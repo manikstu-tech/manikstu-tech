@@ -68,8 +68,12 @@ export default function Header() {
       <div className="h-1 bg-gradient-to-r from-manikstu-red via-manikstu-green to-manikstu-red" />
 
       {/* Mobile nav */}
-      {open && (
-        <div className="lg:hidden bg-manikstu-leaf text-white">
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-manikstu-leaf text-white">
           <nav className="flex flex-col px-4 py-4">
             {navLinks.map((link) => (
               <Link
@@ -90,7 +94,7 @@ export default function Header() {
             </a>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }

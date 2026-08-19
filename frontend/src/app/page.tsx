@@ -132,10 +132,17 @@ export default function HomePage() {
     <>
       <Header />
 
-      <main>
+      <main id="main-content">
         {/* Hero */}
-        <section className="relative flex min-h-[80vh] items-center justify-center bg-manikstu-leaf text-white">
+        <section className="relative flex min-h-[80vh] items-center justify-center bg-manikstu-leaf text-white overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-manikstu-leaf/90 to-charcoal/70" />
+          {/* Saura pattern overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F0E8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
           <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
             <h1 className="font-heading text-4xl font-bold leading-tight md:text-6xl">
               Revolutionizing Goat Farming
@@ -296,10 +303,10 @@ export default function HomePage() {
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <div className="mt-4 border-t border-light-grey pt-4">
-                    <p className="text-sm font-semibold text-charcoal">
+                    <p className="text-base font-semibold text-charcoal">
                       {t.name}
                     </p>
-                    <p className="text-xs text-grey">{t.role}</p>
+                    <p className="mt-0.5 text-sm text-grey">{t.role}</p>
                   </div>
                 </div>
               ))}

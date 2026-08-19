@@ -23,15 +23,15 @@ h1, h2, h3, h4, h5, h6 {
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center bg-manikstu-green text-white px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-manikstu-leaf;
+    @apply inline-flex items-center justify-center bg-manikstu-green text-white px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-manikstu-leaf focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-manikstu-green focus-visible:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center bg-manikstu-red text-white px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-red-700;
+    @apply inline-flex items-center justify-center bg-manikstu-red text-white px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-manikstu-red focus-visible:ring-offset-2;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center border-2 border-manikstu-green text-manikstu-green px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-manikstu-green hover:text-white;
+    @apply inline-flex items-center justify-center border-2 border-manikstu-green text-manikstu-green px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-manikstu-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-manikstu-green focus-visible:ring-offset-2;
   }
 
   .section-padding {
