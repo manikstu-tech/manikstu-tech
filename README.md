@@ -1,24 +1,24 @@
-# Manikstu Agro — Website Revamp
+# 🐐 Manikstu Agro — Website Revamp
 
-> Revolutionizing Goat Farming Ecosystem Worldwide
+> 🚀 Revolutionizing Goat Farming Ecosystem Worldwide
 
-## Overview
+## 📋 Overview
 
 Complete redesign of [manikstu.com](https://manikstu.com) — a goat farming ecosystem website for Manikstu Agro Private Limited, founded 2015 in Kalahandi, Odisha, India.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend | Next.js 14 (App Router) + Tailwind CSS |
-| Backend | Laravel 11 REST API |
-| Database | MySQL 8 |
-| Auth | Laravel Sanctum (Staff/Dealer/Farmer) |
-| Payments | Razorpay |
-| Admin | Custom Laravel Blade |
-| Hosting | Vercel (frontend) + VPS (backend) |
+| 🎨 Frontend | Next.js 14 (App Router) + Tailwind CSS |
+| ⚙️ Backend | Laravel 11 REST API |
+| 🗄️ Database | MySQL 8 |
+| 🔐 Auth | Laravel Sanctum (Staff/Dealer/Farmer) |
+| 💳 Payments | Razorpay |
+| 🖥️ Admin | Custom Laravel Blade |
+| 🌐 Hosting | Vercel (frontend) + VPS (backend) |
 
-## Getting Started
+## 🚀 Getting Started
 
 ```bash
 # Frontend
@@ -27,20 +27,20 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open [http://localhost:3000](http://localhost:3000) to view the site 🎉
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 manikstu-tech/
-├── docs/                           # Project documentation
+├── 📚 docs/                           # Project documentation
 │   ├── PRD.MD                      # Requirements, features, target users
 │   ├── ARCHITECTURE.MD             # System design, API endpoints, DB schema
 │   ├── RULES.MD                    # Laravel + Next.js conventions
 │   ├── PHASES.MD                   # 6 development phases with tasks
 │   ├── DESIGN.MD                   # Colors, typography, component specs
 │   └── MEMORY.MD                   # Progress tracker, decisions log
-├── frontend/                       # Next.js 14 frontend
+├── 🎨 frontend/                       # Next.js 14 frontend
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── layout.tsx          # Root layout (fonts, metadata)
@@ -58,76 +58,76 @@ manikstu-tech/
 │   ├── tailwind.config.ts          # Custom color palette, fonts
 │   ├── next.config.mjs             # Image domains
 │   └── package.json
-├── backend/                        # Laravel 11 (pending Phase 1)
+├── ⚙️ backend/                        # Laravel 11 (pending Phase 1)
 ├── README.md
 └── .gitignore
 ```
 
-## Progress
+## 📊 Progress
 
-### Phase 1: Foundation
+### 🏗️ Phase 1: Foundation
 | Task | Status |
 |------|--------|
-| Next.js 14 project init | Done |
-| Tailwind CSS + custom palette | Done |
-| Path aliases (`@/`) | Done |
-| Root layout + fonts (Playfair Display, Inter) | Done |
-| `cn()` utility (clsx + tailwind-merge) | Done |
-| Header component (responsive, mobile nav) | Done |
-| Footer component | Done |
-| Homepage (all 7 sections) | Done |
-| SVG pattern library | Pending |
-| API client | Pending |
-| TypeScript interfaces | Pending |
-| `.env.local` | Pending |
-| Laravel backend setup | Pending |
-| Database migrations | Pending |
-| Admin panel | Pending |
+| ✅ Next.js 14 project init | Done |
+| ✅ Tailwind CSS + custom palette | Done |
+| ✅ Path aliases (`@/`) | Done |
+| ✅ Root layout + fonts (Playfair Display, Inter) | Done |
+| ✅ `cn()` utility (clsx + tailwind-merge) | Done |
+| ✅ Header component (responsive, mobile nav) | Done |
+| ✅ Footer component | Done |
+| ✅ Homepage (all 7 sections) | Done |
+| ⏳ SVG pattern library | Pending |
+| ⏳ API client | Pending |
+| ⏳ TypeScript interfaces | Pending |
+| ⏳ `.env.local` | Pending |
+| ⏳ Laravel backend setup | Pending |
+| ⏳ Database migrations | Pending |
+| ⏳ Admin panel | Pending |
 
-### Phase 2-6
+### 🗺️ Phase 2-6
 See [PHASES.MD](./docs/PHASES.MD) for full roadmap.
 
-## Homepage Sections
+## 🏠 Homepage Sections
 
-1. **Hero** — Full-width with gradient overlay, headline, dual CTAs
-2. **Stats** — 4 impact counters (farmers, goats, states, years)
-3. **Services** — 4 cards (Goat Care, Farm ERP, Farming Solutions, Insurance)
-4. **Projects** — 4 project cards (Samarth, Sujalam Sufalam, Samriddhi, Dhanvantaram)
-5. **Products** — 3 category cards (For Goats, Goats, From Goats)
-6. **Testimonials** — 3 farmer quotes
-7. **CTA** — Call to action with training + contact links
+1. 🎯 **Hero** — Full-width with gradient overlay, headline, dual CTAs
+2. 📈 **Stats** — 4 impact counters (farmers, goats, states, years)
+3. 🛠️ **Services** — 4 cards (Goat Care, Farm ERP, Farming Solutions, Insurance)
+4. 🤝 **Projects** — 4 project cards (Samarth, Sujalam Sufalam, Samriddhi, Dhanvantaram)
+5. 🛍️ **Products** — 3 category cards (For Goats, Goats, From Goats)
+6. 💬 **Testimonials** — 3 farmer quotes
+7. 📣 **CTA** — Call to action with training + contact links
 
-## Cultural Design
+## 🎭 Cultural Design
 
 The website integrates Odisha and Chhattisgarh tribal art:
-- **Saura paintings** — section borders, dividers, hero illustrations
-- **Godna patterns** — background textures, card patterns
-- **Dhokra art** — icon set, decorative accents
-- **Ikat patterns** — section backgrounds, card borders
-- **Ghumura elements** — loading animations, circular motifs
+- 🎨 **Saura paintings** — section borders, dividers, hero illustrations
+- 〰️ **Godna patterns** — background textures, card patterns
+- 🐘 **Dhokra art** — icon set, decorative accents
+- 🧵 **Ikat patterns** — section backgrounds, card borders
+- 🥁 **Ghumura elements** — loading animations, circular motifs
 
-## Brand Colors
+## 🎨 Brand Colors
 
 | Color | Hex | Usage |
 |-------|-----|-------|
-| Manikstu Green | `#4A8C3F` | Primary buttons, links |
-| Manikstu Red | `#D4342C` | CTA buttons, urgency |
-| Leaf Dark | `#3A7030` | Header, footer, dark backgrounds |
-| Cream Silk | `#FDF6EC` | Warm section backgrounds |
-| Bamboo Gold | `#C4952A` | Accents, highlights |
-| Saura Red | `#9F5233` | Tribal art accents |
+| 💚 Manikstu Green | `#4A8C3F` | Primary buttons, links |
+| ❤️ Manikstu Red | `#D4342C` | CTA buttons, urgency |
+| 🌿 Leaf Dark | `#3A7030` | Header, footer, dark backgrounds |
+| 🧈 Cream Silk | `#FDF6EC` | Warm section backgrounds |
+| ✨ Bamboo Gold | `#C4952A` | Accents, highlights |
+| 🔥 Saura Red | `#9F5233` | Tribal art accents |
 
-## Documentation
+## 📖 Documentation
 
 | Document | Description |
 |----------|-------------|
-| [PRD.MD](./docs/PRD.MD) | What to build, target users, features |
-| [ARCHITECTURE.MD](./docs/ARCHITECTURE.MD) | System design, folders, API endpoints, DB schema |
-| [RULES.MD](./docs/RULES.MD) | Laravel + Next.js rules, anti-patterns |
-| [PHASES.MD](./docs/PHASES.MD) | 6 development phases with tasks |
-| [DESIGN.MD](./docs/DESIGN.MD) | Colors, typography, admin panel design |
-| [MEMORY.MD](./docs/MEMORY.MD) | Progress tracker, agent team, decisions |
+| 📄 [PRD.MD](./docs/PRD.MD) | What to build, target users, features |
+| 📐 [ARCHITECTURE.MD](./docs/ARCHITECTURE.MD) | System design, folders, API endpoints, DB schema |
+| 📏 [RULES.MD](./docs/RULES.MD) | Laravel + Next.js rules, anti-patterns |
+| 📅 [PHASES.MD](./docs/PHASES.MD) | 6 development phases with tasks |
+| 🎨 [DESIGN.MD](./docs/DESIGN.MD) | Colors, typography, admin panel design |
+| 🧠 [MEMORY.MD](./docs/MEMORY.MD) | Progress tracker, agent team, decisions |
 
-## License
+## 📜 License
 
-Private — Manikstu Agro Private Limited
+🔒 Private — Manikstu Agro Private Limited
