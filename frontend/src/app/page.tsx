@@ -140,7 +140,7 @@ export default function HomePage() {
 
       <main id="main-content">
         {/* Hero */}
-        <section className="relative flex min-h-[80vh] items-center justify-center bg-manikstu-leaf text-white overflow-hidden">
+        <section className="relative flex min-h-[80vh] items-center overflow-hidden bg-manikstu-leaf text-white">
           <div className="absolute inset-0 bg-gradient-to-br from-manikstu-leaf/90 to-charcoal/70" />
           {/* Saura pattern overlay */}
           <div
@@ -149,23 +149,63 @@ export default function HomePage() {
               backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F0E8' fill-opacity='1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm0-40c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM10 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm0-40c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3Cpath d='M30 30h20v20H30z'/%3E%3Cpath d='M0 30h10v20H0zM70 30h10v20H70zM30 0v10h20V0zM30 70v10h20V70z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
           />
-          <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-            <h1 className="font-heading text-4xl font-bold leading-tight md:text-6xl">
-              Revolutionizing Goat Farming
-              <br />
-              <span className="text-manikstu-gold">Ecosystem Worldwide</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
-              Comprehensive veterinary services, goat bank, training programs,
-              and ethically sourced products — empowering farmers since 2015.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href="/collaborate" className="btn-primary">
-                Join Our Network
-              </Link>
-              <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-manikstu-leaf">
-                Explore Products
-              </Link>
+          <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 md:px-8 lg:grid-cols-2">
+            <div>
+              <h1 className="font-heading text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+                Revolutionizing Goat Farming
+                <br />
+                <span className="text-manikstu-gold">Ecosystem Worldwide</span>
+              </h1>
+              <p className="mt-6 max-w-xl text-lg text-white/80">
+                Comprehensive veterinary services, goat bank, training programs,
+                and ethically sourced products — empowering farmers since 2015.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link href="/collaborate" className="btn-primary">
+                  Join Our Network
+                </Link>
+                <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-manikstu-leaf">
+                  Explore Products
+                </Link>
+              </div>
+            </div>
+            {/* Line-art goat illustration */}
+            <div className="hidden lg:flex justify-center">
+              <svg viewBox="0 0 400 400" className="h-80 w-80 text-white/20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                {/* Goat body */}
+                <ellipse cx="200" cy="240" rx="90" ry="60" />
+                {/* Goat head */}
+                <circle cx="310" cy="180" r="35" />
+                {/* Horns */}
+                <path d="M295 150 Q280 120 290 90" />
+                <path d="M325 150 Q340 120 330 90" />
+                {/* Ears */}
+                <path d="M280 170 Q260 160 265 145" />
+                <path d="M340 170 Q360 160 355 145" />
+                {/* Eye */}
+                <circle cx="315" cy="175" r="3" fill="currentColor" />
+                {/* Nose */}
+                <path d="M335 190 Q345 195 340 205" />
+                {/* Neck */}
+                <path d="M280 200 Q260 220 240 230" />
+                {/* Legs */}
+                <path d="M150 290 L145 360" />
+                <path d="M180 295 L175 365" />
+                <path d="M220 295 L225 365" />
+                <path d="M250 290 L255 360" />
+                {/* Hooves */}
+                <path d="M140 358 L150 362 L155 358" />
+                <path d="M170 363 L180 367 L185 363" />
+                <path d="M220 363 L230 367 L235 363" />
+                <path d="M250 358 L260 362 L265 358" />
+                {/* Tail */}
+                <path d="M110 230 Q90 220 85 240 Q80 260 95 255" />
+                {/* Beard */}
+                <path d="M330 200 Q340 215 335 230" />
+                {/* Saura decorative elements */}
+                <circle cx="200" cy="100" r="15" strokeDasharray="4 4" />
+                <path d="M170 80 L185 65 L200 80 L215 65 L230 80" strokeDasharray="4 4" />
+              </svg>
             </div>
           </div>
         </section>
@@ -205,10 +245,13 @@ export default function HomePage() {
                   <Link
                     key={service.title}
                     href={service.href}
-                    className={`group rounded-lg border border-light-grey bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 ${
+                    className={`group relative rounded-lg border border-light-grey bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 ${
                       i === 0 ? "lg:col-span-2 lg:p-8" : ""
                     }`}
                   >
+                    {/* Saura corner decoration */}
+                    <div className="absolute top-2 right-2 h-6 w-6 border-t-2 border-r-2 border-manikstu-green/20 rounded-tr-lg" />
+                    <div className="absolute bottom-2 left-2 h-6 w-6 border-b-2 border-l-2 border-manikstu-green/20 rounded-bl-lg" />
                     <Icon className={`text-manikstu-green ${i === 0 ? "h-12 w-12" : "h-10 w-10"}`} />
                     <h3 className={`mt-4 font-semibold text-charcoal ${i === 0 ? "text-xl" : "text-lg"}`}>
                       {service.title}
@@ -274,8 +317,15 @@ export default function HomePage() {
                 <Link
                   key={product.category}
                   href={product.href}
-                  className="group rounded-lg border border-light-grey bg-white p-6 shadow-sm transition-all hover:shadow-md"
+                  className="group rounded-lg border border-light-grey bg-white p-6 shadow-sm transition-all hover:shadow-md relative overflow-hidden"
                 >
+                  {/* Ikat top accent */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-2 opacity-60"
+                    style={{
+                      background: `repeating-linear-gradient(90deg, #4A8C3F 0px, #4A8C3F 8px, transparent 8px, transparent 12px, #C4952A 12px, #C4952A 20px, transparent 20px, transparent 24px)`,
+                    }}
+                  />
                   <h3 className="text-lg font-semibold text-charcoal">
                     {product.category}
                   </h3>
@@ -305,8 +355,10 @@ export default function HomePage() {
               {testimonials.map((t) => (
                 <div
                   key={t.name}
-                  className="rounded-lg bg-white p-6 shadow-sm"
+                  className="rounded-lg bg-white p-6 shadow-sm relative overflow-hidden"
                 >
+                  {/* Saura bottom border */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-manikstu-green via-manikstu-gold to-manikstu-green" />
                   <p className="text-sm text-grey italic">
                     &ldquo;{t.quote}&rdquo;
                   </p>
@@ -328,8 +380,15 @@ export default function HomePage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-manikstu-green py-16 text-white">
-          <div className="mx-auto max-w-4xl px-4 text-center md:px-8">
+        <section className="relative bg-manikstu-green py-20 text-white overflow-hidden">
+          {/* Godna pattern overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.05]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23F5F0E8' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20l4-4 2 2-4 4-2-2zm0-20l2.83 2.83L1.41 4.24 0 2.83V0h1.41L4.24 2.83 2.83 4.24 0 1.41V0zm20 20l4-4 2 2-4 4-2-2zm-20 0l2.83 2.83L1.41 24.24 0 22.83V20h1.41L4.24 22.83 2.83 24.24 0 21.41V20zm20-20l4-4 2 2-4 4-2-2zM10 10l2.83 2.83L8.66 15.66 5.83 12.83 10 10zm20 20l4-4 2 2-4 4-2-2z'/%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-8">
             <h2 className="text-3xl font-bold font-heading md:text-4xl">
               Ready to Start Your Goat Farming Journey?
             </h2>
