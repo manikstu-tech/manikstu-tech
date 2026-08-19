@@ -140,7 +140,7 @@ export default function HomePage() {
 
       <main id="main-content">
         {/* Hero */}
-        <section className="relative flex min-h-[80vh] items-center overflow-hidden bg-manikstu-leaf text-white">
+        <section className="relative min-h-[80vh] overflow-hidden bg-manikstu-leaf text-white">
           <div className="absolute inset-0 bg-gradient-to-br from-manikstu-leaf/90 to-charcoal/70" />
           {/* Saura pattern overlay */}
           <div
@@ -149,7 +149,7 @@ export default function HomePage() {
               backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F0E8' fill-opacity='1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm0-40c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM10 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm0-40c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3Cpath d='M30 30h20v20H30z'/%3E%3Cpath d='M0 30h10v20H0zM70 30h10v20H70zM30 0v10h20V0zM30 70v10h20V70z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
           />
-          <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 md:px-8 lg:grid-cols-2">
+          <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl items-center gap-12 px-4 py-20 md:px-8 lg:grid lg:grid-cols-2">
             <div>
               <h1 className="font-heading text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
                 Revolutionizing Goat Farming
