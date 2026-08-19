@@ -3,19 +3,19 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
   Stethoscope,
-  BarChart3,
+  LayoutDashboard,
   Tractor,
   ShieldCheck,
   ArrowRight,
   Users,
   MapPin,
   Award,
-  Heart,
+  Sprout,
 } from "lucide-react";
 
 const stats = [
   { value: "10,000+", label: "Farmers Served", icon: Users },
-  { value: "50,000+", label: "Goats Supported", icon: Heart },
+  { value: "50,000+", label: "Goats Supported", icon: Sprout },
   { value: "6", label: "States Covered", icon: MapPin },
   { value: "8+", label: "Years of Impact", icon: Award },
 ];
@@ -29,7 +29,7 @@ const services = [
     href: "/services/goat-care",
   },
   {
-    icon: BarChart3,
+    icon: LayoutDashboard,
     title: "Farm ERP",
     description:
       "Digital tools for farm management, breeding records, and inventory tracking.",
@@ -112,18 +112,24 @@ const testimonials = [
       "Manikstu helped me start my goat farm with just 5 goats. Today I have 30+ and a steady income.",
     name: "Lakshmi Devi",
     role: "Farmer, Kalahandi",
+    initials: "LD",
+    color: "bg-manikstu-green",
   },
   {
     quote:
       "The veterinary services are excellent. My goat mortality dropped from 20% to under 5%.",
     name: "Rajesh Kumar",
     role: "Farmer, Koraput",
+    initials: "RK",
+    color: "bg-manikstu-red",
   },
   {
     quote:
       "The training program gave me the confidence to run my own goat farming business.",
     name: "Sunita Munda",
     role: "Entrepreneur, Rayagada",
+    initials: "SM",
+    color: "bg-manikstu-gold",
   },
 ];
 
@@ -138,9 +144,9 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-br from-manikstu-leaf/90 to-charcoal/70" />
           {/* Saura pattern overlay */}
           <div
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 opacity-[0.07]"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F0E8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F0E8' fill-opacity='1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm0-40c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM10 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm0-40c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3Cpath d='M30 30h20v20H30z'/%3E%3Cpath d='M0 30h10v20H0zM70 30h10v20H70zM30 0v10h20V0zM30 70v10h20V70z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
           />
           <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
@@ -192,20 +198,22 @@ export default function HomePage() {
               End-to-end solutions for every stage of goat farming — from health
               to harvest.
             </p>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {services.map((service) => {
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+              {services.map((service, i) => {
                 const Icon = service.icon;
                 return (
                   <Link
                     key={service.title}
                     href={service.href}
-                    className="group rounded-lg border border-light-grey bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                    className={`group rounded-lg border border-light-grey bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 ${
+                      i === 0 ? "lg:col-span-2 lg:p-8" : ""
+                    }`}
                   >
-                    <Icon className="h-10 w-10 text-manikstu-green" />
-                    <h3 className="mt-4 text-lg font-semibold text-charcoal">
+                    <Icon className={`text-manikstu-green ${i === 0 ? "h-12 w-12" : "h-10 w-10"}`} />
+                    <h3 className={`mt-4 font-semibold text-charcoal ${i === 0 ? "text-xl" : "text-lg"}`}>
                       {service.title}
                     </h3>
-                    <p className="mt-2 text-sm text-grey">
+                    <p className={`mt-2 text-grey ${i === 0 ? "text-base" : "text-sm"}`}>
                       {service.description}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-manikstu-green group-hover:text-manikstu-red transition-colors">
@@ -302,11 +310,16 @@ export default function HomePage() {
                   <p className="text-sm text-grey italic">
                     &ldquo;{t.quote}&rdquo;
                   </p>
-                  <div className="mt-4 border-t border-light-grey pt-4">
-                    <p className="text-base font-semibold text-charcoal">
-                      {t.name}
-                    </p>
-                    <p className="mt-0.5 text-sm text-grey">{t.role}</p>
+                  <div className="mt-4 border-t border-light-grey pt-4 flex items-center gap-3">
+                    <div className={`flex h-10 w-10 items-center justify-center rounded-full ${t.color} text-white text-sm font-semibold`}>
+                      {t.initials}
+                    </div>
+                    <div>
+                      <p className="text-base font-semibold text-charcoal">
+                        {t.name}
+                      </p>
+                      <p className="mt-0.5 text-sm text-grey">{t.role}</p>
+                    </div>
                   </div>
                 </div>
               ))}
