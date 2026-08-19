@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-green: #4A8C3F;
+  --color-red: #D4342C;
+  --color-leaf: #3A7030;
+  --color-cream: #FDF6EC;
+  --color-gold: #C4952A;
+  --color-saura-red: #9F5233;
+  --color-saura-white: #F5F0E8;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  color: #1a1a1a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-manikstu-green text-white px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-manikstu-leaf;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center bg-manikstu-red text-white px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-red-700;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center border-2 border-manikstu-green text-manikstu-green px-6 py-3 rounded-lg font-semibold transition-colors hover:bg-manikstu-green hover:text-white;
+  }
+
+  .section-padding {
+    @apply px-4 py-16 md:px-8 lg:px-16 xl:px-24;
+  }
+}

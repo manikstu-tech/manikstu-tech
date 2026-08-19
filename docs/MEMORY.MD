@@ -1,6 +1,6 @@
 # Memory — Manikstu Website Development
 
-## Project Status: NOT STARTED
+## Project Status: IN PROGRESS — Phase 1 (Frontend Foundation)
 
 **Last Updated:** 2026-08-20
 
@@ -32,12 +32,23 @@
 - [x] Frontend: Next.js 14 deployed on Vercel
 - [x] Backend: Laravel on VPS/hosting
 
+### Frontend (Phase 1)
+- [x] Next.js 14 project initialized
+- [x] Tailwind CSS configured with custom color palette
+- [x] Path aliases (`@/`) configured
+- [x] Root layout with fonts (Playfair Display + Inter, self-hosted via next/font)
+- [x] `cn()` utility (clsx + tailwind-merge)
+- [x] Header component (responsive, mobile slide-out nav)
+- [x] Footer component (4-column, dark green)
+- [x] Homepage with all 7 sections (hero, stats, services, projects, products, testimonials, CTA)
+- [x] globals.css (custom properties, button utilities)
+
 ---
 
 ## What Is Currently Being Worked On
 
-**Current Phase:** Pre-development (documentation complete)
-**Next Step:** Phase 1 — Foundation setup (both frontend + backend)
+**Current Phase:** Phase 1 — Foundation (frontend layout done, pending backend + patterns)
+**Next Step:** SVG tribal art patterns, API client, TypeScript interfaces
 
 ---
 
@@ -75,24 +86,22 @@
 | DESIGN.MD | DONE | Updated with admin panel design |
 | MEMORY.MD | DONE | This file |
 
-### Frontend Files (Next.js — Not Yet Started)
+### Frontend Files
 | File/Dir | Status | Phase |
 |----------|--------|-------|
-| frontend/package.json | PENDING | Phase 1 |
-| frontend/next.config.ts | PENDING | Phase 1 |
-| frontend/tailwind.config.ts | PENDING | Phase 1 |
-| frontend/tsconfig.json | PENDING | Phase 1 |
+| frontend/package.json | DONE | Phase 1 |
+| frontend/next.config.mjs | DONE | Phase 1 |
+| frontend/tailwind.config.ts | DONE | Phase 1 |
+| frontend/tsconfig.json | DONE | Phase 1 |
 | frontend/.env.local | PENDING | Phase 1 |
-| frontend/src/app/layout.tsx | PENDING | Phase 1 |
-| frontend/src/app/page.tsx | PENDING | Phase 2 |
-| frontend/src/styles/globals.css | PENDING | Phase 1 |
+| frontend/src/app/layout.tsx | DONE | Phase 1 |
+| frontend/src/app/page.tsx | DONE | Phase 1 |
+| frontend/src/app/globals.css | DONE | Phase 1 |
+| frontend/src/components/layout/Header.tsx | DONE | Phase 1 |
+| frontend/src/components/layout/Footer.tsx | DONE | Phase 1 |
 | frontend/src/components/patterns/* | PENDING | Phase 1 |
-| frontend/src/components/layout/Header.tsx | PENDING | Phase 1 |
-| frontend/src/components/layout/Footer.tsx | PENDING | Phase 1 |
-| frontend/src/components/layout/MobileNav.tsx | PENDING | Phase 1 |
+| frontend/src/lib/utils.ts | DONE | Phase 1 |
 | frontend/src/lib/api.ts | PENDING | Phase 1 |
-| frontend/src/lib/utils.ts | PENDING | Phase 1 |
-| frontend/src/lib/constants.ts | PENDING | Phase 1 |
 | frontend/src/types/index.ts | PENDING | Phase 1 |
 | frontend/src/app/about/page.tsx | PENDING | Phase 2 |
 | frontend/src/app/team/page.tsx | PENDING | Phase 2 |

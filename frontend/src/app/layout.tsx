@@ -1,0 +1,52 @@
+import type { Metadata } from "next";
+import { Playfair_Display, Inter } from "next/font/google";
+import "./globals.css";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "Manikstu Agro — Revolutionizing Goat Farming Ecosystem",
+    template: "%s | Manikstu Agro",
+  },
+  description:
+    "Manikstu Agro Private Limited — comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products. Founded 2015, Kalahandi, Odisha.",
+  keywords: [
+    "goat farming",
+    "goat bank",
+    "veterinary services",
+    "livestock",
+    "Manikstu",
+    "Odisha",
+    "Kalahandi",
+    "goat supplements",
+    "organic manure",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Manikstu Agro",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <body>{children}</body>
+    </html>
+  );
+}
