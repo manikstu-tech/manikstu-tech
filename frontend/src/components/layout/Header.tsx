@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
@@ -22,13 +23,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-manikstu-green font-heading">
-            Manikstu
-          </span>
-          <span className="text-sm font-medium text-manikstu-leaf hidden sm:inline">
-            Agro
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="Manikstu Agro"
+            width={120}
+            height={48}
+            className="h-12 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6">

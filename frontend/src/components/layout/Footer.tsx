@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   services: [
@@ -31,8 +32,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <Link href="/" className="text-2xl font-bold font-heading">
-              Manikstu
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                alt="Manikstu Agro"
+                width={120}
+                height={48}
+                className="h-12 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="mt-3 text-sm text-white/70">
               Revolutionizing Goat Farming Ecosystem Worldwide. Founded 2015,
