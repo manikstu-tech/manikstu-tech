@@ -56,7 +56,7 @@ const stats = [
 
 const associations = [
   { name: "MSME", image: "/msme.png" },
-  "Miller Center",
+  { name: "Miller Center", image: "/miller-center.png" },
   { name: "Startup Odisha", image: "/startup-odisha.png" },
   { name: "StartupIndia", image: "/startup-india.png" },
   "NABARD",
