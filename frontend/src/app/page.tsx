@@ -68,6 +68,7 @@ const partnerCategories = [
       { name: "Startup India", image: "/startup-india.png" },
       { name: "Startup Odisha", image: "/startup-odisha.png" },
       { name: "Miller Center", image: "/miller-center.png" },
+      { name: "KIIT TBI", image: "/KIIT TBI.png" },
     ],
   },
   {
