@@ -296,17 +296,20 @@ export default function HomePage() {
                   Our Flagship Program
                 </p>
                 <h2 className="mt-4 text-3xl font-bold text-charcoal font-heading md:text-4xl">
-                  Project Samarth
+                  Project AJAH
                 </h2>
                 <p className="mt-4 text-grey">
-                  This initiative provides interest-free loans, insurance,
-                  healthcare and training to marginal farmers.
+                  AJAH — Women-Led Integrated Livestock Entrepreneurship Initiative.
+                  Empowering women farmers through an integrated goat and poultry
+                  livelihood model, combining scientific livestock management,
+                  improved infrastructure, animal healthcare, training, insurance
+                  and market support.
                 </p>
                 <Link
-                  href="/collaborate/samarth"
+                  href="/collaborate/ajah"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
                 >
-                  Explore More <ArrowRight className="h-4 w-4" />
+                  Explore Project AJAH <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
@@ -315,7 +318,7 @@ export default function HomePage() {
                 </div>
                 {/* Badge */}
                 <div className="absolute bottom-4 right-4 rounded-full bg-manikstu-green px-4 py-2 text-xs font-semibold text-white">
-                  Holistic Support for Marginal Farmers
+                  10 Female Goats + 2 Male Goats | Women-Led Livestock Entrepreneurship
                 </div>
               </div>
             </div>
