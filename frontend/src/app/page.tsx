@@ -20,7 +20,6 @@ import {
   Shield,
   Calendar,
   FileText,
-  Award,
 } from "lucide-react";
 
 const missionCards = [
@@ -72,28 +71,24 @@ const newsItems = [
     category: "FEATURED",
     categoryColor: "bg-manikstu-green",
     title: "Manikstu's Goat Bank featured in Mann Ki Baat",
-    image: true,
   },
   {
     date: "Jan 14, 2024",
     category: "EVENT",
     categoryColor: "bg-manikstu-red",
     title: "Hon'ble Prime Minister Modi met with Odisha Govt. for Rural Development",
-    image: true,
   },
   {
     date: "Dec 15, 2023",
     category: "PRESS",
     categoryColor: "bg-manikstu-gold",
     title: "CEO, Manikstu Agro received Emerging Women Entrepreneur Award",
-    image: true,
   },
   {
     date: "Mar 08, 2024",
     category: "MEDIA",
     categoryColor: "bg-saura-red",
     title: "Manikstu Initiative on Goat Farming featured in Dainik Jagran",
-    image: true,
   },
 ];
 

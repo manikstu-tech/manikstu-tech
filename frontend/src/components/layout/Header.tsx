@@ -20,7 +20,6 @@ const navLinks = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const { toggle } = useThemeToggle();
-  const isDark = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-charcoal shadow-sm transition-colors">

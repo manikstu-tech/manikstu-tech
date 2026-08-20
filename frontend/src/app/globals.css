@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-green: #4A8C3F;
-  --color-red: #D4342C;
-  --color-leaf: #3A7030;
-  --color-cream: #FDF6EC;
-  --color-gold: #C4952A;
-  --color-saura-red: #9F5233;
-  --color-saura-white: #F5F0E8;
-}
-
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
   color: #1a1a1a;
