@@ -3,17 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Moon } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Products", href: "/products" },
+  { label: "Media", href: "/blog" },
   { label: "Collaborate", href: "/collaborate" },
-  { label: "Training", href: "/training" },
-  { label: "Impact", href: "/impact" },
-  { label: "Blog", href: "/blog" },
+  { label: "Training & Awareness", href: "/training" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -47,13 +46,16 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="tel:+919437000000"
-            className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-manikstu-green"
+          <button className="hidden md:flex items-center gap-1 text-sm text-charcoal hover:text-manikstu-green transition-colors" aria-label="Toggle dark mode">
+            <Moon className="h-4 w-4" />
+          </button>
+          <span className="hidden md:inline text-sm text-grey">EN</span>
+          <Link
+            href="/contact"
+            className="hidden md:inline-flex items-center rounded-full bg-manikstu-green px-5 py-2 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
           >
-            <Phone className="h-4 w-4" />
-            Call Us
-          </a>
+            Contact Us
+          </Link>
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden p-2 text-charcoal"
@@ -63,9 +65,6 @@ export default function Header() {
           </button>
         </div>
       </div>
-
-      {/* Saura-style border */}
-      <div className="h-1 bg-gradient-to-r from-manikstu-red via-manikstu-green to-manikstu-red" />
 
       {/* Mobile nav */}
       <div
