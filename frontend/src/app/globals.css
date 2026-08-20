@@ -49,11 +49,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Partners marquee animation */
 @keyframes partner-scroll {
-  0% {
-    transform: translateX(0);
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -100,10 +100,17 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 768px) {
   .partner-track {
     animation: partner-scroll 60s linear infinite;
+    will-change: transform;
   }
 
   .partner-track:hover {
     animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-track {
+    animation: none;
   }
 }
 

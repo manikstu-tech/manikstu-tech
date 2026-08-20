@@ -384,25 +384,25 @@ export default function HomePage() {
             </div>
           </div>
           <div className="mt-12">
-            {/* Mobile: 2-column grid */}
-            <div className="grid grid-cols-2 gap-6 md:hidden">
+            {/* Mobile: stacked categories */}
+            <div className="space-y-8 md:hidden">
               {partnerCategories.map((category) => (
                 <div key={category.title} className="text-center">
-                  <h3 className="border border-manikstu-green/20 bg-white text-xs font-semibold text-charcoal dark:bg-gray-700 dark:text-white dark:border-gray-600 px-4 py-2 mb-3 whitespace-nowrap rounded-t">
+                  <h3 className="mb-4 inline-block border border-manikstu-green/20 bg-white px-4 py-2 text-xs font-semibold text-charcoal dark:border-gray-600 dark:bg-gray-700 dark:text-white">
                     {category.title}
                   </h3>
-                  <div className="flex flex-wrap items-center justify-center gap-3">
+                  <div className="flex flex-wrap justify-center gap-3">
                     {category.partners.map((partner) => (
                       <div
                         key={partner.name}
-                        className="partner-card flex h-24 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-6 flex-shrink-0"
+                        className="partner-card flex h-22 w-36 items-center justify-center rounded-lg border border-light-grey bg-white px-4 dark:border-gray-600 dark:bg-gray-700"
                       >
                         <Image
                           src={partner.image}
                           alt={partner.name}
                           width={140}
                           height={70}
-                          className="h-16 w-auto object-contain"
+                          className="max-h-12 w-auto max-w-[120px] object-contain"
                         />
                       </div>
                     ))}
@@ -414,21 +414,21 @@ export default function HomePage() {
             <div className="mt-12 partner-track hidden md:flex">
             {[...partnerCategories, ...partnerCategories].map((category, idx) => (
               <div key={idx} className="partner-group flex-shrink-0">
-                <h3 className="border border-manikstu-green/20 bg-white text-sm font-semibold text-charcoal dark:bg-gray-700 dark:text-white dark:border-gray-600 px-6 py-3 mb-4 whitespace-nowrap rounded-t">
+                <h3 className="mb-5 inline-block border border-manikstu-green/20 bg-white px-6 py-3 text-sm font-semibold text-charcoal dark:border-gray-600 dark:bg-gray-700 dark:text-white">
                   {category.title}
                 </h3>
-                <div className="flex items-center gap-6">
+                <div className="flex items-start gap-5">
                   {category.partners.map((partner) => (
                     <div
                       key={partner.name}
-                      className="partner-card flex h-28 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-8 flex-shrink-0"
+                      className="partner-card flex h-28 w-48 shrink-0 items-center justify-center rounded-lg border border-light-grey bg-white px-5 dark:border-gray-600 dark:bg-gray-700"
                     >
                       <Image
                         src={partner.image}
                         alt={partner.name}
-                        width={160}
-                        height={80}
-                        className="h-18 w-auto object-contain"
+                        width={220}
+                        height={100}
+                        className="max-h-20 w-auto max-w-[170px] object-contain"
                       />
                     </div>
                   ))}
