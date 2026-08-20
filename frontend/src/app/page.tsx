@@ -395,14 +395,14 @@ export default function HomePage() {
                     {category.partners.map((partner) => (
                       <div
                         key={partner.name}
-                        className="partner-card flex h-16 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-3 flex-shrink-0"
+                        className="partner-card flex h-20 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-4 flex-shrink-0"
                       >
                         <Image
                           src={partner.image}
                           alt={partner.name}
-                          width={100}
-                          height={50}
-                          className="h-10 w-auto object-contain"
+                          width={140}
+                          height={70}
+                          className="h-16 w-auto object-contain"
                         />
                       </div>
                     ))}
@@ -421,14 +421,14 @@ export default function HomePage() {
                   {category.partners.map((partner) => (
                     <div
                       key={partner.name}
-                      className="partner-card flex h-20 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-5 flex-shrink-0"
+                      className="partner-card flex h-24 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-5 flex-shrink-0"
                     >
                       <Image
                         src={partner.image}
                         alt={partner.name}
-                        width={120}
-                        height={60}
-                        className="h-14 w-auto object-contain"
+                        width={160}
+                        height={80}
+                        className="h-18 w-auto object-contain"
                       />
                     </div>
                   ))}
