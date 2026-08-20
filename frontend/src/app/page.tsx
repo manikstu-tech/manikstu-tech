@@ -54,13 +54,44 @@ const stats = [
   { value: "10+", label: "States Covered", icon: Shield },
 ];
 
-const associations = [
-  { name: "MSME", image: "/msme.png" },
-  { name: "Miller Center", image: "/miller-center.png" },
-  { name: "Startup Odisha", image: "/startup-odisha.png" },
-  { name: "StartupIndia", image: "/startup-india.png" },
-  "NABARD",
-  "NSDC",
+const partnerCategories = [
+  {
+    title: "Operational Partners",
+    partners: [
+      { name: "NABARD", image: null },
+      { name: "NSDC", image: null },
+    ],
+  },
+  {
+    title: "Incubation Partners",
+    partners: [
+      { name: "Startup India", image: "/startup-india.png" },
+      { name: "Startup Odisha", image: "/startup-odisha.png" },
+      { name: "Miller Center", image: "/miller-center.png" },
+    ],
+  },
+  {
+    title: "Supporting Partners",
+    partners: [
+      { name: "MSME", image: "/msme.png" },
+    ],
+  },
+  {
+    title: "Technology Partners",
+    partners: [],
+  },
+  {
+    title: "CSR Partners",
+    partners: [],
+  },
+  {
+    title: "Investing Partners",
+    partners: [],
+  },
+  {
+    title: "Banking Partner",
+    partners: [],
+  },
 ];
 
 const newsItems = [
@@ -327,33 +358,50 @@ export default function HomePage() {
         </section>
 
         {/* Associations */}
-        <section className="section-padding bg-manikstu-cream">
+        <section className="section-padding bg-manikstu-cream dark:bg-gray-800 overflow-hidden">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-center text-3xl font-bold text-charcoal font-heading md:text-4xl">
+            <h2 className="text-center text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
               Our Associations
             </h2>
-            <div className="mt-12 grid grid-cols-3 gap-4 md:grid-cols-6">
-              {associations.map((item) => (
-                <div
-                  key={typeof item === "string" ? item : item.name}
-                  className="flex h-28 items-center justify-center rounded-lg border border-light-grey bg-white px-4"
-                >
-                  {typeof item === "string" ? (
-                    <span className="text-sm font-semibold text-grey text-center">
-                      {item}
-                    </span>
+          </div>
+          <div className="mt-12 partner-track">
+            {[...partnerCategories, ...partnerCategories].map((category, idx) => (
+              <div key={idx} className="partner-group flex-shrink-0">
+                <h3 className="bg-gray-100 dark:bg-gray-700 text-sm font-semibold text-charcoal dark:text-white px-6 py-3 mb-4 whitespace-nowrap">
+                  {category.title}
+                </h3>
+                <div className="flex items-center gap-8">
+                  {category.partners.length > 0 ? (
+                    category.partners.map((partner) => (
+                      <div
+                        key={partner.name}
+                        className="flex h-20 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-4 flex-shrink-0"
+                      >
+                        {partner.image ? (
+                          <Image
+                            src={partner.image}
+                            alt={partner.name}
+                            width={120}
+                            height={60}
+                            className="h-14 w-auto object-contain"
+                          />
+                        ) : (
+                          <span className="text-sm font-semibold text-grey dark:text-gray-300 text-center whitespace-nowrap">
+                            {partner.name}
+                          </span>
+                        )}
+                      </div>
+                    ))
                   ) : (
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      width={200}
-                      height={80}
-                      className="h-24 w-auto object-contain"
-                    />
+                    <div className="flex h-20 items-center justify-center rounded-lg border border-dashed border-light-grey dark:border-gray-600 px-8 flex-shrink-0">
+                      <span className="text-xs text-grey dark:text-gray-400 italic">
+                        Coming soon
+                      </span>
+                    </div>
                   )}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </section>
 

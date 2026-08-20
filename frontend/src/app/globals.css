@@ -46,3 +46,30 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
   border-color: #3a3a3a;
 }
+
+/* Partners marquee animation */
+@keyframes partner-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-track {
+  display: flex;
+  gap: 3rem;
+  animation: partner-scroll 40s linear infinite;
+  width: max-content;
+  padding-left: 2rem;
+}
+
+.partner-track:hover {
+  animation-play-state: paused;
+}
+
+.partner-group {
+  flex-shrink: 0;
+  text-align: center;
+}
