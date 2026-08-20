@@ -75,6 +75,7 @@ const partnerCategories = [
     title: "Supporting Partners",
     partners: [
       { name: "MSME", image: "/msme.png" },
+      { name: "Kalinga Kusum", image: "/kalinga kusum.png" },
     ],
   },
   {
