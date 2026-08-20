@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, Moon } from "lucide-react";
+import { Menu, X, Phone, Moon, Sun } from "lucide-react";
+import { useThemeToggle } from "./ThemeProvider";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -18,9 +19,11 @@ const navLinks = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const { toggle } = useThemeToggle();
+  const isDark = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <header className="sticky top-0 z-50 bg-white dark:bg-charcoal shadow-sm transition-colors">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
         <Link href="/" className="flex items-center">
           <Image
@@ -38,7 +41,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-charcoal hover:text-manikstu-green transition-colors"
+              className="text-sm font-medium text-charcoal dark:text-white hover:text-manikstu-green transition-colors"
             >
               {link.label}
             </Link>
@@ -46,8 +49,9 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button className="hidden md:flex items-center gap-1 text-sm text-charcoal hover:text-manikstu-green transition-colors" aria-label="Toggle dark mode">
-            <Moon className="h-4 w-4" />
+          <button onClick={toggle} className="hidden md:flex items-center gap-1 text-sm text-charcoal dark:text-white hover:text-manikstu-green transition-colors" aria-label="Toggle dark mode">
+            <Moon className="h-4 w-4 dark:hidden" />
+            <Sun className="h-4 w-4 hidden dark:block" />
           </button>
           <span className="hidden md:inline text-sm text-grey">EN</span>
           <Link

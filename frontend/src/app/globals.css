@@ -38,3 +38,35 @@ h1, h2, h3, h4, h5, h6 {
     @apply px-4 py-16 md:px-8 lg:px-16 xl:px-24;
   }
 }
+
+/* Dark mode */
+.dark {
+  background-color: #1A1A1A;
+  color: #e5e5e5;
+}
+
+.dark .bg-white {
+  background-color: #1A1A1A;
+}
+
+.dark .bg-manikstu-cream {
+  background-color: #2a2a2a;
+}
+
+.dark .text-charcoal {
+  color: #ffffff;
+}
+
+.dark .text-grey {
+  color: #a0a0a0;
+}
+
+.dark .border-light-grey {
+  border-color: #3a3a3a;
+}
+
+.dark input {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #3a3a3a;
+}

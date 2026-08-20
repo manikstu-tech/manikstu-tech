@@ -133,7 +133,7 @@ export default function HomePage() {
         <section className="relative overflow-hidden bg-white">
           {/* Green wave decoration */}
           <div className="absolute right-0 top-0 h-full w-1/3 opacity-10 hidden lg:block">
-            <svg viewBox="0 0 400 800" className="h-full w-full text-manikstu-green" fill="currentColor">
+            <svg viewBox="0 0 400 800" className="h-full w-full" fill="#4A8C3F">
               <path d="M400 0 C300 100 200 200 250 400 C300 600 100 700 400 800 L400 0Z" />
             </svg>
           </div>
