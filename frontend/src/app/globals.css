@@ -93,13 +93,18 @@ h1, h2, h3, h4, h5, h6 {
 .partner-track {
   display: flex;
   gap: 3rem;
-  animation: partner-scroll 40s linear infinite;
   width: max-content;
   padding-left: 2rem;
 }
 
-.partner-track:hover {
-  animation-play-state: paused;
+@media (min-width: 768px) {
+  .partner-track {
+    animation: partner-scroll 60s linear infinite;
+  }
+
+  .partner-track:hover {
+    animation-play-state: paused;
+  }
 }
 
 .partner-group {

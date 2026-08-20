@@ -378,12 +378,43 @@ export default function HomePage() {
                 Our Associations
               </h2>
               <div className="mx-auto mt-3 h-0.5 w-24 bg-gradient-to-r from-transparent via-manikstu-green to-transparent" />
+              <p className="mt-4 text-sm text-grey dark:text-gray-400">
+                Trusted by leading organizations across India
+              </p>
             </div>
           </div>
-          <div className="mt-12 partner-track">
+          <div className="mt-12">
+            {/* Mobile: 2-column grid */}
+            <div className="grid grid-cols-2 gap-6 md:hidden">
+              {partnerCategories.map((category) => (
+                <div key={category.title} className="text-center">
+                  <h3 className="border border-manikstu-green/20 bg-white text-xs font-semibold text-charcoal dark:bg-gray-700 dark:text-white dark:border-gray-600 px-4 py-2 mb-3 whitespace-nowrap rounded-t">
+                    {category.title}
+                  </h3>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    {category.partners.map((partner) => (
+                      <div
+                        key={partner.name}
+                        className="partner-card flex h-16 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-3 flex-shrink-0"
+                      >
+                        <Image
+                          src={partner.image}
+                          alt={partner.name}
+                          width={100}
+                          height={50}
+                          className="h-10 w-auto object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Desktop: marquee */}
+            <div className="mt-12 partner-track hidden md:flex">
             {[...partnerCategories, ...partnerCategories].map((category, idx) => (
               <div key={idx} className="partner-group flex-shrink-0">
-                <h3 className="bg-gray-100 dark:bg-gray-700 text-sm font-semibold text-charcoal dark:text-white px-6 py-3 mb-4 whitespace-nowrap rounded-t">
+                <h3 className="border border-manikstu-green/20 bg-white text-sm font-semibold text-charcoal dark:bg-gray-700 dark:text-white dark:border-gray-600 px-6 py-3 mb-4 whitespace-nowrap rounded-t">
                   {category.title}
                 </h3>
                 <div className="flex items-center gap-6">
@@ -404,6 +435,7 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </section>
 
