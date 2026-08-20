@@ -58,41 +58,52 @@ const partnerCategories = [
   {
     title: "Operational Partners",
     partners: [
-      { name: "NABARD", image: null },
-      { name: "NSDC", image: null },
+      { name: "Krimanshi", image: "/1.png" },
+      { name: "Bharat Herbs Co.", image: "/2.png" },
+      { name: "Goat Bank Odisha", image: "/3.png" },
+      { name: "TrainGuru", image: "/4.png" },
+      { name: "AIC", image: "/AIC.png" },
     ],
   },
   {
     title: "Incubation Partners",
     partners: [
-      { name: "Startup India", image: "/startup-india.png" },
-      { name: "Startup Odisha", image: "/startup-odisha.png" },
-      { name: "Miller Center", image: "/miller-center.png" },
-      { name: "KIIT TBI", image: "/KIIT TBI.png" },
+      { name: "KIIT TBI", image: "/5.png" },
+      { name: "ILS", image: "/6.png" },
+      { name: "Miller Center", image: "/7.png" },
+      { name: "Startup Odisha", image: "/8.png" },
+      { name: "Startup India", image: "/9.png" },
+      { name: "MSME", image: "/10.png" },
     ],
   },
   {
     title: "Supporting Partners",
     partners: [
-      { name: "MSME", image: "/msme.png" },
-      { name: "Kalinga Kusum", image: "/kalinga kusum.png" },
+      { name: "Supporting Partner", image: "/11.png" },
+      { name: "Supporting Partner 2", image: "/12.png" },
     ],
   },
   {
-    title: "Technology Partners",
-    partners: [],
-  },
-  {
     title: "CSR Partners",
-    partners: [],
+    partners: [
+      { name: "Kalinga Kusum", image: "/15.png" },
+      { name: "HDFC Parivartan", image: "/16.png" },
+      { name: "Oxfam", image: "/17.png" },
+    ],
   },
   {
     title: "Investing Partners",
-    partners: [],
+    partners: [
+      { name: "Upaya", image: "/18.png" },
+    ],
   },
   {
     title: "Banking Partner",
-    partners: [],
+    partners: [
+      { name: "Sambhav", image: "/20.png" },
+      { name: "HDFC Bank", image: "/21.png" },
+      { name: "Atal Incubation Centre", image: "/AIC.png" },
+    ],
   },
 ];
 
@@ -376,34 +387,20 @@ export default function HomePage() {
                   {category.title}
                 </h3>
                 <div className="flex items-center gap-6">
-                  {category.partners.length > 0 ? (
-                    category.partners.map((partner) => (
-                      <div
-                        key={partner.name}
-                        className="partner-card flex h-20 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-5 flex-shrink-0"
-                      >
-                        {partner.image ? (
-                          <Image
-                            src={partner.image}
-                            alt={partner.name}
-                            width={120}
-                            height={60}
-                            className="h-14 w-auto object-contain"
-                          />
-                        ) : (
-                          <span className="text-sm font-semibold text-grey dark:text-gray-300 text-center whitespace-nowrap">
-                            {partner.name}
-                          </span>
-                        )}
-                      </div>
-                    ))
-                  ) : (
-                    <div className="flex h-20 items-center justify-center rounded-lg border border-dashed border-light-grey dark:border-gray-600 px-8 flex-shrink-0">
-                      <span className="text-xs text-grey dark:text-gray-400 italic">
-                        Coming soon
-                      </span>
+                  {category.partners.map((partner) => (
+                    <div
+                      key={partner.name}
+                      className="partner-card flex h-20 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-5 flex-shrink-0"
+                    >
+                      <Image
+                        src={partner.image}
+                        alt={partner.name}
+                        width={120}
+                        height={60}
+                        className="h-14 w-auto object-contain"
+                      />
                     </div>
-                  )}
+                  ))}
                 </div>
               </div>
             ))}
