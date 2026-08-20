@@ -1,13 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
   ArrowRight,
   Play,
   Star,
-  ChevronLeft,
-  ChevronRight,
   Check,
   Smartphone,
   Cpu,
@@ -331,26 +328,17 @@ export default function HomePage() {
             <h2 className="text-center text-3xl font-bold text-charcoal font-heading md:text-4xl">
               Our Associations
             </h2>
-            <div className="relative mt-12">
-              <div className="flex items-center justify-center gap-8 md:gap-16 flex-wrap">
-                {associations.map((name) => (
-                  <div
-                    key={name}
-                    className="flex h-16 w-32 items-center justify-center rounded-lg border border-light-grey bg-white px-4"
-                  >
-                    <span className="text-sm font-semibold text-grey text-center">
-                      {name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              {/* Nav arrows */}
-              <button className="absolute left-0 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md text-charcoal hover:bg-manikstu-cream transition-colors" aria-label="Previous">
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button className="absolute right-0 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md text-charcoal hover:bg-manikstu-cream transition-colors" aria-label="Next">
-                <ChevronRight className="h-5 w-5" />
-              </button>
+            <div className="mt-12 grid grid-cols-3 gap-4 md:grid-cols-6">
+              {associations.map((name) => (
+                <div
+                  key={name}
+                  className="flex h-16 items-center justify-center rounded-lg border border-light-grey bg-white px-4"
+                >
+                  <span className="text-sm font-semibold text-grey text-center">
+                    {name}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -511,12 +499,6 @@ export default function HomePage() {
                   </div>
                 </div>
               ))}
-            </div>
-            {/* Carousel dots */}
-            <div className="mt-8 flex justify-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-manikstu-green" />
-              <div className="h-2 w-2 rounded-full bg-light-grey" />
-              <div className="h-2 w-2 rounded-full bg-light-grey" />
             </div>
           </div>
         </section>
