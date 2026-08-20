@@ -336,7 +336,7 @@ export default function HomePage() {
               {associations.map((item) => (
                 <div
                   key={typeof item === "string" ? item : item.name}
-                  className="flex h-16 items-center justify-center rounded-lg border border-light-grey bg-white px-4"
+                  className="flex h-20 items-center justify-center rounded-lg border border-light-grey bg-white px-4"
                 >
                   {typeof item === "string" ? (
                     <span className="text-sm font-semibold text-grey text-center">
@@ -346,9 +346,9 @@ export default function HomePage() {
                     <Image
                       src={item.image}
                       alt={item.name}
-                      width={120}
-                      height={40}
-                      className="h-10 w-auto object-contain"
+                      width={160}
+                      height={60}
+                      className="h-14 w-auto object-contain"
                     />
                   )}
                 </div>
