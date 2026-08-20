@@ -43,19 +43,17 @@ manikstu-tech/
 ├── 🎨 frontend/                       # Next.js 14 frontend
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── layout.tsx          # Root layout (fonts, metadata)
-│   │   │   ├── page.tsx            # Homepage (hero, stats, services, projects, products, testimonials, CTA)
-│   │   │   └── globals.css         # Tailwind + custom utilities
+│   │   │   ├── layout.tsx          # Root layout (fonts, metadata, ThemeProvider)
+│   │   │   ├── page.tsx            # Homepage (10 sections)
+│   │   │   └── globals.css         # Tailwind + dark mode overrides
 │   │   ├── components/
-│   │   │   ├── layout/
-│   │   │   │   ├── Header.tsx      # Responsive header with mobile nav
-│   │   │   │   └── Footer.tsx      # 4-column footer
-│   │   │   ├── home/               # Homepage-specific components (pending)
-│   │   │   ├── patterns/           # SVG tribal art patterns (pending)
-│   │   │   └── shared/             # Reusable UI components (pending)
+│   │   │   └── layout/
+│   │   │       ├── Header.tsx      # Responsive header with dark mode toggle
+│   │   │       ├── Footer.tsx      # 4-column footer with social icons
+│   │   │       └── ThemeProvider.tsx # Dark mode context + localStorage
 │   │   └── lib/
 │   │       └── utils.ts            # cn() utility, formatPrice()
-│   ├── tailwind.config.ts          # Custom color palette, fonts
+│   ├── tailwind.config.ts          # Custom color palette, dark mode, fonts
 │   ├── next.config.mjs             # Image domains
 │   └── package.json
 ├── ⚙️ backend/                        # Laravel 11 (pending Phase 1)
@@ -65,7 +63,7 @@ manikstu-tech/
 
 ## 📊 Progress
 
-### 🏗️ Phase 1: Foundation
+### ✅ Phase 1: Foundation — Complete
 | Task | Status |
 |------|--------|
 | ✅ Next.js 14 project init | Done |
@@ -74,8 +72,10 @@ manikstu-tech/
 | ✅ Root layout + fonts (Playfair Display, Inter) | Done |
 | ✅ `cn()` utility (clsx + tailwind-merge) | Done |
 | ✅ Header component (responsive, mobile nav) | Done |
-| ✅ Footer component | Done |
-| ✅ Homepage (all 7 sections) | Done |
+| ✅ Footer component (white bg, 4-column, social icons) | Done |
+| ✅ Homepage (all 10 sections) | Done |
+| ✅ Dark mode toggle (localStorage persistence) | Done |
+| ✅ Homepage redesign (reference layout match) | Done |
 | ⏳ SVG pattern library | Pending |
 | ⏳ API client | Pending |
 | ⏳ TypeScript interfaces | Pending |
@@ -89,22 +89,23 @@ See [PHASES.MD](./docs/PHASES.MD) for full roadmap.
 
 ## 🏠 Homepage Sections
 
-1. 🎯 **Hero** — Full-width with gradient overlay, headline, dual CTAs
-2. 📈 **Stats** — 4 impact counters (farmers, goats, states, years)
-3. 🛠️ **Services** — 4 cards (Goat Care, Farm ERP, Farming Solutions, Insurance)
-4. 🤝 **Projects** — 4 project cards (Samarth, Sujalam Sufalam, Samriddhi, Dhanvantaram)
-5. 🛍️ **Products** — 3 category cards (For Goats, Goats, From Goats)
-6. 💬 **Testimonials** — 3 farmer quotes
-7. 📣 **CTA** — Call to action with training + contact links
+1. 🎯 **Hero** — White bg, headline with green accent, dual CTAs, photo area, floating cards (Mann Ki Baat + Product), trust badges
+2. 🌍 **Mission** — "Our Mission" label, 4 feature cards (Technology, Collaborations, Livelihoods, Innovation)
+3. 📈 **Stats** — "Impacting Lives" with 4 metrics (70K farmers, 10K villages, 7L goats, 10 states)
+4. 🏆 **Flagship** — Project Samarth spotlight with CTA and photo area
+5. 🤝 **Associations** — 6 partner logos in grid (Villgro, Miller Center, Startup Odisha, StartupIndia, NABARD, NSDC)
+6. 📱 **Mobile App** — Phone mockup, feature checklist, QR code, app store badges
+7. 📰 **News** — 4 cards with images, dates, category badges (Featured, Event, Press, Media)
+8. 💬 **Testimonials** — 2 cards with star ratings, quotes, farmer names
+9. 📣 **Newsletter** — Green bg, email input + Subscribe button
+10. 🔗 **Footer** — White bg, logo, social icons, Quick Links, Support, Contact Us
 
-## 🎭 Cultural Design
+## 🌙 Dark Mode
 
-The website integrates Odisha and Chhattisgarh tribal art:
-- 🎨 **Saura paintings** — section borders, dividers, hero illustrations
-- 〰️ **Godna patterns** — background textures, card patterns
-- 🐘 **Dhokra art** — icon set, decorative accents
-- 🧵 **Ikat patterns** — section backgrounds, card borders
-- 🥁 **Ghumura elements** — loading animations, circular motifs
+- Toggle via Moon/Sun icon in header
+- Persists to localStorage
+- System preference detection on first visit
+- CSS overrides for backgrounds, text, borders, inputs
 
 ## 🎨 Brand Colors
 
