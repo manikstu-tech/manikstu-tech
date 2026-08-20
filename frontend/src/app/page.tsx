@@ -57,7 +57,7 @@ const stats = [
 const associations = [
   "Villgro",
   "Miller Center",
-  "Startup Odisha",
+  { name: "Startup Odisha", image: "/startup-odisha.png" },
   { name: "StartupIndia", image: "/startup-india.png" },
   "NABARD",
   "NSDC",
