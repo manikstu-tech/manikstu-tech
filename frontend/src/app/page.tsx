@@ -358,24 +358,27 @@ export default function HomePage() {
         </section>
 
         {/* Associations */}
-        <section className="section-padding bg-manikstu-cream dark:bg-gray-800 overflow-hidden">
+        <section className="partner-section section-padding bg-manikstu-cream dark:bg-gray-800 overflow-hidden">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-center text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
-              Our Associations
-            </h2>
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
+                Our Associations
+              </h2>
+              <div className="mx-auto mt-3 h-0.5 w-24 bg-gradient-to-r from-transparent via-manikstu-green to-transparent" />
+            </div>
           </div>
           <div className="mt-12 partner-track">
             {[...partnerCategories, ...partnerCategories].map((category, idx) => (
               <div key={idx} className="partner-group flex-shrink-0">
-                <h3 className="bg-gray-100 dark:bg-gray-700 text-sm font-semibold text-charcoal dark:text-white px-6 py-3 mb-4 whitespace-nowrap">
+                <h3 className="bg-gray-100 dark:bg-gray-700 text-sm font-semibold text-charcoal dark:text-white px-6 py-3 mb-4 whitespace-nowrap rounded-t">
                   {category.title}
                 </h3>
-                <div className="flex items-center gap-8">
+                <div className="flex items-center gap-6">
                   {category.partners.length > 0 ? (
                     category.partners.map((partner) => (
                       <div
                         key={partner.name}
-                        className="flex h-20 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-4 flex-shrink-0"
+                        className="partner-card flex h-20 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-5 flex-shrink-0"
                       >
                         {partner.image ? (
                           <Image
