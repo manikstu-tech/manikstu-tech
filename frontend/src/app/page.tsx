@@ -395,7 +395,7 @@ export default function HomePage() {
                     {category.partners.map((partner) => (
                       <div
                         key={partner.name}
-                        className="partner-card flex h-24 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-4 flex-shrink-0"
+                        className="partner-card flex h-24 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-6 flex-shrink-0"
                       >
                         <Image
                           src={partner.image}
@@ -421,7 +421,7 @@ export default function HomePage() {
                   {category.partners.map((partner) => (
                     <div
                       key={partner.name}
-                      className="partner-card flex h-28 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-5 flex-shrink-0"
+                      className="partner-card flex h-28 items-center justify-center rounded-lg border border-light-grey bg-white dark:bg-gray-700 dark:border-gray-600 px-8 flex-shrink-0"
                     >
                       <Image
                         src={partner.image}
