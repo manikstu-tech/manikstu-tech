@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
@@ -57,7 +58,7 @@ const associations = [
   "Villgro",
   "Miller Center",
   "Startup Odisha",
-  "StartupIndia",
+  { name: "StartupIndia", image: "/startup-india.png" },
   "NABARD",
   "NSDC",
 ];
@@ -332,14 +333,24 @@ export default function HomePage() {
               Our Associations
             </h2>
             <div className="mt-12 grid grid-cols-3 gap-4 md:grid-cols-6">
-              {associations.map((name) => (
+              {associations.map((item) => (
                 <div
-                  key={name}
+                  key={typeof item === "string" ? item : item.name}
                   className="flex h-16 items-center justify-center rounded-lg border border-light-grey bg-white px-4"
                 >
-                  <span className="text-sm font-semibold text-grey text-center">
-                    {name}
-                  </span>
+                  {typeof item === "string" ? (
+                    <span className="text-sm font-semibold text-grey text-center">
+                      {item}
+                    </span>
+                  ) : (
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={120}
+                      height={40}
+                      className="h-10 w-auto object-contain"
+                    />
+                  )}
                 </div>
               ))}
             </div>
