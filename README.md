@@ -93,7 +93,7 @@ See [PHASES.MD](./docs/PHASES.MD) for full roadmap.
 2. 🌍 **Mission** — "Our Mission" label, 4 feature cards (Technology, Collaborations, Livelihoods, Innovation)
 3. 📈 **Stats** — "Impacting Lives" with 4 metrics (70K farmers, 10K villages, 7L goats, 10 states)
 4. 🏆 **Flagship** — Project Samarth spotlight with CTA and photo area
-5. 🤝 **Associations** — 6 partner logos in grid (Villgro, Miller Center, Startup Odisha, StartupIndia, NABARD, NSDC)
+5. 🤝 **Associations** — Partner logos with CSS marquee animation (Operational, Incubation, Supporting, Technology, CSR, Investing, Banking partners) — pauses on hover
 6. 📱 **Mobile App** — Phone mockup, feature checklist, QR code, app store badges
 7. 📰 **News** — 4 cards with images, dates, category badges (Featured, Event, Press, Media)
 8. 💬 **Testimonials** — 2 cards with star ratings, quotes, farmer names
