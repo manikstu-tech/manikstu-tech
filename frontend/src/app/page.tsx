@@ -426,7 +426,7 @@ export default function HomePage() {
                         alt=""
                         width={320}
                         height={160}
-                        className="w-full h-14 sm:h-16 md:h-20 object-cover object-bottom opacity-95 transition-opacity hover:opacity-100"
+                        className="w-full h-auto object-contain opacity-95 transition-opacity hover:opacity-100"
                       />
                     </div>
                   </div>
