@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 export type Testimonial = {
@@ -13,60 +13,64 @@ export type Testimonial = {
 
 const AUTOPLAY_MS = 3000;
 
+// How many cards are visible per view at each Tailwind breakpoint.
+function useVisibleCount() {
+  const [n, setN] = useState(1);
+  useEffect(() => {
+    const compute = () => {
+      const w = window.innerWidth;
+      if (w >= 1024) return 3;
+      if (w >= 640) return 2;
+      return 1;
+    };
+    const update = () => setN(compute());
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return n;
+}
+
 export default function TestimonialsSlider({
   testimonials,
 }: {
   testimonials: Testimonial[];
 }) {
-  const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const visible = useVisibleCount();
+  const maxIndex = Math.max(0, testimonials.length - visible);
+  const safeActive = Math.min(active, maxIndex);
 
-  const scrollTo = useCallback((idx: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.children[idx] as HTMLElement | undefined;
-    if (!card) return;
-    track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: "smooth" });
-  }, []);
+  const goTo = useCallback(
+    (idx: number) => {
+      setActive(Math.max(0, Math.min(idx, maxIndex)));
+    },
+    [maxIndex]
+  );
 
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const onScroll = () => {
-      const children = Array.from(track.children) as HTMLElement[];
-      const trackLeft = track.scrollLeft;
-      let closest = 0;
-      let minDist = Infinity;
-      children.forEach((c, i) => {
-        const d = Math.abs(c.offsetLeft - track.offsetLeft - trackLeft);
-        if (d < minDist) {
-          minDist = d;
-          closest = i;
-        }
-      });
-      setActive(closest);
-    };
-    track.addEventListener("scroll", onScroll, { passive: true });
-    return () => track.removeEventListener("scroll", onScroll);
-  }, []);
+  const prev = () => goTo(safeActive - 1);
+  const next = () =>
+    setActive((prev) => (prev + 1 > maxIndex ? 0 : prev + 1));
 
-  // Autoplay — advance every AUTOPLAY_MS ms; pause on hover/focus/reduced-motion
   useEffect(() => {
     if (paused) return;
-    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
     const id = window.setInterval(() => {
-      setActive((prev) => {
-        const nextIdx = (prev + 1) % testimonials.length;
-        scrollTo(nextIdx);
-        return nextIdx;
-      });
+      setActive((prev) => (prev + 1 > maxIndex ? 0 : prev + 1));
     }, AUTOPLAY_MS);
     return () => window.clearInterval(id);
-  }, [paused, testimonials.length, scrollTo]);
+  }, [paused, maxIndex]);
 
-  const prev = () => scrollTo(Math.max(0, active - 1));
-  const next = () => scrollTo(Math.min(testimonials.length - 1, active + 1));
+  // Each card takes `basis` of the wrapper's width; wrapper width is
+  // visible * cardWidth + (visible - 1) * gap. We just translate by
+  // `safeActive * (100 / visible)%` — the card width in wrapper terms.
+  const cardBasisPct = 100 / visible;
+  const translatePct = safeActive * cardBasisPct;
 
   return (
     <div
@@ -76,40 +80,48 @@ export default function TestimonialsSlider({
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      {/* Track */}
-      <div
-        ref={trackRef}
-        className="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2"
-      >
-        {testimonials.map((t) => (
-          <div
-            key={t.name}
-            className="snap-start shrink-0 basis-full sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
-          >
-            <div className="h-full rounded-xl bg-manikstu-cream p-6">
-              <div className="flex gap-1">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star
-                    key={i}
-                    className="h-4 w-4 fill-manikstu-gold text-manikstu-gold"
-                  />
-                ))}
-              </div>
-              <p className="mt-4 text-sm text-grey italic">&ldquo;{t.quote}&rdquo;</p>
-              <div className="mt-6 flex items-center gap-3">
-                <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-full ${t.color} text-white text-sm font-semibold`}
-                >
-                  {t.initials}
+      {/* Viewport */}
+      <div className="overflow-hidden">
+        {/* Track */}
+        <div
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${translatePct}%)` }}
+        >
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="shrink-0 px-3"
+              style={{ flexBasis: `${cardBasisPct}%` }}
+            >
+              <div className="h-full rounded-xl bg-manikstu-cream p-6">
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-manikstu-gold text-manikstu-gold"
+                    />
+                  ))}
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-charcoal">— {t.name}</p>
-                  <p className="text-xs text-grey">{t.role}</p>
+                <p className="mt-4 text-sm text-grey italic">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="mt-6 flex items-center gap-3">
+                  <div
+                    className={`flex h-10 w-10 items-center justify-center rounded-full ${t.color} text-white text-sm font-semibold`}
+                  >
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-charcoal">
+                      — {t.name}
+                    </p>
+                    <p className="text-xs text-grey">{t.role}</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Controls */}
@@ -117,21 +129,21 @@ export default function TestimonialsSlider({
         <button
           type="button"
           onClick={prev}
-          disabled={active === 0}
+          disabled={safeActive === 0}
           aria-label="Previous testimonial"
           className="flex h-10 w-10 items-center justify-center rounded-full border border-manikstu-green/30 text-manikstu-green hover:bg-manikstu-green hover:text-white disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-manikstu-green transition-colors"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
         <div className="flex items-center gap-2">
-          {testimonials.map((_, i) => (
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
             <button
               key={i}
               type="button"
-              onClick={() => scrollTo(i)}
+              onClick={() => goTo(i)}
               aria-label={`Go to testimonial ${i + 1}`}
               className={`h-2 rounded-full transition-all ${
-                i === active
+                i === safeActive
                   ? "w-6 bg-manikstu-green"
                   : "w-2 bg-manikstu-green/30 hover:bg-manikstu-green/50"
               }`}
@@ -141,7 +153,7 @@ export default function TestimonialsSlider({
         <button
           type="button"
           onClick={next}
-          disabled={active === testimonials.length - 1}
+          disabled={safeActive === maxIndex}
           aria-label="Next testimonial"
           className="flex h-10 w-10 items-center justify-center rounded-full border border-manikstu-green/30 text-manikstu-green hover:bg-manikstu-green hover:text-white disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-manikstu-green transition-colors"
         >
