@@ -606,7 +606,7 @@ export default function HomePage() {
             aria-hidden
             width={1300}
             height={1300}
-            className="pointer-events-none select-none absolute left-[8%] top-[42%] -translate-y-1/2 h-[620px] w-auto max-w-none opacity-[0.35]"
+            className="pointer-events-none select-none absolute left-[4%] top-[47%] -translate-y-1/2 h-[550px] w-auto max-w-none opacity-[0.20]"
           />
 
           <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
@@ -690,33 +690,18 @@ export default function HomePage() {
                   ))}
                 </ul>
 
-                {/* QR + Store buttons */}
-                <div className="mt-10 flex flex-wrap items-center gap-6">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-lg border-2 border-manikstu-gold/30 bg-white p-2 shadow-sm">
-                    <div className="grid h-full w-full grid-cols-6 grid-rows-6 gap-px">
-                      {Array.from({ length: 36 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className={
-                            [0, 1, 2, 5, 6, 7, 8, 11, 12, 14, 15, 17, 18, 20, 21, 23, 24, 25, 26, 29, 30, 31, 32, 33, 35].includes(i)
-                              ? "bg-charcoal"
-                              : "bg-transparent"
-                          }
-                        />
-                      ))}
-                    </div>
+                {/* Store buttons */}
+                <div className="mt-10">
+                  <div className="flex items-center gap-2">
+                    <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-manikstu-leaf">
+                      Scan to Download
+                    </p>
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
-                      <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-manikstu-leaf">
-                        Scan to Download
-                      </p>
-                      <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                      <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
-                    </div>
-                    <div className="mt-3 flex gap-2">
+                  <div className="mt-3 flex flex-wrap gap-2">
                       <a
                         href="#"
                         aria-label="Get it on Google Play"
@@ -753,7 +738,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
 
           {/* Bottom tribal village figures — left (mirrored: hut on outer edge) */}
           <Image
