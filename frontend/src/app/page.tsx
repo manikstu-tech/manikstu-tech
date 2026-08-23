@@ -51,10 +51,10 @@ const missionCards = [
 ];
 
 const stats = [
-  { value: "70,000+", label: "Farmers Impacted", icon: Users },
-  { value: "10,000+", label: "Villages Reached", icon: MapPin },
-  { value: "7,00,000+", label: "Goats Insured", icon: Sprout },
-  { value: "10+", label: "States Covered", icon: Shield },
+  { value: "70,000+", label: "Farmers Impacted", icon: Users, image: "/patterns/impact-panel-1.png" },
+  { value: "10,000+", label: "Villages Reached", icon: MapPin, image: "/patterns/impact-panel-2.png" },
+  { value: "7,00,000+", label: "Goats Insured", icon: Sprout, image: "/patterns/impact-panel-3.png" },
+  { value: "10+", label: "States Covered", icon: Shield, image: "/patterns/impact-panel-4.png" },
 ];
 
 const partnerCategories = [
@@ -385,13 +385,26 @@ export default function HomePage() {
                 return (
                   <div
                     key={stat.label}
-                    className="rounded-xl bg-white/90 backdrop-blur-sm p-6 text-center shadow-sm border border-manikstu-cream/50 hover:shadow-md transition-shadow dark:bg-gray-800/90 dark:border-gray-700"
+                    className="relative overflow-hidden flex flex-col justify-between rounded-xl bg-white/95 backdrop-blur-sm pt-6 text-center shadow-sm border border-manikstu-cream/60 hover:shadow-md transition-all duration-300 dark:bg-gray-800/90 dark:border-gray-700 min-h-[250px] sm:min-h-[280px]"
                   >
-                    <Icon className="mx-auto h-10 w-10 text-manikstu-green" />
-                    <p className="mt-3 text-3xl font-bold text-charcoal font-heading dark:text-white">
-                      {stat.value}
-                    </p>
-                    <p className="mt-1 text-sm text-grey dark:text-gray-300">{stat.label}</p>
+                    <div className="px-4">
+                      <Icon className="mx-auto h-10 w-10 text-manikstu-green" />
+                      <p className="mt-3 text-3xl font-bold text-charcoal font-heading dark:text-white">
+                        {stat.value}
+                      </p>
+                      <p className="mt-1 text-sm font-medium text-grey dark:text-gray-300">{stat.label}</p>
+                    </div>
+
+                    {/* Tribal village scene panel image at bottom of card — large, full-width fit */}
+                    <div className="mt-4 w-full select-none pointer-events-none overflow-hidden rounded-b-xl leading-none">
+                      <Image
+                        src={stat.image}
+                        alt=""
+                        width={320}
+                        height={160}
+                        className="w-full h-24 sm:h-28 md:h-32 object-cover object-bottom opacity-95 transition-opacity hover:opacity-100"
+                      />
+                    </div>
                   </div>
                 );
               })}
