@@ -365,25 +365,23 @@ export default function HomePage() {
 
         {/* Associations */}
         <section className="partner-section relative section-padding bg-manikstu-cream dark:bg-gray-800 overflow-hidden">
-          {/* Top tribal border */}
-          <Image
-            src="/patterns/tribal-border.png"
-            alt=""
+          {/* Top tribal border — tiled horizontally at natural pattern height */}
+          <div
             aria-hidden
-            width={2172}
-            height={73}
-            loading="eager"
-            className="pointer-events-none absolute left-0 top-0 w-full h-auto select-none"
+            className="pointer-events-none absolute left-0 right-0 top-0 h-8 bg-repeat-x"
+            style={{
+              backgroundImage: "url('/patterns/tribal-border.png')",
+              backgroundSize: "auto 100%",
+            }}
           />
           {/* Bottom tribal border (flipped) */}
-          <Image
-            src="/patterns/tribal-border.png"
-            alt=""
+          <div
             aria-hidden
-            width={2172}
-            height={73}
-            loading="eager"
-            className="pointer-events-none absolute left-0 bottom-0 w-full h-auto select-none -scale-y-100"
+            className="pointer-events-none absolute left-0 right-0 bottom-0 h-8 bg-repeat-x -scale-y-100"
+            style={{
+              backgroundImage: "url('/patterns/tribal-border.png')",
+              backgroundSize: "auto 100%",
+            }}
           />
           <div className="relative mx-auto max-w-6xl">
             <div className="text-center">
