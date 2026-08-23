@@ -168,16 +168,18 @@ export default function HomePage() {
       <main id="main-content">
         {/* Hero */}
         <section className="relative overflow-hidden bg-white">
-          {/* Tribal motif background */}
-          <Image
-            src="/hero-motif.png"
-            alt=""
-            aria-hidden
-            width={1300}
-            height={1300}
-            priority
-            className="pointer-events-none select-none absolute right-[-500px] top-1/2 -translate-y-1/2 w-[1000px] max-w-none opacity-[0.14] dark:opacity-[0.18]"
-          />
+          {/* Tribal motif background — wrapper ensures clipping to hero bounds */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <Image
+              src="/hero-motif.png"
+              alt=""
+              aria-hidden
+              width={1300}
+              height={1300}
+              priority
+              className="select-none absolute right-[-500px] top-1/2 -translate-y-1/2 w-[1000px] max-w-none opacity-[0.14] dark:opacity-[0.18]"
+            />
+          </div>
 
           <div className="relative mx-auto max-w-7xl px-4 py-12 md:px-8 lg:py-20">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
