@@ -168,13 +168,6 @@ export default function HomePage() {
       <main id="main-content">
         {/* Hero */}
         <section className="relative overflow-hidden bg-white">
-          {/* Green wave decoration */}
-          <div className="absolute right-0 top-0 h-full w-1/3 opacity-10 hidden lg:block">
-            <svg viewBox="0 0 400 800" className="h-full w-full" fill="#4A8C3F">
-              <path d="M400 0 C300 100 200 200 250 400 C300 600 100 700 400 800 L400 0Z" />
-            </svg>
-          </div>
-
           <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 lg:py-20">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               {/* Left content */}
