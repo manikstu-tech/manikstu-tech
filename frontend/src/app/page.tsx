@@ -307,7 +307,7 @@ export default function HomePage() {
           {/* Top tribal floral border — continuous seamless tile across full width */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-0 h-10 sm:h-12 bg-repeat-x z-20 opacity-90 dark:opacity-75"
+            className="pointer-events-none absolute left-0 right-0 top-0 h-5 sm:h-6 bg-repeat-x z-20 opacity-90 dark:opacity-75"
             style={{
               backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
               backgroundSize: "auto 100%",
