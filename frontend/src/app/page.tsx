@@ -619,7 +619,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[52px] left-0 w-[30%] max-w-none h-auto opacity-80 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-[36px] left-0 w-[30%] max-w-none h-auto opacity-80 -scale-x-100"
           />
           {/* Bottom tribal village figures — right (natural: hut on outer edge) */}
           <Image
@@ -629,7 +629,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[52px] right-0 w-[30%] max-w-none h-auto opacity-80"
+            className="pointer-events-none select-none absolute bottom-[36px] right-0 w-[30%] max-w-none h-auto opacity-80"
           />
 
           {/* Dark green tagline ribbon */}
