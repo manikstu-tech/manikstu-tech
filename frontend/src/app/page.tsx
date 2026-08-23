@@ -333,14 +333,30 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-                  Our Flagship Program
-                </p>
-                <h2 className="mt-4 text-3xl font-bold text-charcoal font-heading md:text-4xl">
-                  Project AJAH
+                {/* Ornamental pill heading */}
+                <div className="flex items-center gap-2">
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-green" />
+                  <span aria-hidden className="h-px w-10 bg-manikstu-green/50" />
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                    Our Flagship Program
+                  </p>
+                  <span aria-hidden className="h-px w-10 bg-manikstu-green/50" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-green" />
+                </div>
+
+                <h2 className="mt-6 font-heading text-4xl font-bold leading-tight text-charcoal sm:text-5xl lg:text-6xl">
+                  Project <span className="text-manikstu-green">AJAHI</span>
                 </h2>
-                <p className="mt-4 text-grey">
-                  AJAH — Women-Led Integrated Livestock Entrepreneurship Initiative.
+
+                {/* Line-diamond-line ornamental divider */}
+                <div className="mt-4 flex items-center gap-2">
+                  <span aria-hidden className="h-px w-16 bg-manikstu-green/50" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-green" />
+                  <span aria-hidden className="h-px w-16 bg-manikstu-green/50" />
+                </div>
+
+                <p className="mt-6 text-grey leading-relaxed">
+                  AJAHI – Women-Led Integrated Livestock Entrepreneurship Initiative.
                   Empowering women farmers through an integrated goat and poultry
                   livelihood model, combining scientific livestock management,
                   improved infrastructure, animal healthcare, training, insurance
@@ -350,7 +366,7 @@ export default function HomePage() {
                   href="/collaborate/ajah"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
                 >
-                  Explore Project AJAH <ArrowRight className="h-4 w-4" />
+                  Explore Project AJAHI <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
