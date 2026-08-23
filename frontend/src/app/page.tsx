@@ -398,9 +398,15 @@ export default function HomePage() {
             <div className="space-y-8 md:hidden">
               {partnerCategories.map((category) => (
                 <div key={category.title} className="text-center">
-                  <h3 className="mb-4 inline-block border border-manikstu-green/20 bg-white px-4 py-2 text-xs font-semibold text-charcoal dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    {category.title}
-                  </h3>
+                  <div className="mb-4 flex items-center justify-center gap-2">
+                    <span aria-hidden className="h-px w-8 bg-manikstu-leaf/40 dark:bg-white/30" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-leaf dark:bg-white/70" />
+                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf dark:text-white">
+                      {category.title}
+                    </h3>
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-leaf dark:bg-white/70" />
+                    <span aria-hidden className="h-px w-8 bg-manikstu-leaf/40 dark:bg-white/30" />
+                  </div>
                   <div className="flex flex-wrap justify-center gap-3">
                     {category.partners.map((partner) => (
                       <div
@@ -424,9 +430,15 @@ export default function HomePage() {
             <div className="mt-10 hidden md:grid md:grid-cols-3 gap-6">
               {partnerCategories.map((category) => (
                 <div key={category.title} className="text-center">
-                  <h3 className="mb-3 inline-block border border-manikstu-green/20 bg-white px-4 py-1.5 text-xs font-semibold text-charcoal dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    {category.title}
-                  </h3>
+                  <div className="mb-3 flex items-center justify-center gap-2">
+                    <span aria-hidden className="h-px w-8 bg-manikstu-leaf/40 dark:bg-white/30" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-leaf dark:bg-white/70" />
+                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf dark:text-white">
+                      {category.title}
+                    </h3>
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-leaf dark:bg-white/70" />
+                    <span aria-hidden className="h-px w-8 bg-manikstu-leaf/40 dark:bg-white/30" />
+                  </div>
                   <div className="flex flex-wrap justify-center gap-2">
                     {category.partners.map((partner) => (
                       <div
