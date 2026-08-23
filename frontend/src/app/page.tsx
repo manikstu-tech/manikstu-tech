@@ -633,31 +633,34 @@ export default function HomePage() {
           />
 
           {/* Dark green tagline ribbon */}
-          <div className="relative bg-manikstu-leaf py-6 text-center overflow-hidden">
-            {/* Golden tribal border — top */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-0 right-0 top-0 h-5 bg-repeat-x opacity-90"
-              style={{
-                backgroundImage: "url('/patterns/golden-tribal-border.png')",
-                backgroundSize: "auto 100%",
-              }}
-            />
-            {/* Golden tribal border — bottom (mirrored) */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-0 right-0 bottom-0 h-5 bg-repeat-x opacity-90 -scale-y-100"
-              style={{
-                backgroundImage: "url('/patterns/golden-tribal-border.png')",
-                backgroundSize: "auto 100%",
-              }}
-            />
-            <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 sm:px-6 md:px-8">
-              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-              <p className="text-xs font-semibold text-manikstu-gold sm:text-sm">
-                Building partnerships. Strengthening communities. Transforming livelihoods.
-              </p>
-              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+          <div className="relative bg-manikstu-leaf py-5 overflow-hidden">
+            <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 sm:px-6 md:px-8">
+              {/* Left golden tribal band */}
+              <div
+                aria-hidden
+                className="pointer-events-none h-8 flex-1 bg-repeat-x bg-center opacity-90"
+                style={{
+                  backgroundImage: "url('/patterns/golden-tribal-border.png')",
+                  backgroundSize: "auto 100%",
+                }}
+              />
+              {/* Center tagline */}
+              <div className="flex flex-shrink-0 items-center gap-3 text-center">
+                <span aria-hidden className="text-manikstu-gold text-lg leading-none">◇</span>
+                <p className="text-xs font-semibold text-manikstu-gold sm:text-sm md:whitespace-nowrap">
+                  Building partnerships. Strengthening communities. Transforming livelihoods.
+                </p>
+                <span aria-hidden className="text-manikstu-gold text-lg leading-none">◇</span>
+              </div>
+              {/* Right golden tribal band (mirrored) */}
+              <div
+                aria-hidden
+                className="pointer-events-none h-8 flex-1 bg-repeat-x bg-center opacity-90 -scale-x-100"
+                style={{
+                  backgroundImage: "url('/patterns/golden-tribal-border.png')",
+                  backgroundSize: "auto 100%",
+                }}
+              />
             </div>
           </div>
         </section>
