@@ -337,7 +337,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={card.title}
-                    className="group relative overflow-hidden rounded-2xl border border-light-grey bg-white pt-8 pb-24 px-6 shadow-sm hover:shadow-md transition-shadow"
+                    className="group relative overflow-hidden rounded-2xl border border-light-grey bg-white pt-10 pb-32 px-6 shadow-sm hover:shadow-md transition-shadow min-h-[400px] flex flex-col"
                   >
                     {/* Bottom Warli village art */}
                     <div
