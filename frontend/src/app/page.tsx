@@ -303,9 +303,41 @@ export default function HomePage() {
         </section>
 
         {/* Stats */}
-        <section className="section-padding bg-manikstu-cream">
-          <div className="mx-auto max-w-7xl">
-            <h2 className="text-center text-3xl font-bold text-charcoal font-heading md:text-4xl">
+        <section className="relative overflow-hidden section-padding bg-manikstu-cream dark:bg-gray-900">
+          {/* Top tribal floral border — continuous seamless tile across full width */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 right-0 top-0 h-10 sm:h-12 bg-repeat-x z-20 opacity-90 dark:opacity-75"
+            style={{
+              backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
+              backgroundSize: "auto 100%",
+            }}
+          />
+
+          {/* Mandala background artwork — Left (positioned cleanly below top border) */}
+          <div aria-hidden className="pointer-events-none absolute left-0 top-[55%] -translate-y-1/2 select-none z-0">
+            <Image
+              src="/patterns/mandala-left.png"
+              alt=""
+              width={320}
+              height={576}
+              className="h-auto w-32 sm:w-44 md:w-56 lg:w-72 max-h-[80%] object-contain object-left opacity-75 sm:opacity-90 dark:opacity-60"
+            />
+          </div>
+
+          {/* Mandala background artwork — Right (positioned cleanly below top border) */}
+          <div aria-hidden className="pointer-events-none absolute right-0 top-[55%] -translate-y-1/2 select-none z-0">
+            <Image
+              src="/patterns/mandala-right.png"
+              alt=""
+              width={320}
+              height={576}
+              className="h-auto w-32 sm:w-44 md:w-56 lg:w-72 max-h-[80%] object-contain object-right opacity-75 sm:opacity-90 dark:opacity-60"
+            />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-7xl pt-6 sm:pt-8">
+            <h2 className="text-center text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
               Impacting Lives
             </h2>
             <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
@@ -314,13 +346,13 @@ export default function HomePage() {
                 return (
                   <div
                     key={stat.label}
-                    className="rounded-xl bg-white p-6 text-center shadow-sm"
+                    className="rounded-xl bg-white/90 backdrop-blur-sm p-6 text-center shadow-sm border border-manikstu-cream/50 hover:shadow-md transition-shadow dark:bg-gray-800/90 dark:border-gray-700"
                   >
                     <Icon className="mx-auto h-10 w-10 text-manikstu-green" />
-                    <p className="mt-3 text-3xl font-bold text-charcoal font-heading">
+                    <p className="mt-3 text-3xl font-bold text-charcoal font-heading dark:text-white">
                       {stat.value}
                     </p>
-                    <p className="mt-1 text-sm text-grey">{stat.label}</p>
+                    <p className="mt-1 text-sm text-grey dark:text-gray-300">{stat.label}</p>
                   </div>
                 );
               })}
