@@ -399,13 +399,13 @@ export default function HomePage() {
               {partnerCategories.map((category) => (
                 <div key={category.title} className="text-center">
                   <div className="mb-4 flex items-center justify-center gap-2">
-                    <span aria-hidden className="h-px w-8 bg-manikstu-leaf/40 dark:bg-white/30" />
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-leaf dark:bg-white/70" />
+                    <span aria-hidden className="h-px w-8 bg-manikstu-gold/50 dark:bg-manikstu-gold/60" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf dark:text-white">
                       {category.title}
                     </h3>
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-leaf dark:bg-white/70" />
-                    <span aria-hidden className="h-px w-8 bg-manikstu-leaf/40 dark:bg-white/30" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <span aria-hidden className="h-px w-8 bg-manikstu-gold/50 dark:bg-manikstu-gold/60" />
                   </div>
                   <div className="flex flex-wrap justify-center gap-3">
                     {category.partners.map((partner) => (
@@ -431,13 +431,13 @@ export default function HomePage() {
               {partnerCategories.map((category) => (
                 <div key={category.title} className="text-center">
                   <div className="mb-3 flex items-center justify-center gap-2">
-                    <span aria-hidden className="h-px w-8 bg-manikstu-leaf/40 dark:bg-white/30" />
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-leaf dark:bg-white/70" />
+                    <span aria-hidden className="h-px w-8 bg-manikstu-gold/50 dark:bg-manikstu-gold/60" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf dark:text-white">
                       {category.title}
                     </h3>
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-leaf dark:bg-white/70" />
-                    <span aria-hidden className="h-px w-8 bg-manikstu-leaf/40 dark:bg-white/30" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <span aria-hidden className="h-px w-8 bg-manikstu-gold/50 dark:bg-manikstu-gold/60" />
                   </div>
                   <div className="flex flex-wrap justify-center gap-2">
                     {category.partners.map((partner) => (
