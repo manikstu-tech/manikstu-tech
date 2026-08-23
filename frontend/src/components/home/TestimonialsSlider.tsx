@@ -11,6 +11,8 @@ export type Testimonial = {
   color: string;
 };
 
+const AUTOPLAY_MS = 5000;
+
 export default function TestimonialsSlider({
   testimonials,
 }: {
@@ -18,6 +20,7 @@ export default function TestimonialsSlider({
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const scrollTo = useCallback((idx: number) => {
     const track = trackRef.current;
@@ -48,11 +51,31 @@ export default function TestimonialsSlider({
     return () => track.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Autoplay — advance every AUTOPLAY_MS ms; pause on hover/focus/reduced-motion
+  useEffect(() => {
+    if (paused) return;
+    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => {
+      setActive((prev) => {
+        const nextIdx = (prev + 1) % testimonials.length;
+        scrollTo(nextIdx);
+        return nextIdx;
+      });
+    }, AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [paused, testimonials.length, scrollTo]);
+
   const prev = () => scrollTo(Math.max(0, active - 1));
   const next = () => scrollTo(Math.min(testimonials.length - 1, active + 1));
 
   return (
-    <div className="relative mt-8">
+    <div
+      className="relative mt-8"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
       {/* Track */}
       <div
         ref={trackRef}
