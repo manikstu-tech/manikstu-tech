@@ -18,6 +18,9 @@ import {
   Shield,
   Calendar,
   FileText,
+  User,
+  BarChart3,
+  ShoppingBag,
 } from "lucide-react";
 
 const missionCards = [
@@ -154,10 +157,10 @@ const testimonials = [
 ];
 
 const features = [
-  "Spot treatment & vaccination of farmers' goats",
-  "Support for field representatives in their daily tasks",
-  "Activity management & farm governance",
-  "Sales of company products for farmers",
+  { icon: Shield, text: "Spot treatment & vaccination of farmers' goats" },
+  { icon: User, text: "Support for field representatives in their daily tasks" },
+  { icon: BarChart3, text: "Activity management & farm governance" },
+  { icon: ShoppingBag, text: "Sales of company products for farmers" },
 ];
 
 export default function HomePage() {
@@ -462,7 +465,161 @@ export default function HomePage() {
         </section>
 
         {/* Mobile App */}
-        <section className="relative section-padding bg-white overflow-hidden">
+        <section className="relative bg-white overflow-hidden">
+          {/* Top tribal border */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 right-0 top-0 h-8 bg-repeat-x"
+            style={{
+              backgroundImage: "url('/patterns/tribal-border.png')",
+              backgroundSize: "auto 100%",
+            }}
+          />
+          {/* Left mandala background */}
+          <Image
+            src="/hero-motif.png"
+            alt=""
+            aria-hidden
+            width={1300}
+            height={1300}
+            className="pointer-events-none select-none absolute left-[-120px] top-1/2 -translate-y-1/2 h-[90%] w-auto max-w-none opacity-[0.08]"
+          />
+
+          <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-32 sm:px-6 md:px-8 md:pt-24 md:pb-40">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              {/* Phone mockup — branded splash */}
+              <div className="flex justify-center">
+                <div className="relative w-64 h-[500px] rounded-[2.5rem] border-4 border-charcoal bg-manikstu-cream overflow-hidden shadow-xl">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 rounded-b-xl bg-charcoal" />
+                  {/* Splash content */}
+                  <div className="flex h-full flex-col items-center justify-center px-6 pt-8 text-center">
+                    <div className="flex h-24 w-24 items-center justify-center rounded-full bg-manikstu-green/10 ring-2 ring-manikstu-green/30">
+                      <Sprout className="h-12 w-12 text-manikstu-leaf" />
+                    </div>
+                    <p className="mt-4 font-heading text-2xl font-bold tracking-wide text-manikstu-leaf">
+                      GOAT BANK
+                    </p>
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-manikstu-gold">
+                      Mobile App
+                    </p>
+                  </div>
+                  {/* Warli figures at bottom of phone */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom"
+                    style={{
+                      backgroundImage: "url('/patterns/village-figures.png')",
+                      backgroundSize: "180% auto",
+                      backgroundPosition: "center bottom",
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div>
+                {/* Ornamental pill heading */}
+                <div className="flex items-center gap-2">
+                  <span aria-hidden className="h-px w-8 bg-manikstu-gold/50" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf">
+                    Goat Bank Mobile App
+                  </p>
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <span aria-hidden className="h-px w-8 bg-manikstu-gold/50" />
+                </div>
+
+                <h2 className="mt-4 font-heading text-3xl font-bold text-charcoal sm:text-4xl lg:text-5xl">
+                  Empowering Farmers
+                  <br />
+                  with Technology
+                </h2>
+
+                {/* Gold ornamental divider */}
+                <div className="mt-4 flex items-center gap-2">
+                  <span aria-hidden className="h-px w-16 bg-manikstu-gold/50" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <span aria-hidden className="h-px w-24 bg-manikstu-gold/50" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <span aria-hidden className="h-px w-16 bg-manikstu-gold/50" />
+                </div>
+
+                <p className="mt-6 text-grey">
+                  Our mobile app streamlines and enhances the entire onboarding
+                  process, village visits, and delivery of essential agricultural
+                  services.
+                </p>
+
+                {/* Features with gold icon circles + dotted trails */}
+                <ul className="mt-8 space-y-4">
+                  {features.map(({ icon: Icon, text }) => (
+                    <li key={text} className="flex items-center gap-3">
+                      <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-gold/15 ring-1 ring-manikstu-gold/40">
+                        <Icon className="h-4 w-4 text-manikstu-leaf" />
+                      </span>
+                      <span className="text-sm text-charcoal">{text}</span>
+                      <span
+                        aria-hidden
+                        className="flex-1 border-b border-dashed border-manikstu-gold/40"
+                      />
+                    </li>
+                  ))}
+                </ul>
+
+                {/* QR + Store buttons */}
+                <div className="mt-10 flex flex-wrap items-center gap-6">
+                  <div className="flex h-24 w-24 items-center justify-center rounded-lg border-2 border-manikstu-gold/30 bg-white p-2 shadow-sm">
+                    <div className="grid h-full w-full grid-cols-6 grid-rows-6 gap-px">
+                      {Array.from({ length: 36 }).map((_, i) => (
+                        <div
+                          key={i}
+                          className={
+                            [0, 1, 2, 5, 6, 7, 8, 11, 12, 14, 15, 17, 18, 20, 21, 23, 24, 25, 26, 29, 30, 31, 32, 33, 35].includes(i)
+                              ? "bg-charcoal"
+                              : "bg-transparent"
+                          }
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
+                      <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-manikstu-leaf">
+                        Scan to Download
+                      </p>
+                      <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                      <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
+                    </div>
+                    <div className="mt-3 flex gap-2">
+                      <a
+                        href="#"
+                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf"
+                      >
+                        <Play className="h-4 w-4" />
+                        <span className="flex flex-col leading-tight">
+                          <span className="text-[9px] opacity-80">GET IT ON</span>
+                          <span className="text-[11px] font-semibold">Google Play</span>
+                        </span>
+                      </a>
+                      <a
+                        href="#"
+                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf"
+                      >
+                        <Smartphone className="h-4 w-4" />
+                        <span className="flex flex-col leading-tight">
+                          <span className="text-[9px] opacity-80">Download on the</span>
+                          <span className="text-[11px] font-semibold">App Store</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Bottom tribal village figures — left (mirrored: hut on outer edge) */}
           <Image
             src="/patterns/village-figures.png"
@@ -471,7 +628,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[-15px] left-0 w-[30%] max-w-none h-auto opacity-70 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-10 left-0 w-[22%] max-w-none h-auto opacity-80 -scale-x-100"
           />
           {/* Bottom tribal village figures — right (natural: hut on outer edge) */}
           <Image
@@ -481,62 +638,17 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[-15px] right-0 w-[30%] max-w-none h-auto opacity-70"
+            className="pointer-events-none select-none absolute bottom-10 right-0 w-[22%] max-w-none h-auto opacity-80"
           />
-          <div className="relative mx-auto max-w-7xl">
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-              {/* Phone mockup */}
-              <div className="flex justify-center">
-                <div className="relative w-64 h-[500px] rounded-[2.5rem] border-4 border-charcoal bg-manikstu-cream overflow-hidden shadow-xl">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 rounded-b-xl bg-charcoal" />
-                  <div className="flex h-full items-center justify-center pt-6">
-                    <div className="text-center">
-                      <Smartphone className="mx-auto h-16 w-16 text-manikstu-green/40" />
-                      <p className="mt-2 text-xs text-grey">Goat Bank App</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              {/* Content */}
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-                  Goat Bank Mobile App
-                </p>
-                <h2 className="mt-4 text-3xl font-bold text-charcoal font-heading md:text-4xl">
-                  Empowering Farmers with Technology
-                </h2>
-                <p className="mt-4 text-grey">
-                  Our mobile app streamlines and enhances the entire onboarding
-                  process, village visits, and delivery of essential agricultural
-                  services.
-                </p>
-                <ul className="mt-6 space-y-3">
-                  {features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-manikstu-green" />
-                      <span className="text-sm text-charcoal">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex items-center gap-6">
-                  {/* QR Code placeholder */}
-                  <div className="flex h-20 w-20 items-center justify-center rounded-lg border border-light-grey bg-white">
-                    <FileText className="h-8 w-8 text-grey/40" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-grey">Scan to Download</p>
-                    <div className="mt-2 flex gap-2">
-                      <div className="flex h-8 items-center gap-1 rounded bg-charcoal px-3 text-[10px] text-white">
-                        <Smartphone className="h-3 w-3" /> Google Play
-                      </div>
-                      <div className="flex h-8 items-center gap-1 rounded bg-charcoal px-3 text-[10px] text-white">
-                        <Smartphone className="h-3 w-3" /> App Store
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          {/* Dark green tagline ribbon */}
+          <div className="relative bg-manikstu-leaf py-4 text-center">
+            <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 sm:px-6 md:px-8">
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <p className="text-xs font-semibold text-manikstu-gold sm:text-sm">
+                Building partnerships. Strengthening communities. Transforming livelihoods.
+              </p>
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             </div>
           </div>
         </section>
