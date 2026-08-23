@@ -488,7 +488,7 @@ export default function HomePage() {
                       <Sprout className="h-12 w-12 text-manikstu-leaf" />
                     </div>
                     <p className="mt-4 font-heading text-2xl font-bold tracking-wide text-manikstu-leaf">
-                      GOAT BANK
+                      GOAT CARE
                     </p>
                     <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-manikstu-gold">
                       Mobile App
@@ -514,7 +514,7 @@ export default function HomePage() {
                   <span aria-hidden className="h-px w-8 bg-manikstu-gold/50" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf">
-                    Goat Bank Mobile App
+                    Goat Care Mobile App
                   </p>
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-8 bg-manikstu-gold/50" />
