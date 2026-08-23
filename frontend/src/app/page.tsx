@@ -168,7 +168,18 @@ export default function HomePage() {
       <main id="main-content">
         {/* Hero */}
         <section className="relative overflow-hidden bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 lg:py-20">
+          {/* Tribal motif background */}
+          <Image
+            src="/hero-motif.png"
+            alt=""
+            aria-hidden
+            width={1300}
+            height={1300}
+            priority
+            className="pointer-events-none select-none absolute -right-40 top-1/2 -translate-y-1/2 w-[900px] max-w-none opacity-[0.08] dark:opacity-10"
+          />
+
+          <div className="relative mx-auto max-w-7xl px-4 py-12 md:px-8 lg:py-20">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               {/* Left content */}
               <div>
