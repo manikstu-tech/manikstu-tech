@@ -466,15 +466,6 @@ export default function HomePage() {
 
         {/* Mobile App */}
         <section className="relative bg-white overflow-hidden">
-          {/* Top tribal border */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-0 h-8 bg-repeat-x"
-            style={{
-              backgroundImage: "url('/patterns/tribal-border.png')",
-              backgroundSize: "auto 100%",
-            }}
-          />
           {/* Left mandala background */}
           <Image
             src="/hero-motif.png"
