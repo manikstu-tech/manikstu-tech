@@ -194,20 +194,8 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-light-grey">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 text-xs text-grey sm:px-6 md:flex-row md:items-center md:justify-between md:px-8">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-            <Image
-              src="/logo.png"
-              alt="Manikstu Agro"
-              width={24}
-              height={24}
-              className="h-5 w-auto flex-shrink-0"
-            />
-            <span>&copy; {new Date().getFullYear()} Manikstu Agro Private Limited. All Rights Reserved.</span>
-            <span className="border-l border-light-grey pl-4">GSTIN: 21AAJCM6881B1ZM</span>
-            <span className="border-l border-light-grey pl-4">CIN: U74900PN2015PTC154344</span>
-          </div>
-          <Image src="/patterns/village-scene.png" alt="" width={300} height={120} className="hidden h-16 w-auto opacity-70 lg:block" />
+        <div className="mx-auto max-w-7xl px-4 py-3 text-center text-xs text-grey sm:px-6 md:px-8">
+          <p>&copy; {new Date().getFullYear()} Manikstu Agro Private Limited. All Rights Reserved. &nbsp;|&nbsp; GSTIN: 21AAJCM6881B1ZM &nbsp;|&nbsp; CIN: U74900PN2015PTC154344</p>
         </div>
       </div>
     </footer>
