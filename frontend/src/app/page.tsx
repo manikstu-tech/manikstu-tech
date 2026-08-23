@@ -369,7 +369,7 @@ export default function HomePage() {
             aria-hidden
             width={600}
             height={600}
-            className="pointer-events-none select-none absolute left-[-60px] top-1/2 -translate-y-1/2 w-[45%] max-w-[500px] h-auto opacity-[0.12] lg:left-[5%]"
+            className="pointer-events-none select-none absolute left-[-60px] top-1/2 -translate-y-1/2 w-[45%] max-w-[500px] h-auto opacity-[0.10] lg:left-[5%]"
           />
           <div className="relative mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
