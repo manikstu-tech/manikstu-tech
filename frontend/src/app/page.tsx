@@ -637,13 +637,13 @@ export default function HomePage() {
             {/* Left golden tribal art — anchored to left edge */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-0 w-[28%] bg-no-repeat bg-left bg-contain"
+              className="pointer-events-none absolute inset-y-0 left-0 w-[18%] bg-no-repeat bg-left bg-contain"
               style={{ backgroundImage: "url('/patterns/golden-tribal-border.png')" }}
             />
             {/* Right golden tribal art — anchored to right edge (mirrored) */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 w-[28%] bg-no-repeat bg-left bg-contain -scale-x-100"
+              className="pointer-events-none absolute inset-y-0 right-0 w-[18%] bg-no-repeat bg-left bg-contain -scale-x-100"
               style={{ backgroundImage: "url('/patterns/golden-tribal-border.png')" }}
             />
             {/* Centered tagline */}
