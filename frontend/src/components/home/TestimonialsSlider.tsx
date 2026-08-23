@@ -11,7 +11,7 @@ export type Testimonial = {
   color: string;
 };
 
-const AUTOPLAY_MS = 5000;
+const AUTOPLAY_MS = 3000;
 
 export default function TestimonialsSlider({
   testimonials,
