@@ -176,7 +176,7 @@ export default function HomePage() {
             width={1300}
             height={1300}
             priority
-            className="pointer-events-none select-none absolute right-[-500px] top-1/2 -translate-y-1/2 w-[1000px] max-w-none opacity-[0.08] dark:opacity-10"
+            className="pointer-events-none select-none absolute right-[-500px] top-1/2 -translate-y-1/2 w-[1000px] max-w-none opacity-20 dark:opacity-25"
           />
 
           <div className="relative mx-auto max-w-7xl px-4 py-12 md:px-8 lg:py-20">
