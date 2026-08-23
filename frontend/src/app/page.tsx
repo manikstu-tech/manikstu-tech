@@ -619,7 +619,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[36px] left-0 w-[30%] max-w-none h-auto opacity-80 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-[24px] left-0 w-[30%] max-w-none h-auto opacity-80 -scale-x-100"
           />
           {/* Bottom tribal village figures — right (natural: hut on outer edge) */}
           <Image
@@ -629,12 +629,30 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[36px] right-0 w-[30%] max-w-none h-auto opacity-80"
+            className="pointer-events-none select-none absolute bottom-[24px] right-0 w-[30%] max-w-none h-auto opacity-80"
           />
 
           {/* Dark green tagline ribbon */}
-          <div className="relative bg-manikstu-leaf py-4 text-center">
-            <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 sm:px-6 md:px-8">
+          <div className="relative bg-manikstu-leaf py-6 text-center overflow-hidden">
+            {/* Golden tribal border — top */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-0 right-0 top-0 h-5 bg-repeat-x opacity-90"
+              style={{
+                backgroundImage: "url('/patterns/golden-tribal-border.png')",
+                backgroundSize: "auto 100%",
+              }}
+            />
+            {/* Golden tribal border — bottom (mirrored) */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-0 right-0 bottom-0 h-5 bg-repeat-x opacity-90 -scale-y-100"
+              style={{
+                backgroundImage: "url('/patterns/golden-tribal-border.png')",
+                backgroundSize: "auto 100%",
+              }}
+            />
+            <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 sm:px-6 md:px-8">
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
               <p className="text-xs font-semibold text-manikstu-gold sm:text-sm">
                 Building partnerships. Strengthening communities. Transforming livelihoods.
