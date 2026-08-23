@@ -367,13 +367,13 @@ export default function HomePage() {
               <div>
                 {/* Ornamental pill heading */}
                 <div className="flex items-center gap-2">
-                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-green" />
-                  <span aria-hidden className="h-px w-10 bg-manikstu-green/50" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
                     Our Flagship Program
                   </p>
-                  <span aria-hidden className="h-px w-10 bg-manikstu-green/50" />
-                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-green" />
+                  <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 </div>
 
                 <h2 className="mt-6 font-heading text-4xl font-bold leading-tight text-charcoal sm:text-5xl lg:text-6xl">
@@ -382,9 +382,9 @@ export default function HomePage() {
 
                 {/* Line-diamond-line ornamental divider */}
                 <div className="mt-4 flex items-center gap-2">
-                  <span aria-hidden className="h-px w-16 bg-manikstu-green/50" />
-                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-green" />
-                  <span aria-hidden className="h-px w-16 bg-manikstu-green/50" />
+                  <span aria-hidden className="h-px w-16 bg-manikstu-gold/60" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <span aria-hidden className="h-px w-16 bg-manikstu-gold/60" />
                 </div>
 
                 <p className="mt-6 text-grey leading-relaxed">
