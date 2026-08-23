@@ -586,9 +586,16 @@ export default function HomePage() {
                     <div className="mt-3 flex gap-2">
                       <a
                         href="#"
+                        aria-label="Get it on Google Play"
                         className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf"
                       >
-                        <Play className="h-4 w-4" />
+                        {/* Google Play brand triangle */}
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" aria-hidden>
+                          <path d="M3.6 1.9C3.2 2.2 3 2.7 3 3.4v17.2c0 .7.2 1.2.6 1.5l.1.1 9.7-9.7v-.1L3.6 1.9z" fill="#5BC9F4" />
+                          <path d="M17.1 15.5l-3.2-3.2v-.2l3.2-3.2.1.1 3.8 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2z" fill="#F6B600" />
+                          <path d="M17.2 15.4L13.9 12 3.6 22.1c.4.4 1 .4 1.7.1l11.9-6.7" fill="#F44336" />
+                          <path d="M17.2 8.6L5.3 1.9c-.7-.4-1.3-.3-1.7 0L13.9 12l3.3-3.4z" fill="#00A64F" />
+                        </svg>
                         <span className="flex flex-col leading-tight">
                           <span className="text-[9px] opacity-80">GET IT ON</span>
                           <span className="text-[11px] font-semibold">Google Play</span>
@@ -596,9 +603,13 @@ export default function HomePage() {
                       </a>
                       <a
                         href="#"
+                        aria-label="Download on the App Store"
                         className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf"
                       >
-                        <Smartphone className="h-4 w-4" />
+                        {/* Apple brand icon */}
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" fill="currentColor" aria-hidden>
+                          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                        </svg>
                         <span className="flex flex-col leading-tight">
                           <span className="text-[9px] opacity-80">Download on the</span>
                           <span className="text-[11px] font-semibold">App Store</span>
