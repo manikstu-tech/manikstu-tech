@@ -462,8 +462,28 @@ export default function HomePage() {
         </section>
 
         {/* Mobile App */}
-        <section className="section-padding bg-white">
-          <div className="mx-auto max-w-7xl">
+        <section className="relative section-padding bg-white overflow-hidden">
+          {/* Bottom tribal village figures — left */}
+          <Image
+            src="/patterns/village-figures.png"
+            alt=""
+            aria-hidden
+            width={2172}
+            height={724}
+            loading="eager"
+            className="pointer-events-none select-none absolute bottom-0 left-0 w-[45%] max-w-none h-auto opacity-70"
+          />
+          {/* Bottom tribal village figures — right (mirrored) */}
+          <Image
+            src="/patterns/village-figures.png"
+            alt=""
+            aria-hidden
+            width={2172}
+            height={724}
+            loading="eager"
+            className="pointer-events-none select-none absolute bottom-0 right-0 w-[45%] max-w-none h-auto opacity-70 -scale-x-100"
+          />
+          <div className="relative mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               {/* Phone mockup */}
               <div className="flex justify-center">
