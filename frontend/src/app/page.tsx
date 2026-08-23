@@ -23,12 +23,18 @@ import {
   ShoppingBag,
 } from "lucide-react";
 
-const missionCards = [
+const missionCards: {
+  icon: typeof Cpu;
+  title: string;
+  description: string;
+  image?: string;
+}[] = [
   {
     icon: Cpu,
     title: "Driving Progress with Technology",
     description:
       "Leveraging technology and innovation to empower farmers with actionable data.",
+    image: "/patterns/mission-driving-progress.png",
   },
   {
     icon: Handshake,
@@ -333,12 +339,19 @@ export default function HomePage() {
                     {/* Bottom Warli village art */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-no-repeat opacity-40"
-                      style={{
-                        backgroundImage: "url('/patterns/village-figures.png')",
-                        backgroundSize: "400% auto",
-                        backgroundPosition: `${(i * 33) % 100}% bottom`,
-                      }}
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-70"
+                      style={
+                        card.image
+                          ? {
+                              backgroundImage: `url('${card.image}')`,
+                              backgroundSize: "contain",
+                            }
+                          : {
+                              backgroundImage: "url('/patterns/village-figures.png')",
+                              backgroundSize: "400% auto",
+                              backgroundPosition: `${(i * 33) % 100}% bottom`,
+                            }
+                      }
                     />
                     <div className="relative text-center">
                       {/* Circular icon */}
