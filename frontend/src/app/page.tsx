@@ -804,15 +804,37 @@ export default function HomePage() {
         </section>
 
         {/* News */}
-        <section className="section-padding bg-manikstu-cream">
-          <div className="mx-auto max-w-7xl">
+        <section className="relative overflow-hidden section-padding bg-manikstu-cream dark:bg-gray-900">
+          {/* Top-right mandala corner artwork */}
+          <div aria-hidden className="pointer-events-none absolute right-0 top-0 select-none z-0">
+            <Image
+              src="/patterns/mandala-top-right-corner.png"
+              alt=""
+              width={504}
+              height={560}
+              className="h-auto w-44 sm:w-60 md:w-72 lg:w-84 object-contain object-right-top opacity-85 sm:opacity-95 dark:opacity-60"
+            />
+          </div>
+
+          {/* Bottom-left mandala artwork */}
+          <div aria-hidden className="pointer-events-none absolute left-0 bottom-0 select-none z-0">
+            <Image
+              src="/patterns/mandala-bottom-left-crop.png"
+              alt=""
+              width={420}
+              height={1024}
+              className="h-auto w-36 sm:w-48 md:w-60 lg:w-72 max-h-[85%] object-contain object-left-bottom opacity-80 sm:opacity-90 dark:opacity-60"
+            />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-7xl">
             <div className="flex items-center justify-between">
-              <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl">
+              <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
                 Latest @ Manikstu
               </h2>
               <Link
                 href="/blog"
-                className="text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors"
+                className="text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors dark:text-manikstu-gold"
               >
                 View All
               </Link>
