@@ -385,7 +385,7 @@ export default function HomePage() {
           />
           <div className="relative mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="font-heading text-4xl font-bold text-charcoal sm:text-5xl lg:text-6xl dark:text-white">
+              <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
                 Our Associations
               </h2>
               <p className="mt-2 text-xs text-grey sm:text-sm dark:text-gray-400">
