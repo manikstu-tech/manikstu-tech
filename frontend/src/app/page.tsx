@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import TestimonialsSlider from "@/components/home/TestimonialsSlider";
 import {
   ArrowRight,
   Play,
-  Star,
   Check,
   Smartphone,
   Cpu,
@@ -153,6 +153,30 @@ const testimonials = [
     role: "Farmer, Keonjhar, Odisha",
     initials: "LD",
     color: "bg-manikstu-red",
+  },
+  {
+    quote:
+      "The veterinary support at my doorstep saved my herd during the last outbreak. I owe my livelihood to their team.",
+    name: "Sanjay Nayak",
+    role: "Farmer, Kalahandi, Odisha",
+    initials: "SN",
+    color: "bg-manikstu-gold",
+  },
+  {
+    quote:
+      "Being part of the women-led initiative gave me both confidence and a steady income. My family is proud of me.",
+    name: "Anita Majhi",
+    role: "Farmer, Balangir, Odisha",
+    initials: "AM",
+    color: "bg-saura-red",
+  },
+  {
+    quote:
+      "The Goat Care app makes tracking vaccinations and sales simple. What used to take a whole day now takes minutes.",
+    name: "Prakash Behera",
+    role: "Farmer, Sundargarh, Odisha",
+    initials: "PB",
+    color: "bg-manikstu-leaf",
   },
 ];
 
@@ -842,40 +866,7 @@ export default function HomePage() {
                 View All
               </Link>
             </div>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              {testimonials.map((t) => (
-                <div
-                  key={t.name}
-                  className="rounded-xl bg-manikstu-cream p-6"
-                >
-                  {/* Stars */}
-                  <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-manikstu-gold text-manikstu-gold"
-                      />
-                    ))}
-                  </div>
-                  <p className="mt-4 text-sm text-grey italic">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className="mt-6 flex items-center gap-3">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full ${t.color} text-white text-sm font-semibold`}
-                    >
-                      {t.initials}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-charcoal">
-                        — {t.name}
-                      </p>
-                      <p className="text-xs text-grey">{t.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <TestimonialsSlider testimonials={testimonials} />
           </div>
         </section>
 
