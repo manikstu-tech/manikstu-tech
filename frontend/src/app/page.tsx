@@ -55,6 +55,7 @@ const missionCards: {
     title: "Innovating for Tomorrow",
     description:
       "Continuously developing new solutions for farm development and inclusive future.",
+    image: "/patterns/mission-innovating.png",
   },
 ];
 
