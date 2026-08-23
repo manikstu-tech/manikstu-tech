@@ -168,7 +168,7 @@ export default function HomePage() {
       <main id="main-content">
         {/* Hero */}
         <section className="relative overflow-hidden bg-white">
-          {/* Tribal motif background — wrapper ensures clipping to hero bounds */}
+          {/* Tribal motif background — full picture fits inside hero, right-anchored */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
             <Image
               src="/hero-motif.png"
@@ -177,7 +177,7 @@ export default function HomePage() {
               width={1300}
               height={1300}
               priority
-              className="select-none absolute right-[-500px] top-1/2 -translate-y-1/2 w-[1000px] max-w-none opacity-[0.14] dark:opacity-[0.18]"
+              className="select-none absolute right-4 top-1/2 -translate-y-1/2 h-[95%] w-auto max-w-none opacity-[0.14] dark:opacity-[0.18]"
             />
           </div>
 
