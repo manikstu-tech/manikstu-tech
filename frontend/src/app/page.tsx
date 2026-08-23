@@ -342,12 +342,13 @@ export default function HomePage() {
                     {/* Bottom Warli village art */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-70"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-no-repeat bg-bottom opacity-90"
                       style={
                         card.image
                           ? {
                               backgroundImage: `url('${card.image}')`,
-                              backgroundSize: "contain",
+                              backgroundSize: "100% auto",
+                              backgroundPosition: "bottom center",
                             }
                           : {
                               backgroundImage: "url('/patterns/village-figures.png')",
