@@ -2,7 +2,7 @@
 
 ## Project Status: IN PROGRESS — Phase 1 (Frontend Foundation)
 
-**Last Updated:** 2026-08-20
+**Last Updated:** 2026-08-21
 
 ---
 
@@ -40,15 +40,29 @@
 - [x] `cn()` utility (clsx + tailwind-merge)
 - [x] Header component (responsive, mobile slide-out nav)
 - [x] Footer component (4-column, dark green)
-- [x] Homepage with all 7 sections (hero, stats, services, projects, products, testimonials, CTA)
-- [x] globals.css (custom properties, button utilities)
+- [x] Homepage with all 10 sections (hero, mission, stats, flagship, associations, mobile app, news, testimonials, newsletter, footer)
+- [x] globals.css (custom properties, button utilities, dark mode overrides, marquee animations)
+- [x] Dark mode toggle (localStorage persistence)
+- [x] SVG pattern library (6 inline React components)
+  - [x] SauraBorder.tsx — Tribal stick-figure geometric border
+  - [x] GodnaBorder.tsx — Concentric circle tattoo border
+  - [x] CulturalDivider.tsx — Gold diamond divider
+  - [x] DiamondAccent.tsx — Gold diamond for pill labels
+  - [x] PaperTexture.tsx — Tileable paper grain
+  - [x] CornerOrnament.tsx — Saura corner decorations
+- [x] Associations section with cultural design system
+  - [x] Two-lane marquee (opposite directions)
+  - [x] Pill-style category labels with gold diamond accents
+  - [x] Museum-style cards with hover effects
+  - [x] `prefers-reduced-motion` support
+  - [x] Accessibility (aria-hidden, pointer-events-none)
 
 ---
 
 ## What Is Currently Being Worked On
 
-**Current Phase:** Phase 1 — Foundation (frontend layout done, pending backend + patterns)
-**Next Step:** SVG tribal art patterns, API client, TypeScript interfaces
+**Current Phase:** Phase 1 — Foundation (frontend layout + cultural design system done, pending backend)
+**Next Step:** API client, TypeScript interfaces, .env.local configuration
 
 ---
 
@@ -95,11 +109,17 @@
 | frontend/tsconfig.json | DONE | Phase 1 |
 | frontend/.env.local | PENDING | Phase 1 |
 | frontend/src/app/layout.tsx | DONE | Phase 1 |
-| frontend/src/app/page.tsx | DONE | Phase 1 |
-| frontend/src/app/globals.css | DONE | Phase 1 |
+| frontend/src/app/page.tsx | DONE | Phase 1 (updated with cultural associations section) |
+| frontend/src/app/globals.css | DONE | Phase 1 (updated with cultural design, @layer components) |
 | frontend/src/components/layout/Header.tsx | DONE | Phase 1 |
 | frontend/src/components/layout/Footer.tsx | DONE | Phase 1 |
-| frontend/src/components/patterns/* | PENDING | Phase 1 |
+| frontend/src/components/layout/ThemeProvider.tsx | DONE | Phase 1 |
+| frontend/src/components/patterns/SauraBorder.tsx | DONE | Phase 1 |
+| frontend/src/components/patterns/GodnaBorder.tsx | DONE | Phase 1 |
+| frontend/src/components/patterns/CulturalDivider.tsx | DONE | Phase 1 |
+| frontend/src/components/patterns/DiamondAccent.tsx | DONE | Phase 1 |
+| frontend/src/components/patterns/PaperTexture.tsx | DONE | Phase 1 |
+| frontend/src/components/patterns/CornerOrnament.tsx | DONE | Phase 1 |
 | frontend/src/lib/utils.ts | DONE | Phase 1 |
 | frontend/src/lib/api.ts | PENDING | Phase 1 |
 | frontend/src/types/index.ts | PENDING | Phase 1 |
@@ -155,6 +175,11 @@
 | 2026-08-20 | Saura as primary art | Directly from Odisha, sacred, distinctive |
 | 2026-08-20 | Logo colors extracted | #4A8C3F green, #D4342C red |
 | 2026-08-20 | Self-hosted fonts | NOT Google Fonts CDN (performance) |
+| 2026-08-21 | Inline React SVG components | Per RULES.MD:45 — tribal art as React components, not external files |
+| 2026-08-21 | @layer components for CSS | Per RULES.MD:58 — custom classes via @layer only |
+| 2026-08-21 | Two-lane marquee | Thematic split: Lane 1 → (Operational, Incubation, Supporting), Lane 2 ← (CSR, Investing, Banking) |
+| 2026-08-21 | Museum-style cards | Gold top-line on hover, subtle shadow lift, backdrop-blur |
+| 2026-08-21 | Pill-style category labels | Rounded-full with gold diamond accents, uppercase tracking |
 
 ---
 

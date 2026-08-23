@@ -128,7 +128,6 @@ manikstu/
 │   ├── public/
 │   │   ├── images/
 │   │   │   ├── logo/
-│   │   │   ├── patterns/        # Tribal art SVG patterns
 │   │   │   ├── heroes/
 │   │   │   ├── products/
 │   │   │   ├── team/
@@ -217,15 +216,12 @@ manikstu/
 │   │   │   │   ├── MobileNav.tsx
 │   │   │   │   └── Breadcrumb.tsx
 │   │   │   ├── patterns/
-│   │   │   │   ├── SauraBorder.tsx
-│   │   │   │   ├── SauraFigures.tsx
-│   │   │   │   ├── SauraSunDisc.tsx
-│   │   │   │   ├── SauraTreeOfLife.tsx
-│   │   │   │   ├── GodnaTexture.tsx
-│   │   │   │   ├── DhokraElephant.tsx
-│   │   │   │   ├── DhokraPeacock.tsx
-│   │   │   │   ├── IkatPattern.tsx
-│   │   │   │   └── GhumuraDrum.tsx
+│   │   │   │   ├── SauraBorder.tsx       # Tribal stick-figure geometric border
+│   │   │   │   ├── GodnaBorder.tsx       # Concentric circle tattoo border
+│   │   │   │   ├── CulturalDivider.tsx   # Gold diamond divider
+│   │   │   │   ├── DiamondAccent.tsx     # Gold diamond for pill labels
+│   │   │   │   ├── PaperTexture.tsx      # Tileable paper grain (inline SVG pattern)
+│   │   │   │   └── CornerOrnament.tsx    # Saura corner decorations
 │   │   │   ├── home/
 │   │   │   │   ├── Hero.tsx
 │   │   │   │   ├── ProjectCards.tsx

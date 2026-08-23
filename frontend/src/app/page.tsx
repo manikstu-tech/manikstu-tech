@@ -230,7 +230,7 @@ export default function HomePage() {
                     <Users className="h-24 w-24 text-manikstu-green/30" />
                   </div>
                   {/* Watch Our Story overlay */}
-                  <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-xl bg-white/90 backdrop-blur-sm px-4 py-3 shadow-lg">
+                  <div className="absolute bottom-4 right-4 flex items-center gap-3 rounded-xl bg-white/90 backdrop-blur-sm px-4 py-3 shadow-lg">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-manikstu-green text-white">
                       <Play className="h-4 w-4" />
                     </div>
@@ -253,19 +253,6 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Floating card — Product */}
-                <div className="absolute -top-4 -right-4 rounded-xl bg-white p-3 shadow-lg md:-right-8">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-manikstu-cream">
-                      <Sprout className="h-6 w-6 text-manikstu-green" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-charcoal">Manikstu</p>
-                      <p className="text-xs text-grey">Poshak Tatva</p>
-                      <p className="text-xs font-bold text-manikstu-green">₹ 245/ Bottle, 500 ML</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -395,7 +382,7 @@ export default function HomePage() {
                     {category.partners.map((partner) => (
                       <div
                         key={partner.name}
-                        className="partner-card flex h-22 w-36 items-center justify-center rounded-lg border border-light-grey bg-white px-4 dark:border-gray-600 dark:bg-gray-700"
+                        className="partner-card flex h-16 w-28 items-center justify-center rounded-lg border border-light-grey bg-white px-2 dark:border-gray-600 dark:bg-gray-700"
                       >
                         <Image
                           src={partner.image}
@@ -410,31 +397,31 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            {/* Desktop: marquee */}
-            <div className="mt-12 partner-track hidden md:flex">
-            {[...partnerCategories, ...partnerCategories].map((category, idx) => (
-              <div key={idx} className="partner-group flex-shrink-0">
-                <h3 className="mb-5 inline-block border border-manikstu-green/20 bg-white px-6 py-3 text-sm font-semibold text-charcoal dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                  {category.title}
-                </h3>
-                <div className="flex items-start gap-5">
-                  {category.partners.map((partner) => (
-                    <div
-                      key={partner.name}
-                      className="partner-card flex h-28 w-48 shrink-0 items-center justify-center rounded-lg border border-light-grey bg-white px-5 dark:border-gray-600 dark:bg-gray-700"
-                    >
-                      <Image
-                        src={partner.image}
-                        alt={partner.name}
-                        width={220}
-                        height={100}
-                        className="max-h-20 w-auto max-w-[170px] object-contain"
-                      />
-                    </div>
-                  ))}
+            {/* Desktop: 3-column grid */}
+            <div className="mt-10 hidden md:grid md:grid-cols-3 gap-6">
+              {partnerCategories.map((category) => (
+                <div key={category.title} className="text-center">
+                  <h3 className="mb-3 inline-block border border-manikstu-green/20 bg-white px-4 py-1.5 text-xs font-semibold text-charcoal dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                    {category.title}
+                  </h3>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {category.partners.map((partner) => (
+                      <div
+                        key={partner.name}
+                        className="partner-card flex h-16 w-28 items-center justify-center rounded-lg border border-light-grey bg-white px-2 dark:border-gray-600 dark:bg-gray-700"
+                      >
+                        <Image
+                          src={partner.image}
+                          alt={partner.name}
+                          width={100}
+                          height={40}
+                          className="max-h-10 w-auto max-w-[90px] object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
           </div>
         </section>
@@ -599,27 +586,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Newsletter */}
-        <section className="bg-manikstu-green py-16 text-white">
-          <div className="mx-auto max-w-4xl px-4 text-center md:px-8">
-            <h2 className="text-3xl font-bold font-heading md:text-4xl">
-              Stay Updated with Manikstu
-            </h2>
-            <p className="mt-2 text-white/80">
-              Subscribe to our newsletter for the latest updates and news.
-            </p>
-            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full sm:w-80 rounded-full px-5 py-3 text-sm text-charcoal outline-none focus:ring-2 focus:ring-manikstu-gold"
-              />
-              <button className="w-full sm:w-auto rounded-full bg-charcoal px-6 py-3 text-sm font-semibold text-white hover:bg-charcoal/80 transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />

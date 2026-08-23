@@ -28,7 +28,7 @@
 - [ ] Create seeders (products, projects, team, settings)
 
 ### Design System (Frontend)
-- [ ] Create SVG pattern library (Saura, Godna, Dhokra, Ikat, Ghumura)
+- [x] Create SVG pattern library (Saura, Godna, Dhokra, Ikat, Ghumura) — 6 inline React components
 - [ ] Set up typography (Playfair Display + Inter, self-hosted)
 - [ ] Define CSS custom properties (colors, spacing, shadows)
 - [ ] Build API client (`src/lib/api.ts`)

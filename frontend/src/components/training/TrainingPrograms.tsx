@@ -1,0 +1,99 @@
+import {
+  Banknote,
+  GraduationCap,
+  Sparkles,
+  Sprout,
+  Stethoscope,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+
+export interface TrainingProgram {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+const programs: TrainingProgram[] = [
+  {
+    icon: GraduationCap,
+    title: "Farmer Field Training",
+    description:
+      "Hands-on training at our model farms on scientific goat rearing, balanced feeding, breeding and herd health.",
+  },
+  {
+    icon: Users,
+    title: "FPO & SHG Capacity Building",
+    description:
+      "Strengthening Farmer Producer Organizations and self-help groups with governance, aggregation and collective marketing.",
+  },
+  {
+    icon: Stethoscope,
+    title: "Veterinary & Animal Health Awareness",
+    description:
+      "Community vet camps and awareness drives on vaccination, disease prevention and timely treatment.",
+  },
+  {
+    icon: Sprout,
+    title: "Sustainable & Regenerative Farming",
+    description:
+      "Fodder cultivation, water stewardship and low-emission practices for resilient rural livelihoods.",
+  },
+  {
+    icon: Sparkles,
+    title: "Women & Youth Empowerment",
+    description:
+      "Skill development and entrepreneurship pathways for women and rural youth in the livestock economy.",
+  },
+  {
+    icon: Banknote,
+    title: "Goat Bank & Livelihood Training",
+    description:
+      "Training on our Goat Bank model that builds assets, diversifies income and de-risks rural livelihoods.",
+  },
+];
+
+export default function TrainingPrograms() {
+  return (
+    <section id="programs" className="section-padding bg-manikstu-cream">
+      <div className="mx-auto max-w-6xl">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
+            What We Do
+          </p>
+          <h2 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold text-charcoal md:text-4xl">
+            Programs That Build{" "}
+            <span className="text-manikstu-green">Confidence &amp; Capability</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-grey">
+            From the field to the federation, our training programs meet farmers
+            where they are and grow with them.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {programs.map((program) => {
+            const Icon = program.icon;
+            return (
+              <div
+                key={program.title}
+                className="rounded-xl border border-light-grey bg-white p-6 transition-shadow hover:shadow-md"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-manikstu-green/10">
+                  <Icon className="h-5 w-5 text-manikstu-green" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-charcoal">
+                  {program.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-grey">
+                  {program.description}
+                </p>
+                <div className="mt-4 h-0.5 w-8 rounded bg-manikstu-green/60" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -47,10 +47,17 @@ manikstu-tech/
 │   │   │   ├── page.tsx            # Homepage (10 sections)
 │   │   │   └── globals.css         # Tailwind + dark mode overrides
 │   │   ├── components/
-│   │   │   └── layout/
-│   │   │       ├── Header.tsx      # Responsive header with dark mode toggle
-│   │   │       ├── Footer.tsx      # 4-column footer with social icons
-│   │   │       └── ThemeProvider.tsx # Dark mode context + localStorage
+│   │   │   ├── layout/
+│   │   │   │   ├── Header.tsx      # Responsive header with dark mode toggle
+│   │   │   │   ├── Footer.tsx      # 4-column footer with social icons
+│   │   │   │   └── ThemeProvider.tsx # Dark mode context + localStorage
+│   │   │   └── patterns/
+│   │   │       ├── SauraBorder.tsx      # Inline SVG tribal border (top)
+│   │   │       ├── GodnaBorder.tsx      # Inline SVG tattoo border (bottom)
+│   │   │       ├── CulturalDivider.tsx  # Inline SVG gold diamond divider
+│   │   │       ├── DiamondAccent.tsx    # Inline SVG gold diamond for pill labels
+│   │   │       ├── PaperTexture.tsx     # Inline SVG tileable paper grain
+│   │   │       └── CornerOrnament.tsx   # Inline SVG Saura corner decoration
 │   │   └── lib/
 │   │       └── utils.ts            # cn() utility, formatPrice()
 │   ├── tailwind.config.ts          # Custom color palette, dark mode, fonts
@@ -76,7 +83,7 @@ manikstu-tech/
 | ✅ Homepage (all 10 sections) | Done |
 | ✅ Dark mode toggle (localStorage persistence) | Done |
 | ✅ Homepage redesign (reference layout match) | Done |
-| ⏳ SVG pattern library | Pending |
+| ✅ SVG pattern library (6 inline React components) | Done |
 | ⏳ API client | Pending |
 | ⏳ TypeScript interfaces | Pending |
 | ⏳ `.env.local` | Pending |
@@ -93,7 +100,7 @@ See [PHASES.MD](./docs/PHASES.MD) for full roadmap.
 2. 🌍 **Mission** — "Our Mission" label, 4 feature cards (Technology, Collaborations, Livelihoods, Innovation)
 3. 📈 **Stats** — "Impacting Lives" with 4 metrics (70K farmers, 10K villages, 7L goats, 10 states)
 4. 🏆 **Flagship** — Project Samarth spotlight with CTA and photo area
-5. 🤝 **Associations** — Partner logos with CSS marquee animation (Operational, Incubation, Supporting, Technology, CSR, Investing, Banking partners) — pauses on hover
+5. 🤝 **Associations** — Two-lane marquee with tribal art decorations (Saura border, Godna border, corner ornaments, paper texture, gold diamond dividers). Pill-style category labels with gold diamond accents. Museum-style cards with hover effects. Lane 1 → (Operational, Incubation, Supporting), Lane 2 ← (CSR, Investing, Banking). Pauses on hover.
 6. 📱 **Mobile App** — Phone mockup, feature checklist, QR code, app store badges
 7. 📰 **News** — 4 cards with images, dates, category badges (Featured, Event, Press, Media)
 8. 💬 **Testimonials** — 2 cards with star ratings, quotes, farmer names
