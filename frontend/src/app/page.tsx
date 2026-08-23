@@ -812,7 +812,7 @@ export default function HomePage() {
               alt=""
               width={504}
               height={560}
-              className="h-auto w-24 sm:w-32 md:w-40 lg:w-48 object-contain object-right-top opacity-30 sm:opacity-40 dark:opacity-25"
+              className="h-auto w-24 sm:w-32 md:w-40 lg:w-48 object-contain object-right-top opacity-[0.12] sm:opacity-[0.18] dark:opacity-[0.10]"
             />
           </div>
 
@@ -823,7 +823,7 @@ export default function HomePage() {
               alt=""
               width={420}
               height={1024}
-              className="h-auto w-20 sm:w-28 md:w-36 lg:w-44 max-h-[85%] object-contain object-left-bottom opacity-30 sm:opacity-40 dark:opacity-25"
+              className="h-auto w-20 sm:w-28 md:w-36 lg:w-44 max-h-[85%] object-contain object-left-bottom opacity-[0.12] sm:opacity-[0.18] dark:opacity-[0.10]"
             />
           </div>
 
