@@ -649,7 +649,7 @@ export default function HomePage() {
             {/* Centered tagline */}
             <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 sm:px-6 md:px-8">
               <span aria-hidden className="text-manikstu-gold text-lg leading-none">◇</span>
-              <p className="text-xs font-semibold text-manikstu-gold sm:text-sm md:whitespace-nowrap">
+              <p className="text-xs font-semibold text-white sm:text-sm md:whitespace-nowrap">
                 Building partnerships. Strengthening communities. Transforming livelihoods.
               </p>
               <span aria-hidden className="text-manikstu-gold text-lg leading-none">◇</span>
