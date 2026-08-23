@@ -463,7 +463,7 @@ export default function HomePage() {
 
         {/* Mobile App */}
         <section className="relative section-padding bg-white overflow-hidden">
-          {/* Bottom tribal village figures — left */}
+          {/* Bottom tribal village figures — left (mirrored: hut on outer edge) */}
           <Image
             src="/patterns/village-figures.png"
             alt=""
@@ -471,9 +471,9 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-0 left-0 w-[45%] max-w-none h-auto opacity-70"
+            className="pointer-events-none select-none absolute bottom-0 left-0 w-[45%] max-w-none h-auto opacity-70 -scale-x-100"
           />
-          {/* Bottom tribal village figures — right (mirrored) */}
+          {/* Bottom tribal village figures — right (natural: hut on outer edge) */}
           <Image
             src="/patterns/village-figures.png"
             alt=""
@@ -481,7 +481,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-0 right-0 w-[45%] max-w-none h-auto opacity-70 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-0 right-0 w-[45%] max-w-none h-auto opacity-70"
           />
           <div className="relative mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
