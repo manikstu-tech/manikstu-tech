@@ -2,7 +2,7 @@
 
 ## Project Status: IN PROGRESS — Phase 1 (Frontend Foundation)
 
-**Last Updated:** 2026-08-21
+**Last Updated:** 2026-08-23
 
 ---
 
@@ -129,7 +129,7 @@
 | frontend/src/app/products/page.tsx | PENDING | Phase 3 |
 | frontend/src/app/shop/page.tsx | PENDING | Phase 3 |
 | frontend/src/app/collaborate/page.tsx | PENDING | Phase 4 |
-| frontend/src/app/training/page.tsx | PENDING | Phase 4 |
+| frontend/src/app/training/page.tsx | DONE | Phase 4 (renamed from Training_Awareness to match /training URL) |
 | frontend/src/app/impact/page.tsx | PENDING | Phase 4 |
 | frontend/src/app/blog/page.tsx | PENDING | Phase 5 |
 | frontend/src/app/gallery/page.tsx | PENDING | Phase 5 |
@@ -180,6 +180,8 @@
 | 2026-08-21 | Two-lane marquee | Thematic split: Lane 1 → (Operational, Incubation, Supporting), Lane 2 ← (CSR, Investing, Banking) |
 | 2026-08-21 | Museum-style cards | Gold top-line on hover, subtle shadow lift, backdrop-blur |
 | 2026-08-21 | Pill-style category labels | Rounded-full with gold diamond accents, uppercase tracking |
+| 2026-08-23 | Renamed `app/Training_Awareness/` → `app/training/` | Next.js kebab-lowercase URL convention; matches PRD.MD `/training` spec; updated Header + Footer nav hrefs from `/Training_Awareness` → `/training` |
+| 2026-08-23 | Tailwind `darkMode: "class"` | Previously unset → defaulted to `media`, so every `dark:*` utility fired from OS `prefers-color-scheme: dark`, overriding the in-app light/dark toggle (header + Associations rendered dark even in light mode). Class strategy makes `dark:*` respect ThemeProvider's `.dark` on `<html>`. |
 
 ---
 
