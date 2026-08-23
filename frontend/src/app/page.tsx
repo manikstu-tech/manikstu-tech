@@ -371,7 +371,7 @@ export default function HomePage() {
             alt=""
             aria-hidden
             width={2172}
-            height={88}
+            height={73}
             loading="eager"
             className="pointer-events-none absolute left-0 top-0 w-full h-auto select-none"
           />
@@ -381,7 +381,7 @@ export default function HomePage() {
             alt=""
             aria-hidden
             width={2172}
-            height={88}
+            height={73}
             loading="eager"
             className="pointer-events-none absolute left-0 bottom-0 w-full h-auto select-none -scale-y-100"
           />
