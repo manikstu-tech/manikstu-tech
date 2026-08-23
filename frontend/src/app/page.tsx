@@ -41,6 +41,7 @@ const missionCards: {
     title: "Collaborating for Success",
     description:
       "Building strong partnerships with cooperatives, organizations and governments.",
+    image: "/patterns/mission-collaborating.png",
   },
   {
     icon: Home,
