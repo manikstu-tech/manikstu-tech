@@ -377,7 +377,7 @@ export default function HomePage() {
                 </div>
 
                 <h2 className="mt-6 font-heading text-4xl font-bold leading-tight text-charcoal sm:text-5xl lg:text-6xl">
-                  Project <span className="text-manikstu-green">AJAHI</span>
+                  Project <span className="text-manikstu-green">AJAH</span>
                 </h2>
 
                 {/* Line-diamond-line ornamental divider */}
@@ -388,7 +388,7 @@ export default function HomePage() {
                 </div>
 
                 <p className="mt-6 text-grey leading-relaxed">
-                  AJAHI – Women-Led Integrated Livestock Entrepreneurship Initiative.
+                  AJAH – Women-Led Integrated Livestock Entrepreneurship Initiative.
                   Empowering women farmers through an integrated goat and poultry
                   livelihood model, combining scientific livestock management,
                   improved infrastructure, animal healthcare, training, insurance
@@ -398,7 +398,7 @@ export default function HomePage() {
                   href="/collaborate/ajah"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
                 >
-                  Explore Project AJAHI <ArrowRight className="h-4 w-4" />
+                  Explore Project AJAH <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
