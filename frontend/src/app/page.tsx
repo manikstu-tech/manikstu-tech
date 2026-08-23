@@ -299,18 +299,41 @@ export default function HomePage() {
               practices, financial support and innovative solutions.
             </p>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {missionCards.map((card) => {
+              {missionCards.map((card, i) => {
                 const Icon = card.icon;
                 return (
                   <div
                     key={card.title}
-                    className="rounded-xl border border-light-grey p-6 hover:shadow-md transition-shadow"
+                    className="group relative overflow-hidden rounded-2xl border border-light-grey bg-white pt-8 pb-24 px-6 shadow-sm hover:shadow-md transition-shadow"
                   >
-                    <Icon className="h-10 w-10 text-manikstu-green" />
-                    <h3 className="mt-4 text-lg font-semibold text-charcoal">
-                      {card.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-grey">{card.description}</p>
+                    {/* Bottom Warli village art */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-no-repeat opacity-40"
+                      style={{
+                        backgroundImage: "url('/patterns/village-figures.png')",
+                        backgroundSize: "400% auto",
+                        backgroundPosition: `${(i * 33) % 100}% bottom`,
+                      }}
+                    />
+                    <div className="relative text-center">
+                      {/* Circular icon */}
+                      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                        <Icon className="h-7 w-7 text-manikstu-green" />
+                      </div>
+                      {/* Ornamental line-diamond-line */}
+                      <div className="mt-5 flex items-center justify-center gap-2">
+                        <span aria-hidden className="h-px w-8 bg-manikstu-gold/60" />
+                        <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                        <span aria-hidden className="h-px w-8 bg-manikstu-gold/60" />
+                      </div>
+                      <h3 className="mt-4 text-base font-bold text-charcoal">
+                        {card.title}
+                      </h3>
+                      <p className="mt-3 text-sm text-grey leading-relaxed">
+                        {card.description}
+                      </p>
+                    </div>
                   </div>
                 );
               })}
