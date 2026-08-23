@@ -547,7 +547,7 @@ export default function HomePage() {
                     {category.partners.map((partner) => (
                       <div
                         key={partner.name}
-                        className="partner-card flex h-16 w-28 items-center justify-center rounded-lg border border-light-grey border-t-[3px] border-t-saura-red/80 bg-white px-2 dark:border-gray-600 dark:border-t-manikstu-gold dark:bg-gray-700"
+                        className="partner-card flex h-16 w-28 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-2 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700"
                       >
                         <Image
                           src={partner.image}
@@ -579,7 +579,7 @@ export default function HomePage() {
                     {category.partners.map((partner) => (
                       <div
                         key={partner.name}
-                        className="partner-card flex h-16 w-28 items-center justify-center rounded-lg border border-light-grey border-t-[3px] border-t-saura-red/80 bg-white px-2 dark:border-gray-600 dark:border-t-manikstu-gold dark:bg-gray-700"
+                        className="partner-card flex h-16 w-28 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-2 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700"
                       >
                         <Image
                           src={partner.image}
