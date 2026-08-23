@@ -321,7 +321,7 @@ export default function HomePage() {
               alt=""
               width={320}
               height={576}
-              className="h-auto w-32 sm:w-44 md:w-56 lg:w-72 max-h-[80%] object-contain object-left opacity-20 sm:opacity-25 dark:opacity-15"
+              className="h-auto w-32 sm:w-44 md:w-56 lg:w-72 max-h-[80%] object-contain object-left opacity-10 sm:opacity-[0.12] dark:opacity-[0.08]"
             />
           </div>
 
@@ -332,7 +332,7 @@ export default function HomePage() {
               alt=""
               width={320}
               height={576}
-              className="h-auto w-32 sm:w-44 md:w-56 lg:w-72 max-h-[80%] object-contain object-right opacity-20 sm:opacity-25 dark:opacity-15"
+              className="h-auto w-32 sm:w-44 md:w-56 lg:w-72 max-h-[80%] object-contain object-right opacity-10 sm:opacity-[0.12] dark:opacity-[0.08]"
             />
           </div>
 
