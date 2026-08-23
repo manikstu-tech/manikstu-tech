@@ -476,7 +476,7 @@ export default function HomePage() {
             className="pointer-events-none select-none absolute left-[-120px] top-1/2 -translate-y-1/2 h-[90%] w-auto max-w-none opacity-[0.08]"
           />
 
-          <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-32 sm:px-6 md:px-8 md:pt-24 md:pb-40">
+          <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               {/* Phone mockup — branded splash */}
               <div className="flex justify-center">
@@ -619,7 +619,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-10 left-0 w-[22%] max-w-none h-auto opacity-80 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-0 left-0 w-[18%] max-w-none h-auto opacity-80 -scale-x-100"
           />
           {/* Bottom tribal village figures — right (natural: hut on outer edge) */}
           <Image
@@ -629,7 +629,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-10 right-0 w-[22%] max-w-none h-auto opacity-80"
+            className="pointer-events-none select-none absolute bottom-0 right-0 w-[18%] max-w-none h-auto opacity-80"
           />
 
           {/* Dark green tagline ribbon */}
