@@ -606,7 +606,7 @@ export default function HomePage() {
             aria-hidden
             width={1300}
             height={1300}
-            className="pointer-events-none select-none absolute left-[8%] top-[42%] -translate-y-1/2 h-[620px] w-auto max-w-none opacity-[0.35]"
+            className="pointer-events-none select-none absolute left-[4%] top-[46%] -translate-y-1/2 h-[550px] w-auto max-w-none opacity-[0.20]"
           />
 
           <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
