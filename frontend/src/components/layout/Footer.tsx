@@ -21,7 +21,7 @@ const supportLinks = [
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-light-grey">
-      <div className="mx-auto max-w-7xl px-4 py-12 md:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div>
@@ -165,7 +165,7 @@ export default function Footer() {
       </div>
 
       {/* Our Offices */}
-      <div className="mx-auto max-w-7xl px-4 py-6 md:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 md:px-8">
         <div className="rounded-xl border border-light-grey p-6">
           <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
             <div>
@@ -194,8 +194,8 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-light-grey">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 text-xs text-grey md:px-8">
-          <div className="flex items-center gap-4">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 text-xs text-grey sm:px-6 md:flex-row md:items-center md:justify-between md:px-8">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <Image
               src="/logo.png"
               alt="Manikstu Agro"
@@ -207,7 +207,7 @@ export default function Footer() {
             <span className="border-l border-light-grey pl-4">GSTIN: 21AAJCM6881B1ZM</span>
             <span className="border-l border-light-grey pl-4">CIN: U74900PN2015PTC154344</span>
           </div>
-          <Image src="/patterns/village-scene.png" alt="" width={300} height={120} className="hidden h-20 w-auto opacity-70 sm:block" />
+          <Image src="/patterns/village-scene.png" alt="" width={300} height={120} className="hidden h-16 w-auto opacity-70 lg:block" />
         </div>
       </div>
     </footer>

@@ -177,11 +177,11 @@ export default function HomePage() {
               width={1300}
               height={1300}
               priority
-              className="select-none absolute right-4 top-1/2 -translate-y-1/2 h-[95%] w-auto max-w-none opacity-[0.14] dark:opacity-[0.18]"
+              className="select-none absolute right-2 top-1/2 -translate-y-1/2 h-[70%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
             />
           </div>
 
-          <div className="relative mx-auto max-w-7xl px-4 py-12 md:px-8 lg:py-20">
+          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:py-20">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               {/* Left content */}
               <div>
@@ -266,7 +266,7 @@ export default function HomePage() {
 
         {/* Mission */}
         <section className="section-padding bg-white">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <p className="text-center text-sm font-semibold uppercase tracking-wider text-manikstu-green">
               Our Mission
             </p>
@@ -301,7 +301,7 @@ export default function HomePage() {
 
         {/* Stats */}
         <section className="section-padding bg-manikstu-cream">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <h2 className="text-center text-3xl font-bold text-charcoal font-heading md:text-4xl">
               Impacting Lives
             </h2>
@@ -327,7 +327,7 @@ export default function HomePage() {
 
         {/* Flagship Program */}
         <section className="section-padding bg-white">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
@@ -383,7 +383,7 @@ export default function HomePage() {
               backgroundSize: "auto 100%",
             }}
           />
-          <div className="relative mx-auto max-w-6xl">
+          <div className="relative mx-auto max-w-7xl">
             <div className="text-center">
               <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
                 Our Associations
@@ -463,7 +463,7 @@ export default function HomePage() {
 
         {/* Mobile App */}
         <section className="section-padding bg-white">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               {/* Phone mockup */}
               <div className="flex justify-center">
@@ -523,7 +523,7 @@ export default function HomePage() {
 
         {/* News */}
         <section className="section-padding bg-manikstu-cream">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl">
                 Latest @ Manikstu
@@ -572,7 +572,7 @@ export default function HomePage() {
 
         {/* Testimonials */}
         <section className="section-padding bg-white">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl">
                 What Farmers Say
