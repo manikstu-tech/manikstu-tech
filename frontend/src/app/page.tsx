@@ -471,7 +471,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[-40px] left-0 w-[30%] max-w-none h-auto opacity-70 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-0 left-0 w-[30%] max-w-none h-auto opacity-70 -scale-x-100"
           />
           {/* Bottom tribal village figures — right (natural: hut on outer edge) */}
           <Image
@@ -481,7 +481,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[-40px] right-0 w-[30%] max-w-none h-auto opacity-70"
+            className="pointer-events-none select-none absolute bottom-0 right-0 w-[30%] max-w-none h-auto opacity-70"
           />
           <div className="relative mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
