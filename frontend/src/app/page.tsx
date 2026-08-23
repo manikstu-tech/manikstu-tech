@@ -388,7 +388,6 @@ export default function HomePage() {
               <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
                 Our Associations
               </h2>
-              <div className="mx-auto mt-3 h-0.5 w-24 bg-gradient-to-r from-transparent via-manikstu-green to-transparent" />
               <p className="mt-4 text-sm text-grey dark:text-gray-400">
                 Trusted by leading organizations across India
               </p>
