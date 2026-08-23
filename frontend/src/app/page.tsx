@@ -366,27 +366,25 @@ export default function HomePage() {
         {/* Associations */}
         <section className="partner-section relative section-padding bg-manikstu-cream dark:bg-gray-800 overflow-hidden">
           {/* Top tribal border */}
-          <div className="pointer-events-none absolute left-0 right-0 top-0 h-16 overflow-hidden" aria-hidden>
-            <Image
-              src="/patterns/tribal-border.png"
-              alt=""
-              width={2172}
-              height={724}
-              loading="eager"
-              className="absolute bottom-0 left-0 w-full h-auto"
-            />
-          </div>
-          {/* Bottom tribal border (flipped vertically) */}
-          <div className="pointer-events-none absolute left-0 right-0 bottom-0 h-16 overflow-hidden -scale-y-100" aria-hidden>
-            <Image
-              src="/patterns/tribal-border.png"
-              alt=""
-              width={2172}
-              height={724}
-              loading="eager"
-              className="absolute bottom-0 left-0 w-full h-auto"
-            />
-          </div>
+          <Image
+            src="/patterns/tribal-border.png"
+            alt=""
+            aria-hidden
+            width={2172}
+            height={88}
+            loading="eager"
+            className="pointer-events-none absolute left-0 top-0 w-full h-auto select-none"
+          />
+          {/* Bottom tribal border (flipped) */}
+          <Image
+            src="/patterns/tribal-border.png"
+            alt=""
+            aria-hidden
+            width={2172}
+            height={88}
+            loading="eager"
+            className="pointer-events-none absolute left-0 bottom-0 w-full h-auto select-none -scale-y-100"
+          />
           <div className="relative mx-auto max-w-6xl">
             <div className="text-center">
               <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
