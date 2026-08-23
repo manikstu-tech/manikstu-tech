@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin, Leaf } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
 
 const quickLinks = [
   { label: "About Us", href: "/about" },
@@ -196,7 +196,13 @@ export default function Footer() {
       <div className="border-t border-light-grey">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 text-xs text-grey md:px-8">
           <div className="flex items-center gap-4">
-            <Leaf className="h-4 w-4 flex-shrink-0 text-manikstu-green" />
+            <Image
+              src="/logo.png"
+              alt="Manikstu Agro"
+              width={24}
+              height={24}
+              className="h-5 w-auto flex-shrink-0"
+            />
             <span>&copy; {new Date().getFullYear()} Manikstu Agro Private Limited. All Rights Reserved.</span>
             <span className="border-l border-light-grey pl-4">GSTIN: 21AAJCM6881B1ZM</span>
             <span className="border-l border-light-grey pl-4">CIN: U74900PN2015PTC154344</span>

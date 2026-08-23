@@ -182,6 +182,7 @@
 | 2026-08-21 | Pill-style category labels | Rounded-full with gold diamond accents, uppercase tracking |
 | 2026-08-23 | Renamed `app/Training_Awareness/` → `app/training/` | Next.js kebab-lowercase URL convention; matches PRD.MD `/training` spec; updated Header + Footer nav hrefs from `/Training_Awareness` → `/training` |
 | 2026-08-23 | Tailwind `darkMode: "class"` | Previously unset → defaulted to `media`, so every `dark:*` utility fired from OS `prefers-color-scheme: dark`, overriding the in-app light/dark toggle (header + Associations rendered dark even in light mode). Class strategy makes `dark:*` respect ThemeProvider's `.dark` on `<html>`. |
+| 2026-08-23 | Footer copyright uses `/logo.png` (was `lucide-react` Leaf icon) | Brand consistency — the copyright bar now carries the actual Manikstu logo instead of a generic leaf glyph. Dropped unused `Leaf` import. |
 
 ---
 
