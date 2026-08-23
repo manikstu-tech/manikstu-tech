@@ -270,15 +270,31 @@ export default function HomePage() {
         {/* Mission */}
         <section className="section-padding bg-white">
           <div className="mx-auto max-w-7xl">
-            <p className="text-center text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-              Our Mission
-            </p>
-            <h2 className="mx-auto mt-4 max-w-3xl text-center text-3xl font-bold text-charcoal font-heading md:text-4xl">
+            {/* Ornamental pill heading */}
+            <div className="flex items-center justify-center gap-2">
+              <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                Our Mission
+              </p>
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+            </div>
+
+            <h2 className="mx-auto mt-6 max-w-4xl text-center font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
               Worldwide, fostering a{" "}
               <span className="text-manikstu-green">prosperous</span> and{" "}
               <span className="text-manikstu-green">sustainable agricultural future.</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-grey">
+
+            {/* Ornamental divider */}
+            <div className="mt-6 flex items-center justify-center gap-2">
+              <span aria-hidden className="h-px w-16 bg-manikstu-gold/60" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-16 bg-manikstu-gold/60" />
+            </div>
+
+            <p className="mx-auto mt-6 max-w-2xl text-center text-grey leading-relaxed">
               Since 2015, we have been empowering India&apos;s goat farmers with modern
               practices, financial support and innovative solutions.
             </p>
