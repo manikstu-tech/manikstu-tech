@@ -395,7 +395,7 @@ export default function HomePage() {
           </div>
           <div className="mt-12">
             {/* Mobile: stacked categories */}
-            <div className="space-y-8 md:hidden">
+            <div className="space-y-8 sm:hidden">
               {partnerCategories.map((category) => (
                 <div key={category.title} className="text-center">
                   <div className="mb-4 flex items-center justify-center gap-2">
@@ -426,8 +426,8 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            {/* Desktop: 3-column grid */}
-            <div className="mt-10 hidden md:grid md:grid-cols-3 gap-6">
+            {/* Tablet + Desktop: 3-column grid */}
+            <div className="mt-10 hidden gap-4 sm:grid sm:grid-cols-3 md:gap-6">
               {partnerCategories.map((category) => (
                 <div key={category.title} className="text-center">
                   <div className="mb-3 flex items-center justify-center gap-2">
