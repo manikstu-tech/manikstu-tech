@@ -48,6 +48,7 @@ const missionCards: {
     title: "Empowering Rural Livelihoods",
     description:
       "Creating opportunities and strengthening rural communities through goat farming.",
+    image: "/patterns/mission-rural-livelihoods.png",
   },
   {
     icon: Lightbulb,
