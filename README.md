@@ -29,6 +29,19 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the site 🎉
 
+### ⚙️ Backend (Laravel 11)
+
+```bash
+cd backend
+composer install
+cp .env.example .env        # then edit .env (see Security below)
+php artisan key:generate
+php artisan migrate --seed  # seeds admin; see ADMIN_PASSWORD note
+php artisan serve
+```
+
+Admin panel: [http://localhost:8000/admin/login](http://localhost:8000/admin/login)
+
 ## 📁 Project Structure
 
 ```
@@ -87,9 +100,9 @@ manikstu-tech/
 | ⏳ API client | Pending |
 | ⏳ TypeScript interfaces | Pending |
 | ⏳ `.env.local` | Pending |
-| ⏳ Laravel backend setup | Pending |
-| ⏳ Database migrations | Pending |
-| ⏳ Admin panel | Pending |
+| ✅ Laravel backend setup | Done |
+| ✅ Database migrations | Done |
+| ✅ Admin panel | Done |
 
 ### 🗺️ Phase 2-6
 See [PHASES.MD](./docs/PHASES.MD) for full roadmap.
@@ -135,6 +148,19 @@ See [PHASES.MD](./docs/PHASES.MD) for full roadmap.
 | 📅 [PHASES.MD](./docs/PHASES.MD) | 6 development phases with tasks |
 | 🎨 [DESIGN.MD](./docs/DESIGN.MD) | Colors, typography, admin panel design |
 | 🧠 [MEMORY.MD](./docs/MEMORY.MD) | Progress tracker, agent team, decisions |
+
+## 🔒 Security
+
+Security baseline applied to the Laravel backend (see commit history for details):
+
+- **No hardcoded credentials** — `AdminSeeder` reads the admin password from `ADMIN_PASSWORD`; if unset it generates a random 24-char password and logs it once. Set `ADMIN_PASSWORD` in `.env` and rotate any admin seeded with the old default.
+- **CSRF** — `VerifyCsrfToken` is active on all `web` routes including `/admin/login` (no CSRF exceptions).
+- **Login brute-force protection** — `POST /admin/login` is throttled to 5 attempts/minute.
+- **Debug off by default** — `.env.example` ships `APP_DEBUG=false`. Keep it `false` in production (debug exposes stack traces, env, and queries).
+- **HTTPS in production** — `AppServiceProvider` forces the HTTPS scheme when `APP_ENV=production`; serve behind TLS and set `SESSION_SECURE_COOKIE=true`.
+- **Session cookies** — `http_only` is on and `same_site=lax` by default.
+
+Before deploying to production, also review: password complexity at user-creation time, email verification if self-serve admin accounts are added, Razorpay webhook signature verification, and rate limiting / CORS on the public REST API.
 
 ## 📜 License
 

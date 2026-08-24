@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use App\Models\User;
 
 class AdminSeeder extends Seeder
@@ -14,12 +15,19 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        $password = env('ADMIN_PASSWORD') ?? Str::random(24);
+
         User::create([
             'name' => 'Admin',
             'email' => 'admin@manikstu.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make($password),
             'role' => 'developer',
             'is_active' => true,
         ]);
+
+        // ponytail: no fixed default; if ADMIN_PASSWORD unset we emit the random one to logs once
+        if (!env('ADMIN_PASSWORD')) {
+            logger()->info('Admin seeded with a random password (set ADMIN_PASSWORD to control it): '.$password);
+        }
     }
 }
