@@ -36,7 +36,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {photos.map((photo) => (
             <figure
               key={photo.id}
