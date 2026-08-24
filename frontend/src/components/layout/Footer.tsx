@@ -125,16 +125,16 @@ export default function Footer() {
                 <span>info@manikstu.com<br /><span className="text-xs text-grey/70">(For Other Enquiry)</span></span>
               </li>
             </ul>
-            <div className="mt-4 flex gap-3">
+            <div className="mt-4 flex flex-col gap-2">
               <Link
                 href="/careers"
-                className="inline-flex items-center gap-2 rounded-lg bg-manikstu-green px-4 py-2 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-manikstu-green px-4 py-2 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
               >
                 Careers <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/get-in-touch"
-                className="inline-flex items-center gap-2 rounded-lg border border-manikstu-green bg-white px-4 py-2 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green bg-white px-4 py-2 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
               >
                 Get In Touch <Phone className="h-4 w-4" />
               </Link>
