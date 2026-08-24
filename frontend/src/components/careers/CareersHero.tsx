@@ -1,16 +1,33 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Leaf, Sprout, Users } from "lucide-react";
 
 export default function CareersHero() {
   return (
     <section className="relative overflow-hidden bg-white">
-<div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
+      {/* Top-right mandala corner artwork */}
+      <Image
+        src="/patterns/mandala-top-right-corner.png"
+        alt=""
+        aria-hidden
+        width={504}
+        height={560}
+        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
+      />
+      <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left — copy */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-              Careers at Manikstu
-            </p>
+            <div className="flex items-center gap-2">
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                Careers at Manikstu
+              </p>
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+            </div>
+
             <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
               Build Your Career.
               <br />
@@ -20,7 +37,7 @@ export default function CareersHero() {
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
               At Manikstu, we are building more than a company — we are
               building an ecosystem that empowers farmers, creates livelihoods
-              and drives sustainable rural transformation.
+              and drives sustainable rural transformation across India.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -44,7 +61,7 @@ export default function CareersHero() {
                 <Leaf className="h-3.5 w-3.5 text-manikstu-green" />
               </span>
               <p className="text-sm text-grey">
-                Join a passionate team making real impact
+                Join a passionate team making meaningful impact every single day
               </p>
             </div>
           </div>
@@ -88,7 +105,7 @@ export default function CareersHero() {
               </svg>
 
               {/* Corner accent */}
-              <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
+              <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3.5 py-1.5 shadow-sm">
                 <Sprout className="h-4 w-4 text-manikstu-green" />
                 <span className="text-xs font-semibold text-charcoal">
                   Purpose-driven work
@@ -96,7 +113,7 @@ export default function CareersHero() {
               </div>
             </div>
 
-            {/* Small floating leaf badge */}
+            {/* Small floating badge */}
             <div className="absolute -bottom-4 -right-2 hidden h-14 w-14 items-center justify-center rounded-full bg-manikstu-green shadow-md md:flex">
               <Users className="h-6 w-6 text-white" />
             </div>
