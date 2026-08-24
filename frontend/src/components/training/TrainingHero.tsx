@@ -12,7 +12,7 @@ export default function TrainingHero() {
         aria-hidden
         width={504}
         height={560}
-        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-44 sm:w-56 md:w-64 lg:w-80 opacity-70 sm:opacity-80"
+        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-70 sm:opacity-80"
       />
       <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
