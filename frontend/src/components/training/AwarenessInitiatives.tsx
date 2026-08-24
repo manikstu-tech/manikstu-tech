@@ -14,7 +14,7 @@ const initiatives: AwarenessInitiative[] = [
     title: "Community Awareness Drives",
     description:
       "Village-level campaigns on nutrition, hygiene and the value of improved livestock practices.",
-    image: "/patterns/training-women-youth.png",
+    image: "/patterns/awareness-community-drives.png",
   },
   {
     icon: HeartPulse,
