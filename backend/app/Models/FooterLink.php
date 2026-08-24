@@ -17,9 +17,4 @@ class FooterLink extends Model
     {
         return $query->where('is_active', true);
     }
-
-    public function scopeByGroup($query, string $group)
-    {
-        return $query->where('group', $group);
-    }
 }

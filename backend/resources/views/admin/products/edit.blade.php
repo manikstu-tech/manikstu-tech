@@ -17,10 +17,21 @@
     <div class="form-grid">
         <div class="form-main">
             <div class="form-card">
-                <x-admin.form-field label="Name" name="name" :value="$product->name" required />
-                <x-admin.form-field label="Slug" name="slug" :value="$product->slug" />
-                <x-admin.form-field label="Description" name="description" type="textarea" :value="$product->description" :rows="4" />
-                <x-admin.form-field label="Price (₹)" name="price" type="number" :value="$product->price" />
+                <x-admin.translation-tabs :model="$product">
+                    <div class="translation-panel active" data-locale="en">
+                        <x-admin.form-field label="Name" name="name" :value="$product->name" required />
+                        <x-admin.form-field label="Slug" name="slug" :value="$product->slug" />
+                        <x-admin.form-field label="Description" name="description" type="textarea" :value="$product->description" :rows="4" />
+                        <x-admin.form-field label="Price (₹)" name="price" type="number" :value="$product->price" />
+                    </div>
+                    @foreach(['hi'=>'हिन्दी','bn'=>'বাংলা','ta'=>'தமிழ்','te'=>'తెలుగు','mr'=>'मराठी','gu'=>'ગુજરાતી','kn'=>'ಕನ್ನಡ','ml'=>'മലയാളം','or'=>'ଓଡ଼ିଆ','ja'=>'日本語','de'=>'Deutsch','fr'=>'Français','es'=>'Español'] as $code => $label)
+                        <div class="translation-panel" data-locale="{{ $code }}">
+                            <h4 class="translation-heading">{{ $label }} Translation</h4>
+                            <x-admin.form-field label="Name" name="name_{{ $code }}" :value="$product->translations->where('locale',$code)->first()?->name" placeholder="Translation in {{ $label }}" />
+                            <x-admin.form-field label="Description" name="description_{{ $code }}" type="textarea" :value="$product->translations->where('locale',$code)->first()?->description" :rows="4" placeholder="Translation in {{ $label }}" />
+                        </div>
+                    @endforeach
+                </x-admin.translation-tabs>
             </div>
         </div>
         <div class="form-side">
@@ -55,6 +66,7 @@
 .btn { padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; border: none; transition: all 0.15s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
 .btn-primary { background: #4A8C3F; color: #fff; }
 .btn-primary:hover { background: #3A7030; }
+.translation-heading { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: #5A5A5A; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid #E5E5E5; }
 @media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } }
 </style>
 @endsection

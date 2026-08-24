@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PlayCircle, Clock, Calendar } from "lucide-react";
-import type { VideoItem } from "@/app/blog/data";
+import type { VideoItem } from "@/lib/blog-data";
 
 export default function VideosSection({ videos }: { videos: VideoItem[] }) {
   return (

@@ -46,7 +46,9 @@ class BlogController extends Controller
         $validated['is_published'] = $request->boolean('is_published');
         $validated['published_at'] = $request->boolean('is_published') ? now() : null;
 
-        BlogPost::create($validated);
+        $post = BlogPost::create($validated);
+
+        $this->saveTranslations($request, $post);
 
         return redirect()->route('admin.blog.index')->with('success', 'Blog post created.');
     }
@@ -81,6 +83,8 @@ class BlogController extends Controller
 
         $post->update($validated);
 
+        $this->saveTranslations($request, $post);
+
         return redirect()->route('admin.blog.index')->with('success', 'Blog post updated.');
     }
 
@@ -88,5 +92,21 @@ class BlogController extends Controller
     {
         $post->delete();
         return redirect()->route('admin.blog.index')->with('success', 'Blog post deleted.');
+    }
+
+    private function saveTranslations(Request $request, BlogPost $post): void
+    {
+        $locales = ['hi','bn','ta','te','mr','gu','kn','ml','or','ja','de','fr','es'];
+        foreach ($locales as $locale) {
+            $title = $request->input("title_{$locale}");
+            $content = $request->input("content_{$locale}");
+            $excerpt = $request->input("excerpt_{$locale}");
+            if ($title || $content || $excerpt) {
+                $post->translations()->updateOrCreate(
+                    ['locale' => $locale],
+                    ['title' => $title, 'content' => $content, 'excerpt' => $excerpt]
+                );
+            }
+        }
     }
 }

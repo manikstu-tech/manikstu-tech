@@ -12,9 +12,4 @@ class Enquiry extends Model
     {
         return ['replied_at' => 'datetime'];
     }
-
-    public function scopeNew($query)
-    {
-        return $query->where('status', 'new');
-    }
 }

@@ -82,6 +82,63 @@ export interface BlogPost {
   published_at: string | null;
 }
 
+// Testimonials
+export interface Testimonial {
+  id: number;
+  name: string;
+  location: string;
+  quote: string;
+  image: string | null;
+  rating: number;
+  is_active: boolean;
+  order: number;
+}
+
+// Impact Stats
+export interface ImpactStat {
+  id: number;
+  number: string;
+  label: string;
+  icon: string;
+  order: number;
+  is_active: boolean;
+}
+
+// Gallery
+export interface GalleryImage {
+  id: number;
+  image: string;
+  caption: string;
+  category_id: number | null;
+  order: number;
+  is_active: boolean;
+}
+
+// Partners
+export interface Partner {
+  id: number;
+  name: string;
+  logo: string;
+  website_url: string | null;
+  category: string;
+  order: number;
+  is_active: boolean;
+}
+
+// Press Releases
+export interface PressRelease {
+  id: number;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  featured_image: string | null;
+  category_id: number | null;
+  is_published: boolean;
+  published_at: string | null;
+  category: BlogCategory | null;
+}
+
 // Products
 export interface Product {
   id: number;
@@ -93,52 +150,4 @@ export interface Product {
   images: string[];
 }
 
-export interface ProductResponse {
-  data: Product[];
-  meta: {
-    current_page: number;
-    last_page: number;
-    per_page: number;
-    total: number;
-  };
-}
 
-// Orders
-export interface Order {
-  id: number;
-  order_number: string;
-  total: number;
-  status: string;
-  payment_status: string;
-}
-
-// Forms
-export interface ContactFormData {
-  name: string;
-  phone: string;
-  email: string;
-  city: string;
-  state: string;
-  enquiryType: string;
-  message: string;
-}
-
-export interface JoinHandsFormData {
-  mobile: string;
-  project: string;
-  state: string;
-}
-
-export interface TrainingFormData {
-  mobile: string;
-  trainingType: string;
-  state: string;
-}
-
-export interface OrderCreateData {
-  items: Array<{
-    productId: number;
-    quantity: number;
-  }>;
-  totalAmount: number;
-}

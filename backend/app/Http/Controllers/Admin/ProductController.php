@@ -47,7 +47,9 @@ class ProductController extends Controller
         $validated['is_active'] = $request->boolean('is_active', true);
         $validated['order'] = $validated['order'] ?? 0;
 
-        Product::create($validated);
+        $product = Product::create($validated);
+
+        $this->saveTranslations($request, $product);
 
         return redirect()->route('admin.products.index')->with('success', 'Product created.');
     }
@@ -79,6 +81,8 @@ class ProductController extends Controller
 
         $product->update($validated);
 
+        $this->saveTranslations($request, $product);
+
         return redirect()->route('admin.products.index')->with('success', 'Product updated.');
     }
 
@@ -86,5 +90,20 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('admin.products.index')->with('success', 'Product deleted.');
+    }
+
+    private function saveTranslations(Request $request, Product $product): void
+    {
+        $locales = ['hi','bn','ta','te','mr','gu','kn','ml','or','ja','de','fr','es'];
+        foreach ($locales as $locale) {
+            $name = $request->input("name_{$locale}");
+            $desc = $request->input("description_{$locale}");
+            if ($name || $desc) {
+                $product->translations()->updateOrCreate(
+                    ['locale' => $locale],
+                    ['name' => $name, 'description' => $desc]
+                );
+            }
+        }
     }
 }

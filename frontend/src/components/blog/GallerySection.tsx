@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Camera, MapPin, ChevronDown, ChevronUp } from "lucide-react";
-import type { GalleryPhoto } from "@/app/blog/data";
+import type { GalleryPhoto } from "@/lib/blog-data";
 
 const INITIAL_COUNT = 4;
 

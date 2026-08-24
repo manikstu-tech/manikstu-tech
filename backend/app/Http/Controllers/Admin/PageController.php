@@ -28,7 +28,24 @@ class PageController extends Controller
 
         $page->update($validated);
 
+        $this->saveTranslations($request, $page);
+
         return redirect()->route('admin.pages.edit', $page)->with('success', 'Page updated.');
+    }
+
+    private function saveTranslations(Request $request, Page $page): void
+    {
+        $locales = ['hi','bn','ta','te','mr','gu','kn','ml','or','ja','de','fr','es'];
+        foreach ($locales as $locale) {
+            $title = $request->input("title_{$locale}");
+            $meta = $request->input("meta_description_{$locale}");
+            if ($title || $meta) {
+                $page->translations()->updateOrCreate(
+                    ['locale' => $locale],
+                    ['title' => $title, 'meta_description' => $meta]
+                );
+            }
+        }
     }
 
     public function storeBlock(Request $request, Page $page)

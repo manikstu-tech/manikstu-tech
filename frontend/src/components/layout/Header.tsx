@@ -1,34 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/routing";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Moon, Sun } from "lucide-react";
 import { useThemeToggle } from "./ThemeProvider";
 import { getNavigation } from "@/lib/api";
 import type { NavigationMenuItem } from "@/types";
-
-const fallbackLinks: NavigationMenuItem[] = [
-  { id: 1, label: "Home", url: "/", parent_id: null, order: 1, is_active: true, target: "_self" },
-  { id: 2, label: "About Us", url: "/about", parent_id: null, order: 2, is_active: true, target: "_self" },
-  { id: 3, label: "Services", url: "/services", parent_id: null, order: 3, is_active: true, target: "_self" },
-  { id: 4, label: "Products", url: "/products", parent_id: null, order: 4, is_active: true, target: "_self" },
-  { id: 5, label: "Media", url: "/blog", parent_id: null, order: 5, is_active: true, target: "_self" },
-  { id: 6, label: "Collaborate", url: "/collaborate", parent_id: null, order: 6, is_active: true, target: "_self" },
-  { id: 7, label: "Training & Awareness", url: "/training", parent_id: null, order: 7, is_active: true, target: "_self" },
-];
-
-function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(href + "/");
-}
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>(fallbackLinks);
+  const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>([]);
   const { toggle } = useThemeToggle();
   const pathname = usePathname() ?? "/";
+  const t = useTranslations("Navigation");
 
   useEffect(() => {
     getNavigation()
@@ -53,6 +40,10 @@ export default function Header() {
         <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => {
             const active = isActive(pathname, link.url);
+            // Map known static links to translation keys, otherwise use API label
+            const labelKey = link.label.toLowerCase().replace(/\s+/g, '');
+            const translatedLabel = t.has(labelKey) ? t(labelKey) : link.label;
+
             return (
               <Link
                 key={link.id}
@@ -64,28 +55,28 @@ export default function Header() {
                     : "text-sm font-medium text-charcoal dark:text-white hover:text-manikstu-green transition-colors"
                 }
               >
-                {link.label}
+                {translatedLabel}
               </Link>
             );
           })}
         </nav>
 
         <div className="flex items-center gap-3">
-          <button onClick={toggle} className="hidden md:flex items-center gap-1 text-sm text-charcoal dark:text-white hover:text-manikstu-green transition-colors" aria-label="Toggle dark mode">
+          <button onClick={toggle} className="hidden md:flex items-center gap-1 text-sm text-charcoal dark:text-white hover:text-manikstu-green transition-colors" aria-label={t("toggleDarkMode")}>
             <Moon className="h-4 w-4 dark:hidden" />
             <Sun className="h-4 w-4 hidden dark:block" />
           </button>
-          <span className="hidden md:inline text-sm text-grey">EN</span>
+          <LanguageSwitcher />
           <Link
             href="/contact"
             className="hidden md:inline-flex items-center rounded-full bg-manikstu-green px-5 py-2 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
           >
-            Contact Us
+            {t("contactUs")}
           </Link>
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden p-2 text-charcoal"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t("closeMenu") : t("openMenu")}
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -102,6 +93,8 @@ export default function Header() {
           <nav className="flex flex-col px-4 py-4">
             {navLinks.map((link) => {
               const active = isActive(pathname, link.url);
+              const labelKey = link.label.toLowerCase().replace(/\s+/g, '');
+              const translatedLabel = t.has(labelKey) ? t(labelKey) : link.label;
               return (
                 <Link
                   key={link.id}
@@ -114,7 +107,7 @@ export default function Header() {
                       : "py-3 text-sm font-medium border-b border-white/10 hover:text-manikstu-gold transition-colors"
                   }
                 >
-                  {link.label}
+                  {translatedLabel}
                 </Link>
               );
             })}
@@ -123,11 +116,16 @@ export default function Header() {
               className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-manikstu-green py-3 text-sm font-semibold"
             >
               <Phone className="h-4 w-4" />
-              Call Us
+              {t("callUs")}
             </a>
           </nav>
         </div>
       </div>
     </header>
   );
+}
+
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
 }

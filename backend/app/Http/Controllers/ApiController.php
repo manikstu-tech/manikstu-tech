@@ -44,34 +44,104 @@ class ApiController extends Controller
         ]);
     }
 
+    private function getLocale(Request $request): string
+    {
+        return $request->query('locale', 'en');
+    }
+
+    private function getTranslatedTitle($model, string $locale): string
+    {
+        if ($locale === 'en') return $model->title;
+
+        $translation = $model->translations()->where('locale', $locale)->first();
+        return $translation?->title ?? $model->title;
+    }
+
+    private function getTranslatedField($model, string $locale, string $field)
+    {
+        if ($locale === 'en') return $model->{$field};
+
+        $translation = $model->translations()->where('locale', $locale)->first();
+        return $translation?->{$field} ?? $model->{$field};
+    }
+
     public function getSettings(): JsonResponse
     {
         return $this->json(['data' => Setting::allKeyValue()]);
     }
 
-    public function getNavigation(): JsonResponse
+    public function getNavigation(Request $request): JsonResponse
     {
-        $nav = NavigationMenu::active()->orderBy('order')->get();
+        $locale = $this->getLocale($request);
+        $nav = NavigationMenu::active()
+            ->where('locale', $locale)
+            ->orderBy('order')
+            ->get();
+
+        if ($nav->isEmpty()) {
+            $nav = NavigationMenu::active()
+                ->where('locale', 'en')
+                ->orderBy('order')
+                ->get();
+        }
+
         return $this->json(['data' => $nav]);
     }
 
-    public function getFooter(): JsonResponse
+    public function getFooter(Request $request): JsonResponse
     {
-        $links = FooterLink::active()->orderBy('order')->get()->groupBy('group');
+        $locale = $this->getLocale($request);
+        $links = FooterLink::active()
+            ->where('locale', $locale)
+            ->orderBy('order')
+            ->get()
+            ->groupBy('group');
+
+        if ($links->isEmpty()) {
+            $links = FooterLink::active()
+                ->where('locale', 'en')
+                ->orderBy('order')
+                ->get()
+                ->groupBy('group');
+        }
+
         return $this->json(['data' => $links]);
     }
 
-    public function getPage(string $slug): JsonResponse
+    public function getPage(string $slug, Request $request): JsonResponse
     {
+        $locale = $this->getLocale($request);
         $page = Page::where('slug', $slug)->where('is_published', true)
             ->with(['blocks' => fn($q) => $q->active()->orderBy('order')])
             ->firstOrFail();
 
-        return $this->json(['data' => $page]);
+        $data = $page->toArray();
+
+        if ($locale !== 'en') {
+            $translation = $page->translations()->where('locale', $locale)->first();
+            if ($translation) {
+                $data['title'] = $translation->title;
+                $data['meta_description'] = $translation->meta_description;
+            }
+
+            foreach ($data['blocks'] as &$block) {
+                $blockModel = \App\Models\PageBlock::find($block['id']);
+                if ($blockModel) {
+                    $blockTranslation = $blockModel->translations()->where('locale', $locale)->first();
+                    if ($blockTranslation) {
+                        $block['title'] = $blockTranslation->title;
+                        $block['content'] = $blockTranslation->content;
+                    }
+                }
+            }
+        }
+
+        return $this->json(['data' => $data]);
     }
 
     public function getBlogPosts(Request $request): JsonResponse
     {
+        $locale = $this->getLocale($request);
         $query = BlogPost::published()->with('category')
             ->when($request->category, fn($q, $c) => $q->where('category_id', $c));
 
@@ -79,13 +149,50 @@ class ApiController extends Controller
             $query->featured();
         }
 
-        return $this->paginated($query->latest('published_at'), $request->per_page ?? 15);
+        $posts = $query->latest('published_at')->paginate($request->per_page ?? 15);
+
+        if ($locale !== 'en') {
+            $items = $posts->getCollection()->map(function ($post) use ($locale) {
+                $translation = $post->translations()->where('locale', $locale)->first();
+                $data = $post->toArray();
+                if ($translation) {
+                    $data['title'] = $translation->title;
+                    $data['content'] = $translation->content;
+                    $data['excerpt'] = $translation->excerpt;
+                }
+                return $data;
+            });
+            $posts->setCollection($items);
+        }
+
+        return $this->json([
+            'data' => $posts->items(),
+            'meta' => [
+                'current_page' => $posts->currentPage(),
+                'last_page' => $posts->lastPage(),
+                'per_page' => $posts->perPage(),
+                'total' => $posts->total(),
+            ],
+        ]);
     }
 
-    public function getBlogPost(string $slug): JsonResponse
+    public function getBlogPost(string $slug, Request $request): JsonResponse
     {
+        $locale = $this->getLocale($request);
         $post = BlogPost::published()->with('category')->where('slug', $slug)->firstOrFail();
-        return $this->json(['data' => $post]);
+
+        $data = $post->toArray();
+
+        if ($locale !== 'en') {
+            $translation = $post->translations()->where('locale', $locale)->first();
+            if ($translation) {
+                $data['title'] = $translation->title;
+                $data['content'] = $translation->content;
+                $data['excerpt'] = $translation->excerpt;
+            }
+        }
+
+        return $this->json(['data' => $data]);
     }
 
     public function getBlogCategories(): JsonResponse
@@ -108,17 +215,53 @@ class ApiController extends Controller
 
     public function getProducts(Request $request): JsonResponse
     {
+        $locale = $this->getLocale($request);
         $query = Product::active()->with('category')
             ->when($request->category, fn($q, $c) => $q->where('category_id', $c))
             ->when($request->featured, fn($q) => $q->featured());
 
-        return $this->paginated($query->orderBy('order'), $request->per_page ?? 15);
+        $products = $query->orderBy('order')->paginate($request->per_page ?? 15);
+
+        if ($locale !== 'en') {
+            $items = $products->getCollection()->map(function ($product) use ($locale) {
+                $translation = $product->translations()->where('locale', $locale)->first();
+                $data = $product->toArray();
+                if ($translation) {
+                    $data['name'] = $translation->name;
+                    $data['description'] = $translation->description;
+                }
+                return $data;
+            });
+            $products->setCollection($items);
+        }
+
+        return $this->json([
+            'data' => $products->items(),
+            'meta' => [
+                'current_page' => $products->currentPage(),
+                'last_page' => $products->lastPage(),
+                'per_page' => $products->perPage(),
+                'total' => $products->total(),
+            ],
+        ]);
     }
 
-    public function getProduct(string $slug): JsonResponse
+    public function getProduct(string $slug, Request $request): JsonResponse
     {
+        $locale = $this->getLocale($request);
         $product = Product::active()->with('category')->where('slug', $slug)->firstOrFail();
-        return $this->json(['data' => $product]);
+
+        $data = $product->toArray();
+
+        if ($locale !== 'en') {
+            $translation = $product->translations()->where('locale', $locale)->first();
+            if ($translation) {
+                $data['name'] = $translation->name;
+                $data['description'] = $translation->description;
+            }
+        }
+
+        return $this->json(['data' => $data]);
     }
 
     public function getCategories(Request $request): JsonResponse
@@ -163,10 +306,7 @@ class ApiController extends Controller
     public function getGallery(Request $request): JsonResponse
     {
         $query = GalleryImage::active();
-        if ($request->category) {
-            $query->where('category_id', $request->category);
-        }
-        return $this->paginated($query->orderBy('order'), $request->per_page ?? 20);
+        return $this->paginated($query->orderBy('order'), $request->per_page ?? 15);
     }
 
     public function getPartners(): JsonResponse
@@ -180,51 +320,40 @@ class ApiController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:20',
-            'type' => 'nullable|string|max:255',
+            'type' => 'nullable|string|max:50',
             'message' => 'required|string',
         ]);
 
-        $validated['status'] = 'new';
-        $enquiry = Enquiry::create($validated);
+        $enquiry = Enquiry::create($validated + ['status' => 'new']);
 
-        return $this->json(['data' => $enquiry, 'message' => 'Enquiry submitted successfully.'], 201);
+        return $this->json(['data' => $enquiry, 'message' => 'Enquiry submitted successfully'], 201);
     }
 
     public function storeOrder(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'items' => 'required|array|min:1',
-            'items.*.product_id' => 'required|exists:products,id',
+            'items' => 'required|array',
+            'items.*.productId' => 'required|exists:products,id',
             'items.*.quantity' => 'required|integer|min:1',
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:20',
-            'address' => 'nullable|string',
+            'totalAmount' => 'required|numeric|min:0',
         ]);
-
-        $total = 0;
-        foreach ($validated['items'] as $item) {
-            $product = Product::findOrFail($item['product_id']);
-            $total += $product->price * $item['quantity'];
-        }
 
         $order = Order::create([
             'order_number' => 'ORD-' . strtoupper(uniqid()),
-            'total' => $total,
+            'total' => $validated['totalAmount'],
             'status' => 'pending',
-            'payment_status' => 'unpaid',
+            'payment_status' => 'pending',
         ]);
 
         foreach ($validated['items'] as $item) {
-            $product = Product::findOrFail($item['product_id']);
+            $product = Product::findOrFail($item['productId']);
             $order->items()->create([
                 'product_id' => $product->id,
-                'product_name' => $product->name,
                 'quantity' => $item['quantity'],
                 'price' => $product->price,
             ]);
         }
 
-        return $this->json(['data' => $order, 'message' => 'Order placed successfully.'], 201);
+        return $this->json(['data' => $order, 'message' => 'Order created successfully'], 201);
     }
 }

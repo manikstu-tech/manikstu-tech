@@ -8,8 +8,19 @@
 <form method="POST" action="{{ route('admin.pages.update', $page) }}">
     @csrf @method('PUT')
     <div class="form-card">
-        <x-admin.form-field label="Title" name="title" :value="$page->title" required />
-        <x-admin.form-field label="Meta Description" name="meta_description" type="textarea" :value="$page->meta_description" :rows="2" />
+        <x-admin.translation-tabs :model="$page">
+            <div class="translation-panel active" data-locale="en">
+                <x-admin.form-field label="Title" name="title" :value="$page->title" required />
+                <x-admin.form-field label="Meta Description" name="meta_description" type="textarea" :value="$page->meta_description" :rows="2" />
+            </div>
+            @foreach(['hi'=>'हिन्दी','bn'=>'বাংলা','ta'=>'தமிழ்','te'=>'తెలుగు','mr'=>'मराठी','gu'=>'ગુજરાતી','kn'=>'ಕನ್ನಡ','ml'=>'മലയാളം','or'=>'ଓଡ଼ିଆ','ja'=>'日本語','de'=>'Deutsch','fr'=>'Français','es'=>'Español'] as $code => $label)
+                <div class="translation-panel" data-locale="{{ $code }}">
+                    <h4 class="translation-heading">{{ $label }} Translation</h4>
+                    <x-admin.form-field label="Title" name="title_{{ $code }}" :value="$page->translations->where('locale',$code)->first()?->title" placeholder="Translation in {{ $label }}" />
+                    <x-admin.form-field label="Meta Description" name="meta_description_{{ $code }}" type="textarea" :value="$page->translations->where('locale',$code)->first()?->meta_description" :rows="2" placeholder="Translation in {{ $label }}" />
+                </div>
+            @endforeach
+        </x-admin.translation-tabs>
         <x-admin.form-field label="Published" name="is_published" type="toggle" :value="$page->is_published" />
         <button type="submit" class="btn btn-primary">Update Page</button>
     </div>
@@ -68,5 +79,6 @@
 .btn-delete-sm:hover{background:rgba(212,52,44,0.06);color:#D4342C;border-color:rgba(212,52,44,0.2)}
 .btn{padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;border:none;transition:all 0.15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn-primary{background:#4A8C3F;color:#fff}.btn-primary:hover{background:#3A7030}
+.translation-heading{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:#5A5A5A;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid #E5E5E5}
 </style>
 @endsection

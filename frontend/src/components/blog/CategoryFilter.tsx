@@ -1,6 +1,6 @@
 "use client";
 
-import type { Category } from "@/app/blog/data";
+import type { Category } from "@/lib/blog-data";
 
 const categories: ("All" | Category)[] = [
   "All",

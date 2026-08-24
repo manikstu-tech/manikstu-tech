@@ -29,9 +29,4 @@ class NavigationMenu extends Model
     {
         return $query->where('is_active', true);
     }
-
-    public function scopeTopLevel($query)
-    {
-        return $query->whereNull('parent_id');
-    }
 }

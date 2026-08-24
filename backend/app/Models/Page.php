@@ -19,8 +19,8 @@ class Page extends Model
         return $this->hasMany(PageBlock::class)->orderBy('order');
     }
 
-    public function scopePublished($query)
+    public function translations(): HasMany
     {
-        return $query->where('is_published', true);
+        return $this->hasMany(PageTranslation::class);
     }
 }

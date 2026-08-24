@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PageBlock extends Model
 {
@@ -22,5 +23,10 @@ class PageBlock extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
+    }
+
+    public function translations(): HasMany
+    {
+        return $this->hasMany(PageBlockTranslation::class, 'block_id');
     }
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
-import type { Article } from "@/app/blog/data";
-import { categoryColors } from "@/app/blog/data";
+import type { Article } from "@/lib/blog-data";
+import { categoryColors } from "@/lib/blog-data";
 
 export default function ArticleGrid({ articles }: { articles: Article[] }) {
   if (articles.length === 0) {

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BlogPost extends Model
 {
@@ -27,5 +28,10 @@ class BlogPost extends Model
     public function scopeFeatured($query)
     {
         return $query->where('is_featured', true);
+    }
+
+    public function translations(): HasMany
+    {
+        return $this->hasMany(BlogPostTranslation::class, 'post_id');
     }
 }

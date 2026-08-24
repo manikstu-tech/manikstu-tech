@@ -12,9 +12,4 @@ class Media extends Model
     {
         return ['size' => 'integer', 'width' => 'integer', 'height' => 'integer'];
     }
-
-    public function url(): string
-    {
-        return asset('storage/' . $this->path);
-    }
 }
