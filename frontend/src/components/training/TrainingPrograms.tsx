@@ -36,6 +36,7 @@ const programs: TrainingProgram[] = [
     title: "Veterinary & Animal Health Awareness",
     description:
       "Community vet camps and awareness drives on vaccination, disease prevention and timely treatment.",
+    image: "/patterns/training-vet-health.png",
   },
   {
     icon: Sprout,
