@@ -55,8 +55,17 @@ const programs: TrainingProgram[] = [
 
 export default function TrainingPrograms() {
   return (
-    <section id="programs" className="section-padding bg-manikstu-cream">
-      <div className="mx-auto max-w-6xl">
+    <section id="programs" className="relative section-padding bg-manikstu-cream overflow-hidden">
+      {/* Top tribal-floral border */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-8 bg-repeat-x"
+        style={{
+          backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
+          backgroundSize: "auto 100%",
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl">
         <div className="text-center">
           {/* Ornamental pill heading */}
           <div className="flex items-center justify-center gap-2">
