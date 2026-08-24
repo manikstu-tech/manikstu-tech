@@ -58,14 +58,30 @@ export default function TrainingPrograms() {
     <section id="programs" className="section-padding bg-manikstu-cream">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-            What We Do
-          </p>
-          <h2 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold text-charcoal md:text-4xl">
+          {/* Ornamental pill heading */}
+          <div className="flex items-center justify-center gap-2">
+            <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+            <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+              What We Do
+            </p>
+            <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+            <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+          </div>
+
+          <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
             Programs That Build{" "}
             <span className="text-manikstu-green">Confidence &amp; Capability</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-grey">
+
+          {/* Ornamental divider */}
+          <div className="mt-6 flex items-center justify-center gap-2">
+            <span aria-hidden className="h-px w-16 bg-manikstu-gold/60" />
+            <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+            <span aria-hidden className="h-px w-16 bg-manikstu-gold/60" />
+          </div>
+
+          <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
             From the field to the federation, our training programs meet farmers
             where they are and grow with them.
           </p>
