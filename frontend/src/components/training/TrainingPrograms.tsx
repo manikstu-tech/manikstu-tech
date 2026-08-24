@@ -14,6 +14,7 @@ export interface TrainingProgram {
   title: string;
   description: string;
   image?: string;
+  imageScale?: string;
 }
 
 const programs: TrainingProgram[] = [
@@ -37,6 +38,7 @@ const programs: TrainingProgram[] = [
     description:
       "Community vet camps and awareness drives on vaccination, disease prevention and timely treatment.",
     image: "/patterns/training-vet-health.png",
+    imageScale: "140% auto",
   },
   {
     icon: Sprout,
@@ -158,10 +160,11 @@ export default function TrainingPrograms() {
                 {program.image && (
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-90"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat opacity-90"
                     style={{
                       backgroundImage: `url('${program.image}')`,
-                      backgroundSize: "100% auto",
+                      backgroundSize: program.imageScale ?? "100% auto",
+                      backgroundPosition: "center bottom",
                     }}
                   />
                 )}
