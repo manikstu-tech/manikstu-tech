@@ -64,14 +64,16 @@ export default function BlogPage() {
                 </span>
               </h2>
 
-              {/* Ornamental divider */}
-              <div className="mt-6 flex items-center justify-center gap-2">
-                <span aria-hidden className="h-px w-16 bg-manikstu-gold/60" />
-                <span
-                  aria-hidden
-                  className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold"
-                />
-                <span aria-hidden className="h-px w-16 bg-manikstu-gold/60" />
+              {/* Ornamental Divider with Framed Diamond */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <div aria-hidden className="relative flex items-center justify-center">
+                  <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                  <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
               <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">

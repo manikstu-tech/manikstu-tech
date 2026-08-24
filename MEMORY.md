@@ -80,6 +80,16 @@
   - Features gradient edge fades on left and right for seamless entrance/exit.
 - **Impact Stats / Mobile App / Testimonials**: Cohesive tribal and mandala design system with cultural Warli patterns and partner showcase.
 
+### 4. Media & Stories Page (`frontend/src/app/blog/page.tsx`)
+- **MediaHero (`MediaHero.tsx`)**:
+  - Redesigned to match the split-grid layout of Collaborate and Training heroes with compact bottom padding.
+  - Top-right corner mandala artwork (`mandala-top-right-corner.png`), gold diamond pill badge (`— ◆ MEDIA & STORIES ◆ —`), and Playfair serif typography.
+  - Right-hand visual card with `aspect-[4/3] rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream`, rural hills & goats landscape artwork (`/media-card.png`), gradient overlay, corner pill badge (`Grassroots Coverage`), and floating green icon badge (`Radio`).
+- **Standard Framed Double-Diamond Dividers**:
+  - **Moments from the Field (`GallerySection.tsx`)**: Standardized framed double-diamond divider under section heading.
+  - **Stories in Motion (`VideosSection.tsx`)**: Standardized framed double-diamond divider under section heading.
+  - **Latest Press & News (`blog/page.tsx`)**: Standardized framed double-diamond divider under section heading.
+
 ---
 
 ## Design System & Divider Standard
