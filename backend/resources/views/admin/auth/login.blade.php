@@ -28,7 +28,7 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--charcoal);
-            background: var(--cream);
+            background: linear-gradient(160deg, #FDF6EC 0%, #F6EDDD 48%, #FBF3E6 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -39,15 +39,42 @@
             padding-bottom: 68px; /* sit the secure-access badge a little above the fixed footer strip */
         }
 
-        .bg-texture {
+        .bg-village {
             position: fixed;
-            inset: 0;
-            background-image: url('{{ asset("patterns/tribal-border.png") }}');
-            background-size: 138px 73px;
-            background-repeat: repeat;
-            opacity: 0.02;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0.2;
             z-index: 0;
             pointer-events: none;
+        }
+
+        .bg-sun {
+            position: fixed;
+            top: 7%;
+            left: 5%;
+            width: 104px;
+            height: 104px;
+            opacity: 0.14;
+            color: var(--earth);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .dot {
+            position: fixed;
+            border-radius: 50%;
+            background: var(--gold);
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+            animation: dotFloat 7s ease-in-out infinite;
+        }
+
+        @keyframes dotFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-16px); }
         }
 
         .leaf {
@@ -66,7 +93,7 @@
         }
 
         @keyframes leafFadeIn {
-            to { opacity: 0.12; }
+            to { opacity: 0.22; }
         }
 
         @keyframes cardIn {
@@ -117,16 +144,15 @@
         }
 
         .tribal-strip {
-            height: 34px;
-            /* seamless loop tile (840x68) cropped to 9 whole motif periods with matching
-               phase at both edges, so repeat-x has no gap and no cut motif.
-               420x34 preserves the aspect ratio (12.35) so motifs are not distorted */
-            background-image: url('{{ asset("patterns/tribal-floral-border-loop.png") }}');
-            background-size: 420px 34px;
+            height: 40px;
+            /* tight-cropped seamless Warli people tile (1837x271, 9 whole periods,
+               figures fill the height so they read clearly and repeat with no gap) */
+            background-image: url('{{ asset("patterns/saura-border-tight.png") }}');
+            background-size: auto 100%;
             background-repeat: repeat-x;
             background-position: center;
             position: relative;
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
         .tribal-strip::after {
@@ -428,18 +454,38 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: var(--forest);
-            padding: 14px 16px;
+            background: linear-gradient(180deg, #3a6b28 0%, #2d5219 100%);
+            padding: 11px 16px 10px;
             text-align: center;
             z-index: 20;
             opacity: 0;
             animation: fadeIn 0.4s 0.9s ease forwards;
         }
 
+        .footer-strip::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38'%3E%3Cpath d='M19 5 L30 19 L19 33 L8 19 Z' fill='none' stroke='%23ffffff' stroke-opacity='0.06'/%3E%3Ccircle cx='19' cy='19' r='1.1' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            pointer-events: none;
+        }
+
         .footer-strip p {
+            position: relative;
             font-size: 12px;
             color: rgba(253,246,236,0.85);
         }
+
+        .footer-torn {
+            position: absolute;
+            left: 0;
+            top: -15px;
+            width: 100%;
+            height: 17px;
+            display: block;
+        }
+
 
         @media (prefers-reduced-motion: reduce) {
             .leaf, .login-card, .logo-wrap, .heading,
@@ -467,7 +513,23 @@
 </head>
 <body>
 
-    <div class="bg-texture"></div>
+    <img src="{{ asset('patterns/village-scene.png') }}" alt="" class="bg-village" />
+
+    <svg class="bg-sun" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="50" cy="50" r="16"/>
+        <circle cx="50" cy="50" r="9"/>
+        <g stroke-linecap="round">
+            <path d="M50 6 V22"/><path d="M50 78 V94"/><path d="M6 50 H22"/><path d="M78 50 H94"/>
+            <path d="M19 19 L30 30"/><path d="M70 70 L81 81"/><path d="M81 19 L70 30"/><path d="M30 70 L19 81"/>
+        </g>
+    </svg>
+
+    <span class="dot" style="top:22%; left:14%; width:5px; height:5px; animation-delay:0s;"></span>
+    <span class="dot" style="top:31%; left:82%; width:4px; height:4px; animation-delay:1.2s;"></span>
+    <span class="dot" style="top:46%; left:8%; width:6px; height:6px; animation-delay:2s;"></span>
+    <span class="dot" style="top:18%; left:58%; width:4px; height:4px; animation-delay:0.6s;"></span>
+    <span class="dot" style="top:55%; left:90%; width:5px; height:5px; animation-delay:1.8s;"></span>
+    <span class="dot" style="top:38%; left:33%; width:4px; height:4px; animation-delay:2.6s;"></span>
 
     <svg class="leaf" style="top:10%; left:7%; animation-delay:0s; animation-duration:9s;" width="26" height="26" viewBox="0 0 24 24" fill="none">
         <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22L6.66 19.7C7.14 19.87 7.64 20 8.17 20C12.42 20 16.63 14.38 17 8Z" fill="#4A8C3F" opacity="0.7"/>
@@ -559,6 +621,11 @@
     </div>
 
     <div class="footer-strip">
+        <svg class="footer-torn" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="#3a6b28" d="M0,30 L0,13.4 L0,13.4 L12,9.4 L21.2,9.4 L32.3,12.7 L41.9,11.5 L48.2,13.9 L54.7,12.2 L63.2,7.4 L73.6,5.8 L82.2,5.6 L93.2,14.5 L99.3,13.7 L109.5,10.8 L121.1,14 L130.4,7.9 L142.2,9.3 L154.2,9.1 L163.6,12.8 L175.1,9.4 L181.3,7.8 L191.1,12.8 L198.3,10.2 L205.9,12 L216.6,14.9 L228.5,14.1 L236.3,18.8 L247.2,13.1 L258.6,5.4 L270.1,11.5 L277.5,7.3 L287.4,11.3 L299.4,10.5 L310.1,13.3 L316.5,13.8 L324.3,7.8 L334,7 L343.1,9.5 L351.8,12 L358.5,13.8 L366,13.5 L376.6,12.8 L383.4,14.1 L392.3,9.3 L403.7,14.8 L413,13.2 L423.9,6 L433.6,12.6 L445.3,9.7 L454.5,11.4 L462.4,10.6 L471.1,10.6 L477.7,9 L486.4,7.2 L492.7,10.4 L502.7,9.3 L510.8,14.5 L519.2,13.2 L528.8,12.7 L537.4,11.6 L543.9,12.2 L550.3,17.9 L561.4,12.2 L572.3,19.5 L583.2,11.1 L593.5,11 L600.3,12 L611.4,12.4 L618.9,14 L627.2,11.2 L636.6,9.3 L647.9,11.5 L656.2,19.5 L664,8 L671,7.8 L680.6,9.8 L688.2,11.7 L695.7,14.3 L704.2,9 L711.1,6.8 L718,9.3 L725.5,14.7 L733.9,6.6 L741.7,9.4 L753.4,13.4 L760.1,11.5 L769.8,11.9 L778,14.9 L784.2,14.9 L792.5,12 L798.9,12.7 L808.9,11.8 L820,14.1 L827,11.7 L836.3,10.7 L848,9.8 L856.3,12.4 L864.3,7.5 L871.7,10 L878.1,7.5 L886.3,13.1 L895.4,12.6 L903.6,10.2 L912,13.3 L921.1,12.8 L929.4,9 L935.7,14.4 L943,14.3 L953.9,15 L961.9,9.8 L971.9,14.5 L981.9,11.5 L991.2,18.9 L1002.2,11.8 L1012.4,12.7 L1020.9,10.8 L1028.7,10.5 L1035.5,19.5 L1044,11.4 L1054.4,11.3 L1065.2,14.3 L1071.8,14.7 L1082.6,11.6 L1094.1,9.2 L1101.8,17.9 L1112.7,11.2 L1118.8,13.3 L1129.4,18.7 L1136.5,12.2 L1147.9,14.3 L1158.9,19.2 L1165.2,12.7 L1175.7,9.3 L1185.4,9.7 L1196.5,14 L1200,13.5 L1200,30 Z"/>
+            <path fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" d="M0,13.4 L12,9.4 L21.2,9.4 L32.3,12.7 L41.9,11.5 L48.2,13.9 L54.7,12.2 L63.2,7.4 L73.6,5.8 L82.2,5.6 L93.2,14.5 L99.3,13.7 L109.5,10.8 L121.1,14 L130.4,7.9 L142.2,9.3 L154.2,9.1 L163.6,12.8 L175.1,9.4 L181.3,7.8 L191.1,12.8 L198.3,10.2 L205.9,12 L216.6,14.9 L228.5,14.1 L236.3,18.8 L247.2,13.1 L258.6,5.4 L270.1,11.5 L277.5,7.3 L287.4,11.3 L299.4,10.5 L310.1,13.3 L316.5,13.8 L324.3,7.8 L334,7 L343.1,9.5 L351.8,12 L358.5,13.8 L366,13.5 L376.6,12.8 L383.4,14.1 L392.3,9.3 L403.7,14.8 L413,13.2 L423.9,6 L433.6,12.6 L445.3,9.7 L454.5,11.4 L462.4,10.6 L471.1,10.6 L477.7,9 L486.4,7.2 L492.7,10.4 L502.7,9.3 L510.8,14.5 L519.2,13.2 L528.8,12.7 L537.4,11.6 L543.9,12.2 L550.3,17.9 L561.4,12.2 L572.3,19.5 L583.2,11.1 L593.5,11 L600.3,12 L611.4,12.4 L618.9,14 L627.2,11.2 L636.6,9.3 L647.9,11.5 L656.2,19.5 L664,8 L671,7.8 L680.6,9.8 L688.2,11.7 L695.7,14.3 L704.2,9 L711.1,6.8 L718,9.3 L725.5,14.7 L733.9,6.6 L741.7,9.4 L753.4,13.4 L760.1,11.5 L769.8,11.9 L778,14.9 L784.2,14.9 L792.5,12 L798.9,12.7 L808.9,11.8 L820,14.1 L827,11.7 L836.3,10.7 L848,9.8 L856.3,12.4 L864.3,7.5 L871.7,10 L878.1,7.5 L886.3,13.1 L895.4,12.6 L903.6,10.2 L912,13.3 L921.1,12.8 L929.4,9 L935.7,14.4 L943,14.3 L953.9,15 L961.9,9.8 L971.9,14.5 L981.9,11.5 L991.2,18.9 L1002.2,11.8 L1012.4,12.7 L1020.9,10.8 L1028.7,10.5 L1035.5,19.5 L1044,11.4 L1054.4,11.3 L1065.2,14.3 L1071.8,14.7 L1082.6,11.6 L1094.1,9.2 L1101.8,17.9 L1112.7,11.2 L1118.8,13.3 L1129.4,18.7 L1136.5,12.2 L1147.9,14.3 L1158.9,19.2 L1165.2,12.7 L1175.7,9.3 L1185.4,9.7 L1196.5,14 L1200,13.5"/>
+        </svg>
+
         <p>&copy; {{ date('Y') }} Manikstu Agro Private Limited. All Rights Reserved.</p>
     </div>
 
