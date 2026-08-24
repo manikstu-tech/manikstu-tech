@@ -4,10 +4,14 @@ import Link from 'next/link';
 import { ArrowRight, Heart, Users, Target } from 'lucide-react';
 import { SauraBorder, GodnaBorder, CulturalDivider, DiamondAccent } from '@/components/patterns';
 import { cn } from '@/lib/utils';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <Header />
+      <main id="main-content" className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 bg-white overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent" />
@@ -231,6 +235,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
