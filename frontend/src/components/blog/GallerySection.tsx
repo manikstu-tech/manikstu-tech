@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Camera, MapPin } from "lucide-react";
+import Link from "next/link";
+import { Camera, MapPin, ArrowRight } from "lucide-react";
 import type { GalleryPhoto } from "@/app/blog/data";
 
 export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
@@ -70,6 +71,16 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
               </figcaption>
             </figure>
           ))}
+        </div>
+
+        {/* View all */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/gallery"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
+          >
+            View All Photos <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>
