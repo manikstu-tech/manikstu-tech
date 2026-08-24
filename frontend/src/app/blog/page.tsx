@@ -7,7 +7,6 @@ import MediaHero from "@/components/blog/MediaHero";
 import GallerySection from "@/components/blog/GallerySection";
 import VideosSection from "@/components/blog/VideosSection";
 import CategoryFilter from "@/components/blog/CategoryFilter";
-import FeaturedArticle from "@/components/blog/FeaturedArticle";
 import ArticleGrid from "@/components/blog/ArticleGrid";
 import {
   articles,
@@ -21,8 +20,6 @@ export default function BlogPage() {
 
   const filtered =
     filter === "All" ? articles : articles.filter((a) => a.category === filter);
-
-  const featured = articles.find((a) => a.featured);
 
   return (
     <>
@@ -88,21 +85,8 @@ export default function BlogPage() {
               <CategoryFilter active={filter} onFilter={setFilter} />
             </div>
 
-            {/* Featured article — only on "All" */}
-            {filter === "All" && featured && (
-              <div className="mb-10">
-                <FeaturedArticle article={featured} />
-              </div>
-            )}
-
-            {/* Article grid */}
-            <ArticleGrid
-              articles={
-                filter === "All"
-                  ? articles.filter((a) => !a.featured)
-                  : filtered
-              }
-            />
+            {/* Article grid — featured article included inline, no special banner */}
+            <ArticleGrid articles={filtered} />
           </div>
         </section>
       </main>
