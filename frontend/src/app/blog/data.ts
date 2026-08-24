@@ -43,6 +43,12 @@ export const galleryPhotos: GalleryPhoto[] = [
   { id: "g4", title: "Goat Bank Handover Day", location: "Mayurbhanj, Odisha", date: "Mar 18, 2024", image: "/4.png" },
   { id: "g5", title: "Demo Plot Field Day", location: "Keonjhar, Odisha", date: "Apr 02, 2024", image: "/5.png" },
   { id: "g6", title: "Community Awareness Drive", location: "Rayagada, Odisha", date: "Apr 15, 2024", image: "/6.png" },
+  { id: "g7", title: "Youth Training Workshop", location: "Ganjam, Odisha", date: "Apr 22, 2024", image: "/7.png" },
+  { id: "g8", title: "Livestock Insurance Sign-up", location: "Nabarangpur, Odisha", date: "May 04, 2024", image: "/8.png" },
+  { id: "g9", title: "Fodder Cultivation Demo", location: "Koraput, Odisha", date: "May 12, 2024", image: "/9.png" },
+  { id: "g10", title: "AJAH Women Cohort Graduation", location: "Bhawanipatna, Odisha", date: "May 20, 2024", image: "/10.png" },
+  { id: "g11", title: "Village Health Camp", location: "Malkangiri, Odisha", date: "Jun 01, 2024", image: "/11.png" },
+  { id: "g12", title: "Farmer Producer Meeting", location: "Boudh, Odisha", date: "Jun 10, 2024", image: "/12.png" },
 ];
 
 export const videos: VideoItem[] = [
