@@ -50,6 +50,7 @@ const programs: TrainingProgram[] = [
     title: "Women & Youth Empowerment",
     description:
       "Skill development and entrepreneurship pathways for women and rural youth in the livestock economy.",
+    image: "/patterns/training-women-youth.png",
   },
   {
     icon: Banknote,
