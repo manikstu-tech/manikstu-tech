@@ -43,6 +43,7 @@ const programs: TrainingProgram[] = [
     title: "Sustainable & Regenerative Farming",
     description:
       "Fodder cultivation, water stewardship and low-emission practices for resilient rural livelihoods.",
+    image: "/patterns/training-sustainable.png",
   },
   {
     icon: Sparkles,
