@@ -5,14 +5,23 @@ import { ArrowRight, GraduationCap, Sprout, Users } from "lucide-react";
 export default function TrainingHero() {
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* Top-right mandala corner artwork */}
+      {/* Top-left mandala corner artwork */}
       <Image
-        src="/patterns/mandala-top-right-corner.png"
+        src="/patterns/mandala-corner-top.png"
         alt=""
         aria-hidden
-        width={504}
-        height={560}
-        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
+        width={1370}
+        height={1155}
+        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.14] sm:opacity-[0.18] dark:opacity-[0.22]"
+      />
+      {/* Top-right mandala corner artwork (mirrored) */}
+      <Image
+        src="/patterns/mandala-corner-top.png"
+        alt=""
+        aria-hidden
+        width={1370}
+        height={1155}
+        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.14] sm:opacity-[0.18] dark:opacity-[0.22] -scale-x-100"
       />
       <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
