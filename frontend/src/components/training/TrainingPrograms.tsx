@@ -146,29 +146,46 @@ export default function TrainingPrograms() {
             return (
               <div
                 key={program.title}
-                className="relative overflow-hidden rounded-xl border border-light-grey bg-white p-6 pb-24 transition-shadow hover:shadow-md"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-6 pb-28 transition-shadow hover:shadow-lg"
               >
+                {/* Inner dashed border */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                />
+
+                {/* Bottom tribal art */}
                 {program.image && (
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-no-repeat bg-bottom opacity-80"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-90"
                     style={{
                       backgroundImage: `url('${program.image}')`,
                       backgroundSize: "100% auto",
                     }}
                   />
                 )}
-                <div className="relative">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-manikstu-green/10">
-                    <Icon className="h-5 w-5 text-manikstu-green" />
+
+                <div className="relative text-center">
+                  {/* Icon with dashed decorative ring */}
+                  <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                    <Icon className="h-6 w-6 text-manikstu-green" />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                    />
                   </div>
-                  <h3 className="mt-4 text-base font-semibold text-charcoal">
+
+                  <h3 className="mt-6 font-heading text-lg italic font-bold leading-snug text-manikstu-leaf">
                     {program.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-grey">
+
+                  {/* Gold underline */}
+                  <div className="mx-auto mt-3 h-0.5 w-10 rounded bg-manikstu-gold" />
+
+                  <p className="mt-4 text-sm leading-relaxed text-grey">
                     {program.description}
                   </p>
-                  <div className="mt-4 h-0.5 w-8 rounded bg-manikstu-green/60" />
                 </div>
               </div>
             );
