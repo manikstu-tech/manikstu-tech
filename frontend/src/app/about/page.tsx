@@ -509,58 +509,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* CTA (Collaborate Style) */}
-        <section className="section-padding bg-white">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <div className="group relative overflow-hidden rounded-3xl border-2 border-saura-red/50 bg-manikstu-cream p-8 sm:p-12 md:p-16 text-center shadow-lg">
-              {/* Inner dashed border */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-3 rounded-2xl border border-dashed border-saura-red/40"
-              />
 
-              <div className="relative z-10 mx-auto max-w-2xl">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20 mb-6">
-                  <Compass className="h-8 w-8 text-manikstu-green" />
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
-                  />
-                </div>
-
-                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal">
-                  Ready to Transform Your Farm?
-                </h2>
-
-                {/* Line-diamond-line ornament */}
-                <div className="mt-4 mb-6 flex items-center justify-center gap-2">
-                  <span aria-hidden className="h-px w-12 bg-manikstu-gold" />
-                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                  <span aria-hidden className="h-px w-12 bg-manikstu-gold" />
-                </div>
-
-                <p className="text-grey text-base sm:text-lg mb-8 leading-relaxed">
-                  Join thousands of farmers who are already benefiting from our goat farming ecosystem.
-                </p>
-
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <Link
-                    href="/collaborate"
-                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf shadow-sm"
-                  >
-                    Get in Touch <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="/training"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-white px-8 py-3.5 text-sm font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white shadow-sm"
-                  >
-                    Our Programs
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
