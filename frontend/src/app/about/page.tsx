@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Heart, Users, Target } from "lucide-react";
+import { ArrowRight, Heart, Users, Target, Sprout, MapPin } from "lucide-react";
 import { SauraBorder, GodnaBorder, CulturalDivider } from "@/components/patterns";
 import { getPage } from "@/lib/api";
 import type { PageBlock } from "@/types";
@@ -78,21 +79,121 @@ export default function AboutPage() {
       <Header />
       <main id="main-content" className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative py-20 md:py-32 bg-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent" />
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-charcoal">About Manikstu Agro</h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-              Transforming goat farming through sustainable practices, community partnerships, and cutting-edge technology in the heart of Kalahandi, Odisha.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/collaborate" className="bg-green-700 hover:bg-green-800 text-white px-8 py-3 rounded-md font-medium transition-colors flex items-center justify-center gap-2">
-                Join Our Mission <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link href="#timeline" className="border border-green-700 text-green-700 hover:bg-green-50 px-8 py-3 rounded-md font-medium transition-colors">
-                Our Journey
-              </Link>
+      <section className="relative overflow-hidden bg-white">
+        {/* Top-right mandala corner artwork */}
+        <Image
+          src="/patterns/mandala-top-right-corner.png"
+          alt=""
+          aria-hidden
+          width={504}
+          height={560}
+          className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
+        />
+        <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            {/* Left — copy */}
+            <div>
+              <div className="flex items-center gap-2">
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                  About Us
+                </p>
+                <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              </div>
+
+              <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
+                Farming with heart,
+                <br />
+                <span className="text-manikstu-green">
+                  rooted in community.
+                </span>
+              </h1>
+
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+                Since 2015, Manikstu Agro has transformed goat farming through
+                sustainable practices, community partnerships and cutting-edge
+                technology — in the heart of Kalahandi, Odisha.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/collaborate"
+                  className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
+                >
+                  Join Our Mission <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="#timeline"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
+                >
+                  Our Journey
+                </Link>
+              </div>
+
+              {/* Micro-statement */}
+              <div className="mt-8 flex items-center gap-2.5">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-manikstu-green/10">
+                  <Heart className="h-3.5 w-3.5 text-manikstu-green" />
+                </span>
+                <p className="text-sm text-grey">
+                  Nurturing goats, farmers and futures — together
+                </p>
+              </div>
+            </div>
+
+            {/* Right — visual panel */}
+            <div className="relative">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
+                {/* Growth / roots line-art illustration */}
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 480 360"
+                  className="pointer-events-none absolute inset-0 h-full w-full"
+                  fill="none"
+                  stroke="#4A8C3F"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {/* Ground line */}
+                  <path d="M40 250 H440" opacity="0.35" />
+                  {/* Sun */}
+                  <circle cx="380" cy="90" r="26" fill="#C4952A" fillOpacity="0.4" stroke="none" />
+                  <circle cx="380" cy="90" r="26" opacity="0.4" />
+                  {/* Central growing stem */}
+                  <path d="M240 250 V150" />
+                  {/* Heart-shaped canopy */}
+                  <path d="M240 150 C210 110 160 120 165 165 C168 200 220 215 240 235 C260 215 312 200 315 165 C320 120 270 110 240 150 Z" fill="#4A8C3F" fillOpacity="0.10" />
+                  {/* Leaves on stem */}
+                  <path d="M240 205 C218 200 202 185 202 165 C224 170 240 185 240 205 Z" />
+                  <path d="M240 190 C262 185 278 170 278 150 C256 155 240 170 240 190 Z" fill="#4A8C3F" fillOpacity="0.12" />
+                  {/* Roots below ground */}
+                  <path d="M240 250 C220 275 200 285 180 305" opacity="0.5" strokeDasharray="4 6" />
+                  <path d="M240 250 C260 275 280 285 300 305" opacity="0.5" strokeDasharray="4 6" />
+                  <path d="M240 250 V300" opacity="0.5" strokeDasharray="4 6" />
+                  {/* Rolling hills */}
+                  <path d="M40 250 C110 220 160 235 220 250" opacity="0.3" />
+                  <path d="M260 250 C320 232 380 240 440 250" opacity="0.3" />
+                  {/* Small accent leaves */}
+                  <path d="M95 175 C105 160 125 155 135 165 C125 180 105 185 95 175 Z" fill="#4A8C3F" fillOpacity="0.15" />
+                  <path d="M348 200 C358 185 378 180 388 190 C378 205 358 210 348 200 Z" fill="#C4952A" fillOpacity="0.2" />
+                </svg>
+
+                {/* Corner accent */}
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
+                  <MapPin className="h-4 w-4 text-manikstu-green" />
+                  <span className="text-xs font-semibold text-charcoal">
+                    Rooted in Kalahandi, Odisha
+                  </span>
+                </div>
+              </div>
+
+              {/* Small floating badge */}
+              <div className="absolute -bottom-4 -right-2 hidden h-14 w-14 items-center justify-center rounded-full bg-manikstu-green shadow-md md:flex">
+                <Sprout className="h-6 w-6 text-white" />
+              </div>
             </div>
           </div>
         </div>
