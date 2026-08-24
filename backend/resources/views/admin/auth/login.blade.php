@@ -44,24 +44,26 @@
             background-image: url('{{ asset("patterns/tribal-border.png") }}');
             background-size: 138px 73px;
             background-repeat: repeat;
-            opacity: 0.04;
+            opacity: 0.02;
             z-index: 0;
             pointer-events: none;
         }
 
         .bg-village {
             position: absolute;
-            bottom: 60px;
-            left: 0;
-            width: 100%;
+            bottom: 52px;
+            left: -5%;
+            width: 110%;
             height: auto;
-            max-height: 45vh;
+            max-height: 48vh;
             object-fit: contain;
             object-position: bottom center;
             opacity: 0;
             animation: villageIn 1.2s 0.2s ease forwards;
             z-index: 1;
             pointer-events: none;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,1) 70%, rgba(0,0,0,1) 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,1) 70%, rgba(0,0,0,1) 100%);
         }
 
         .leaf {
@@ -80,7 +82,7 @@
         }
 
         @keyframes leafFadeIn {
-            to { opacity: 0.18; }
+            to { opacity: 0.12; }
         }
 
         @keyframes cardIn {
@@ -105,7 +107,7 @@
 
         @keyframes villageIn {
             from { opacity: 0; }
-            to { opacity: 0.08; }
+            to { opacity: 0.09; }
         }
 
         @keyframes shake {
@@ -136,12 +138,13 @@
         }
 
         .tribal-strip {
-            height: 36px;
+            height: 34px;
             background-image: url('{{ asset("patterns/tribal-floral-border-strip.png") }}');
             background-size: auto 100%;
             background-repeat: repeat-x;
             background-position: center;
             position: relative;
+            opacity: 0.85;
         }
 
         .tribal-strip::after {
@@ -155,17 +158,17 @@
             opacity: 0.5;
         }
 
-        .card-body { padding: 28px 36px 32px; }
+        .card-body { padding: 24px 36px 28px; }
 
         .logo-wrap {
             text-align: center;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             opacity: 0;
             animation: fadeIn 0.4s 0.3s ease forwards;
         }
 
         .login-logo {
-            height: 64px;
+            height: 72px;
             width: auto;
             display: block;
             margin: 0 auto;
@@ -177,7 +180,7 @@
             font-size: 30px;
             font-weight: 700;
             color: var(--charcoal);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             opacity: 0;
             animation: fadeIn 0.4s 0.38s ease forwards;
         }
@@ -186,7 +189,7 @@
             text-align: center;
             font-size: 13.5px;
             color: var(--grey);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             opacity: 0;
             animation: fadeIn 0.4s 0.44s ease forwards;
         }
@@ -196,7 +199,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             opacity: 0;
             animation: fadeIn 0.3s 0.5s ease forwards;
         }
@@ -219,7 +222,7 @@
         }
 
         .field-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             opacity: 0;
             animation: fadeIn 0.35s ease forwards;
         }
@@ -312,7 +315,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             opacity: 0;
             animation: fadeIn 0.35s 0.66s ease forwards;
         }
@@ -444,11 +447,7 @@
             left: 0;
             width: 100%;
             background: var(--forest);
-            background-image: url('{{ asset("patterns/tribal-border.png") }}');
-            background-size: 138px 73px;
-            background-repeat: repeat;
-            background-blend-mode: overlay;
-            padding: 12px 16px;
+            padding: 14px 16px;
             text-align: center;
             z-index: 20;
             opacity: 0;
@@ -458,8 +457,6 @@
         .footer-strip p {
             font-size: 12px;
             color: rgba(253,246,236,0.85);
-            position: relative;
-            z-index: 1;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -472,17 +469,19 @@
             }
             .ornament-line { width: 60px !important; }
             .ornament-diamond { animation: none !important; opacity: 0.8; }
-            .bg-village { opacity: 0.08 !important; }
-            .leaf { opacity: 0.18 !important; }
+            .bg-village { opacity: 0.09 !important; }
+            .leaf { opacity: 0.12 !important; }
         }
 
         @media (max-width: 480px) {
-            .card-body { padding: 24px 20px 28px; }
+            .card-body { padding: 20px 20px 24px; }
             .heading { font-size: 26px; }
-            .login-logo { height: 54px; }
+            .login-logo { height: 60px; }
             .bg-village { max-height: 35vh; }
             .ornament-line { width: 40px; }
             .ornament-diamond { width: 6px; height: 6px; }
+            .field-group { margin-bottom: 12px; }
+            .remember-row { margin-bottom: 14px; }
         }
     </style>
 </head>
@@ -492,21 +491,17 @@
 
     <img src="{{ asset('patterns/village-scene.png') }}" alt="" class="bg-village" />
 
-    <svg class="leaf" style="top:12%; left:8%; animation-delay:0s;" width="28" height="28" viewBox="0 0 24 24" fill="none">
+    <svg class="leaf" style="top:10%; left:7%; animation-delay:0s; animation-duration:9s;" width="26" height="26" viewBox="0 0 24 24" fill="none">
         <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22L6.66 19.7C7.14 19.87 7.64 20 8.17 20C12.42 20 16.63 14.38 17 8Z" fill="#4A8C3F" opacity="0.7"/>
         <path d="M8 17C10.5 14.5 12 11 12.5 7.5" stroke="#3A7030" stroke-width="0.8" opacity="0.5"/>
     </svg>
 
-    <svg class="leaf" style="top:20%; left:88%; animation-delay:2s; animation-duration:9s;" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg class="leaf" style="top:55%; left:91%; animation-delay:3s; animation-duration:10s;" width="22" height="22" viewBox="0 0 24 24" fill="none">
         <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22L6.66 19.7C7.14 19.87 7.64 20 8.17 20C12.42 20 16.63 14.38 17 8Z" fill="#3A7030" opacity="0.6"/>
     </svg>
 
-    <svg class="leaf" style="top:65%; left:5%; animation-delay:4s; animation-duration:10s;" width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg class="leaf" style="top:80%; left:4%; animation-delay:5s; animation-duration:11s;" width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22L6.66 19.7C7.14 19.87 7.64 20 8.17 20C12.42 20 16.63 14.38 17 8Z" fill="#4A8C3F" opacity="0.5"/>
-    </svg>
-
-    <svg class="leaf" style="top:75%; left:90%; animation-delay:1s; animation-duration:7s;" width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22L6.66 19.7C7.14 19.87 7.64 20 8.17 20C12.42 20 16.63 14.38 17 8Z" fill="#3A7030" opacity="0.55"/>
     </svg>
 
     <div class="login-card">
@@ -540,7 +535,7 @@
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         </span>
                         <input type="email" name="email" id="email" value="{{ old('email') }}"
-                            placeholder="admin@manikstu.com" required autofocus
+                            placeholder="you@example.com" required autofocus
                             class="login-input @error('email') error-input @enderror" />
                     </div>
                 </div>
