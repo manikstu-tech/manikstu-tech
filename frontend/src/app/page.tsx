@@ -3,6 +3,7 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
+import PageHero from "@/components/layout/PageHero";
 import {
   ArrowRight,
   Play,
@@ -233,22 +234,21 @@ export default function HomePage() {
 
       <main id="main-content">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-white">
-          {/* Tribal motif background — full picture fits inside hero, right-anchored */}
-          <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            <Image
-              src="/hero-motif.png"
-              alt=""
-              aria-hidden
-              width={1300}
-              height={1300}
-              priority
-              className="select-none absolute right-2 top-1/2 -translate-y-1/2 h-[70%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
-            />
-          </div>
-
-          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:py-20">
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <PageHero
+          background={
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+              <Image
+                src="/hero-motif.png"
+                alt=""
+                aria-hidden
+                width={1300}
+                height={1300}
+                priority
+                className="select-none absolute right-2 top-1/2 -translate-y-1/2 h-[70%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
+              />
+            </div>
+          }
+        >
               {/* Left content */}
               <div>
                 <h1 className="font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
@@ -326,9 +326,7 @@ export default function HomePage() {
                 </div>
 
               </div>
-            </div>
-          </div>
-        </section>
+        </PageHero>
 
         {/* Mission */}
         <section className="section-padding bg-white">

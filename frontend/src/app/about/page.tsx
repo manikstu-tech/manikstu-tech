@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Heart, Users, Target, Sprout, MapPin } from "lucide-react";
 import { SauraBorder, GodnaBorder, CulturalDivider } from "@/components/patterns";
+import PageHero from "@/components/layout/PageHero";
 import { getPage } from "@/lib/api";
 import type { PageBlock } from "@/types";
 import Header from "@/components/layout/Header";
@@ -79,18 +80,7 @@ export default function AboutPage() {
       <Header />
       <main id="main-content" className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white">
-        {/* Top-right mandala corner artwork */}
-        <Image
-          src="/patterns/mandala-top-right-corner.png"
-          alt=""
-          aria-hidden
-          width={504}
-          height={560}
-          className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
-        />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+      <PageHero afterGrid={<SauraBorder className="absolute bottom-0 left-0 right-0" />}>
             {/* Left — copy */}
             <div>
               <div className="flex items-center gap-2">
@@ -195,10 +185,7 @@ export default function AboutPage() {
                 <Sprout className="h-6 w-6 text-white" />
               </div>
             </div>
-          </div>
-        </div>
-        <SauraBorder className="absolute bottom-0 left-0 right-0" />
-      </section>
+      </PageHero>
 
       {/* Vision & Mission */}
       <section className="py-20 bg-cream">
