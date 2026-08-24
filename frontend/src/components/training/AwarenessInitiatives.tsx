@@ -28,7 +28,7 @@ const initiatives: AwarenessInitiative[] = [
     title: "Demo Plots & Field Days",
     description:
       "Live demonstrations of fodder, feeding and housing models farmers can adapt on their own land.",
-    image: "/patterns/training-sustainable.png",
+    image: "/patterns/awareness-demo-plots.png",
   },
   {
     icon: Radio,
