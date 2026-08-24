@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Moon, Sun } from "lucide-react";
 import { useThemeToggle } from "./ThemeProvider";
 
@@ -16,9 +17,15 @@ const navLinks = [
   { label: "Training & Awareness", href: "/training" },
 ];
 
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+}
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const { toggle } = useThemeToggle();
+  const pathname = usePathname() ?? "/";
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-charcoal shadow-sm transition-colors">
@@ -35,15 +42,23 @@ export default function Header() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-charcoal dark:text-white hover:text-manikstu-green transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = isActive(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={
+                  active
+                    ? "text-sm font-semibold text-manikstu-green transition-colors"
+                    : "text-sm font-medium text-charcoal dark:text-white hover:text-manikstu-green transition-colors"
+                }
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -76,16 +91,24 @@ export default function Header() {
       >
         <div className="bg-manikstu-leaf text-white">
           <nav className="flex flex-col px-4 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="py-3 text-sm font-medium border-b border-white/10 hover:text-manikstu-gold transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = isActive(pathname, link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={
+                    active
+                      ? "py-3 text-sm font-semibold text-manikstu-gold border-b border-white/10"
+                      : "py-3 text-sm font-medium border-b border-white/10 hover:text-manikstu-gold transition-colors"
+                  }
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <a
               href="tel:+919437000000"
               className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-manikstu-green py-3 text-sm font-semibold"

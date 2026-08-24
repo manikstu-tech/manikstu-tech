@@ -14,28 +14,28 @@ const initiatives: AwarenessInitiative[] = [
     title: "Community Awareness Drives",
     description:
       "Village-level campaigns on nutrition, hygiene and the value of improved livestock practices.",
-    image: "/patterns/training-women-youth.png",
+    image: "/patterns/awareness-community-drives.png",
   },
   {
     icon: HeartPulse,
     title: "Veterinary Health Camps",
     description:
       "Periodic camps for vaccination, deworming and early diagnosis in partnership with local vets.",
-    image: "/patterns/training-vet-health.png",
+    image: "/patterns/awareness-vet-camps.png",
   },
   {
     icon: Wheat,
     title: "Demo Plots & Field Days",
     description:
       "Live demonstrations of fodder, feeding and housing models farmers can adapt on their own land.",
-    image: "/patterns/training-sustainable.png",
+    image: "/patterns/awareness-demo-plots.png",
   },
   {
     icon: Radio,
     title: "Rural Radio & IVRS Advisories",
     description:
       "Timely, localized advisories on weather, disease outbreaks and best practices in native dialects.",
-    image: "/patterns/training-fpo-shg.png",
+    image: "/patterns/awareness-radio-ivrs.png",
   },
 ];
 
@@ -94,7 +94,7 @@ export default function AwarenessInitiatives() {
                     className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat opacity-90"
                     style={{
                       backgroundImage: `url('${item.image}')`,
-                      backgroundSize: item.imageScale ?? "100% auto",
+                      backgroundSize: item.imageScale ?? "cover",
                       backgroundPosition: "center bottom",
                     }}
                   />
