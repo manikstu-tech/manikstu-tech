@@ -450,7 +450,7 @@ export default function HomePage() {
           {/* Bottom village panoramic scene banner */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-2 sm:-bottom-2.5 md:-bottom-3 lg:-bottom-4 z-0 flex justify-between overflow-hidden select-none opacity-90 dark:opacity-40"
+            className="pointer-events-none absolute inset-x-0 -bottom-1 sm:-bottom-1.5 md:-bottom-2 lg:-bottom-2.5 z-0 flex justify-between overflow-hidden select-none opacity-90 dark:opacity-40"
           >
             <Image
               src="/patterns/village-figures.png"
