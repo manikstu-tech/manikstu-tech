@@ -21,7 +21,7 @@ const initiatives: AwarenessInitiative[] = [
     title: "Veterinary Health Camps",
     description:
       "Periodic camps for vaccination, deworming and early diagnosis in partnership with local vets.",
-    image: "/patterns/training-vet-health.png",
+    image: "/patterns/awareness-vet-camps.png",
   },
   {
     icon: Wheat,
