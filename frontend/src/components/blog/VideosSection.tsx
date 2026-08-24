@@ -5,8 +5,30 @@ import type { VideoItem } from "@/app/blog/data";
 
 export default function VideosSection({ videos }: { videos: VideoItem[] }) {
   return (
-    <section id="videos" className="section-padding bg-manikstu-cream scroll-mt-6">
-      <div className="mx-auto max-w-6xl">
+    <section
+      id="videos"
+      className="scroll-mt-6 relative overflow-hidden bg-manikstu-cream section-padding"
+    >
+      {/* Top tribal border (matches home page Our Network) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-7 bg-repeat-x opacity-70"
+        style={{
+          backgroundImage: "url('/patterns/tribal-border.png')",
+          backgroundSize: "auto 100%",
+        }}
+      />
+      {/* Bottom tribal border (flipped) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
+        style={{
+          backgroundImage: "url('/patterns/tribal-border.png')",
+          backgroundSize: "auto 100%",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-6xl">
         <div className="text-center">
           {/* Ornamental pill heading */}
           <div className="flex items-center justify-center gap-2">
