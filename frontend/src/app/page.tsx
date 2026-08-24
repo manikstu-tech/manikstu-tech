@@ -125,24 +125,28 @@ const newsItems = [
     category: "FEATURED",
     categoryColor: "bg-manikstu-green",
     title: "Manikstu's Goat Bank featured in Mann Ki Baat",
+    image: "/1.png",
   },
   {
     date: "Jan 14, 2024",
     category: "EVENT",
     categoryColor: "bg-manikstu-red",
     title: "Hon'ble Prime Minister Modi met with Odisha Govt. for Rural Development",
+    image: "/2.png",
   },
   {
     date: "Dec 15, 2023",
     category: "PRESS",
     categoryColor: "bg-manikstu-gold",
     title: "CEO, Manikstu Agro received Emerging Women Entrepreneur Award",
+    image: "/3.png",
   },
   {
     date: "Mar 08, 2024",
     category: "MEDIA",
     categoryColor: "bg-saura-red",
     title: "Manikstu Initiative on Goat Farming featured in Dainik Jagran",
+    image: "/4.png",
   },
 ];
 
@@ -873,13 +877,21 @@ export default function HomePage() {
                   href="/blog"
                   className="group rounded-xl bg-white shadow-sm overflow-hidden hover:shadow-md transition-shadow"
                 >
-                  {/* Image placeholder */}
-                  <div className="relative h-40 bg-manikstu-cream">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <FileText className="h-10 w-10 text-manikstu-green/30" />
-                    </div>
+                  {/* Image container */}
+                  <div className="relative flex h-40 w-full items-center justify-center overflow-hidden bg-manikstu-cream p-3">
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="max-h-full max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <FileText className="h-10 w-10 text-manikstu-green/30" />
+                      </div>
+                    )}
                     <span
-                      className={`absolute top-3 left-3 rounded px-2 py-0.5 text-[10px] font-bold text-white ${item.categoryColor}`}
+                      className={`absolute top-3 left-3 rounded px-2 py-0.5 text-[10px] font-bold text-white z-10 ${item.categoryColor}`}
                     >
                       {item.category}
                     </span>
