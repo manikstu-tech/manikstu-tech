@@ -158,11 +158,10 @@ export default function TrainingPrograms() {
                 {program.image && (
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-no-repeat opacity-90"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-90"
                     style={{
                       backgroundImage: `url('${program.image}')`,
-                      backgroundSize: "130% auto",
-                      backgroundPosition: "center bottom",
+                      backgroundSize: "100% auto",
                     }}
                   />
                 )}
