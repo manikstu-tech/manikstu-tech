@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Banknote,
   GraduationCap,
@@ -64,6 +65,24 @@ export default function TrainingPrograms() {
           backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
           backgroundSize: "auto 100%",
         }}
+      />
+      {/* Top-left mandala corner */}
+      <Image
+        src="/patterns/mandala-corner-top.png"
+        alt=""
+        aria-hidden
+        width={1370}
+        height={1155}
+        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18]"
+      />
+      {/* Top-right mandala corner (mirrored) */}
+      <Image
+        src="/patterns/mandala-corner-top.png"
+        alt=""
+        aria-hidden
+        width={1370}
+        height={1155}
+        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
       />
       <div className="relative mx-auto max-w-6xl">
         <div className="text-center">
