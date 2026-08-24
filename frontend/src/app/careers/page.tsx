@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CareersHero from "@/components/careers/CareersHero";
@@ -9,21 +11,9 @@ import ResumeCTA from "@/components/careers/ResumeCTA";
 import type { JobOpening } from "@/components/careers/OpenPositions";
 import type { CareerValue } from "@/components/careers/WhyJoinUs";
 import type { CareerBenefit } from "@/components/careers/CareerBenefits";
+import { getPage, getJobOpenings } from "@/lib/api";
 
-export const metadata: Metadata = {
-  title: {
-    absolute:
-      "Careers at Manikstu Agro | Build Your Career. Grow Rural India.",
-  },
-  description:
-    "Join Manikstu Agro and build a meaningful career while empowering rural communities through sustainable agriculture and livestock solutions.",
-};
-
-// No real job openings exist in the repository yet, so we render a
-// legitimate empty state rather than fabricating roles.
-const jobOpenings: JobOpening[] = [];
-
-const careerValues: CareerValue[] = [
+const fallbackValues: CareerValue[] = [
   {
     icon: "impact",
     title: "Impact That Matters",
@@ -50,7 +40,7 @@ const careerValues: CareerValue[] = [
   },
 ];
 
-const careerBenefits: CareerBenefit[] = [
+const fallbackBenefits: CareerBenefit[] = [
   {
     icon: "health",
     title: "Health & Wellness",
@@ -78,16 +68,49 @@ const careerBenefits: CareerBenefit[] = [
   },
 ];
 
+function parseContent(block: any): any {
+  if (!block?.content) return null;
+  try { return JSON.parse(block.content); } catch { return null; }
+}
+
 export default function CareersPage() {
+  const [values, setValues] = useState<CareerValue[]>(fallbackValues);
+  const [benefits, setBenefits] = useState<CareerBenefit[]>(fallbackBenefits);
+  const [jobs, setJobs] = useState<JobOpening[]>([]);
+
+  useEffect(() => {
+    getPage('careers')
+      .then((res) => {
+        const blocks = res.data.blocks;
+        const valuesBlock = blocks.find((b: any) => b.type === 'career_values');
+        if (valuesBlock) {
+          const c = parseContent(valuesBlock);
+          if (Array.isArray(c)) setValues(c);
+        }
+        const benefitsBlock = blocks.find((b: any) => b.type === 'career_benefits');
+        if (benefitsBlock) {
+          const c = parseContent(benefitsBlock);
+          if (Array.isArray(c)) setBenefits(c);
+        }
+      })
+      .catch(() => {});
+
+    getJobOpenings()
+      .then((res) => {
+        if (Array.isArray(res.data)) setJobs(res.data);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <>
       <Header />
 
       <main id="main-content">
         <CareersHero />
-        <WhyJoinUs values={careerValues} />
-        <OpenPositions jobs={jobOpenings} />
-        <CareerBenefits benefits={careerBenefits} />
+        <WhyJoinUs values={values} />
+        <OpenPositions jobs={jobs} />
+        <CareerBenefits benefits={benefits} />
         <ResumeCTA />
       </main>
 

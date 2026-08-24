@@ -1,20 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Moon, Sun } from "lucide-react";
 import { useThemeToggle } from "./ThemeProvider";
+import { getNavigation } from "@/lib/api";
+import type { NavigationMenuItem } from "@/types";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Products", href: "/products" },
-  { label: "Media", href: "/blog" },
-  { label: "Collaborate", href: "/collaborate" },
-  { label: "Training & Awareness", href: "/training" },
+const fallbackLinks: NavigationMenuItem[] = [
+  { id: 1, label: "Home", url: "/", parent_id: null, order: 1, is_active: true, target: "_self" },
+  { id: 2, label: "About Us", url: "/about", parent_id: null, order: 2, is_active: true, target: "_self" },
+  { id: 3, label: "Services", url: "/services", parent_id: null, order: 3, is_active: true, target: "_self" },
+  { id: 4, label: "Products", url: "/products", parent_id: null, order: 4, is_active: true, target: "_self" },
+  { id: 5, label: "Media", url: "/blog", parent_id: null, order: 5, is_active: true, target: "_self" },
+  { id: 6, label: "Collaborate", url: "/collaborate", parent_id: null, order: 6, is_active: true, target: "_self" },
+  { id: 7, label: "Training & Awareness", url: "/training", parent_id: null, order: 7, is_active: true, target: "_self" },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -24,8 +26,15 @@ function isActive(pathname: string, href: string) {
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>(fallbackLinks);
   const { toggle } = useThemeToggle();
   const pathname = usePathname() ?? "/";
+
+  useEffect(() => {
+    getNavigation()
+      .then((res) => setNavLinks(res.data))
+      .catch(() => {});
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-charcoal shadow-sm transition-colors">
@@ -43,11 +52,11 @@ export default function Header() {
 
         <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => {
-            const active = isActive(pathname, link.href);
+            const active = isActive(pathname, link.url);
             return (
               <Link
-                key={link.href}
-                href={link.href}
+                key={link.id}
+                href={link.url}
                 aria-current={active ? "page" : undefined}
                 className={
                   active
@@ -92,11 +101,11 @@ export default function Header() {
         <div className="bg-manikstu-leaf text-white">
           <nav className="flex flex-col px-4 py-4">
             {navLinks.map((link) => {
-              const active = isActive(pathname, link.href);
+              const active = isActive(pathname, link.url);
               return (
                 <Link
-                  key={link.href}
-                  href={link.href}
+                  key={link.id}
+                  href={link.url}
                   onClick={() => setOpen(false)}
                   aria-current={active ? "page" : undefined}
                   className={
@@ -110,7 +119,7 @@ export default function Header() {
               );
             })}
             <a
-              href="tel:+919437000000"
+              href="tel:+918270331856"
               className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-manikstu-green py-3 text-sm font-semibold"
             >
               <Phone className="h-4 w-4" />

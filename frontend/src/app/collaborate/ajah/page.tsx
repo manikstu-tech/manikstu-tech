@@ -1,20 +1,22 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AjahHero from "@/components/collaborate/AjahHero";
 import AjahPillars from "@/components/collaborate/AjahPillars";
 import AjahCTA from "@/components/collaborate/AjahCTA";
-
-export const metadata: Metadata = {
-  title: {
-    absolute:
-      "Project AJAH | Manikstu Agro — Women-Led Integrated Livestock Entrepreneurship",
-  },
-  description:
-    "Project AJAH empowers women farmers through an integrated goat and poultry livelihood model with science, infrastructure, healthcare, training, insurance and market support.",
-};
+import { getPage } from "@/lib/api";
 
 export default function AjahPage() {
+  const [blocks, setBlocks] = useState<any[]>([]);
+
+  useEffect(() => {
+    getPage("ajah")
+      .then((res) => setBlocks(res.data.blocks))
+      .catch(() => {});
+  }, []);
+
   return (
     <>
       <Header />

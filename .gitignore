@@ -30,6 +30,7 @@ npm-debug.log*
 
 # PHP
 composer.lock
+composer.phar
 
 # uploads (large files)
 storage/app/public/uploads/*

@@ -1,24 +1,58 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
+import { getSettings, getFooter } from "@/lib/api";
+import type { Setting, FooterLink } from "@/types";
 
-const quickLinks = [
-  { label: "About Us", href: "/about" },
-  { label: "Our Services", href: "/services" },
-  { label: "Our Products", href: "/products" },
-  { label: "Media", href: "/blog" },
-  { label: "Collaborate", href: "/collaborate" },
-  { label: "Training & Awareness", href: "/training" },
+const fallbackQuickLinks: FooterLink[] = [
+  { id: 1, group: "quick", label: "About Us", url: "/about", order: 1, is_active: true },
+  { id: 2, group: "quick", label: "Our Services", url: "/services", order: 2, is_active: true },
+  { id: 3, group: "quick", label: "Our Products", url: "/products", order: 3, is_active: true },
+  { id: 4, group: "quick", label: "Media", url: "/blog", order: 4, is_active: true },
+  { id: 5, group: "quick", label: "Collaborate", url: "/collaborate", order: 5, is_active: true },
+  { id: 6, group: "quick", label: "Training & Awareness", url: "/training", order: 6, is_active: true },
 ];
 
-const supportLinks = [
-  { label: "Help Center", href: "/help" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms & Conditions", href: "/terms" },
+const fallbackSupportLinks: FooterLink[] = [
+  { id: 7, group: "support", label: "Help Center", url: "/help", order: 1, is_active: true },
+  { id: 8, group: "support", label: "Contact Us", url: "/contact", order: 2, is_active: true },
+  { id: 9, group: "support", label: "Privacy Policy", url: "/privacy", order: 3, is_active: true },
+  { id: 10, group: "support", label: "Terms & Conditions", url: "/terms", order: 4, is_active: true },
 ];
+
+const fallbackSettings: Record<string, string> = {
+  brand_tagline: "Building a prosperous and sustainable agricultural future through innovation, collaboration and empowerment.",
+  phone: "+91 82703 31856",
+  email_sales: "sales@manikstu.com",
+  email_info: "info@manikstu.com",
+  address_registered: "Row House No - 94, Ravi Garden, Pune Solapur Road, Manjri Budruk, Hadapsar, Pune - 412307",
+  address_corporate: "Plot No-754, 14, Gangadhar Meher Marg, near Pabitra Guest House, Jayadev Vihar, Bhubaneswar, Odisha 751013",
+  address_farm: "At/Po: Salebhata, P.S: Kegaon, via: Borda, Kalahandi, Odisha - 766036",
+  address_regional: "CMTC Campus, Serikhedi, Chhattisgarh - 492012",
+  gstin: "21AAJCM6881B1ZM",
+  cin: "U74900PN2015PTC154344",
+};
 
 export default function Footer() {
+  const [settings, setSettings] = useState(fallbackSettings);
+  const [quickLinks, setQuickLinks] = useState(fallbackQuickLinks);
+  const [supportLinks, setSupportLinks] = useState(fallbackSupportLinks);
+
+  useEffect(() => {
+    getSettings()
+      .then((res) => setSettings(res.data))
+      .catch(() => {});
+    getFooter()
+      .then((res) => {
+        if (res.data.quick) setQuickLinks(res.data.quick);
+        if (res.data.support) setSupportLinks(res.data.support);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <footer className="bg-white border-t border-light-grey">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8">
@@ -35,8 +69,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-3 text-sm text-grey">
-              Building a prosperous and sustainable agricultural future through
-              innovation, collaboration and empowerment.
+              {settings.brand_tagline}
             </p>
             <div className="mt-4 flex gap-3">
               {[Facebook, Instagram, Linkedin, Twitter, Youtube].map((Icon, i) => (
@@ -61,9 +94,9 @@ export default function Footer() {
             </h3>
             <ul className="mt-3 space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.id}>
                   <Link
-                    href={link.href}
+                    href={link.url}
                     className="flex items-center gap-1 text-sm text-grey hover:text-manikstu-green transition-colors"
                   >
                     <ChevronRight className="h-3 w-3 flex-shrink-0 text-manikstu-green" />
@@ -84,9 +117,9 @@ export default function Footer() {
             </h3>
             <ul className="mt-3 space-y-2">
               {supportLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.id}>
                   <Link
-                    href={link.href}
+                    href={link.url}
                     className="flex items-center gap-1 text-sm text-grey hover:text-manikstu-green transition-colors"
                   >
                     <ChevronRight className="h-3 w-3 flex-shrink-0 text-manikstu-green" />
@@ -110,19 +143,19 @@ export default function Footer() {
                 <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Phone className="h-3.5 w-3.5" />
                 </span>
-                +91 82703 31856
+                {settings.phone}
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Mail className="h-3.5 w-3.5" />
                 </span>
-                <span>sales@manikstu.com<br /><span className="text-xs text-grey/70">(For Sales Enquiry)</span></span>
+                <span>{settings.email_sales}<br /><span className="text-xs text-grey/70">(For Sales Enquiry)</span></span>
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                  <Send className="h-3.5 w-�3.5" />
+                  <Send className="h-3.5 w-3.5" />
                 </span>
-                <span>info@manikstu.com<br /><span className="text-xs text-grey/70">(For Other Enquiry)</span></span>
+                <span>{settings.email_info}<br /><span className="text-xs text-grey/70">(For Other Enquiry)</span></span>
               </li>
             </ul>
             <div className="mt-4 flex flex-col gap-2">
@@ -171,22 +204,22 @@ export default function Footer() {
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
               <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">Registered Office</p>
-              <p className="mt-1 text-xs text-grey leading-relaxed">Row House No - 94, Ravi Garden, Pune Solapur Road, Manjri Budruk, Hadapsar, Pune - 412307</p>
+              <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_registered}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
               <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">Corporate Office</p>
-              <p className="mt-1 text-xs text-grey leading-relaxed">Plot No-754, 14, Gangadhar Meher Marg, near Pabitra Guest House, Jayadev Vihar, Bhubaneswar, Odisha 751013</p>
+              <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_corporate}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
               <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">Farm Office</p>
-              <p className="mt-1 text-xs text-grey leading-relaxed">At/Po: Salebhata, P.S: Kegaon, via: Borda, Kalahandi, Odisha - 766036</p>
+              <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_farm}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
               <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">Regional Office</p>
-              <p className="mt-1 text-xs text-grey leading-relaxed">CMTC Campus, Serikhedi, Chhattisgarh - 492012</p>
+              <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_regional}</p>
             </div>
           </div>
         </div>
@@ -195,7 +228,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="border-t border-light-grey">
         <div className="mx-auto max-w-7xl px-4 py-3 text-center text-xs text-grey sm:px-6 md:px-8">
-          <p>&copy; {new Date().getFullYear()} Manikstu Agro Private Limited. All Rights Reserved. &nbsp;|&nbsp; GSTIN: 21AAJCM6881B1ZM &nbsp;|&nbsp; CIN: U74900PN2015PTC154344</p>
+          <p>&copy; {new Date().getFullYear()} Manikstu Agro Private Limited. All Rights Reserved. &nbsp;|&nbsp; GSTIN: {settings.gstin} &nbsp;|&nbsp; CIN: {settings.cin}</p>
         </div>
       </div>
     </footer>

@@ -48,15 +48,47 @@
     4. *Sustainable Impact* (`Sprout`)
   - Framed by large top-left quarter-mandala (`mandala-top-right.png`), right circular mandala (`mandala-right.png`), bottom-left tree/goat illustration, bottom-right village figures/hut, and bottom continuous tribal border.
 
-### 2. Home Page (`frontend/src/app/page.tsx`)
+### 2. Collaborate Page (`frontend/src/app/collaborate/page.tsx`)
+- **CollaborateHero (`CollaborateHero.tsx`)**:
+  - Refined to match TrainingHero with top-right corner mandala artwork (`mandala-top-right-corner.png`), ornamental pill badge, Playfair serif typography with green highlight, and ecosystem line art.
+- **PartnerTypes (`PartnerTypes.tsx`)**:
+  - "Who We Partner With" -> "A Coalition for Lasting Impact".
+  - Top-left & top-right corner mandalas (`mandala-corner-top.png`) and top tribal border.
+  - Standardized framed double-diamond divider.
+  - 6 clean partner category cards with dashed inner borders, dashed circular icon badges, title, and descriptions (bottom images removed for a clean, elegant look).
+- **HowItWorks (`HowItWorks.tsx`)**:
+  - "How It Works" -> "From First Conversation to Shared Impact".
+  - Standardized framed double-diamond divider.
+  - 4 clean step cards with step pill badges, dashed circular icon rings, title, and description (bottom images removed for a clean, focused process flow).
+- **CollaborateImpact (`CollaborateImpact.tsx`)**:
+  - "Our Network" -> "Collaboration That Reaches Across the Heartland" styled identically to TrainingImpact.
+  - Emerald gradient background, top & bottom white tribal floral borders, side white mandala watermarks, and 4 compact glassmorphic metric cards (`50+ Partner Organizations`, `700+ Villages Reached`, `10,000+ Farmers Engaged`, `3+ States Covered`).
+- **CollaborateCTA (`CollaborateCTA.tsx`)**:
+  - "Get Involved" -> "Partner With Us to Build the Future of Rural Livelihoods" styled identically to TrainingCTA.
+  - Warm cream background, top-left quarter mandala, right circular mandala, green "GET INVOLVED" pill, green CTA button `Become a Partner →`, 4 circular dashed-ring feature pillars (*Institutional Trust*, *Grassroots Delivery*, *Shared Governance*, *Sustainable Value*), and bottom village artwork.
+
+### 3. Home Page (`frontend/src/app/page.tsx`)
 - **Our Mission**: Standardized ornamental framed double-diamond divider under `Worldwide, fostering a prosperous and sustainable agricultural future.`
 - **Project AJAH**: Standardized ornamental framed double-diamond divider under `Project AJAH` heading.
+- **Impacting Lives Section (`page.tsx`)**:
+  - Redesigned with compact vertical height (`pt-8 pb-14 sm:pt-9 sm:pb-16 md:pt-10 md:pb-20`), top-left & top-right corner mandalas (`mandala-corner-top.png`), top tribal floral border (`tribal-floral-border-seamless.png`), large prominent bottom village figures panoramic landscape banner (`village-figures.png` fine-tuned to `-bottom-2 sm:-bottom-2.5 md:-bottom-3 lg:-bottom-4` mirrored at left and right), and standardized framed double-diamond divider.
+  - 4 impact metric cards styled with dashed inner borders, dashed circular icon rings, large serif numbers, line-diamond ornaments, and descriptive labels.
 - **Our Associations Section**:
   - Redesigned to a compact section height (`py-8 sm:py-10 md:py-12`) with top and bottom tribal border strips (`tribal-border.png`).
   - Implemented continuous, smooth infinite horizontal scrolling marquee tracks with pause-on-hover (`.animate-marquee` and `.animate-marquee-reverse` in `globals.css`).
   - Retained the exact same partner card design: white rounded card with `border-b-[3px] border-b-saura-red/80`, dark mode support, and partner logos.
   - Features gradient edge fades on left and right for seamless entrance/exit.
-- **Impact Stats / Mobile App / Testimonials**: Cohesive tribal and mandala design system with cultural Warli patterns and partner showcase.
+### 4. Media & Stories Page (`frontend/src/app/blog/page.tsx`)
+- **MediaHero (`MediaHero.tsx`)**:
+  - Redesigned to match the split-grid layout of Collaborate and Training heroes with compact bottom padding (`pt-10 pb-6 sm:pt-12 sm:pb-8 md:pt-14 md:pb-10 lg:pt-16 lg:pb-10`).
+  - Top-right corner mandala artwork (`mandala-top-right-corner.png`).
+  - Ornamental pill badge: `— ◆ MEDIA & STORIES ◆ —` with gold diamonds.
+  - Two-tone Playfair serif typography: `Amplifying Voices. Sharing Rural Impact.` with green highlight.
+  - Action buttons: `Explore Stories →` (linking to `#stories`) and `Press Inquiries` button.
+  - Micro-statement with gold/green sparkle icon.
+  - Right-hand visual card with `aspect-[4/3] rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream`, rural hills & goats landscape artwork backdrop (`/media-card.png`), bottom gradient overlay, corner pill badge (`Grassroots Coverage`), and floating green icon badge (`Radio`).
+- **Stories & Category Filter Section (`blog/page.tsx`)**:
+  - Optimized top spacing (`pt-2 sm:pt-4 md:pt-6`) and `mb-8` above category filter for a clean, seamless transition from hero to articles.
 
 ---
 
