@@ -94,7 +94,7 @@ export default function AwarenessInitiatives() {
                     className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat opacity-90"
                     style={{
                       backgroundImage: `url('${item.image}')`,
-                      backgroundSize: item.imageScale ?? "100% auto",
+                      backgroundSize: item.imageScale ?? "cover",
                       backgroundPosition: "center bottom",
                     }}
                   />
