@@ -148,7 +148,7 @@ export default function TrainingPrograms() {
             return (
               <div
                 key={program.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-6 pb-28 transition-shadow hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-5 pb-20 transition-shadow hover:shadow-lg"
               >
                 {/* Inner dashed border */}
                 <div
