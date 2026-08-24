@@ -29,35 +29,35 @@ const missionCards: {
   description: string;
   image?: string;
 }[] = [
-  {
-    icon: Cpu,
-    title: "Driving Progress with Technology",
-    description:
-      "Leveraging technology and innovation to empower farmers with actionable data.",
-    image: "/patterns/mission-driving-progress.png",
-  },
-  {
-    icon: Handshake,
-    title: "Collaborating for Success",
-    description:
-      "Building strong partnerships with cooperatives, organizations and governments.",
-    image: "/patterns/mission-collaborating.png",
-  },
-  {
-    icon: Home,
-    title: "Empowering Rural Livelihoods",
-    description:
-      "Creating opportunities and strengthening rural communities through goat farming.",
-    image: "/patterns/mission-rural-livelihoods.png",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovating for Tomorrow",
-    description:
-      "Continuously developing new solutions for farm development and inclusive future.",
-    image: "/patterns/mission-innovating.png",
-  },
-];
+    {
+      icon: Cpu,
+      title: "Driving Progress with Technology",
+      description:
+        "Leveraging technology and innovation to empower farmers with actionable data.",
+      image: "/patterns/mission-driving-progress.png",
+    },
+    {
+      icon: Handshake,
+      title: "Collaborating for Success",
+      description:
+        "Building strong partnerships with cooperatives, organizations and governments.",
+      image: "/patterns/mission-collaborating.png",
+    },
+    {
+      icon: Home,
+      title: "Empowering Rural Livelihoods",
+      description:
+        "Creating opportunities and strengthening rural communities through goat farming.",
+      image: "/patterns/mission-rural-livelihoods.png",
+    },
+    {
+      icon: Lightbulb,
+      title: "Innovating for Tomorrow",
+      description:
+        "Continuously developing new solutions for farm development and inclusive future.",
+      image: "/patterns/mission-innovating.png",
+    },
+  ];
 
 const stats = [
   { value: "70,000+", label: "Farmers Impacted", icon: Users, image: "/patterns/impact-panel-1.png" },
@@ -381,15 +381,15 @@ export default function HomePage() {
                       style={
                         card.image
                           ? {
-                              backgroundImage: `url('${card.image}')`,
-                              backgroundSize: "100% auto",
-                              backgroundPosition: "bottom center",
-                            }
+                            backgroundImage: `url('${card.image}')`,
+                            backgroundSize: "100% auto",
+                            backgroundPosition: "bottom center",
+                          }
                           : {
-                              backgroundImage: "url('/patterns/village-figures.png')",
-                              backgroundSize: "400% auto",
-                              backgroundPosition: `${(i * 33) % 100}% bottom`,
-                            }
+                            backgroundImage: "url('/patterns/village-figures.png')",
+                            backgroundSize: "400% auto",
+                            backgroundPosition: `${(i * 33) % 100}% bottom`,
+                          }
                       }
                     />
                     <div className="relative text-center">
@@ -417,69 +417,129 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="relative overflow-hidden section-padding bg-manikstu-cream dark:bg-gray-900">
-          {/* Top tribal floral border — continuous seamless tile across full width */}
+        {/* Stats / Impacting Lives */}
+        <section className="relative overflow-hidden pt-8 pb-14 sm:pt-9 sm:pb-16 md:pt-10 md:pb-20 px-4 sm:px-6 md:px-8 bg-manikstu-cream dark:bg-gray-900">
+          {/* Top tribal floral border */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-0 h-5 sm:h-6 bg-repeat-x z-20 opacity-50 dark:opacity-40 -scale-y-100"
+            className="pointer-events-none absolute left-0 right-0 top-0 h-4 sm:h-6 bg-repeat-x -scale-y-100 opacity-60"
             style={{
               backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
               backgroundSize: "auto 100%",
             }}
           />
 
-          {/* Mandala background artwork — Left (positioned cleanly below top border) */}
-          <div aria-hidden className="pointer-events-none absolute left-0 top-[55%] -translate-y-1/2 select-none z-0">
+          {/* Top-left mandala corner */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18]"
+          />
+          {/* Top-right mandala corner (mirrored) */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+          />
+          {/* Bottom village panoramic scene banner */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 -bottom-1 sm:-bottom-1.5 md:-bottom-2 lg:-bottom-2.5 z-0 flex justify-between overflow-hidden select-none opacity-90 dark:opacity-40"
+          >
             <Image
-              src="/patterns/mandala-left.png"
+              src="/patterns/village-figures.png"
               alt=""
-              width={320}
-              height={576}
-              className="h-auto w-32 sm:w-44 md:w-56 lg:w-72 max-h-[80%] object-contain object-left opacity-[0.15] sm:opacity-[0.18] dark:opacity-[0.10]"
+              width={1920}
+              height={300}
+              className="h-22 sm:h-26 md:h-30 lg:h-36 xl:h-40 w-auto max-w-none -scale-x-100 object-contain object-left"
+            />
+            <Image
+              src="/patterns/village-figures.png"
+              alt=""
+              width={1920}
+              height={300}
+              className="h-22 sm:h-26 md:h-30 lg:h-36 xl:h-40 w-auto max-w-none object-contain object-right"
             />
           </div>
 
-          {/* Mandala background artwork — Right (positioned cleanly below top border) */}
-          <div aria-hidden className="pointer-events-none absolute right-0 top-[55%] -translate-y-1/2 select-none z-0">
-            <Image
-              src="/patterns/mandala-right.png"
-              alt=""
-              width={320}
-              height={576}
-              className="h-auto w-32 sm:w-44 md:w-56 lg:w-72 max-h-[80%] object-contain object-right opacity-[0.15] sm:opacity-[0.18] dark:opacity-[0.10]"
-            />
-          </div>
+          <div className="relative mx-auto max-w-6xl">
+            <div className="text-center">
+              {/* Ornamental pill heading */}
+              <div className="flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                  Our Impact
+                </p>
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
+              </div>
 
-          <div className="relative z-10 mx-auto max-w-7xl pt-6 sm:pt-8">
-            <h2 className="text-center text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
-              Impacting Lives
-            </h2>
-            <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
+              <h2 className="mx-auto mt-2.5 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl lg:text-4xl dark:text-white">
+                Impacting <span className="text-manikstu-green">Lives</span>
+              </h2>
+
+              {/* Ornamental Divider with Framed Diamond */}
+              <div className="mt-2.5 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-10 sm:w-14 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <div aria-hidden className="relative flex items-center justify-center">
+                  <span className="h-2.5 w-2.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                  <span className="absolute h-1 w-1 rotate-45 bg-manikstu-gold" />
+                </div>
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <span aria-hidden className="h-px w-10 sm:w-14 bg-manikstu-gold/70" />
+              </div>
+
+              <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm text-grey leading-relaxed dark:text-gray-300">
+                Measurable progress and sustainable livelihoods delivered directly to rural heartlands.
+              </p>
+            </div>
+
+            <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-4">
               {stats.map((stat) => {
                 const Icon = stat.icon;
                 return (
                   <div
                     key={stat.label}
-                    className="relative overflow-hidden flex flex-col justify-between rounded-xl bg-white/95 backdrop-blur-sm pt-6 text-center shadow-sm border border-manikstu-cream/60 hover:shadow-md transition-all duration-300 dark:bg-gray-800/90 dark:border-gray-700 min-h-[250px] sm:min-h-[280px]"
+                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 p-4 sm:p-5 text-center transition-shadow hover:shadow-lg dark:bg-gray-800/90"
                   >
-                    <div className="px-4">
-                      <Icon className="mx-auto h-10 w-10 text-manikstu-green" />
-                      <p className="mt-3 text-3xl font-bold text-charcoal font-heading dark:text-white">
+                    {/* Inner dashed border */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                    />
+
+                    <div className="relative text-center">
+                      {/* Icon with dashed decorative ring */}
+                      <div className="relative mx-auto flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-manikstu-green" />
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
+                        />
+                      </div>
+
+                      <p className="mt-3 font-heading text-2xl sm:text-3xl font-bold leading-none text-charcoal dark:text-white group-hover:text-manikstu-green transition-colors duration-200">
                         {stat.value}
                       </p>
-                      <p className="mt-1 text-sm font-medium text-grey dark:text-gray-300">{stat.label}</p>
-                    </div>
 
-                    {/* Tribal village scene panel image at bottom of card — large, full-width fit */}
-                    <div className="mt-4 w-full select-none pointer-events-none overflow-hidden rounded-b-xl leading-none">
-                      <Image
-                        src={stat.image}
-                        alt=""
-                        width={320}
-                        height={160}
-                        className="w-full h-auto object-contain opacity-95 transition-opacity hover:opacity-100"
-                      />
+                      {/* Line-diamond-line ornament */}
+                      <div className="mt-2 flex items-center justify-center gap-1.5">
+                        <span aria-hidden className="h-px w-5 bg-manikstu-gold" />
+                        <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                        <span aria-hidden className="h-px w-5 bg-manikstu-gold" />
+                      </div>
+
+                      <p className="mt-2 text-xs sm:text-sm font-medium leading-snug text-grey dark:text-gray-300">
+                        {stat.label}
+                      </p>
                     </div>
                   </div>
                 );
