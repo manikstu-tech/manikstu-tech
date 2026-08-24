@@ -17,12 +17,12 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
       {articles.map((article) => (
         <Link key={article.id} href={`/blog/${article.slug}`}>
           <article className="group h-full overflow-hidden rounded-xl border border-light-grey bg-white transition-all hover:shadow-md">
-            {/* Thumbnail placeholder */}
-            <div className="flex h-48 items-center justify-center bg-manikstu-cream">
+            {/* Thumbnail */}
+            <div className="relative flex h-48 w-full items-center justify-center overflow-hidden bg-manikstu-cream p-4">
               <img
                 src={article.image}
                 alt={article.title}
-                className="h-full w-full object-cover"
+                className="max-h-full max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </div>
 

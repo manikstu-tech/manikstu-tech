@@ -8,12 +8,12 @@ export default function FeaturedArticle({ article }: { article: Article }) {
     <Link href={`/blog/${article.slug}`}>
       <article className="group overflow-hidden rounded-xl border border-light-grey bg-white shadow-sm transition-all hover:shadow-md">
         <div className="grid md:grid-cols-2">
-          {/* Image placeholder */}
-          <div className="flex h-64 items-center justify-center bg-manikstu-cream md:h-full">
+          {/* Image */}
+          <div className="relative flex h-64 items-center justify-center overflow-hidden bg-manikstu-cream p-6 md:h-full">
             <img
               src={article.image}
               alt={article.title}
-              className="h-full w-full object-cover"
+              className="max-h-56 max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </div>
 
