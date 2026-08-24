@@ -22,11 +22,11 @@
             --page-bg: #F5F5F5;
         }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; color: var(--charcoal); background: var(--page-bg); }
+        body { font-family: 'Inter', sans-serif; color: var(--charcoal); background: var(--page-bg); height: 100vh; overflow: hidden; }
         h1,h2,h3,h4,h5,h6 { font-family: 'Playfair Display', serif; }
         a { text-decoration: none; color: inherit; }
 
-        .app-shell { display: flex; min-height: 100vh; }
+        .app-shell { display: flex; height: 100vh; overflow: hidden; }
 
         /* ===== SIDEBAR ===== */
         .sidebar {
@@ -144,7 +144,11 @@
         .logout-btn svg { width: 14px; height: 14px; }
 
         /* ===== MAIN ===== */
-        .main-area { flex: 1; margin-left: 260px; display: flex; flex-direction: column; min-height: 100vh; }
+        .main-area { flex: 1; margin-left: 260px; display: flex; flex-direction: column; height: 100vh; overflow-y: scroll; }
+        .main-area::-webkit-scrollbar { width: 10px; }
+        .main-area::-webkit-scrollbar-track { background: transparent; }
+        .main-area::-webkit-scrollbar-thumb { background: rgba(45,80,22,0.22); border-radius: 6px; }
+        .main-area::-webkit-scrollbar-thumb:hover { background: rgba(45,80,22,0.35); }
 
         /* ===== TOPBAR ===== */
         .topbar {
@@ -161,6 +165,7 @@
         }
         .topbar-strip {
             height: 30px;
+            flex-shrink: 0;
             background-image: url('{{ asset("patterns/saura-border-tight.png") }}');
             background-size: auto 100%;
             background-repeat: repeat-x;
