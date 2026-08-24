@@ -100,7 +100,7 @@ export default function TrainingPrograms() {
         aria-hidden
         width={1536}
         height={1024}
-        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.12] sm:opacity-[0.16]"
+        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-32 sm:w-44 md:w-56 lg:w-72 opacity-[0.10] sm:opacity-[0.14]"
       />
       {/* Bottom-right woman + hut + tree silhouette */}
       <Image
@@ -109,7 +109,7 @@ export default function TrainingPrograms() {
         aria-hidden
         width={1802}
         height={900}
-        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.12] sm:opacity-[0.16]"
+        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-32 sm:w-44 md:w-56 lg:w-72 opacity-[0.10] sm:opacity-[0.14]"
       />
       <div className="relative mx-auto max-w-6xl">
         <div className="text-center">
