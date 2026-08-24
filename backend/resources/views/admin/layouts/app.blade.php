@@ -159,6 +159,16 @@
             top: 0;
             z-index: 30;
         }
+        .topbar-strip {
+            height: 30px;
+            background-image: url('{{ asset("patterns/saura-border-tight.png") }}');
+            background-size: auto 100%;
+            background-repeat: repeat-x;
+            background-position: center;
+            opacity: 0.4;
+            pointer-events: none;
+            border-bottom: 1px solid var(--light-grey);
+        }
         .topbar-search {
             position: relative;
             width: 340px;
@@ -234,37 +244,39 @@
         }
         .topbar-user:hover { background: var(--page-bg); }
         .topbar-user-avatar {
-            width: 34px;
-            height: 34px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: rgba(74,140,63,0.1);
+            background: var(--leaf);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--green);
-            font-size: 13px;
+            color: #fff;
+            font-size: 14px;
             font-weight: 600;
         }
         .topbar-user-name { font-size: 13px; font-weight: 600; color: var(--charcoal); }
-        .topbar-user-role { font-size: 11px; color: var(--grey); }
+        .topbar-user-role { font-size: 11px; font-weight: 600; color: var(--gold); }
+        .topbar-user-chev { width: 16px; height: 16px; color: var(--grey); flex-shrink: 0; }
 
         /* ===== PAGE CONTENT ===== */
         .page-content { padding: 24px; flex: 1; }
 
         /* ===== HAMBURGER ===== */
         .hamburger {
-            display: none;
+            display: flex;
             width: 40px;
             height: 40px;
             align-items: center;
             justify-content: center;
             border: none;
-            background: transparent;
-            border-radius: 8px;
+            background: rgba(74,140,63,0.10);
+            border-radius: 10px;
             cursor: pointer;
+            transition: background 0.15s;
         }
-        .hamburger:hover { background: var(--page-bg); }
-        .hamburger svg { width: 22px; height: 22px; color: var(--charcoal); }
+        .hamburger:hover { background: rgba(74,140,63,0.18); }
+        .hamburger svg { width: 20px; height: 20px; color: var(--green); }
         .sidebar-overlay {
             display: none;
             position: fixed;
@@ -417,9 +429,12 @@
                             <p class="topbar-user-name">{{ Auth::user()->name }}</p>
                             <p class="topbar-user-role">{{ ucfirst(Auth::user()->role) }}</p>
                         </div>
+                        <svg class="topbar-user-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
                 </div>
             </header>
+
+            <div class="topbar-strip" aria-hidden="true"></div>
 
             <main class="page-content">
                 @yield('content')
