@@ -35,7 +35,7 @@ const initiatives: AwarenessInitiative[] = [
     title: "Rural Radio & IVRS Advisories",
     description:
       "Timely, localized advisories on weather, disease outbreaks and best practices in native dialects.",
-    image: "/patterns/training-fpo-shg.png",
+    image: "/patterns/awareness-radio-ivrs.png",
   },
 ];
 
