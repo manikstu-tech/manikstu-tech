@@ -11,6 +11,7 @@ vendor/
 .next/
 dist/
 build/
+*.tsbuildinfo
 
 # IDE
 .vscode/
