@@ -33,9 +33,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
             position: relative;
             overflow-x: hidden;
+            padding-bottom: 55px; /* sit the secure-access badge just above the fixed footer strip */
         }
 
         .bg-texture {
@@ -139,8 +140,11 @@
 
         .tribal-strip {
             height: 34px;
-            background-image: url('{{ asset("patterns/tribal-floral-border-strip.png") }}');
-            background-size: auto 100%;
+            /* seamless loop tile (840x68) cropped to 9 whole motif periods with matching
+               phase at both edges, so repeat-x has no gap and no cut motif.
+               420x34 preserves the aspect ratio (12.35) so motifs are not distorted */
+            background-image: url('{{ asset("patterns/tribal-floral-border-loop.png") }}');
+            background-size: 420px 34px;
             background-repeat: repeat-x;
             background-position: center;
             position: relative;
