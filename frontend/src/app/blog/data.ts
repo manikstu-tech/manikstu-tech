@@ -73,6 +73,15 @@ export const videos: VideoItem[] = [
     thumbnail: "/3.png",
     url: "#",
   },
+  {
+    id: "v4",
+    title: "Goat Care App — Field Walkthrough",
+    description: "How our field team uses the app to onboard farmers and log visits in real time.",
+    duration: "3:05",
+    date: "Feb 14, 2024",
+    thumbnail: "/4.png",
+    url: "#",
+  },
 ];
 
 export const articles: Article[] = [

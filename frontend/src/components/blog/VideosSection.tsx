@@ -37,7 +37,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {videos.map((video) => (
             <Link
               key={video.id}
