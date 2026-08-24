@@ -1,10 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, GraduationCap, Sprout, Users } from "lucide-react";
 
 export default function TrainingHero() {
   return (
     <section className="relative overflow-hidden bg-white">
-<div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
+      {/* Top-right mandala corner artwork */}
+      <Image
+        src="/patterns/mandala-top-right-corner.png"
+        alt=""
+        aria-hidden
+        width={504}
+        height={560}
+        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-44 sm:w-56 md:w-64 lg:w-80 opacity-70 sm:opacity-80"
+      />
+      <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left — copy */}
           <div>
