@@ -3,9 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Heart, Users, Target, Sprout, MapPin } from "lucide-react";
-import { SauraBorder, GodnaBorder, CulturalDivider } from "@/components/patterns";
-import PageHero from "@/components/layout/PageHero";
+import { ArrowRight, Heart, Users, Target, Sprout, MapPin, Compass } from "lucide-react";
 import { getPage } from "@/lib/api";
 import type { PageBlock } from "@/types";
 import Header from "@/components/layout/Header";
@@ -37,8 +35,8 @@ const fallbackTimeline = [
 
 const fallbackValues = [
   { icon: "Heart", title: "Community First", description: "We believe in farming with heart, nurturing both goats and farmers towards sustainable futures." },
-  { icon: "Target", title: "Quality", description: "We provide only the highest quality genetics, veterinary care, and farming practices for long-term success." },
-  { icon: "Users", title: "Sustainability", description: "Our practices protect the environment and create lasting economic value for rural communities." },
+  { icon: "Target", title: "Quality & Innovation", description: "We provide only the highest quality genetics, veterinary care, and farming practices for long-term success." },
+  { icon: "Users", title: "Sustainability & Inclusion", description: "Our practices protect the environment and create lasting economic value for rural communities." },
 ];
 
 export default function AboutPage() {
@@ -79,254 +77,490 @@ export default function AboutPage() {
     <>
       <Header />
       <main id="main-content" className="min-h-screen bg-white">
-      {/* Hero */}
-      <PageHero afterGrid={<SauraBorder className="absolute bottom-0 left-0 right-0" />}>
-            {/* Left — copy */}
-            <div>
-              <div className="flex items-center gap-2">
-                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
-                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                  About Us
-                </p>
-                <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
-                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-              </div>
+        {/* Hero */}
+        <section className="relative overflow-hidden bg-white">
+          {/* Top-right mandala corner artwork */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+          />
+          <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-12 md:px-8 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20">
+            <div className="grid items-center gap-12 lg:grid-cols-2">
+              {/* Left — copy */}
+              <div>
+                <div className="flex items-center gap-2">
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <span aria-hidden className="h-px w-10 bg-manikstu-gold/70" />
+                  <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                    About Us
+                  </p>
+                  <span aria-hidden className="h-px w-10 bg-manikstu-gold/70" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
 
-              <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
-                Farming with heart,
-                <br />
-                <span className="text-manikstu-green">
-                  rooted in community.
-                </span>
-              </h1>
-
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
-                Since 2015, Manikstu Agro has transformed goat farming through
-                sustainable practices, community partnerships and cutting-edge
-                technology — in the heart of Kalahandi, Odisha.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/collaborate"
-                  className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
-                >
-                  Join Our Mission <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="#timeline"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
-                >
-                  Our Journey
-                </Link>
-              </div>
-
-              {/* Micro-statement */}
-              <div className="mt-8 flex items-center gap-2.5">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-manikstu-green/10">
-                  <Heart className="h-3.5 w-3.5 text-manikstu-green" />
-                </span>
-                <p className="text-sm text-grey">
-                  Nurturing goats, farmers and futures — together
-                </p>
-              </div>
-            </div>
-
-            {/* Right — visual panel */}
-            <div className="relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
-                {/* Growth / roots line-art illustration */}
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 480 360"
-                  className="pointer-events-none absolute inset-0 h-full w-full"
-                  fill="none"
-                  stroke="#4A8C3F"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  {/* Ground line */}
-                  <path d="M40 250 H440" opacity="0.35" />
-                  {/* Sun */}
-                  <circle cx="380" cy="90" r="26" fill="#C4952A" fillOpacity="0.4" stroke="none" />
-                  <circle cx="380" cy="90" r="26" opacity="0.4" />
-                  {/* Central growing stem */}
-                  <path d="M240 250 V150" />
-                  {/* Heart-shaped canopy */}
-                  <path d="M240 150 C210 110 160 120 165 165 C168 200 220 215 240 235 C260 215 312 200 315 165 C320 120 270 110 240 150 Z" fill="#4A8C3F" fillOpacity="0.10" />
-                  {/* Leaves on stem */}
-                  <path d="M240 205 C218 200 202 185 202 165 C224 170 240 185 240 205 Z" />
-                  <path d="M240 190 C262 185 278 170 278 150 C256 155 240 170 240 190 Z" fill="#4A8C3F" fillOpacity="0.12" />
-                  {/* Roots below ground */}
-                  <path d="M240 250 C220 275 200 285 180 305" opacity="0.5" strokeDasharray="4 6" />
-                  <path d="M240 250 C260 275 280 285 300 305" opacity="0.5" strokeDasharray="4 6" />
-                  <path d="M240 250 V300" opacity="0.5" strokeDasharray="4 6" />
-                  {/* Rolling hills */}
-                  <path d="M40 250 C110 220 160 235 220 250" opacity="0.3" />
-                  <path d="M260 250 C320 232 380 240 440 250" opacity="0.3" />
-                  {/* Small accent leaves */}
-                  <path d="M95 175 C105 160 125 155 135 165 C125 180 105 185 95 175 Z" fill="#4A8C3F" fillOpacity="0.15" />
-                  <path d="M348 200 C358 185 378 180 388 190 C378 205 358 210 348 200 Z" fill="#C4952A" fillOpacity="0.2" />
-                </svg>
-
-                {/* Corner accent */}
-                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
-                  <MapPin className="h-4 w-4 text-manikstu-green" />
-                  <span className="text-xs font-semibold text-charcoal">
-                    Rooted in Kalahandi, Odisha
+                <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal sm:text-5xl lg:text-6xl">
+                  Farming with heart,
+                  <br />
+                  <span className="text-manikstu-green">
+                    rooted in community.
                   </span>
-                </div>
-              </div>
+                </h1>
 
-              {/* Small floating badge */}
-              <div className="absolute -bottom-4 -right-2 hidden h-14 w-14 items-center justify-center rounded-full bg-manikstu-green shadow-md md:flex">
-                <Sprout className="h-6 w-6 text-white" />
-              </div>
-            </div>
-      </PageHero>
-
-      {/* Vision & Mission */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-charcoal">Our Purpose</h2>
-              <CulturalDivider className="mx-auto" />
-            </div>
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cream rounded-full -translate-y-16 translate-x-16" />
-                {/* Mandala corner artwork */}
-                <Image
-                  src="/patterns/vision-mandala-corner.png"
-                  alt=""
-                  aria-hidden
-                  width={640}
-                  height={660}
-                  className="pointer-events-none select-none absolute bottom-0 right-0 h-auto w-40 sm:w-48 md:w-56 opacity-[0.15]"
-                />
-                <div className="relative z-10">
-                  <Target className="w-12 h-12 text-green-700 mb-6" />
-                  <h3 className="text-2xl font-bold mb-4 text-charcoal">Our Vision</h3>
-                  {vision.map((p: string, i: number) => (
-                    <p key={i} className="text-gray-600 leading-relaxed mb-4">{p}</p>
-                  ))}
-                  <GodnaBorder className="mt-6" />
-                </div>
-              </div>
-              <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cream rounded-full -translate-y-16 translate-x-16" />
-                {/* Mandala corner artwork */}
-                <Image
-                  src="/patterns/mission-mandala-corner.png"
-                  alt=""
-                  aria-hidden
-                  width={640}
-                  height={660}
-                  className="pointer-events-none select-none absolute bottom-0 right-0 h-auto w-40 sm:w-48 md:w-56 opacity-[0.15]"
-                />
-                <div className="relative z-10">
-                  <Heart className="w-12 h-12 text-green-700 mb-6" />
-                  <h3 className="text-2xl font-bold mb-4 text-charcoal">Our Mission</h3>
-                  {mission.map((p: string, i: number) => (
-                    <p key={i} className="text-gray-600 leading-relaxed mb-4">{p}</p>
-                  ))}
-                  <CulturalDivider className="mt-6" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section id="timeline" className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-charcoal">Our Journey</h2>
-            <CulturalDivider className="mx-auto mb-12" />
-            <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-green-200" />
-              <div className="space-y-12">
-                {timeline.map((item: any, i: number) => (
-                  <div key={item.year} className="relative flex items-center">
-                    {i % 2 === 0 ? (
-                      <>
-                        <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-700 rounded-full border-4 border-white" />
-                        <div className="w-1/2 pr-8 text-right">
-                          <div className="bg-cream rounded-lg p-6 shadow-md">
-                            <h3 className="text-xl font-bold text-green-700 mb-2">{item.year}</h3>
-                            <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
-                            <p className="text-gray-600">{item.description}</p>
-                          </div>
-                        </div>
-                        <div className="w-1/2" />
-                      </>
-                    ) : (
-                      <>
-                        <div className="w-1/2" />
-                        <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-700 rounded-full border-4 border-white" />
-                        <div className="w-1/2 pl-8">
-                          <div className="bg-cream rounded-lg p-6 shadow-md">
-                            <h3 className="text-xl font-bold text-green-700 mb-2">{item.year}</h3>
-                            <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
-                            <p className="text-gray-600">{item.description}</p>
-                          </div>
-                        </div>
-                      </>
-                    )}
+                {/* Ornamental Divider with Framed Diamond */}
+                <div className="mt-4 flex items-center gap-2">
+                  <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                  <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                  <div aria-hidden className="relative flex items-center justify-center">
+                    <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                    <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   </div>
-                ))}
+                  <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                  <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                </div>
+
+                <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+                  Since 2015, Manikstu Agro has transformed goat farming through
+                  sustainable practices, community partnerships and cutting-edge
+                  technology — in the heart of Kalahandi, Odisha.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/collaborate"
+                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
+                  >
+                    Join Our Mission <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="#timeline"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-white px-6 py-3 text-sm font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2"
+                  >
+                    Our Journey
+                  </Link>
+                </div>
+
+                {/* Micro-statement */}
+                <div className="mt-8 flex items-center gap-2.5">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-manikstu-green/10">
+                    <Heart className="h-3.5 w-3.5 text-manikstu-green" />
+                  </span>
+                  <p className="text-sm text-grey font-medium">
+                    Nurturing goats, farmers and futures — together
+                  </p>
+                </div>
+              </div>
+
+              {/* Right — visual panel */}
+              <div className="relative">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream shadow-md">
+                  {/* Inner dashed border */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-3 rounded-xl border border-dashed border-saura-red/40 z-10"
+                  />
+
+                  {/* Growth / roots line-art illustration */}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 480 360"
+                    className="pointer-events-none absolute inset-0 h-full w-full z-0"
+                    fill="none"
+                    stroke="#4A8C3F"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M40 250 H440" opacity="0.35" />
+                    <circle cx="380" cy="90" r="26" fill="#C4952A" fillOpacity="0.4" stroke="none" />
+                    <circle cx="380" cy="90" r="26" opacity="0.4" />
+                    <path d="M240 250 V150" />
+                    <path d="M240 150 C210 110 160 120 165 165 C168 200 220 215 240 235 C260 215 312 200 315 165 C320 120 270 110 240 150 Z" fill="#4A8C3F" fillOpacity="0.10" />
+                    <path d="M240 205 C218 200 202 185 202 165 C224 170 240 185 240 205 Z" />
+                    <path d="M240 190 C262 185 278 170 278 150 C256 155 240 170 240 190 Z" fill="#4A8C3F" fillOpacity="0.12" />
+                    <path d="M240 250 C220 275 200 285 180 305" opacity="0.5" strokeDasharray="4 6" />
+                    <path d="M240 250 C260 275 280 285 300 305" opacity="0.5" strokeDasharray="4 6" />
+                    <path d="M240 250 V300" opacity="0.5" strokeDasharray="4 6" />
+                    <path d="M40 250 C110 220 160 235 220 250" opacity="0.3" />
+                    <path d="M260 250 C320 232 380 240 440 250" opacity="0.3" />
+                  </svg>
+
+                  {/* Corner accent */}
+                  <div className="absolute bottom-5 left-5 z-20 flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 shadow-sm border border-manikstu-cream">
+                    <MapPin className="h-4 w-4 text-manikstu-green" />
+                    <span className="text-xs font-bold text-charcoal">
+                      Rooted in Kalahandi, Odisha
+                    </span>
+                  </div>
+                </div>
+
+                {/* Floating badge */}
+                <div className="absolute -bottom-4 -right-2 hidden h-16 w-16 items-center justify-center rounded-full bg-manikstu-green shadow-lg ring-4 ring-white md:flex z-30">
+                  <Sprout className="h-7 w-7 text-white" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Values */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-charcoal">Our Core Values</h2>
-            <CulturalDivider className="mx-auto mb-12" />
+        {/* Vision & Mission (Collaborate Style) */}
+        <section className="relative section-padding bg-manikstu-cream overflow-hidden">
+          {/* Top tribal floral border */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-8 bg-repeat-x -scale-y-100 opacity-60"
+            style={{
+              backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
+              backgroundSize: "auto 100%",
+            }}
+          />
+          {/* Top-left mandala corner */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18]"
+          />
+          {/* Top-right mandala corner (mirrored) */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+          />
+
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              {/* Ornamental pill heading */}
+              <div className="flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                  Our Purpose
+                </p>
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+              </div>
+
+              <h2 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                Guided by <span className="text-manikstu-green">Vision & Mission</span>
+              </h2>
+
+              {/* Ornamental Divider with Framed Diamond */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <div aria-hidden className="relative flex items-center justify-center">
+                  <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                  <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Vision Card */}
+              <div className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+                {/* Inner dashed border */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                />
+
+                <div className="relative z-10">
+                  {/* Dashed-ring icon badge */}
+                  <div className="relative mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                    <Target className="h-7 w-7 text-manikstu-green" />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                    />
+                  </div>
+
+                  <h3 className="font-heading text-2xl italic font-bold text-manikstu-leaf">
+                    Our Vision
+                  </h3>
+
+                  {/* Line-diamond-line ornament */}
+                  <div className="mt-3 mb-5 flex items-center gap-1.5">
+                    <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
+                  </div>
+
+                  {vision.map((p: string, i: number) => (
+                    <p key={i} className="text-grey leading-relaxed mb-4 text-sm sm:text-base">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mission Card */}
+              <div className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+                {/* Inner dashed border */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                />
+
+                <div className="relative z-10">
+                  {/* Dashed-ring icon badge */}
+                  <div className="relative mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                    <Heart className="h-7 w-7 text-manikstu-green" />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                    />
+                  </div>
+
+                  <h3 className="font-heading text-2xl italic font-bold text-manikstu-leaf">
+                    Our Mission
+                  </h3>
+
+                  {/* Line-diamond-line ornament */}
+                  <div className="mt-3 mb-5 flex items-center gap-1.5">
+                    <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
+                  </div>
+
+                  {mission.map((p: string, i: number) => (
+                    <p key={i} className="text-grey leading-relaxed mb-4 text-sm sm:text-base">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Timeline (Journey) */}
+        <section id="timeline" className="relative section-padding bg-white overflow-hidden">
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                  Our Milestones
+                </p>
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+              </div>
+
+              <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                A Decade of <span className="text-manikstu-green">Growth & Impact</span>
+              </h2>
+
+              {/* Ornamental Divider with Framed Diamond */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <div aria-hidden className="relative flex items-center justify-center">
+                  <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                  <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {timeline.map((item: any) => (
+                <div
+                  key={item.year}
+                  className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/40 p-6 transition-all hover:shadow-lg hover:border-saura-red flex flex-col justify-between"
+                >
+                  {/* Inner dashed border */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                  />
+
+                  <div className="relative z-10 text-center">
+                    <span className="inline-block rounded-full bg-manikstu-green/10 px-4 py-1 font-heading text-lg font-bold text-manikstu-green ring-1 ring-manikstu-green/30 mb-4">
+                      {item.year}
+                    </span>
+
+                    <h3 className="font-heading text-base italic font-bold text-charcoal group-hover:text-manikstu-green transition-colors">
+                      {item.title}
+                    </h3>
+
+                    {/* Line-diamond-line ornament */}
+                    <div className="mt-2.5 mb-3 flex items-center justify-center gap-1.5">
+                      <span aria-hidden className="h-px w-5 bg-manikstu-gold" />
+                      <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                      <span aria-hidden className="h-px w-5 bg-manikstu-gold" />
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-grey leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Values (Collaborate Style) */}
+        <section className="relative section-padding bg-manikstu-cream overflow-hidden">
+          {/* Bottom-left tree + goat silhouette */}
+          <Image
+            src="/patterns/training-bottom-left.png"
+            alt=""
+            aria-hidden
+            width={1536}
+            height={1024}
+            className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-80 sm:opacity-90 z-0"
+          />
+          {/* Bottom-right woman + hut + tree silhouette */}
+          <Image
+            src="/patterns/training-bottom-right.png"
+            alt=""
+            aria-hidden
+            width={1802}
+            height={900}
+            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-80 sm:opacity-90 z-0"
+          />
+
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                  What Drives Us
+                </p>
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+              </div>
+
+              <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                Our Core <span className="text-manikstu-green">Values</span>
+              </h2>
+
+              {/* Ornamental Divider with Framed Diamond */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <div aria-hidden className="relative flex items-center justify-center">
+                  <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                  <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              </div>
+            </div>
+
             <div className="grid md:grid-cols-3 gap-8">
               {values.map((v: any) => {
                 const Icon = iconMap[v.icon] || Heart;
                 return (
-                  <div key={v.title} className="text-center">
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Icon className="w-10 h-10 text-green-700" />
+                  <div
+                    key={v.title}
+                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 p-6 sm:p-8 text-center transition-all hover:shadow-xl"
+                  >
+                    {/* Inner dashed border */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                    />
+
+                    <div className="relative z-10">
+                      {/* Dashed-ring icon badge */}
+                      <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20 mb-6">
+                        <Icon className="h-7 w-7 text-manikstu-green" />
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                        />
+                      </div>
+
+                      <h3 className="font-heading text-xl italic font-bold text-manikstu-leaf">
+                        {v.title}
+                      </h3>
+
+                      {/* Line-diamond-line ornament */}
+                      <div className="mt-3 mb-4 flex items-center justify-center gap-1.5">
+                        <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
+                        <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                        <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
+                      </div>
+
+                      <p className="text-sm text-grey leading-relaxed">
+                        {v.description}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-semibold mb-4">{v.title}</h3>
-                    <p className="text-gray-600">{v.description}</p>
                   </div>
                 );
               })}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-cream border border-manikstu-gold/20 rounded-2xl p-12 text-center relative overflow-hidden shadow-md">
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">Ready to Transform Your Farm?</h2>
-                <p className="text-gray-600 mb-8 text-lg">Join thousands of farmers who are already benefiting from our goat farming ecosystem.</p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="#contact" className="bg-green-700 text-white hover:bg-green-800 px-8 py-3 rounded-md font-medium transition-colors">Get in Touch</Link>
-                  <Link href="/services" className="border border-green-700 text-green-700 hover:bg-green-50 px-8 py-3 rounded-md font-medium transition-colors">Our Services</Link>
+        {/* CTA (Collaborate Style) */}
+        <section className="section-padding bg-white">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <div className="group relative overflow-hidden rounded-3xl border-2 border-saura-red/50 bg-manikstu-cream p-8 sm:p-12 md:p-16 text-center shadow-lg">
+              {/* Inner dashed border */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-3 rounded-2xl border border-dashed border-saura-red/40"
+              />
+
+              <div className="relative z-10 mx-auto max-w-2xl">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20 mb-6">
+                  <Compass className="h-8 w-8 text-manikstu-green" />
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                  />
+                </div>
+
+                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal">
+                  Ready to Transform Your Farm?
+                </h2>
+
+                {/* Line-diamond-line ornament */}
+                <div className="mt-4 mb-6 flex items-center justify-center gap-2">
+                  <span aria-hidden className="h-px w-12 bg-manikstu-gold" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <span aria-hidden className="h-px w-12 bg-manikstu-gold" />
+                </div>
+
+                <p className="text-grey text-base sm:text-lg mb-8 leading-relaxed">
+                  Join thousands of farmers who are already benefiting from our goat farming ecosystem.
+                </p>
+
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <Link
+                    href="/collaborate"
+                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf shadow-sm"
+                  >
+                    Get in Touch <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/training"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-white px-8 py-3.5 text-sm font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white shadow-sm"
+                  >
+                    Our Programs
+                  </Link>
                 </div>
               </div>
-              <SauraBorder className="absolute bottom-0 left-0 right-0" />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
       </main>
       <Footer />
     </>

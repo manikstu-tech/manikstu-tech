@@ -329,8 +329,54 @@ export default function HomePage() {
         </PageHero>
 
         {/* Mission */}
-        <section className="section-padding bg-white">
-          <div className="mx-auto max-w-7xl">
+        <section className="relative section-padding bg-manikstu-cream overflow-hidden dark:bg-gray-900">
+          {/* Top tribal floral border */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-8 bg-repeat-x -scale-y-100 opacity-60"
+            style={{
+              backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
+              backgroundSize: "auto 100%",
+            }}
+          />
+          {/* Top-left mandala corner */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18]"
+          />
+          {/* Top-right mandala corner (mirrored) */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+          />
+          {/* Bottom-left tree + goat silhouette */}
+          <Image
+            src="/patterns/training-bottom-left.png"
+            alt=""
+            aria-hidden
+            width={1536}
+            height={1024}
+            className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-80 sm:opacity-90 z-0"
+          />
+          {/* Bottom-right woman + hut + tree silhouette */}
+          <Image
+            src="/patterns/training-bottom-right.png"
+            alt=""
+            aria-hidden
+            width={1802}
+            height={900}
+            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-80 sm:opacity-90 z-0"
+          />
+
+          <div className="relative z-10 mx-auto max-w-7xl">
             {/* Ornamental pill heading */}
             <div className="flex items-center justify-center gap-2">
               <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
@@ -342,7 +388,7 @@ export default function HomePage() {
               <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             </div>
 
-            <h2 className="mx-auto mt-6 max-w-4xl text-center font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+            <h2 className="mx-auto mt-6 max-w-4xl text-center font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
               Worldwide, fostering a{" "}
               <span className="text-manikstu-green">prosperous</span> and{" "}
               <span className="text-manikstu-green">sustainable agricultural future.</span>
@@ -360,51 +406,66 @@ export default function HomePage() {
               <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
             </div>
 
-            <p className="mx-auto mt-6 max-w-2xl text-center text-grey leading-relaxed">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-grey leading-relaxed dark:text-gray-300">
               Since 2015, we have been empowering India&apos;s goat farmers with modern
               practices, financial support and innovative solutions.
             </p>
+
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {missionCards.map((card, i) => {
                 const Icon = card.icon;
                 return (
                   <div
                     key={card.title}
-                    className="group relative overflow-hidden rounded-2xl border border-light-grey bg-white pt-10 pb-32 px-6 shadow-sm hover:shadow-md transition-shadow min-h-[400px] flex flex-col"
+                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 dark:bg-gray-800/90 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
                   >
+                    {/* Inner dashed border */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                    />
+
                     {/* Bottom Warli village art */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-no-repeat bg-bottom opacity-90"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-85 z-0"
                       style={
                         card.image
                           ? {
-                            backgroundImage: `url('${card.image}')`,
-                            backgroundSize: "100% auto",
-                            backgroundPosition: "bottom center",
-                          }
+                              backgroundImage: `url('${card.image}')`,
+                              backgroundSize: "100% auto",
+                              backgroundPosition: "bottom center",
+                            }
                           : {
-                            backgroundImage: "url('/patterns/village-figures.png')",
-                            backgroundSize: "400% auto",
-                            backgroundPosition: `${(i * 33) % 100}% bottom`,
-                          }
+                              backgroundImage: "url('/patterns/village-figures.png')",
+                              backgroundSize: "400% auto",
+                              backgroundPosition: `${(i * 33) % 100}% bottom`,
+                            }
                       }
                     />
-                    <div className="relative text-center">
-                      {/* Circular icon */}
-                      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+
+                    <div className="relative z-10 text-center">
+                      {/* Icon with dashed decorative ring */}
+                      <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                         <Icon className="h-7 w-7 text-manikstu-green" />
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                        />
                       </div>
-                      {/* Ornamental line-diamond-line */}
-                      <div className="mt-5 flex items-center justify-center gap-2">
-                        <span aria-hidden className="h-px w-8 bg-manikstu-gold/60" />
-                        <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                        <span aria-hidden className="h-px w-8 bg-manikstu-gold/60" />
-                      </div>
-                      <h3 className="mt-4 text-base font-bold text-charcoal">
+
+                      <h3 className="mt-6 font-heading text-lg italic font-bold leading-snug text-manikstu-leaf dark:text-white group-hover:text-manikstu-green transition-colors">
                         {card.title}
                       </h3>
-                      <p className="mt-3 text-sm text-grey leading-relaxed">
+
+                      {/* Line-diamond-line ornament */}
+                      <div className="mt-3 flex items-center justify-center gap-1.5">
+                        <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
+                        <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                        <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
+                      </div>
+
+                      <p className="mt-3 text-sm text-grey leading-relaxed dark:text-gray-300">
                         {card.description}
                       </p>
                     </div>
