@@ -29,6 +29,7 @@ const programs: TrainingProgram[] = [
     title: "FPO & SHG Capacity Building",
     description:
       "Strengthening Farmer Producer Organizations and self-help groups with governance, aggregation and collective marketing.",
+    image: "/patterns/training-fpo-shg.png",
   },
   {
     icon: Stethoscope,
