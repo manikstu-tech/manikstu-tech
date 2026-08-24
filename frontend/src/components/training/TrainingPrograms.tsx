@@ -57,6 +57,7 @@ const programs: TrainingProgram[] = [
     title: "Goat Bank & Livelihood Training",
     description:
       "Training on our Goat Bank model that builds assets, diversifies income and de-risks rural livelihoods.",
+    image: "/patterns/training-farmer-field.png",
   },
 ];
 
