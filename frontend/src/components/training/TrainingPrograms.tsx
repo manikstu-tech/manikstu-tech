@@ -183,8 +183,12 @@ export default function TrainingPrograms() {
                     {program.title}
                   </h3>
 
-                  {/* Gold underline */}
-                  <div className="mx-auto mt-3 h-0.5 w-10 rounded bg-manikstu-gold" />
+                  {/* Line-diamond-line ornament */}
+                  <div className="mt-3 flex items-center justify-center gap-1.5">
+                    <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
+                  </div>
 
                   <p className="mt-4 text-sm leading-relaxed text-grey">
                     {program.description}
