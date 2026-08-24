@@ -13,6 +13,7 @@ class OrderController extends Controller
         $orders = Order::with('customer')
             ->when($request->status, fn($q, $s) => $q->where('status', $s))
             ->when($request->search, fn($q, $s) => $q->where('order_number', 'like', "%{$s}%"))
+            ->when($request->date, fn($q, $d) => $q->whereDate('created_at', $d))
             ->latest()
             ->paginate(15)
             ->withQueryString();
