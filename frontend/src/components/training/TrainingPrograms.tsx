@@ -100,6 +100,15 @@ export default function TrainingPrograms() {
         height={1024}
         className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.12] sm:opacity-[0.16]"
       />
+      {/* Bottom-right woman + hut + tree silhouette */}
+      <Image
+        src="/patterns/training-bottom-right.png"
+        alt=""
+        aria-hidden
+        width={1802}
+        height={900}
+        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.12] sm:opacity-[0.16]"
+      />
       <div className="relative mx-auto max-w-6xl">
         <div className="text-center">
           {/* Ornamental pill heading */}
