@@ -78,6 +78,8 @@
   - Implemented continuous, smooth infinite horizontal scrolling marquee tracks with pause-on-hover (`.animate-marquee` and `.animate-marquee-reverse` in `globals.css`).
   - Retained the exact same partner card design: white rounded card with `border-b-[3px] border-b-saura-red/80`, dark mode support, and partner logos.
   - Features gradient edge fades on left and right for seamless entrance/exit.
+- **Latest @ Manikstu Section (`page.tsx`)**: 4-card news & media grid with category badges (`FEATURED`, `EVENT`, `PRESS`, `MEDIA`), dates, titles, and "Read More" links, framed with top-right corner mandala and bottom-left crop mandala.
+- **What Farmers Say Testimonials Section (`page.tsx`)**: Responsive testimonial carousel slider with rating stars, feedback quotes, and farmer profiles.
 ### 4. Media & Stories Page (`frontend/src/app/blog/page.tsx`)
 - **MediaHero (`MediaHero.tsx`)**:
   - Redesigned to match the split-grid layout of Collaborate and Training heroes with compact bottom padding (`pt-10 pb-6 sm:pt-12 sm:pb-8 md:pt-14 md:pb-10 lg:pt-16 lg:pb-10`).
