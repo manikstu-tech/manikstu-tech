@@ -88,6 +88,7 @@
 - **Standard Framed Double-Diamond Dividers**:
   - **Moments from the Field (`GallerySection.tsx`)**: Standardized framed double-diamond divider under section heading.
   - **Stories in Motion (`VideosSection.tsx`)**: Standardized framed double-diamond divider under section heading.
+  - **Latest Press & News (`blog/page.tsx`)**: Standardized framed double-diamond divider under section heading.
 ### 5. Careers Page (`frontend/src/app/careers/page.tsx`)
 - **CareersHero (`CareersHero.tsx`)**:
   - Redesigned with top-right corner mandala artwork (`mandala-top-right-corner.png`), gold diamond pill badge (`— ◆ CAREERS AT MANIKSTU ◆ —`), two-tone Playfair serif typography (`Build Your Career. Grow Rural India.`), micro-statement with green leaf badge, and framed visual line-art panel with corner badge (`Purpose-driven work`) and floating badge (`Users`).
