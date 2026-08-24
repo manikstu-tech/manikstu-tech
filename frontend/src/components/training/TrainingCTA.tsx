@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, GraduationCap, Handshake, Sprout, Users } from "lucide-react";
+import { ArrowRight, GraduationCap, Handshake, Sprout, Users, type LucideIcon } from "lucide-react";
 
-const pillars = [
+export interface Pillar {
+  icon: LucideIcon;
+  line1: string;
+  line2: string;
+}
+
+const fallbackPillars: Pillar[] = [
   {
     icon: Users,
     line1: "Empowering",
@@ -25,7 +31,8 @@ const pillars = [
   },
 ];
 
-export default function TrainingCTA() {
+export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar[] }) {
+  const pillars = propPillars?.length ? propPillars : fallbackPillars;
   return (
     <section
       id="get-involved"

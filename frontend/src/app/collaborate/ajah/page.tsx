@@ -7,13 +7,32 @@ import AjahHero from "@/components/collaborate/AjahHero";
 import AjahPillars from "@/components/collaborate/AjahPillars";
 import AjahCTA from "@/components/collaborate/AjahCTA";
 import { getPage } from "@/lib/api";
+import {
+  Sprout, Warehouse, HeartPulse, GraduationCap, ShieldCheck, ShoppingBag,
+} from "lucide-react";
+
+const iconMap: Record<string, any> = {
+  Sprout, Warehouse, HeartPulse, GraduationCap, ShieldCheck, ShoppingBag,
+};
+
+function parseContent(block: any): any {
+  if (!block?.content) return null;
+  try { return JSON.parse(block.content); } catch { return null; }
+}
 
 export default function AjahPage() {
-  const [blocks, setBlocks] = useState<any[]>([]);
+  const [pillars, setPillars] = useState<any[]>([]);
 
   useEffect(() => {
     getPage("ajah")
-      .then((res) => setBlocks(res.data.blocks))
+      .then((res) => {
+        const blocks = res.data.blocks;
+        const pillarsBlock = blocks.find((b: any) => b.title === 'AJAH Pillars');
+        if (pillarsBlock) {
+          const content = parseContent(pillarsBlock);
+          if (content) setPillars(content.map((p: any) => ({ ...p, icon: iconMap[p.icon] || Sprout })));
+        }
+      })
       .catch(() => {});
   }, []);
 
@@ -22,7 +41,7 @@ export default function AjahPage() {
       <Header />
       <main id="main-content">
         <AjahHero />
-        <AjahPillars />
+        <AjahPillars pillars={pillars} />
         <AjahCTA />
       </main>
       <Footer />

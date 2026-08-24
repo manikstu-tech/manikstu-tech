@@ -20,7 +20,7 @@ export const getBlogCategories = () => apiFetch<ApiResponse<BlogCategory[]>>('/b
 
 // Products
 // Job Openings
-export const getJobOpenings = () => apiFetch<ApiResponse<any[]>>('/job-openings');
+export const getJobOpenings = () => apiFetch<ApiResponse<any[]>>('/careers');
 
 // Products
 export const getProducts = async (page = 1, limit = 10) => {

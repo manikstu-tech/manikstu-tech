@@ -1,13 +1,13 @@
 import { ClipboardList, Compass, Rocket, TrendingUp, type LucideIcon } from "lucide-react";
 
-interface StepItem {
+export interface StepItem {
   step: string;
   title: string;
   description: string;
   icon: LucideIcon;
 }
 
-const steps: StepItem[] = [
+const fallbackSteps: StepItem[] = [
   {
     step: "01",
     title: "Discover",
@@ -38,7 +38,8 @@ const steps: StepItem[] = [
   },
 ];
 
-export default function HowItWorks() {
+export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] }) {
+  const steps = propSteps?.length ? propSteps : fallbackSteps;
   return (
     <section className="section-padding bg-white">
       <div className="mx-auto max-w-6xl">

@@ -15,7 +15,7 @@ export interface PartnerType {
   description: string;
 }
 
-const partners: PartnerType[] = [
+const fallbackPartners: PartnerType[] = [
   {
     icon: Users,
     title: "FPOs & SHGs",
@@ -54,7 +54,8 @@ const partners: PartnerType[] = [
   },
 ];
 
-export default function PartnerTypes() {
+export default function PartnerTypes({ partners: propPartners }: { partners?: PartnerType[] }) {
+  const partners = propPartners?.length ? propPartners : fallbackPartners;
   return (
     <section className="relative section-padding bg-manikstu-cream overflow-hidden">
       {/* Top tribal-floral border */}

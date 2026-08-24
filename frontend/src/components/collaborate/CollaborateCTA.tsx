@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, Handshake, MapPin, Sprout } from "lucide-react";
+import { ArrowRight, Building2, Handshake, MapPin, Sprout, type LucideIcon } from "lucide-react";
 
-const pillars = [
+export interface Pillar {
+  icon: LucideIcon;
+  line1: string;
+  line2: string;
+}
+
+const fallbackPillars: Pillar[] = [
   {
     icon: Building2,
     line1: "Institutional",
@@ -25,7 +31,8 @@ const pillars = [
   },
 ];
 
-export default function CollaborateCTA() {
+export default function CollaborateCTA({ pillars: propPillars }: { pillars?: Pillar[] }) {
+  const pillars = propPillars?.length ? propPillars : fallbackPillars;
   return (
     <section
       id="get-involved"

@@ -17,7 +17,7 @@ export interface TrainingProgram {
   imageScale?: string;
 }
 
-const programs: TrainingProgram[] = [
+const fallbackPrograms: TrainingProgram[] = [
   {
     icon: GraduationCap,
     title: "Farmer Field Training",
@@ -63,7 +63,8 @@ const programs: TrainingProgram[] = [
   },
 ];
 
-export default function TrainingPrograms() {
+export default function TrainingPrograms({ programs: propPrograms }: { programs?: TrainingProgram[] }) {
+  const programs = propPrograms?.length ? propPrograms : fallbackPrograms;
   return (
     <section id="programs" className="relative section-padding bg-manikstu-cream overflow-hidden">
       {/* Top tribal-floral border */}

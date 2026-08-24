@@ -8,7 +8,7 @@ export interface AwarenessInitiative {
   imageScale?: string;
 }
 
-const initiatives: AwarenessInitiative[] = [
+const fallbackInitiatives: AwarenessInitiative[] = [
   {
     icon: Megaphone,
     title: "Community Awareness Drives",
@@ -39,7 +39,8 @@ const initiatives: AwarenessInitiative[] = [
   },
 ];
 
-export default function AwarenessInitiatives() {
+export default function AwarenessInitiatives({ initiatives: propInitiatives }: { initiatives?: AwarenessInitiative[] }) {
+  const initiatives = propInitiatives?.length ? propInitiatives : fallbackInitiatives;
   return (
     <section className="section-padding bg-white">
       <div className="mx-auto max-w-6xl">

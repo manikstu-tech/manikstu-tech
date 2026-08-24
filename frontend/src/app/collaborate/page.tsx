@@ -9,6 +9,17 @@ import PartnerTypes from "@/components/collaborate/PartnerTypes";
 import HowItWorks from "@/components/collaborate/HowItWorks";
 import CollaborateImpact from "@/components/collaborate/CollaborateImpact";
 import CollaborateCTA from "@/components/collaborate/CollaborateCTA";
+import {
+  Users, Building2, HeartHandshake, Landmark, Truck, Banknote,
+  Compass, ClipboardList, Rocket, TrendingUp,
+  MapPin, Shield, Handshake, Sprout,
+} from "lucide-react";
+
+const iconMap: Record<string, any> = {
+  Users, Building2, HeartHandshake, Landmark, Truck, Banknote,
+  Compass, ClipboardList, Rocket, TrendingUp,
+  MapPin, Shield, Handshake, Sprout,
+};
 
 function parseContent(block: any): any {
   if (!block?.content) return null;
@@ -44,6 +55,10 @@ const fallbackCTAPillars = [
   { icon: "Handshake", line1: "Shared", line2: "Governance" },
   { icon: "Sprout", line1: "Sustainable", line2: "Value" },
 ];
+
+function mapIcons<T extends { icon: string }>(items: T[]): (T & { icon: any })[] {
+  return items.map((item) => ({ ...item, icon: iconMap[item.icon] || Users }));
+}
 
 export default function CollaboratePage() {
   const [partnerTypes, setPartnerTypes] = useState(fallbackPartnerTypes);
@@ -84,10 +99,10 @@ export default function CollaboratePage() {
       <Header />
       <main id="main-content">
         <CollaborateHero />
-        <PartnerTypes />
-        <HowItWorks />
-        <CollaborateImpact />
-        <CollaborateCTA />
+        <PartnerTypes partners={mapIcons(partnerTypes)} />
+        <HowItWorks steps={mapIcons(steps)} />
+        <CollaborateImpact stats={mapIcons(stats)} />
+        <CollaborateCTA pillars={mapIcons(ctaPillars)} />
       </main>
       <Footer />
     </>

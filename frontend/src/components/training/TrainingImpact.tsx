@@ -1,7 +1,13 @@
 import Image from "next/image";
-import { GraduationCap, MapPin, Shield, Sprout } from "lucide-react";
+import { GraduationCap, MapPin, Shield, Sprout, type LucideIcon } from "lucide-react";
 
-const stats = [
+export interface Stat {
+  value: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+const fallbackStats: Stat[] = [
   {
     value: "10,000+",
     label: "Farmers Trained",
@@ -24,7 +30,8 @@ const stats = [
   },
 ];
 
-export default function TrainingImpact() {
+export default function TrainingImpact({ stats: propStats }: { stats?: Stat[] }) {
+  const stats = propStats?.length ? propStats : fallbackStats;
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#23581D] via-manikstu-green to-[#1F4E1A] py-12 text-white md:py-16">
       {/* Top tribal floral border — white line art */}

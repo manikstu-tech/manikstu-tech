@@ -14,7 +14,7 @@ export interface AjahPillar {
   description: string;
 }
 
-const pillars: AjahPillar[] = [
+const fallbackPillars: AjahPillar[] = [
   {
     icon: Sprout,
     title: "Scientific Livestock Management",
@@ -53,7 +53,8 @@ const pillars: AjahPillar[] = [
   },
 ];
 
-export default function AjahPillars() {
+export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPillar[] }) {
+  const pillars = propPillars?.length ? propPillars : fallbackPillars;
   return (
     <section className="section-padding bg-manikstu-cream">
       <div className="mx-auto max-w-6xl">

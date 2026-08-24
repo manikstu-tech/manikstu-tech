@@ -1,7 +1,13 @@
 import Image from "next/image";
-import { Building2, MapPin, Shield, Users } from "lucide-react";
+import { Building2, MapPin, Shield, Users, type LucideIcon } from "lucide-react";
 
-const stats = [
+export interface Stat {
+  value: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+const fallbackStats: Stat[] = [
   {
     value: "50+",
     label: "Partner Organizations",
@@ -24,7 +30,8 @@ const stats = [
   },
 ];
 
-export default function CollaborateImpact() {
+export default function CollaborateImpact({ stats: propStats }: { stats?: Stat[] }) {
+  const stats = propStats?.length ? propStats : fallbackStats;
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#23581D] via-manikstu-green to-[#1F4E1A] py-12 text-white md:py-16">
       {/* Top tribal floral border — white line art */}
