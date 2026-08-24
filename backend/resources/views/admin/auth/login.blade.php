@@ -36,7 +36,7 @@
             justify-content: flex-end;
             position: relative;
             overflow-x: hidden;
-            padding-bottom: 55px; /* sit the secure-access badge just above the fixed footer strip */
+            padding-bottom: 68px; /* sit the secure-access badge a little above the fixed footer strip */
         }
 
         .bg-texture {
@@ -48,23 +48,6 @@
             opacity: 0.02;
             z-index: 0;
             pointer-events: none;
-        }
-
-        .bg-village {
-            position: absolute;
-            bottom: 52px;
-            left: -5%;
-            width: 110%;
-            height: auto;
-            max-height: 48vh;
-            object-fit: contain;
-            object-position: bottom center;
-            opacity: 0;
-            animation: villageIn 1.2s 0.2s ease forwards;
-            z-index: 1;
-            pointer-events: none;
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,1) 70%, rgba(0,0,0,1) 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,1) 70%, rgba(0,0,0,1) 100%);
         }
 
         .leaf {
@@ -104,11 +87,6 @@
         @keyframes diamondPulse {
             0%, 100% { opacity: 0.6; transform: rotate(45deg) scale(1); }
             50% { opacity: 1; transform: rotate(45deg) scale(1.2); }
-        }
-
-        @keyframes villageIn {
-            from { opacity: 0; }
-            to { opacity: 0.09; }
         }
 
         @keyframes shake {
@@ -464,7 +442,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .leaf, .bg-village, .login-card, .logo-wrap, .heading,
+            .leaf, .login-card, .logo-wrap, .heading,
             .subtitle, .ornament, .field-group, .btn-signin,
             .secure-access, .footer-strip, .error-msg, .ornament-line {
                 animation: none !important;
@@ -473,7 +451,6 @@
             }
             .ornament-line { width: 60px !important; }
             .ornament-diamond { animation: none !important; opacity: 0.8; }
-            .bg-village { opacity: 0.09 !important; }
             .leaf { opacity: 0.12 !important; }
         }
 
@@ -481,7 +458,6 @@
             .card-body { padding: 20px 20px 24px; }
             .heading { font-size: 26px; }
             .login-logo { height: 60px; }
-            .bg-village { max-height: 35vh; }
             .ornament-line { width: 40px; }
             .ornament-diamond { width: 6px; height: 6px; }
             .field-group { margin-bottom: 12px; }
@@ -492,8 +468,6 @@
 <body>
 
     <div class="bg-texture"></div>
-
-    <img src="{{ asset('patterns/village-scene.png') }}" alt="" class="bg-village" />
 
     <svg class="leaf" style="top:10%; left:7%; animation-delay:0s; animation-duration:9s;" width="26" height="26" viewBox="0 0 24 24" fill="none">
         <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22L6.66 19.7C7.14 19.87 7.64 20 8.17 20C12.42 20 16.63 14.38 17 8Z" fill="#4A8C3F" opacity="0.7"/>
