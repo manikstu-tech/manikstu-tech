@@ -4,6 +4,8 @@ export interface AwarenessInitiative {
   icon: LucideIcon;
   title: string;
   description: string;
+  image?: string;
+  imageScale?: string;
 }
 
 const initiatives: AwarenessInitiative[] = [
@@ -12,24 +14,28 @@ const initiatives: AwarenessInitiative[] = [
     title: "Community Awareness Drives",
     description:
       "Village-level campaigns on nutrition, hygiene and the value of improved livestock practices.",
+    image: "/patterns/training-women-youth.png",
   },
   {
     icon: HeartPulse,
     title: "Veterinary Health Camps",
     description:
       "Periodic camps for vaccination, deworming and early diagnosis in partnership with local vets.",
+    image: "/patterns/training-vet-health.png",
   },
   {
     icon: Wheat,
     title: "Demo Plots & Field Days",
     description:
       "Live demonstrations of fodder, feeding and housing models farmers can adapt on their own land.",
+    image: "/patterns/training-sustainable.png",
   },
   {
     icon: Radio,
     title: "Rural Radio & IVRS Advisories",
     description:
       "Timely, localized advisories on weather, disease outbreaks and best practices in native dialects.",
+    image: "/patterns/training-fpo-shg.png",
   },
 ];
 
@@ -73,17 +79,52 @@ export default function AwarenessInitiatives() {
             return (
               <div
                 key={item.title}
-                className="rounded-xl border border-light-grey bg-manikstu-cream p-6 transition-shadow hover:shadow-md"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-5 pb-20 transition-shadow hover:shadow-lg"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-manikstu-green/10">
-                  <Icon className="h-5 w-5 text-manikstu-green" />
+                {/* Inner dashed border */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                />
+
+                {/* Bottom tribal art */}
+                {item.image && (
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat opacity-90"
+                    style={{
+                      backgroundImage: `url('${item.image}')`,
+                      backgroundSize: item.imageScale ?? "100% auto",
+                      backgroundPosition: "center bottom",
+                    }}
+                  />
+                )}
+
+                <div className="relative text-center">
+                  {/* Icon with dashed decorative ring */}
+                  <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                    <Icon className="h-6 w-6 text-manikstu-green" />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                    />
+                  </div>
+
+                  <h3 className="mt-6 font-heading text-base font-bold leading-snug text-charcoal">
+                    {item.title}
+                  </h3>
+
+                  {/* Line-diamond-line ornament */}
+                  <div className="mt-3 flex items-center justify-center gap-1.5">
+                    <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
+                  </div>
+
+                  <p className="mt-4 text-sm leading-relaxed text-grey">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-charcoal">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-grey">
-                  {item.description}
-                </p>
               </div>
             );
           })}
