@@ -14,6 +14,11 @@ class Category extends Model
         return ['is_active' => 'boolean'];
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
     public function blogPosts(): HasMany
     {
         return $this->hasMany(BlogPost::class);
