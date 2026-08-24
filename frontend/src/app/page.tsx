@@ -119,6 +119,32 @@ const partnerCategories = [
   },
 ];
 
+const allPartnersRow1 = [
+  { name: "Krimanshi", image: "/1.png" },
+  { name: "Bharat Herbs Co.", image: "/2.png" },
+  { name: "Goat Bank Odisha", image: "/3.png" },
+  { name: "TrainGuru", image: "/4.png" },
+  { name: "AIC", image: "/AIC.png" },
+  { name: "KIIT TBI", image: "/5.png" },
+  { name: "ILS", image: "/6.png" },
+  { name: "Miller Center", image: "/7.png" },
+  { name: "Startup Odisha", image: "/8.png" },
+  { name: "Startup India", image: "/9.png" },
+  { name: "MSME", image: "/10.png" },
+];
+
+const allPartnersRow2 = [
+  { name: "Supporting Partner", image: "/11.png" },
+  { name: "Supporting Partner 2", image: "/12.png" },
+  { name: "Kalinga Kusum", image: "/15.png" },
+  { name: "HDFC Parivartan", image: "/16.png" },
+  { name: "Oxfam", image: "/17.png" },
+  { name: "Upaya", image: "/18.png" },
+  { name: "Sambhav", image: "/20.png" },
+  { name: "HDFC Bank", image: "/21.png" },
+  { name: "Atal Incubation Centre", image: "/AIC.png" },
+];
+
 const newsItems = [
   {
     date: "Feb 25, 2024",
@@ -531,11 +557,11 @@ export default function HomePage() {
         </section>
 
         {/* Associations */}
-        <section className="partner-section relative section-padding bg-manikstu-cream dark:bg-gray-800 overflow-hidden">
-          {/* Top tribal border — tiled horizontally at natural pattern height */}
+        <section className="partner-section relative py-8 sm:py-10 md:py-12 bg-manikstu-cream dark:bg-gray-800 overflow-hidden">
+          {/* Top tribal border */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-0 h-8 bg-repeat-x"
+            className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-7 bg-repeat-x opacity-70"
             style={{
               backgroundImage: "url('/patterns/tribal-border.png')",
               backgroundSize: "auto 100%",
@@ -544,84 +570,90 @@ export default function HomePage() {
           {/* Bottom tribal border (flipped) */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 bottom-0 h-8 bg-repeat-x -scale-y-100"
+            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
             style={{
               backgroundImage: "url('/patterns/tribal-border.png')",
               backgroundSize: "auto 100%",
             }}
           />
-          <div className="relative mx-auto max-w-7xl">
-            <div className="text-center">
-              <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
-                Our Associations
-              </h2>
-              <p className="mt-2 text-xs text-grey sm:text-sm dark:text-gray-400">
-                Trusted by leading organizations across India
+
+          <div className="relative mx-auto max-w-7xl px-4 text-center">
+            {/* Top Pill / Badge */}
+            <div className="flex items-center justify-center gap-2">
+              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70 dark:bg-manikstu-gold/80" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-leaf dark:text-manikstu-gold sm:text-sm">
+                Our Network
               </p>
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70 dark:bg-manikstu-gold/80" />
             </div>
+
+            <h2 className="mt-2.5 font-heading text-3xl font-bold text-charcoal sm:text-4xl dark:text-white">
+              Our <span className="text-manikstu-green">Associations</span>
+            </h2>
+
+            {/* Ornamental Divider with Framed Diamond */}
+            <div className="mt-3 flex items-center justify-center gap-2">
+              <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+              <div aria-hidden className="relative flex items-center justify-center">
+                <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              </div>
+              <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+              <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+            </div>
+
+            <p className="mt-2 text-xs text-grey sm:text-sm dark:text-gray-400">
+              Trusted by leading government, institutional, incubation, and CSR organizations across India
+            </p>
           </div>
-          <div className="mt-12">
-            {/* Mobile: stacked categories */}
-            <div className="space-y-8 sm:hidden">
-              {partnerCategories.map((category) => (
-                <div key={category.title} className="text-center">
-                  <div className="mb-4 flex items-center justify-center gap-2">
-                    <span aria-hidden className="h-px w-8 bg-manikstu-gold/50 dark:bg-manikstu-gold/60" />
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf dark:text-white">
-                      {category.title}
-                    </h3>
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                    <span aria-hidden className="h-px w-8 bg-manikstu-gold/50 dark:bg-manikstu-gold/60" />
-                  </div>
-                  <div className="flex flex-wrap justify-center gap-3">
-                    {category.partners.map((partner) => (
-                      <div
-                        key={partner.name}
-                        className="partner-card flex h-16 w-28 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-2 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700"
-                      >
-                        <Image
-                          src={partner.image}
-                          alt={partner.name}
-                          width={140}
-                          height={70}
-                          className="max-h-12 w-auto max-w-[120px] object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
+
+          {/* Horizontal Scrolling Marquee Tracks */}
+          <div className="relative mt-6 sm:mt-8 overflow-hidden">
+            {/* Left and Right Fade Gradients */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-28 bg-gradient-to-r from-manikstu-cream dark:from-gray-800 to-transparent z-10"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-28 bg-gradient-to-l from-manikstu-cream dark:from-gray-800 to-transparent z-10"
+            />
+
+            {/* Track 1 */}
+            <div className="flex gap-4 animate-marquee py-1.5">
+              {[...allPartnersRow1, ...allPartnersRow1, ...allPartnersRow1].map((partner, idx) => (
+                <div
+                  key={`${partner.name}-${idx}`}
+                  className="partner-card flex h-16 w-32 sm:h-18 sm:w-36 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
+                >
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    width={110}
+                    height={45}
+                    className="max-h-10 w-auto max-w-[100px] object-contain"
+                  />
                 </div>
               ))}
             </div>
-            {/* Tablet + Desktop: 3-column grid */}
-            <div className="mt-10 hidden gap-4 sm:grid sm:grid-cols-3 md:gap-6">
-              {partnerCategories.map((category) => (
-                <div key={category.title} className="text-center">
-                  <div className="mb-3 flex items-center justify-center gap-2">
-                    <span aria-hidden className="h-px w-8 bg-manikstu-gold/50 dark:bg-manikstu-gold/60" />
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf dark:text-white">
-                      {category.title}
-                    </h3>
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                    <span aria-hidden className="h-px w-8 bg-manikstu-gold/50 dark:bg-manikstu-gold/60" />
-                  </div>
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {category.partners.map((partner) => (
-                      <div
-                        key={partner.name}
-                        className="partner-card flex h-16 w-28 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-2 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700"
-                      >
-                        <Image
-                          src={partner.image}
-                          alt={partner.name}
-                          width={100}
-                          height={40}
-                          className="max-h-10 w-auto max-w-[90px] object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
+
+            {/* Track 2 (Reverse) */}
+            <div className="mt-3 flex gap-4 animate-marquee-reverse py-1.5">
+              {[...allPartnersRow2, ...allPartnersRow2, ...allPartnersRow2].map((partner, idx) => (
+                <div
+                  key={`${partner.name}-${idx}`}
+                  className="partner-card flex h-16 w-32 sm:h-18 sm:w-36 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
+                >
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    width={110}
+                    height={45}
+                    className="max-h-10 w-auto max-w-[100px] object-contain"
+                  />
                 </div>
               ))}
             </div>
