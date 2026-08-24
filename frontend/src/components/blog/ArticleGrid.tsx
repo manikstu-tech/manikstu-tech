@@ -13,7 +13,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
   }
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2">
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {articles.map((article) => (
         <Link key={article.id} href={`/blog/${article.slug}`}>
           <article className="group h-full overflow-hidden rounded-xl border border-light-grey bg-white transition-all hover:shadow-md">

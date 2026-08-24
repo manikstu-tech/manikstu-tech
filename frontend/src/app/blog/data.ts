@@ -18,6 +18,78 @@ export const categoryColors: Record<Category, string> = {
   Media: "bg-saura-red",
 };
 
+export interface GalleryPhoto {
+  id: string;
+  title: string;
+  location: string;
+  date: string;
+  image: string;
+}
+
+export interface VideoItem {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  date: string;
+  thumbnail: string;
+  url: string;
+}
+
+export const galleryPhotos: GalleryPhoto[] = [
+  { id: "g1", title: "Farmer Field School in Kalahandi", location: "Kalahandi, Odisha", date: "Feb 12, 2024", image: "/1.png" },
+  { id: "g2", title: "Vaccination Camp — Balangir", location: "Balangir, Odisha", date: "Feb 24, 2024", image: "/2.png" },
+  { id: "g3", title: "Women SHG Meeting", location: "Sundargarh, Odisha", date: "Mar 05, 2024", image: "/3.png" },
+  { id: "g4", title: "Goat Bank Handover Day", location: "Mayurbhanj, Odisha", date: "Mar 18, 2024", image: "/4.png" },
+  { id: "g5", title: "Demo Plot Field Day", location: "Keonjhar, Odisha", date: "Apr 02, 2024", image: "/5.png" },
+  { id: "g6", title: "Community Awareness Drive", location: "Rayagada, Odisha", date: "Apr 15, 2024", image: "/6.png" },
+  { id: "g7", title: "Youth Training Workshop", location: "Ganjam, Odisha", date: "Apr 22, 2024", image: "/7.png" },
+  { id: "g8", title: "Livestock Insurance Sign-up", location: "Nabarangpur, Odisha", date: "May 04, 2024", image: "/8.png" },
+  { id: "g9", title: "Fodder Cultivation Demo", location: "Koraput, Odisha", date: "May 12, 2024", image: "/9.png" },
+  { id: "g10", title: "AJAH Women Cohort Graduation", location: "Bhawanipatna, Odisha", date: "May 20, 2024", image: "/10.png" },
+  { id: "g11", title: "Village Health Camp", location: "Malkangiri, Odisha", date: "Jun 01, 2024", image: "/11.png" },
+  { id: "g12", title: "Farmer Producer Meeting", location: "Boudh, Odisha", date: "Jun 10, 2024", image: "/12.png" },
+];
+
+export const videos: VideoItem[] = [
+  {
+    id: "v1",
+    title: "Manikstu's Goat Bank — Farmer Story",
+    description: "Meet Ramesh, a farmer whose life changed with Manikstu's Goat Bank model.",
+    duration: "3:42",
+    date: "Mar 20, 2024",
+    thumbnail: "/1.png",
+    url: "#",
+  },
+  {
+    id: "v2",
+    title: "Inside a Vaccination Camp",
+    description: "A day in the field with our veterinary team across three villages.",
+    duration: "2:18",
+    date: "Mar 10, 2024",
+    thumbnail: "/2.png",
+    url: "#",
+  },
+  {
+    id: "v3",
+    title: "Women Leading Rural Livelihoods",
+    description: "Project AJAH — women farmers building a livestock-led rural economy.",
+    duration: "4:57",
+    date: "Feb 28, 2024",
+    thumbnail: "/3.png",
+    url: "#",
+  },
+  {
+    id: "v4",
+    title: "Goat Care App — Field Walkthrough",
+    description: "How our field team uses the app to onboard farmers and log visits in real time.",
+    duration: "3:05",
+    date: "Feb 14, 2024",
+    thumbnail: "/4.png",
+    url: "#",
+  },
+];
+
 export const articles: Article[] = [
   {
     id: "1",
