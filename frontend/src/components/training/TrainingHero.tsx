@@ -4,17 +4,7 @@ import { ArrowRight, GraduationCap, Sprout, Users } from "lucide-react";
 export default function TrainingHero() {
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* Subtle botanical decoration — top right */}
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 400 400"
-        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 text-manikstu-green opacity-[0.06]"
-        fill="currentColor"
-      >
-        <path d="M200 20 C280 80 340 160 320 260 C300 340 220 380 160 360 C100 340 60 260 80 180 C100 100 140 60 200 20 Z" />
-      </svg>
-
-      <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
+<div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left — copy */}
           <div>
