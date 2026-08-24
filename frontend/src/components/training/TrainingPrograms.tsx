@@ -13,6 +13,7 @@ export interface TrainingProgram {
   icon: LucideIcon;
   title: string;
   description: string;
+  image?: string;
 }
 
 const programs: TrainingProgram[] = [
@@ -21,6 +22,7 @@ const programs: TrainingProgram[] = [
     title: "Farmer Field Training",
     description:
       "Hands-on training at our model farms on scientific goat rearing, balanced feeding, breeding and herd health.",
+    image: "/patterns/training-farmer-field.png",
   },
   {
     icon: Users,
@@ -121,18 +123,30 @@ export default function TrainingPrograms() {
             return (
               <div
                 key={program.title}
-                className="rounded-xl border border-light-grey bg-white p-6 transition-shadow hover:shadow-md"
+                className="relative overflow-hidden rounded-xl border border-light-grey bg-white p-6 pb-24 transition-shadow hover:shadow-md"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-manikstu-green/10">
-                  <Icon className="h-5 w-5 text-manikstu-green" />
+                {program.image && (
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-no-repeat bg-bottom opacity-80"
+                    style={{
+                      backgroundImage: `url('${program.image}')`,
+                      backgroundSize: "100% auto",
+                    }}
+                  />
+                )}
+                <div className="relative">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-manikstu-green/10">
+                    <Icon className="h-5 w-5 text-manikstu-green" />
+                  </div>
+                  <h3 className="mt-4 text-base font-semibold text-charcoal">
+                    {program.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-grey">
+                    {program.description}
+                  </p>
+                  <div className="mt-4 h-0.5 w-8 rounded bg-manikstu-green/60" />
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-charcoal">
-                  {program.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-grey">
-                  {program.description}
-                </p>
-                <div className="mt-4 h-0.5 w-8 rounded bg-manikstu-green/60" />
               </div>
             );
           })}
