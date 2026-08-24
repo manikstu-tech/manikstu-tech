@@ -78,17 +78,7 @@
   - Implemented continuous, smooth infinite horizontal scrolling marquee tracks with pause-on-hover (`.animate-marquee` and `.animate-marquee-reverse` in `globals.css`).
   - Retained the exact same partner card design: white rounded card with `border-b-[3px] border-b-saura-red/80`, dark mode support, and partner logos.
   - Features gradient edge fades on left and right for seamless entrance/exit.
-### 4. Media & Stories Page (`frontend/src/app/blog/page.tsx`)
-- **MediaHero (`MediaHero.tsx`)**:
-  - Redesigned to match the split-grid layout of Collaborate and Training heroes with compact bottom padding (`pt-10 pb-6 sm:pt-12 sm:pb-8 md:pt-14 md:pb-10 lg:pt-16 lg:pb-10`).
-  - Top-right corner mandala artwork (`mandala-top-right-corner.png`).
-  - Ornamental pill badge: `— ◆ MEDIA & STORIES ◆ —` with gold diamonds.
-  - Two-tone Playfair serif typography: `Amplifying Voices. Sharing Rural Impact.` with green highlight.
-  - Action buttons: `Explore Stories →` (linking to `#stories`) and `Press Inquiries` button.
-  - Micro-statement with gold/green sparkle icon.
-  - Right-hand visual card with `aspect-[4/3] rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream`, rural hills & goats landscape artwork backdrop (`/media-card.png`), bottom gradient overlay, corner pill badge (`Grassroots Coverage`), and floating green icon badge (`Radio`).
-- **Stories & Category Filter Section (`blog/page.tsx`)**:
-  - Optimized top spacing (`pt-2 sm:pt-4 md:pt-6`) and `mb-8` above category filter for a clean, seamless transition from hero to articles.
+- **Impact Stats / Mobile App / Testimonials**: Cohesive tribal and mandala design system with cultural Warli patterns and partner showcase.
 
 ---
 
