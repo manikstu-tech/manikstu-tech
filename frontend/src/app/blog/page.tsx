@@ -65,10 +65,10 @@ export default function BlogPage() {
       <main id="main-content">
         <MediaHero />
 
-        <section className="section-padding bg-white">
+        <section id="stories" className="pt-2 pb-16 sm:pt-4 sm:pb-20 md:pt-6 md:pb-24 px-4 sm:px-6 md:px-8 bg-white scroll-mt-6">
           <div className="mx-auto max-w-6xl">
             {/* Category filter */}
-            <div className="mb-10">
+            <div className="mb-8">
               <CategoryFilter active={filter} onFilter={setFilter} />
             </div>
 
