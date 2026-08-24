@@ -4,7 +4,7 @@ import type { GalleryPhoto } from "@/app/blog/data";
 
 export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
   return (
-    <section id="gallery" className="section-padding bg-white scroll-mt-6">
+    <section id="gallery" className="scroll-mt-6 bg-white px-4 pb-14 pt-4 sm:px-6 sm:pb-16 sm:pt-6 md:px-8 md:pb-20 md:pt-8">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
           {/* Ornamental pill heading */}
