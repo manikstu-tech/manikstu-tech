@@ -60,7 +60,7 @@ export default function TrainingPrograms() {
       {/* Top tribal-floral border */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-8 bg-repeat-x"
+        className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-8 bg-repeat-x -scale-y-100"
         style={{
           backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
           backgroundSize: "auto 100%",
