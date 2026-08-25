@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
@@ -143,43 +144,14 @@ export default function ProductsPage() {
           {/* Right — visual panel */}
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
-              {/* Marketplace / packaged goods line-art illustration */}
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 480 360"
-                className="pointer-events-none absolute inset-0 h-full w-full"
-                fill="none"
-                stroke="#4A8C3F"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {/* Ground line */}
-                <path d="M40 300 H440" opacity="0.35" />
-                {/* Shop stall / awning */}
-                <path d="M120 165 L360 165 L340 200 L140 200 Z" fill="#4A8C3F" fillOpacity="0.10" />
-                <path d="M150 200 L165 220 L170 200" opacity="0.5" />
-                <path d="M195 200 L210 220 L215 200" opacity="0.5" />
-                <path d="M240 200 L255 220 L260 200" opacity="0.5" />
-                <path d="M285 200 L300 220 L305 200" opacity="0.5" />
-                <path d="M330 200 L345 220 L350 200" opacity="0.5" />
-                {/* Central shopping bag */}
-                <path d="M200 235 L280 235 L295 300 L185 300 Z" fill="#C4952A" fillOpacity="0.18" />
-                <path d="M215 235 V220 C215 205 265 205 265 220 V235" />
-                {/* Package box left */}
-                <rect x="90" y="250" width="70" height="50" fill="#4A8C3F" fillOpacity="0.12" />
-                <path d="M90 265 H160" opacity="0.5" />
-                <path d="M125 250 V300" opacity="0.5" />
-                {/* Bottle / feed sack right */}
-                <path d="M340 250 L385 250 L380 300 L345 300 Z" fill="#4A8C3F" fillOpacity="0.10" />
-                <path d="M348 260 H377" opacity="0.5" />
-                {/* Small leaves */}
-                <path d="M70 130 C80 115 100 110 110 120 C100 135 80 140 70 130 Z" fill="#4A8C3F" fillOpacity="0.15" />
-                <path d="M390 110 C400 95 420 90 430 100 C420 115 400 120 390 110 Z" fill="#C4952A" fillOpacity="0.2" />
-                {/* Sun */}
-                <circle cx="240" cy="85" r="20" fill="#C4952A" fillOpacity="0.35" stroke="none" />
-                <circle cx="240" cy="85" r="20" opacity="0.4" />
-              </svg>
+              <Image
+                src="/products-hero.png"
+                alt="Farm-first product range"
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
 
               {/* Corner accent */}
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
