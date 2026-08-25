@@ -168,6 +168,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
       "Rearing kids from 3 months onwards",
       "Farms with limited access to quality green fodder",
     ],
+    gallery: ["/1.png", "/2.png", "/3.png", "/4.png"],
   },
   {
     id: -2,
@@ -209,6 +210,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
       "Seasonal immunity support during monsoon and winter",
       "Farms wanting a chemical-free daily tonic",
     ],
+    gallery: ["/5.png", "/6.png", "/7.png", "/8.png"],
   },
   {
     id: -3,
@@ -251,6 +253,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
       "Breeding bucks and pregnant does",
       "Farms noticing signs of mineral deficiency (pica, poor coat)",
     ],
+    gallery: ["/9.png", "/10.png", "/11.png", "/12.png"],
   },
   {
     id: -4,

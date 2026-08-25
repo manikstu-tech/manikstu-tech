@@ -78,7 +78,10 @@ export default function ProductDetailPage() {
 
   const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const [qty, setQty] = useState(1);
-  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+  // Bumps whenever autoplay ticks or the user clicks a thumb, so the interval
+  // restarts and the main <img> re-mounts (triggering the fade animation).
+  const [autoplayNonce, setAutoplayNonce] = useState(0);
 
   const handleAddToCart = () => {
     if (!product) return;
@@ -207,17 +210,43 @@ export default function ProductDetailPage() {
     [products, slug]
   );
 
-  // When the product changes, reset the active image to the product's first
-  // gallery entry (or its main image).
-  useEffect(() => {
-    if (!product) {
-      setActiveImage(null);
-      return;
-    }
-    const first =
-      (product.gallery && product.gallery[0]) || product.image || null;
-    setActiveImage(first);
+  // Effective gallery source for THIS product (memoized).
+  const gallery = useMemo(() => {
+    if (!product) return [] as string[];
+    if (product.gallery && product.gallery.length > 0) return product.gallery;
+    if (product.image) return [product.image];
+    return [];
   }, [product]);
+
+  // When the product changes, reset the active image to the first slide.
+  useEffect(() => {
+    setActiveIdx(0);
+    setAutoplayNonce((n) => n + 1);
+  }, [product]);
+
+  // Autoplay: cycle every 3s. Restarts whenever autoplayNonce changes (product
+  // change, manual thumb click, or a natural tick). Skipped when the user
+  // prefers reduced motion or the gallery has ≤1 image.
+  useEffect(() => {
+    if (gallery.length <= 1) return;
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const id = window.setInterval(() => {
+      setActiveIdx((i) => (i + 1) % gallery.length);
+      setAutoplayNonce((n) => n + 1);
+    }, 3000);
+    return () => window.clearInterval(id);
+  }, [gallery.length, autoplayNonce]);
+
+  const activeImage = gallery[activeIdx] ?? null;
+  const goToImage = (idx: number) => {
+    setActiveIdx(idx);
+    // Restart autoplay from THIS image
+    setAutoplayNonce((n) => n + 1);
+  };
 
   if (!product) {
     return (
@@ -284,16 +313,37 @@ export default function ProductDetailPage() {
             {/* Left — image + details */}
             <div className="relative">
               <div className="relative aspect-square overflow-hidden rounded-3xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
-                {activeImage || product.image ? (
+                {activeImage ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={activeImage ?? product.image}
+                    key={`${activeImage}-${activeIdx}`}
+                    src={activeImage}
                     alt={product.name}
-                    className="absolute inset-0 h-full w-full object-contain p-8"
+                    className="animate-gallery-fade absolute inset-0 h-full w-full object-contain p-8"
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <ShoppingBag className="h-24 w-24 text-manikstu-green/30" />
+                  </div>
+                )}
+
+                {/* Slide indicator dots — visible only when >1 image */}
+                {gallery.length > 1 && (
+                  <div className="absolute bottom-4 right-4 flex items-center gap-1.5">
+                    {gallery.map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => goToImage(i)}
+                        aria-label={`Go to slide ${i + 1}`}
+                        className={
+                          "h-1.5 rounded-full transition-all " +
+                          (i === activeIdx
+                            ? "w-6 bg-manikstu-green"
+                            : "w-1.5 bg-manikstu-green/40 hover:bg-manikstu-green/70")
+                        }
+                      />
+                    ))}
                   </div>
                 )}
                 {product.size && (
@@ -305,33 +355,27 @@ export default function ProductDetailPage() {
 
               {/* Image gallery thumbnails — click to swap the main image */}
               {(() => {
-                const gallery =
-                  product.gallery && product.gallery.length > 0
-                    ? product.gallery
-                    : product.image
-                    ? [product.image]
-                    : [];
                 // Always render 4 slots so the strip looks complete
                 const slots = Array.from({ length: 4 }, (_, i) => gallery[i] ?? null);
                 return (
-                  <div className="mt-4 grid grid-cols-4 gap-3">
+                  <div className="mt-4 grid grid-cols-4 gap-2 sm:gap-3">
                     {slots.map((src, i) => {
-                      const isActive = !!src && src === activeImage;
+                      const isActive = !!src && i === activeIdx;
                       const isPlaceholder = !src;
                       return (
                         <button
                           key={i}
                           type="button"
-                          onClick={() => src && setActiveImage(src)}
+                          onClick={() => !isPlaceholder && goToImage(i)}
                           disabled={isPlaceholder}
                           aria-label={`View image ${i + 1}`}
                           aria-pressed={isActive}
                           className={
-                            "relative aspect-square overflow-hidden rounded-xl border bg-manikstu-cream/60 transition-shadow " +
+                            "relative aspect-square overflow-hidden rounded-xl border bg-manikstu-cream/60 transition-all duration-300 " +
                             (isPlaceholder
                               ? "cursor-default border-light-grey/60 opacity-70 dark:border-gray-700"
                               : isActive
-                              ? "border-manikstu-green ring-2 ring-manikstu-green/40"
+                              ? "border-manikstu-green ring-2 ring-manikstu-green/40 shadow-sm"
                               : "border-manikstu-gold/20 hover:border-manikstu-green/50 hover:shadow-sm")
                           }
                         >
@@ -340,7 +384,10 @@ export default function ProductDetailPage() {
                             <img
                               src={src}
                               alt=""
-                              className="absolute inset-0 h-full w-full object-contain p-2"
+                              className={
+                                "absolute inset-0 h-full w-full object-contain p-2 transition-opacity duration-300 " +
+                                (isActive ? "opacity-100" : "opacity-90")
+                              }
                             />
                           ) : (
                             <span className="absolute inset-0 flex items-center justify-center">
