@@ -127,20 +127,23 @@
         .logout-btn {
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 7px;
             width: 100%;
             margin-top: 10px;
-            padding: 7px 10px;
-            border: none;
-            background: rgba(255,255,255,0.06);
-            color: rgba(255,255,255,0.5);
+            padding: 8px 10px;
+            border: 1px solid rgba(255,120,120,0.5);
+            background: rgba(255,95,95,0.16);
+            color: #ff9a9a;
             font-size: 12px;
+            font-weight: 600;
             font-family: 'Inter', sans-serif;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.15s;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
         }
-        .logout-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+        .logout-btn:hover { background: rgba(255,95,95,0.28); color: #ffbcbc; transform: translateY(-1px); }
+        .logout-btn:active { transform: translateY(0); }
         .logout-btn svg { width: 14px; height: 14px; }
 
         /* ===== MAIN ===== */
@@ -225,19 +228,60 @@
         .topbar-bell svg { width: 20px; height: 20px; color: var(--grey); }
         .bell-badge {
             position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 16px;
+            top: 5px;
+            right: 5px;
+            min-width: 16px;
             height: 16px;
+            padding: 0 3px;
             background: var(--red);
             color: #fff;
             font-size: 9px;
             font-weight: 700;
-            border-radius: 50%;
+            border-radius: 9px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 2px solid #fff;
         }
+        .topbar-bell-wrap { position: relative; }
+        .topbar-bell-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 340px;
+            max-width: calc(100vw - 24px);
+            background: #fff;
+            border: 1px solid var(--light-grey);
+            border-radius: 14px;
+            box-shadow: 0 14px 40px rgba(26,26,26,0.16);
+            z-index: 50;
+            overflow: hidden;
+        }
+        .topbar-bell-wrap.open .topbar-bell-menu { display: block; animation: userMenuIn 0.16s ease both; }
+        .bell-menu-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--light-grey); }
+        .bell-menu-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--charcoal); }
+        .bell-menu-count { font-size: 11px; font-weight: 700; color: var(--green); background: rgba(74,140,63,0.10); padding: 3px 9px; border-radius: 9999px; }
+        .bell-menu-list { max-height: 360px; overflow-y: auto; }
+        .bell-menu-list::-webkit-scrollbar { width: 6px; }
+        .bell-menu-list::-webkit-scrollbar-thumb { background: rgba(45,80,22,0.18); border-radius: 6px; }
+        .bell-item { position: relative; display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F4F1EB; text-decoration: none; transition: background 0.13s; }
+        .bell-item:hover { background: #FBFAF7; }
+        .bell-item.unread { background: rgba(74,140,63,0.035); }
+        .bell-item-ic { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .bell-item-ic svg { width: 17px; height: 17px; }
+        .bell-ic-enquiry { background: rgba(74,140,63,0.12); color: #3A7030; }
+        .bell-ic-order { background: rgba(196,149,42,0.14); color: #B4711A; }
+        .bell-item-body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+        .bell-item-title { font-size: 13px; font-weight: 600; color: var(--charcoal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .bell-item-sub { font-size: 12px; color: var(--grey); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .bell-item-time { font-size: 11px; color: #A8A8A8; margin-top: 4px; }
+        .bell-item-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; margin-top: 6px; }
+        .bell-empty { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 36px 16px; color: #B0B0B0; }
+        .bell-empty svg { width: 30px; height: 30px; opacity: 0.5; }
+        .bell-empty p { font-size: 13px; }
+        .bell-menu-foot { display: block; text-align: center; padding: 12px; font-size: 12.5px; font-weight: 600; color: var(--green); text-decoration: none; border-top: 1px solid var(--light-grey); transition: background 0.13s; }
+        .bell-menu-foot:hover { background: #FBFAF7; }
         .topbar-user-wrap { position: relative; }
         .topbar-user {
             display: flex;
@@ -343,6 +387,35 @@
     </style>
 </head>
 <body>
+    @php
+        $notifItems = collect();
+        try {
+            foreach (\App\Models\Enquiry::latest()->take(6)->get() as $e) {
+                $notifItems->push([
+                    'type' => 'enquiry',
+                    'title' => $e->name ?: 'New enquiry',
+                    'sub' => \Illuminate\Support\Str::limit($e->message ?: ($e->type ?: 'New enquiry received'), 46),
+                    'time' => $e->created_at,
+                    'unread' => ($e->status ?? 'new') === 'new',
+                    'url' => route('admin.enquiries.index'),
+                ]);
+            }
+        } catch (\Throwable $ex) {}
+        try {
+            foreach (\App\Models\Order::latest()->take(6)->get() as $o) {
+                $notifItems->push([
+                    'type' => 'order',
+                    'title' => 'Order ' . ($o->order_number ?: ('#' . $o->id)),
+                    'sub' => '₹' . number_format((float) $o->total, 0) . ' · ' . ucfirst($o->status ?? 'pending'),
+                    'time' => $o->created_at,
+                    'unread' => in_array($o->status ?? 'pending', ['pending', 'processing']),
+                    'url' => route('admin.orders.index'),
+                ]);
+            }
+        } catch (\Throwable $ex) {}
+        $notifItems = $notifItems->sortByDesc('time')->take(7)->values();
+        $notifCount = $notifItems->where('unread', true)->count();
+    @endphp
     <div class="app-shell">
 
         <!-- Sidebar overlay (mobile) -->
@@ -463,10 +536,43 @@
                     </div>
                 </div>
                 <div class="topbar-right">
-                    <button class="topbar-bell" aria-label="Notifications">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-                        <span class="bell-badge">3</span>
-                    </button>
+                    <div class="topbar-bell-wrap" id="bellWrap">
+                        <button type="button" class="topbar-bell" onclick="toggleBellMenu()" aria-label="Notifications" aria-haspopup="true" aria-expanded="false" id="bellToggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                            @if($notifCount > 0)<span class="bell-badge">{{ $notifCount > 9 ? '9+' : $notifCount }}</span>@endif
+                        </button>
+                        <div class="topbar-bell-menu" id="bellMenu">
+                            <div class="bell-menu-head">
+                                <span class="bell-menu-title">Notifications</span>
+                                @if($notifCount > 0)<span class="bell-menu-count">{{ $notifCount }} new</span>@endif
+                            </div>
+                            <div class="bell-menu-list">
+                                @forelse($notifItems as $n)
+                                    <a href="{{ $n['url'] }}" class="bell-item {{ $n['unread'] ? 'unread' : '' }}">
+                                        <span class="bell-item-ic bell-ic-{{ $n['type'] }}">
+                                            @if($n['type'] === 'order')
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                            @else
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                            @endif
+                                        </span>
+                                        <span class="bell-item-body">
+                                            <span class="bell-item-title">{{ $n['title'] }}</span>
+                                            <span class="bell-item-sub">{{ $n['sub'] }}</span>
+                                            <span class="bell-item-time">{{ $n['time'] ? $n['time']->diffForHumans() : '' }}</span>
+                                        </span>
+                                        @if($n['unread'])<span class="bell-item-dot"></span>@endif
+                                    </a>
+                                @empty
+                                    <div class="bell-empty">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                                        <p>You're all caught up</p>
+                                    </div>
+                                @endforelse
+                            </div>
+                            <a href="{{ route('admin.enquiries.index') }}" class="bell-menu-foot">View all enquiries</a>
+                        </div>
+                    </div>
                     <div class="topbar-user-wrap" id="userWrap">
                         <button type="button" class="topbar-user" onclick="toggleUserMenu()" aria-haspopup="true" aria-expanded="false" id="userToggle">
                             <span class="topbar-user-avatar">{{ substr(Auth::user()->name, 0, 1) }}</span>
@@ -517,23 +623,32 @@
             document.getElementById('sidebar').classList.remove('open');
             document.getElementById('sidebarOverlay').classList.remove('open');
         }
+        function closeBellMenu() {
+            var bw = document.getElementById('bellWrap');
+            if (bw) { bw.classList.remove('open'); document.getElementById('bellToggle').setAttribute('aria-expanded', 'false'); }
+        }
+        function closeUserMenu() {
+            var uw = document.getElementById('userWrap');
+            if (uw) { uw.classList.remove('open'); document.getElementById('userToggle').setAttribute('aria-expanded', 'false'); }
+        }
         function toggleUserMenu() {
+            closeBellMenu();
             var wrap = document.getElementById('userWrap');
             var open = wrap.classList.toggle('open');
             document.getElementById('userToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
         }
+        function toggleBellMenu() {
+            closeUserMenu();
+            var wrap = document.getElementById('bellWrap');
+            var open = wrap.classList.toggle('open');
+            document.getElementById('bellToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
         document.addEventListener('click', function (e) {
-            var wrap = document.getElementById('userWrap');
-            if (wrap && !e.target.closest('#userWrap')) {
-                wrap.classList.remove('open');
-                document.getElementById('userToggle').setAttribute('aria-expanded', 'false');
-            }
+            if (!e.target.closest('#userWrap')) closeUserMenu();
+            if (!e.target.closest('#bellWrap')) closeBellMenu();
         });
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                var wrap = document.getElementById('userWrap');
-                if (wrap) { wrap.classList.remove('open'); document.getElementById('userToggle').setAttribute('aria-expanded', 'false'); }
-            }
+            if (e.key === 'Escape') { closeUserMenu(); closeBellMenu(); }
         });
     </script>
 </body>
