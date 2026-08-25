@@ -11,13 +11,23 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
+        $sortable = ['name' => 'name', 'role' => 'role', 'status' => 'is_active'];
+        $sort = $request->sort;
+        $dir = $request->dir === 'desc' ? 'desc' : 'asc';
+
         $users = User::when($request->search, fn($q, $s) => $q->where('name', 'like', "%{$s}%")->orWhere('email', 'like', "%{$s}%"))
             ->when($request->role, fn($q, $r) => $q->where('role', $r))
-            ->latest()
-            ->paginate(15)
+            ->when(
+                isset($sortable[$sort]),
+                fn($q) => $q->orderBy($sortable[$sort], $dir),
+                fn($q) => $q->orderByDesc('id'),
+            )
+            ->paginate(5)
             ->withQueryString();
 
-        return view('admin.users.index', compact('users'));
+        $roles = User::query()->whereNotNull('role')->distinct()->orderBy('role')->pluck('role');
+
+        return view('admin.users.index', compact('users', 'roles'));
     }
 
     public function create()

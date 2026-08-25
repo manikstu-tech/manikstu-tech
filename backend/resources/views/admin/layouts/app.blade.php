@@ -238,6 +238,7 @@
             align-items: center;
             justify-content: center;
         }
+        .topbar-user-wrap { position: relative; }
         .topbar-user {
             display: flex;
             align-items: center;
@@ -245,6 +246,9 @@
             cursor: pointer;
             padding: 4px 8px;
             border-radius: 8px;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
             transition: background 0.15s;
         }
         .topbar-user:hover { background: var(--page-bg); }
@@ -259,10 +263,40 @@
             color: #fff;
             font-size: 14px;
             font-weight: 600;
+            flex-shrink: 0;
         }
-        .topbar-user-name { font-size: 13px; font-weight: 600; color: var(--charcoal); }
-        .topbar-user-role { font-size: 11px; font-weight: 600; color: var(--gold); }
-        .topbar-user-chev { width: 16px; height: 16px; color: var(--grey); flex-shrink: 0; }
+        .topbar-user-meta { display: flex; flex-direction: column; text-align: left; min-width: 0; }
+        .topbar-user-name { font-size: 13px; font-weight: 600; color: var(--charcoal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .topbar-user-role { font-size: 11px; font-weight: 600; color: var(--gold); white-space: nowrap; }
+        .topbar-user-chev { width: 16px; height: 16px; color: var(--grey); flex-shrink: 0; transition: transform 0.2s ease; }
+        .topbar-user-wrap.open .topbar-user-chev { transform: rotate(180deg); }
+
+        /* User dropdown */
+        .topbar-user-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 220px;
+            background: #fff;
+            border: 1px solid var(--light-grey);
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(26,26,26,0.14);
+            padding: 6px;
+            z-index: 50;
+        }
+        .topbar-user-wrap.open .topbar-user-menu { display: block; animation: userMenuIn 0.16s ease both; }
+        @keyframes userMenuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .user-menu-head { display: flex; align-items: center; gap: 10px; padding: 10px 10px 12px; border-bottom: 1px solid var(--light-grey); margin-bottom: 6px; }
+        .user-menu-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--leaf); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; flex-shrink: 0; }
+        .user-menu-id { display: flex; flex-direction: column; min-width: 0; }
+        .user-menu-name { font-size: 13.5px; font-weight: 600; color: var(--charcoal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .user-menu-role { font-size: 11px; font-weight: 600; color: var(--gold); }
+        .user-menu-item { display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 10px; border: none; background: transparent; font-size: 13px; font-weight: 500; font-family: 'Inter', sans-serif; color: var(--grey); border-radius: 8px; cursor: pointer; text-decoration: none; text-align: left; }
+        .user-menu-item svg { width: 16px; height: 16px; flex-shrink: 0; }
+        .user-menu-item:hover { background: var(--page-bg); color: var(--charcoal); }
+        .user-menu-danger { color: var(--red); }
+        .user-menu-danger:hover { background: rgba(212,52,44,0.08); color: var(--red); }
 
         /* ===== PAGE CONTENT ===== */
         .page-content { padding: 24px; flex: 1; }
@@ -298,8 +332,13 @@
             .main-area { margin-left: 0; }
             .hamburger { display: flex; }
             .topbar-search { width: 100%; max-width: 200px; }
-            .topbar-user-name, .topbar-user-role { display: none; }
+            .topbar-user-meta, .topbar-user-chev { display: none; }
+            .topbar-user { gap: 0; padding: 2px; }
             .page-content { padding: 16px; }
+        }
+        @media (max-width: 380px) {
+            .topbar-search { max-width: 130px; }
+            .topbar-user-menu { min-width: 200px; right: -4px; }
         }
     </style>
 </head>
@@ -428,13 +467,35 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
                         <span class="bell-badge">3</span>
                     </button>
-                    <div class="topbar-user">
-                        <div class="topbar-user-avatar">{{ substr(Auth::user()->name, 0, 1) }}</div>
-                        <div>
-                            <p class="topbar-user-name">{{ Auth::user()->name }}</p>
-                            <p class="topbar-user-role">{{ ucfirst(Auth::user()->role) }}</p>
+                    <div class="topbar-user-wrap" id="userWrap">
+                        <button type="button" class="topbar-user" onclick="toggleUserMenu()" aria-haspopup="true" aria-expanded="false" id="userToggle">
+                            <span class="topbar-user-avatar">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                            <span class="topbar-user-meta">
+                                <span class="topbar-user-name">{{ Auth::user()->name }}</span>
+                                <span class="topbar-user-role">{{ ucfirst(Auth::user()->role) }}</span>
+                            </span>
+                            <svg class="topbar-user-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                        <div class="topbar-user-menu" id="userMenu">
+                            <div class="user-menu-head">
+                                <span class="user-menu-avatar">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                                <span class="user-menu-id">
+                                    <span class="user-menu-name">{{ Auth::user()->name }}</span>
+                                    <span class="user-menu-role">{{ ucfirst(Auth::user()->role) }}</span>
+                                </span>
+                            </div>
+                            <a href="{{ route('admin.settings.edit') }}" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Settings
+                            </a>
+                            <form method="POST" action="{{ route('admin.logout') }}">
+                                @csrf
+                                <button type="submit" class="user-menu-item user-menu-danger">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                                    Sign Out
+                                </button>
+                            </form>
                         </div>
-                        <svg class="topbar-user-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
                 </div>
             </header>
@@ -456,6 +517,24 @@
             document.getElementById('sidebar').classList.remove('open');
             document.getElementById('sidebarOverlay').classList.remove('open');
         }
+        function toggleUserMenu() {
+            var wrap = document.getElementById('userWrap');
+            var open = wrap.classList.toggle('open');
+            document.getElementById('userToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        document.addEventListener('click', function (e) {
+            var wrap = document.getElementById('userWrap');
+            if (wrap && !e.target.closest('#userWrap')) {
+                wrap.classList.remove('open');
+                document.getElementById('userToggle').setAttribute('aria-expanded', 'false');
+            }
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                var wrap = document.getElementById('userWrap');
+                if (wrap) { wrap.classList.remove('open'); document.getElementById('userToggle').setAttribute('aria-expanded', 'false'); }
+            }
+        });
     </script>
 </body>
 </html>
