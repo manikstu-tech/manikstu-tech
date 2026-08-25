@@ -11,97 +11,13 @@ import {
   Sprout,
   Package,
   Leaf,
-  ShieldCheck,
-  UserCheck,
-  Truck,
-  Headphones,
   Minus,
   Plus,
   X,
   ShoppingCart,
 } from "lucide-react";
 import { getProducts } from "@/lib/api";
-
-interface Product {
-  id: number;
-  name: string;
-  slug: string;
-  description: string;
-  price: number;
-  image: string;
-  category: { name: string } | null;
-  size?: string;
-}
-
-const FALLBACK_PRODUCTS: Product[] = [
-  {
-    id: -1,
-    name: "Goat Feed",
-    slug: "goat-feed",
-    description: "Complete and balanced nutrition for healthy growth and productivity.",
-    price: 850,
-    image: "",
-    category: null,
-    size: "25 kg",
-  },
-  {
-    id: -2,
-    name: "Herbal Booster",
-    slug: "herbal-booster",
-    description: "Improves immunity, digestion and overall goat health.",
-    price: 450,
-    image: "",
-    category: null,
-    size: "500 ml",
-  },
-  {
-    id: -3,
-    name: "Mineral Mixture",
-    slug: "mineral-mixture",
-    description: "Essential minerals for strong bones, better growth and fertility.",
-    price: 300,
-    image: "",
-    category: null,
-    size: "1 kg",
-  },
-  {
-    id: -4,
-    name: "Dewormer Powder",
-    slug: "dewormer-powder",
-    description: "Helps control internal worms and keeps goats healthy.",
-    price: 120,
-    image: "",
-    category: null,
-    size: "100 gm",
-  },
-  {
-    id: -5,
-    name: "Calcium Supplement",
-    slug: "calcium-supplement",
-    description: "Strengthens bones and improves milk yield in lactating goats.",
-    price: 220,
-    image: "",
-    category: null,
-    size: "500 gm",
-  },
-  {
-    id: -6,
-    name: "Fodder Seed Mix",
-    slug: "fodder-seed-mix",
-    description: "High-yield seed mix for green fodder cultivation year-round.",
-    price: 180,
-    image: "",
-    category: null,
-    size: "1 kg",
-  },
-];
-
-const trustFeatures = [
-  { icon: Leaf, title: "Quality Assured", subtitle: "Carefully selected and tested for best results." },
-  { icon: UserCheck, title: "Farmer Trusted", subtitle: "Products used and trusted by farmers." },
-  { icon: Truck, title: "Reliable Delivery", subtitle: "Safe and timely delivery at your doorstep." },
-  { icon: Headphones, title: "Support", subtitle: "We are here to help you always." },
-];
+import { FALLBACK_PRODUCTS, trustFeatures, type Product } from "./data";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
@@ -341,11 +257,7 @@ export default function ProductsPage() {
                     </p>
                     <div className="flex items-center gap-2">
                       <Link
-                        href={
-                          product.id > 0
-                            ? `/products/${product.slug}`
-                            : "/contact"
-                        }
+                        href={`/products/${product.slug}`}
                         className="inline-flex items-center gap-1 text-xs font-semibold text-manikstu-green hover:text-manikstu-leaf transition-colors underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1 rounded"
                       >
                         View Details
