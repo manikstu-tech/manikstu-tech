@@ -10,9 +10,17 @@ class TrainingController extends Controller
 {
     public function index(Request $request)
     {
+        $sortable = ['title' => 'title', 'order' => 'order', 'status' => 'is_active'];
+        $sort = $request->sort;
+        $dir = $request->dir === 'desc' ? 'desc' : 'asc';
+
         $programs = TrainingProgram::when($request->search, fn($q, $s) => $q->where('title', 'like', "%{$s}%"))
-            ->orderBy('order')
-            ->paginate(15)
+            ->when(
+                isset($sortable[$sort]),
+                fn($q) => $q->orderBy($sortable[$sort], $dir),
+                fn($q) => $q->orderBy('order'),
+            )
+            ->paginate(5)
             ->withQueryString();
 
         return view('admin.training.index', compact('programs'));

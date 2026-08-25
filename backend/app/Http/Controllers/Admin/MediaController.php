@@ -11,8 +11,12 @@ class MediaController extends Controller
     public function index(Request $request)
     {
         $media = Media::when($request->search, fn($q, $s) => $q->where('name', 'like', "%{$s}%"))
-            ->latest()
-            ->paginate(24)
+            ->when(
+                $request->sort === 'oldest',
+                fn($q) => $q->oldest(),
+                fn($q) => $q->latest(),
+            )
+            ->paginate(10)
             ->withQueryString();
 
         return view('admin.media.index', compact('media'));

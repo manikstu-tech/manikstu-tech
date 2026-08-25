@@ -10,10 +10,18 @@ class CareerController extends Controller
 {
     public function index(Request $request)
     {
+        $sortable = ['title' => 'title', 'department' => 'department', 'status' => 'is_active'];
+        $sort = $request->sort;
+        $dir = $request->dir === 'desc' ? 'desc' : 'asc';
+
         $jobs = JobOpening::when($request->search, fn($q, $s) => $q->where('title', 'like', "%{$s}%"))
             ->when($request->department, fn($q, $d) => $q->where('department', $d))
-            ->latest()
-            ->paginate(15)
+            ->when(
+                isset($sortable[$sort]),
+                fn($q) => $q->orderBy($sortable[$sort], $dir),
+                fn($q) => $q->oldest(),
+            )
+            ->paginate(5)
             ->withQueryString();
 
         return view('admin.careers.index', compact('jobs'));
