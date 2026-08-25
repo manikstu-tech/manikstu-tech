@@ -382,7 +382,7 @@ export default function HomePage() {
                     {/* Bottom Warli village art */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-85 z-0"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-45 z-0"
                       style={
                         card.image
                           ? {
@@ -463,7 +463,7 @@ export default function HomePage() {
           {/* Bottom village panoramic scene banner */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-4 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-90 dark:opacity-40"
+            className="pointer-events-none absolute inset-x-0 -bottom-4 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-50 dark:opacity-25"
           >
             <Image
               src="/patterns/village-figures.png"
@@ -766,7 +766,7 @@ export default function HomePage() {
                   {/* Warli figures at bottom of phone */}
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom"
+                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom opacity-45"
                     style={{
                       backgroundImage: "url('/patterns/village-figures.png')",
                       backgroundSize: "180% auto",
@@ -899,7 +899,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-80 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-40 -scale-x-100"
           />
           {/* Bottom tribal village figures ΓÇö right (natural: hut on outer edge) */}
           <Image
@@ -909,7 +909,7 @@ export default function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[12px] right-0 w-[30%] max-w-none h-auto opacity-80"
+            className="pointer-events-none select-none absolute bottom-[12px] right-0 w-[30%] max-w-none h-auto opacity-40"
           />
 
           {/* Dark green tagline ribbon */}

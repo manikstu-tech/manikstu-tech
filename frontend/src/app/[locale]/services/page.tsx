@@ -203,7 +203,7 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
           {/* Bottom Warli village art */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-85 z-0"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-45 z-0"
             style={{
               backgroundImage: "url('/patterns/village-figures.png')",
               backgroundSize: "400% auto",
