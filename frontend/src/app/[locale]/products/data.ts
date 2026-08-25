@@ -49,6 +49,7 @@ export interface Product {
   storage?: string;
   ingredients?: string;
   recommendedFor?: string[];
+  gallery?: string[];
 }
 
 // Reasonable defaults used when a product has no reviews yet — keeps the

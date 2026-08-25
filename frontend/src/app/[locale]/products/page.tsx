@@ -18,11 +18,21 @@ import {
 } from "lucide-react";
 import { getProducts } from "@/lib/api";
 import { FALLBACK_PRODUCTS, trustFeatures, type Product } from "./data";
+import {
+  readCart,
+  writeCart,
+  subscribeCart,
+  addToCart as addToCartStore,
+  setQty as setQtyStore,
+  removeFromCart as removeFromCartStore,
+  clearCart as clearCartStore,
+  type CartMap,
+} from "./cart";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState<Record<number, number>>({});
+  const [cart, setCart] = useState<CartMap>({});
 
   useEffect(() => {
     getProducts(1, 50)
@@ -33,22 +43,31 @@ export default function ProductsPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  const addToCart = (id: number) =>
-    setCart((c) => ({ ...c, [id]: (c[id] ?? 0) + 1 }));
-  const decrement = (id: number) =>
-    setCart((c) => {
-      const next = { ...c };
-      const q = (next[id] ?? 0) - 1;
-      if (q <= 0) delete next[id];
-      else next[id] = q;
-      return next;
-    });
-  const removeFromCart = (id: number) =>
-    setCart((c) => {
-      const next = { ...c };
-      delete next[id];
-      return next;
-    });
+  // Hydrate cart from localStorage on mount, and subscribe to same/other-tab changes.
+  useEffect(() => {
+    setCart(readCart());
+    const unsub = subscribeCart(setCart);
+    return unsub;
+  }, []);
+
+  // If we arrive from the detail page with #cart, scroll it into view once it renders.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash !== "#cart") return;
+    // Wait a tick so the cart card mounts after cart state hydrates
+    const t = setTimeout(() => {
+      const el = document.getElementById("cart");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 200);
+    return () => clearTimeout(t);
+  }, [cart]);
+
+  const addToCart = (id: number) => setCart(addToCartStore(id));
+  const decrement = (id: number) => {
+    const cur = readCart();
+    setCart(setQtyStore(id, (cur[id] ?? 0) - 1));
+  };
+  const removeFromCart = (id: number) => setCart(removeFromCartStore(id));
 
   const cartLines = Object.entries(cart)
     .map(([idStr, qty]) => {
@@ -185,23 +204,35 @@ export default function ProductsPage() {
           <div className="mx-auto max-w-7xl">
             {/* Ornamental section heading */}
             <div className="text-center">
-              <h2 className="mx-auto font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-[2.75rem] dark:text-white">
-                <span className="inline-flex items-center gap-3 sm:gap-4">
-                  <span aria-hidden className="hidden sm:inline-flex items-center gap-2">
-                    <span className="h-px w-10 bg-manikstu-gold/70" />
-                    <Sprout className="h-4 w-4 text-manikstu-green/70" />
-                  </span>
-                  <span>
-                    Our{" "}
-                    <span className="text-manikstu-green">Product Range</span>
-                  </span>
-                  <span aria-hidden className="hidden sm:inline-flex items-center gap-2">
-                    <Sprout className="h-4 w-4 text-manikstu-green/70 -scale-x-100" />
-                    <span className="h-px w-10 bg-manikstu-gold/70" />
-                  </span>
-                </span>
+              {/* Ornamental pill heading */}
+              <div className="flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-10 sm:w-14 bg-manikstu-gold/60" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                  Our Products
+                </p>
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-10 sm:w-14 bg-manikstu-gold/60" />
+              </div>
+
+              <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
+                Explore Our{" "}
+                <span className="text-manikstu-green">Product Range</span>
               </h2>
-              <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-grey dark:text-gray-300">
+
+              {/* Ornamental Divider with Framed Diamond */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <div aria-hidden className="relative flex items-center justify-center">
+                  <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                  <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              </div>
+
+              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey dark:text-gray-300">
                 Trusted by farmers, for healthier animals and better livelihoods.
               </p>
             </div>
@@ -323,7 +354,7 @@ export default function ProductsPage() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => setCart({})}
+                    onClick={() => setCart(clearCartStore())}
                     className="text-xs font-semibold text-grey hover:text-manikstu-red transition-colors"
                   >
                     Clear all

@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { addToCart as addToCartStore } from "../cart";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
@@ -72,10 +73,19 @@ function StarRow({
 
 export default function ProductDetailPage() {
   const params = useParams<{ slug: string }>();
+  const router = useRouter();
   const slug = params?.slug ?? "";
 
   const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const [qty, setQty] = useState(1);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+
+  const handleAddToCart = () => {
+    if (!product) return;
+    addToCartStore(product.id, qty);
+    // Take the farmer to the cart on the listing page
+    router.push("/products#cart");
+  };
 
   // Write-a-review form state (client-only, no backend)
   const [reviewFormOpen, setReviewFormOpen] = useState(false);
@@ -197,6 +207,18 @@ export default function ProductDetailPage() {
     [products, slug]
   );
 
+  // When the product changes, reset the active image to the product's first
+  // gallery entry (or its main image).
+  useEffect(() => {
+    if (!product) {
+      setActiveImage(null);
+      return;
+    }
+    const first =
+      (product.gallery && product.gallery[0]) || product.image || null;
+    setActiveImage(first);
+  }, [product]);
+
   if (!product) {
     return (
       <>
@@ -262,10 +284,10 @@ export default function ProductDetailPage() {
             {/* Left — image + details */}
             <div className="relative">
               <div className="relative aspect-square overflow-hidden rounded-3xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
-                {product.image ? (
+                {activeImage || product.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={product.image}
+                    src={activeImage ?? product.image}
                     alt={product.name}
                     className="absolute inset-0 h-full w-full object-contain p-8"
                   />
@@ -281,6 +303,56 @@ export default function ProductDetailPage() {
                 )}
               </div>
 
+              {/* Image gallery thumbnails — click to swap the main image */}
+              {(() => {
+                const gallery =
+                  product.gallery && product.gallery.length > 0
+                    ? product.gallery
+                    : product.image
+                    ? [product.image]
+                    : [];
+                // Always render 4 slots so the strip looks complete
+                const slots = Array.from({ length: 4 }, (_, i) => gallery[i] ?? null);
+                return (
+                  <div className="mt-4 grid grid-cols-4 gap-3">
+                    {slots.map((src, i) => {
+                      const isActive = !!src && src === activeImage;
+                      const isPlaceholder = !src;
+                      return (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => src && setActiveImage(src)}
+                          disabled={isPlaceholder}
+                          aria-label={`View image ${i + 1}`}
+                          aria-pressed={isActive}
+                          className={
+                            "relative aspect-square overflow-hidden rounded-xl border bg-manikstu-cream/60 transition-shadow " +
+                            (isPlaceholder
+                              ? "cursor-default border-light-grey/60 opacity-70 dark:border-gray-700"
+                              : isActive
+                              ? "border-manikstu-green ring-2 ring-manikstu-green/40"
+                              : "border-manikstu-gold/20 hover:border-manikstu-green/50 hover:shadow-sm")
+                          }
+                        >
+                          {src ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={src}
+                              alt=""
+                              className="absolute inset-0 h-full w-full object-contain p-2"
+                            />
+                          ) : (
+                            <span className="absolute inset-0 flex items-center justify-center">
+                              <ShoppingBag className="h-5 w-5 text-manikstu-green/20" />
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
             </div>
 
             {/* Right — info */}
@@ -345,37 +417,48 @@ export default function ProductDetailPage() {
                 )}
               </div>
 
-              {/* Qty + Add to Cart */}
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <div className="inline-flex items-center gap-1 rounded-full border border-manikstu-green/60 bg-white text-sm font-semibold text-manikstu-green dark:bg-gray-800">
+              {/* Qty + Add to Cart + Buy Now */}
+              <div className="mt-6 w-fit max-w-full">
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="inline-flex items-center gap-1 rounded-full border border-manikstu-green/60 bg-white text-sm font-semibold text-manikstu-green dark:bg-gray-800">
+                    <button
+                      type="button"
+                      onClick={() => setQty((q) => Math.max(1, q - 1))}
+                      aria-label="Decrease quantity"
+                      className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-manikstu-green/10"
+                    >
+                      <Minus className="h-4 w-4" />
+                    </button>
+                    <span className="min-w-[1.5rem] text-center tabular-nums">
+                      {qty}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setQty((q) => q + 1)}
+                      aria-label="Increase quantity"
+                      className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-manikstu-green/10"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </button>
+                  </div>
+
                   <button
                     type="button"
-                    onClick={() => setQty((q) => Math.max(1, q - 1))}
-                    aria-label="Decrease quantity"
-                    className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-manikstu-green/10"
+                    onClick={handleAddToCart}
+                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
                   >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <span className="min-w-[1.5rem] text-center tabular-nums">
-                    {qty}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => setQty((q) => q + 1)}
-                    aria-label="Increase quantity"
-                    className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-manikstu-green/10"
-                  >
-                    <Plus className="h-4 w-4" />
+                    <ShoppingBag className="h-4 w-4" />
+                    Add {qty > 1 ? `${qty} ` : ""}to Cart
                   </button>
                 </div>
 
+                {/* Buy Now — matches the width of the row above */}
                 <Link
-                  href={`/products#cart`}
-                  className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
+                  href="/contact"
+                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-red px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-saura-red focus:outline-none focus:ring-2 focus:ring-manikstu-red focus:ring-offset-2"
                 >
-                  <ShoppingBag className="h-4 w-4" />
-                  Add {qty > 1 ? `${qty} ` : ""}to Cart · ₹
-                  {lineTotal.toLocaleString("en-IN")}
+                  <ArrowRight className="h-4 w-4" />
+                  Buy Now
                 </Link>
               </div>
 
