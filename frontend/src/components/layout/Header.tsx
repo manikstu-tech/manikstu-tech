@@ -10,16 +10,29 @@ import { getNavigation } from "@/lib/api";
 import type { NavigationMenuItem } from "@/types";
 import LanguageSwitcher from "./LanguageSwitcher";
 
+const FALLBACK_NAV: NavigationMenuItem[] = [
+  { id: -1, label: "Home", url: "/", order: 1 } as NavigationMenuItem,
+  { id: -2, label: "About Us", url: "/about", order: 2 } as NavigationMenuItem,
+  { id: -3, label: "Services", url: "/services", order: 3 } as NavigationMenuItem,
+  { id: -4, label: "Products", url: "/products", order: 4 } as NavigationMenuItem,
+  { id: -5, label: "Media", url: "/blog", order: 5 } as NavigationMenuItem,
+  { id: -6, label: "Collaborate", url: "/collaborate", order: 6 } as NavigationMenuItem,
+  { id: -7, label: "Training", url: "/training", order: 7 } as NavigationMenuItem,
+  { id: -8, label: "Careers", url: "/careers", order: 8 } as NavigationMenuItem,
+];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>([]);
+  const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>(FALLBACK_NAV);
   const { toggle } = useThemeToggle();
   const pathname = usePathname() ?? "/";
   const t = useTranslations("Navigation");
 
   useEffect(() => {
     getNavigation()
-      .then((res) => setNavLinks(res.data))
+      .then((res) => {
+        if (Array.isArray(res.data) && res.data.length > 0) setNavLinks(res.data);
+      })
       .catch(() => {});
   }, []);
 
