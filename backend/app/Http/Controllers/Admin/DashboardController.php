@@ -43,7 +43,7 @@ class DashboardController extends Controller
             'job_openings' => JobOpening::active()->where('created_at', '<=', $asOf)->count(),
         ];
 
-        $recentEnquiries = Enquiry::where('created_at', '<=', $asOf)->latest()->take(5)->get();
+        $recentEnquiries = Enquiry::where('created_at', '<=', $asOf)->latest()->take(12)->get();
         $recentOrders = Order::with('customer')->where('created_at', '<=', $asOf)->latest()->take(5)->get();
         $recentBlog = BlogPost::where('created_at', '<=', $asOf)->latest('created_at')->take(3)->get();
 

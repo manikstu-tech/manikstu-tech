@@ -42,14 +42,14 @@
             transition: transform 0.25s ease;
         }
         .sidebar-logo {
-            height: 88px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid rgba(255,255,255,0.12);
-            padding: 0 20px;
+            padding: 0 16px;
         }
-        .sidebar-logo img { height: 40px; width: auto; filter: brightness(0) invert(1); opacity: 0.95; }
+        .sidebar-logo img { height: 60px; width: auto; filter: brightness(0) invert(1); opacity: 1; image-rendering: -webkit-optimize-contrast; }
 
         .sidebar-nav {
             flex: 1;
@@ -147,7 +147,10 @@
         .logout-btn svg { width: 14px; height: 14px; }
 
         /* ===== MAIN ===== */
-        .main-area { flex: 1; margin-left: 260px; display: flex; flex-direction: column; height: 100vh; overflow-y: scroll; }
+        .main-area { flex: 1; margin-left: 260px; display: flex; flex-direction: column; height: 100vh; overflow-y: scroll; transition: margin-left 0.25s ease; }
+        /* Desktop: collapse the sidebar via the hamburger */
+        .app-shell.sidebar-collapsed .sidebar { transform: translateX(-100%); }
+        .app-shell.sidebar-collapsed .main-area { margin-left: 0; }
         .main-area::-webkit-scrollbar { width: 10px; }
         .main-area::-webkit-scrollbar-track { background: transparent; }
         .main-area::-webkit-scrollbar-thumb { background: rgba(45,80,22,0.22); border-radius: 6px; }
@@ -416,7 +419,15 @@
         $notifItems = $notifItems->sortByDesc('time')->take(7)->values();
         $notifCount = $notifItems->where('unread', true)->count();
     @endphp
-    <div class="app-shell">
+    <div class="app-shell" id="appShell">
+        <script>
+            // Restore the desktop sidebar collapse state before paint (no flash)
+            try {
+                if (window.innerWidth > 768 && localStorage.getItem('sidebarCollapsed') === '1') {
+                    document.getElementById('appShell').classList.add('sidebar-collapsed');
+                }
+            } catch (e) {}
+        </script>
 
         <!-- Sidebar overlay (mobile) -->
         <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
@@ -616,8 +627,16 @@
 
     <script>
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-            document.getElementById('sidebarOverlay').classList.toggle('open');
+            if (window.innerWidth <= 768) {
+                // Mobile: slide the off-canvas sidebar in/out
+                document.getElementById('sidebar').classList.toggle('open');
+                document.getElementById('sidebarOverlay').classList.toggle('open');
+            } else {
+                // Desktop: collapse/expand the sidebar and remember the choice
+                var shell = document.getElementById('appShell');
+                var collapsed = shell.classList.toggle('sidebar-collapsed');
+                try { localStorage.setItem('sidebarCollapsed', collapsed ? '1' : '0'); } catch (e) {}
+            }
         }
         function closeSidebar() {
             document.getElementById('sidebar').classList.remove('open');
