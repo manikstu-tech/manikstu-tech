@@ -6,8 +6,8 @@
 ---
 
 ## Tech Stack & Structure
-- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS, Lucide React, Framer Motion.
-- **Backend**: FastAPI / Python backend (`backend/` directory).
+- **Frontend**: Next.js 14 (App Router) with `next-intl` multi-language routing (`[locale]`), TypeScript, Tailwind CSS, Lucide React, Framer Motion.
+- **Backend**: Laravel 11 REST API & Admin Panel (`backend/` directory).
 - **Styling Tokens**:
   - `manikstu-green`: `#4A8C3F`
   - `manikstu-leaf`: `#3A7030`
