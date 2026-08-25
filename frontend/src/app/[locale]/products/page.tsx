@@ -143,7 +143,7 @@ export default function ProductsPage() {
 
           {/* Right — visual panel */}
           <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               <Image
                 src="/products-hero.png"
                 alt="Farm-first product range"
@@ -171,7 +171,7 @@ export default function ProductsPage() {
 
         <section
           id="products-grid"
-          className="bg-white dark:bg-gray-900 px-4 pt-4 pb-14 sm:px-6 sm:pt-6 sm:pb-16 md:px-8 md:pt-8 md:pb-20"
+          className="section-padding bg-white dark:bg-gray-900"
         >
           <div className="mx-auto max-w-7xl">
             {/* Ornamental section heading */}

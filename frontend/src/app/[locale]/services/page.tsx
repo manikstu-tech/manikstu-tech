@@ -186,26 +186,68 @@ const categories: Block[] = [
 function AlternatingBlock({ item, index }: { item: Block; index: number }) {
   const Icon = item.icon;
   const flipped = index % 2 === 1;
+  // Stagger the village-figures art position so each card looks different
+  const artOffset = `${(index * 33) % 100}% bottom`;
 
   return (
     <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
-      {/* Text side */}
+      {/* Text side — mission-card design language */}
       <div className={`relative h-full ${flipped ? "lg:order-2" : ""}`}>
-        <div className="relative flex h-full flex-col rounded-2xl bg-gray-100 p-8 shadow-md ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-xl md:p-10">
-          {item.subtitle && (
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-manikstu-green">
-              {item.subtitle}
+        <div className="group relative h-full overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/90 pt-8 pb-28 px-6 shadow-sm transition-all duration-300 hover:shadow-xl md:px-8 dark:bg-gray-800/90 flex flex-col">
+          {/* Inner dashed border */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+          />
+
+          {/* Bottom Warli village art */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-85 z-0"
+            style={{
+              backgroundImage: "url('/patterns/village-figures.png')",
+              backgroundSize: "400% auto",
+              backgroundPosition: artOffset,
+            }}
+          />
+
+          <div className="relative z-10 text-center">
+            {/* Icon with dashed decorative ring */}
+            <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+              <Icon className="h-7 w-7 text-manikstu-green" />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+              />
+            </div>
+
+            {item.subtitle && (
+              <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-xs">
+                {item.subtitle}
+              </p>
+            )}
+
+            <h3 className="mt-2 font-heading text-2xl italic font-bold leading-snug text-manikstu-leaf group-hover:text-manikstu-green transition-colors dark:text-white md:text-3xl">
+              {item.title}
+            </h3>
+
+            {/* Line-diamond-line ornament */}
+            <div className="mt-3 flex items-center justify-center gap-1.5">
+              <span aria-hidden className="h-px w-10 bg-manikstu-gold" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-10 bg-manikstu-gold" />
+            </div>
+
+            {item.highlight && (
+              <p className="mt-3 text-sm font-semibold text-manikstu-green">
+                {item.highlight}
+              </p>
+            )}
+
+            <p className="mt-4 text-sm leading-relaxed text-grey dark:text-gray-300 md:text-base">
+              {item.description}
             </p>
-          )}
-          <h3 className="font-heading text-2xl font-bold text-charcoal md:text-3xl">
-            {item.title}
-          </h3>
-          {item.highlight && (
-            <p className="mt-3 font-semibold text-manikstu-green">
-              {item.highlight}
-            </p>
-          )}
-          <p className="mt-4 leading-relaxed text-grey">{item.description}</p>
+          </div>
         </div>
       </div>
 
@@ -283,7 +325,7 @@ export default function ServicesPage() {
 
           {/* Right — visual panel */}
           <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               {/* Services / stacked-support line-art illustration */}
               <svg
                 aria-hidden="true"
@@ -343,12 +385,39 @@ export default function ServicesPage() {
         <section id="what-we-offer" className="section-padding bg-white scroll-mt-6">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                What We Offer
-              </p>
-              <h2 className="mt-3 font-heading text-3xl font-bold text-charcoal md:text-4xl">
-                Our Services
+              {/* Ornamental pill heading */}
+              <div className="flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                  What We Offer
+                </p>
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+              </div>
+
+              <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
+                Our{" "}
+                <span className="text-manikstu-green">Services</span>
               </h2>
+
+              {/* Ornamental Divider with Framed Diamond */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <div aria-hidden className="relative flex items-center justify-center">
+                  <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                  <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              </div>
+
+              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed dark:text-gray-300">
+                Integrated support for every stage of the goat-farming journey —
+                veterinary care, farm management, insurance and technology under
+                one roof.
+              </p>
             </div>
             <div className="space-y-16 md:space-y-24">
               {categories.map((item, i) => (

@@ -7,9 +7,16 @@ export default function TrainingHero() {
     <PageHero>
           {/* Left — copy */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-              Training &amp; Awareness
-            </p>
+            <div className="flex items-center gap-2">
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                Training &amp; Awareness
+              </p>
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+            </div>
+
             <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
               Building Capabilities.
               <br />
@@ -52,7 +59,7 @@ export default function TrainingHero() {
 
           {/* Right — visual panel */}
           <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               {/* Community / learning line-art illustration */}
               <svg
                 aria-hidden="true"

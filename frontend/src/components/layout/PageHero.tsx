@@ -52,7 +52,7 @@ export default function PageHero({
     >
       {background === undefined ? defaultBackground : background}
       <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-start gap-12 lg:grid-cols-2">
           {children}
         </div>
       </div>
