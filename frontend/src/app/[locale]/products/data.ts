@@ -295,6 +295,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
       "Herds showing signs of parasite load (poor coat, weight loss)",
       "Newly acquired stock during quarantine",
     ],
+    gallery: ["/15.png", "/16.png", "/17.png", "/18.png"],
   },
   {
     id: -5,
@@ -335,6 +336,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
       "Late-pregnancy does — prevents milk fever",
       "Growing kids showing weak bones",
     ],
+    gallery: ["/20.png", "/21.png", "/1.png", "/2.png"],
   },
   {
     id: -6,
@@ -376,6 +378,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
       "Small-holder families using kitchen gardens for fodder",
       "Reducing dependence on purchased feed",
     ],
+    gallery: ["/3.png", "/4.png", "/5.png", "/6.png"],
   },
 ];
 
