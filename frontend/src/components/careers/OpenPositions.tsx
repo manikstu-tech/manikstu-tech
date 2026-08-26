@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Briefcase, ChevronRight, MapPin, Clock } from "lucide-react";
 
 export interface JobOpening {
@@ -13,6 +14,8 @@ export interface JobOpening {
 }
 
 export default function OpenPositions({ jobs }: { jobs: JobOpening[] }) {
+  const t = useTranslations("Careers");
+
   return (
     <section id="open-positions" className="relative overflow-hidden bg-manikstu-cream py-16 sm:py-20 md:py-24">
       {/* Top tribal border */}
@@ -60,15 +63,14 @@ export default function OpenPositions({ jobs }: { jobs: JobOpening[] }) {
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              Current Openings
+              {t("openingsPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           </div>
 
           <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-            Join Our{" "}
-            <span className="text-manikstu-green">Growing Team</span>
+            {t("openingsTitle")}
           </h2>
 
           {/* Ornamental Divider with Framed Diamond */}
@@ -84,8 +86,7 @@ export default function OpenPositions({ jobs }: { jobs: JobOpening[] }) {
           </div>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey leading-relaxed">
-            Explore career opportunities to drive technological innovation and
-            sustainable livelihoods in rural heartlands.
+            {t("openingsDesc")}
           </p>
         </div>
 
@@ -100,18 +101,16 @@ export default function OpenPositions({ jobs }: { jobs: JobOpening[] }) {
                 />
               </div>
               <h3 className="font-heading text-xl font-bold text-charcoal">
-                No active openings at this exact moment
+                {t("noOpenings")}
               </h3>
               <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-grey">
-                We&apos;re always eager to meet driven minds passionate about rural
-                transformation and agritech. Send us your resume to be considered
-                for upcoming opportunities.
+                {t("noOpeningsDesc")}
               </p>
               <Link
                 href="/contact"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Contact Our Team <ChevronRight className="h-4 w-4" />
+                {t("contactTeam")} <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
           ) : (

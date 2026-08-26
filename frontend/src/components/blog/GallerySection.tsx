@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Camera, MapPin, ChevronDown, ChevronUp } from "lucide-react";
 import type { GalleryPhoto } from "@/lib/blog-data";
@@ -8,6 +9,7 @@ import type { GalleryPhoto } from "@/lib/blog-data";
 const INITIAL_COUNT = 4;
 
 export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
+  const t = useTranslations("Blog");
   const [expanded, setExpanded] = useState(false);
   const hasMore = photos.length > INITIAL_COUNT;
   const visible = expanded ? photos : photos.slice(0, INITIAL_COUNT);
@@ -24,15 +26,17 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              Gallery
+              {t("galleryPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           </div>
 
           <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-            Moments from the{" "}
-            <span className="text-manikstu-green">Field</span>
+            {t("galleryTitle").split("Field")[0]}
+            <span className="text-manikstu-green">
+              {t("galleryTitle").split("Field")[1]?.trim()}
+            </span>
           </h2>
 
           {/* Ornamental Divider with Framed Diamond */}
@@ -48,8 +52,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
           </div>
 
           <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
-            Photos from villages, farms and community events across our
-            programs.
+            {t("galleryDesc")}
           </p>
         </div>
 
@@ -69,7 +72,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
                 />
                 <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-manikstu-green shadow-sm">
                   <Camera className="h-3 w-3" />
-                  Photo
+                  {t("photoBadge")}
                 </span>
               </div>
               <figcaption className="px-4 py-4">
@@ -100,11 +103,11 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
             >
               {expanded ? (
                 <>
-                  Show Less <ChevronUp className="h-4 w-4" />
+                  {t("showLess")} <ChevronUp className="h-4 w-4" />
                 </>
               ) : (
                 <>
-                  View All Photos ({photos.length}){" "}
+                  {t("viewAllPhotos")} ({photos.length}){" "}
                   <ChevronDown className="h-4 w-4" />
                 </>
               )}

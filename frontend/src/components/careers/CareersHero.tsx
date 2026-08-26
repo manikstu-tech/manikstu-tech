@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight, Leaf, Sprout, Users } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
 
 export default function CareersHero() {
+  const t = useTranslations("Careers");
+
   return (
     <PageHero>
           {/* Left — copy */}
@@ -11,22 +14,22 @@ export default function CareersHero() {
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
               <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
               <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                Careers at Manikstu
+                {t("pill")}
               </p>
               <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             </div>
 
             <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
-              Build Your Career.
+              {t("heroTitle").split("Rural")[0]}
               <br />
-              <span className="text-manikstu-green">Grow Rural India.</span>
+              <span className="text-manikstu-green">
+                {t("heroTitle").split("Rural")[1]?.trim()}
+              </span>
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
-              At Manikstu, we are building more than a company — we are
-              building an ecosystem that empowers farmers, creates livelihoods
-              and drives sustainable rural transformation across India.
+              {t("heroDesc")}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -34,13 +37,13 @@ export default function CareersHero() {
                 href="#open-positions"
                 className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                View Open Positions <ArrowRight className="h-4 w-4" />
+                {t("viewPositions")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="#why-join-us"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Life at Manikstu
+                {t("lifeAt")}
               </Link>
             </div>
 
@@ -50,7 +53,7 @@ export default function CareersHero() {
                 <Leaf className="h-3.5 w-3.5 text-manikstu-green" />
               </span>
               <p className="text-sm text-grey">
-                Join a passionate team making meaningful impact every single day
+                {t("microStatement")}
               </p>
             </div>
           </div>
@@ -97,7 +100,7 @@ export default function CareersHero() {
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3.5 py-1.5 shadow-sm">
                 <Sprout className="h-4 w-4 text-manikstu-green" />
                 <span className="text-xs font-semibold text-charcoal">
-                  Purpose-driven work
+                  {t("cornerAccent")}
                 </span>
               </div>
             </div>

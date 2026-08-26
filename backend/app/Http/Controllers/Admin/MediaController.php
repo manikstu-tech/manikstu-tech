@@ -21,7 +21,8 @@ class MediaController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'file' => 'required|file|max:10240|mimes:jpg,jpeg,png,gif,webp,svg,pdf',
+            // ponytail: svg dropped — it's XML and executes scripts when rendered (stored XSS)
+            'file' => 'required|file|max:10240|mimes:jpg,jpeg,png,gif,webp,pdf',
         ]);
 
         $file = $request->file('file');

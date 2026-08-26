@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -21,6 +22,7 @@ interface Product {
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const t = useTranslations("Products");
 
   useEffect(() => {
     getProducts(1, 50)
@@ -38,13 +40,13 @@ export default function ProductsPage() {
         <PageHero background={null}>
           <div>
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              Our Products
+              {t("pill")}
             </p>
             <h1 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-              Quality <span className="text-manikstu-green">Products</span>
+              {t("heroTitle")}
             </h1>
             <p className="mt-4 max-w-lg text-grey">
-              Specially curated products to support goat farming and rural livelihoods.
+              {t("heroDesc")}
             </p>
           </div>
           <div className="flex items-center justify-center rounded-2xl bg-manikstu-cream p-8">
@@ -55,16 +57,16 @@ export default function ProductsPage() {
         <section className="section-padding bg-white">
           <div className="mx-auto max-w-6xl">
             {loading ? (
-              <div className="py-12 text-center text-grey">Loading products...</div>
+              <div className="py-12 text-center text-grey">{t("loading")}</div>
             ) : products.length === 0 ? (
               <div className="py-12 text-center">
                 <ShoppingBag className="mx-auto h-12 w-12 text-manikstu-green/30" />
-                <p className="mt-4 text-grey">Products coming soon.</p>
+                <p className="mt-4 text-grey">{t("comingSoon")}</p>
                 <Link
                   href="/contact"
                   className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors"
                 >
-                  Contact us for enquiries <ArrowRight className="h-3 w-3" />
+                  {t("contactEnquiry")} <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
             ) : (

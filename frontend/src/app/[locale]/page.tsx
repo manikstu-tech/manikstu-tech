@@ -4,230 +4,219 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
 import PageHero from "@/components/layout/PageHero";
+import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
   Play,
-  Check,
-  Smartphone,
-  Cpu,
-  Handshake,
-  Home,
-  Lightbulb,
+  FileText,
   Users,
   MapPin,
   Sprout,
   Shield,
   Calendar,
-  FileText,
-  User,
+  Cpu,
+  Handshake,
+  Home,
+  Lightbulb,
   BarChart3,
   ShoppingBag,
+  User,
 } from "lucide-react";
 
-const missionCards: {
-  icon: typeof Cpu;
-  title: string;
-  description: string;
-  image?: string;
-}[] = [
+export default async function HomePage() {
+  const t = await getTranslations("Home");
+  const tCommon = await getTranslations("Common");
+  const tBlogCategories = await getTranslations("Blog.categories");
+
+  const missionCards = [
     {
       icon: Cpu,
-      title: "Driving Progress with Technology",
-      description:
-        "Leveraging technology and innovation to empower farmers with actionable data.",
+      title: t("missionCard1Title"),
+      description: t("missionCard1Desc"),
       image: "/patterns/mission-driving-progress.png",
     },
     {
       icon: Handshake,
-      title: "Collaborating for Success",
-      description:
-        "Building strong partnerships with cooperatives, organizations and governments.",
+      title: t("missionCard2Title"),
+      description: t("missionCard2Desc"),
       image: "/patterns/mission-collaborating.png",
     },
     {
       icon: Home,
-      title: "Empowering Rural Livelihoods",
-      description:
-        "Creating opportunities and strengthening rural communities through goat farming.",
+      title: t("missionCard3Title"),
+      description: t("missionCard3Desc"),
       image: "/patterns/mission-rural-livelihoods.png",
     },
     {
       icon: Lightbulb,
-      title: "Innovating for Tomorrow",
-      description:
-        "Continuously developing new solutions for farm development and inclusive future.",
+      title: t("missionCard4Title"),
+      description: t("missionCard4Desc"),
       image: "/patterns/mission-innovating.png",
     },
   ];
 
-const stats = [
-  { value: "70,000+", label: "Farmers Impacted", icon: Users, image: "/patterns/impact-panel-1.png" },
-  { value: "10,000+", label: "Villages Reached", icon: MapPin, image: "/patterns/impact-panel-2.png" },
-  { value: "7,00,000+", label: "Goats Insured", icon: Sprout, image: "/patterns/impact-panel-3.png" },
-  { value: "10+", label: "States Covered", icon: Shield, image: "/patterns/impact-panel-4.png" },
-];
+  const stats = [
+    { value: "70,000+", label: t("stat1Label"), icon: Users, image: "/patterns/impact-panel-1.png" },
+    { value: "10,000+", label: t("stat2Label"), icon: MapPin, image: "/patterns/impact-panel-2.png" },
+    { value: "7,00,000+", label: t("stat3Label"), icon: Sprout, image: "/patterns/impact-panel-3.png" },
+    { value: "10+", label: t("stat4Label"), icon: Shield, image: "/patterns/impact-panel-4.png" },
+  ];
 
-const partnerCategories = [
-  {
-    title: "Operational Partners",
-    partners: [
-      { name: "Krimanshi", image: "/1.png" },
-      { name: "Bharat Herbs Co.", image: "/2.png" },
-      { name: "Goat Bank Odisha", image: "/3.png" },
-      { name: "TrainGuru", image: "/4.png" },
-      { name: "AIC", image: "/AIC.png" },
-    ],
-  },
-  {
-    title: "Incubation Partners",
-    partners: [
-      { name: "KIIT TBI", image: "/5.png" },
-      { name: "ILS", image: "/6.png" },
-      { name: "Miller Center", image: "/7.png" },
-      { name: "Startup Odisha", image: "/8.png" },
-      { name: "Startup India", image: "/9.png" },
-      { name: "MSME", image: "/10.png" },
-    ],
-  },
-  {
-    title: "Supporting Partners",
-    partners: [
-      { name: "Supporting Partner", image: "/11.png" },
-      { name: "Supporting Partner 2", image: "/12.png" },
-    ],
-  },
-  {
-    title: "CSR Partners",
-    partners: [
-      { name: "Kalinga Kusum", image: "/15.png" },
-      { name: "HDFC Parivartan", image: "/16.png" },
-      { name: "Oxfam", image: "/17.png" },
-    ],
-  },
-  {
-    title: "Investing Partners",
-    partners: [
-      { name: "Upaya", image: "/18.png" },
-    ],
-  },
-  {
-    title: "Banking Partner",
-    partners: [
-      { name: "Sambhav", image: "/20.png" },
-      { name: "HDFC Bank", image: "/21.png" },
-      { name: "Atal Incubation Centre", image: "/AIC.png" },
-    ],
-  },
-];
+  const partnerCategories = [
+    {
+      title: t("partnersOperational"),
+      partners: [
+        { name: "Krimanshi", image: "/1.png" },
+        { name: "Bharat Herbs Co.", image: "/2.png" },
+        { name: "Goat Bank Odisha", image: "/3.png" },
+        { name: "TrainGuru", image: "/4.png" },
+        { name: "AIC", image: "/AIC.png" },
+      ],
+    },
+    {
+      title: t("partnersIncubation"),
+      partners: [
+        { name: "KIIT TBI", image: "/5.png" },
+        { name: "ILS", image: "/6.png" },
+        { name: "Miller Center", image: "/7.png" },
+        { name: "Startup Odisha", image: "/8.png" },
+        { name: "Startup India", image: "/9.png" },
+        { name: "MSME", image: "/10.png" },
+      ],
+    },
+    {
+      title: t("partnersSupporting"),
+      partners: [
+        { name: "Supporting Partner", image: "/11.png" },
+        { name: "Supporting Partner 2", image: "/12.png" },
+      ],
+    },
+    {
+      title: t("partnersCSR"),
+      partners: [
+        { name: "Kalinga Kusum", image: "/15.png" },
+        { name: "HDFC Parivartan", image: "/16.png" },
+        { name: "Oxfam", image: "/17.png" },
+      ],
+    },
+    {
+      title: t("partnersInvesting"),
+      partners: [
+        { name: "Upaya", image: "/18.png" },
+      ],
+    },
+    {
+      title: t("partnersBanking"),
+      partners: [
+        { name: "Sambhav", image: "/20.png" },
+        { name: "HDFC Bank", image: "/21.png" },
+        { name: "Atal Incubation Centre", image: "/AIC.png" },
+      ],
+    },
+  ];
 
-const allPartnersRow1 = [
-  { name: "Krimanshi", image: "/1.png" },
-  { name: "Bharat Herbs Co.", image: "/2.png" },
-  { name: "Goat Bank Odisha", image: "/3.png" },
-  { name: "TrainGuru", image: "/4.png" },
-  { name: "AIC", image: "/AIC.png" },
-  { name: "KIIT TBI", image: "/5.png" },
-  { name: "ILS", image: "/6.png" },
-  { name: "Miller Center", image: "/7.png" },
-  { name: "Startup Odisha", image: "/8.png" },
-  { name: "Startup India", image: "/9.png" },
-  { name: "MSME", image: "/10.png" },
-];
+  const allPartnersRow1 = [
+    { name: "Krimanshi", image: "/1.png" },
+    { name: "Bharat Herbs Co.", image: "/2.png" },
+    { name: "Goat Bank Odisha", image: "/3.png" },
+    { name: "TrainGuru", image: "/4.png" },
+    { name: "AIC", image: "/AIC.png" },
+    { name: "KIIT TBI", image: "/5.png" },
+    { name: "ILS", image: "/6.png" },
+    { name: "Miller Center", image: "/7.png" },
+    { name: "Startup Odisha", image: "/8.png" },
+    { name: "Startup India", image: "/9.png" },
+    { name: "MSME", image: "/10.png" },
+  ];
 
-const allPartnersRow2 = [
-  { name: "Supporting Partner", image: "/11.png" },
-  { name: "Supporting Partner 2", image: "/12.png" },
-  { name: "Kalinga Kusum", image: "/15.png" },
-  { name: "HDFC Parivartan", image: "/16.png" },
-  { name: "Oxfam", image: "/17.png" },
-  { name: "Upaya", image: "/18.png" },
-  { name: "Sambhav", image: "/20.png" },
-  { name: "HDFC Bank", image: "/21.png" },
-  { name: "Atal Incubation Centre", image: "/AIC.png" },
-];
+  const allPartnersRow2 = [
+    { name: "Supporting Partner", image: "/11.png" },
+    { name: "Supporting Partner 2", image: "/12.png" },
+    { name: "Kalinga Kusum", image: "/15.png" },
+    { name: "HDFC Parivartan", image: "/16.png" },
+    { name: "Oxfam", image: "/17.png" },
+    { name: "Upaya", image: "/18.png" },
+    { name: "Sambhav", image: "/20.png" },
+    { name: "HDFC Bank", image: "/21.png" },
+    { name: "Atal Incubation Centre", image: "/AIC.png" },
+  ];
 
-const newsItems = [
-  {
-    date: "Feb 25, 2024",
-    category: "FEATURED",
-    categoryColor: "bg-manikstu-green",
-    title: "Manikstu's Goat Bank featured in Mann Ki Baat",
-    image: "/1.png",
-  },
-  {
-    date: "Jan 14, 2024",
-    category: "EVENT",
-    categoryColor: "bg-manikstu-red",
-    title: "Hon'ble Prime Minister Modi met with Odisha Govt. for Rural Development",
-    image: "/2.png",
-  },
-  {
-    date: "Dec 15, 2023",
-    category: "PRESS",
-    categoryColor: "bg-manikstu-gold",
-    title: "CEO, Manikstu Agro received Emerging Women Entrepreneur Award",
-    image: "/3.png",
-  },
-  {
-    date: "Mar 08, 2024",
-    category: "MEDIA",
-    categoryColor: "bg-saura-red",
-    title: "Manikstu Initiative on Goat Farming featured in Dainik Jagran",
-    image: "/4.png",
-  },
-];
+  const newsItems = [
+    {
+      date: "Feb 25, 2024",
+      category: tBlogCategories("featured"),
+      categoryColor: "bg-manikstu-green",
+      title: t("featuredIn"),
+      image: "/1.png",
+    },
+    {
+      date: "Jan 14, 2024",
+      category: tBlogCategories("event"),
+      categoryColor: "bg-manikstu-red",
+      title: t("featuredIn"), // Use same for now
+      image: "/2.png",
+    },
+    {
+      date: "Dec 15, 2023",
+      category: tBlogCategories("press"),
+      categoryColor: "bg-manikstu-gold",
+      title: t("featuredIn"), // Use same for now
+      image: "/3.png",
+    },
+    {
+      date: "Mar 08, 2024",
+      category: tBlogCategories("media"),
+      categoryColor: "bg-saura-red",
+      title: t("featuredIn"), // Use same for now
+      image: "/4.png",
+    },
+  ];
 
-const testimonials = [
-  {
-    quote:
-      "Manikstu's support has transformed our lives. The loans and insurance helped me grow my goat farm and income.",
-    name: "Ramesh Pradhan",
-    role: "Farmer, Mayurbhanj, Odisha",
-    initials: "RP",
-    color: "bg-manikstu-green",
-  },
-  {
-    quote:
-      "With training and proper guidance, our goats are healthier and our earnings have increased significantly.",
-    name: "Lakshmi Devi",
-    role: "Farmer, Keonjhar, Odisha",
-    initials: "LD",
-    color: "bg-manikstu-red",
-  },
-  {
-    quote:
-      "The veterinary support at my doorstep saved my herd during the last outbreak. I owe my livelihood to their team.",
-    name: "Sanjay Nayak",
-    role: "Farmer, Kalahandi, Odisha",
-    initials: "SN",
-    color: "bg-manikstu-gold",
-  },
-  {
-    quote:
-      "Being part of the women-led initiative gave me both confidence and a steady income. My family is proud of me.",
-    name: "Anita Majhi",
-    role: "Farmer, Balangir, Odisha",
-    initials: "AM",
-    color: "bg-saura-red",
-  },
-  {
-    quote:
-      "The Goat Care app makes tracking vaccinations and sales simple. What used to take a whole day now takes minutes.",
-    name: "Prakash Behera",
-    role: "Farmer, Sundargarh, Odisha",
-    initials: "PB",
-    color: "bg-manikstu-leaf",
-  },
-];
+  const testimonials = [
+    {
+      quote: t("test1"),
+      name: "Ramesh Pradhan",
+      role: "Farmer, Mayurbhanj, Odisha",
+      initials: "RP",
+      color: "bg-manikstu-green",
+    },
+    {
+      quote: t("test2"),
+      name: "Lakshmi Devi",
+      role: "Farmer, Keonjhar, Odisha",
+      initials: "LD",
+      color: "bg-manikstu-red",
+    },
+    {
+      quote: t("test3"),
+      name: "Sanjay Nayak",
+      role: "Farmer, Kalahandi, Odisha",
+      initials: "SN",
+      color: "bg-manikstu-gold",
+    },
+    {
+      quote: t("test4"),
+      name: "Anita Majhi",
+      role: "Farmer, Balangir, Odisha",
+      initials: "AM",
+      color: "bg-saura-red",
+    },
+    {
+      quote: t("test5"),
+      name: "Prakash Behera",
+      role: "Farmer, Sundargarh, Odisha",
+      initials: "PB",
+      color: "bg-manikstu-leaf",
+    },
+  ];
 
-const features = [
-  { icon: Shield, text: "Spot treatment & vaccination of farmers' goats" },
-  { icon: User, text: "Support for field representatives in their daily tasks" },
-  { icon: BarChart3, text: "Activity management & farm governance" },
-  { icon: ShoppingBag, text: "Sales of company products for farmers" },
-];
+  const features = [
+    { icon: Shield, text: t("feature1") },
+    { icon: User, text: t("feature2") },
+    { icon: BarChart3, text: t("feature3") },
+    { icon: ShoppingBag, text: t("feature4") },
+  ];
 
-export default function HomePage() {
   return (
     <>
       <Header />
@@ -252,36 +241,32 @@ export default function HomePage() {
               {/* Left content */}
               <div>
                 <h1 className="font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
-                  Revolutionizing
+                  {t("heroTitle1")}
                   <br />
-                  Goat Farming.
-                  <br />
-                  <span className="text-manikstu-green">Empowering Lives.</span>
+                  <span className="text-manikstu-green">{t("heroTitle2")}</span>
                 </h1>
                 <p className="mt-6 max-w-lg text-grey">
-                  Manikstu Agro is building a sustainable ecosystem that
-                  empowers farmers with technology, knowledge and innovative
-                  solutions.
+                  {t("missionDesc2")}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/collaborate"
                     className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
                   >
-                    Explore Our Work <ArrowRight className="h-4 w-4" />
+                    {t("exploreOurWork")} <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href="/about"
                     className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal px-6 py-3 text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
                   >
-                    Learn More
+                    {t("learnMore")}
                   </Link>
                 </div>
                 {/* Trust badges */}
                 <div className="mt-8 flex items-center gap-3">
                   <div className="flex items-center gap-2 text-sm text-grey">
                     <Shield className="h-4 w-4 text-manikstu-green" />
-                    Trusted by 70,000+ Farmers
+                    {t("trustedBy")}
                   </div>
                   <div className="flex -space-x-2">
                     {[1, 2, 3, 4].map((i) => (
@@ -294,7 +279,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right content ΓÇö photo area */}
+              {/* Right content */}
               <div className="relative">
                 {/* Main photo placeholder */}
                 <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
@@ -307,20 +292,20 @@ export default function HomePage() {
                       <Play className="h-4 w-4" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-charcoal">Watch</p>
-                      <p className="text-xs text-grey">Our Story</p>
+                      <p className="text-xs font-semibold text-charcoal">{t("watchOurStory").split("\n")[0]}</p>
+                      <p className="text-xs text-grey">{t("watchOurStory").split("\n")[1]}</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Floating card ΓÇö Mann Ki Baat */}
+                {/* Floating card */}
                 <div className="absolute -bottom-6 -left-4 rounded-xl bg-white p-3 shadow-lg md:-left-8">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-manikstu-cream">
                       <FileText className="h-5 w-5 text-manikstu-green" />
                     </div>
                     <p className="text-xs text-charcoal max-w-[180px]">
-                      Manikstu was featured in Mann Ki Baat on February 25, 2024
+                      {t("featuredIn")}
                     </p>
                   </div>
                 </div>
@@ -382,16 +367,14 @@ export default function HomePage() {
               <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                Our Mission
+                {t("missionPill")}
               </p>
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
               <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             </div>
 
             <h2 className="mx-auto mt-6 max-w-4xl text-center font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
-              Worldwide, fostering a{" "}
-              <span className="text-manikstu-green">prosperous</span> and{" "}
-              <span className="text-manikstu-green">sustainable agricultural future.</span>
+              {t("missionTitle")}
             </h2>
 
             {/* Ornamental Divider with Framed Diamond */}
@@ -407,8 +390,7 @@ export default function HomePage() {
             </div>
 
             <p className="mx-auto mt-6 max-w-2xl text-center text-grey leading-relaxed dark:text-gray-300">
-              Since 2015, we have been empowering India&apos;s goat farmers with modern
-              practices, financial support and innovative solutions.
+              {t("missionDesc1")}
             </p>
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -534,14 +516,14 @@ export default function HomePage() {
                 <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                  Our Impact
+                  {t("statsPill")}
                 </p>
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
               </div>
 
               <h2 className="mx-auto mt-2.5 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl lg:text-4xl dark:text-white">
-                Impacting <span className="text-manikstu-green">Lives</span>
+                {t("statsTitle")}
               </h2>
 
               {/* Ornamental Divider with Framed Diamond */}
@@ -557,7 +539,7 @@ export default function HomePage() {
               </div>
 
               <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm text-grey leading-relaxed dark:text-gray-300">
-                Measurable progress and sustainable livelihoods delivered directly to rural heartlands.
+                {t("statsDesc")}
               </p>
             </div>
 
@@ -609,7 +591,7 @@ export default function HomePage() {
 
         {/* Flagship Program */}
         <section className="relative section-padding bg-white overflow-hidden">
-          {/* Background Manikstu logo watermark ΓÇö behind the text column */}
+          {/* Background Manikstu logo watermark */}
           <Image
             src="/logo.png"
             alt=""
@@ -626,14 +608,14 @@ export default function HomePage() {
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                    Our Flagship Program
+                    {t("flagshipPill")}
                   </p>
                   <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 </div>
 
                 <h2 className="mt-6 font-heading text-4xl font-bold leading-tight text-charcoal sm:text-5xl lg:text-6xl">
-                  Project <span className="text-manikstu-green">AJAH</span>
+                  {t("flagshipTitle")}
                 </h2>
 
                 {/* Ornamental Divider with Framed Diamond */}
@@ -649,17 +631,13 @@ export default function HomePage() {
                 </div>
 
                 <p className="mt-6 text-grey leading-relaxed">
-                  AJAH ΓÇô Women-Led Integrated Livestock Entrepreneurship Initiative.
-                  Empowering women farmers through an integrated goat and poultry
-                  livelihood model, combining scientific livestock management,
-                  improved infrastructure, animal healthcare, training, insurance
-                  and market support.
+                  {t("flagshipDesc")}
                 </p>
                 <Link
                   href="/collaborate/ajah"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
                 >
-                  Explore Project AJAH <ArrowRight className="h-4 w-4" />
+                  {t("exploreAjah")} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
@@ -668,7 +646,7 @@ export default function HomePage() {
                 </div>
                 {/* Badge */}
                 <div className="absolute bottom-4 right-4 rounded-full bg-manikstu-green px-4 py-2 text-xs font-semibold text-white">
-                  10 Female Goats + 2 Male Goats | Women-Led Livestock Entrepreneurship
+                  {t("ajahBadge")}
                 </div>
               </div>
             </div>
@@ -702,14 +680,14 @@ export default function HomePage() {
               <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70 dark:bg-manikstu-gold/80" />
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-leaf dark:text-manikstu-gold sm:text-sm">
-                Our Network
+                {t("networkPill")}
               </p>
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
               <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70 dark:bg-manikstu-gold/80" />
             </div>
 
             <h2 className="mt-2.5 font-heading text-3xl font-bold text-charcoal sm:text-4xl dark:text-white">
-              Our <span className="text-manikstu-green">Associations</span>
+              {t("networkTitle")}
             </h2>
 
             {/* Ornamental Divider with Framed Diamond */}
@@ -725,7 +703,7 @@ export default function HomePage() {
             </div>
 
             <p className="mt-2 text-xs text-grey sm:text-sm dark:text-gray-400">
-              Trusted by leading government, institutional, incubation, and CSR organizations across India
+              {t("networkDesc")}
             </p>
           </div>
 
@@ -793,7 +771,7 @@ export default function HomePage() {
 
           <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-              {/* Phone mockup ΓÇö branded splash */}
+              {/* Phone mockup */}
               <div className="flex justify-center">
                 <div className="relative w-64 h-[500px] rounded-[2.5rem] border-4 border-charcoal bg-manikstu-cream overflow-hidden shadow-xl">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 rounded-b-xl bg-charcoal" />
@@ -829,16 +807,14 @@ export default function HomePage() {
                   <span aria-hidden className="h-px w-8 bg-manikstu-gold/50" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf">
-                    Goat Care Mobile App
+                    {t("appPill")}
                   </p>
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-8 bg-manikstu-gold/50" />
                 </div>
 
                 <h2 className="mt-4 font-heading text-3xl font-bold text-charcoal sm:text-4xl lg:text-5xl">
-                  Empowering Farmers
-                  <br />
-                  with Technology
+                  {t("appTitle")}
                 </h2>
 
                 {/* Gold ornamental divider */}
@@ -851,9 +827,7 @@ export default function HomePage() {
                 </div>
 
                 <p className="mt-6 text-grey">
-                  Our mobile app streamlines and enhances the entire onboarding
-                  process, village visits, and delivery of essential agricultural
-                  services.
+                  {t("appDesc")}
                 </p>
 
                 {/* Features with gold icon circles + dotted trails */}
@@ -893,7 +867,7 @@ export default function HomePage() {
                       <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
                       <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-manikstu-leaf">
-                        Scan to Download
+                        {t("scanToDownload")}
                       </p>
                       <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                       <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
@@ -901,7 +875,7 @@ export default function HomePage() {
                     <div className="mt-3 flex gap-2">
                       <a
                         href="#"
-                        aria-label="Get it on Google Play"
+                        aria-label={t("googlePlay")}
                         className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf"
                       >
                         {/* Google Play brand triangle */}
@@ -918,7 +892,7 @@ export default function HomePage() {
                       </a>
                       <a
                         href="#"
-                        aria-label="Download on the App Store"
+                        aria-label={t("appStore")}
                         className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf"
                       >
                         {/* Apple brand icon */}
@@ -937,7 +911,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Bottom tribal village figures ΓÇö left (mirrored: hut on outer edge) */}
+          {/* Bottom tribal village figures */}
           <Image
             src="/patterns/village-figures.png"
             alt=""
@@ -947,7 +921,6 @@ export default function HomePage() {
             loading="eager"
             className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-80 -scale-x-100"
           />
-          {/* Bottom tribal village figures ΓÇö right (natural: hut on outer edge) */}
           <Image
             src="/patterns/village-figures.png"
             alt=""
@@ -960,13 +933,13 @@ export default function HomePage() {
 
           {/* Dark green tagline ribbon */}
           <div className="relative bg-manikstu-leaf py-3 overflow-hidden">
-            {/* Left golden tribal art ΓÇö anchored to left edge */}
+            {/* Left golden tribal art */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-y-0 left-0 w-[18%] bg-no-repeat bg-left bg-contain"
               style={{ backgroundImage: "url('/patterns/golden-tribal-border.png')" }}
             />
-            {/* Right golden tribal art ΓÇö anchored to right edge (mirrored) */}
+            {/* Right golden tribal art (mirrored) */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-y-0 right-0 w-[18%] bg-no-repeat bg-left bg-contain -scale-x-100"
@@ -975,11 +948,11 @@ export default function HomePage() {
             {/* Centered tagline */}
             <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 sm:px-6 md:px-8">
               <span aria-hidden className="hidden md:block h-px w-16 bg-manikstu-gold/60" />
-              <span aria-hidden className="text-manikstu-gold text-lg leading-none">Γùç</span>
+              <span aria-hidden className="text-manikstu-gold text-lg leading-none">♦</span>
               <p className="text-xs font-semibold text-white sm:text-sm md:whitespace-nowrap">
-                Building partnerships. Strengthening communities. Transforming livelihoods.
+                {t("tagline")}
               </p>
-              <span aria-hidden className="text-manikstu-gold text-lg leading-none">Γùç</span>
+              <span aria-hidden className="text-manikstu-gold text-lg leading-none">♦</span>
               <span aria-hidden className="hidden md:block h-px w-16 bg-manikstu-gold/60" />
             </div>
           </div>
@@ -1012,13 +985,13 @@ export default function HomePage() {
           <div className="relative z-10 mx-auto max-w-7xl">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
-                Latest @ Manikstu
+                {t("newsTitle")}
               </h2>
               <Link
                 href="/blog"
                 className="text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors dark:text-manikstu-gold"
               >
-                View All
+                {tCommon("viewAll")}
               </Link>
             </div>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -1055,7 +1028,7 @@ export default function HomePage() {
                       {item.title}
                     </h3>
                     <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-manikstu-green">
-                      Read More <ArrowRight className="h-3 w-3" />
+                      {tCommon("readMore")} <ArrowRight className="h-3 w-3" />
                     </span>
                   </div>
                 </Link>
@@ -1069,13 +1042,13 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl">
-                What Farmers Say
+                {t("testimonialsTitle")}
               </h2>
               <Link
                 href="/testimonials"
                 className="text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors"
               >
-                View All
+                {tCommon("viewAll")}
               </Link>
             </div>
             <TestimonialsSlider testimonials={testimonials} />

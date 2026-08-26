@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import {
   Banknote,
   GraduationCap,
@@ -17,53 +18,49 @@ export interface TrainingProgram {
   imageScale?: string;
 }
 
-const fallbackPrograms: TrainingProgram[] = [
-  {
-    icon: GraduationCap,
-    title: "Farmer Field Training",
-    description:
-      "Hands-on training at our model farms on scientific goat rearing, balanced feeding, breeding and herd health.",
-    image: "/patterns/training-farmer-field.png",
-  },
-  {
-    icon: Users,
-    title: "FPO & SHG Capacity Building",
-    description:
-      "Strengthening Farmer Producer Organizations and self-help groups with governance, aggregation and collective marketing.",
-    image: "/patterns/training-fpo-shg.png",
-  },
-  {
-    icon: Stethoscope,
-    title: "Veterinary & Animal Health Awareness",
-    description:
-      "Community vet camps and awareness drives on vaccination, disease prevention and timely treatment.",
-    image: "/patterns/training-vet-health.png",
-    imageScale: "115% auto",
-  },
-  {
-    icon: Sprout,
-    title: "Sustainable & Regenerative Farming",
-    description:
-      "Fodder cultivation, water stewardship and low-emission practices for resilient rural livelihoods.",
-    image: "/patterns/training-sustainable.png",
-  },
-  {
-    icon: Sparkles,
-    title: "Women & Youth Empowerment",
-    description:
-      "Skill development and entrepreneurship pathways for women and rural youth in the livestock economy.",
-    image: "/patterns/training-women-youth.png",
-  },
-  {
-    icon: Banknote,
-    title: "Goat Bank & Livelihood Training",
-    description:
-      "Training on our Goat Bank model that builds assets, diversifies income and de-risks rural livelihoods.",
-    image: "/patterns/training-farmer-field.png",
-  },
-];
-
 export default function TrainingPrograms({ programs: propPrograms }: { programs?: TrainingProgram[] }) {
+  const t = useTranslations("Training");
+
+  const fallbackPrograms: TrainingProgram[] = [
+    {
+      icon: GraduationCap,
+      title: t("program1Title"),
+      description: t("program1Desc"),
+      image: "/patterns/training-farmer-field.png",
+    },
+    {
+      icon: Users,
+      title: t("program2Title"),
+      description: t("program2Desc"),
+      image: "/patterns/training-fpo-shg.png",
+    },
+    {
+      icon: Stethoscope,
+      title: t("program3Title"),
+      description: t("program3Desc"),
+      image: "/patterns/training-vet-health.png",
+      imageScale: "115% auto",
+    },
+    {
+      icon: Sprout,
+      title: t("program4Title"),
+      description: t("program4Desc"),
+      image: "/patterns/training-sustainable.png",
+    },
+    {
+      icon: Sparkles,
+      title: t("program5Title"),
+      description: t("program5Desc"),
+      image: "/patterns/training-women-youth.png",
+    },
+    {
+      icon: Banknote,
+      title: t("program6Title"),
+      description: t("program6Desc"),
+      image: "/patterns/training-farmer-field.png",
+    },
+  ];
+
   const programs = propPrograms?.length ? propPrograms : fallbackPrograms;
   return (
     <section id="programs" className="relative section-padding bg-manikstu-cream overflow-hidden">
@@ -119,15 +116,15 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-              What We Do
+              {t("programsPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           </div>
 
           <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-            Programs That Build{" "}
-            <span className="text-manikstu-green">Confidence &amp; Capability</span>
+            {t("programsTitle").split("Confidence")[0]}
+            <span className="text-manikstu-green">{t("programsTitle").split("Confidence")[1]}</span>
           </h2>
 
           {/* Ornamental Divider with Framed Diamond */}
@@ -143,8 +140,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
           </div>
 
           <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
-            From the field to the federation, our training programs meet farmers
-            where they are and grow with them.
+            {t("programsDesc")}
           </p>
         </div>
 

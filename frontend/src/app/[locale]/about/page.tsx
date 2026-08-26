@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Heart, Users, Target, Sprout, MapPin } from "lucide-react";
@@ -12,34 +13,12 @@ import Footer from "@/components/layout/Footer";
 
 const iconMap: Record<string, any> = { Heart, Users, Target };
 
-const fallbackVision = [
-  "To become India's most trusted goat farming ecosystem — connecting farmers with market access, technology, and sustainable practices that transform rural livelihoods and strengthen communities across Odisha and Chhattisgarh.",
-  "By 2030, we aim to empower 50,000+ farmers with modern goat farming techniques, creating sustainable income streams and strengthening rural economies.",
-];
-
-const fallbackMission = [
-  "To revolutionize goat farming through integrated solutions: providing high-quality genetics, comprehensive veterinary care, market access, and training programs that create lasting positive impact for farmers and their communities.",
-  "We believe in farming with heart — nurturing both goats and farmers towards a greener, more prosperous future.",
-];
-
-const fallbackTimeline = [
-  { year: "2015", title: "Manikstu Agro Founded", description: "Started with a vision to transform goat farming in Kalahandi, beginning with 500 goats and 5 farming families." },
-  { year: "2018", title: "First Training Program", description: "Launched comprehensive goat care training, reaching 200 farmers across 3 districts with certified trainers." },
-  { year: "2021", title: "Goat Bank Initiative", description: "Started Samarth goat bank project, providing breeding stock to 1,000+ small farmers with community trust." },
-  { year: "2024", title: "Website & E-commerce", description: "Launched our digital presence with e-commerce platform for products, revolutionizing how farmers access quality goat products." },
-];
-
-const fallbackValues = [
-  { icon: "Heart", title: "Community First", description: "We believe in farming with heart, nurturing both goats and farmers towards sustainable futures." },
-  { icon: "Target", title: "Quality & Innovation", description: "We provide only the highest quality genetics, veterinary care, and farming practices for long-term success." },
-  { icon: "Users", title: "Sustainability & Inclusion", description: "Our practices protect the environment and create lasting economic value for rural communities." },
-];
-
 export default function AboutPage() {
-  const [vision, setVision] = useState(fallbackVision);
-  const [mission, setMission] = useState(fallbackMission);
-  const [timeline, setTimeline] = useState(fallbackTimeline);
-  const [values, setValues] = useState(fallbackValues);
+  const t = useTranslations("About");
+  const [vision, setVision] = useState<string[] | null>(null);
+  const [mission, setMission] = useState<string[] | null>(null);
+  const [timeline, setTimeline] = useState<any[] | null>(null);
+  const [values, setValues] = useState<any[] | null>(null);
 
   useEffect(() => {
     getPage('about')
@@ -69,6 +48,25 @@ export default function AboutPage() {
       .catch(() => {});
   }, []);
 
+  const fallbackVision = [t("fallbackVision1"), t("fallbackVision2")];
+  const fallbackMission = [t("fallbackMission1"), t("fallbackMission2")];
+  const fallbackTimeline = [
+    { year: "2015", title: t("timeline1Title"), description: t("timeline1Desc") },
+    { year: "2018", title: t("timeline2Title"), description: t("timeline2Desc") },
+    { year: "2021", title: t("timeline3Title"), description: t("timeline3Desc") },
+    { year: "2024", title: t("timeline4Title"), description: t("timeline4Desc") },
+  ];
+  const fallbackValues = [
+    { icon: "Heart", title: t("value1Title"), description: t("value1Desc") },
+    { icon: "Target", title: t("value2Title"), description: t("value2Desc") },
+    { icon: "Users", title: t("value3Title"), description: t("value3Desc") },
+  ];
+
+  const displayVision = vision || fallbackVision;
+  const displayMission = mission || fallbackMission;
+  const displayTimeline = timeline || fallbackTimeline;
+  const displayValues = values || fallbackValues;
+
   return (
     <>
       <Header />
@@ -92,17 +90,17 @@ export default function AboutPage() {
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-10 bg-manikstu-gold/70" />
                   <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                    About Us
+                    {t("pill")}
                   </p>
                   <span aria-hidden className="h-px w-10 bg-manikstu-gold/70" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 </div>
 
                 <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal sm:text-5xl lg:text-6xl">
-                  Farming with heart,
+                  {t("heroTitle")}
                   <br />
                   <span className="text-manikstu-green">
-                    rooted in community.
+                    {t("cornerAccent")}
                   </span>
                 </h1>
 
@@ -119,9 +117,7 @@ export default function AboutPage() {
                 </div>
 
                 <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
-                  Since 2015, Manikstu Agro has transformed goat farming through
-                  sustainable practices, community partnerships and cutting-edge
-                  technology — in the heart of Kalahandi, Odisha.
+                  {t("heroDesc")}
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4">
@@ -129,13 +125,13 @@ export default function AboutPage() {
                     href="/collaborate"
                     className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
                   >
-                    Join Our Mission <ArrowRight className="h-4 w-4" />
+                    {t("joinMission")} <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href="#timeline"
                     className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-white px-6 py-3 text-sm font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2"
                   >
-                    Our Journey
+                    {t("ourJourney")}
                   </Link>
                 </div>
 
@@ -145,7 +141,7 @@ export default function AboutPage() {
                     <Heart className="h-3.5 w-3.5 text-manikstu-green" />
                   </span>
                   <p className="text-sm text-grey font-medium">
-                    Nurturing goats, farmers and futures — together
+                    {t("microStatement")}
                   </p>
                 </div>
               </div>
@@ -188,7 +184,7 @@ export default function AboutPage() {
                   <div className="absolute bottom-5 left-5 z-20 flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 shadow-sm border border-manikstu-cream">
                     <MapPin className="h-4 w-4 text-manikstu-green" />
                     <span className="text-xs font-bold text-charcoal">
-                      Rooted in Kalahandi, Odisha
+                      {t("cornerAccent")}
                     </span>
                   </div>
                 </div>
@@ -239,14 +235,14 @@ export default function AboutPage() {
                 <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                  Our Purpose
+                  {t("purposePill")}
                 </p>
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
               </div>
 
               <h2 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                Guided by <span className="text-manikstu-green">Vision & Mission</span>
+                {t("purposeTitle")}
               </h2>
 
               {/* Ornamental Divider with Framed Diamond */}
@@ -282,17 +278,17 @@ export default function AboutPage() {
                   </div>
 
                   <h3 className="font-heading text-2xl italic font-bold text-manikstu-leaf">
-                    Our Vision
+                    {t("visionTitle")}
                   </h3>
 
                   {/* Line-diamond-line ornament */}
-                  <div className="mt-3 mb-5 flex items-center gap-1.5">
+                  <div className="mt-3 mb-5 flex items-center justify-center gap-1.5">
                     <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
                   </div>
 
-                  {vision.map((p: string, i: number) => (
+                  {displayVision.map((p: string, i: number) => (
                     <p key={i} className="text-grey leading-relaxed mb-4 text-sm sm:text-base">
                       {p}
                     </p>
@@ -319,17 +315,17 @@ export default function AboutPage() {
                   </div>
 
                   <h3 className="font-heading text-2xl italic font-bold text-manikstu-leaf">
-                    Our Mission
+                    {t("missionTitle")}
                   </h3>
 
                   {/* Line-diamond-line ornament */}
-                  <div className="mt-3 mb-5 flex items-center gap-1.5">
+                  <div className="mt-3 mb-5 flex items-center justify-center gap-1.5">
                     <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
                   </div>
 
-                  {mission.map((p: string, i: number) => (
+                  {displayMission.map((p: string, i: number) => (
                     <p key={i} className="text-grey leading-relaxed mb-4 text-sm sm:text-base">
                       {p}
                     </p>
@@ -348,14 +344,14 @@ export default function AboutPage() {
                 <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                  Our Milestones
+                  {t("milestonesPill")}
                 </p>
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
               </div>
 
               <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                A Decade of <span className="text-manikstu-green">Growth & Impact</span>
+                {t("milestonesTitle")}
               </h2>
 
               {/* Ornamental Divider with Framed Diamond */}
@@ -372,7 +368,7 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-              {timeline.map((item: any) => (
+              {displayTimeline.map((item: any) => (
                 <div
                   key={item.year}
                   className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/40 p-6 transition-all hover:shadow-lg hover:border-saura-red flex flex-col justify-between"
@@ -436,14 +432,14 @@ export default function AboutPage() {
                 <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                  What Drives Us
+                  {t("valuesPill")}
                 </p>
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
               </div>
 
               <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                Our Core <span className="text-manikstu-green">Values</span>
+                {t("valuesTitle")}
               </h2>
 
               {/* Ornamental Divider with Framed Diamond */}
@@ -460,7 +456,7 @@ export default function AboutPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {values.map((v: any) => {
+              {displayValues.map((v: any) => {
                 const Icon = iconMap[v.icon] || Heart;
                 return (
                   <div

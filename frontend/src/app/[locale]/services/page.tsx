@@ -3,32 +3,32 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
 import { GraduationCap, Handshake, Users, ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-const services = [
-  {
-    icon: GraduationCap,
-    title: "Training & Awareness",
-    description:
-      "Comprehensive training programs for farmers on goat farming best practices, healthcare, and modern techniques.",
-    href: "/training",
-  },
-  {
-    icon: Handshake,
-    title: "Collaborate With Us",
-    description:
-      "Partner with Manikstu to create sustainable rural livelihoods through livestock-based interventions.",
-    href: "/collaborate",
-  },
-  {
-    icon: Users,
-    title: "Project AJAH",
-    description:
-      "An integrated livestock program empowering women farmers across rural Odisha with goats, training, and market access.",
-    href: "/collaborate/ajah",
-  },
-];
+export default async function ServicesPage() {
+  const t = await getTranslations("Services");
 
-export default function ServicesPage() {
+  const services = [
+    {
+      icon: GraduationCap,
+      title: t("trainingTitle"),
+      description: t("trainingDesc"),
+      href: "/training",
+    },
+    {
+      icon: Handshake,
+      title: t("collaborateTitle"),
+      description: t("collaborateDesc"),
+      href: "/collaborate",
+    },
+    {
+      icon: Users,
+      title: t("ajahTitle"),
+      description: t("ajahDesc"),
+      href: "/collaborate/ajah",
+    },
+  ];
+
   return (
     <>
       <Header />
@@ -36,13 +36,13 @@ export default function ServicesPage() {
         <PageHero background={null}>
           <div>
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              What We Do
+              {t("pill")}
             </p>
             <h1 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-              Our <span className="text-manikstu-green">Services</span>
+              {t("heroTitle")}
             </h1>
             <p className="mt-4 max-w-lg text-grey">
-              From farmer training to strategic partnerships, we deliver end-to-end solutions for sustainable goat farming.
+              {t("heroDesc")}
             </p>
           </div>
           <div className="flex items-center justify-center rounded-2xl bg-manikstu-cream p-8">
@@ -71,7 +71,7 @@ export default function ServicesPage() {
                       {service.description}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-manikstu-green">
-                      Learn More <ArrowRight className="h-3 w-3" />
+                      {t("learnMore")} <ArrowRight className="h-3 w-3" />
                     </span>
                   </Link>
                 );

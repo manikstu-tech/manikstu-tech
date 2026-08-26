@@ -1,4 +1,5 @@
 import { HeartPulse, Megaphone, Radio, Wheat, type LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export interface AwarenessInitiative {
   icon: LucideIcon;
@@ -8,38 +9,36 @@ export interface AwarenessInitiative {
   imageScale?: string;
 }
 
-const fallbackInitiatives: AwarenessInitiative[] = [
-  {
-    icon: Megaphone,
-    title: "Community Awareness Drives",
-    description:
-      "Village-level campaigns on nutrition, hygiene and the value of improved livestock practices.",
-    image: "/patterns/awareness-community-drives.png",
-  },
-  {
-    icon: HeartPulse,
-    title: "Veterinary Health Camps",
-    description:
-      "Periodic camps for vaccination, deworming and early diagnosis in partnership with local vets.",
-    image: "/patterns/awareness-vet-camps.png",
-  },
-  {
-    icon: Wheat,
-    title: "Demo Plots & Field Days",
-    description:
-      "Live demonstrations of fodder, feeding and housing models farmers can adapt on their own land.",
-    image: "/patterns/awareness-demo-plots.png",
-  },
-  {
-    icon: Radio,
-    title: "Rural Radio & IVRS Advisories",
-    description:
-      "Timely, localized advisories on weather, disease outbreaks and best practices in native dialects.",
-    image: "/patterns/awareness-radio-ivrs.png",
-  },
-];
-
 export default function AwarenessInitiatives({ initiatives: propInitiatives }: { initiatives?: AwarenessInitiative[] }) {
+  const t = useTranslations("Training");
+
+  const fallbackInitiatives: AwarenessInitiative[] = [
+    {
+      icon: Megaphone,
+      title: t("initiative1Title"),
+      description: t("initiative1Desc"),
+      image: "/patterns/awareness-community-drives.png",
+    },
+    {
+      icon: HeartPulse,
+      title: t("initiative2Title"),
+      description: t("initiative2Desc"),
+      image: "/patterns/awareness-vet-camps.png",
+    },
+    {
+      icon: Wheat,
+      title: t("initiative3Title"),
+      description: t("initiative3Desc"),
+      image: "/patterns/awareness-demo-plots.png",
+    },
+    {
+      icon: Radio,
+      title: t("initiative4Title"),
+      description: t("initiative4Desc"),
+      image: "/patterns/awareness-radio-ivrs.png",
+    },
+  ];
+
   const initiatives = propInitiatives?.length ? propInitiatives : fallbackInitiatives;
   return (
     <section className="section-padding bg-white">
@@ -50,15 +49,15 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-              Awareness Initiatives
+              {t("awarenessPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           </div>
 
           <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-            Reaching Every{" "}
-            <span className="text-manikstu-green">Village &amp; Household</span>
+            {t("awarenessTitle").split("&")[0]}
+            <span className="text-manikstu-green">&amp; {t("awarenessTitle").split("&")[1]}</span>
           </h2>
 
           {/* Ornamental Divider with Framed Diamond */}
@@ -74,8 +73,7 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
           </div>
 
           <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
-            Awareness is the foundation of adoption. We meet communities through
-            the channels they already trust.
+            {t("awarenessDesc")}
           </p>
         </div>
 

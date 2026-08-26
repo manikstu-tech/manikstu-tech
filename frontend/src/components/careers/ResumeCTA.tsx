@@ -1,31 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight, Lightbulb, Sprout, TrendingUp, Users } from "lucide-react";
 
-const pillars = [
-  {
-    icon: Sprout,
-    title: "Impact-Driven Culture",
-    subtitle: "Meaningful grassroots mission",
-  },
-  {
-    icon: Lightbulb,
-    title: "Continuous Learning",
-    subtitle: "Expand skills & domain expertise",
-  },
-  {
-    icon: Users,
-    title: "Collaborative Teams",
-    subtitle: "Supportive, passionate peers",
-  },
-  {
-    icon: TrendingUp,
-    title: "Inclusive Growth",
-    subtitle: "Clear career advancement",
-  },
-];
-
 export default function ResumeCTA() {
+  const t = useTranslations("Careers");
+
+  const pillars = [
+    {
+      icon: Sprout,
+      title: t("resumePillar1Title"),
+      subtitle: t("resumePillar1Sub"),
+    },
+    {
+      icon: Lightbulb,
+      title: t("resumePillar2Title"),
+      subtitle: t("resumePillar2Sub"),
+    },
+    {
+      icon: Users,
+      title: t("resumePillar3Title"),
+      subtitle: t("resumePillar3Sub"),
+    },
+    {
+      icon: TrendingUp,
+      title: t("resumePillar4Title"),
+      subtitle: t("resumePillar4Sub"),
+    },
+  ];
+
   return (
     <section className="relative overflow-hidden bg-[#FAF4EB] dark:bg-gray-900 pt-6 pb-8 sm:pt-8 sm:pb-10 md:pt-10 md:pb-12 px-4 sm:px-6 md:px-8">
       {/* Top-left quarter mandala */}
@@ -75,16 +78,16 @@ export default function ResumeCTA() {
           <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
           <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-            Get In Touch
+            {t("resumePill")}
           </p>
           <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
           <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
         </div>
 
         <h2 className="mx-auto mt-3 max-w-3xl font-heading text-xl font-bold leading-tight text-charcoal sm:text-2xl lg:text-3xl dark:text-white">
-          Don&apos;t See the Right Role?{" "}
+          {t("resumeTitle").split("Always")[0]}
           <span className="text-manikstu-green">
-            We&apos;re Always Looking for Talent.
+            {t("resumeTitle").split("Always")[1]?.trim()}
           </span>
         </h2>
 
@@ -101,8 +104,7 @@ export default function ResumeCTA() {
         </div>
 
         <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-grey dark:text-gray-300 leading-relaxed">
-          If you believe in our mission of transforming rural livestock
-          livelihoods across India, send us your resume and we&apos;d love to connect.
+          {t("resumeDesc")}
         </p>
 
         {/* Solid green CTA button */}
@@ -111,7 +113,7 @@ export default function ResumeCTA() {
             href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-manikstu-leaf hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
           >
-            Send Us Your Resume <ArrowRight className="h-4 w-4" />
+            {t("sendResume")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 

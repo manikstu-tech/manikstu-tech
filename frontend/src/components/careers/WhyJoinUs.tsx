@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { HeartHandshake, Leaf, Sprout, TrendingUp, type LucideIcon } from "lucide-react";
 
 export interface CareerValue {
@@ -15,6 +16,8 @@ const iconMap: Record<CareerValue["icon"], LucideIcon> = {
 };
 
 export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
+  const t = useTranslations("Careers");
+
   return (
     <section id="why-join-us" className="relative overflow-hidden bg-white py-16 sm:py-20 md:py-24">
       {/* Top tribal floral border */}
@@ -53,16 +56,16 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              Why Join Us
+              {t("whyPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           </div>
 
           <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-            Work with Purpose.{" "}
+            {t("whyTitle").split("Empower")[0]}
             <span className="text-manikstu-green">
-              Empower Rural India.
+              {t("whyTitle").split("Empower")[1]?.trim()}
             </span>
           </h2>
 
@@ -79,8 +82,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
           </div>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey leading-relaxed">
-            A career at Manikstu means growing alongside the farmers and
-            communities we serve — with work that matters every single day.
+            {t("whyDesc")}
           </p>
         </div>
 

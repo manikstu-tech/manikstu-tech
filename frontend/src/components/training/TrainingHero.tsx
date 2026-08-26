@@ -1,27 +1,28 @@
 import Link from "next/link";
 import { ArrowRight, GraduationCap, Sprout, Users } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
+import { getTranslations } from "next-intl/server";
 
-export default function TrainingHero() {
+export default async function TrainingHero() {
+  const t = await getTranslations("Training");
+
   return (
     <PageHero>
           {/* Left — copy */}
           <div>
             <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-              Training &amp; Awareness
+              {t("pill")}
             </p>
             <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
-              Building Capabilities.
+              {t("heroTitle").split(".")[0]}.
               <br />
               <span className="text-manikstu-green">
-                Transforming Communities.
+                {t("heroTitle").split(".")[1]?.trim()}.
               </span>
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
-              We equip farmers, farmer groups and rural youth with the
-              knowledge, skills and confidence to build resilient,
-              sustainable livelihoods in the livestock economy.
+              {t("heroDesc")}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -29,13 +30,13 @@ export default function TrainingHero() {
                 href="#programs"
                 className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Explore Programs <ArrowRight className="h-4 w-4" />
+                {t("explorePrograms")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="#get-involved"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Partner With Us
+                {t("partnerWithUs")}
               </Link>
             </div>
 
@@ -45,7 +46,7 @@ export default function TrainingHero() {
                 <Sprout className="h-3.5 w-3.5 text-manikstu-green" />
               </span>
               <p className="text-sm text-grey">
-                Knowledge is the first input for a thriving farm
+                {t("microStatement")}
               </p>
             </div>
           </div>
@@ -92,7 +93,7 @@ export default function TrainingHero() {
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
                 <GraduationCap className="h-4 w-4 text-manikstu-green" />
                 <span className="text-xs font-semibold text-charcoal">
-                  Learn by doing
+                  {t("cornerAccent")}
                 </span>
               </div>
             </div>

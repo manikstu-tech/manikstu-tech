@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight, Building2, Handshake, MapPin, Sprout, type LucideIcon } from "lucide-react";
 
 export interface Pillar {
@@ -8,30 +9,32 @@ export interface Pillar {
   line2: string;
 }
 
-const fallbackPillars: Pillar[] = [
-  {
-    icon: Building2,
-    line1: "Institutional",
-    line2: "Trust",
-  },
-  {
-    icon: MapPin,
-    line1: "Grassroots",
-    line2: "Delivery",
-  },
-  {
-    icon: Handshake,
-    line1: "Shared",
-    line2: "Governance",
-  },
-  {
-    icon: Sprout,
-    line1: "Sustainable",
-    line2: "Value",
-  },
-];
-
 export default function CollaborateCTA({ pillars: propPillars }: { pillars?: Pillar[] }) {
+  const t = useTranslations("Collaborate");
+
+  const fallbackPillars: Pillar[] = [
+    {
+      icon: Building2,
+      line1: t("ctaPillar1Line1"),
+      line2: t("ctaPillar1Line2"),
+    },
+    {
+      icon: MapPin,
+      line1: t("ctaPillar2Line1"),
+      line2: t("ctaPillar2Line2"),
+    },
+    {
+      icon: Handshake,
+      line1: t("ctaPillar3Line1"),
+      line2: t("ctaPillar3Line2"),
+    },
+    {
+      icon: Sprout,
+      line1: t("ctaPillar4Line1"),
+      line2: t("ctaPillar4Line2"),
+    },
+  ];
+
   const pillars = propPillars?.length ? propPillars : fallbackPillars;
   return (
     <section
@@ -66,7 +69,7 @@ export default function CollaborateCTA({ pillars: propPillars }: { pillars?: Pil
             <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/80" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              Get Involved
+              {t("ctaPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/80" />
@@ -86,14 +89,14 @@ export default function CollaborateCTA({ pillars: propPillars }: { pillars?: Pil
 
           {/* Heading */}
           <h2 className="mx-auto mt-3 max-w-3xl font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl lg:text-4xl">
-            <span className="text-[#376E2A]">Partner With Us</span> to Build the Future
+            <span className="text-[#376E2A]">{t("ctaTitle").split("the Future")[0]}</span>
+            to Build the Future
             <br />
             of Rural Livelihoods
           </h2>
 
           <p className="mx-auto mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-grey">
-            Tell us about your organization and the change you want to create.
-            We&apos;ll shape a collaboration that delivers lasting impact.
+            {t("ctaDesc")}
           </p>
 
           {/* CTA Button */}
@@ -102,7 +105,7 @@ export default function CollaborateCTA({ pillars: propPillars }: { pillars?: Pil
               href="/get-in-touch"
               className="inline-flex items-center gap-2 rounded-full bg-[#3D7830] px-6 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-[#326327] hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
             >
-              Become a Partner <ArrowRight className="h-3.5 w-3.5" />
+              {t("becomePartner")} <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
@@ -40,6 +41,8 @@ export default function Footer() {
   const [settings, setSettings] = useState(fallbackSettings);
   const [quickLinks, setQuickLinks] = useState(fallbackQuickLinks);
   const [supportLinks, setSupportLinks] = useState(fallbackSupportLinks);
+  const t = useTranslations("Footer");
+  const tCommon = useTranslations("Common");
 
   useEffect(() => {
     getSettings()
@@ -69,7 +72,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-3 text-sm text-grey">
-              {settings.brand_tagline}
+              {settings.brand_tagline || t("brandTagline")}
             </p>
             <div className="mt-4 flex gap-3">
               {[Facebook, Instagram, Linkedin, Twitter, Youtube].map((Icon, i) => (
@@ -90,7 +93,7 @@ export default function Footer() {
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                 <Link2 className="h-3.5 w-3.5" />
               </span>
-              Quick Links
+              {t("quickLinks")}
             </h3>
             <ul className="mt-3 space-y-2">
               {quickLinks.map((link) => (
@@ -113,7 +116,7 @@ export default function Footer() {
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                 <Headphones className="h-3.5 w-3.5" />
               </span>
-              Support
+              {t("support")}
             </h3>
             <ul className="mt-3 space-y-2">
               {supportLinks.map((link) => (
@@ -136,7 +139,7 @@ export default function Footer() {
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                 <Phone className="h-3.5 w-3.5" />
               </span>
-              Contact Us
+              {t("contactUs")}
             </h3>
             <ul className="mt-3 space-y-3">
               <li className="flex items-center gap-2 text-sm text-grey">
@@ -149,13 +152,13 @@ export default function Footer() {
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Mail className="h-3.5 w-3.5" />
                 </span>
-                <span>{settings.email_sales}<br /><span className="text-xs text-grey/70">(For Sales Enquiry)</span></span>
+                <span>{settings.email_sales}<br /><span className="text-xs text-grey/70">{t("forSalesEnquiry")}</span></span>
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Send className="h-3.5 w-3.5" />
                 </span>
-                <span>{settings.email_info}<br /><span className="text-xs text-grey/70">(For Other Enquiry)</span></span>
+                <span>{settings.email_info}<br /><span className="text-xs text-grey/70">{t("forOtherEnquiry")}</span></span>
               </li>
             </ul>
             <div className="mt-4 flex flex-col gap-2">
@@ -163,13 +166,13 @@ export default function Footer() {
                 href="/careers"
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-manikstu-green px-4 py-2 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
               >
-                Careers <ArrowRight className="h-4 w-4" />
+                {t("careers")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/get-in-touch"
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green bg-white px-4 py-2 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
               >
-                Get In Touch <Phone className="h-4 w-4" />
+                {t("getInTouch")} <Phone className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -180,18 +183,18 @@ export default function Footer() {
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                 <Mail className="h-3.5 w-3.5" />
               </span>
-              Stay Updated
+              {t("stayUpdated")}
             </h3>
             <p className="mt-3 text-sm text-grey leading-relaxed">
-              Subscribe to our newsletter for the latest updates and news.
+              {t("newsletterDesc")}
             </p>
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder={tCommon("enterEmail")}
               className="mt-3 w-full rounded-lg border border-light-grey px-4 py-2.5 text-sm text-charcoal placeholder:text-grey/50 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
             />
             <button className="mt-3 w-full rounded-lg bg-manikstu-green px-4 py-2.5 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors">
-              Subscribe
+              {tCommon("subscribe")}
             </button>
           </div>
         </div>
@@ -203,22 +206,22 @@ export default function Footer() {
           <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
-              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">Registered Office</p>
+              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("registeredOffice")}</p>
               <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_registered}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
-              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">Corporate Office</p>
+              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("corporateOffice")}</p>
               <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_corporate}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
-              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">Farm Office</p>
+              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("farmOffice")}</p>
               <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_farm}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
-              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">Regional Office</p>
+              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("regionalOffice")}</p>
               <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_regional}</p>
             </div>
           </div>
@@ -228,7 +231,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="border-t border-light-grey">
         <div className="mx-auto max-w-7xl px-4 py-3 text-center text-xs text-grey sm:px-6 md:px-8">
-          <p>&copy; {new Date().getFullYear()} Manikstu Agro Private Limited. All Rights Reserved. &nbsp;|&nbsp; GSTIN: {settings.gstin} &nbsp;|&nbsp; CIN: {settings.cin}</p>
+          <p>&copy; {new Date().getFullYear()} {t("copyright")} &nbsp;|&nbsp; GSTIN: {settings.gstin} &nbsp;|&nbsp; CIN: {settings.cin}</p>
         </div>
       </div>
     </footer>

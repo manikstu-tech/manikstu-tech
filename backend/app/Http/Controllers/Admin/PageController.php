@@ -55,7 +55,7 @@ class PageController extends Controller
             'title' => 'nullable|string|max:255',
             'content' => 'nullable|string',
             'image' => 'nullable|string|max:255',
-            'settings' => 'nullable|string',
+            'settings' => 'nullable|json',
             'order' => 'nullable|integer',
         ]);
 

@@ -65,7 +65,7 @@ export default function LanguageSwitcher() {
         <div className="absolute right-0 top-full mt-2 w-56 rounded-lg border border-light-grey bg-white shadow-lg z-50 max-h-80 overflow-y-auto">
           <div className="p-2">
             <p className="px-2 py-1 text-xs font-semibold uppercase tracking-wider text-grey">
-              English
+              {t("groupEnglish")}
             </p>
             <button
               onClick={() => handleSwitch("en")}
@@ -75,13 +75,13 @@ export default function LanguageSwitcher() {
                   : "text-charcoal hover:bg-manikstu-cream"
               }`}
             >
-              English
+              {t("en")}
             </button>
           </div>
 
           <div className="border-t border-light-grey p-2">
             <p className="px-2 py-1 text-xs font-semibold uppercase tracking-wider text-grey">
-              Indian Languages
+              {t("groupIndian")}
             </p>
             {groupedLocales.indian.map((loc) => (
               <button
@@ -100,7 +100,7 @@ export default function LanguageSwitcher() {
 
           <div className="border-t border-light-grey p-2">
             <p className="px-2 py-1 text-xs font-semibold uppercase tracking-wider text-grey">
-              International
+              {t("groupInternational")}
             </p>
             {groupedLocales.foreign.map((loc) => (
               <button

@@ -1,13 +1,16 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Calendar, ArrowRight } from "lucide-react";
 import type { Article } from "@/lib/blog-data";
 import { categoryColors } from "@/lib/blog-data";
 
 export default function ArticleGrid({ articles }: { articles: Article[] }) {
+  const t = useTranslations("Blog");
+
   if (articles.length === 0) {
     return (
       <p className="py-12 text-center text-grey">
-        No articles found in this category.
+        {t("noArticles")}
       </p>
     );
   }
@@ -46,7 +49,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
                 {article.excerpt}
               </p>
               <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-manikstu-green">
-                Read more
+                {t("readMore")}
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>

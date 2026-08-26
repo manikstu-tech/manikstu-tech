@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { PlayCircle, Clock, Calendar } from "lucide-react";
 import type { VideoItem } from "@/lib/blog-data";
 
 export default function VideosSection({ videos }: { videos: VideoItem[] }) {
+  const t = useTranslations("Blog");
+
   return (
     <section
       id="videos"
@@ -54,15 +57,17 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              Videos
+              {t("videosPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           </div>
 
           <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-            Stories in{" "}
-            <span className="text-manikstu-green">Motion</span>
+            {t("videosTitle").split("Motion")[0]}
+            <span className="text-manikstu-green">
+              {t("videosTitle").split("Motion")[1]?.trim()}
+            </span>
           </h2>
 
           {/* Ornamental Divider with Framed Diamond */}
@@ -78,8 +83,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
           </div>
 
           <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
-            Short films and field interviews that let farmers speak for
-            themselves.
+            {t("videosDesc")}
           </p>
         </div>
 

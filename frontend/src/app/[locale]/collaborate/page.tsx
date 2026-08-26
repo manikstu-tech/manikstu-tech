@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { getPage } from "@/lib/api";
 import { parseContent } from "@/lib/pages";
 import Header from "@/components/layout/Header";
@@ -22,45 +23,47 @@ const iconMap: Record<string, any> = {
   MapPin, Shield, Handshake, Sprout,
 };
 
-const fallbackPartnerTypes = [
-  { icon: "Users", title: "FPOs & SHGs", description: "Strengthen farmer producer organizations and self-help groups with training, aggregation and collective market access." },
-  { icon: "Building2", title: "Corporates & CSR", description: "Co-create CSR and sustainability programs that deliver measurable rural livelihoods and ESG outcomes." },
-  { icon: "HeartHandshake", title: "NGOs & Development Orgs", description: "Combine on-ground reach with our technical expertise to scale livestock interventions that last." },
-  { icon: "Landmark", title: "Government & Research", description: "Partner on schemes, pilots and studies that inform policy and strengthen the livestock value chain." },
-  { icon: "Truck", title: "Supply Chain & Retail", description: "Source ethically produced, traceable livestock products and build resilient last-mile linkages." },
-  { icon: "Banknote", title: "Financial Institutions", description: "Enable credit, insurance and Goat Bank models that de-risk rural livelihoods and expand inclusion." },
-];
-
-const fallbackSteps = [
-  { step: "01", title: "Discover", description: "We listen to communities and partners to understand local needs, assets and gaps.", icon: "Compass" },
-  { step: "02", title: "Design", description: "We co-create programs that blend our livestock expertise with partner strengths.", icon: "ClipboardList" },
-  { step: "03", title: "Deploy", description: "We implement on the ground with training, infrastructure and continuous handholding.", icon: "Rocket" },
-  { step: "04", title: "Measure", description: "We track outcomes and refine together to ensure durable, scalable impact.", icon: "TrendingUp" },
-];
-
-const fallbackStats = [
-  { value: "50+", label: "Partner Organizations", icon: "Building2" },
-  { value: "700+", label: "Villages Reached", icon: "MapPin" },
-  { value: "10,000+", label: "Farmers Engaged", icon: "Users" },
-  { value: "3+", label: "States Covered", icon: "Shield" },
-];
-
-const fallbackCTAPillars = [
-  { icon: "Building2", line1: "Institutional", line2: "Trust" },
-  { icon: "MapPin", line1: "Grassroots", line2: "Delivery" },
-  { icon: "Handshake", line1: "Shared", line2: "Governance" },
-  { icon: "Sprout", line1: "Sustainable", line2: "Value" },
-];
-
 function mapIcons<T extends { icon: string }>(items: T[]): (T & { icon: any })[] {
   return items.map((item) => ({ ...item, icon: iconMap[item.icon] || Users }));
 }
 
 export default function CollaboratePage() {
-  const [partnerTypes, setPartnerTypes] = useState(fallbackPartnerTypes);
-  const [steps, setSteps] = useState(fallbackSteps);
-  const [stats, setStats] = useState(fallbackStats);
-  const [ctaPillars, setCTAPillars] = useState(fallbackCTAPillars);
+  const t = useTranslations("Collaborate");
+
+  const fallbackPartnerTypes = [
+    { icon: "Users", title: t("partner1Title"), description: t("partner1Desc") },
+    { icon: "Building2", title: t("partner2Title"), description: t("partner2Desc") },
+    { icon: "HeartHandshake", title: t("partner3Title"), description: t("partner3Desc") },
+    { icon: "Landmark", title: t("partner4Title"), description: t("partner4Desc") },
+    { icon: "Truck", title: t("partner5Title"), description: t("partner5Desc") },
+    { icon: "Banknote", title: t("partner6Title"), description: t("partner6Desc") },
+  ];
+
+  const fallbackSteps = [
+    { step: "01", title: t("step1Title"), description: t("step1Desc"), icon: "Compass" },
+    { step: "02", title: t("step2Title"), description: t("step2Desc"), icon: "ClipboardList" },
+    { step: "03", title: t("step3Title"), description: t("step3Desc"), icon: "Rocket" },
+    { step: "04", title: t("step4Title"), description: t("step4Desc"), icon: "TrendingUp" },
+  ];
+
+  const fallbackStats = [
+    { value: "50+", label: t("stat1Label"), icon: "Building2" },
+    { value: "700+", label: t("stat2Label"), icon: "MapPin" },
+    { value: "10,000+", label: t("stat3Label"), icon: "Users" },
+    { value: "3+", label: t("stat4Label"), icon: "Shield" },
+  ];
+
+  const fallbackCTAPillars = [
+    { icon: "Building2", line1: t("ctaPillar1Line1"), line2: t("ctaPillar1Line2") },
+    { icon: "MapPin", line1: t("ctaPillar2Line1"), line2: t("ctaPillar2Line2") },
+    { icon: "Handshake", line1: t("ctaPillar3Line1"), line2: t("ctaPillar3Line2") },
+    { icon: "Sprout", line1: t("ctaPillar4Line1"), line2: t("ctaPillar4Line2") },
+  ];
+
+  const [partnerTypes, setPartnerTypes] = useState<any[] | null>(null);
+  const [steps, setSteps] = useState<any[] | null>(null);
+  const [stats, setStats] = useState<any[] | null>(null);
+  const [ctaPillars, setCTAPillars] = useState<any[] | null>(null);
 
   useEffect(() => {
     getPage('collaborate')
@@ -95,10 +98,10 @@ export default function CollaboratePage() {
       <Header />
       <main id="main-content">
         <CollaborateHero />
-        <PartnerTypes partners={mapIcons(partnerTypes)} />
-        <HowItWorks steps={mapIcons(steps)} />
-        <CollaborateImpact stats={mapIcons(stats)} />
-        <CollaborateCTA pillars={mapIcons(ctaPillars)} />
+        <PartnerTypes partners={mapIcons(partnerTypes || fallbackPartnerTypes)} />
+        <HowItWorks steps={mapIcons(steps || fallbackSteps)} />
+        <CollaborateImpact stats={mapIcons(stats || fallbackStats)} />
+        <CollaborateCTA pillars={mapIcons(ctaPillars || fallbackCTAPillars)} />
       </main>
       <Footer />
     </>

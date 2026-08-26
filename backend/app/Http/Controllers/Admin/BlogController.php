@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
 use App\Models\Category;
+use App\Support\Sanitizer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -41,6 +42,7 @@ class BlogController extends Controller
             'is_published' => 'boolean',
         ]);
 
+        $validated['content'] = Sanitizer::richText($validated['content']);
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
         $validated['is_featured'] = $request->boolean('is_featured');
         $validated['is_published'] = $request->boolean('is_published');
@@ -72,6 +74,7 @@ class BlogController extends Controller
             'is_published' => 'boolean',
         ]);
 
+        $validated['content'] = Sanitizer::richText($validated['content']);
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
         $validated['is_featured'] = $request->boolean('is_featured');
 
@@ -99,7 +102,7 @@ class BlogController extends Controller
         $locales = ['hi','bn','ta','te','mr','gu','kn','ml','or','ja','de','fr','es'];
         foreach ($locales as $locale) {
             $title = $request->input("title_{$locale}");
-            $content = $request->input("content_{$locale}");
+            $content = Sanitizer::richText($request->input("content_{$locale}"));
             $excerpt = $request->input("excerpt_{$locale}");
             if ($title || $content || $excerpt) {
                 $post->translations()->updateOrCreate(

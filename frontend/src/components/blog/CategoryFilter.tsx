@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { Category } from "@/lib/blog-data";
 
 const categories: ("All" | Category)[] = [
@@ -17,6 +18,16 @@ export default function CategoryFilter({
   active: "All" | Category;
   onFilter: (cat: "All" | Category) => void;
 }) {
+  const t = useTranslations("Blog");
+
+  const categoryLabels: Record<string, string> = {
+    All: t("categories.all"),
+    Featured: t("categories.featured"),
+    Event: t("categories.event"),
+    Press: t("categories.press"),
+    Media: t("categories.media"),
+  };
+
   return (
     <div className="flex flex-wrap justify-center gap-2">
       {categories.map((cat) => (
@@ -29,7 +40,7 @@ export default function CategoryFilter({
               : "border border-light-grey bg-white text-charcoal hover:border-manikstu-green hover:text-manikstu-green"
           }`}
         >
-          {cat}
+          {categoryLabels[cat] || cat}
         </button>
       ))}
     </div>

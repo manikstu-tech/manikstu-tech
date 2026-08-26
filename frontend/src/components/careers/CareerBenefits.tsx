@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import {
   HeartPulse,
   Lightbulb,
@@ -26,6 +27,18 @@ export default function CareerBenefits({
 }: {
   benefits: CareerBenefit[];
 }) {
+  const t = useTranslations("Careers");
+
+  const fallbackBenefits: CareerBenefit[] = [
+    { icon: "health", title: t("benefit1Title"), description: t("benefit1Desc") },
+    { icon: "learning", title: t("benefit2Title"), description: t("benefit2Desc") },
+    { icon: "flexible", title: t("benefit3Title"), description: t("benefit3Desc") },
+    { icon: "impact", title: t("benefit4Title"), description: t("benefit4Desc") },
+    { icon: "growth", title: t("benefit5Title"), description: t("benefit5Desc") },
+  ];
+
+  const displayBenefits = benefits.length ? benefits : fallbackBenefits;
+
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-20 md:py-24">
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
@@ -35,14 +48,14 @@ export default function CareerBenefits({
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              Perks &amp; Benefits
+              {t("benefitsPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           </div>
 
           <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-            What You <span className="text-manikstu-green">Can Expect</span>
+            {t("benefitsTitle")}
           </h2>
 
           {/* Ornamental Divider with Framed Diamond */}
@@ -58,13 +71,12 @@ export default function CareerBenefits({
           </div>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey leading-relaxed">
-            We are committed to supporting the people who power our mission —
-            with holistic benefits and an empowering workspace.
+            {t("benefitsDesc")}
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 sm:gap-6">
-          {benefits.map((benefit) => {
+          {displayBenefits.map((benefit) => {
             const Icon = iconMap[benefit.icon];
             return (
               <div

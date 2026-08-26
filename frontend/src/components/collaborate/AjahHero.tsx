@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowLeft, ArrowRight, Users } from "lucide-react";
 
 export default function AjahHero() {
+  const t = useTranslations("Ajah");
+
   return (
     <section className="relative overflow-hidden bg-white">
 <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20 lg:py-24">
@@ -13,22 +16,21 @@ export default function AjahHero() {
               className="inline-flex items-center gap-1.5 text-sm font-medium text-grey transition-colors hover:text-manikstu-green"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Collaborate
+              {t("backToCollaborate")}
             </Link>
 
             <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-              Project AJAH
+              {t("pill")}
             </p>
             <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
-              Women-Led Integrated{" "}
-              <span className="text-manikstu-green">Livestock Entrepreneurship</span>
+              {t("heroTitle").split("Entrepreneurship")[0]}
+              <span className="text-manikstu-green">
+                {t("heroTitle").split("Entrepreneurship")[1]?.trim()}
+              </span>
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
-              Empowering women farmers through an integrated goat and poultry
-              livelihood model, combining scientific livestock management,
-              improved infrastructure, animal healthcare, training, insurance
-              and market support.
+              {t("heroDesc")}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -36,7 +38,7 @@ export default function AjahHero() {
                 href="/get-in-touch"
                 className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Partner on Project AJAH <ArrowRight className="h-4 w-4" />
+                {t("partnerAjah")} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
@@ -46,7 +48,7 @@ export default function AjahHero() {
                 <Users className="h-3.5 w-3.5 text-manikstu-green" />
               </span>
               <p className="text-sm text-grey">
-                When women lead, whole communities thrive
+                {t("microStatement")}
               </p>
             </div>
           </div>
@@ -86,7 +88,7 @@ export default function AjahHero() {
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
                 <Users className="h-4 w-4 text-manikstu-green" />
                 <span className="text-xs font-semibold text-charcoal">
-                  Women at the center
+                  {t("cornerAccent")}
                 </span>
               </div>
             </div>

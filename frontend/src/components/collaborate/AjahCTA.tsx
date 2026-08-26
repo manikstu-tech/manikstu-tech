@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight, Leaf } from "lucide-react";
 
 export default function AjahCTA() {
+  const t = useTranslations("Ajah");
+
   return (
     <section className="relative overflow-hidden bg-manikstu-green py-16 text-white md:py-20">
       {/* Subtle leaf line-art — top left */}
@@ -36,21 +39,20 @@ export default function AjahCTA() {
 
       <div className="relative mx-auto max-w-3xl px-4 text-center md:px-8">
         <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-gold">
-          Join the Initiative
+          {t("ctaPill")}
         </p>
         <h2 className="mt-4 font-heading text-3xl font-bold md:text-4xl">
-          Back Women-Led Livelihoods with Project AJAH
+          {t("ctaTitle")}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-white/85">
-          Partner, fund or field-test AJAH in your region. Together we can
-          scale dignity and income for thousands of women farmers.
+          {t("ctaDesc")}
         </p>
 
         <Link
           href="/get-in-touch"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-cream focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-manikstu-green"
         >
-          Partner on Project AJAH <ArrowRight className="h-4 w-4" />
+          {t("partnerAjah")} <ArrowRight className="h-4 w-4" />
         </Link>
 
         {/* Small cultural divider */}

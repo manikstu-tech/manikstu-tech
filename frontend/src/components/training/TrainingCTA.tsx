@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight, GraduationCap, Handshake, Sprout, Users, type LucideIcon } from "lucide-react";
 
 export interface Pillar {
@@ -8,30 +9,32 @@ export interface Pillar {
   line2: string;
 }
 
-const fallbackPillars: Pillar[] = [
-  {
-    icon: Users,
-    line1: "Empowering",
-    line2: "Communities",
-  },
-  {
-    icon: GraduationCap,
-    line1: "Practical",
-    line2: "Training",
-  },
-  {
-    icon: Handshake,
-    line1: "Stronger",
-    line2: "Partnerships",
-  },
-  {
-    icon: Sprout,
-    line1: "Sustainable",
-    line2: "Impact",
-  },
-];
-
 export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar[] }) {
+  const t = useTranslations("Training");
+
+  const fallbackPillars: Pillar[] = [
+    {
+      icon: Users,
+      line1: t("ctaPillar1Line1"),
+      line2: t("ctaPillar1Line2"),
+    },
+    {
+      icon: GraduationCap,
+      line1: t("ctaPillar2Line1"),
+      line2: t("ctaPillar2Line2"),
+    },
+    {
+      icon: Handshake,
+      line1: t("ctaPillar3Line1"),
+      line2: t("ctaPillar3Line2"),
+    },
+    {
+      icon: Sprout,
+      line1: t("ctaPillar4Line1"),
+      line2: t("ctaPillar4Line2"),
+    },
+  ];
+
   const pillars = propPillars?.length ? propPillars : fallbackPillars;
   return (
     <section
@@ -66,7 +69,7 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
             <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/80" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              Get Involved
+              {t("ctaPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/80" />
@@ -86,14 +89,14 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
 
           {/* Heading */}
           <h2 className="mx-auto mt-3 max-w-3xl font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl lg:text-4xl">
-            <span className="text-[#376E2A]">Partner With Us</span> to Train the Next
+            <span className="text-[#376E2A]">{t("ctaTitle").split("the Next")[0]}</span>
+            to Train the Next
             <br />
             Generation of Farmers
           </h2>
 
           <p className="mx-auto mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-grey">
-            Whether you are a community, institution or organization, we would love
-            to bring training and awareness to your village.
+            {t("ctaDesc")}
           </p>
 
           {/* CTA Button */}
@@ -102,7 +105,7 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
               href="/get-in-touch"
               className="inline-flex items-center gap-2 rounded-full bg-[#3D7830] px-6 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-[#326327] hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
             >
-              Request a Training Program <ArrowRight className="h-3.5 w-3.5" />
+              {t("requestTraining")} <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>

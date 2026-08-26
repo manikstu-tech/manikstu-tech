@@ -8,11 +8,21 @@ import { Menu, X, Phone, Moon, Sun } from "lucide-react";
 import { useThemeToggle } from "./ThemeProvider";
 import { getNavigation } from "@/lib/api";
 import type { NavigationMenuItem } from "@/types";
-import LanguageSwitcher from "./LanguageSwitcher";
+// import LanguageSwitcher from "./LanguageSwitcher";
+
+const fallbackLinks: NavigationMenuItem[] = [
+  { id: 1, label: "Home", url: "/", parent_id: null, order: 1, is_active: true, target: "_self" },
+  { id: 2, label: "About Us", url: "/about", parent_id: null, order: 2, is_active: true, target: "_self" },
+  { id: 3, label: "Services", url: "/services", parent_id: null, order: 3, is_active: true, target: "_self" },
+  { id: 4, label: "Products", url: "/products", parent_id: null, order: 4, is_active: true, target: "_self" },
+  { id: 5, label: "Media", url: "/blog", parent_id: null, order: 5, is_active: true, target: "_self" },
+  { id: 6, label: "Collaborate", url: "/collaborate", parent_id: null, order: 6, is_active: true, target: "_self" },
+  { id: 7, label: "Training & Awareness", url: "/training", parent_id: null, order: 7, is_active: true, target: "_self" },
+];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>([]);
+  const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>(fallbackLinks);
   const { toggle } = useThemeToggle();
   const pathname = usePathname() ?? "/";
   const t = useTranslations("Navigation");
@@ -66,7 +76,7 @@ export default function Header() {
             <Moon className="h-4 w-4 dark:hidden" />
             <Sun className="h-4 w-4 hidden dark:block" />
           </button>
-          <LanguageSwitcher />
+          {/* <LanguageSwitcher /> */}
           <Link
             href="/contact"
             className="hidden md:inline-flex items-center rounded-full bg-manikstu-green px-5 py-2 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"

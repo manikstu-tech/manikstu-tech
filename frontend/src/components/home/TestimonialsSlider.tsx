@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 export type Testimonial = {
@@ -13,7 +14,6 @@ export type Testimonial = {
 
 const AUTOPLAY_MS = 3000;
 
-// How many cards are visible per view at each Tailwind breakpoint.
 function useVisibleCount() {
   const [n, setN] = useState(1);
   useEffect(() => {
@@ -36,6 +36,7 @@ export default function TestimonialsSlider({
 }: {
   testimonials: Testimonial[];
 }) {
+  const t = useTranslations("Common");
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const visible = useVisibleCount();
@@ -66,9 +67,6 @@ export default function TestimonialsSlider({
     return () => window.clearInterval(id);
   }, [paused, maxIndex]);
 
-  // Each card takes `basis` of the wrapper's width; wrapper width is
-  // visible * cardWidth + (visible - 1) * gap. We just translate by
-  // `safeActive * (100 / visible)%` — the card width in wrapper terms.
   const cardBasisPct = 100 / visible;
   const translatePct = safeActive * cardBasisPct;
 
@@ -87,9 +85,9 @@ export default function TestimonialsSlider({
           className="flex transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${translatePct}%)` }}
         >
-          {testimonials.map((t) => (
+          {testimonials.map((tItem) => (
             <div
-              key={t.name}
+              key={tItem.name}
               className="shrink-0 px-3"
               style={{ flexBasis: `${cardBasisPct}%` }}
             >
@@ -103,19 +101,19 @@ export default function TestimonialsSlider({
                   ))}
                 </div>
                 <p className="mt-4 text-sm text-grey italic">
-                  &ldquo;{t.quote}&rdquo;
+                  &ldquo;{tItem.quote}&rdquo;
                 </p>
                 <div className="mt-6 flex items-center gap-3">
                   <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-full ${t.color} text-white text-sm font-semibold`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-full ${tItem.color} text-white text-sm font-semibold`}
                   >
-                    {t.initials}
+                    {tItem.initials}
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-charcoal">
-                      — {t.name}
+                      — {tItem.name}
                     </p>
-                    <p className="text-xs text-grey">{t.role}</p>
+                    <p className="text-xs text-grey">{tItem.role}</p>
                   </div>
                 </div>
               </div>
@@ -130,7 +128,7 @@ export default function TestimonialsSlider({
           type="button"
           onClick={prev}
           disabled={safeActive === 0}
-          aria-label="Previous testimonial"
+          aria-label={t("prevTestimonial")}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-manikstu-green/30 text-manikstu-green hover:bg-manikstu-green hover:text-white disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-manikstu-green transition-colors"
         >
           <ChevronLeft className="h-5 w-5" />
@@ -141,7 +139,7 @@ export default function TestimonialsSlider({
               key={i}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={`Go to testimonial ${i + 1}`}
+              aria-label={`${t("goToTestimonial").replace("{number}", String(i + 1))}`}
               className={`h-2 rounded-full transition-all ${
                 i === safeActive
                   ? "w-6 bg-manikstu-green"
@@ -154,7 +152,7 @@ export default function TestimonialsSlider({
           type="button"
           onClick={next}
           disabled={safeActive === maxIndex}
-          aria-label="Next testimonial"
+          aria-label={t("nextTestimonial")}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-manikstu-green/30 text-manikstu-green hover:bg-manikstu-green hover:text-white disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-manikstu-green transition-colors"
         >
           <ChevronRight className="h-5 w-5" />

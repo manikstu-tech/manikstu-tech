@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import {
   HeartPulse,
   ShieldCheck,
@@ -14,61 +15,55 @@ export interface AjahPillar {
   description: string;
 }
 
-const fallbackPillars: AjahPillar[] = [
-  {
-    icon: Sprout,
-    title: "Scientific Livestock Management",
-    description:
-      "Improved breeding, feeding and husbandry practices for healthier, more productive animals.",
-  },
-  {
-    icon: Warehouse,
-    title: "Improved Infrastructure",
-    description:
-      "Better housing, fodder storage and farm setups that raise productivity and comfort.",
-  },
-  {
-    icon: HeartPulse,
-    title: "Animal Healthcare",
-    description:
-      "Routine vaccination, disease prevention and timely veterinary care for resilient herds.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Training",
-    description:
-      "Hands-on skill building for women farmers to manage and grow their livestock enterprises.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Insurance",
-    description:
-      "Risk cover that protects families and assets against illness, loss and climate shocks.",
-  },
-  {
-    icon: ShoppingBag,
-    title: "Market Support",
-    description:
-      "Linkages to fair, reliable markets so women entrepreneurs earn what their work is worth.",
-  },
-];
-
 export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPillar[] }) {
+  const t = useTranslations("Ajah");
+
+  const fallbackPillars: AjahPillar[] = [
+    {
+      icon: Sprout,
+      title: t("pillar1Title"),
+      description: t("pillar1Desc"),
+    },
+    {
+      icon: Warehouse,
+      title: t("pillar2Title"),
+      description: t("pillar2Desc"),
+    },
+    {
+      icon: HeartPulse,
+      title: t("pillar3Title"),
+      description: t("pillar3Desc"),
+    },
+    {
+      icon: GraduationCap,
+      title: t("pillar4Title"),
+      description: t("pillar4Desc"),
+    },
+    {
+      icon: ShieldCheck,
+      title: t("pillar5Title"),
+      description: t("pillar5Desc"),
+    },
+    {
+      icon: ShoppingBag,
+      title: t("pillar6Title"),
+      description: t("pillar6Desc"),
+    },
+  ];
+
   const pillars = propPillars?.length ? propPillars : fallbackPillars;
   return (
     <section className="section-padding bg-manikstu-cream">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-manikstu-green">
-            The Model
+            {t("modelPill")}
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold text-charcoal md:text-4xl">
-            Six Pillars of{" "}
-            <span className="text-manikstu-green">Integrated Livelihood</span>
+            {t("modelTitle")}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-grey">
-            Project AJAH weaves together the full livelihood stack so women
-            farmers can build stable, dignified enterprises.
+            {t("modelDesc")}
           </p>
         </div>
 

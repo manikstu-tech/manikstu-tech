@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { GraduationCap, MapPin, Shield, Sprout, type LucideIcon } from "lucide-react";
 
 export interface Stat {
@@ -7,30 +8,32 @@ export interface Stat {
   icon: LucideIcon;
 }
 
-const fallbackStats: Stat[] = [
-  {
-    value: "10,000+",
-    label: "Farmers Trained",
-    icon: GraduationCap,
-  },
-  {
-    value: "700+",
-    label: "Villages Reached",
-    icon: MapPin,
-  },
-  {
-    value: "3+",
-    label: "States Covered",
-    icon: Shield,
-  },
-  {
-    value: "7,00,000+",
-    label: "Goats Impacted",
-    icon: Sprout,
-  },
-];
-
 export default function TrainingImpact({ stats: propStats }: { stats?: Stat[] }) {
+  const t = useTranslations("Training");
+
+  const fallbackStats: Stat[] = [
+    {
+      value: "10,000+",
+      label: t("impactStat1Label"),
+      icon: GraduationCap,
+    },
+    {
+      value: "700+",
+      label: t("impactStat2Label"),
+      icon: MapPin,
+    },
+    {
+      value: "3+",
+      label: t("impactStat3Label"),
+      icon: Shield,
+    },
+    {
+      value: "7,00,000+",
+      label: t("impactStat4Label"),
+      icon: Sprout,
+    },
+  ];
+
   const stats = propStats?.length ? propStats : fallbackStats;
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#23581D] via-manikstu-green to-[#1F4E1A] py-12 text-white md:py-16">
@@ -72,7 +75,7 @@ export default function TrainingImpact({ stats: propStats }: { stats?: Stat[] })
             <span aria-hidden className="h-px w-8 sm:w-12 bg-manikstu-gold/80" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-gold">
-              Our Reach
+              {t("impactPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-8 sm:w-12 bg-manikstu-gold/80" />
@@ -80,8 +83,8 @@ export default function TrainingImpact({ stats: propStats }: { stats?: Stat[] })
 
           {/* Heading */}
           <h2 className="mx-auto mt-3 max-w-3xl font-heading text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
-            Knowledge That <span className="text-manikstu-gold">Scales</span> Across
-            <br className="hidden sm:inline" /> the Heartland
+            {t("impactTitle").split("Scales")[0]}
+            <span className="text-manikstu-gold">{t("impactTitle").split("Scales")[1]}</span>
           </h2>
 
           {/* Ornamental Divider with Framed Diamond */}

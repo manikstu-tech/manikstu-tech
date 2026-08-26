@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\PressRelease;
 use App\Models\Category;
+use App\Support\Sanitizer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -40,6 +41,7 @@ class PressController extends Controller
             'is_published' => 'boolean',
         ]);
 
+        $validated['content'] = Sanitizer::richText($validated['content']);
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
         $validated['is_published'] = $request->boolean('is_published');
         $validated['published_at'] = $request->boolean('is_published') ? now() : null;
@@ -67,6 +69,7 @@ class PressController extends Controller
             'is_published' => 'boolean',
         ]);
 
+        $validated['content'] = Sanitizer::richText($validated['content']);
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
         $wasPublished = $release->is_published;
         $validated['is_published'] = $request->boolean('is_published');

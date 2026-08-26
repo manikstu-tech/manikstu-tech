@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { ClipboardList, Compass, Rocket, TrendingUp, type LucideIcon } from "lucide-react";
 
 export interface StepItem {
@@ -7,38 +8,36 @@ export interface StepItem {
   icon: LucideIcon;
 }
 
-const fallbackSteps: StepItem[] = [
-  {
-    step: "01",
-    title: "Discover",
-    description:
-      "We listen to communities and partners to understand local needs, assets and gaps.",
-    icon: Compass,
-  },
-  {
-    step: "02",
-    title: "Design",
-    description:
-      "We co-create programs that blend our livestock expertise with partner strengths.",
-    icon: ClipboardList,
-  },
-  {
-    step: "03",
-    title: "Deploy",
-    description:
-      "We implement on the ground with training, infrastructure and continuous handholding.",
-    icon: Rocket,
-  },
-  {
-    step: "04",
-    title: "Measure",
-    description:
-      "We track outcomes and refine together to ensure durable, scalable impact.",
-    icon: TrendingUp,
-  },
-];
-
 export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] }) {
+  const t = useTranslations("Collaborate");
+
+  const fallbackSteps: StepItem[] = [
+    {
+      step: "01",
+      title: t("step1Title"),
+      description: t("step1Desc"),
+      icon: Compass,
+    },
+    {
+      step: "02",
+      title: t("step2Title"),
+      description: t("step2Desc"),
+      icon: ClipboardList,
+    },
+    {
+      step: "03",
+      title: t("step3Title"),
+      description: t("step3Desc"),
+      icon: Rocket,
+    },
+    {
+      step: "04",
+      title: t("step4Title"),
+      description: t("step4Desc"),
+      icon: TrendingUp,
+    },
+  ];
+
   const steps = propSteps?.length ? propSteps : fallbackSteps;
   return (
     <section className="section-padding bg-white">
@@ -49,15 +48,14 @@ export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] })
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-              How It Works
+              {t("howPill")}
             </p>
             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
           </div>
 
           <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-            From First Conversation to{" "}
-            <span className="text-manikstu-green">Shared Impact</span>
+            {t("howTitle")}
           </h2>
 
           {/* Ornamental Divider with Framed Diamond */}
@@ -73,8 +71,7 @@ export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] })
           </div>
 
           <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
-            A simple, transparent process that keeps communities and partners
-            aligned at every stage.
+            {t("howDesc")}
           </p>
         </div>
 
@@ -95,7 +92,7 @@ export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] })
                 <div className="relative text-center">
                   {/* Step pill tag */}
                   <div className="mx-auto inline-flex items-center justify-center rounded-full border border-manikstu-gold/60 bg-manikstu-gold/15 px-3 py-0.5 text-xs font-bold text-[#6B4423]">
-                    Step {item.step}
+                    {t("stepPrefix")} {item.step}
                   </div>
 
                   {/* Icon with dashed decorative ring */}

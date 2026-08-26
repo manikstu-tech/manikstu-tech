@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight, Newspaper, Radio, Camera } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
 
 export default function MediaHero() {
+  const t = useTranslations("Blog");
+
   return (
     <PageHero>
           {/* Left — copy */}
@@ -11,24 +14,22 @@ export default function MediaHero() {
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
               <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
               <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                Media
+                {t("pill")}
               </p>
               <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             </div>
 
             <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
-              News, Stories
+              {t("heroTitle").split("Voices")[0]}
               <br />
               <span className="text-manikstu-green">
-                & Voices from the Field.
+                {t("heroTitle").split("Voices")[1]?.trim()}
               </span>
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
-              Stay informed with our latest press coverage, events and stories
-              from Manikstu&apos;s work across rural India — told through the
-              people, farms and communities we serve.
+              {t("heroDesc")}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -36,13 +37,13 @@ export default function MediaHero() {
                 href="#featured"
                 className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Explore Latest <ArrowRight className="h-4 w-4" />
+                {t("exploreLatest")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="#press"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Press Coverage
+                {t("pressCoverage")}
               </Link>
             </div>
 
@@ -52,7 +53,7 @@ export default function MediaHero() {
                 <Newspaper className="h-3.5 w-3.5 text-manikstu-green" />
               </span>
               <p className="text-sm text-grey">
-                Fresh stories every week from villages across India
+                {t("microStatement")}
               </p>
             </div>
           </div>
@@ -103,7 +104,7 @@ export default function MediaHero() {
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
                 <Radio className="h-4 w-4 text-manikstu-green" />
                 <span className="text-xs font-semibold text-charcoal">
-                  Stories that travel far
+                  {t("cornerAccent")}
                 </span>
               </div>
             </div>
