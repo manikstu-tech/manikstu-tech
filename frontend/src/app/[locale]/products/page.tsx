@@ -411,7 +411,7 @@ export default function ProductsPage() {
                     </p>
                   </div>
                   <Link
-                    href="/contact"
+                    href="/products/checkout"
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
                   >
                     Proceed to Checkout <ArrowRight className="h-4 w-4" />
