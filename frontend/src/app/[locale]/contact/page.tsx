@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
@@ -45,47 +46,243 @@ export default function ContactPage() {
       <Header />
       <main id="main-content">
         <PageHero
-          background={null}
+          background={
+            <>
+              {/* Default top-right mandala */}
+              <Image
+                src="/patterns/mandala-top-right-corner.png"
+                alt=""
+                aria-hidden
+                width={504}
+                height={560}
+                className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
+              />
+              {/* Left-side mandala */}
+              <Image
+                src="/patterns/mandala-right.png"
+                alt=""
+                aria-hidden
+                width={768}
+                height={768}
+                className="pointer-events-none select-none absolute -left-12 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-44 md:w-56 lg:w-64 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+              />
+            </>
+          }
         >
+          {/* Left — copy */}
           <div>
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-              {t("pill")}
-            </p>
-            <h1 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-              {t("heroTitle")}
+            <div className="flex items-center gap-2">
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                {t("pill")}
+              </p>
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+            </div>
+
+            <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
+              {t("heroTitle").split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="text-manikstu-green">
+                {t("heroTitle").split(" ").slice(-1)}
+              </span>
             </h1>
-            <p className="mt-4 max-w-lg text-grey">
+
+            {/* Framed-diamond divider */}
+            <div className="mt-4 flex items-center gap-2">
+              <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+              <div aria-hidden className="relative flex items-center justify-center">
+                <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              </div>
+              <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+              <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+            </div>
+
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
               {t("heroDesc")}
             </p>
           </div>
+
+          {/* Right — contact cards */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3 rounded-xl border border-light-grey bg-manikstu-cream/50 p-4">
-              <Phone className="h-5 w-5 text-manikstu-green" />
-              <div>
-                <p className="text-sm font-semibold text-charcoal">{t("callUs")}</p>
-                <p className="text-sm text-grey">+91 8270331856</p>
+            {[
+              {
+                icon: Phone,
+                title: t("callUs"),
+                value: "+91 8270331856",
+                subtitle: "Mon – Sat | 9:00 AM – 6:00 PM",
+              },
+              {
+                icon: Mail,
+                title: t("emailUs"),
+                value: "contact@manikstu.com",
+                subtitle: "We typically reply within 24 hours",
+              },
+            ].map(({ icon: Icon, title, value, subtitle }) => (
+              <div
+                key={title}
+                className="group flex items-center gap-5 rounded-2xl border border-manikstu-gold/25 bg-manikstu-cream/60 p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5"
+              >
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-manikstu-green/20">
+                  <Icon className="h-6 w-6 text-manikstu-green" />
+                </span>
+                <span
+                  aria-hidden
+                  className="hidden h-12 w-px bg-manikstu-gold/30 sm:block"
+                />
+                <div className="min-w-0 flex-1">
+                  <p className="font-heading text-base font-bold text-charcoal">
+                    {title}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-manikstu-green break-words">
+                    {value}
+                  </p>
+                  <p className="mt-1 text-xs text-grey">{subtitle}</p>
+                </div>
               </div>
+            ))}
+          </div>
+
+          {/* Visit Us — spans full hero width so it captures the left empty area */}
+          <div className="rounded-2xl border border-manikstu-gold/25 bg-manikstu-cream/60 p-5 shadow-sm sm:p-6 lg:col-span-2">
+            <div className="flex items-center gap-4">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-manikstu-green/20">
+                <MapPin className="h-6 w-6 text-manikstu-green" />
+              </span>
+              <p className="font-heading text-base font-bold text-charcoal">
+                Visit Us
+              </p>
             </div>
-            <div className="flex items-center gap-3 rounded-xl border border-light-grey bg-manikstu-cream/50 p-4">
-              <Mail className="h-5 w-5 text-manikstu-green" />
-              <div>
-                <p className="text-sm font-semibold text-charcoal">{t("emailUs")}</p>
-                <p className="text-sm text-grey">contact@manikstu.com</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 rounded-xl border border-light-grey bg-manikstu-cream/50 p-4">
-              <MapPin className="h-5 w-5 text-manikstu-green" />
-              <div>
-                <p className="text-sm font-semibold text-charcoal">{t("visitUs")}</p>
-                <p className="text-sm text-grey">Bhubaneswar, Odisha, India</p>
-              </div>
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  label: "Registered Office",
+                  address:
+                    "Row House No - 94, Ravi Garden, Pune Solapur Road, Manjri Budruk, Hadapsar, Pune – 412307",
+                },
+                {
+                  label: "Corporate Office",
+                  address:
+                    "Plot No-754, 14, Gangadhar Meher Marg, near Pabitra Guest House, Jayadev Vihar, Bhubaneswar, Odisha – 751013",
+                },
+                {
+                  label: "Farm Office",
+                  address:
+                    "At/Po: Salebhata, P.S: Kegaon, via: Borda, Kalahandi, Odisha – 766036",
+                },
+                {
+                  label: "Regional Office",
+                  address:
+                    "CMTC Campus, Serikhedi, Chhattisgarh – 492012",
+                },
+              ].map((office) => (
+                <div
+                  key={office.label}
+                  className="rounded-xl border border-light-grey/70 bg-white/70 p-3"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="h-3 w-3 text-manikstu-green" />
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-manikstu-green">
+                      {office.label}
+                    </p>
+                  </div>
+                  <p className="mt-1 text-[11px] leading-snug text-grey">
+                    {office.address}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </PageHero>
 
-        <section className="section-padding bg-manikstu-cream">
-          <div className="mx-auto max-w-3xl">
-            <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
+        <section className="relative section-padding bg-manikstu-cream dark:bg-gray-900 overflow-hidden">
+          {/* Top tribal border */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-7 bg-repeat-x opacity-70"
+            style={{
+              backgroundImage: "url('/patterns/tribal-border.png')",
+              backgroundSize: "auto 100%",
+            }}
+          />
+          {/* Bottom tribal border (flipped) */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
+            style={{
+              backgroundImage: "url('/patterns/tribal-border.png')",
+              backgroundSize: "auto 100%",
+            }}
+          />
+
+          {/* Top-left mandala corner */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.14] sm:opacity-[0.18]"
+          />
+
+          {/* Bottom-right mandala corner */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.14] sm:opacity-[0.18] -scale-x-100 -scale-y-100"
+          />
+
+          <div className="relative z-10 mx-auto max-w-4xl">
+            {/* Section header — matches Training "What We Do" */}
+            <div className="text-center">
+              {/* Ornamental pill heading */}
+              <div className="flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                  Send a Message
+                </p>
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+              </div>
+
+              <h2 className="mx-auto mt-6 max-w-3xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
+                We&apos;d Love to{" "}
+                <span className="text-manikstu-green">Hear From You</span>
+              </h2>
+
+              {/* Framed diamond divider */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <div aria-hidden className="relative flex items-center justify-center">
+                  <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                  <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
+                <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              </div>
+
+              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed dark:text-gray-300">
+                Drop us a line — questions, partnership ideas, feedback or
+                anything else. Our team responds within a working day.
+              </p>
+            </div>
+
+            {/* Ornate form card — matches Training program card */}
+            <div className="relative mt-10 overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white p-6 shadow-sm sm:p-8 dark:bg-gray-800">
+              {/* Inner dashed border */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+              />
+              <div className="relative">
               {status === "success" ? (
                 <div className="py-12 text-center">
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10">
@@ -226,6 +423,7 @@ export default function ContactPage() {
                   </button>
                 </form>
               )}
+              </div>
             </div>
           </div>
         </section>

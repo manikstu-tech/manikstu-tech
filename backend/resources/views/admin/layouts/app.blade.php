@@ -42,14 +42,14 @@
             transition: transform 0.25s ease;
         }
         .sidebar-logo {
-            height: 88px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid rgba(255,255,255,0.12);
-            padding: 0 20px;
+            padding: 0 16px;
         }
-        .sidebar-logo img { height: 40px; width: auto; filter: brightness(0) invert(1); opacity: 0.95; }
+        .sidebar-logo img { height: 60px; width: auto; filter: brightness(0) invert(1); opacity: 1; image-rendering: -webkit-optimize-contrast; }
 
         .sidebar-nav {
             flex: 1;
@@ -127,24 +127,30 @@
         .logout-btn {
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 7px;
             width: 100%;
             margin-top: 10px;
-            padding: 7px 10px;
-            border: none;
-            background: rgba(255,255,255,0.06);
-            color: rgba(255,255,255,0.5);
+            padding: 8px 10px;
+            border: 1px solid rgba(255,120,120,0.5);
+            background: rgba(255,95,95,0.16);
+            color: #ff9a9a;
             font-size: 12px;
+            font-weight: 600;
             font-family: 'Inter', sans-serif;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.15s;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
         }
-        .logout-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+        .logout-btn:hover { background: rgba(255,95,95,0.28); color: #ffbcbc; transform: translateY(-1px); }
+        .logout-btn:active { transform: translateY(0); }
         .logout-btn svg { width: 14px; height: 14px; }
 
         /* ===== MAIN ===== */
-        .main-area { flex: 1; margin-left: 260px; display: flex; flex-direction: column; height: 100vh; overflow-y: scroll; }
+        .main-area { flex: 1; margin-left: 260px; display: flex; flex-direction: column; height: 100vh; overflow-y: scroll; transition: margin-left 0.25s ease; }
+        /* Desktop: collapse the sidebar via the hamburger */
+        .app-shell.sidebar-collapsed .sidebar { transform: translateX(-100%); }
+        .app-shell.sidebar-collapsed .main-area { margin-left: 0; }
         .main-area::-webkit-scrollbar { width: 10px; }
         .main-area::-webkit-scrollbar-track { background: transparent; }
         .main-area::-webkit-scrollbar-thumb { background: rgba(45,80,22,0.22); border-radius: 6px; }
@@ -225,19 +231,61 @@
         .topbar-bell svg { width: 20px; height: 20px; color: var(--grey); }
         .bell-badge {
             position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 16px;
+            top: 5px;
+            right: 5px;
+            min-width: 16px;
             height: 16px;
+            padding: 0 3px;
             background: var(--red);
             color: #fff;
             font-size: 9px;
             font-weight: 700;
-            border-radius: 50%;
+            border-radius: 9px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 2px solid #fff;
         }
+        .topbar-bell-wrap { position: relative; }
+        .topbar-bell-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 340px;
+            max-width: calc(100vw - 24px);
+            background: #fff;
+            border: 1px solid var(--light-grey);
+            border-radius: 14px;
+            box-shadow: 0 14px 40px rgba(26,26,26,0.16);
+            z-index: 50;
+            overflow: hidden;
+        }
+        .topbar-bell-wrap.open .topbar-bell-menu { display: block; animation: userMenuIn 0.16s ease both; }
+        .bell-menu-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--light-grey); }
+        .bell-menu-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--charcoal); }
+        .bell-menu-count { font-size: 11px; font-weight: 700; color: var(--green); background: rgba(74,140,63,0.10); padding: 3px 9px; border-radius: 9999px; }
+        .bell-menu-list { max-height: 360px; overflow-y: auto; }
+        .bell-menu-list::-webkit-scrollbar { width: 6px; }
+        .bell-menu-list::-webkit-scrollbar-thumb { background: rgba(45,80,22,0.18); border-radius: 6px; }
+        .bell-item { position: relative; display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F4F1EB; text-decoration: none; transition: background 0.13s; }
+        .bell-item:hover { background: #FBFAF7; }
+        .bell-item.unread { background: rgba(74,140,63,0.035); }
+        .bell-item-ic { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .bell-item-ic svg { width: 17px; height: 17px; }
+        .bell-ic-enquiry { background: rgba(74,140,63,0.12); color: #3A7030; }
+        .bell-ic-order { background: rgba(196,149,42,0.14); color: #B4711A; }
+        .bell-item-body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+        .bell-item-title { font-size: 13px; font-weight: 600; color: var(--charcoal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .bell-item-sub { font-size: 12px; color: var(--grey); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .bell-item-time { font-size: 11px; color: #A8A8A8; margin-top: 4px; }
+        .bell-item-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; margin-top: 6px; }
+        .bell-empty { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 36px 16px; color: #B0B0B0; }
+        .bell-empty svg { width: 30px; height: 30px; opacity: 0.5; }
+        .bell-empty p { font-size: 13px; }
+        .bell-menu-foot { display: block; text-align: center; padding: 12px; font-size: 12.5px; font-weight: 600; color: var(--green); text-decoration: none; border-top: 1px solid var(--light-grey); transition: background 0.13s; }
+        .bell-menu-foot:hover { background: #FBFAF7; }
+        .topbar-user-wrap { position: relative; }
         .topbar-user {
             display: flex;
             align-items: center;
@@ -245,6 +293,9 @@
             cursor: pointer;
             padding: 4px 8px;
             border-radius: 8px;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
             transition: background 0.15s;
         }
         .topbar-user:hover { background: var(--page-bg); }
@@ -259,10 +310,40 @@
             color: #fff;
             font-size: 14px;
             font-weight: 600;
+            flex-shrink: 0;
         }
-        .topbar-user-name { font-size: 13px; font-weight: 600; color: var(--charcoal); }
-        .topbar-user-role { font-size: 11px; font-weight: 600; color: var(--gold); }
-        .topbar-user-chev { width: 16px; height: 16px; color: var(--grey); flex-shrink: 0; }
+        .topbar-user-meta { display: flex; flex-direction: column; text-align: left; min-width: 0; }
+        .topbar-user-name { font-size: 13px; font-weight: 600; color: var(--charcoal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .topbar-user-role { font-size: 11px; font-weight: 600; color: var(--gold); white-space: nowrap; }
+        .topbar-user-chev { width: 16px; height: 16px; color: var(--grey); flex-shrink: 0; transition: transform 0.2s ease; }
+        .topbar-user-wrap.open .topbar-user-chev { transform: rotate(180deg); }
+
+        /* User dropdown */
+        .topbar-user-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 220px;
+            background: #fff;
+            border: 1px solid var(--light-grey);
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(26,26,26,0.14);
+            padding: 6px;
+            z-index: 50;
+        }
+        .topbar-user-wrap.open .topbar-user-menu { display: block; animation: userMenuIn 0.16s ease both; }
+        @keyframes userMenuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .user-menu-head { display: flex; align-items: center; gap: 10px; padding: 10px 10px 12px; border-bottom: 1px solid var(--light-grey); margin-bottom: 6px; }
+        .user-menu-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--leaf); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; flex-shrink: 0; }
+        .user-menu-id { display: flex; flex-direction: column; min-width: 0; }
+        .user-menu-name { font-size: 13.5px; font-weight: 600; color: var(--charcoal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .user-menu-role { font-size: 11px; font-weight: 600; color: var(--gold); }
+        .user-menu-item { display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 10px; border: none; background: transparent; font-size: 13px; font-weight: 500; font-family: 'Inter', sans-serif; color: var(--grey); border-radius: 8px; cursor: pointer; text-decoration: none; text-align: left; }
+        .user-menu-item svg { width: 16px; height: 16px; flex-shrink: 0; }
+        .user-menu-item:hover { background: var(--page-bg); color: var(--charcoal); }
+        .user-menu-danger { color: var(--red); }
+        .user-menu-danger:hover { background: rgba(212,52,44,0.08); color: var(--red); }
 
         /* ===== PAGE CONTENT ===== */
         .page-content { padding: 24px; flex: 1; }
@@ -298,13 +379,55 @@
             .main-area { margin-left: 0; }
             .hamburger { display: flex; }
             .topbar-search { width: 100%; max-width: 200px; }
-            .topbar-user-name, .topbar-user-role { display: none; }
+            .topbar-user-meta, .topbar-user-chev { display: none; }
+            .topbar-user { gap: 0; padding: 2px; }
             .page-content { padding: 16px; }
+        }
+        @media (max-width: 380px) {
+            .topbar-search { max-width: 130px; }
+            .topbar-user-menu { min-width: 200px; right: -4px; }
         }
     </style>
 </head>
 <body>
-    <div class="app-shell">
+    @php
+        $notifItems = collect();
+        try {
+            foreach (\App\Models\Enquiry::latest()->take(6)->get() as $e) {
+                $notifItems->push([
+                    'type' => 'enquiry',
+                    'title' => $e->name ?: 'New enquiry',
+                    'sub' => \Illuminate\Support\Str::limit($e->message ?: ($e->type ?: 'New enquiry received'), 46),
+                    'time' => $e->created_at,
+                    'unread' => ($e->status ?? 'new') === 'new',
+                    'url' => route('admin.enquiries.index'),
+                ]);
+            }
+        } catch (\Throwable $ex) {}
+        try {
+            foreach (\App\Models\Order::latest()->take(6)->get() as $o) {
+                $notifItems->push([
+                    'type' => 'order',
+                    'title' => 'Order ' . ($o->order_number ?: ('#' . $o->id)),
+                    'sub' => '₹' . number_format((float) $o->total, 0) . ' · ' . ucfirst($o->status ?? 'pending'),
+                    'time' => $o->created_at,
+                    'unread' => in_array($o->status ?? 'pending', ['pending', 'processing']),
+                    'url' => route('admin.orders.index'),
+                ]);
+            }
+        } catch (\Throwable $ex) {}
+        $notifItems = $notifItems->sortByDesc('time')->take(7)->values();
+        $notifCount = $notifItems->where('unread', true)->count();
+    @endphp
+    <div class="app-shell" id="appShell">
+        <script>
+            // Restore the desktop sidebar collapse state before paint (no flash)
+            try {
+                if (window.innerWidth > 768 && localStorage.getItem('sidebarCollapsed') === '1') {
+                    document.getElementById('appShell').classList.add('sidebar-collapsed');
+                }
+            } catch (e) {}
+        </script>
 
         <!-- Sidebar overlay (mobile) -->
         <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
@@ -424,17 +547,72 @@
                     </div>
                 </div>
                 <div class="topbar-right">
-                    <button class="topbar-bell" aria-label="Notifications">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-                        <span class="bell-badge">3</span>
-                    </button>
-                    <div class="topbar-user">
-                        <div class="topbar-user-avatar">{{ substr(Auth::user()->name, 0, 1) }}</div>
-                        <div>
-                            <p class="topbar-user-name">{{ Auth::user()->name }}</p>
-                            <p class="topbar-user-role">{{ ucfirst(Auth::user()->role) }}</p>
+                    <div class="topbar-bell-wrap" id="bellWrap">
+                        <button type="button" class="topbar-bell" onclick="toggleBellMenu()" aria-label="Notifications" aria-haspopup="true" aria-expanded="false" id="bellToggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                            @if($notifCount > 0)<span class="bell-badge">{{ $notifCount > 9 ? '9+' : $notifCount }}</span>@endif
+                        </button>
+                        <div class="topbar-bell-menu" id="bellMenu">
+                            <div class="bell-menu-head">
+                                <span class="bell-menu-title">Notifications</span>
+                                @if($notifCount > 0)<span class="bell-menu-count">{{ $notifCount }} new</span>@endif
+                            </div>
+                            <div class="bell-menu-list">
+                                @forelse($notifItems as $n)
+                                    <a href="{{ $n['url'] }}" class="bell-item {{ $n['unread'] ? 'unread' : '' }}">
+                                        <span class="bell-item-ic bell-ic-{{ $n['type'] }}">
+                                            @if($n['type'] === 'order')
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                            @else
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                            @endif
+                                        </span>
+                                        <span class="bell-item-body">
+                                            <span class="bell-item-title">{{ $n['title'] }}</span>
+                                            <span class="bell-item-sub">{{ $n['sub'] }}</span>
+                                            <span class="bell-item-time">{{ $n['time'] ? $n['time']->diffForHumans() : '' }}</span>
+                                        </span>
+                                        @if($n['unread'])<span class="bell-item-dot"></span>@endif
+                                    </a>
+                                @empty
+                                    <div class="bell-empty">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                                        <p>You're all caught up</p>
+                                    </div>
+                                @endforelse
+                            </div>
+                            <a href="{{ route('admin.enquiries.index') }}" class="bell-menu-foot">View all enquiries</a>
                         </div>
-                        <svg class="topbar-user-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <div class="topbar-user-wrap" id="userWrap">
+                        <button type="button" class="topbar-user" onclick="toggleUserMenu()" aria-haspopup="true" aria-expanded="false" id="userToggle">
+                            <span class="topbar-user-avatar">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                            <span class="topbar-user-meta">
+                                <span class="topbar-user-name">{{ Auth::user()->name }}</span>
+                                <span class="topbar-user-role">{{ ucfirst(Auth::user()->role) }}</span>
+                            </span>
+                            <svg class="topbar-user-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                        <div class="topbar-user-menu" id="userMenu">
+                            <div class="user-menu-head">
+                                <span class="user-menu-avatar">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                                <span class="user-menu-id">
+                                    <span class="user-menu-name">{{ Auth::user()->name }}</span>
+                                    <span class="user-menu-role">{{ ucfirst(Auth::user()->role) }}</span>
+                                </span>
+                            </div>
+                            <a href="{{ route('admin.settings.edit') }}" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Settings
+                            </a>
+                            <form method="POST" action="{{ route('admin.logout') }}">
+                                @csrf
+                                <button type="submit" class="user-menu-item user-menu-danger">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                                    Sign Out
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -449,13 +627,48 @@
 
     <script>
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-            document.getElementById('sidebarOverlay').classList.toggle('open');
+            if (window.innerWidth <= 768) {
+                // Mobile: slide the off-canvas sidebar in/out
+                document.getElementById('sidebar').classList.toggle('open');
+                document.getElementById('sidebarOverlay').classList.toggle('open');
+            } else {
+                // Desktop: collapse/expand the sidebar and remember the choice
+                var shell = document.getElementById('appShell');
+                var collapsed = shell.classList.toggle('sidebar-collapsed');
+                try { localStorage.setItem('sidebarCollapsed', collapsed ? '1' : '0'); } catch (e) {}
+            }
         }
         function closeSidebar() {
             document.getElementById('sidebar').classList.remove('open');
             document.getElementById('sidebarOverlay').classList.remove('open');
         }
+        function closeBellMenu() {
+            var bw = document.getElementById('bellWrap');
+            if (bw) { bw.classList.remove('open'); document.getElementById('bellToggle').setAttribute('aria-expanded', 'false'); }
+        }
+        function closeUserMenu() {
+            var uw = document.getElementById('userWrap');
+            if (uw) { uw.classList.remove('open'); document.getElementById('userToggle').setAttribute('aria-expanded', 'false'); }
+        }
+        function toggleUserMenu() {
+            closeBellMenu();
+            var wrap = document.getElementById('userWrap');
+            var open = wrap.classList.toggle('open');
+            document.getElementById('userToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        function toggleBellMenu() {
+            closeUserMenu();
+            var wrap = document.getElementById('bellWrap');
+            var open = wrap.classList.toggle('open');
+            document.getElementById('bellToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('#userWrap')) closeUserMenu();
+            if (!e.target.closest('#bellWrap')) closeBellMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { closeUserMenu(); closeBellMenu(); }
+        });
     </script>
 </body>
 </html>

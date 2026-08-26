@@ -60,7 +60,7 @@ export default function CareersHero() {
 
           {/* Right — visual panel */}
           <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               {/* Community / purpose line-art illustration */}
               <svg
                 aria-hidden="true"

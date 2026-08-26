@@ -83,7 +83,7 @@ export default function AboutPage() {
             className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
           />
           <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-12 md:px-8 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20">
-            <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="grid items-start gap-12 lg:grid-cols-2">
               {/* Left — copy */}
               <div>
                 <div className="flex items-center gap-2">
@@ -103,18 +103,6 @@ export default function AboutPage() {
                     {t("cornerAccent")}
                   </span>
                 </h1>
-
-                {/* Ornamental Divider with Framed Diamond */}
-                <div className="mt-4 flex items-center gap-2">
-                  <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
-                  <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
-                  <div aria-hidden className="relative flex items-center justify-center">
-                    <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
-                    <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                  </div>
-                  <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
-                  <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
-                </div>
 
                 <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
                   {t("heroDesc")}
@@ -148,7 +136,7 @@ export default function AboutPage() {
 
               {/* Right — visual panel */}
               <div className="relative">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream shadow-md">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
                   {/* Inner dashed border */}
                   <div
                     aria-hidden

@@ -314,53 +314,7 @@ export default async function HomePage() {
         </PageHero>
 
         {/* Mission */}
-        <section className="relative section-padding bg-manikstu-cream overflow-hidden dark:bg-gray-900">
-          {/* Top tribal floral border */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-8 bg-repeat-x -scale-y-100 opacity-60"
-            style={{
-              backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
-              backgroundSize: "auto 100%",
-            }}
-          />
-          {/* Top-left mandala corner */}
-          <Image
-            src="/patterns/mandala-corner-top.png"
-            alt=""
-            aria-hidden
-            width={1370}
-            height={1155}
-            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18]"
-          />
-          {/* Top-right mandala corner (mirrored) */}
-          <Image
-            src="/patterns/mandala-corner-top.png"
-            alt=""
-            aria-hidden
-            width={1370}
-            height={1155}
-            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
-          />
-          {/* Bottom-left tree + goat silhouette */}
-          <Image
-            src="/patterns/training-bottom-left.png"
-            alt=""
-            aria-hidden
-            width={1536}
-            height={1024}
-            className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-80 sm:opacity-90 z-0"
-          />
-          {/* Bottom-right woman + hut + tree silhouette */}
-          <Image
-            src="/patterns/training-bottom-right.png"
-            alt=""
-            aria-hidden
-            width={1802}
-            height={900}
-            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-80 sm:opacity-90 z-0"
-          />
-
+        <section className="relative section-padding bg-white overflow-hidden dark:bg-gray-900">
           <div className="relative z-10 mx-auto max-w-7xl">
             {/* Ornamental pill heading */}
             <div className="flex items-center justify-center gap-2">
@@ -410,7 +364,7 @@ export default async function HomePage() {
                     {/* Bottom Warli village art */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-85 z-0"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-45 z-0"
                       style={
                         card.image
                           ? {
@@ -491,7 +445,7 @@ export default async function HomePage() {
           {/* Bottom village panoramic scene banner */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-1 sm:-bottom-1.5 md:-bottom-2 lg:-bottom-2.5 z-0 flex justify-between overflow-hidden select-none opacity-90 dark:opacity-40"
+            className="pointer-events-none absolute inset-x-0 -bottom-4 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-50 dark:opacity-25"
           >
             <Image
               src="/patterns/village-figures.png"
@@ -790,7 +744,7 @@ export default async function HomePage() {
                   {/* Warli figures at bottom of phone */}
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom"
+                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom opacity-45"
                     style={{
                       backgroundImage: "url('/patterns/village-figures.png')",
                       backgroundSize: "180% auto",
@@ -919,7 +873,7 @@ export default async function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-80 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-40 -scale-x-100"
           />
           <Image
             src="/patterns/village-figures.png"
@@ -928,7 +882,7 @@ export default async function HomePage() {
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[12px] right-0 w-[30%] max-w-none h-auto opacity-80"
+            className="pointer-events-none select-none absolute bottom-[12px] right-0 w-[30%] max-w-none h-auto opacity-40"
           />
 
           {/* Dark green tagline ribbon */}

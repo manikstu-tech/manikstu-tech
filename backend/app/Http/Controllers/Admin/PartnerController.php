@@ -10,13 +10,23 @@ class PartnerController extends Controller
 {
     public function index(Request $request)
     {
+        $sortable = ['name' => 'name', 'category' => 'category', 'status' => 'is_active'];
+        $sort = $request->sort;
+        $dir = $request->dir === 'desc' ? 'desc' : 'asc';
+
         $partners = Partner::when($request->search, fn($q, $s) => $q->where('name', 'like', "%{$s}%"))
             ->when($request->category, fn($q, $c) => $q->where('category', $c))
-            ->orderBy('order')
-            ->paginate(15)
+            ->when(
+                isset($sortable[$sort]),
+                fn($q) => $q->orderBy($sortable[$sort], $dir),
+                fn($q) => $q->orderBy('order'),
+            )
+            ->paginate(6)
             ->withQueryString();
 
-        return view('admin.partners.index', compact('partners'));
+        $categories = Partner::query()->whereNotNull('category')->distinct()->orderBy('category')->pluck('category');
+
+        return view('admin.partners.index', compact('partners', 'categories'));
     }
 
     public function create()

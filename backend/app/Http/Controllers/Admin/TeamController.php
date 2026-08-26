@@ -10,9 +10,17 @@ class TeamController extends Controller
 {
     public function index(Request $request)
     {
+        $sortable = ['name' => 'name', 'role' => 'role', 'status' => 'is_active'];
+        $sort = $request->sort;
+        $dir = $request->dir === 'desc' ? 'desc' : 'asc';
+
         $members = TeamMember::when($request->search, fn($q, $s) => $q->where('name', 'like', "%{$s}%"))
-            ->orderBy('order')
-            ->paginate(15)
+            ->when(
+                isset($sortable[$sort]),
+                fn($q) => $q->orderBy($sortable[$sort], $dir),
+                fn($q) => $q->orderBy('order'),
+            )
+            ->paginate(5)
             ->withQueryString();
 
         return view('admin.team.index', compact('members'));

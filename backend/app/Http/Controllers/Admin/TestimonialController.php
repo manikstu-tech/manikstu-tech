@@ -10,9 +10,17 @@ class TestimonialController extends Controller
 {
     public function index(Request $request)
     {
+        $sortable = ['name' => 'name', 'rating' => 'rating', 'status' => 'is_active'];
+        $sort = $request->sort;
+        $dir = $request->dir === 'desc' ? 'desc' : 'asc';
+
         $testimonials = Testimonial::when($request->search, fn($q, $s) => $q->where('name', 'like', "%{$s}%"))
-            ->orderBy('order')
-            ->paginate(15)
+            ->when(
+                isset($sortable[$sort]),
+                fn($q) => $q->orderBy($sortable[$sort], $dir),
+                fn($q) => $q->orderBy('order'),
+            )
+            ->paginate(5)
             ->withQueryString();
 
         return view('admin.testimonials.index', compact('testimonials'));

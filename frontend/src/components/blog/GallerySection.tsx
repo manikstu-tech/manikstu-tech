@@ -17,7 +17,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
   return (
     <section
       id="gallery"
-      className="scroll-mt-6 bg-white px-4 pb-14 pt-4 sm:px-6 sm:pb-16 sm:pt-6 md:px-8 md:pb-20 md:pt-8"
+      className="scroll-mt-6 section-padding bg-white"
     >
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
