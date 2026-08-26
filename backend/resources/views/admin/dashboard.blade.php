@@ -117,7 +117,7 @@ $activities = $recentEnquiries->count()
             <h2>Recent Enquiries</h2>
             <a href="{{ route('admin.enquiries.index') }}" class="view-all">View all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
-        <div class="act-list">
+        <div class="act-list" id="actList">
             @foreach($activities as $a)
                 <div class="act-row">
                     <span class="act-ic ic-{{ $a['tone'] }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $a['ic'] !!}</svg></span>
@@ -132,6 +132,7 @@ $activities = $recentEnquiries->count()
                 </div>
             @endforeach
         </div>
+        <div class="act-pagination" id="actPagination"></div>
     </div>
 
     <div class="card">
@@ -166,4 +167,71 @@ $activities = $recentEnquiries->count()
     <div class="dash-footer-right" aria-hidden="true"></div>
     <p class="dash-copyright">&copy; {{ date('Y') }} Manikstu Agro Private Limited. All Rights Reserved.</p>
 </div>
+
+<style>
+.act-pagination { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 0 6px; }
+.actpg-btn { min-width: 36px; height: 36px; padding: 0 9px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E7E1D4; background: #fff; border-radius: 9px; font-size: 13px; font-weight: 600; color: #5A5A5A; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.actpg-btn:hover:not(.active):not(:disabled) { border-color: #4A8C3F; color: #3A7030; }
+.actpg-btn.active { background: #fff; border-color: #4A8C3F; color: #3A7030; box-shadow: 0 0 0 1px #4A8C3F inset; }
+.actpg-btn:disabled { opacity: 0.4; cursor: default; }
+.actpg-btn svg { width: 15px; height: 15px; }
+.actpg-ellipsis { min-width: 22px; text-align: center; color: #B0B0B0; font-weight: 600; user-select: none; }
+</style>
+
+<script>
+(function () {
+    var list = document.getElementById('actList');
+    var nav = document.getElementById('actPagination');
+    if (!list || !nav) return;
+    var rows = Array.prototype.slice.call(list.querySelectorAll('.act-row'));
+    var perPage = 1; // show activities one by one
+    var pages = Math.max(1, Math.ceil(rows.length / perPage));
+    var current = 1;
+    var chevL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>';
+    var chevR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>';
+
+    function mkBtn(html, onClick, disabled, active) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'actpg-btn' + (active ? ' active' : '');
+        b.innerHTML = html;
+        if (disabled) b.disabled = true;
+        else b.addEventListener('click', onClick);
+        return b;
+    }
+
+    // Windowed page list: first 3, last, and neighbours of the current page; gaps become "…"
+    function pageTokens(cur, last) {
+        var out = [];
+        for (var p = 1; p <= last; p++) {
+            if (p <= 3 || p === last || Math.abs(p - cur) <= 1) {
+                out.push(p);
+            } else if (out[out.length - 1] !== '...') {
+                out.push('...');
+            }
+        }
+        return out;
+    }
+
+    function render() {
+        rows.forEach(function (r, i) {
+            r.style.display = (Math.floor(i / perPage) + 1 === current) ? '' : 'none';
+        });
+        nav.innerHTML = '';
+        nav.appendChild(mkBtn(chevL, function () { current--; render(); }, current === 1, false));
+        pageTokens(current, pages).forEach(function (tok) {
+            if (tok === '...') {
+                var s = document.createElement('span');
+                s.className = 'actpg-ellipsis';
+                s.textContent = '…';
+                nav.appendChild(s);
+            } else {
+                nav.appendChild(mkBtn(String(tok), function () { current = tok; render(); }, false, tok === current));
+            }
+        });
+        nav.appendChild(mkBtn(chevR, function () { current++; render(); }, current === pages, false));
+    }
+    render();
+})();
+</script>
 @endsection
