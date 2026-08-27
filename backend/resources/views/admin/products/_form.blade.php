@@ -8,6 +8,19 @@
         ->map(fn ($s) => ($s['label'] ?? '') . ' | ' . ($s['value'] ?? ''))
         ->implode("\n");
     $galSrc = fn ($path) => Str::startsWith($path, ['http://', 'https://', '/']) ? $path : asset('storage/' . $path);
+    // Fixed 4-image layout: 1 main + 3 angle views.
+    $imageSlots = [
+        ['key' => 'main',   'label' => 'Main Image',    'sub' => 'Featured — shown first on the website'],
+        ['key' => 'angle1', 'label' => 'Angle View 1',  'sub' => 'Side / detail view'],
+        ['key' => 'angle2', 'label' => 'Angle View 2',  'sub' => 'Side / detail view'],
+        ['key' => 'angle3', 'label' => 'Angle View 3',  'sub' => 'Side / detail view'],
+    ];
+    $slotValues = [
+        'main'   => $galleryImages[0] ?? null,
+        'angle1' => $galleryImages[1] ?? null,
+        'angle2' => $galleryImages[2] ?? null,
+        'angle3' => $galleryImages[3] ?? null,
+    ];
 @endphp
 
 <div class="page-header">
@@ -25,7 +38,6 @@
 <form method="POST" action="{{ $isEdit ? route('admin.products.update', $product) : route('admin.products.store') }}" enctype="multipart/form-data" id="productForm">
     @csrf
     @if($isEdit) @method('PUT') @endif
-    <input type="hidden" name="gallery_sequence" id="gallerySequence" value="">
 
     <div class="form-grid">
         <div class="form-main">
@@ -63,25 +75,35 @@
             <div class="form-card">
                 <div class="card-header">Product Images &amp; Gallery</div>
                 <div class="pad">
-                    <p class="gallery-hint">Upload one or more images. Drag to reorder — the <strong>first image is the main/featured image</strong> shown on the website. Uploaded images are stored and served to the website automatically.</p>
+                    <p class="gallery-hint">Upload <strong>4 images</strong> — one <strong>Main Image</strong> (featured, shown first on the website) and <strong>3 angle / side views</strong>. Uploaded images are stored and served to the website automatically.</p>
 
-                    <div class="gallery-grid" id="galleryList">
-                        @foreach($galleryImages as $path)
-                            <div class="gallery-item" draggable="true" data-kind="existing" data-path="{{ $path }}">
-                                <span class="main-badge">Main</span>
-                                <img src="{{ $galSrc($path) }}" alt="" onerror="this.classList.add('img-missing')">
-                                <button type="button" class="gal-remove" title="Remove" onclick="galRemove(this)">&times;</button>
-                                <span class="drag-dot" title="Drag to reorder">⠿</span>
+                    <div class="slot-grid">
+                        @foreach($imageSlots as $slot)
+                            @php $cur = $slotValues[$slot['key']]; @endphp
+                            <div class="img-slot {{ $slot['key'] === 'main' ? 'is-main' : '' }}" data-slot="{{ $slot['key'] }}">
+                                <div class="slot-label">
+                                    <span>{{ $slot['label'] }}</span>
+                                    @if($slot['key'] === 'main')<span class="slot-tag">Featured</span>@endif
+                                </div>
+                                <label class="slot-drop" id="drop-{{ $slot['key'] }}">
+                                    <input type="file" name="images[{{ $slot['key'] }}]" id="input-{{ $slot['key'] }}" accept="image/*" hidden onchange="slotPreview('{{ $slot['key'] }}', this)">
+                                    <input type="hidden" name="existing_images[{{ $slot['key'] }}]" id="existing-{{ $slot['key'] }}" value="{{ $cur }}">
+                                    <div class="slot-preview {{ $cur ? '' : 'empty' }}" id="preview-{{ $slot['key'] }}">
+                                        @if($cur)
+                                            <img src="{{ $galSrc($cur) }}" alt="" onerror="this.style.display='none'">
+                                        @endif
+                                    </div>
+                                    <div class="slot-placeholder" id="placeholder-{{ $slot['key'] }}" style="{{ $cur ? 'display:none;' : '' }}">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4-4 4 4"/></svg>
+                                        <span>Upload</span>
+                                        <small>{{ $slot['sub'] }}</small>
+                                    </div>
+                                    <button type="button" class="slot-remove" id="remove-{{ $slot['key'] }}" style="{{ $cur ? '' : 'display:none;' }}" title="Remove" onclick="slotRemove(event, '{{ $slot['key'] }}')">&times;</button>
+                                </label>
                             </div>
                         @endforeach
                     </div>
-
-                    <label class="gallery-upload" id="galleryDrop">
-                        <input type="file" name="gallery_files[]" id="galleryInput" accept="image/*" multiple hidden>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4-4 4 4"/></svg>
-                        <span>Click or drag images here to add to the gallery</span>
-                        <small>JPG, PNG, WebP — up to 5MB each</small>
-                    </label>
+                    <p class="slot-note">JPG, PNG, WebP — up to 5MB each. Leave slots empty if you have fewer images; the Main Image is recommended.</p>
                 </div>
             </div>
         </div>
@@ -144,103 +166,73 @@
 .alert-danger { background: rgba(212,52,44,0.08); color: #D4342C; border: 1px solid rgba(212,52,44,0.15); }
 .translation-heading { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: #5A5A5A; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid #E5E5E5; }
 
-.gallery-hint { font-size: 12.5px; color: #7A7A7A; margin-bottom: 14px; line-height: 1.5; }
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-bottom: 16px; }
-.gallery-item { position: relative; border: 1px solid #E8E2D6; border-radius: 11px; overflow: hidden; background: #FAF8F3; aspect-ratio: 1; cursor: grab; }
-.gallery-item.dragging { opacity: 0.5; }
-.gallery-item.drag-over { outline: 2px dashed #4A8C3F; outline-offset: -2px; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.gallery-item img.img-missing { opacity: 0; }
-.gallery-item .main-badge { position: absolute; top: 6px; left: 6px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #4A8C3F; padding: 2px 7px; border-radius: 5px; display: none; z-index: 2; }
-.gallery-item:first-child .main-badge { display: inline-block; }
-.gallery-item:first-child { outline: 2px solid #4A8C3F; outline-offset: -2px; }
-.gal-remove { position: absolute; top: 5px; right: 5px; width: 22px; height: 22px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; font-size: 14px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
-.gal-remove:hover { background: rgba(212,52,44,0.92); }
-.drag-dot { position: absolute; bottom: 5px; right: 7px; color: rgba(255,255,255,0.9); font-size: 13px; text-shadow: 0 1px 2px rgba(0,0,0,0.6); pointer-events: none; }
-.gallery-upload { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 26px 16px; border: 1.5px dashed #D9D2C4; border-radius: 12px; cursor: pointer; text-align: center; color: #7A7A7A; transition: border-color 0.15s, background 0.15s; }
-.gallery-upload:hover, .gallery-upload.dragover { border-color: #4A8C3F; background: rgba(74,140,63,0.03); }
-.gallery-upload svg { width: 26px; height: 26px; color: #4A8C3F; }
-.gallery-upload span { font-size: 13px; font-weight: 500; }
-.gallery-upload small { font-size: 11px; color: #A8A8A8; }
+.gallery-hint { font-size: 12.5px; color: #7A7A7A; margin-bottom: 16px; line-height: 1.55; }
+.slot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.img-slot.is-main { grid-column: span 1; }
+.slot-label { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 7px; }
+.slot-label span:first-child { font-size: 12px; font-weight: 700; color: #5A5A5A; }
+.slot-tag { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #4A8C3F; padding: 2px 7px; border-radius: 5px; }
+.slot-drop { position: relative; display: block; aspect-ratio: 1; border: 1.5px dashed #D9D2C4; border-radius: 12px; overflow: hidden; cursor: pointer; background: #FAF8F3; transition: border-color 0.15s, background 0.15s; }
+.slot-drop:hover, .slot-drop.dragover { border-color: #4A8C3F; background: rgba(74,140,63,0.03); }
+.is-main .slot-drop { border-color: rgba(74,140,63,0.5); border-style: solid; }
+.slot-preview { position: absolute; inset: 0; }
+.slot-preview.empty { display: none; }
+.slot-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slot-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; color: #9A9A8E; padding: 8px; }
+.slot-placeholder svg { width: 24px; height: 24px; color: #4A8C3F; }
+.slot-placeholder span { font-size: 12px; font-weight: 600; }
+.slot-placeholder small { font-size: 10px; color: #B0A98E; line-height: 1.3; }
+.slot-remove { position: absolute; top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; font-size: 15px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
+.slot-remove:hover { background: rgba(212,52,44,0.92); }
+.slot-note { font-size: 11.5px; color: #A8A8A8; margin-top: 12px; }
+@media (max-width: 700px) { .slot-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } }
 </style>
 
 <script>
-(function () {
-    var list = document.getElementById('galleryList');
-    var input = document.getElementById('galleryInput');
-    var drop = document.getElementById('galleryDrop');
-    var form = document.getElementById('productForm');
-    if (!list || !input || !form) return;
+// Preview a picked file inside its slot.
+function slotPreview(key, input) {
+    var file = input.files && input.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        var preview = document.getElementById('preview-' + key);
+        preview.innerHTML = '<img src="' + e.target.result + '" alt="">';
+        preview.classList.remove('empty');
+        document.getElementById('placeholder-' + key).style.display = 'none';
+        document.getElementById('remove-' + key).style.display = 'flex';
+    };
+    reader.readAsDataURL(file);
+}
 
-    // Add newly-selected files as thumbnails (a single selection batch).
-    function loadFiles() {
-        // remove previous "new" thumbs (a fresh selection replaces them)
-        list.querySelectorAll('.gallery-item[data-kind="new"]').forEach(function (n) { n.remove(); });
-        Array.prototype.forEach.call(input.files, function (file, idx) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var el = document.createElement('div');
-                el.className = 'gallery-item';
-                el.setAttribute('draggable', 'true');
-                el.dataset.kind = 'new';
-                el.dataset.newidx = String(idx);
-                el.innerHTML =
-                    '<span class="main-badge">Main</span>' +
-                    '<img src="' + e.target.result + '" alt="">' +
-                    '<button type="button" class="gal-remove" title="Remove" onclick="galRemove(this)">&times;</button>' +
-                    '<span class="drag-dot">⠿</span>';
-                bindDrag(el);
-                list.appendChild(el);
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-    input.addEventListener('change', loadFiles);
+// Clear a slot (removes the picked file and any existing stored image).
+function slotRemove(ev, key) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    document.getElementById('input-' + key).value = '';
+    document.getElementById('existing-' + key).value = '';
+    var preview = document.getElementById('preview-' + key);
+    preview.innerHTML = '';
+    preview.classList.add('empty');
+    document.getElementById('placeholder-' + key).style.display = '';
+    document.getElementById('remove-' + key).style.display = 'none';
+}
 
-    // Dropzone click / drag-drop for adding files.
-    drop.addEventListener('click', function (e) { if (e.target !== input) input.click(); });
-    ['dragenter', 'dragover'].forEach(function (ev) {
-        drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('dragover'); });
+// Drag-and-drop onto each slot.
+document.querySelectorAll('.slot-drop').forEach(function (drop) {
+    var key = drop.id.replace('drop-', '');
+    var input = document.getElementById('input-' + key);
+    ['dragenter', 'dragover'].forEach(function (evn) {
+        drop.addEventListener(evn, function (e) { e.preventDefault(); drop.classList.add('dragover'); });
     });
-    ['dragleave', 'drop'].forEach(function (ev) {
-        drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('dragover'); });
+    ['dragleave', 'drop'].forEach(function (evn) {
+        drop.addEventListener(evn, function (e) { e.preventDefault(); drop.classList.remove('dragover'); });
     });
     drop.addEventListener('drop', function (e) {
-        if (e.dataTransfer.files.length) { input.files = e.dataTransfer.files; loadFiles(); }
+        if (e.dataTransfer.files && e.dataTransfer.files.length) {
+            input.files = e.dataTransfer.files;
+            slotPreview(key, input);
+        }
     });
-
-    // Drag-to-reorder within the gallery grid.
-    var dragEl = null;
-    function bindDrag(el) {
-        el.addEventListener('dragstart', function () { dragEl = el; el.classList.add('dragging'); });
-        el.addEventListener('dragend', function () { el.classList.remove('dragging'); list.querySelectorAll('.drag-over').forEach(function (n) { n.classList.remove('drag-over'); }); });
-        el.addEventListener('dragover', function (e) { e.preventDefault(); if (el !== dragEl) el.classList.add('drag-over'); });
-        el.addEventListener('dragleave', function () { el.classList.remove('drag-over'); });
-        el.addEventListener('drop', function (e) {
-            e.preventDefault();
-            el.classList.remove('drag-over');
-            if (!dragEl || dragEl === el) return;
-            var items = Array.prototype.slice.call(list.children);
-            if (items.indexOf(dragEl) < items.indexOf(el)) list.insertBefore(dragEl, el.nextSibling);
-            else list.insertBefore(dragEl, el);
-        });
-    }
-    list.querySelectorAll('.gallery-item').forEach(bindDrag);
-
-    // Serialize the final order into gallery_sequence on submit.
-    form.addEventListener('submit', function () {
-        var seq = [];
-        list.querySelectorAll('.gallery-item').forEach(function (el) {
-            if (el.dataset.kind === 'existing') seq.push('e:' + el.dataset.path);
-            else if (el.dataset.kind === 'new') seq.push('n:' + el.dataset.newidx);
-        });
-        document.getElementById('gallerySequence').value = JSON.stringify(seq);
-    });
-
-    window.galRemove = function (btn) {
-        var el = btn.closest('.gallery-item');
-        if (el) el.remove();
-    };
-})();
+});
 </script>

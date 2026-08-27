@@ -110,7 +110,7 @@ class ProductController extends Controller
             'order' => 'nullable|integer',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
-            'gallery_files.*' => 'nullable|image|max:5120',
+            'images.*' => 'nullable|image|max:5120',
         ]);
 
         $data = [
@@ -168,51 +168,28 @@ class ProductController extends Controller
     }
 
     /**
-     * Build the ordered gallery array from the submitted sequence.
-     * `gallery_sequence` is a JSON array of tokens: "e:<existing-path>" to keep an
-     * existing image, or "n:<index>" to insert the Nth newly-uploaded file.
-     * Falls back to (kept existing) + (new uploads appended) if no sequence.
+     * Build the gallery from the fixed 4 image slots (1 main + 3 angle views).
+     * For each slot, a newly-uploaded file wins; otherwise the kept existing path
+     * is used. Order is always: main, angle1, angle2, angle3. image = main.
      */
     private function buildGallery(Request $request, ?Product $product): array
     {
-        $files = $request->file('gallery_files', []);
-        $existing = (array) ($product->images ?? []);
+        $slots = ['main', 'angle1', 'angle2', 'angle3'];
+        $files = $request->file('images', []);
+        $existingInputs = (array) $request->input('existing_images', []);
+        $oldImages = (array) ($product->images ?? []);
         $final = [];
 
-        $sequence = json_decode((string) $request->input('gallery_sequence'), true);
-
-        if (is_array($sequence) && count($sequence)) {
-            foreach ($sequence as $token) {
-                if (! is_string($token)) {
-                    continue;
-                }
-                if (str_starts_with($token, 'e:')) {
-                    $path = substr($token, 2);
-                    if (in_array($path, $existing, true) || str_starts_with($path, '/') || str_starts_with($path, 'http')) {
-                        $final[] = $path;
-                    }
-                } elseif (str_starts_with($token, 'n:')) {
-                    $idx = (int) substr($token, 2);
-                    if (isset($files[$idx]) && $files[$idx]) {
-                        $final[] = $files[$idx]->store('uploads/products', 'public');
-                    }
-                }
-            }
-        } else {
-            // Fallback: keep the images the form still lists, then append new uploads.
-            $keep = (array) $request->input('gallery_existing', $existing);
-            foreach ($keep as $path) {
-                $final[] = $path;
-            }
-            foreach ($files as $file) {
-                if ($file) {
-                    $final[] = $file->store('uploads/products', 'public');
-                }
+        foreach ($slots as $slot) {
+            if (isset($files[$slot]) && $files[$slot]) {
+                $final[] = $files[$slot]->store('uploads/products', 'public');
+            } elseif (! empty($existingInputs[$slot])) {
+                $final[] = $existingInputs[$slot];
             }
         }
 
-        // Delete stored images that were removed from the gallery.
-        foreach ($existing as $old) {
+        // Delete stored files that are no longer referenced.
+        foreach ($oldImages as $old) {
             if (! in_array($old, $final, true)) {
                 $this->deleteStoredImage($old);
             }
