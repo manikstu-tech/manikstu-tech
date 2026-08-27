@@ -43,7 +43,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('testimonials', TestimonialController::class)->except('show');
         Route::resource('partners', PartnerController::class)->except('show');
         Route::resource('enquiries', EnquiryController::class)->only(['index', 'show', 'destroy']);
-        Route::resource('orders', OrderController::class)->except('show');
+        Route::resource('orders', OrderController::class);
         Route::resource('customers', CustomerController::class)->except('show');
         Route::resource('users', UserController::class)->except('show');
 

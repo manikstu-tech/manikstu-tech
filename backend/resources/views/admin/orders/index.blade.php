@@ -104,6 +104,7 @@
 
     $rows = $orders->count()
         ? $orders->map(fn($o) => [
+            'id' => $o->id,
             'num' => $o->order_number,
             'name' => $o->customer->name ?? 'Guest',
             'phone' => $o->customer->phone ?? '',
@@ -180,8 +181,9 @@
                     [$pc, $pi, $pl] = $payMeta[$r['pay']] ?? ['grey','dot',ucfirst($r['pay'])];
                     [$sbg,$stx] = $badgeColors[$sc]; [$pbg,$ptx] = $badgeColors[$pc];
                 @endphp
+                @php $oid = $r['id'] ?? null; @endphp
                 <tr>
-                    <td><span class="ord-num">{{ $r['num'] }}</span></td>
+                    <td>@if($oid)<a href="{{ route('admin.orders.show', $oid) }}" class="ord-num ord-num-link">{{ $r['num'] }}</a>@else<span class="ord-num">{{ $r['num'] }}</span>@endif</td>
                     <td>
                         <div class="cust">
                             <span class="cust-av">{{ $initials($r['name']) }}</span>
@@ -197,8 +199,8 @@
                     <td><div class="ord-date">{{ $r['date'] }}</div><div class="ord-time">{{ $r['time'] }}</div></td>
                     <td>
                         <div class="ord-actions">
-                            <a href="#" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></a>
-                            <button type="button" title="More"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+                            <a href="{{ $oid ? route('admin.orders.show', $oid) : '#' }}" title="View details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></a>
+                            @if($oid)<a href="{{ route('admin.orders.edit', $oid) }}" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></a>@endif
                         </div>
                     </td>
                 </tr>

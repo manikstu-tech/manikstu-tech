@@ -21,6 +21,12 @@ class OrderController extends Controller
         return view('admin.orders.index', compact('orders'));
     }
 
+    public function show(Order $order)
+    {
+        $order->load(['customer', 'items.product']);
+        return view('admin.orders.show', compact('order'));
+    }
+
     public function create()
     {
         return view('admin.orders.create');
