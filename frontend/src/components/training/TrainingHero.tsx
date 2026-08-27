@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, GraduationCap, Sprout, Users } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
-export default async function TrainingHero() {
-  const t = await getTranslations("Training");
+export default function TrainingHero() {
+  const t = useTranslations("Training");
 
   return (
     <PageHero>
