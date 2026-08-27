@@ -71,9 +71,30 @@
 .empty-btn svg { width: 16px; height: 16px; }
 
 .prod-pagination { padding: 16px; display: flex; justify-content: center; }
-.prod-pagination .pagination { display: flex; gap: 4px; list-style: none; }
-.prod-pagination .pagination a, .prod-pagination .pagination span { display: inline-flex; align-items: center; justify-content: center; min-width: 36px; height: 36px; padding: 0 10px; border-radius: 8px; font-size: 13px; border: 1px solid #ECE7DC; color: #5A5A5A; background: #fff; text-decoration: none; }
-.prod-pagination .pagination .active span { background: #4A8C3F; color: #fff; border-color: #4A8C3F; }
+.prod-pagination nav { width: 100%; }
+/* Laravel's Tailwind paginator ships two blocks (mobile + desktop). Without
+   Tailwind loaded, neither hides the other, so kill the mobile block. */
+.prod-pagination nav > div:first-of-type { display: none !important; }
+.prod-pagination nav > div:last-of-type { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.prod-pagination nav > div:last-of-type > div:first-child p { margin: 0; font-size: 12.5px; color: #7A7A7A; }
+.prod-pagination nav > div:last-of-type > div:first-child .font-medium { font-weight: 600; color: #3A3A3A; }
+/* Numbered pagination row */
+.prod-pagination nav > div:last-of-type > div:last-child { display: flex; justify-content: flex-end; }
+.prod-pagination nav > div:last-of-type > div:last-child > span { display: inline-flex; align-items: center; gap: 4px; }
+.prod-pagination nav a,
+.prod-pagination nav > div:last-of-type span[aria-current="page"],
+.prod-pagination nav > div:last-of-type span[aria-disabled="true"] { text-decoration: none; }
+.prod-pagination nav a > span,
+.prod-pagination nav span[aria-current="page"] > span,
+.prod-pagination nav span[aria-disabled="true"] > span { display: inline-flex; align-items: center; justify-content: center; min-width: 36px; height: 36px; padding: 0 10px; border-radius: 8px; font-size: 13px; border: 1px solid #ECE7DC; color: #5A5A5A; background: #fff; line-height: 1; font-weight: 500; box-sizing: border-box; }
+.prod-pagination nav a:hover > span { border-color: #4A8C3F; color: #4A8C3F; }
+.prod-pagination nav span[aria-current="page"] > span { background: #4A8C3F; color: #fff; border-color: #4A8C3F; }
+.prod-pagination nav span[aria-disabled="true"] > span { opacity: 0.45; cursor: not-allowed; }
+.prod-pagination svg { width: 16px !important; height: 16px !important; display: inline-block; flex: 0 0 auto; }
+@media (max-width: 640px) {
+    .prod-pagination nav > div:last-of-type { flex-direction: column; align-items: center; }
+    .prod-pagination nav > div:last-of-type > div:last-child { justify-content: center; }
+}
 
 .prod-footer { position: relative; margin-top: 30px; height: 88px; }
 .prod-footer-left, .prod-footer-right { position: absolute; bottom: 0; height: 86px; background-repeat: no-repeat; background-size: contain; opacity: 0.85; pointer-events: none; }

@@ -4,9 +4,23 @@
     $galleryImages = (array) ($product->images ?? []);
     $highlightsText = implode("\n", (array) ($product->highlights ?? []));
     $recommendedText = implode("\n", (array) ($product->recommended_for ?? []));
-    $specsText = collect((array) ($product->specifications ?? []))
-        ->map(fn ($s) => ($s['label'] ?? '') . ' | ' . ($s['value'] ?? ''))
-        ->implode("\n");
+
+    // Canonical specification fields — exactly what the website spec table renders.
+    // Each row: [label, placeholder]
+    $specFields = [
+        ['Form', 'e.g. Pellet / Powder / Liquid'],
+        ['Packaging Type', 'e.g. Bag / Bottle / Sachet'],
+        ['Grade Standard', 'e.g. Feed Grade / Food Grade'],
+        ['Shelf Life', 'e.g. 12 months'],
+        ['Type Of Supplement', 'e.g. Nutritional Supplement'],
+        ['Packaging', 'e.g. 500 ml / 25 kg'],
+        ['Country of Origin', 'e.g. Made in India'],
+    ];
+    $specsMap = [];
+    foreach ((array) ($product->specifications ?? []) as $s) {
+        $key = strtolower(trim($s['label'] ?? ''));
+        if ($key !== '') $specsMap[$key] = $s['value'] ?? '';
+    }
     $galSrc = fn ($path) => Str::startsWith($path, ['http://', 'https://', '/']) ? $path : asset('storage/' . $path);
     // Fixed 4-image layout: 1 main + 3 angle views.
     $imageSlots = [
@@ -42,22 +56,10 @@
     <div class="form-grid">
         <div class="form-main">
             <div class="form-card pad">
-                <x-admin.translation-tabs>
-                    <div class="translation-panel active" data-locale="en">
-                        <x-admin.form-field label="Product Name" name="name" :value="$product->name ?? ''" required />
-                        <x-admin.form-field label="Slug" name="slug" :value="$product->slug ?? ''" help="Leave blank to auto-generate from the name." />
-                        <x-admin.form-field label="Short Description" name="description" type="textarea" :value="$product->description ?? ''" :rows="2" help="One-line summary shown on the product cards." />
-                        <x-admin.form-field label="Full Description" name="long_description" type="textarea" :value="$product->long_description ?? ''" :rows="5" help="Detailed description shown on the product detail page." />
-                    </div>
-                    @foreach(['hi'=>'हिन्दी','bn'=>'বাংলা','ta'=>'தமிழ்','te'=>'తెలుగు','mr'=>'मराठी','gu'=>'ગુજરાતી','kn'=>'ಕನ್ನಡ','ml'=>'മലയാളം','or'=>'ଓଡ଼ିଆ','ja'=>'日本語','de'=>'Deutsch','fr'=>'Français','es'=>'Español'] as $code => $label)
-                        <div class="translation-panel" data-locale="{{ $code }}">
-                            <h4 class="translation-heading">{{ $label }} Translation</h4>
-                            @php $tr = $isEdit ? $product->translations->firstWhere('locale', $code) : null; @endphp
-                            <x-admin.form-field label="Name" name="name_{{ $code }}" :value="optional($tr)->name" placeholder="Translation in {{ $label }}" />
-                            <x-admin.form-field label="Short Description" name="description_{{ $code }}" type="textarea" :rows="3" :value="optional($tr)->description" placeholder="Translation in {{ $label }}" />
-                        </div>
-                    @endforeach
-                </x-admin.translation-tabs>
+                <x-admin.form-field label="Product Name" name="name" :value="$product->name ?? ''" required />
+                <x-admin.form-field label="Slug" name="slug" :value="$product->slug ?? ''" help="Leave blank to auto-generate from the name." />
+                <x-admin.form-field label="Short Description" name="description" type="textarea" :value="$product->description ?? ''" :rows="2" help="One-line summary shown on the product cards." />
+                <x-admin.form-field label="Full Description" name="long_description" type="textarea" :value="$product->long_description ?? ''" :rows="5" help="Detailed description shown on the product detail page." />
             </div>
 
             <div class="form-card">
@@ -65,7 +67,23 @@
                 <div class="pad">
                     <x-admin.form-field label="Highlights (Why farmers choose it)" name="highlights" type="textarea" :value="$highlightsText" :rows="4" help="One highlight per line — shown as the bullet checklist." />
                     <x-admin.form-field label="Recommended For" name="recommended_for" type="textarea" :value="$recommendedText" :rows="4" help="One item per line." />
-                    <x-admin.form-field label="Specifications" name="specifications" type="textarea" :value="$specsText" :rows="6" help="One per line, in the format: Label | Value  (e.g. Form | Pellet)" />
+                    <div class="form-field">
+                        <label class="field-label">Product Specifications</label>
+                        <p class="field-help specs-help">Fill any of the rows below. Only rows with a value will appear on the website.</p>
+                        <div class="specs-table">
+                            @foreach($specFields as [$label, $placeholder])
+                                <div class="specs-row">
+                                    <div class="specs-key">{{ $label }}</div>
+                                    <input
+                                        type="text"
+                                        name="specs[{{ $label }}]"
+                                        value="{{ $specsMap[strtolower($label)] ?? '' }}"
+                                        placeholder="{{ $placeholder }}"
+                                        class="specs-input" />
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <x-admin.form-field label="Usage / Dosage" name="usage_instructions" type="textarea" :value="$product->usage_instructions ?? ''" :rows="3" />
                     <x-admin.form-field label="Storage &amp; Handling" name="storage_instructions" type="textarea" :value="$product->storage_instructions ?? ''" :rows="3" />
                     <x-admin.form-field label="Composition / Ingredients" name="ingredients" type="textarea" :value="$product->ingredients ?? ''" :rows="3" />
@@ -187,6 +205,22 @@
 .slot-note { font-size: 11.5px; color: #A8A8A8; margin-top: 12px; }
 @media (max-width: 700px) { .slot-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } }
+
+/* Structured product specifications */
+.form-field { margin-bottom: 18px; }
+.field-label { display:block; font-size: 13px; font-weight: 600; color:#3A3A3A; margin-bottom: 6px; font-family:'Inter',sans-serif; }
+.specs-help { font-size: 12px; color:#7A7A7A; margin: 0 0 10px; line-height: 1.5; }
+.specs-table { border: 1px solid #E8E2D6; border-radius: 10px; overflow: hidden; background: #FBFAF7; }
+.specs-row { display: grid; grid-template-columns: minmax(140px, 220px) 1fr; align-items: stretch; border-bottom: 1px solid #EDE9E1; }
+.specs-row:last-child { border-bottom: none; }
+.specs-key { padding: 11px 14px; font-size: 13px; font-weight: 600; color: #3A3A3A; background: #F5F1E6; border-right: 1px solid #EDE9E1; display: flex; align-items: center; font-family:'Inter',sans-serif; }
+.specs-input { border: none; background: transparent; padding: 11px 14px; font-size: 13.5px; font-family:'Inter',sans-serif; color:#1A1A1A; outline: none; width: 100%; }
+.specs-input::placeholder { color:#B5AC9A; font-style: italic; }
+.specs-input:focus { background: #fff; box-shadow: inset 0 0 0 2px rgba(74,140,63,0.2); }
+@media (max-width: 620px) {
+    .specs-row { grid-template-columns: 1fr; }
+    .specs-key { border-right: none; border-bottom: 1px solid #EDE9E1; padding-bottom: 8px; }
+}
 </style>
 
 <script>

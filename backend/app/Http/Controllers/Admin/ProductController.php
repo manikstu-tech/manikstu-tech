@@ -133,7 +133,10 @@ class ProductController extends Controller
             'is_active' => $request->boolean('is_active', true),
             'highlights' => $this->lines($request->input('highlights')),
             'recommended_for' => $this->lines($request->input('recommended_for')),
-            'specifications' => $this->specLines($request->input('specifications')),
+            'specifications' => $this->buildSpecs(
+                $request->input('specs'),
+                $request->input('specifications')
+            ),
         ];
 
         $gallery = $this->buildGallery($request, $product);
@@ -152,19 +155,69 @@ class ProductController extends Controller
         return array_values(array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', $text))));
     }
 
-    /** Parse "Label | Value" lines into [{label, value}] pairs. */
-    private function specLines(?string $text): array
+    /**
+     * Build the specifications array from the structured admin form.
+     * The form submits an associative `specs[Label]=Value` array; empty
+     * values are dropped and canonical row order is preserved.
+     *
+     * Falls back to the legacy "Label | Value" textarea for backwards
+     * compatibility so old imports / API clients keep working.
+     */
+    private function buildSpecs(mixed $specs, mixed $legacyText): array
     {
-        $out = [];
-        foreach ($this->lines($text) as $line) {
-            $parts = explode('|', $line, 2);
-            $label = trim($parts[0]);
-            $value = isset($parts[1]) ? trim($parts[1]) : '';
-            if ($label !== '') {
-                $out[] = ['label' => $label, 'value' => $value];
+        // Canonical order matching the website's Product Specifications table.
+        $canonical = [
+            'Form',
+            'Packaging Type',
+            'Grade Standard',
+            'Shelf Life',
+            'Type Of Supplement',
+            'Packaging',
+            'Country of Origin',
+        ];
+
+        if (is_array($specs) && count($specs) > 0) {
+            $lookup = [];
+            foreach ($specs as $label => $value) {
+                if (! is_string($label) || $label === '') continue;
+                $lookup[strtolower(trim($label))] = trim((string) $value);
             }
+            $out = [];
+            // First: canonical fields in order.
+            foreach ($canonical as $label) {
+                $value = $lookup[strtolower($label)] ?? '';
+                if ($value !== '') {
+                    $out[] = ['label' => $label, 'value' => $value];
+                }
+                unset($lookup[strtolower($label)]);
+            }
+            // Then: any extras the user submitted (defensive).
+            foreach ($specs as $label => $value) {
+                $key = strtolower(trim((string) $label));
+                if (! isset($lookup[$key])) continue;
+                $value = trim((string) $value);
+                if ($value === '') continue;
+                $out[] = ['label' => trim((string) $label), 'value' => $value];
+                unset($lookup[$key]);
+            }
+            return $out;
         }
-        return $out;
+
+        // Legacy: "Label | Value" per line
+        if (is_string($legacyText) && $legacyText !== '') {
+            $out = [];
+            foreach ($this->lines($legacyText) as $line) {
+                $parts = explode('|', $line, 2);
+                $label = trim($parts[0]);
+                $value = isset($parts[1]) ? trim($parts[1]) : '';
+                if ($label !== '') {
+                    $out[] = ['label' => $label, 'value' => $value];
+                }
+            }
+            return $out;
+        }
+
+        return [];
     }
 
     /**
