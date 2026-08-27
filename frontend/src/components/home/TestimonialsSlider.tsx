@@ -139,7 +139,7 @@ export default function TestimonialsSlider({
               key={i}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={`${t("goToTestimonial").replace("{number}", String(i + 1))}`}
+              aria-label={t("goToTestimonial", { number: i + 1 })}
               className={`h-2 rounded-full transition-all ${
                 i === safeActive
                   ? "w-6 bg-manikstu-green"
