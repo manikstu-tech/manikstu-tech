@@ -218,25 +218,14 @@ class ApiController extends Controller
         $locale = $this->getLocale($request);
         $query = Product::active()->with('category')
             ->when($request->category, fn($q, $c) => $q->where('category_id', $c))
-            ->when($request->featured, fn($q) => $q->featured());
+            ->when($request->featured, fn($q) => $q->featured())
+            ->orderBy('order')->latest('id');
 
-        $products = $query->orderBy('order')->paginate($request->per_page ?? 15);
-
-        if ($locale !== 'en') {
-            $items = $products->getCollection()->map(function ($product) use ($locale) {
-                $translation = $product->translations()->where('locale', $locale)->first();
-                $data = $product->toArray();
-                if ($translation) {
-                    $data['name'] = $translation->name;
-                    $data['description'] = $translation->description;
-                }
-                return $data;
-            });
-            $products->setCollection($items);
-        }
+        $perPage = (int) ($request->per_page ?? $request->limit ?? 50);
+        $products = $query->paginate($perPage);
 
         return $this->json([
-            'data' => $products->items(),
+            'data' => collect($products->items())->map(fn($p) => $this->productPayload($p, $locale))->all(),
             'meta' => [
                 'current_page' => $products->currentPage(),
                 'last_page' => $products->lastPage(),
@@ -251,17 +240,58 @@ class ApiController extends Controller
         $locale = $this->getLocale($request);
         $product = Product::active()->with('category')->where('slug', $slug)->firstOrFail();
 
-        $data = $product->toArray();
+        return $this->json(['data' => $this->productPayload($product, $locale)]);
+    }
+
+    /** Serialize a Product into the camelCase shape the website consumes. */
+    private function productPayload(Product $p, string $locale = 'en'): array
+    {
+        $name = $p->name;
+        $description = $p->description;
 
         if ($locale !== 'en') {
-            $translation = $product->translations()->where('locale', $locale)->first();
+            $translation = $p->translations()->where('locale', $locale)->first();
             if ($translation) {
-                $data['name'] = $translation->name;
-                $data['description'] = $translation->description;
+                $name = $translation->name ?: $name;
+                $description = $translation->description ?: $description;
             }
         }
 
-        return $this->json(['data' => $data]);
+        return [
+            'id' => $p->id,
+            'name' => $name,
+            'slug' => $p->slug,
+            'sku' => $p->sku,
+            'description' => $description,
+            'longDescription' => $p->long_description,
+            'price' => $p->price !== null ? (float) $p->price : null,
+            'size' => $p->size,
+            'image' => $this->imageUrl($p->image),
+            'gallery' => collect((array) $p->images)->map(fn($x) => $this->imageUrl($x))->values()->all(),
+            'category' => $p->category ? ['name' => $p->category->name] : null,
+            'highlights' => (array) ($p->highlights ?? []),
+            'specifications' => (array) ($p->specifications ?? []),
+            'recommendedFor' => (array) ($p->recommended_for ?? []),
+            'usage' => $p->usage_instructions,
+            'storage' => $p->storage_instructions,
+            'ingredients' => $p->ingredients,
+            'rating' => $p->rating !== null ? (float) $p->rating : null,
+            'ratingCount' => (int) ($p->rating_count ?? 0),
+            'stock' => (int) ($p->stock_quantity ?? 0),
+            'inStock' => (int) ($p->stock_quantity ?? 0) > 0,
+        ];
+    }
+
+    /** Resolve a stored image path to a URL the frontend can use directly. */
+    private function imageUrl(?string $path): string
+    {
+        if (! $path) {
+            return '';
+        }
+        if (\Illuminate\Support\Str::startsWith($path, ['http://', 'https://', '/'])) {
+            return $path; // absolute URL, or a frontend-relative asset like "/1.png"
+        }
+        return asset('storage/' . $path);
     }
 
     public function getCategories(Request $request): JsonResponse

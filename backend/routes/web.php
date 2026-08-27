@@ -31,7 +31,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('products', ProductController::class)->except('show');
+        Route::resource('products', ProductController::class);
+        Route::put('/products/{product}/toggle-publish', [ProductController::class, 'togglePublish'])->name('products.togglePublish');
         Route::resource('categories', CategoryController::class)->except('show');
         Route::resource('blog', BlogController::class)->except('show');
         Route::resource('press', PressController::class)->except('show');

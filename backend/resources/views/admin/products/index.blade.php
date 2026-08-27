@@ -24,6 +24,18 @@
 .btn-filter { height: 46px; padding: 0 20px; border: 1px solid #ECE7DC; border-radius: 12px; background: #fff; color: #5A5A5A; display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.15s; }
 .btn-filter:hover { border-color: rgba(74,140,63,0.4); color: #4A8C3F; }
 .btn-filter svg { width: 16px; height: 16px; }
+.prod-select { height: 46px; padding: 0 34px 0 14px; border: 1px solid #ECE7DC; border-radius: 12px; background: #fff; color: #5A5A5A; font-size: 13.5px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235A5A5A' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+.prod-select:focus { border-color: #4A8C3F; }
+.toggle-pub { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E5E5E5; background: #fff; color: #9A9A9A; cursor: pointer; transition: all 0.15s; }
+.toggle-pub svg { width: 16px; height: 16px; }
+.toggle-pub:hover { border-color: rgba(74,140,63,0.4); }
+.toggle-pub.on { color: #4A8C3F; border-color: rgba(74,140,63,0.35); background: rgba(74,140,63,0.06); }
+.prod-name-link { text-decoration: none; color: inherit; }
+.prod-name-link:hover strong { color: #3A7030; text-decoration: underline; }
+.status-toggle { border: none; background: transparent; padding: 0; cursor: pointer; }
+.status-toggle:hover { filter: brightness(0.96); }
+.act-view { color: #4A8C3F !important; }
+.act-view:hover { background: rgba(74,140,63,0.08) !important; border-color: rgba(74,140,63,0.3) !important; }
 .btn-add { height: 46px; padding: 0 24px; border-radius: 12px; background: linear-gradient(135deg, #4A8C3F, #3A7030); color: #fff; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; box-shadow: 0 6px 16px rgba(58,112,48,0.22); transition: transform 0.15s, box-shadow 0.15s; }
 .btn-add:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(58,112,48,0.3); }
 .btn-add svg { width: 18px; height: 18px; }
@@ -91,6 +103,18 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Search products..." class="prod-search">
         </div>
+        <select name="category" class="prod-select" onchange="this.form.submit()">
+            <option value="">All Categories</option>
+            @foreach(($categories ?? []) as $cat)
+                <option value="{{ $cat->id }}" {{ (string) request('category') === (string) $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+            @endforeach
+        </select>
+        <select name="status" class="prod-select" onchange="this.form.submit()">
+            <option value="">All Status</option>
+            <option value="published" {{ request('status') === 'published' ? 'selected' : '' }}>Published</option>
+            <option value="draft" {{ request('status') === 'draft' ? 'selected' : '' }}>Draft</option>
+            <option value="featured" {{ request('status') === 'featured' ? 'selected' : '' }}>Featured</option>
+        </select>
         <button type="submit" class="btn-filter">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
             Filter
@@ -119,21 +143,29 @@
                     <td>
                         <div style="display:flex;align-items:center;gap:12px;">
                             @if($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" class="cell-img" alt="">
+                                <img src="{{ \Illuminate\Support\Str::startsWith($product->image, ['http','/']) ? $product->image : asset('storage/' . $product->image) }}" class="cell-img" alt="" onerror="this.style.visibility='hidden'">
                             @else
                                 <div class="cell-img-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></div>
                             @endif
                             <div>
-                                <strong>{{ $product->name }}</strong>
+                                <a href="{{ route('admin.products.show', $product) }}" class="prod-name-link"><strong>{{ $product->name }}</strong></a>
                                 @if($product->is_featured)<br><small style="color:#C4952A;">Featured</small>@endif
                             </div>
                         </div>
                     </td>
                     <td>{{ $product->category->name ?? '—' }}</td>
                     <td>{{ $product->price ? '₹' . number_format($product->price, 2) : '—' }}</td>
-                    <td><x-admin.badge :type="$product->is_active ? 'green' : 'red'" dot>{{ $product->is_active ? 'Active' : 'Inactive' }}</x-admin.badge></td>
+                    <td>
+                        <form method="POST" action="{{ route('admin.products.togglePublish', $product) }}" style="display:inline;">
+                            @csrf @method('PUT')
+                            <button type="submit" class="status-toggle" title="Click to {{ $product->is_active ? 'unpublish' : 'publish' }}">
+                                <x-admin.badge :type="$product->is_active ? 'green' : 'gold'" dot>{{ $product->is_active ? 'Published' : 'Draft' }}</x-admin.badge>
+                            </button>
+                        </form>
+                    </td>
                     <td>
                         <div class="row-actions" style="justify-content:flex-end;">
+                            <a href="{{ route('admin.products.show', $product) }}" class="act-view" title="View details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></a>
                             <a href="{{ route('admin.products.edit', $product) }}" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></a>
                             <button type="button" class="btn-delete" onclick="openModal('deleteModal','{{ route('admin.products.destroy', $product) }}')" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
                         </div>
