@@ -67,6 +67,7 @@ export default function PrivacyPage() {
             <p>{t("changesText")}</p>
             <h2 className="font-heading text-xl font-bold text-charcoal">{t("contactTitle")}</h2>
             <p>{t("contactText")}</p>
+            </div>
           </div>
         </section>
       </main>

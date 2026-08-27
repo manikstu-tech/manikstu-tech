@@ -19,7 +19,7 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import { getProducts } from "@/lib/api";
-import { FALLBACK_PRODUCTS, trustFeatures, type Product } from "./data";
+import { trustFeatures, type Product } from "./data";
 import {
   readCart,
   writeCart,
@@ -32,7 +32,7 @@ import {
 } from "./cart";
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const t = useTranslations("Products");
   const [cart, setCart] = useState<CartMap>({});
@@ -40,9 +40,9 @@ export default function ProductsPage() {
   useEffect(() => {
     getProducts(1, 50)
       .then((res) => {
-        if (res.data?.length) setProducts(res.data);
+        setProducts(Array.isArray(res.data) ? res.data : []);
       })
-      .catch(() => {})
+      .catch(() => setProducts([]))
       .finally(() => setLoading(false));
   }, []);
 
@@ -209,9 +209,31 @@ export default function ProductsPage() {
               </p>
             </div>
 
-            {loading && products === FALLBACK_PRODUCTS ? null : null}
-
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {loading ? (
+              <div className="mt-10 py-16 text-center text-grey dark:text-gray-300">
+                Loading products…
+              </div>
+            ) : products.length === 0 ? (
+              <div className="mt-10 flex flex-col items-center rounded-2xl border border-light-grey/70 py-16 text-center dark:border-gray-700">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-cream">
+                  <ShoppingBag className="h-7 w-7 text-manikstu-green/40" />
+                </div>
+                <h3 className="mt-4 font-heading text-lg font-bold text-charcoal dark:text-white">
+                  No Products Available
+                </h3>
+                <p className="mt-1 max-w-md text-sm text-grey dark:text-gray-300">
+                  There are no products listed at the moment. Please check back
+                  soon or reach out to us for assistance.
+                </p>
+                <Link
+                  href="/contact"
+                  className="mt-5 inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green px-5 py-2.5 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white"
+                >
+                  Contact us for enquiries <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {products.map((product) => (
                 <article
                   key={product.id}
@@ -301,7 +323,8 @@ export default function ProductsPage() {
                   </div>
                 </article>
               ))}
-            </div>
+              </div>
+            )}
 
             {/* Cart card — appears below the listing when items are added */}
             {cartLines.length > 0 && (

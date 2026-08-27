@@ -19,12 +19,9 @@ import {
   MessageCircleQuestion,
   X,
 } from "lucide-react";
-import { getProducts } from "@/lib/api";
+import { getProducts, getProductBySlug } from "@/lib/api";
 import {
-  FALLBACK_PRODUCTS,
   trustFeatures,
-  DEFAULT_REVIEWS,
-  DEFAULT_QUESTIONS,
   type Product,
   type Review,
   type Question,
@@ -76,7 +73,9 @@ export default function ProductDetailPage() {
   const router = useRouter();
   const slug = params?.slug ?? "";
 
-  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
   const [qty, setQty] = useState(1);
   const [activeIdx, setActiveIdx] = useState(0);
   // Bumps whenever autoplay ticks or the user clicks a thumb, so the interval
@@ -192,18 +191,32 @@ export default function ProductDetailPage() {
     }, 1600);
   };
 
+  // Fetch the product by slug (single source of truth: backend admin panel).
+  // Also fetch the full listing so we can compute related products.
   useEffect(() => {
-    getProducts(1, 50)
-      .then((res) => {
-        if (res.data?.length) setProducts(res.data);
-      })
-      .catch(() => {});
-  }, []);
-
-  const product = useMemo(
-    () => products.find((p) => p.slug === slug),
-    [products, slug]
-  );
+    let cancelled = false;
+    setLoading(true);
+    Promise.all([
+      slug
+        ? getProductBySlug(slug).catch(() => null)
+        : Promise.resolve(null),
+      getProducts(1, 50).catch(() => null),
+    ]).then(([detailRes, listRes]) => {
+      if (cancelled) return;
+      // Detail endpoint returns { data: {...} }, list returns { data: [...] }
+      const detail: Product | null =
+        detailRes && (detailRes.data as Product | undefined)
+          ? (detailRes.data as Product)
+          : null;
+      const list: Product[] = Array.isArray(listRes?.data) ? listRes.data : [];
+      setProduct(detail);
+      setProducts(list);
+      setLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug]);
 
   const related = useMemo(
     () => products.filter((p) => p.slug !== slug).slice(0, 3),
@@ -247,6 +260,21 @@ export default function ProductDetailPage() {
     // Restart autoplay from THIS image
     setAutoplayNonce((n) => n + 1);
   };
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main
+          id="main-content"
+          className="mx-auto max-w-3xl px-4 py-24 text-center text-grey sm:px-6 md:px-8"
+        >
+          Loading product…
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   if (!product) {
     return (
@@ -427,7 +455,7 @@ export default function ProductDetailPage() {
                       stripCount
                     : product.rating ?? 0;
                 const reviewsShown =
-                  (product.reviews ?? DEFAULT_REVIEWS).length +
+                  (product.reviews ?? []).length +
                   userReviews.length;
                 return (
                   <div className="mt-3 flex flex-wrap items-center gap-3">
@@ -677,9 +705,9 @@ export default function ProductDetailPage() {
 
         {/* Ratings, Reviews & Q&A */}
         {(() => {
-          const baseReviews = product.reviews ?? DEFAULT_REVIEWS;
+          const baseReviews = product.reviews ?? [];
           const reviews = [...userReviews, ...baseReviews];
-          const baseQuestions = product.questions ?? DEFAULT_QUESTIONS;
+          const baseQuestions = product.questions ?? [];
           const questions = [...userQuestions, ...baseQuestions];
 
           // Live-update rating count, breakdown and average as reviews come in.
