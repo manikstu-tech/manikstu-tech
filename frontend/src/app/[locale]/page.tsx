@@ -233,7 +233,7 @@ export default async function HomePage() {
                 width={1300}
                 height={1300}
                 priority
-                className="select-none absolute right-2 top-1/2 -translate-y-1/2 h-[70%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
+                className="select-none absolute -right-[38%] sm:-right-[18%] md:right-2 top-1/3 sm:top-1/2 -translate-y-1/2 h-[65%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.12] sm:opacity-[0.14] dark:opacity-[0.18]"
               />
             </div>
           }
