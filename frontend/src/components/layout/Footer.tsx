@@ -58,8 +58,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-white border-t border-light-grey">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mx-auto max-w-7xl px-4 pt-8 pb-3 sm:py-12 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div>
             <Link href="/">
@@ -201,8 +201,8 @@ export default function Footer() {
       </div>
 
       {/* Our Offices */}
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 md:px-8">
-        <div className="rounded-xl border border-light-grey p-6">
+      <div className="mx-auto max-w-7xl px-4 pt-1 pb-6 sm:py-6 sm:px-6 md:px-8">
+        <div className="rounded-xl border border-light-grey p-4 sm:p-6">
           <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
