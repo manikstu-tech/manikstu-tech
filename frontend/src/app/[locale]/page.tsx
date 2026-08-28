@@ -442,24 +442,17 @@ export default async function HomePage() {
             height={1155}
             className="pointer-events-none select-none absolute right-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
           />
-          {/* Bottom village panoramic scene banner — right side only on mobile, both sides on tablet/desktop */}
+          {/* Bottom village panoramic scene banner — spans full width from left to right */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-2 sm:-bottom-3.5 md:-bottom-6 lg:-bottom-7 z-0 flex justify-end sm:justify-between overflow-hidden select-none opacity-40 sm:opacity-50 dark:opacity-25"
+            className="pointer-events-none absolute inset-x-0 -bottom-1 sm:-bottom-2 md:-bottom-4 z-0 overflow-hidden select-none opacity-40 sm:opacity-50 dark:opacity-25"
           >
             <Image
               src="/patterns/village-figures.png"
               alt=""
               width={1920}
               height={300}
-              className="hidden sm:block h-[62px] sm:h-18 md:h-24 lg:h-32 xl:h-36 w-auto max-w-none -scale-x-100 object-contain object-left"
-            />
-            <Image
-              src="/patterns/village-figures.png"
-              alt=""
-              width={1920}
-              height={300}
-              className="h-[62px] sm:h-18 md:h-24 lg:h-32 xl:h-36 w-auto max-w-none object-contain object-right"
+              className="h-16 sm:h-20 md:h-26 lg:h-32 w-full object-cover object-bottom"
             />
           </div>
 
