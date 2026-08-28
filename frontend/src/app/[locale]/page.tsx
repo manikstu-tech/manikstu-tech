@@ -314,7 +314,7 @@ export default async function HomePage() {
         </PageHero>
 
         {/* Mission */}
-        <section className="relative section-padding bg-white overflow-hidden dark:bg-gray-900">
+        <section className="relative pt-4 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 px-4 sm:px-6 md:px-8 bg-white overflow-hidden dark:bg-gray-900">
           <div className="relative z-10 mx-auto max-w-7xl">
             {/* Ornamental pill heading */}
             <div className="flex items-center justify-center gap-2">
@@ -327,7 +327,7 @@ export default async function HomePage() {
               <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             </div>
 
-            <h2 className="mx-auto mt-6 max-w-4xl text-center font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
+            <h2 className="mx-auto mt-3 sm:mt-6 max-w-4xl text-center font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
               {t("missionTitle")}
             </h2>
 
