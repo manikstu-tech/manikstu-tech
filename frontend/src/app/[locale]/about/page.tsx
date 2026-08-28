@@ -126,7 +126,7 @@ export default function AboutPage() {
           </div>
 
           {/* Right — visual panel */}
-          <div className="relative self-start lg:-mt-4 -mt-4 sm:-mt-6">
+          <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               {/* Ecosystem & community line-art illustration */}
               <svg
