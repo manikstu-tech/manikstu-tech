@@ -85,9 +85,9 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button onClick={toggle} className="hidden md:flex items-center gap-1 text-sm text-charcoal dark:text-white hover:text-manikstu-green transition-colors" aria-label={t("toggleDarkMode")}>
-            <Moon className="h-4 w-4 dark:hidden" />
-            <Sun className="h-4 w-4 hidden dark:block" />
+          <button onClick={toggle} className="flex items-center justify-center h-9 w-9 rounded-full text-charcoal dark:text-white hover:text-manikstu-green hover:bg-manikstu-cream/60 dark:hover:bg-white/10 transition-colors" aria-label={t("toggleDarkMode")}>
+            <Moon className="h-5 w-5 dark:hidden" />
+            <Sun className="h-5 w-5 hidden dark:block" />
           </button>
           {/* <LanguageSwitcher /> */}
           <Link
