@@ -109,7 +109,7 @@ export default function Header() {
       {/* Mobile nav */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-[36rem] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="bg-manikstu-leaf text-white">
