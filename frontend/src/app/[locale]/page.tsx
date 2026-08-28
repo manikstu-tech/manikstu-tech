@@ -766,10 +766,10 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              {/* Content */}
-              <div>
+              {/* Content — centered on mobile, left-aligned on desktop */}
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 {/* Ornamental pill heading */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center lg:justify-start gap-2">
                   <span aria-hidden className="h-px w-8 bg-manikstu-gold/50" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-leaf">
@@ -779,12 +779,12 @@ export default async function HomePage() {
                   <span aria-hidden className="h-px w-8 bg-manikstu-gold/50" />
                 </div>
 
-                <h2 className="mt-4 font-heading text-3xl font-bold text-charcoal sm:text-4xl lg:text-5xl">
+                <h2 className="mt-4 font-heading text-3xl font-bold text-charcoal sm:text-4xl lg:text-5xl text-center lg:text-left">
                   {t("appTitle")}
                 </h2>
 
                 {/* Gold ornamental divider */}
-                <div className="mt-4 flex items-center gap-2">
+                <div className="mt-4 flex items-center justify-center lg:justify-start gap-2">
                   <span aria-hidden className="h-px w-16 bg-manikstu-gold/50" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-24 bg-manikstu-gold/50" />
@@ -792,12 +792,12 @@ export default async function HomePage() {
                   <span aria-hidden className="h-px w-16 bg-manikstu-gold/50" />
                 </div>
 
-                <p className="mt-6 text-grey">
+                <p className="mt-6 text-grey text-center lg:text-left max-w-lg mx-auto lg:mx-0">
                   {t("appDesc")}
                 </p>
 
                 {/* Features with gold icon circles + dotted trails */}
-                <ul className="mt-8 space-y-4">
+                <ul className="mt-8 space-y-4 w-full max-w-md mx-auto lg:mx-0 text-left">
                   {features.map(({ icon: Icon, text }) => (
                     <li key={text} className="flex items-center gap-3">
                       <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-gold/15 ring-1 ring-manikstu-gold/40">
@@ -813,7 +813,7 @@ export default async function HomePage() {
                 </ul>
 
                 {/* QR + Store buttons */}
-                <div className="mt-10 flex flex-wrap items-center gap-6">
+                <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6">
                   <div className="flex h-24 w-24 items-center justify-center rounded-lg border-2 border-manikstu-gold/30 bg-white p-2 shadow-sm">
                     <div className="grid h-full w-full grid-cols-6 grid-rows-6 gap-px">
                       {Array.from({ length: 36 }).map((_, i) => (
@@ -828,8 +828,8 @@ export default async function HomePage() {
                       ))}
                     </div>
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2">
+                  <div className="flex flex-col items-center lg:items-start">
+                    <div className="flex items-center justify-center lg:justify-start gap-2">
                       <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
                       <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-manikstu-leaf">
@@ -838,11 +838,11 @@ export default async function HomePage() {
                       <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                       <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
                     </div>
-                    <div className="mt-3 flex gap-2">
+                    <div className="mt-3 flex justify-center lg:justify-start gap-2">
                       <a
                         href="#"
                         aria-label={t("googlePlay")}
-                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf"
+                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf shadow-xs"
                       >
                         {/* Google Play brand triangle */}
                         <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" aria-hidden>
@@ -859,7 +859,7 @@ export default async function HomePage() {
                       <a
                         href="#"
                         aria-label={t("appStore")}
-                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf"
+                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf shadow-xs"
                       >
                         {/* Apple brand icon */}
                         <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" fill="currentColor" aria-hidden>
