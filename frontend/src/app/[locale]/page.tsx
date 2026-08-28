@@ -445,21 +445,21 @@ export default async function HomePage() {
           {/* Bottom village panoramic scene banner */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-2.5 sm:-bottom-4 md:-bottom-6 lg:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-40 sm:opacity-50 dark:opacity-25"
+            className="pointer-events-none absolute inset-x-0 -bottom-1.5 sm:-bottom-3 md:-bottom-6 lg:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-35 sm:opacity-50 dark:opacity-25"
           >
             <Image
               src="/patterns/village-figures.png"
               alt=""
               width={1920}
               height={300}
-              className="h-15 sm:h-18 md:h-24 lg:h-32 xl:h-36 w-auto max-w-none -scale-x-100 object-contain object-left"
+              className="h-11 sm:h-15 md:h-22 lg:h-30 xl:h-36 w-auto max-w-none -scale-x-100 object-contain object-left"
             />
             <Image
               src="/patterns/village-figures.png"
               alt=""
               width={1920}
               height={300}
-              className="h-15 sm:h-18 md:h-24 lg:h-32 xl:h-36 w-auto max-w-none object-contain object-right"
+              className="h-11 sm:h-15 md:h-22 lg:h-30 xl:h-36 w-auto max-w-none object-contain object-right"
             />
           </div>
 
