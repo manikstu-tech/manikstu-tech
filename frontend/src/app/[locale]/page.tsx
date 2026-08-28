@@ -899,26 +899,26 @@ export default async function HomePage() {
 
           {/* Dark green tagline ribbon */}
           <div className="relative bg-manikstu-leaf py-3 overflow-hidden">
-            {/* Left golden tribal art */}
+            {/* Left golden tribal art (desktop only) */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-0 w-[18%] bg-no-repeat bg-left bg-contain"
+              className="pointer-events-none absolute inset-y-0 left-0 w-[18%] bg-no-repeat bg-left bg-contain hidden md:block"
               style={{ backgroundImage: "url('/patterns/golden-tribal-border.png')" }}
             />
-            {/* Right golden tribal art (mirrored) */}
+            {/* Right golden tribal art (mirrored, desktop only) */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 w-[18%] bg-no-repeat bg-left bg-contain -scale-x-100"
+              className="pointer-events-none absolute inset-y-0 right-0 w-[18%] bg-no-repeat bg-left bg-contain -scale-x-100 hidden md:block"
               style={{ backgroundImage: "url('/patterns/golden-tribal-border.png')" }}
             />
             {/* Centered tagline */}
-            <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 sm:px-6 md:px-8">
+            <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 text-center">
               <span aria-hidden className="hidden md:block h-px w-16 bg-manikstu-gold/60" />
-              <span aria-hidden className="text-manikstu-gold text-lg leading-none">♦</span>
-              <p className="text-xs font-semibold text-white sm:text-sm md:whitespace-nowrap">
+              <span aria-hidden className="hidden sm:inline-block text-manikstu-gold text-lg leading-none">♦</span>
+              <p className="text-xs sm:text-sm font-semibold text-white text-center leading-snug md:whitespace-nowrap">
                 {t("tagline")}
               </p>
-              <span aria-hidden className="text-manikstu-gold text-lg leading-none">♦</span>
+              <span aria-hidden className="hidden sm:inline-block text-manikstu-gold text-lg leading-none">♦</span>
               <span aria-hidden className="hidden md:block h-px w-16 bg-manikstu-gold/60" />
             </div>
           </div>
