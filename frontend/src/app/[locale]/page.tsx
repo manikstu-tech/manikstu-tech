@@ -298,13 +298,13 @@ export default async function HomePage() {
                   </div>
                 </div>
 
-                {/* Floating card */}
-                <div className="absolute -bottom-6 -left-4 rounded-xl bg-white p-3 shadow-lg md:-left-8">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-manikstu-cream">
-                      <FileText className="h-5 w-5 text-manikstu-green" />
+                {/* Floating card — safe inside bottom-left on mobile, floating on desktop */}
+                <div className="absolute bottom-3 left-3 sm:-bottom-6 sm:-left-4 md:-left-8 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white p-2 sm:p-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="flex h-7 w-7 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                      <FileText className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
                     </div>
-                    <p className="text-xs text-charcoal max-w-[180px]">
+                    <p className="text-[10px] sm:text-xs leading-tight text-charcoal max-w-[145px] sm:max-w-[180px] font-medium">
                       {t("featuredIn")}
                     </p>
                   </div>
