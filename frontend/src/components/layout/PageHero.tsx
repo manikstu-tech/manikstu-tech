@@ -51,7 +51,7 @@ export default function PageHero({
       className={`relative overflow-hidden bg-white ${className ?? ""}`.trim()}
     >
       {background === undefined ? defaultBackground : background}
-      <div className="relative mx-auto max-w-7xl px-4 pt-3 pb-8 sm:pt-8 sm:pb-12 md:px-8 md:py-20 lg:py-24">
+      <div className="relative mx-auto max-w-7xl px-4 pt-6 pb-10 sm:pt-10 sm:pb-14 md:px-8 md:py-20 lg:py-24">
         <div className="grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
           {children}
         </div>

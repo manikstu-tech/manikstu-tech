@@ -82,7 +82,7 @@ export default function AboutPage() {
             height={1155}
             className="pointer-events-none select-none absolute right-0 top-0 h-auto w-36 sm:w-64 md:w-80 lg:w-[28rem] opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
           />
-          <div className="relative mx-auto max-w-7xl px-4 pt-3 pb-6 sm:pt-8 sm:pb-10 md:px-8 md:pt-16 md:pb-14 lg:pt-20 lg:pb-18">
+          <div className="relative mx-auto max-w-7xl px-4 pt-6 pb-8 sm:pt-10 sm:pb-12 md:px-8 md:pt-16 md:pb-14 lg:pt-20 lg:pb-18">
             <div className="grid items-center gap-6 sm:gap-8 lg:gap-12 lg:grid-cols-2">
               {/* Left — copy */}
               <div>
