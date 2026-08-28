@@ -610,8 +610,8 @@ export default async function HomePage() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Sprout className="h-24 w-24 text-manikstu-green/30" />
                 </div>
-                {/* Badge */}
-                <div className="absolute bottom-4 right-4 rounded-full bg-manikstu-green px-4 py-2 text-xs font-semibold text-white shadow-sm">
+                {/* Badge — compact in bottom-right corner on mobile, full pill on desktop */}
+                <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 rounded-lg sm:rounded-full bg-manikstu-green px-2.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-semibold text-white shadow-md max-w-[85%] sm:max-w-none text-right leading-tight z-10">
                   {t("ajahBadge")}
                 </div>
               </div>
