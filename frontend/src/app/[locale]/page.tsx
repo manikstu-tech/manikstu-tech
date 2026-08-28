@@ -442,17 +442,34 @@ export default async function HomePage() {
             height={1155}
             className="pointer-events-none select-none absolute right-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
           />
-          {/* Bottom village panoramic scene banner — spans full width from left to right */}
+          {/* Bottom village panoramic scene banner — mobile single full-width lower banner, desktop original two-side panoramic banner */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-7 md:-bottom-10 lg:-bottom-12 z-0 overflow-hidden select-none opacity-40 sm:opacity-50 dark:opacity-25"
+            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-40 sm:opacity-50 dark:opacity-25"
           >
+            {/* Left figures (Desktop/tablet only) */}
             <Image
               src="/patterns/village-figures.png"
               alt=""
               width={1920}
               height={300}
-              className="h-16 sm:h-20 md:h-26 lg:h-32 w-full object-cover object-bottom"
+              className="hidden sm:block h-22 sm:h-26 md:h-30 lg:h-36 xl:h-40 w-auto max-w-none -scale-x-100 object-contain object-left"
+            />
+            {/* Mobile full-width banner */}
+            <Image
+              src="/patterns/village-figures.png"
+              alt=""
+              width={1920}
+              height={300}
+              className="sm:hidden w-full h-16 object-cover object-bottom"
+            />
+            {/* Right figures (Desktop/tablet only) */}
+            <Image
+              src="/patterns/village-figures.png"
+              alt=""
+              width={1920}
+              height={300}
+              className="hidden sm:block h-22 sm:h-26 md:h-30 lg:h-36 xl:h-40 w-auto max-w-none object-contain object-right"
             />
           </div>
 
