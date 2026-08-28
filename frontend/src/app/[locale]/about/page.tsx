@@ -79,11 +79,11 @@ export default function AboutPage() {
           <div>
             <div className="flex items-center gap-2">
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
               <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
                 {t("pill")}
               </p>
-              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
             </div>
 
@@ -91,7 +91,7 @@ export default function AboutPage() {
               {t("heroTitle").split(",")[0]},
               <br />
               <span className="text-manikstu-green">
-                {t("heroTitle").split(",")[1]?.trim() || t("cornerAccent")}
+                {t("heroTitle").split(",")[1]?.trim() || t("cornerAccent")}.
               </span>
             </h1>
 
@@ -102,13 +102,13 @@ export default function AboutPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/collaborate"
-                className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 shadow-xs"
+                className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
                 {t("joinMission")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="#awards"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-white px-6 py-3 text-sm font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
                 {t("ourJourney")}
               </Link>
@@ -116,10 +116,10 @@ export default function AboutPage() {
 
             {/* Micro-statement */}
             <div className="mt-8 flex items-center gap-2.5">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-manikstu-green/10">
                 <Heart className="h-3.5 w-3.5 text-manikstu-green" />
               </span>
-              <p className="text-sm text-grey font-medium">
+              <p className="text-sm text-grey">
                 {t("microStatement")}
               </p>
             </div>
@@ -127,42 +127,56 @@ export default function AboutPage() {
 
           {/* Right — visual panel */}
           <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-sm">
-              {/* Inner dashed border */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-3 rounded-xl border border-dashed border-saura-red/40 z-10"
-              />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
+              {/* Ecosystem & community line-art illustration */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 480 360"
+                className="pointer-events-none absolute inset-0 h-full w-full"
+                fill="none"
+                stroke="#4A8C3F"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* Ground line */}
+                <path d="M40 300 H440" opacity="0.35" />
+                {/* Central Mandala Motif */}
+                <circle cx="240" cy="180" r="52" fill="#C4952A" fillOpacity="0.14" stroke="#C4952A" strokeDasharray="3 4" />
+                <circle cx="240" cy="180" r="28" fill="#4A8C3F" fillOpacity="0.2" />
+                <path d="M240 180 V130" />
+                <path d="M240 155 C224 150 214 138 214 122 C230 125 240 138 240 155 Z" fill="#4A8C3F" fillOpacity="0.18" />
+                <path d="M240 145 C256 140 266 128 266 112 C250 115 240 128 240 145 Z" fill="#4A8C3F" fillOpacity="0.12" />
+                <circle cx="240" cy="112" r="8" fill="#C4952A" fillOpacity="0.55" stroke="none" />
+                {/* Left Person */}
+                <circle cx="130" cy="195" r="20" />
+                <path d="M130 215 V295" />
+                <path d="M130 240 L100 265" />
+                <path d="M130 240 L160 260" />
+                {/* Right Person */}
+                <circle cx="350" cy="195" r="20" />
+                <path d="M350 215 V295" />
+                <path d="M350 240 L320 260" />
+                <path d="M350 240 L380 265" />
+                {/* Connecting arc */}
+                <path d="M150 175 C190 135 290 135 330 175" opacity="0.5" strokeDasharray="4 6" />
+                {/* Small leaves */}
+                <path d="M80 115 C90 100 110 95 120 105 C110 120 90 125 80 115 Z" fill="#4A8C3F" fillOpacity="0.15" />
+                <path d="M380 95 C390 80 410 75 420 85 C410 100 390 105 380 95 Z" fill="#C4952A" fillOpacity="0.2" />
+              </svg>
 
-              {/* Motif Background Art */}
-              <div className="absolute inset-0 flex items-center justify-center p-4">
-                <Image
-                  src="/hero-motif.png"
-                  alt="Manikstu Agro Ecosystem"
-                  width={800}
-                  height={800}
-                  priority
-                  className="h-full w-full object-contain opacity-85 transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-
-              {/* Top-right Est Badge */}
-              <div className="absolute top-4 right-4 z-20 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-manikstu-green shadow-xs border border-manikstu-gold/30">
-                Est. 2015
-              </div>
-
-              {/* Bottom-left Corner accent */}
-              <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 shadow-sm border border-manikstu-cream">
-                <MapPin className="h-3.5 w-3.5 text-manikstu-green" />
-                <span className="text-xs font-bold text-charcoal">
+              {/* Corner accent */}
+              <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3.5 py-1.5 shadow-sm">
+                <MapPin className="h-4 w-4 text-manikstu-green" />
+                <span className="text-xs font-semibold text-charcoal">
                   {t("cornerAccent")}
                 </span>
               </div>
             </div>
 
-            {/* Floating badge */}
-            <div className="absolute -bottom-3 -right-2 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green shadow-lg ring-4 ring-white z-30">
-              <Sprout className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
+            {/* Small floating badge */}
+            <div className="absolute -bottom-4 -right-2 hidden h-14 w-14 items-center justify-center rounded-full bg-manikstu-green shadow-md md:flex">
+              <Sprout className="h-6 w-6 text-white" />
             </div>
           </div>
         </PageHero>
