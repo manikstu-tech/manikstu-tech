@@ -555,8 +555,8 @@ export default async function HomePage() {
 
         {/* Flagship Program */}
         <section className="relative section-padding bg-white overflow-hidden">
-          {/* Background Manikstu logo watermark — moved upward & centered on mobile, left-aligned on desktop */}
-          <div className="pointer-events-none select-none absolute inset-0 flex items-start justify-center pt-8 sm:pt-12 lg:pt-0 lg:items-center lg:justify-start lg:left-[5%] overflow-hidden">
+          {/* Background Manikstu logo watermark — positioned lower & centered on mobile, left-aligned on desktop */}
+          <div className="pointer-events-none select-none absolute inset-0 flex items-start justify-center pt-24 sm:pt-28 lg:pt-0 lg:items-center lg:justify-start lg:left-[5%] overflow-hidden">
             <Image
               src="/logo.png"
               alt=""
