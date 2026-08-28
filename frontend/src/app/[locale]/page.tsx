@@ -445,7 +445,7 @@ export default async function HomePage() {
           {/* Bottom village panoramic scene banner — spans full width from left to right */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-1 sm:-bottom-2 md:-bottom-4 z-0 overflow-hidden select-none opacity-40 sm:opacity-50 dark:opacity-25"
+            className="pointer-events-none absolute inset-x-0 -bottom-3 sm:-bottom-5 md:-bottom-8 lg:-bottom-10 z-0 overflow-hidden select-none opacity-40 sm:opacity-50 dark:opacity-25"
           >
             <Image
               src="/patterns/village-figures.png"
