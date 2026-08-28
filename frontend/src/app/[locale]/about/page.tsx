@@ -587,7 +587,7 @@ export default function AboutPage() {
             } as Record<string, string>)[t] ?? "bg-manikstu-green";
           return (
             <>
-              <section className="pt-8 sm:pt-12 pb-16 sm:pb-20 md:pb-24 bg-white">
+              <section className="pt-6 sm:pt-12 pb-12 sm:pb-20 md:pb-24 bg-white px-4 md:px-8">
               <div className="mx-auto max-w-6xl">
                 {/* Leadership header */}
                 <div className="text-center">
@@ -600,21 +600,21 @@ export default function AboutPage() {
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
-                  <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                  <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
                     Leading with{" "}
                     <span className="text-manikstu-green">Purpose</span>
                   </h2>
                 </div>
 
                 {/* Leader cards */}
-                <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                   {leaders.map((l) => (
                     <article
                       key={l.name}
-                      className="group flex flex-col rounded-2xl border border-manikstu-gold/20 bg-white shadow-sm overflow-hidden hover:shadow-md transition-all"
+                      className="group flex flex-col rounded-xl sm:rounded-2xl border border-manikstu-gold/20 bg-white shadow-xs sm:shadow-sm overflow-hidden hover:shadow-md transition-all"
                     >
-                      {/* Image banner container like Latest @ Manikstu style */}
-                      <div className="relative flex h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
+                      {/* Image banner container */}
+                      <div className="relative flex h-36 sm:h-44 md:h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
                         {l.photo ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
@@ -624,27 +624,27 @@ export default function AboutPage() {
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-manikstu-cream/40 to-manikstu-cream">
-                            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/80 shadow-inner">
-                              <User className="h-12 w-12 text-manikstu-green/40 transition-transform duration-300 group-hover:scale-110" />
+                            <div className="flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 items-center justify-center rounded-full bg-white/80 shadow-inner">
+                              <User className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-manikstu-green/40 transition-transform duration-300 group-hover:scale-110" />
                             </div>
                           </div>
                         )}
                         <span
-                          className={`absolute left-3 top-3 rounded px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
+                          className={`absolute left-2.5 top-2.5 sm:left-3 sm:top-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
                         >
                           {l.tag}
                         </span>
                       </div>
 
-                      <div className="flex flex-1 flex-col items-center justify-between p-5 text-center">
+                      <div className="flex flex-1 flex-col items-center justify-between p-3.5 sm:p-5 text-center">
                         <div className="flex flex-col items-center">
-                          <h3 className="font-heading text-lg font-bold text-charcoal transition-colors group-hover:text-manikstu-green">
+                          <h3 className="font-heading text-base sm:text-lg font-bold text-charcoal transition-colors group-hover:text-manikstu-green">
                             {l.name}
                           </h3>
-                          <p className="mt-1 text-xs font-semibold text-manikstu-green">
+                          <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs font-semibold text-manikstu-green">
                             {l.role}
                           </p>
-                          <p className="mt-3 text-xs leading-relaxed text-grey">
+                          <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs leading-relaxed text-grey">
                             {l.bio}
                           </p>
                         </div>
@@ -652,9 +652,9 @@ export default function AboutPage() {
                         <a
                           href="#"
                           aria-label={`${l.name} on LinkedIn`}
-                          className="mt-4 inline-flex h-8 w-8 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                          className="mt-3 sm:mt-4 inline-flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green"
                         >
-                          <Linkedin className="h-4 w-4" />
+                          <Linkedin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </a>
                       </div>
                     </article>
@@ -662,7 +662,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* The Execution Engine (Key Management) header */}
-                <div className="mt-16 text-center sm:mt-20">
+                <div className="mt-10 sm:mt-16 text-center sm:mt-20">
                   <div className="flex items-center justify-center gap-2">
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
@@ -672,20 +672,20 @@ export default function AboutPage() {
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
-                  <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                  <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
                     The Execution <span className="text-manikstu-green">Engine</span>
                   </h2>
                 </div>
 
                 {/* Execution Engine cards */}
-                <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                   {executionEngine.map((l) => (
                     <article
                       key={l.name}
-                      className="group flex flex-col rounded-2xl border border-manikstu-gold/20 bg-white shadow-sm overflow-hidden hover:shadow-md transition-all"
+                      className="group flex flex-col rounded-xl sm:rounded-2xl border border-manikstu-gold/20 bg-white shadow-xs sm:shadow-sm overflow-hidden hover:shadow-md transition-all"
                     >
-                      {/* Image banner container like Latest @ Manikstu style */}
-                      <div className="relative flex h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
+                      {/* Image banner container */}
+                      <div className="relative flex h-36 sm:h-44 md:h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
                         {l.photo ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
@@ -695,27 +695,27 @@ export default function AboutPage() {
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-manikstu-cream/40 to-manikstu-cream">
-                            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/80 shadow-inner">
-                              <User className="h-12 w-12 text-manikstu-green/40 transition-transform duration-300 group-hover:scale-110" />
+                            <div className="flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 items-center justify-center rounded-full bg-white/80 shadow-inner">
+                              <User className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-manikstu-green/40 transition-transform duration-300 group-hover:scale-110" />
                             </div>
                           </div>
                         )}
                         <span
-                          className={`absolute left-3 top-3 rounded px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
+                          className={`absolute left-2.5 top-2.5 sm:left-3 sm:top-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
                         >
                           {l.tag}
                         </span>
                       </div>
 
-                      <div className="flex flex-1 flex-col items-center justify-between p-5 text-center">
+                      <div className="flex flex-1 flex-col items-center justify-between p-3.5 sm:p-5 text-center">
                         <div className="flex flex-col items-center">
-                          <h3 className="font-heading text-lg font-bold text-charcoal transition-colors group-hover:text-manikstu-green">
+                          <h3 className="font-heading text-base sm:text-lg font-bold text-charcoal transition-colors group-hover:text-manikstu-green">
                             {l.name}
                           </h3>
-                          <p className="mt-1 text-xs font-semibold text-manikstu-green">
+                          <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs font-semibold text-manikstu-green">
                             {l.role}
                           </p>
-                          <p className="mt-3 text-xs leading-relaxed text-grey">
+                          <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs leading-relaxed text-grey">
                             {l.bio}
                           </p>
                         </div>
@@ -723,9 +723,9 @@ export default function AboutPage() {
                         <a
                           href="#"
                           aria-label={`${l.name} on LinkedIn`}
-                          className="mt-4 inline-flex h-8 w-8 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                          className="mt-3 sm:mt-4 inline-flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green"
                         >
-                          <Linkedin className="h-4 w-4" />
+                          <Linkedin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </a>
                       </div>
                     </article>
