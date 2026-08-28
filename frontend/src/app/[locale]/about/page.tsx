@@ -378,9 +378,9 @@ export default function AboutPage() {
           ];
 
           return (
-            <section id="awards" className="relative pt-14 pb-4 sm:pt-18 md:pt-20 bg-white overflow-hidden">
-              <div className="relative z-10 mx-auto max-w-6xl">
-                <div className="text-center mb-12">
+            <section id="awards" className="relative pt-8 pb-3 sm:pt-16 md:pt-20 bg-white overflow-hidden">
+              <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-8">
+                <div className="text-center mb-6 sm:mb-12">
                   <div className="flex items-center justify-center gap-2">
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
@@ -391,63 +391,63 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
 
-                  <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                  <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
                     Awards & <span className="text-manikstu-green">Recognition</span>
                   </h2>
 
                   {/* Ornamental Divider with Framed Diamond */}
-                  <div className="mt-4 flex items-center justify-center gap-2">
-                    <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                  <div className="mt-2.5 sm:mt-4 flex items-center justify-center gap-2">
+                    <span aria-hidden className="h-px w-10 sm:w-20 bg-manikstu-gold/70" />
                     <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
                     <div aria-hidden className="relative flex items-center justify-center">
-                      <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
-                      <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                      <span className="h-3 sm:h-3.5 w-3 sm:w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                      <span className="absolute h-1 sm:h-1.5 w-1 sm:w-1.5 rotate-45 bg-manikstu-gold" />
                     </div>
                     <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
-                    <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                    <span aria-hidden className="h-px w-10 sm:w-20 bg-manikstu-gold/70" />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6 lg:gap-8">
                   {awards.map((item) => {
                     const Icon = item.icon;
                     return (
                       <div
                         key={item.title}
-                        className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 p-6 sm:p-7 shadow-sm transition-all duration-300 hover:shadow-xl"
+                        className="group relative flex flex-col justify-between overflow-hidden rounded-xl sm:rounded-2xl border-2 border-saura-red/50 bg-white/95 p-4 sm:p-7 shadow-xs sm:shadow-sm transition-all duration-300 hover:shadow-xl"
                       >
                         {/* Inner dashed border */}
                         <div
                           aria-hidden
-                          className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                          className="pointer-events-none absolute inset-1.5 sm:inset-2 rounded-lg sm:rounded-xl border border-dashed border-saura-red/40"
                         />
 
                         <div className="relative z-10 flex flex-col items-center text-center">
                           {/* Dashed-ring icon badge */}
-                          <div className="relative mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
-                            <Icon className="h-7 w-7 text-manikstu-green transition-transform duration-300 group-hover:scale-110" />
+                          <div className="relative mb-2.5 sm:mb-4 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                            <Icon className="h-5 w-5 sm:h-7 sm:w-7 text-manikstu-green transition-transform duration-300 group-hover:scale-110" />
                             <span
                               aria-hidden
-                              className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
+                              className="pointer-events-none absolute inset-[-3.5px] sm:inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
                             />
                           </div>
 
-                          <span className="inline-block rounded-full bg-manikstu-green/10 px-3.5 py-0.5 font-heading text-xs font-bold text-manikstu-green ring-1 ring-manikstu-green/30 mb-3">
+                          <span className="inline-block rounded-full bg-manikstu-green/10 px-2.5 py-0.5 sm:px-3.5 sm:py-0.5 font-heading text-[10px] sm:text-xs font-bold text-manikstu-green ring-1 ring-manikstu-green/30 mb-2 sm:mb-3">
                             {item.year}
                           </span>
 
-                          <h3 className="font-heading text-lg italic font-bold text-manikstu-leaf group-hover:text-manikstu-green transition-colors">
+                          <h3 className="font-heading text-base sm:text-lg italic font-bold text-manikstu-leaf group-hover:text-manikstu-green transition-colors leading-snug">
                             {item.title}
                           </h3>
 
                           {/* Line-diamond-line ornament */}
-                          <div className="mt-2.5 mb-3 flex items-center justify-center gap-1.5">
-                            <span aria-hidden className="h-px w-5 bg-manikstu-gold" />
+                          <div className="mt-1.5 mb-2 sm:mt-2.5 sm:mb-3 flex items-center justify-center gap-1.5">
+                            <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
                             <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                            <span aria-hidden className="h-px w-5 bg-manikstu-gold" />
+                            <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
                           </div>
 
-                          <p className="text-xs sm:text-sm text-grey leading-relaxed">
+                          <p className="text-[11px] sm:text-sm text-grey leading-relaxed">
                             {item.description}
                           </p>
                         </div>
