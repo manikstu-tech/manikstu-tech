@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -240,31 +240,31 @@ export default async function HomePage() {
         >
               {/* Left content */}
               <div>
-                <h1 className="font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
+                <h1 className="font-heading text-3xl sm:text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
                   {t("heroTitle1")}
                   <br />
                   <span className="text-manikstu-green">{t("heroTitle2")}</span>
                 </h1>
-                <p className="mt-6 max-w-lg text-grey">
+                <p className="mt-3 sm:mt-6 max-w-lg text-sm sm:text-base md:text-lg text-grey leading-relaxed">
                   {t("missionDesc2")}
                 </p>
-                <div className="mt-8 flex flex-wrap gap-4">
+                <div className="mt-5 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
                   <Link
                     href="/collaborate"
-                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
                   >
                     {t("exploreOurWork")} <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href="/about"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal px-6 py-3 text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
                   >
                     {t("learnMore")}
                   </Link>
                 </div>
                 {/* Trust badges */}
-                <div className="mt-8 flex items-center gap-3">
-                  <div className="flex items-center gap-2 text-sm text-grey">
+                <div className="mt-5 sm:mt-8 flex items-center gap-3">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm text-grey">
                     <Shield className="h-4 w-4 text-manikstu-green" />
                     {t("trustedBy")}
                   </div>
@@ -272,7 +272,7 @@ export default async function HomePage() {
                     {[1, 2, 3, 4].map((i) => (
                       <div
                         key={i}
-                        className="h-8 w-8 rounded-full border-2 border-white bg-manikstu-cream"
+                        className="h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 border-white bg-manikstu-cream"
                       />
                     ))}
                   </div>
