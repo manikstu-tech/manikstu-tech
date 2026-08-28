@@ -10,6 +10,7 @@ import { parseContent } from "@/lib/pages";
 import type { PageBlock } from "@/types";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PageHero from "@/components/layout/PageHero";
 
 const iconMap: Record<string, any> = { Heart, Users, Target };
 
@@ -48,13 +49,14 @@ export default function AboutPage() {
       .catch(() => {});
   }, []);
 
-  const fallbackVision = [t("fallbackVision1"), t("fallbackVision2")];
-  const fallbackMission = [t("fallbackMission1"), t("fallbackMission2")];
+  const fallbackVision = [t("visionP1"), t("visionP2"), t("visionP3")];
+  const fallbackMission = [t("missionP1"), t("missionP2"), t("missionP3")];
   const fallbackTimeline = [
-    { year: "2015", title: t("timeline1Title"), description: t("timeline1Desc") },
-    { year: "2018", title: t("timeline2Title"), description: t("timeline2Desc") },
-    { year: "2021", title: t("timeline3Title"), description: t("timeline3Desc") },
-    { year: "2024", title: t("timeline4Title"), description: t("timeline4Desc") },
+    { year: "2015", title: t("timeline2015Title"), description: t("timeline2015Desc") },
+    { year: "2018", title: t("timeline2018Title"), description: t("timeline2018Desc") },
+    { year: "2020", title: t("timeline2020Title"), description: t("timeline2020Desc") },
+    { year: "2022", title: t("timeline2022Title"), description: t("timeline2022Desc") },
+    { year: "2024", title: t("timeline2024Title"), description: t("timeline2024Desc") },
   ];
   const fallbackValues = [
     { icon: "Heart", title: t("value1Title"), description: t("value1Desc") },
@@ -72,111 +74,98 @@ export default function AboutPage() {
       <Header />
       <main id="main-content" className="min-h-screen bg-white">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-white">
-          {/* Top-right mandala corner artwork */}
-          <Image
-            src="/patterns/mandala-corner-top.png"
-            alt=""
-            aria-hidden
-            width={1370}
-            height={1155}
-            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-36 sm:w-64 md:w-80 lg:w-[28rem] opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
-          />
-          <div className="relative mx-auto max-w-7xl px-4 pt-6 pb-8 sm:pt-10 sm:pb-12 md:px-8 md:pt-16 md:pb-14 lg:pt-20 lg:pb-18">
-            <div className="grid items-center gap-6 sm:gap-8 lg:gap-12 lg:grid-cols-2">
-              {/* Left — copy */}
-              <div>
-                <div className="flex items-center gap-2">
-                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                  <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70" />
-                  <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                    {t("pill")}
-                  </p>
-                  <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70" />
-                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                </div>
+        <PageHero>
+          {/* Left — copy */}
+          <div>
+            <div className="flex items-center gap-2">
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70" />
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                {t("pill")}
+              </p>
+              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+            </div>
 
-                <h1 className="mt-2 sm:mt-3 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl md:text-5xl lg:text-6xl">
-                  {t("heroTitle")}
-                  <br />
-                  <span className="text-manikstu-green">
-                    {t("cornerAccent")}
-                  </span>
-                </h1>
+            <h1 className="mt-3 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl md:text-5xl lg:text-6xl">
+              {t("heroTitle")}
+              <br />
+              <span className="text-manikstu-green">
+                {t("cornerAccent")}
+              </span>
+            </h1>
 
-                <p className="mt-4 sm:mt-6 max-w-lg text-sm sm:text-base md:text-lg leading-relaxed text-grey">
-                  {t("heroDesc")}
-                </p>
+            <p className="mt-4 sm:mt-6 max-w-lg text-sm sm:text-base md:text-lg leading-relaxed text-grey">
+              {t("heroDesc")}
+            </p>
 
-                <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
-                  <Link
-                    href="/collaborate"
-                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 shadow-xs"
-                  >
-                    {t("joinMission")} <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="#awards"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-white px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2"
-                  >
-                    {t("ourJourney")}
-                  </Link>
-                </div>
+            <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+              <Link
+                href="/collaborate"
+                className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 shadow-xs"
+              >
+                {t("joinMission")} <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="#awards"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-white px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2"
+              >
+                {t("ourJourney")}
+              </Link>
+            </div>
 
-                {/* Micro-statement */}
-                <div className="mt-6 sm:mt-8 flex items-center gap-2.5">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10">
-                    <Heart className="h-3.5 w-3.5 text-manikstu-green" />
-                  </span>
-                  <p className="text-xs sm:text-sm text-grey font-medium">
-                    {t("microStatement")}
-                  </p>
-                </div>
-              </div>
-
-              {/* Right — visual panel */}
-              <div className="relative">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-saura-red/30 bg-manikstu-cream shadow-sm">
-                  {/* Inner dashed border */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-3 rounded-xl border border-dashed border-saura-red/40 z-10"
-                  />
-
-                  {/* Motif Background Art */}
-                  <div className="absolute inset-0 flex items-center justify-center p-4">
-                    <Image
-                      src="/hero-motif.png"
-                      alt="Manikstu Agro Ecosystem"
-                      width={800}
-                      height={800}
-                      priority
-                      className="h-full w-full object-contain opacity-85 transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Top-right Est Badge */}
-                  <div className="absolute top-5 right-5 z-20 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-manikstu-green shadow-xs border border-manikstu-gold/30">
-                    Est. 2015
-                  </div>
-
-                  {/* Bottom-left Corner accent */}
-                  <div className="absolute bottom-5 left-5 z-20 flex items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 shadow-sm border border-manikstu-cream">
-                    <MapPin className="h-3.5 w-3.5 text-manikstu-green" />
-                    <span className="text-xs font-bold text-charcoal">
-                      {t("cornerAccent")}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Floating badge */}
-                <div className="absolute -bottom-3 -right-2 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green shadow-lg ring-4 ring-white z-30">
-                  <Sprout className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
-                </div>
-              </div>
+            {/* Micro-statement */}
+            <div className="mt-6 sm:mt-8 flex items-center gap-2.5">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10">
+                <Heart className="h-3.5 w-3.5 text-manikstu-green" />
+              </span>
+              <p className="text-xs sm:text-sm text-grey font-medium">
+                {t("microStatement")}
+              </p>
             </div>
           </div>
-        </section>
+
+          {/* Right — visual panel */}
+          <div className="relative">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-saura-red/30 bg-manikstu-cream shadow-sm">
+              {/* Inner dashed border */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-3 rounded-xl border border-dashed border-saura-red/40 z-10"
+              />
+
+              {/* Motif Background Art */}
+              <div className="absolute inset-0 flex items-center justify-center p-4">
+                <Image
+                  src="/hero-motif.png"
+                  alt="Manikstu Agro Ecosystem"
+                  width={800}
+                  height={800}
+                  priority
+                  className="h-full w-full object-contain opacity-85 transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+
+              {/* Top-right Est Badge */}
+              <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-manikstu-green shadow-xs border border-manikstu-gold/30">
+                Est. 2015
+              </div>
+
+              {/* Bottom-left Corner accent */}
+              <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 z-20 flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 sm:px-3.5 sm:py-1.5 shadow-sm border border-manikstu-cream">
+                <MapPin className="h-3.5 w-3.5 text-manikstu-green" />
+                <span className="text-xs font-bold text-charcoal">
+                  {t("cornerAccent")}
+                </span>
+              </div>
+            </div>
+
+            {/* Floating badge */}
+            <div className="absolute -bottom-3 -right-2 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green shadow-lg ring-4 ring-white z-30">
+              <Sprout className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
+            </div>
+          </div>
+        </PageHero>
 
         {/* Our Purpose & Story Section */}
         <section className="relative section-padding bg-manikstu-cream overflow-hidden">
