@@ -555,22 +555,22 @@ export default async function HomePage() {
 
         {/* Flagship Program */}
         <section className="relative section-padding bg-white overflow-hidden">
-          {/* Background Manikstu logo watermark — centered */}
-          <div className="pointer-events-none select-none absolute inset-0 flex items-center justify-center overflow-hidden">
+          {/* Background Manikstu logo watermark — moved upward & centered on mobile, left-aligned on desktop */}
+          <div className="pointer-events-none select-none absolute inset-0 flex items-start justify-center pt-8 sm:pt-12 lg:pt-0 lg:items-center lg:justify-start lg:left-[5%] overflow-hidden">
             <Image
               src="/logo.png"
               alt=""
               aria-hidden
               width={600}
               height={600}
-              className="w-64 sm:w-80 md:w-96 lg:w-[480px] h-auto opacity-[0.07] sm:opacity-[0.08]"
+              className="w-56 sm:w-72 md:w-80 lg:w-[450px] max-w-[500px] h-auto opacity-[0.08] lg:opacity-[0.10]"
             />
           </div>
           <div className="relative mx-auto max-w-7xl">
             <div className="grid gap-10 lg:gap-12 lg:grid-cols-2 lg:items-center">
-              <div className="flex flex-col items-center text-center">
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 {/* Ornamental pill heading */}
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center lg:justify-start gap-2">
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
                   <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
@@ -580,12 +580,12 @@ export default async function HomePage() {
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 </div>
 
-                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl md:text-5xl lg:text-6xl text-center">
+                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl md:text-5xl lg:text-6xl text-center lg:text-left">
                   {t("flagshipTitle")}
                 </h2>
 
                 {/* Ornamental Divider with Framed Diamond */}
-                <div className="mt-3.5 flex items-center justify-center gap-2">
+                <div className="mt-3.5 flex items-center justify-center lg:justify-start gap-2">
                   <span aria-hidden className="h-px w-10 sm:w-16 bg-manikstu-gold/70" />
                   <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
                   <div aria-hidden className="relative flex items-center justify-center">
@@ -596,12 +596,12 @@ export default async function HomePage() {
                   <span aria-hidden className="h-px w-10 sm:w-16 bg-manikstu-gold/70" />
                 </div>
 
-                <p className="mt-5 text-sm sm:text-base text-grey leading-relaxed max-w-lg mx-auto text-center">
+                <p className="mt-5 text-sm sm:text-base text-grey leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
                   {t("flagshipDesc")}
                 </p>
                 <Link
                   href="/collaborate/ajah"
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
+                  className="mt-6 inline-flex items-center justify-center lg:justify-start gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
                 >
                   {t("exploreAjah")} <ArrowRight className="h-4 w-4" />
                 </Link>
