@@ -725,14 +725,14 @@ export default async function HomePage() {
 
         {/* Mobile App */}
         <section className="relative bg-white overflow-hidden">
-          {/* Left mandala background */}
+          {/* Left mandala background — moved upward behind phone on mobile, left-aligned on desktop */}
           <Image
             src="/patterns/mobile-app-mandala.png"
             alt=""
             aria-hidden
             width={1300}
             height={1300}
-            className="pointer-events-none select-none absolute left-[4%] top-[46%] -translate-y-1/2 h-[550px] w-auto max-w-none opacity-[0.20]"
+            className="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 top-12 sm:top-16 lg:left-[4%] lg:top-[46%] lg:translate-x-0 lg:-translate-y-1/2 h-[420px] sm:h-[480px] lg:h-[550px] w-auto max-w-none opacity-[0.20]"
           />
 
           <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
