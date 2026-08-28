@@ -286,14 +286,14 @@ export default async function HomePage() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Users className="h-24 w-24 text-manikstu-green/30" />
                   </div>
-                  {/* Watch Our Story overlay */}
-                  <div className="absolute bottom-4 right-4 flex items-center gap-3 rounded-xl bg-white/90 backdrop-blur-sm px-4 py-3 shadow-lg">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-manikstu-green text-white">
-                      <Play className="h-4 w-4" />
+                  {/* Watch Our Story overlay — top-right & compact on mobile, bottom-right on desktop */}
+                  <div className="absolute top-3 right-3 sm:top-auto sm:bottom-4 sm:right-4 flex items-center gap-2 sm:gap-3 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white/90 backdrop-blur-sm px-2.5 py-1.5 sm:px-4 sm:py-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
+                    <div className="flex h-7 w-7 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-manikstu-green text-white shadow-xs">
+                      <Play className="h-3 w-3 sm:h-4 sm:w-4 ml-0.5 fill-current" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-charcoal">{t("watchOurStory").split("\n")[0]}</p>
-                      <p className="text-xs text-grey">{t("watchOurStory").split("\n")[1]}</p>
+                      <p className="text-[10px] sm:text-xs font-semibold leading-tight text-charcoal">{t("watchOurStory").split("\n")[0]}</p>
+                      <p className="text-[9px] sm:text-xs leading-tight text-grey">{t("watchOurStory").split("\n")[1]}</p>
                     </div>
                   </div>
                 </div>
