@@ -45,10 +45,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('enquiries', EnquiryController::class)->only(['index', 'show', 'destroy']);
         Route::resource('orders', OrderController::class);
         Route::resource('customers', CustomerController::class)->except('show');
-        Route::resource('users', UserController::class)->except('show');
 
-        Route::get('/settings', [SettingController::class, 'edit'])->name('settings.edit');
-        Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+        // Developer-only: user management and system settings
+        Route::middleware('role:developer')->group(function () {
+            Route::resource('users', UserController::class)->except('show');
+            Route::get('/settings', [SettingController::class, 'edit'])->name('settings.edit');
+            Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+        });
 
         Route::get('/pages/{page}/edit', [PageController::class, 'edit'])->name('pages.edit');
         Route::put('/pages/{page}', [PageController::class, 'update'])->name('pages.update');
