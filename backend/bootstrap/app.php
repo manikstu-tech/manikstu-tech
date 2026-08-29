@@ -15,8 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'role' => \App\Http\Middleware\EnsureUserRole::class,
+            'captcha' => \App\Http\Middleware\VerifyCaptcha::class,
         ]);
-        $middleware->prepend(\App\Http\Middleware\SecurityHeaders::class);
+        $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
         $middleware->redirectGuestsTo(fn (Request $request) => route('admin.login'));
         $middleware->redirectUsersTo('/admin/dashboard');
     })

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enquiry extends Model
 {
-    protected $fillable = ['name', 'email', 'phone', 'type', 'message', 'status', 'admin_notes', 'replied_at'];
+    protected $fillable = ['name', 'email', 'phone', 'type', 'message', 'status', 'admin_notes', 'replied_at', 'customer_id'];
 
     protected function casts(): array
     {

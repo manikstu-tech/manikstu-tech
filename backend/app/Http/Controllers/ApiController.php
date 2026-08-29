@@ -357,7 +357,7 @@ class ApiController extends Controller
             'message' => 'required|string',
         ]);
 
-        $enquiry = Enquiry::create($validated + ['status' => 'new']);
+        $enquiry = Enquiry::create($validated + ['status' => 'new', 'customer_id' => $request->user('sanctum')?->id]);
 
         return $this->json(['data' => $enquiry, 'message' => 'Enquiry submitted successfully'], 201);
     }
@@ -381,6 +381,7 @@ class ApiController extends Controller
             'total' => $total,
             'status' => 'pending',
             'payment_status' => 'pending',
+            'customer_id' => $request->user('sanctum')?->id,
         ]);
 
         foreach ($validated['items'] as $item) {

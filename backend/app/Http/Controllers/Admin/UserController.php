@@ -48,7 +48,10 @@ class UserController extends Controller
         $validated['password'] = Hash::make($validated['password']);
         $validated['is_active'] = $request->boolean('is_active', true);
 
-        User::create($validated);
+        $user = User::create($validated);
+        $user->role = $validated['role'];
+        $user->is_active = $validated['is_active'];
+        $user->save();
 
         return redirect()->route('admin.users.index')->with('success', 'User created.');
     }
@@ -77,6 +80,9 @@ class UserController extends Controller
         $validated['is_active'] = $request->boolean('is_active', true);
 
         $user->update($validated);
+        $user->role = $validated['role'];
+        $user->is_active = $validated['is_active'];
+        $user->save();
 
         return redirect()->route('admin.users.index')->with('success', 'User updated.');
     }

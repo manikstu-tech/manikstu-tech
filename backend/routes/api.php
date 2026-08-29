@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\CustomerAuthController;
 
 // Read endpoints: 60 req/min
 Route::middleware('throttle:60,1')->group(function () {
@@ -27,8 +28,15 @@ Route::middleware('throttle:60,1')->group(function () {
     Route::get('/partners', [ApiController::class, 'getPartners']);
 });
 
-// Write endpoints (unauthenticated, spam-prone): 10 req/min
+// Customer authentication (token-based via Laravel Sanctum)
 Route::middleware('throttle:10,1')->group(function () {
-    Route::post('/enquiries', [ApiController::class, 'storeEnquiry']);
-    Route::post('/orders', [ApiController::class, 'storeOrder']);
+    Route::post('/register', [CustomerAuthController::class, 'register']);
+    Route::post('/login', [CustomerAuthController::class, 'login']);
+});
+Route::get('/me', [CustomerAuthController::class, 'me'])->middleware('auth:sanctum');
+
+// Write endpoints (unauthenticated, spam-prone): 10 req/min + CAPTCHA when TURNSTILE_SECRET_KEY is set
+Route::middleware('throttle:10,1')->group(function () {
+    Route::post('/enquiries', [ApiController::class, 'storeEnquiry'])->middleware('captcha');
+    Route::post('/orders', [ApiController::class, 'storeOrder'])->middleware('captcha');
 });
