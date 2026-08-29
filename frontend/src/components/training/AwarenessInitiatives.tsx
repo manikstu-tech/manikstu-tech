@@ -83,7 +83,7 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
             return (
               <div
                 key={item.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-5 pb-20 transition-shadow hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-5 pb-32 sm:pb-24 transition-shadow hover:shadow-lg"
               >
                 {/* Inner dashed border */}
                 <div
@@ -95,11 +95,10 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
                 {item.image && (
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat opacity-90"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-24 bg-no-repeat bg-[length:100%_auto] sm:bg-cover bg-bottom opacity-90"
                     style={{
                       backgroundImage: `url('${item.image}')`,
-                      backgroundSize: item.imageScale ?? "cover",
-                      backgroundPosition: "center bottom",
+                      ...(item.imageScale ? { backgroundSize: item.imageScale } : {}),
                     }}
                   />
                 )}
