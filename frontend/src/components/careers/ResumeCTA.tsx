@@ -41,14 +41,14 @@ export default function ResumeCTA() {
         className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] dark:opacity-[0.10] -scale-x-100"
       />
 
-      {/* Right circular mandala watermark */}
+      {/* Top-right quarter floral artwork */}
       <Image
-        src="/patterns/mandala-right.png"
+        src="/patterns/mandala-top-right.png"
         alt=""
         aria-hidden
         width={768}
         height={768}
-        className="pointer-events-none select-none absolute -right-10 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-40 md:w-52 opacity-[0.12] sm:opacity-[0.16] dark:opacity-[0.10]"
+        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] dark:opacity-[0.10]"
       />
 
       {/* Bottom village panoramic scene banner */}

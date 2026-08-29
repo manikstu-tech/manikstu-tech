@@ -581,7 +581,8 @@ export default async function HomePage() {
                 </div>
 
                 <h2 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl md:text-5xl lg:text-6xl text-center lg:text-left">
-                  {t("flagshipTitle")}
+                  {t("flagshipTitle").split("AJAH")[0]}
+                  <span className="text-[#9F5233]">AJAH</span>
                 </h2>
 
                 {/* Ornamental Divider with Framed Diamond */}

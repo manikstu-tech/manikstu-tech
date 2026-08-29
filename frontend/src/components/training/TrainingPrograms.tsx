@@ -152,17 +152,12 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
                 key={program.title}
                 className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-5 pb-20 transition-shadow hover:shadow-lg"
               >
-                {/* Inner dashed border */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
-                />
 
                 {/* Bottom tribal art */}
                 {program.image && (
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat opacity-90"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat opacity-35 group-hover:opacity-55 transition-opacity duration-300"
                     style={{
                       backgroundImage: `url('${program.image}')`,
                       backgroundSize: program.imageScale ?? "100% auto",

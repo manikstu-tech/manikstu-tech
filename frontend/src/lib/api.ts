@@ -1,7 +1,7 @@
 // src/lib/api.ts
 import type { ApiResponse, Setting, NavigationMenuItem, FooterLink, Page, BlogPost, Testimonial, ImpactStat, GalleryImage, Partner, PressRelease } from '@/types';
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
 // Generic fetch helper
 async function apiFetch<T>(path: string): Promise<T> {

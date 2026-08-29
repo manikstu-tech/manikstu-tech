@@ -237,21 +237,11 @@ export default function AboutPage() {
               {/* Right Column: Values 2x2 Grid Panel (Tribal / Collaborate Card Design) */}
               <div className="flex flex-col lg:col-span-7">
                 <div className="group relative flex h-full flex-col justify-center overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 p-6 sm:p-7 md:p-8 shadow-sm transition-all duration-300 hover:shadow-xl">
-                  {/* Inner dashed border */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
-                  />
-
                   <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2">
                     {/* People First (Top-Left) */}
                     <div className="flex items-start gap-4 pb-7 sm:pb-7 sm:pr-7 border-b sm:border-r border-manikstu-gold/30">
                       <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                         <Users className="h-6 w-6 text-manikstu-green" />
-                        <span
-                          aria-hidden
-                          className="pointer-events-none absolute inset-[-4px] rounded-full border-2 border-dashed border-saura-red/50"
-                        />
                       </div>
                       <div>
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
@@ -267,10 +257,6 @@ export default function AboutPage() {
                     <div className="flex items-start gap-4 pb-7 pt-7 sm:pt-0 sm:pb-7 sm:pl-7 border-b border-manikstu-gold/30">
                       <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                         <Heart className="h-6 w-6 text-manikstu-green" />
-                        <span
-                          aria-hidden
-                          className="pointer-events-none absolute inset-[-4px] rounded-full border-2 border-dashed border-saura-red/50"
-                        />
                       </div>
                       <div>
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
@@ -286,10 +272,6 @@ export default function AboutPage() {
                     <div className="flex items-start gap-4 pb-7 pt-7 sm:pb-0 sm:pt-7 sm:pr-7 border-b sm:border-b-0 sm:border-r border-manikstu-gold/30">
                       <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                         <Leaf className="h-6 w-6 text-manikstu-green" />
-                        <span
-                          aria-hidden
-                          className="pointer-events-none absolute inset-[-4px] rounded-full border-2 border-dashed border-saura-red/50"
-                        />
                       </div>
                       <div>
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
@@ -305,10 +287,6 @@ export default function AboutPage() {
                     <div className="flex items-start gap-4 pt-7 sm:pt-7 sm:pl-7">
                       <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                         <Lightbulb className="h-6 w-6 text-manikstu-green" />
-                        <span
-                          aria-hidden
-                          className="pointer-events-none absolute inset-[-4px] rounded-full border-2 border-dashed border-saura-red/50"
-                        />
                       </div>
                       <div>
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
@@ -416,12 +394,6 @@ export default function AboutPage() {
                         key={item.title}
                         className="group relative flex flex-col justify-between overflow-hidden rounded-xl sm:rounded-2xl border-2 border-saura-red/50 bg-white/95 p-4 sm:p-7 shadow-xs sm:shadow-sm transition-all duration-300 hover:shadow-xl"
                       >
-                        {/* Inner dashed border */}
-                        <div
-                          aria-hidden
-                          className="pointer-events-none absolute inset-1.5 sm:inset-2 rounded-lg sm:rounded-xl border border-dashed border-saura-red/40"
-                        />
-
                         <div className="relative z-10 flex flex-col items-center text-center">
                           {/* Dashed-ring icon badge */}
                           <div className="relative mb-2.5 sm:mb-4 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">

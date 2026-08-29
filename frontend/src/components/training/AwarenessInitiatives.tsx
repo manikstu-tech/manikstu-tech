@@ -85,17 +85,12 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
                 key={item.title}
                 className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-5 pb-32 sm:pb-24 transition-shadow hover:shadow-lg"
               >
-                {/* Inner dashed border */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
-                />
 
                 {/* Bottom tribal art */}
                 {item.image && (
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-24 bg-no-repeat bg-[length:100%_auto] sm:bg-cover bg-bottom opacity-90"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-24 bg-no-repeat bg-[length:100%_auto] sm:bg-cover bg-bottom opacity-35 group-hover:opacity-55 transition-opacity duration-300"
                     style={{
                       backgroundImage: `url('${item.image}')`,
                       ...(item.imageScale ? { backgroundSize: item.imageScale } : {}),

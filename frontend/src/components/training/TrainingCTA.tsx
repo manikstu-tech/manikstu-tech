@@ -41,7 +41,7 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
       id="get-involved"
       className="relative overflow-hidden bg-[#FAF4EB] py-10 sm:py-12 md:py-14"
     >
-      {/* Top-left mandala corner artwork */}
+      {/* Top-left floral corner artwork */}
       <Image
         src="/patterns/mandala-top-right.png"
         alt=""
@@ -51,14 +51,14 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
         className="pointer-events-none select-none absolute -left-6 -top-6 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] xl:w-[32rem] opacity-30 -scale-x-100"
       />
 
-      {/* Right side mandala artwork */}
+      {/* Top-right floral corner artwork */}
       <Image
-        src="/patterns/mandala-right.png"
+        src="/patterns/mandala-top-right.png"
         alt=""
         aria-hidden
-        width={300}
-        height={500}
-        className="pointer-events-none select-none absolute right-0 top-1/2 -translate-y-1/2 h-auto w-36 sm:w-48 md:w-56 lg:w-64 max-h-[80%] object-contain object-right opacity-30"
+        width={600}
+        height={600}
+        className="pointer-events-none select-none absolute -right-6 -top-6 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] xl:w-[32rem] opacity-30"
       />
 
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6 md:px-8">
@@ -89,8 +89,7 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
 
           {/* Heading */}
           <h2 className="mx-auto mt-3 max-w-3xl font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl lg:text-4xl">
-            <span className="text-[#376E2A]">{t("ctaTitle").split("the Next")[0]}</span>
-            to Train the Next
+            <span className="text-[#376E2A]">Partner With Us</span> to Train the Next
             <br />
             Generation of Farmers
           </h2>
