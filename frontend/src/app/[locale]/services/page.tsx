@@ -6,6 +6,7 @@ import ServiceAccordion, {
 } from "@/components/services/ServiceAccordion";
 import InsurancePanel from "@/components/services/InsurancePanel";
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   HeartPulse,
@@ -265,6 +266,17 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Our Services",
+  description:
+    "Comprehensive goat farming services including veterinary care, insurance, goat bank programs, training, and ethical partnerships from Manikstu Agro.",
+  openGraph: {
+    title: "Goat Farming Services — Veterinary, Insurance, Training | Manikstu Agro",
+    description:
+      "Professional goat farming services: veterinary care, livestock insurance, goat bank programs, and training.",
+  },
+};
 
 export default async function ServicesPage() {
   const t = await getTranslations("Services");

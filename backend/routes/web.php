@@ -31,20 +31,38 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('products', ProductController::class);
+        Route::resource('products', ProductController::class)->except('destroy');
         Route::put('/products/{product}/toggle-publish', [ProductController::class, 'togglePublish'])->name('products.togglePublish');
-        Route::resource('categories', CategoryController::class)->except('show');
-        Route::resource('blog', BlogController::class)->except('show');
-        Route::resource('press', PressController::class)->except('show');
-        Route::resource('team', TeamController::class)->except('show');
-        Route::resource('careers', CareerController::class)->except('show');
-        Route::resource('training', TrainingController::class)->except('show');
-        Route::resource('awareness', AwarenessController::class)->except('show');
-        Route::resource('testimonials', TestimonialController::class)->except('show');
-        Route::resource('partners', PartnerController::class)->except('show');
-        Route::resource('enquiries', EnquiryController::class)->only(['index', 'show', 'destroy']);
-        Route::resource('orders', OrderController::class);
-        Route::resource('customers', CustomerController::class)->except('show');
+        Route::resource('categories', CategoryController::class)->except(['show', 'destroy']);
+        Route::resource('blog', BlogController::class)->except(['show', 'destroy']);
+        Route::resource('press', PressController::class)->except(['show', 'destroy']);
+        Route::resource('team', TeamController::class)->except(['show', 'destroy']);
+        Route::resource('careers', CareerController::class)->except(['show', 'destroy']);
+        Route::resource('training', TrainingController::class)->except(['show', 'destroy']);
+        Route::resource('awareness', AwarenessController::class)->except(['show', 'destroy']);
+        Route::resource('testimonials', TestimonialController::class)->except(['show', 'destroy']);
+        Route::resource('partners', PartnerController::class)->except(['show', 'destroy']);
+        Route::resource('enquiries', EnquiryController::class)->only(['index', 'show']);
+        Route::resource('orders', OrderController::class)->except('destroy');
+        Route::resource('customers', CustomerController::class)->except(['show', 'destroy']);
+
+        // ponytail: destructive operations are developer-only
+        Route::middleware('role:developer')->group(function () {
+            Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+            Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+            Route::delete('/blog/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
+            Route::delete('/press/{press}', [PressController::class, 'destroy'])->name('press.destroy');
+            Route::delete('/team/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
+            Route::delete('/careers/{career}', [CareerController::class, 'destroy'])->name('careers.destroy');
+            Route::delete('/training/{training}', [TrainingController::class, 'destroy'])->name('training.destroy');
+            Route::delete('/awareness/{awareness}', [AwarenessController::class, 'destroy'])->name('awareness.destroy');
+            Route::delete('/testimonials/{testimonial}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
+            Route::delete('/partners/{partner}', [PartnerController::class, 'destroy'])->name('partners.destroy');
+            Route::delete('/enquiries/{enquiry}', [EnquiryController::class, 'destroy'])->name('enquiries.destroy');
+            Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
+            Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+            Route::delete('/media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
+        });
 
         // ponytail: user administration is developer-only (least privilege; prevents role escalation)
         Route::middleware('role:developer')->group(function () {
@@ -56,11 +74,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/pages/{page}/edit', [PageController::class, 'edit'])->name('pages.edit');
         Route::put('/pages/{page}', [PageController::class, 'update'])->name('pages.update');
         Route::post('/pages/{page}/blocks', [PageController::class, 'storeBlock'])->name('pages.blocks.store');
-        Route::delete('/blocks/{block}', [PageController::class, 'destroyBlock'])->name('blocks.destroy');
         Route::post('/blocks/reorder', [PageController::class, 'reorderBlocks'])->name('blocks.reorder');
+
+        Route::middleware('role:developer')->group(function () {
+            Route::delete('/blocks/{block}', [PageController::class, 'destroyBlock'])->name('blocks.destroy');
+        });
 
         Route::get('/media', [MediaController::class, 'index'])->name('media.index');
         Route::post('/media/upload', [MediaController::class, 'upload'])->name('media.upload');
-        Route::delete('/media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
     });
 });

@@ -6,7 +6,7 @@ import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
 import { getSettings, getFooter } from "@/lib/api";
-import type { Setting, FooterLink } from "@/types";
+import type { FooterLink } from "@/types";
 
 const fallbackQuickLinks: FooterLink[] = [
   { id: 1, group: "quick", label: "About Us", url: "/about", order: 1, is_active: true },

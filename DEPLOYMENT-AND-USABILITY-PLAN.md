@@ -1,211 +1,32 @@
 # Manikstu Agro — Deployment & Usability Fix Plan
 
-Generated: 2026-08-26
+Updated: 2026-08-29
 
 ---
 
-## Part 1: GoDaddy Domain → Hostinger VPS Deployment
+## Part 1: Deployment (Shared Hosting + Vercel)
 
 ### Architecture
 ```
-GoDaddy (DNS only) ──A record──▶ Hostinger VPS (Ubuntu 22.04)
-                                    ├── Nginx (reverse proxy + SSL)
-                                    ├── PHP 8.3-FPM (Laravel backend → :8000)
-                                    ├── Node.js + PM2 (Next.js frontend → :3000)
-                                    └── MySQL 8 (production DB)
+manikstu.com (GoDaddy DNS)
+    ├── manikstu.com → Vercel (Next.js frontend)
+    ├── www.manikstu.com → Vercel (Next.js frontend)
+    └── api.manikstu.com → Hostinger Shared Hosting (Laravel API)
 ```
 
-### Phase A: GoDaddy DNS Setup
+### Why This Setup?
+- **Shared hosting** can't run Node.js → Next.js needs Vercel (free)
+- **Laravel** runs fine on shared hosting (PHP + MySQL)
+- **Vercel** provides free SSL, CDN, and auto-deploys for Next.js
 
-**At GoDaddy → My Products → DNS Management for manikstu.com:**
-
-Change nameservers to Hostinger's:
-- `ns1.dns-parking.com`
-- `ns2.dns-parking.com`
-
-OR add A records directly:
-
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| A | @ | `<VPS_IP>` | 600 |
-| A | www | `<VPS_IP>` | 600 |
-| A | api | `<VPS_IP>` | 600 |
-
-Wait for propagation (15 min – 2 hours).
-
-### Phase B: VPS Initial Setup
-
-```bash
-# Update system
-apt update && apt upgrade -y
-
-# Install Nginx, PHP 8.3, MySQL 8, Node.js 20, Composer
-apt install -y nginx php8.3-fpm php8.3-mysql php8.3-xml php8.3-mbstring php8.3-curl php8.3-zip php8.3-gd php8.3-bcmath php8.3-intl unzip git
-
-# Install Node.js 20
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-apt install -y nodejs
-
-# Install Composer
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Install MySQL
-apt install -y mysql-server
-mysql_secure_installation
-```
-
-### Phase C: Deploy Laravel Backend
-
-```bash
-cd /var/www
-git clone https://github.com/manikstu-tech/manikstu-tech.git manikstu
-cd manikstu/backend
-
-composer install --no-dev --optimize-autoloader
-
-cp .env.example .env
-# Edit .env with production values:
-#   APP_ENV=production
-#   APP_DEBUG=false
-#   APP_URL=https://api.manikstu.com
-#   DB_CONNECTION=mysql
-#   DB_HOST=127.0.0.1
-#   DB_DATABASE=manikstu
-#   DB_USERNAME=manikstu_user
-#   DB_PASSWORD=<strong-password>
-#   SESSION_DRIVER=database
-#   CACHE_STORE=database
-#   QUEUE_CONNECTION=database
-
-php artisan key:generate
-
-# Create MySQL database & user
-mysql -u root -p
-# CREATE DATABASE manikstu;
-# CREATE USER 'manikstu_user'@'127.0.0.1' IDENTIFIED BY '<password>';
-# GRANT ALL ON manikstu.* TO 'manikstu_user'@'127.0.0.1';
-# FLUSH PRIVILEGES;
-
-php artisan migrate --force
-php artisan db:seed --force
-php artisan storage:link
-
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
-
-### Phase D: Deploy Next.js Frontend
-
-```bash
-cd /var/www/manikstu/frontend
-
-npm ci
-
-cat > .env.local << 'EOF'
-NEXT_PUBLIC_API_URL=https://api.manikstu.com/api
-NEXT_PUBLIC_RAZORPAY_KEY=<your-key>
-EOF
-
-npm run build
-
-npm install -g pm2
-pm2 start npm --name "manikstu-frontend" -- start
-pm2 save
-pm2 startup
-```
-
-### Phase E: Nginx Configuration
-
-```nginx
-# /etc/nginx/sites-available/manikstu
-
-# HTTP → HTTPS redirect
-server {
-    listen 80;
-    server_name manikstu.com www.manikstu.com;
-    return 301 https://$server_name$request_uri;
-}
-
-# Frontend (Next.js)
-server {
-    listen 443 ssl http2;
-    server_name manikstu.com www.manikstu.com;
-
-    ssl_certificate /etc/letsencrypt/live/manikstu.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/manikstu.com/privkey.pem;
-
-    location / {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    location /_next/static {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_cache_valid 200 365d;
-        add_header Cache-Control "public, max-age=31536000, immutable";
-    }
-}
-
-# Backend API (Laravel)
-server {
-    listen 443 ssl http2;
-    server_name api.manikstu.com;
-
-    ssl_certificate /etc/letsencrypt/live/manikstu.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/manikstu.com/privkey.pem;
-
-    root /var/www/manikstu/backend/public;
-    index index.php;
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-}
-```
-
-```bash
-ln -s /etc/nginx/sites-available/manikstu /etc/nginx/sites-enabled/
-rm /etc/nginx/sites-enabled/default
-nginx -t && systemctl reload nginx
-```
-
-### Phase F: SSL with Let's Encrypt
-
-```bash
-apt install -y certbot python3-certbot-nginx
-certbot --nginx -d manikstu.com -d www.manikstu.com -d api.manikstu.com
-```
-
-### Phase G: Update CORS & Frontend API URL
-
-**Backend `config/cors.php`:**
-```php
-'allowed_origins' => ['https://manikstu.com', 'https://www.manikstu.com'],
-```
-
-### Deployment Checklist
-- [ ] GoDaddy DNS A records point to VPS IP
-- [ ] VPS has MySQL, PHP 8.3-FPM, Node.js 20, Nginx
-- [ ] Laravel `.env` production values set
-- [ ] Laravel migrations run, `storage:link` created
-- [ ] Frontend `.env.local` has production API URL
-- [ ] Frontend built and running via PM2
-- [ ] Nginx configured with SSL
-- [ ] CORS updated for production domain
-- [ ] `APP_DEBUG=false`, `SESSION_SECURE_COOKIE=true`
+### Deployment Files
+See `deploy/` folder for step-by-step guides:
+1. `01-DEPLOYMENT-GUIDE.md` — Overview
+2. `02-HOSTINGER-BACKEND.md` — Laravel deployment
+3. `03-VERCEL-FRONTEND.md` — Next.js deployment
+4. `04-GODADDY-DNS.md` — DNS configuration
+5. `05-FINAL-CHECKS.md` — Go-live checklist
+6. `.env.production` — Backend environment template
 
 ---
 
@@ -297,6 +118,6 @@ certbot --nginx -d manikstu.com -d www.manikstu.com -d api.manikstu.com
 | `components/layout/Footer.tsx` | #4, #9, #14, #15 |
 | `components/layout/Header.tsx` | #10 |
 | `src/app/globals.css` | #12 |
-| `config/cors.php` (backend) | Deployment Phase G |
-| `frontend/.env.local` | Deployment Phase D |
-| `backend/.env` | Deployment Phase C |
+| `config/cors.php` (backend) | Deployment |
+| `frontend/.env.local` | Deployment |
+| `backend/.env` | Deployment |

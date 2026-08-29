@@ -32,6 +32,7 @@ class ApiController extends Controller
 
     private function paginated($query, $perPage = 15): JsonResponse
     {
+        $perPage = min(max((int) $perPage, 1), 100);
         $result = $query->paginate($perPage);
         return $this->json([
             'data' => $result->items(),
@@ -46,7 +47,9 @@ class ApiController extends Controller
 
     private function getLocale(Request $request): string
     {
-        return $request->query('locale', 'en');
+        $allowed = ['en','hi','bn','ta','te','mr','gu','kn','ml','or','ja','de','fr','es'];
+        $locale = $request->query('locale', 'en');
+        return in_array($locale, $allowed) ? $locale : 'en';
     }
 
     private function getTranslatedTitle($model, string $locale): string
@@ -149,7 +152,7 @@ class ApiController extends Controller
             $query->featured();
         }
 
-        $posts = $query->latest('published_at')->paginate($request->per_page ?? 15);
+        $posts = $query->latest('published_at')->paginate(min(max((int) ($request->per_page ?? 15), 1), 100));
 
         if ($locale !== 'en') {
             $items = $posts->getCollection()->map(function ($post) use ($locale) {
@@ -221,7 +224,7 @@ class ApiController extends Controller
             ->when($request->featured, fn($q) => $q->featured())
             ->orderBy('order')->latest('id');
 
-        $perPage = (int) ($request->per_page ?? $request->limit ?? 50);
+        $perPage = min(max((int) ($request->per_page ?? $request->limit ?? 50), 1), 100);
         $products = $query->paginate($perPage);
 
         return $this->json([
@@ -365,12 +368,17 @@ class ApiController extends Controller
             'items' => 'required|array',
             'items.*.productId' => 'required|exists:products,id',
             'items.*.quantity' => 'required|integer|min:1',
-            'totalAmount' => 'required|numeric|min:0',
         ]);
+
+        $total = 0;
+        foreach ($validated['items'] as $item) {
+            $product = Product::findOrFail($item['productId']);
+            $total += ($product->price ?? 0) * $item['quantity'];
+        }
 
         $order = Order::create([
             'order_number' => 'ORD-' . strtoupper(uniqid()),
-            'total' => $validated['totalAmount'],
+            'total' => $total,
             'status' => 'pending',
             'payment_status' => 'pending',
         ]);

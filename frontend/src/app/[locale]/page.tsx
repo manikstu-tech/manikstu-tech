@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
 import PageHero from "@/components/layout/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
 import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
@@ -22,6 +24,17 @@ import {
   ShoppingBag,
   User,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Manikstu Agro — Revolutionizing Goat Farming Ecosystem",
+  description:
+    "Manikstu Agro provides comprehensive goat farming solutions including veterinary services, goat bank programs, professional training, and ethically sourced goat products. Founded 2015, Kalahandi, Odisha.",
+  openGraph: {
+    title: "Manikstu Agro — Revolutionizing Goat Farming Ecosystem",
+    description:
+      "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
+  },
+};
 
 export default async function HomePage() {
   const t = await getTranslations("Home");
@@ -219,6 +232,19 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Manikstu Agro",
+          url: "https://manikstu.com",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://manikstu.com/en/products?search={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        }}
+      />
       <Header />
 
       <main id="main-content">
@@ -971,9 +997,11 @@ export default async function HomePage() {
                   {/* Image container */}
                   <div className="relative flex h-40 w-full items-center justify-center overflow-hidden bg-manikstu-cream p-3">
                     {item.image ? (
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.title}
+                        width={400}
+                        height={300}
                         className="max-h-full max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                       />
                     ) : (

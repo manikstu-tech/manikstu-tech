@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Calendar, ArrowRight } from "lucide-react";
 import type { Article } from "@/lib/blog-data";
@@ -22,9 +23,11 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
           <article className="group h-full overflow-hidden rounded-xl border border-light-grey bg-white transition-all hover:shadow-md">
             {/* Thumbnail */}
             <div className="relative flex h-48 w-full items-center justify-center overflow-hidden bg-manikstu-cream p-4">
-              <img
+              <Image
                 src={article.image}
                 alt={article.title}
+                width={384}
+                height={192}
                 className="max-h-full max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </div>

@@ -10,7 +10,8 @@ class MediaController extends Controller
 {
     public function index(Request $request)
     {
-        $media = Media::when($request->search, fn($q, $s) => $q->where('name', 'like', "%{$s}%"))
+        $search = $request->search ? addcslashes($request->search, '%_') : null;
+        $media = Media::when($search, fn($q, $s) => $q->where('name', 'like', "%{$s}%"))
             ->when(
                 $request->sort === 'oldest',
                 fn($q) => $q->oldest(),
@@ -31,10 +32,11 @@ class MediaController extends Controller
 
         $file = $request->file('file');
         $path = $file->store('uploads', 'public');
+        $originalName = strip_tags(basename($file->getClientOriginalName()));
 
         $media = Media::create([
-            'name' => pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME),
-            'file_name' => $file->getClientOriginalName(),
+            'name' => pathinfo($originalName, PATHINFO_FILENAME),
+            'file_name' => $originalName,
             'mime_type' => $file->getMimeType(),
             'size' => $file->getSize(),
             'path' => $path,

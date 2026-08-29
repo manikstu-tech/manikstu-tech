@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => \App\Http\Middleware\EnsureUserRole::class,
         ]);
+        $middleware->prepend(\App\Http\Middleware\SecurityHeaders::class);
         $middleware->redirectGuestsTo(fn (Request $request) => route('admin.login'));
         $middleware->redirectUsersTo('/admin/dashboard');
     })

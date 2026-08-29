@@ -1,12 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/seo/JsonLd";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 
-export default function HelpPage() {
-  const t = useTranslations("Help");
+export const metadata: Metadata = {
+  title: "Help Center",
+  description:
+    "Get help with Manikstu Agro products and services. Frequently asked questions, contact support, and more.",
+};
+
+export default async function HelpPage() {
+  const t = await getTranslations("Help");
 
   const faqs = [
     { q: t("faq1Q"), a: t("faq1A") },
@@ -17,11 +25,24 @@ export default function HelpPage() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.a,
+            },
+          })),
+        }}
+      />
       <Header />
       <main id="main-content">
         <section className="relative overflow-hidden bg-manikstu-cream pt-24 pb-16">
           <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 md:px-8">
-            {/* Pill eyebrow — centered */}
             <div className="flex items-center justify-center gap-2">
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
               <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
@@ -42,7 +63,6 @@ export default function HelpPage() {
             </p>
           </div>
 
-          {/* Bottom tribal border — decorative line art, faded in from the left */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
@@ -71,9 +91,7 @@ export default function HelpPage() {
           </div>
         </section>
 
-        {/* Still Need Help — Our Reach design language */}
         <section className="relative overflow-hidden bg-gradient-to-b from-[#23581D] via-manikstu-green to-[#1F4E1A] py-5 text-white md:py-6">
-          {/* Top tribal floral border — white line art */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-0 right-0 top-0 h-5 sm:h-6 bg-repeat-x opacity-60 brightness-0 invert -scale-y-100"
@@ -83,7 +101,6 @@ export default function HelpPage() {
             }}
           />
 
-          {/* Left & Right Mandala line art — white */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-15 brightness-0 invert"
@@ -110,9 +127,7 @@ export default function HelpPage() {
           </div>
 
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-            {/* Section Header */}
             <div className="text-center">
-              {/* Pill eyebrow */}
               <div className="flex items-center justify-center gap-2.5">
                 <span aria-hidden className="h-px w-8 sm:w-12 bg-manikstu-gold/80" />
                 <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
@@ -123,13 +138,11 @@ export default function HelpPage() {
                 <span aria-hidden className="h-px w-8 sm:w-12 bg-manikstu-gold/80" />
               </div>
 
-              {/* Heading */}
               <h2 className="mx-auto mt-2 max-w-3xl font-heading text-2xl font-bold leading-tight text-white md:text-3xl lg:text-4xl">
                 Our Team Is{" "}
                 <span className="text-manikstu-gold">Here to Help</span>
               </h2>
 
-              {/* Framed diamond divider */}
               <div className="mt-2 flex items-center justify-center gap-2">
                 <span aria-hidden className="h-px w-12 sm:w-16 bg-manikstu-gold/70" />
                 <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
@@ -146,7 +159,6 @@ export default function HelpPage() {
               </p>
             </div>
 
-            {/* Contact cards grid (same treatment as stat cards) */}
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
               {[
                 {
@@ -199,7 +211,6 @@ export default function HelpPage() {
             </div>
           </div>
 
-          {/* Bottom tribal floral border — white line art */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-0 right-0 bottom-0 h-5 sm:h-6 bg-repeat-x opacity-60 brightness-0 invert"

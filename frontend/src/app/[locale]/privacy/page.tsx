@@ -1,15 +1,21 @@
-import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-export default function PrivacyPage() {
-  const t = useTranslations("Privacy");
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How Manikstu Agro collects, uses, and protects your personal information. Read our complete privacy policy.",
+};
+
+export default async function PrivacyPage() {
+  const t = await getTranslations("Privacy");
 
   return (
     <>
       <Header />
       <main id="main-content">
-        {/* Hero — matches Help Center design */}
         <section className="relative overflow-hidden bg-manikstu-cream pt-24 pb-16">
           <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 md:px-8">
             <div className="flex items-center justify-center gap-2">
@@ -33,7 +39,6 @@ export default function PrivacyPage() {
             </p>
           </div>
 
-          {/* Bottom tribal border — decorative line art, faded in from the left */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"

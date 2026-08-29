@@ -11,12 +11,6 @@ export interface ApiResponse<T> {
   };
 }
 
-// Settings
-export interface Setting {
-  key: string;
-  value: string;
-}
-
 // Navigation
 export interface NavigationMenuItem {
   id: number;
@@ -82,45 +76,12 @@ export interface BlogPost {
   published_at: string | null;
 }
 
-// Testimonials
-export interface Testimonial {
-  id: number;
-  name: string;
-  location: string;
-  quote: string;
-  image: string | null;
-  rating: number;
-  is_active: boolean;
-  order: number;
-}
-
-// Impact Stats
-export interface ImpactStat {
-  id: number;
-  number: string;
-  label: string;
-  icon: string;
-  order: number;
-  is_active: boolean;
-}
-
 // Gallery
 export interface GalleryImage {
   id: number;
   image: string;
   caption: string;
   category_id: number | null;
-  order: number;
-  is_active: boolean;
-}
-
-// Partners
-export interface Partner {
-  id: number;
-  name: string;
-  logo: string;
-  website_url: string | null;
-  category: string;
   order: number;
   is_active: boolean;
 }
@@ -138,16 +99,3 @@ export interface PressRelease {
   published_at: string | null;
   category: BlogCategory | null;
 }
-
-// Products
-export interface Product {
-  id: number;
-  name: string;
-  slug: string;
-  category: string;
-  price: number;
-  description: string;
-  images: string[];
-}
-
-

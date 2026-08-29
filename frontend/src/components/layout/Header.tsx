@@ -8,8 +8,6 @@ import { Menu, X, Phone, Moon, Sun } from "lucide-react";
 import { useThemeToggle } from "./ThemeProvider";
 import { getNavigation } from "@/lib/api";
 import type { NavigationMenuItem } from "@/types";
-// import LanguageSwitcher from "./LanguageSwitcher";
-
 const fallbackLinks: NavigationMenuItem[] = [
   { id: 1, label: "Home", url: "/", parent_id: null, order: 1, is_active: true, target: "_self" },
   { id: 2, label: "About Us", url: "/about", parent_id: null, order: 2, is_active: true, target: "_self" },
@@ -18,17 +16,6 @@ const fallbackLinks: NavigationMenuItem[] = [
   { id: 5, label: "Media", url: "/blog", parent_id: null, order: 5, is_active: true, target: "_self" },
   { id: 6, label: "Collaborate", url: "/collaborate", parent_id: null, order: 6, is_active: true, target: "_self" },
   { id: 7, label: "Training & Awareness", url: "/training", parent_id: null, order: 7, is_active: true, target: "_self" },
-];
-
-const FALLBACK_NAV: NavigationMenuItem[] = [
-  { id: -1, label: "Home", url: "/", order: 1 } as NavigationMenuItem,
-  { id: -2, label: "About Us", url: "/about", order: 2 } as NavigationMenuItem,
-  { id: -3, label: "Services", url: "/services", order: 3 } as NavigationMenuItem,
-  { id: -4, label: "Products", url: "/products", order: 4 } as NavigationMenuItem,
-  { id: -5, label: "Media", url: "/blog", order: 5 } as NavigationMenuItem,
-  { id: -6, label: "Collaborate", url: "/collaborate", order: 6 } as NavigationMenuItem,
-  { id: -7, label: "Training", url: "/training", order: 7 } as NavigationMenuItem,
-  { id: -8, label: "Careers", url: "/careers", order: 8 } as NavigationMenuItem,
 ];
 
 export default function Header() {

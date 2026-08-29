@@ -1,15 +1,21 @@
-import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-export default function TermsPage() {
-  const t = useTranslations("Terms");
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description:
+    "Terms and conditions governing your use of the Manikstu Agro website and services.",
+};
+
+export default async function TermsPage() {
+  const t = await getTranslations("Terms");
 
   return (
     <>
       <Header />
       <main id="main-content">
-        {/* Hero — matches Help Center design */}
         <section className="relative overflow-hidden bg-manikstu-cream pt-24 pb-16">
           <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 md:px-8">
             <div className="flex items-center justify-center gap-2">
@@ -33,7 +39,6 @@ export default function TermsPage() {
             </p>
           </div>
 
-          {/* Bottom tribal border — decorative line art, faded in from the left */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
