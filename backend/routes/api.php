@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 
-// ponytail: throttle the public API (60 req/min) to blunt scraping/abuse; tighten per-route if needed
+// Read endpoints: 60 req/min
 Route::middleware('throttle:60,1')->group(function () {
     Route::get('/settings', [ApiController::class, 'getSettings']);
     Route::get('/navigation', [ApiController::class, 'getNavigation']);
@@ -25,6 +25,10 @@ Route::middleware('throttle:60,1')->group(function () {
     Route::get('/stats', [ApiController::class, 'getStats']);
     Route::get('/gallery', [ApiController::class, 'getGallery']);
     Route::get('/partners', [ApiController::class, 'getPartners']);
+});
+
+// Write endpoints (unauthenticated, spam-prone): 10 req/min
+Route::middleware('throttle:10,1')->group(function () {
     Route::post('/enquiries', [ApiController::class, 'storeEnquiry']);
     Route::post('/orders', [ApiController::class, 'storeOrder']);
 });
