@@ -86,7 +86,7 @@ export default function AjahHero() {
 
           {/* Central content overlay */}
           <div className="relative z-10 flex h-full flex-col justify-between">
-            <div className="flex items-center justify-between">
+            <div className="hidden sm:flex items-center justify-between">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-manikstu-green shadow-xs ring-1 ring-manikstu-green/20 backdrop-blur-xs">
                 <Sparkles className="h-3.5 w-3.5 text-manikstu-gold" />
                 Empowerment Model
@@ -120,7 +120,7 @@ export default function AjahHero() {
                   {t("cornerAccent")}
                 </span>
               </div>
-              <div className="flex items-center gap-1 text-[11px] font-medium text-manikstu-green bg-manikstu-green/10 rounded-full px-2.5 py-1">
+              <div className="hidden sm:flex items-center gap-1 text-[11px] font-medium text-manikstu-green bg-manikstu-green/10 rounded-full px-2.5 py-1">
                 <ShieldCheck className="h-3.5 w-3.5" /> 100% Verified
               </div>
             </div>
