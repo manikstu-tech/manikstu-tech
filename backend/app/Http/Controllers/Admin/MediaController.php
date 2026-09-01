@@ -53,8 +53,13 @@ class MediaController extends Controller
     public function destroy(Media $media)
     {
         $fullPath = storage_path('app/public/' . $media->path);
-        if (file_exists($fullPath)) {
-            unlink($fullPath);
+        $realPath = realpath($fullPath);
+        $allowedDir = realpath(storage_path('app/public'));
+
+        if ($realPath && $allowedDir && str_starts_with($realPath, $allowedDir . DIRECTORY_SEPARATOR)) {
+            if (file_exists($realPath)) {
+                unlink($realPath);
+            }
         }
 
         $media->delete();
