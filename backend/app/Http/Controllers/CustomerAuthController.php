@@ -119,7 +119,7 @@ class CustomerAuthController extends Controller
 
         $customer = Customer::findOrFail($request->id);
 
-        if (! hash_equals((string) sha1($customer->getEmailForVerification() . $customer->email_verified_at), (string) $request->hash)) {
+        if (! hash_equals((string) hash('sha256', $customer->getEmailForVerification() . $customer->email_verified_at), (string) $request->hash)) {
             return response()->json(['message' => 'Invalid verification link.'], 403);
         }
 
