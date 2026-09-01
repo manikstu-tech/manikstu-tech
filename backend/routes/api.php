@@ -37,7 +37,7 @@ Route::middleware('throttle:10,1')->group(function () {
 });
 Route::get('/me', [CustomerAuthController::class, 'me'])->middleware('auth:sanctum');
 Route::post('/email/verify', [CustomerAuthController::class, 'verifyEmail'])->middleware('auth:sanctum');
-Route::post('/email/confirm', [CustomerAuthController::class, 'confirmEmail']);
+Route::post('/email/confirm', [CustomerAuthController::class, 'confirmEmail'])->middleware('throttle:10,1');
 
 // Write endpoints (unauthenticated, spam-prone): 10 req/min + CAPTCHA when TURNSTILE_SECRET_KEY is set
 Route::middleware('throttle:10,1')->group(function () {
