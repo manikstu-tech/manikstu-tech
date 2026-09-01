@@ -6,6 +6,10 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Auth\Events\Verified;
 
 class CustomerAuthController extends Controller
 {
@@ -55,5 +59,76 @@ class CustomerAuthController extends Controller
     public function me(Request $request): JsonResponse
     {
         return response()->json(['data' => $request->user()]);
+    }
+
+    public function forgotPassword(Request $request): JsonResponse
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $status = Password::broker('customers')->sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? response()->json(['message' => __($status)])
+            : response()->json(['message' => __($status)], 400);
+    }
+
+    public function resetPassword(Request $request): JsonResponse
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $status = Password::broker('customers')->reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($customer, $password) {
+                $customer->forceFill([
+                    'password' => Hash::make($password),
+                    'remember_token' => Str::random(60),
+                ])->save();
+
+                event(new PasswordReset($customer));
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? response()->json(['message' => __($status)])
+            : response()->json(['message' => __($status)], 400);
+    }
+
+    public function verifyEmail(Request $request): JsonResponse
+    {
+        if ($request->user()->hasVerifiedEmail()) {
+            return response()->json(['message' => 'Email already verified.']);
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+
+        return response()->json(['message' => 'Verification link sent.']);
+    }
+
+    public function confirmEmail(Request $request): JsonResponse
+    {
+        $request->validate([
+            'id' => 'required|integer',
+            'hash' => 'required|string',
+        ]);
+
+        $customer = Customer::findOrFail($request->id);
+
+        if (! hash_equals((string) sha1($customer->getEmailForVerification()), (string) $request->hash)) {
+            return response()->json(['message' => 'Invalid verification link.'], 403);
+        }
+
+        if ($customer->hasVerifiedEmail()) {
+            return response()->json(['message' => 'Email already verified.']);
+        }
+
+        $customer->markEmailAsVerified();
+
+        return response()->json(['message' => 'Email verified successfully.']);
     }
 }

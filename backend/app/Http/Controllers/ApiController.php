@@ -377,7 +377,7 @@ class ApiController extends Controller
         }
 
         $order = Order::create([
-            'order_number' => 'ORD-' . strtoupper(uniqid()),
+            'order_number' => 'ORD-' . strtoupper(bin2hex(random_bytes(8))),
             'total' => $total,
             'status' => 'pending',
             'payment_status' => 'pending',

@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\PasswordResetController;
 
 Route::get('/', fn() => redirect()->route('admin.login'));
 
@@ -28,7 +29,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    Route::middleware(['auth'])->group(function () {
+    Route::get('/forgot-password', [PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
+
+    Route::middleware(['auth', 'throttle:120,1'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('products', ProductController::class)->except('destroy');
