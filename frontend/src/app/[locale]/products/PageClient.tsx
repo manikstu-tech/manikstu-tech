@@ -19,7 +19,7 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import { getProducts } from "@/lib/api";
-import { trustFeatures, type Product } from "./data";
+import { trustFeatures, FALLBACK_PRODUCTS, type Product } from "./data";
 import {
   readCart,
   writeCart,
@@ -32,18 +32,25 @@ import {
 } from "./cart";
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Start with the baked-in catalogue so pages render instantly and the site
+  // works even when there's no shared DB yet. If the backend returns products
+  // (admin panel populated), those take precedence — admin remains the source
+  // of truth whenever it has data.
+  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
+  const [loading, setLoading] = useState(false);
   const t = useTranslations("Products");
   const [cart, setCart] = useState<CartMap>({});
 
   useEffect(() => {
     getProducts(1, 50)
       .then((res) => {
-        setProducts(Array.isArray(res.data) ? res.data : []);
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          setProducts(res.data);
+        }
       })
-      .catch(() => setProducts([]))
-      .finally(() => setLoading(false));
+      .catch(() => {
+        /* keep FALLBACK_PRODUCTS when the API isn't reachable */
+      });
   }, []);
 
   // Hydrate cart from localStorage on mount, and subscribe to same/other-tab changes.

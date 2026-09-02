@@ -23,6 +23,7 @@ import {
 import { getProducts, getProductBySlug } from "@/lib/api";
 import {
   trustFeatures,
+  FALLBACK_PRODUCTS,
   type Product,
   type Review,
   type Question,
@@ -74,9 +75,14 @@ export default function ProductDetailPage() {
   const router = useRouter();
   const slug = params?.slug ?? "";
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Hydrate from the baked-in catalogue so the page renders immediately;
+  // API results override once they arrive. Detail page stays useful even
+  // when the backend isn't running.
+  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
+  const [product, setProduct] = useState<Product | null>(
+    FALLBACK_PRODUCTS.find((p) => p.slug === slug) ?? null
+  );
+  const [loading, setLoading] = useState(false);
   const [qty, setQty] = useState(1);
   const [activeIdx, setActiveIdx] = useState(0);
   // Bumps whenever autoplay ticks or the user clicks a thumb, so the interval
@@ -192,11 +198,10 @@ export default function ProductDetailPage() {
     }, 1600);
   };
 
-  // Fetch the product by slug (single source of truth: backend admin panel).
-  // Also fetch the full listing so we can compute related products.
+  // Fetch product + full listing from the backend. Admin panel takes
+  // precedence when it has data; otherwise we keep the baked-in catalogue.
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
     Promise.all([
       slug
         ? getProductBySlug(slug).catch(() => null)
@@ -204,14 +209,14 @@ export default function ProductDetailPage() {
       getProducts(1, 50).catch(() => null),
     ]).then(([detailRes, listRes]) => {
       if (cancelled) return;
-      // Detail endpoint returns { data: {...} }, list returns { data: [...] }
       const detail: Product | null =
         detailRes && (detailRes.data as Product | undefined)
           ? (detailRes.data as Product)
           : null;
       const list: Product[] = Array.isArray(listRes?.data) ? listRes.data : [];
-      setProduct(detail);
-      setProducts(list);
+      // Override defaults only when the API actually returned something.
+      if (detail) setProduct(detail);
+      if (list.length > 0) setProducts(list);
       setLoading(false);
     });
     return () => {
