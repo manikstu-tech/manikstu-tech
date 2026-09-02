@@ -161,29 +161,43 @@ export default async function HomePage() {
       date: "Feb 25, 2024",
       category: tBlogCategories("featured"),
       categoryColor: "bg-manikstu-green",
-      title: t("featuredIn"),
-      image: "/1.png",
+      title:
+        'What is the "Goat Bank" PM Modi spoke today in his "Mann ki Baat" address?',
+      excerpt:
+        'Prime Minister Narendra Modi lauded an Odisha couple\'s innovative "Goat Bank" initiative in his Mann Ki Baat address.',
+      image: "/pm-modi-mann-ki-baat.png",
+      imageFit: "cover",
     },
     {
-      date: "Jan 14, 2024",
+      date: "Jul 25, 2020",
       category: tBlogCategories("event"),
       categoryColor: "bg-manikstu-red",
-      title: t("featuredIn"), // Use same for now
-      image: "/2.png",
+      title: "CEO Manikstu Agro received Emerging Women Entrepreneur Award.",
+      excerpt:
+        "Jayanti Mahapatra, CEO Manikstu Agro received Emerging Women Entrepreneur Award at KIIT Technology Business Incubator.",
+      image: "/women-entrepreneur-award.jpg",
+      imageFit: "cover",
     },
     {
-      date: "Dec 15, 2023",
+      date: "May 08, 2026",
       category: tBlogCategories("press"),
       categoryColor: "bg-manikstu-gold",
-      title: t("featuredIn"), // Use same for now
-      image: "/3.png",
+      title: "Initiative to Promote Scientific Goat Farming in the Dhamtari District",
+      excerpt:
+        "Goat Farming Center to be Established at Bhatgaon; To Be Developed as a Modern Research-cum-Integrated Breeding Center",
+      image: "/5866_press_release.jpeg",
+      imageFit: "cover",
     },
     {
-      date: "Mar 08, 2024",
+      date: "May 14, 2026",
       category: tBlogCategories("media"),
       categoryColor: "bg-saura-red",
-      title: t("featuredIn"), // Use same for now
-      image: "/4.png",
+      title:
+        "Visit of Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India at Raipur Office",
+      excerpt:
+        "Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India visited the Manikstu Agro Raipur Office.",
+      image: "/minister-visit-raipur.jpg",
+      imageFit: "cover",
     },
   ];
 
@@ -973,21 +987,29 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {newsItems.map((item) => (
+              {newsItems.map((item, idx) => (
                 <Link
-                  key={item.title}
+                  key={`${item.title}-${idx}`}
                   href="/blog"
-                  className="group rounded-xl bg-white shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                  className="group flex flex-col rounded-xl border border-light-grey bg-white shadow-sm overflow-hidden hover:shadow-md transition-all dark:border-gray-800 dark:bg-gray-800"
                 >
                   {/* Image container */}
-                  <div className="relative flex h-40 w-full items-center justify-center overflow-hidden bg-manikstu-cream p-3">
+                  <div
+                    className={`relative flex h-40 w-full items-center justify-center overflow-hidden bg-manikstu-cream ${
+                      item.imageFit === "cover" ? "p-0" : "p-3"
+                    }`}
+                  >
                     {item.image ? (
                       <Image
                         src={item.image}
                         alt={item.title}
                         width={400}
                         height={300}
-                        className="max-h-full max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        className={
+                          item.imageFit === "cover"
+                            ? "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            : "max-h-full max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        }
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -1000,14 +1022,19 @@ export default async function HomePage() {
                       {item.category}
                     </span>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 flex flex-col flex-1">
                     <p className="flex items-center gap-1 text-xs text-grey">
                       <Calendar className="h-3 w-3" /> {item.date}
                     </p>
                     <h3 className="mt-2 text-sm font-semibold text-charcoal line-clamp-2 group-hover:text-manikstu-green transition-colors">
                       {item.title}
                     </h3>
-                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-manikstu-green">
+                    {item.excerpt && (
+                      <p className="mt-1.5 text-xs text-grey line-clamp-2">
+                        {item.excerpt}
+                      </p>
+                    )}
+                    <span className="mt-auto pt-3 inline-flex items-center gap-1 text-xs font-medium text-manikstu-green">
                       {tCommon("readMore")} <ArrowRight className="h-3 w-3" />
                     </span>
                   </div>
