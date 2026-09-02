@@ -71,7 +71,7 @@ export default async function HomePage() {
   ];
 
   const stats = [
-    { value: "70,000+", label: t("stat1Label"), icon: Users, image: "/patterns/impact-panel-1.png" },
+    { value: "25,000+", label: t("stat1Label"), icon: Users, image: "/patterns/impact-panel-1.png" },
     { value: "10,000+", label: t("stat2Label"), icon: MapPin, image: "/patterns/impact-panel-2.png" },
     { value: "7,00,000+", label: t("stat3Label"), icon: Sprout, image: "/patterns/impact-panel-3.png" },
     { value: "10+", label: t("stat4Label"), icon: Shield, image: "/patterns/impact-panel-4.png" },
@@ -341,8 +341,14 @@ export default async function HomePage() {
                 {/* Floating card — safe inside bottom-left on mobile, floating on desktop */}
                 <div className="absolute bottom-3 left-3 sm:-bottom-6 sm:-left-4 md:-left-8 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white p-2 sm:p-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="flex h-7 w-7 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                      <FileText className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
+                    <div className="relative h-8 w-8 sm:h-11 sm:w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-manikstu-cream shadow-sm">
+                      <Image
+                        src="/pm-modi-mann-ki-baat.png"
+                        alt="PM Narendra Modi — Mann Ki Baat"
+                        fill
+                        sizes="44px"
+                        className="object-cover object-top"
+                      />
                     </div>
                     <p className="text-[10px] sm:text-xs leading-tight text-charcoal max-w-[145px] sm:max-w-[180px] font-medium">
                       {t("featuredIn")}
@@ -751,14 +757,14 @@ export default async function HomePage() {
 
         {/* Mobile App */}
         <section className="relative bg-white overflow-hidden">
-          {/* Left mandala background — moved upward behind phone on mobile, left-aligned on desktop */}
+          {/* Top-left corner mandala */}
           <Image
-            src="/patterns/mobile-app-mandala.png"
+            src="/patterns/mandala-corner-top.png"
             alt=""
             aria-hidden
-            width={1300}
-            height={1300}
-            className="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 top-12 sm:top-16 lg:left-[4%] lg:top-[46%] lg:translate-x-0 lg:-translate-y-1/2 h-[420px] sm:h-[480px] lg:h-[550px] w-auto max-w-none opacity-[0.20]"
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.14] sm:opacity-[0.18]"
           />
 
           <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
