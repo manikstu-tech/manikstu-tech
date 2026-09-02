@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
 import { getSettings, getFooter } from "@/lib/api";
 import type { FooterLink } from "@/types";
 
@@ -75,7 +75,7 @@ export default function Footer() {
               {settings.brand_tagline || t("brandTagline")}
             </p>
             <div className="mt-4 flex gap-3">
-              {[Facebook, Instagram, Linkedin, Twitter, Youtube].map((Icon, i) => (
+              {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
