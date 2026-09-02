@@ -712,40 +712,25 @@ export default async function HomePage() {
               className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-28 bg-gradient-to-l from-manikstu-cream dark:from-gray-800 to-transparent z-10"
             />
 
-            {/* Track 1 */}
+            {/* Single continuous marquee — every partner logo in one line */}
             <div className="flex gap-4 animate-marquee py-1.5">
-              {[...allPartnersRow1, ...allPartnersRow1, ...allPartnersRow1].map((partner, idx) => (
-                <div
-                  key={`${partner.name}-${idx}`}
-                  className="partner-card flex h-16 w-32 sm:h-18 sm:w-36 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
-                >
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    width={110}
-                    height={45}
-                    className="max-h-10 w-auto max-w-[100px] object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Track 2 (Reverse) */}
-            <div className="mt-3 flex gap-4 animate-marquee-reverse py-1.5">
-              {[...allPartnersRow2, ...allPartnersRow2, ...allPartnersRow2].map((partner, idx) => (
-                <div
-                  key={`${partner.name}-${idx}`}
-                  className="partner-card flex h-16 w-32 sm:h-18 sm:w-36 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
-                >
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    width={110}
-                    height={45}
-                    className="max-h-10 w-auto max-w-[100px] object-contain"
-                  />
-                </div>
-              ))}
+              {(() => {
+                const all = [...allPartnersRow1, ...allPartnersRow2];
+                return [...all, ...all, ...all].map((partner, idx) => (
+                  <div
+                    key={`${partner.name}-${idx}`}
+                    className="partner-card flex h-24 w-44 sm:h-28 sm:w-52 md:h-32 md:w-56 items-center justify-center rounded-xl border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
+                  >
+                    <Image
+                      src={partner.image}
+                      alt={partner.name}
+                      width={220}
+                      height={90}
+                      className="max-h-16 sm:max-h-20 md:max-h-24 w-auto max-w-full object-contain"
+                    />
+                  </div>
+                ));
+              })()}
             </div>
           </div>
         </section>
