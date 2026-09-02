@@ -90,7 +90,7 @@ export default function WhatsAppButton() {
           </div>
 
           {/* Body */}
-          <div className="min-h-[190px] bg-[#E6DDD4] px-4 py-4">
+          <div className="min-h-[280px] bg-[#E6DDD4] px-4 py-4">
             <div className="max-w-[80%] rounded-xl rounded-tl-sm bg-white px-3.5 py-2.5 shadow-sm">
               <p className="text-xs font-semibold text-[#3AAE60]">Manikstu Agro</p>
               <p className="mt-1 text-sm text-gray-800">Hi there 👋</p>
