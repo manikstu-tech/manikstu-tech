@@ -54,7 +54,7 @@ export default function PartnerTypes({ partners: propPartners }: { partners?: Pa
 
   const partners = propPartners?.length ? propPartners : fallbackPartners;
   return (
-    <section className="relative section-padding bg-manikstu-cream overflow-hidden">
+    <section className="relative section-padding !pt-4 sm:!pt-12 md:!pt-16 bg-manikstu-cream overflow-hidden">
       {/* Top tribal-floral border */}
       <div
         aria-hidden

@@ -365,7 +365,7 @@ export default async function ServicesPage() {
         </PageHero>
 
         {/* Service categories */}
-        <section id="what-we-offer" className="section-padding bg-white scroll-mt-6">
+        <section id="what-we-offer" className="section-padding !pt-4 sm:!pt-12 md:!pt-16 bg-white scroll-mt-6">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               {/* Ornamental pill heading */}
