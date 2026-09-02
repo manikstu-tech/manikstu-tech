@@ -150,7 +150,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
             return (
               <div
                 key={program.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-5 pb-20 transition-shadow hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
 
                 {/* Bottom tribal art */}

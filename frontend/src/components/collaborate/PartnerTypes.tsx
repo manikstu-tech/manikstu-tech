@@ -141,7 +141,7 @@ export default function PartnerTypes({ partners: propPartners }: { partners?: Pa
             return (
               <div
                 key={partner.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-6 transition-shadow hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Inner dashed border */}
                 <div

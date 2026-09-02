@@ -83,7 +83,7 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
             return (
               <div
                 key={item.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-5 pb-32 sm:pb-24 transition-shadow hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
 
                 {/* Bottom tribal art */}
