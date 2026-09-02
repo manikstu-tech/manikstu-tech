@@ -77,9 +77,9 @@ export default function Footer() {
             <div className="mt-4 flex gap-3">
               {[
                 { Icon: Facebook, label: "Facebook", href: settings.facebook || "https://www.facebook.com/ManikstuAgroPrivateLimited?mibextid=ZbWKwL" },
-                { Icon: Instagram, label: "Instagram", href: settings.instagram || "#" },
-                { Icon: Linkedin, label: "LinkedIn", href: settings.linkedin || "#" },
-                { Icon: Youtube, label: "YouTube", href: settings.youtube || "#" },
+                { Icon: Instagram, label: "Instagram", href: settings.instagram || "https://www.instagram.com/manikstuagro?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D" },
+                { Icon: Linkedin, label: "LinkedIn", href: settings.linkedin || "https://www.linkedin.com/company/manikstu-agro-private-limited/posts/?feedView=all" },
+                { Icon: Youtube, label: "YouTube", href: settings.youtube || "https://www.youtube.com/@manikstuagro5847" },
               ].map(({ Icon, label, href }, i) => {
                 const external = href !== "#";
                 return (
