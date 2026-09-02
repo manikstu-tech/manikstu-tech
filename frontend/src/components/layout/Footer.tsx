@@ -75,15 +75,25 @@ export default function Footer() {
               {settings.brand_tagline || t("brandTagline")}
             </p>
             <div className="mt-4 flex gap-3">
-              {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              {[
+                { Icon: Facebook, label: "Facebook", href: settings.facebook || "https://www.facebook.com/ManikstuAgroPrivateLimited?mibextid=ZbWKwL" },
+                { Icon: Instagram, label: "Instagram", href: settings.instagram || "#" },
+                { Icon: Linkedin, label: "LinkedIn", href: settings.linkedin || "#" },
+                { Icon: Youtube, label: "YouTube", href: settings.youtube || "#" },
+              ].map(({ Icon, label, href }, i) => {
+                const external = href !== "#";
+                return (
+                  <a
+                    key={i}
+                    href={href}
+                    aria-label={label}
+                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
