@@ -3,6 +3,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import HeroSlider from "@/components/home/HeroSlider";
+import WatchStoryButton from "@/components/home/WatchStoryButton";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
 import PageHero from "@/components/layout/PageHero";
 import JsonLd from "@/components/seo/JsonLd";
@@ -307,21 +309,19 @@ export default async function HomePage() {
 
               {/* Right content */}
               <div className="relative">
-                {/* Main photo placeholder */}
+                {/* Main photo */}
                 <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Users className="h-24 w-24 text-manikstu-green/30" />
-                  </div>
-                  {/* Watch Our Story overlay — top-right & compact on mobile, bottom-right on desktop */}
-                  <div className="absolute top-3 right-3 sm:top-auto sm:bottom-4 sm:right-4 flex items-center gap-2 sm:gap-3 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white/90 backdrop-blur-sm px-2.5 py-1.5 sm:px-4 sm:py-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
-                    <div className="flex h-7 w-7 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-manikstu-green text-white shadow-xs">
-                      <Play className="h-3 w-3 sm:h-4 sm:w-4 ml-0.5 fill-current" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] sm:text-xs font-semibold leading-tight text-charcoal">{t("watchOurStory").split("\n")[0]}</p>
-                      <p className="text-[9px] sm:text-xs leading-tight text-grey">{t("watchOurStory").split("\n")[1]}</p>
-                    </div>
-                  </div>
+                  <HeroSlider
+                    images={["/hero-slide-1.png"]}
+                    alt="Manikstu Agro — goat farming ecosystem"
+                    intervalMs={4000}
+                  />
+                  {/* Watch Our Story — opens a YouTube popup */}
+                  <WatchStoryButton
+                    videoId="eurGt7tXTFw"
+                    topLabel={t("watchOurStory").split("\n")[0]}
+                    bottomLabel={t("watchOurStory").split("\n")[1]}
+                  />
                 </div>
 
                 {/* Floating card — safe inside bottom-left on mobile, floating on desktop */}
