@@ -75,13 +75,17 @@ export default function Footer() {
               {settings.brand_tagline || t("brandTagline")}
             </p>
             <div className="mt-4 flex gap-3">
-              {[
-                { Icon: Facebook, label: "Facebook", href: settings.facebook || "https://www.facebook.com/ManikstuAgroPrivateLimited?mibextid=ZbWKwL" },
-                { Icon: Instagram, label: "Instagram", href: settings.instagram || "https://www.instagram.com/manikstuagro?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D" },
-                { Icon: Linkedin, label: "LinkedIn", href: settings.linkedin || "https://www.linkedin.com/company/manikstu-agro-private-limited/posts/?feedView=all" },
-                { Icon: Youtube, label: "YouTube", href: settings.youtube || "https://www.youtube.com/@manikstuagro5847" },
-              ].map(({ Icon, label, href }, i) => {
-                const external = href !== "#";
+              {(() => {
+                const pick = (v?: string, fallback = "") =>
+                  v && v.startsWith("http") ? v : fallback;
+                return [
+                  { Icon: Facebook, label: "Facebook", href: pick(settings.facebook, "https://www.facebook.com/ManikstuAgroPrivateLimited?mibextid=ZbWKwL") },
+                  { Icon: Instagram, label: "Instagram", href: pick(settings.instagram, "https://www.instagram.com/manikstuagro?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D") },
+                  { Icon: Linkedin, label: "LinkedIn", href: pick(settings.linkedin, "https://www.linkedin.com/company/manikstu-agro-private-limited/posts/?feedView=all") },
+                  { Icon: Youtube, label: "YouTube", href: pick(settings.youtube, "https://www.youtube.com/@manikstuagro5847") },
+                ];
+              })().map(({ Icon, label, href }, i) => {
+                const external = href.startsWith("http");
                 return (
                   <a
                     key={i}
