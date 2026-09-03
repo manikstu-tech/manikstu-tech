@@ -58,6 +58,24 @@
         .topbar-bell { position: relative; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: none; background: transparent; cursor: pointer; }
         .topbar-bell svg { width: 20px; height: 20px; color: var(--grey); }
         .bell-badge { position: absolute; top: 5px; right: 5px; min-width: 16px; height: 16px; padding: 0 3px; background: var(--red); color: #fff; font-size: 9px; font-weight: 700; border-radius: 9px; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+        .bell-wrap { position: relative; }
+        .notif-panel { position: absolute; top: calc(100% + 10px); right: 0; width: 360px; max-width: calc(100vw - 32px); background: #fff; border: 1px solid #EDE9E1; border-radius: 14px; box-shadow: 0 12px 34px rgba(26,26,26,0.16); z-index: 60; overflow: hidden; }
+        .notif-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid #F0ECE2; font-size: 14px; font-weight: 700; font-family: 'Playfair Display', serif; }
+        .notif-clear { background: none; border: none; font-size: 12px; font-weight: 600; color: var(--green); cursor: pointer; font-family: inherit; }
+        .notif-clear:hover { color: var(--leaf); }
+        .notif-list { max-height: 340px; overflow-y: auto; }
+        .notif-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 18px; border-bottom: 1px solid #F5F2EC; position: relative; }
+        .notif-item:last-child { border-bottom: none; }
+        .notif-item.unread { background: #FBF8F1; }
+        .notif-ico { width: 34px; height: 34px; border-radius: 9px; background: rgba(74,140,63,0.12); color: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .notif-ico svg { width: 16px; height: 16px; }
+        .notif-body { flex: 1; min-width: 0; }
+        .notif-title { font-size: 13px; font-weight: 700; color: var(--charcoal); }
+        .notif-text { font-size: 12px; color: #7A7A7A; margin-top: 2px; }
+        .notif-time { font-size: 11px; color: #A5A5A5; margin-top: 4px; }
+        .notif-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 6px; }
+        .notif-foot { display: block; text-align: center; padding: 12px; font-size: 12.5px; font-weight: 600; color: var(--green); border-top: 1px solid #F0ECE2; background: #FBFAF7; }
+        .notif-foot:hover { color: var(--leaf); }
         .topbar-user { display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 8px; }
         .topbar-user-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--leaf); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 600; flex-shrink: 0; }
         .topbar-user-name { font-size: 13px; font-weight: 600; color: var(--charcoal); }
@@ -144,10 +162,49 @@
                     </div>
                 </div>
                 <div class="topbar-right">
-                    <button class="topbar-bell" aria-label="Notifications">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-                        @isset($stats)@if(($stats['new'] ?? 0) > 0)<span class="bell-badge">{{ $stats['new'] > 9 ? '9+' : $stats['new'] }}</span>@endif @endisset
-                    </button>
+                    @php
+                        $tcNotifs = [
+                            ['icon' => 'order', 'title' => 'New order placed', 'text' => 'Ramesh Kumar ordered Goat Feed - 100 KG', 'time' => '5 min ago', 'unread' => true],
+                            ['icon' => 'alert', 'title' => 'Complaint escalated', 'text' => 'CMP-10245 marked High priority', 'time' => '22 min ago', 'unread' => true],
+                            ['icon' => 'lead', 'title' => 'Franchise lead updated', 'text' => 'Suresh Kumar moved to Qualified', 'time' => '1 hr ago', 'unread' => true],
+                            ['icon' => 'delivery', 'title' => 'Delivery in transit', 'text' => 'Order MS-2026-00476 is on the way', 'time' => '3 hr ago', 'unread' => false],
+                            ['icon' => 'call', 'title' => 'Callback due', 'text' => 'Mohan Nayak — bulk feed pricing', 'time' => 'Today', 'unread' => false],
+                        ];
+                        $tcUnread = count(array_filter($tcNotifs, fn ($n) => $n['unread']));
+                        $tcIcons = [
+                            'order'    => '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+                            'alert'    => '<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+                            'lead'     => '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>',
+                            'delivery' => '<rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
+                            'call'     => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+                        ];
+                    @endphp
+                    <div class="bell-wrap">
+                        <button class="topbar-bell" aria-label="Notifications" aria-expanded="false" onclick="toggleNotif(event)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                            @if($tcUnread > 0)<span class="bell-badge" id="bellBadge">{{ $tcUnread > 9 ? '9+' : $tcUnread }}</span>@endif
+                        </button>
+                        <div class="notif-panel" id="notifPanel" hidden>
+                            <div class="notif-head">
+                                <span>Notifications</span>
+                                @if($tcUnread > 0)<button type="button" class="notif-clear" onclick="markAllRead()">Mark all read</button>@endif
+                            </div>
+                            <div class="notif-list">
+                                @foreach($tcNotifs as $n)
+                                    <div class="notif-item {{ $n['unread'] ? 'unread' : '' }}">
+                                        <span class="notif-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $tcIcons[$n['icon']] ?? '' !!}</svg></span>
+                                        <div class="notif-body">
+                                            <p class="notif-title">{{ $n['title'] }}</p>
+                                            <p class="notif-text">{{ $n['text'] }}</p>
+                                            <p class="notif-time">{{ $n['time'] }}</p>
+                                        </div>
+                                        @if($n['unread'])<span class="notif-dot"></span>@endif
+                                    </div>
+                                @endforeach
+                            </div>
+                            <a href="#" class="notif-foot" onclick="return false;">View all notifications</a>
+                        </div>
+                    </div>
                     <div class="topbar-user">
                         <div class="topbar-user-avatar">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div>
                         <div>
@@ -184,6 +241,33 @@
                 document.getElementById('appShell').classList.add('sidebar-collapsed');
             }
         } catch (e) {}
+
+        function toggleNotif(e) {
+            e.stopPropagation();
+            var panel = document.getElementById('notifPanel');
+            var btn = e.currentTarget;
+            var open = panel.hidden;
+            panel.hidden = !open;
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        function markAllRead() {
+            document.querySelectorAll('.notif-item.unread').forEach(function (i) { i.classList.remove('unread'); });
+            document.querySelectorAll('.notif-dot').forEach(function (d) { d.remove(); });
+            var badge = document.getElementById('bellBadge');
+            if (badge) badge.remove();
+            var clr = document.querySelector('.notif-clear');
+            if (clr) clr.remove();
+        }
+        // Close the notification panel when clicking outside it.
+        document.addEventListener('click', function (e) {
+            var panel = document.getElementById('notifPanel');
+            if (!panel || panel.hidden) return;
+            if (!e.target.closest('.bell-wrap')) {
+                panel.hidden = true;
+                var bell = document.querySelector('.topbar-bell');
+                if (bell) bell.setAttribute('aria-expanded', 'false');
+            }
+        });
     </script>
 </body>
 </html>

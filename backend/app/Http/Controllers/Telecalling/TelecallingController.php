@@ -47,6 +47,29 @@ class TelecallingController extends Controller
             return view('telecalling.orders', ['allOrders' => $all, 'orders' => $orders]);
         }
 
+        if ($key === 'reports') {
+            return view('telecalling.reports', $this->reportsData());
+        }
+
+        if ($key === 'settings') {
+            $user = $request->user();
+
+            return view('telecalling.settings', [
+                'notifications' => [
+                    ['label' => 'New order alerts', 'desc' => 'Get notified when a new order is placed', 'on' => true],
+                    ['label' => 'Complaint escalations', 'desc' => 'Get notified when a complaint is marked high priority', 'on' => true],
+                    ['label' => 'Franchise lead updates', 'desc' => 'Get notified when a lead changes stage', 'on' => true],
+                    ['label' => 'Daily summary email', 'desc' => 'Receive a daily digest at 8:00 AM', 'on' => false],
+                ],
+                'team' => [
+                    ['name' => 'Priya Singh', 'role' => 'Telecaller', 'region' => 'Mayurbhanj, Odisha', 'status' => 'Active'],
+                    ['name' => 'Anil Mohapatra', 'role' => 'Telecaller', 'region' => 'Cuttack, Odisha', 'status' => 'Active'],
+                    ['name' => 'Sunita Rao', 'role' => 'Team Lead', 'region' => 'Bhubaneswar, Odisha', 'status' => 'Active'],
+                    ['name' => 'Rakesh Sahoo', 'role' => 'Telecaller', 'region' => 'Puri, Odisha', 'status' => 'Inactive'],
+                ],
+            ]);
+        }
+
         if ($key === 'franchise') {
             $all = $this->franchiseList();
             $status = $request->query('status');
@@ -156,6 +179,57 @@ class TelecallingController extends Controller
             ['id' => 'CMP-10243', 'farmer' => 'Ganga Majhi', 'order' => 'MS-2026-00473', 'issue' => 'Damaged Packaging', 'priority' => 'Low', 'status' => 'Resolved', 'date' => '30 Aug 2026, 02:15 PM', 'report' => 'The outer packaging was torn and the mineral mixture had spilled a little.'],
             ['id' => 'CMP-10242', 'farmer' => 'Dilip Marndi', 'order' => 'MS-2026-00468', 'issue' => 'Delayed Delivery', 'priority' => 'Medium', 'status' => 'Resolved', 'date' => '29 Aug 2026, 11:40 AM', 'report' => 'My order took almost a week to reach me, much later than promised.'],
             ['id' => 'CMP-10241', 'farmer' => 'Anita Hembram', 'order' => 'MS-2026-00460', 'issue' => 'Billing Mismatch', 'priority' => 'High', 'status' => 'Open', 'date' => '28 Aug 2026, 04:50 PM', 'report' => 'I was charged more than the price shown when I placed the order.'],
+        ];
+    }
+
+    /** Persist the telecaller's profile from the Settings page. */
+    public function updateProfile(Request $request)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:120'],
+            'phone' => ['nullable', 'string', 'max:30'],
+            'region' => ['nullable', 'string', 'max:120'],
+        ]);
+
+        $request->user()->update($data);
+
+        return redirect()->route('telecalling.settings')->with('status', 'Profile updated successfully.');
+    }
+
+    /** Reports dashboard data (from the telecalling design). */
+    private function reportsData(): array
+    {
+        return [
+            'kpis' => [
+                ['label' => 'Orders (6 mo)', 'value' => '613', 'delta' => '↑ 14% vs prior period', 'up' => true, 'icon' => 'orders', 'tint' => 'blue'],
+                ['label' => 'Revenue (6 mo)', 'value' => '₹18.4L', 'delta' => '↑ 21% vs prior period', 'up' => true, 'icon' => 'revenue', 'tint' => 'green'],
+                ['label' => 'Avg. Resolution Time', 'value' => '1.8 days', 'delta' => '↓ 0.4 days improved', 'up' => true, 'icon' => 'time', 'tint' => 'gold'],
+                ['label' => 'Franchise Conversion', 'value' => '24%', 'delta' => '↑ 3 pts vs prior period', 'up' => true, 'icon' => 'franchise', 'tint' => 'purple'],
+            ],
+            'ordersPerMonth' => [
+                ['month' => 'Apr', 'value' => 88],
+                ['month' => 'May', 'value' => 102],
+                ['month' => 'Jun', 'value' => 110],
+                ['month' => 'Jul', 'value' => 95],
+                ['month' => 'Aug', 'value' => 118],
+                ['month' => 'Sep', 'value' => 100],
+            ],
+            'statusBreakdown' => [
+                'total' => 128,
+                'items' => [
+                    ['label' => 'Delivered', 'count' => 72, 'pct' => 56, 'color' => '#4A8C3F'],
+                    ['label' => 'In Transit', 'count' => 28, 'pct' => 22, 'color' => '#3E6FD0'],
+                    ['label' => 'Pending', 'count' => 14, 'pct' => 11, 'color' => '#C4952A'],
+                    ['label' => 'Cancelled', 'count' => 8, 'pct' => 6, 'color' => '#D4342C'],
+                ],
+            ],
+            'topProducts' => [
+                ['product' => 'Goat Feed - 50 KG', 'units' => 350, 'revenue' => 420000],
+                ['product' => 'Goat Feed - 100 KG', 'units' => 280, 'revenue' => 672000],
+                ['product' => 'Goat Medicine - Dewormer', 'units' => 210, 'revenue' => 37800],
+                ['product' => 'Mineral Mixture', 'units' => 168, 'revenue' => 159600],
+                ['product' => 'Vaccination Kit', 'units' => 140, 'revenue' => 245000],
+            ],
         ];
     }
 
