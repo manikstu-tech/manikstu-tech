@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { addToCart as addToCartStore } from "../cart";
+import { addToCart as addToCartStore, openCartDrawer } from "../cart";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
@@ -92,8 +92,7 @@ export default function ProductDetailPage() {
   const handleAddToCart = () => {
     if (!product) return;
     addToCartStore(product.id, qty);
-    // Take the farmer to the cart on the listing page
-    router.push("/products#cart");
+    openCartDrawer();
   };
 
   // Write-a-review form state (client-only, no backend)
@@ -346,23 +345,27 @@ export default function ProductDetailPage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             {/* Left ΓÇö image + details */}
             <div className="relative">
-              <div className="relative aspect-square overflow-hidden rounded-3xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
+              <div className="relative aspect-square overflow-hidden rounded-3xl border border-light-grey/80 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
                 {activeImage ? (
-                  <Image
-                    key={`${activeImage}-${activeIdx}`}
-                    src={activeImage}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="animate-gallery-fade object-contain p-8"
-                  />
+                  <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
+                    <div className="relative h-full w-full">
+                      <Image
+                        key={`${activeImage}-${activeIdx}`}
+                        src={activeImage}
+                        alt={product.name}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="animate-gallery-fade object-contain"
+                      />
+                    </div>
+                  </div>
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <ShoppingBag className="h-24 w-24 text-manikstu-green/30" />
                   </div>
                 )}
 
-                {/* Slide indicator dots ΓÇö visible only when >1 image */}
+                {/* Slide indicator dots — visible only when >1 image */}
                 {gallery.length > 1 && (
                   <div className="absolute bottom-4 right-4 flex items-center gap-1.5">
                     {gallery.map((_, i) => (
@@ -388,7 +391,7 @@ export default function ProductDetailPage() {
                 )}
               </div>
 
-              {/* Image gallery thumbnails ΓÇö click to swap the main image */}
+              {/* Image gallery thumbnails — click to swap the main image */}
               {(() => {
                 // Always render 4 slots so the strip looks complete
                 const slots = Array.from({ length: 4 }, (_, i) => gallery[i] ?? null);
@@ -406,12 +409,12 @@ export default function ProductDetailPage() {
                           aria-label={`View image ${i + 1}`}
                           aria-pressed={isActive}
                           className={
-                            "relative aspect-square overflow-hidden rounded-xl border bg-manikstu-cream/60 transition-all duration-300 " +
+                            "relative aspect-square overflow-hidden rounded-xl border bg-white transition-all duration-300 dark:bg-gray-800 " +
                             (isPlaceholder
                               ? "cursor-default border-light-grey/60 opacity-70 dark:border-gray-700"
                               : isActive
                               ? "border-manikstu-green ring-2 ring-manikstu-green/40 shadow-sm"
-                              : "border-manikstu-gold/20 hover:border-manikstu-green/50 hover:shadow-sm")
+                              : "border-light-grey hover:border-manikstu-green/50 hover:shadow-sm dark:border-gray-700")
                           }
                         >
                           {src ? (
@@ -421,8 +424,8 @@ export default function ProductDetailPage() {
                               width={80}
                               height={80}
                               className={
-                                "absolute inset-0 h-full w-full object-contain p-2 transition-opacity duration-300 " +
-                                (isActive ? "opacity-100" : "opacity-90")
+                                "absolute inset-0 h-full w-full object-contain p-1.5 transition-opacity duration-300 " +
+                                (isActive ? "opacity-100" : "opacity-80 hover:opacity-100")
                               }
                             />
                           ) : (
@@ -491,7 +494,7 @@ export default function ProductDetailPage() {
               {/* Price */}
               <div className="mt-6 flex items-baseline gap-3">
                 <p className="font-heading text-3xl font-bold text-manikstu-green">
-                  Γé╣{Number(product.price).toLocaleString("en-IN")}
+                  ₹{Number(product.price).toLocaleString("en-IN")}
                 </p>
                 {product.size && (
                   <span className="text-sm text-grey dark:text-gray-300">
@@ -501,25 +504,25 @@ export default function ProductDetailPage() {
               </div>
 
               {/* Qty + Add to Cart + Buy Now */}
-              <div className="mt-6 w-fit max-w-full">
-                <div className="flex flex-wrap items-center gap-4">
-                  <div className="inline-flex items-center gap-1 rounded-full border border-manikstu-green/60 bg-white text-sm font-semibold text-manikstu-green dark:bg-gray-800">
+              <div className="mt-6 w-full sm:max-w-md">
+                <div className="flex items-center gap-2.5 sm:gap-4">
+                  <div className="inline-flex shrink-0 items-center gap-1 rounded-full border border-manikstu-green/60 bg-white text-sm font-semibold text-manikstu-green dark:bg-gray-800">
                     <button
                       type="button"
                       onClick={() => setQty((q) => Math.max(1, q - 1))}
                       aria-label="Decrease quantity"
-                      className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-manikstu-green/10"
+                      className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-manikstu-green/10"
                     >
                       <Minus className="h-4 w-4" />
                     </button>
-                    <span className="min-w-[1.5rem] text-center tabular-nums">
+                    <span className="min-w-[1.5rem] text-center tabular-nums font-bold">
                       {qty}
                     </span>
                     <button
                       type="button"
                       onClick={() => setQty((q) => q + 1)}
                       aria-label="Increase quantity"
-                      className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-manikstu-green/10"
+                      className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-manikstu-green/10"
                     >
                       <Plus className="h-4 w-4" />
                     </button>
@@ -528,21 +531,26 @@ export default function ProductDetailPage() {
                   <button
                     type="button"
                     onClick={handleAddToCart}
-                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-full bg-manikstu-green px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98]"
                   >
                     <ShoppingBag className="h-4 w-4" />
-                    Add {qty > 1 ? `${qty} ` : ""}to Cart
+                    <span>Add {qty > 1 ? `${qty} ` : ""}to Cart</span>
                   </button>
                 </div>
 
-                {/* Buy Now ΓÇö matches the width of the row above */}
-                <Link
-                  href="/contact"
-                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-red px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-saura-red focus:outline-none focus:ring-2 focus:ring-manikstu-red focus:ring-offset-2"
+                {/* Buy Now — spans full width of container */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!product) return;
+                    addToCartStore(product.id, qty);
+                    router.push("/products/checkout");
+                  }}
+                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-red px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-saura-red focus:outline-none focus:ring-2 focus:ring-manikstu-red focus:ring-offset-2 active:scale-[0.98]"
                 >
                   <ArrowRight className="h-4 w-4" />
-                  Buy Now
-                </Link>
+                  <span>Buy Now</span>
+                </button>
               </div>
 
               {/* Highlights */}

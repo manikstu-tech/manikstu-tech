@@ -160,19 +160,21 @@ export default function Footer() {
                 <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Phone className="h-3.5 w-3.5" />
                 </span>
-                {settings.phone}
+                <a href={`tel:${settings.phone.replace(/\s+/g, "")}`} className="hover:text-manikstu-green transition-colors">
+                  {settings.phone}
+                </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Mail className="h-3.5 w-3.5" />
                 </span>
-                <span>{settings.email_sales}<br /><span className="text-xs text-grey/70">{t("forSalesEnquiry")}</span></span>
+                <span><a href={`mailto:${settings.email_sales}`} className="hover:text-manikstu-green transition-colors">{settings.email_sales}</a><br /><span className="text-xs text-grey/70">{t("forSalesEnquiry")}</span></span>
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Send className="h-3.5 w-3.5" />
                 </span>
-                <span>{settings.email_info}<br /><span className="text-xs text-grey/70">{t("forOtherEnquiry")}</span></span>
+                <span><a href={`mailto:${settings.email_info}`} className="hover:text-manikstu-green transition-colors">{settings.email_info}</a><br /><span className="text-xs text-grey/70">{t("forOtherEnquiry")}</span></span>
               </li>
             </ul>
             <div className="mt-4 flex flex-col gap-2">

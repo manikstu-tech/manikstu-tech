@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import Image from "next/image";
-import { Menu, X, Phone, Moon, Sun } from "lucide-react";
+import { Menu, X, Phone, Moon, Sun, ShoppingBag } from "lucide-react";
 import { useThemeToggle } from "./ThemeProvider";
 import { getNavigation } from "@/lib/api";
+import { readCart, subscribeCart, openCartDrawer } from "@/app/[locale]/products/cart";
 import type { NavigationMenuItem } from "@/types";
 const fallbackLinks: NavigationMenuItem[] = [
   { id: 1, label: "Home", url: "/", parent_id: null, order: 1, is_active: true, target: "_self" },
@@ -21,9 +22,19 @@ const fallbackLinks: NavigationMenuItem[] = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>(fallbackLinks);
+  const [cartCount, setCartCount] = useState(0);
   const { toggle } = useThemeToggle();
   const pathname = usePathname() ?? "/";
   const t = useTranslations("Navigation");
+
+  useEffect(() => {
+    const update = (cart: Record<number, number>) => {
+      const total = Object.values(cart).reduce((sum, q) => sum + (Number(q) || 0), 0);
+      setCartCount(total);
+    };
+    update(readCart());
+    return subscribeCart(update);
+  }, []);
 
   useEffect(() => {
     getNavigation()
@@ -71,7 +82,20 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={openCartDrawer}
+            aria-label={`Open Cart (${cartCount} items)`}
+            className="relative flex items-center justify-center h-9 w-9 rounded-full text-charcoal dark:text-white hover:text-manikstu-green hover:bg-light-grey/60 dark:hover:bg-white/10 transition-colors"
+          >
+            <ShoppingBag className="h-5 w-5" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-manikstu-green px-1 text-[10px] font-bold text-white shadow-sm animate-in zoom-in duration-200">
+                {cartCount}
+              </span>
+            )}
+          </button>
           <button onClick={toggle} className="flex items-center justify-center h-9 w-9 rounded-full text-charcoal dark:text-white hover:text-manikstu-green hover:bg-manikstu-cream/60 dark:hover:bg-white/10 transition-colors" aria-label={t("toggleDarkMode")}>
             <Moon className="h-5 w-5 dark:hidden" />
             <Sun className="h-5 w-5 hidden dark:block" />

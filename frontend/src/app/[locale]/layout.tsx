@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import CartDrawer from "@/components/cart/CartDrawer";
 import JsonLd from "@/components/seo/JsonLd";
 import "../globals.css";
 
@@ -149,6 +150,7 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             {children}
+            <CartDrawer />
             <WhatsAppButton />
           </NextIntlClientProvider>
         </ThemeProvider>

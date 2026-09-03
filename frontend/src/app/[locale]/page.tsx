@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSlider from "@/components/home/HeroSlider";
+import GoatIcon from "@/components/icons/GoatIcon";
 import WatchStoryButton from "@/components/home/WatchStoryButton";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
 import PageHero from "@/components/layout/PageHero";
@@ -14,6 +15,7 @@ import {
   Play,
   FileText,
   Users,
+  Map,
   MapPin,
   Sprout,
   Shield,
@@ -73,8 +75,8 @@ export default async function HomePage() {
   const stats = [
     { value: "25,000+", label: t("stat1Label"), icon: Users, image: "/patterns/impact-panel-1.png" },
     { value: "10,000+", label: t("stat2Label"), icon: MapPin, image: "/patterns/impact-panel-2.png" },
-    { value: "7,00,000+", label: t("stat3Label"), icon: Sprout, image: "/patterns/impact-panel-3.png" },
-    { value: "10+", label: t("stat4Label"), icon: Shield, image: "/patterns/impact-panel-4.png" },
+    { value: "7,00,000+", label: t("stat3Label"), icon: GoatIcon, image: "/patterns/impact-panel-3.png" },
+    { value: "10+", label: t("stat4Label"), icon: Map, image: "/patterns/impact-panel-4.png" },
   ];
 
   const partnerCategories = [

@@ -28,6 +28,7 @@ import {
   setQty as setQtyStore,
   removeFromCart as removeFromCartStore,
   clearCart as clearCartStore,
+  openCartDrawer,
   type CartMap,
 } from "./cart";
 
@@ -72,7 +73,10 @@ export default function ProductsPage() {
     return () => clearTimeout(t);
   }, [cart]);
 
-  const addToCart = (id: number) => setCart(addToCartStore(id));
+  const addToCart = (id: number) => {
+    setCart(addToCartStore(id));
+    openCartDrawer();
+  };
   const decrement = (id: number) => {
     const cur = readCart();
     setCart(setQtyStore(id, (cur[id] ?? 0) - 1));
@@ -248,14 +252,14 @@ export default function ProductsPage() {
                 >
                   <div className="flex items-start gap-3 p-4">
                     {/* Product image tile */}
-                    <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-manikstu-cream">
+                    <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-light-grey/70 bg-white dark:border-gray-700 dark:bg-gray-700">
                       {product.image ? (
                         <Image
                           src={product.image}
                           alt={product.name}
                           width={96}
                           height={96}
-                          className="max-h-full max-w-full object-contain"
+                          className="h-full w-full object-contain p-1.5"
                         />
                       ) : (
                         <ShoppingBag className="h-8 w-8 text-manikstu-green/40" />
@@ -372,14 +376,14 @@ export default function ProductsPage() {
                         key={product.id}
                         className="flex items-center gap-3 px-5 py-3"
                       >
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-manikstu-cream">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-light-grey/70 bg-white dark:border-gray-700 dark:bg-gray-700">
                           {product.image ? (
                             <Image
                               src={product.image}
                               alt={product.name}
                               width={48}
                               height={48}
-                              className="max-h-full max-w-full object-contain"
+                              className="h-full w-full object-cover"
                             />
                           ) : (
                             <ShoppingBag className="h-5 w-5 text-manikstu-green/40" />
