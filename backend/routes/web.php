@@ -100,4 +100,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::prefix('telecalling')->name('telecalling.')->middleware(['auth', 'throttle:120,1', 'area:telecalling'])->group(function () {
     Route::get('/', fn() => redirect()->route('telecalling.dashboard'));
     Route::get('/dashboard', [TelecallingController::class, 'index'])->name('dashboard');
+
+    // Order tracking detail (register before the section catch so /orders stays the list).
+    Route::get('/orders/{id}', [TelecallingController::class, 'orderDetail'])->name('order.show');
+    Route::get('/complaints/{id}', [TelecallingController::class, 'complaintDetail'])->name('complaint.show');
+    Route::get('/franchise/{id}', [TelecallingController::class, 'franchiseDetail'])->name('franchise.show');
+
+    // Sidebar sections (placeholder pages for now; dashboard is the live one).
+    foreach (['farmers', 'orders', 'products', 'delivery', 'complaints', 'telecalling', 'franchise', 'reports', 'settings'] as $section) {
+        Route::get("/{$section}", [TelecallingController::class, 'section'])->name($section);
+    }
 });
