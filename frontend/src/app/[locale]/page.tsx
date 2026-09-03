@@ -654,9 +654,13 @@ export default async function HomePage() {
                 </Link>
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] shadow-sm border border-manikstu-gold/20">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Sprout className="h-24 w-24 text-manikstu-green/30" />
-                </div>
+                <Image
+                  src="/ajah-hero.png"
+                  alt="Project AJAH — Aajivika Jyoti Adhaarit Hastantaran"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
                 {/* Badge — compact in bottom-right corner on mobile, full pill on desktop */}
                 <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 rounded-lg sm:rounded-full bg-manikstu-green px-2.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-semibold text-white shadow-md max-w-[85%] sm:max-w-none text-right leading-tight z-10">
                   {t("ajahBadge")}

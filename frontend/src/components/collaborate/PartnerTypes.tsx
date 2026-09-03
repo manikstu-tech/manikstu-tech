@@ -136,17 +136,28 @@ export default function PartnerTypes({ partners: propPartners }: { partners?: Pa
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {partners.map((partner) => {
+          {partners.map((partner, i) => {
             const Icon = partner.icon;
             return (
               <div
                 key={partner.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 pt-5 pb-16 px-5 sm:pt-6 sm:pb-20 sm:px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Inner dashed border */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                />
+
+                {/* Bottom Warli village art (staggered per index) */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-no-repeat bg-bottom opacity-90"
+                  style={{
+                    backgroundImage: "url('/patterns/village-figures.png')",
+                    backgroundSize: "400% auto",
+                    backgroundPosition: `${(i * 33) % 100}% bottom`,
+                  }}
                 />
 
                 <div className="relative text-center">
