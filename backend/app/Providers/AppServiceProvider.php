@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\View\Composers\TelecallingNotificationsComposer;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +26,8 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production')) {
             URL::forceScheme('https');
         }
+
+        // Live notification feed for the telecalling topbar bell.
+        View::composer('telecalling.layouts.app', TelecallingNotificationsComposer::class);
     }
 }

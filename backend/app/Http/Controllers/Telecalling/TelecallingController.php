@@ -182,6 +182,14 @@ class TelecallingController extends Controller
         ];
     }
 
+    /** Mark all notifications as read for the current telecaller. */
+    public function markNotificationsRead(Request $request)
+    {
+        $request->user()->update(['notifications_read_at' => now()]);
+
+        return back();
+    }
+
     /** Persist the telecaller's profile from the Settings page. */
     public function updateProfile(Request $request)
     {

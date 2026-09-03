@@ -74,8 +74,9 @@
         .notif-text { font-size: 12px; color: #7A7A7A; margin-top: 2px; }
         .notif-time { font-size: 11px; color: #A5A5A5; margin-top: 4px; }
         .notif-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 6px; }
-        .notif-foot { display: block; text-align: center; padding: 12px; font-size: 12.5px; font-weight: 600; color: var(--green); border-top: 1px solid #F0ECE2; background: #FBFAF7; }
-        .notif-foot:hover { color: var(--leaf); }
+        .notif-empty { padding: 34px 18px; text-align: center; color: #A5A5A5; }
+        .notif-empty svg { width: 30px; height: 30px; margin: 0 auto 10px; color: #CFC9BB; }
+        .notif-empty p { font-size: 13px; font-weight: 600; }
         .topbar-user { display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 8px; }
         .topbar-user-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--leaf); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 600; flex-shrink: 0; }
         .topbar-user-name { font-size: 13px; font-weight: 600; color: var(--charcoal); }
@@ -163,14 +164,6 @@
                 </div>
                 <div class="topbar-right">
                     @php
-                        $tcNotifs = [
-                            ['icon' => 'order', 'title' => 'New order placed', 'text' => 'Ramesh Kumar ordered Goat Feed - 100 KG', 'time' => '5 min ago', 'unread' => true],
-                            ['icon' => 'alert', 'title' => 'Complaint escalated', 'text' => 'CMP-10245 marked High priority', 'time' => '22 min ago', 'unread' => true],
-                            ['icon' => 'lead', 'title' => 'Franchise lead updated', 'text' => 'Suresh Kumar moved to Qualified', 'time' => '1 hr ago', 'unread' => true],
-                            ['icon' => 'delivery', 'title' => 'Delivery in transit', 'text' => 'Order MS-2026-00476 is on the way', 'time' => '3 hr ago', 'unread' => false],
-                            ['icon' => 'call', 'title' => 'Callback due', 'text' => 'Mohan Nayak — bulk feed pricing', 'time' => 'Today', 'unread' => false],
-                        ];
-                        $tcUnread = count(array_filter($tcNotifs, fn ($n) => $n['unread']));
                         $tcIcons = [
                             'order'    => '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>',
                             'alert'    => '<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
@@ -178,6 +171,8 @@
                             'delivery' => '<rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
                             'call'     => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
                         ];
+                        $tcNotifs = $tcNotifs ?? [];
+                        $tcUnread = $tcUnread ?? 0;
                     @endphp
                     <div class="bell-wrap">
                         <button class="topbar-bell" aria-label="Notifications" aria-expanded="false" onclick="toggleNotif(event)">
@@ -187,10 +182,16 @@
                         <div class="notif-panel" id="notifPanel" hidden>
                             <div class="notif-head">
                                 <span>Notifications</span>
-                                @if($tcUnread > 0)<button type="button" class="notif-clear" onclick="markAllRead()">Mark all read</button>@endif
+                                @if($tcUnread > 0)
+                                    <form method="POST" action="{{ route('telecalling.notifications.read') }}" style="margin:0;">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="notif-clear">Mark all read</button>
+                                    </form>
+                                @endif
                             </div>
                             <div class="notif-list">
-                                @foreach($tcNotifs as $n)
+                                @forelse($tcNotifs as $n)
                                     <div class="notif-item {{ $n['unread'] ? 'unread' : '' }}">
                                         <span class="notif-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $tcIcons[$n['icon']] ?? '' !!}</svg></span>
                                         <div class="notif-body">
@@ -200,9 +201,13 @@
                                         </div>
                                         @if($n['unread'])<span class="notif-dot"></span>@endif
                                     </div>
-                                @endforeach
+                                @empty
+                                    <div class="notif-empty">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                                        <p>You're all caught up</p>
+                                    </div>
+                                @endforelse
                             </div>
-                            <a href="#" class="notif-foot" onclick="return false;">View all notifications</a>
                         </div>
                     </div>
                     <div class="topbar-user">
@@ -249,14 +254,6 @@
             var open = panel.hidden;
             panel.hidden = !open;
             btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        }
-        function markAllRead() {
-            document.querySelectorAll('.notif-item.unread').forEach(function (i) { i.classList.remove('unread'); });
-            document.querySelectorAll('.notif-dot').forEach(function (d) { d.remove(); });
-            var badge = document.getElementById('bellBadge');
-            if (badge) badge.remove();
-            var clr = document.querySelector('.notif-clear');
-            if (clr) clr.remove();
         }
         // Close the notification panel when clicking outside it.
         document.addEventListener('click', function (e) {

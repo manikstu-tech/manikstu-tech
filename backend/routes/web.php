@@ -106,6 +106,7 @@ Route::prefix('telecalling')->name('telecalling.')->middleware(['auth', 'throttl
     Route::get('/complaints/{id}', [TelecallingController::class, 'complaintDetail'])->name('complaint.show');
     Route::get('/franchise/{id}', [TelecallingController::class, 'franchiseDetail'])->name('franchise.show');
     Route::put('/settings/profile', [TelecallingController::class, 'updateProfile'])->name('settings.profile');
+    Route::put('/notifications/read', [TelecallingController::class, 'markNotificationsRead'])->name('notifications.read');
 
     // Sidebar sections (placeholder pages for now; dashboard is the live one).
     foreach (['farmers', 'orders', 'products', 'delivery', 'complaints', 'telecalling', 'franchise', 'reports', 'settings'] as $section) {
