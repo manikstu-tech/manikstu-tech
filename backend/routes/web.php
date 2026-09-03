@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\PasswordResetController;
+use App\Http\Controllers\Telecalling\TelecallingController;
 
 Route::get('/', fn() => redirect()->route('admin.login'));
 
@@ -34,7 +35,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [PasswordResetController::class, 'reset'])->name('password.update')->middleware('throttle:5,1');
 
-    Route::middleware(['auth', 'throttle:120,1'])->group(function () {
+    Route::middleware(['auth', 'throttle:120,1', 'area:admin'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('products', ProductController::class)->except('destroy');
@@ -89,4 +90,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/media', [MediaController::class, 'index'])->name('media.index');
         Route::post('/media/upload', [MediaController::class, 'upload'])->name('media.upload');
     });
+});
+
+/*
+| Telecalling area — same shared login (/admin/login) routes telecallers here.
+| Only accounts with role = "telecaller" may access; anyone else is redirected
+| to the admin dashboard by the `area:telecalling` guard.
+*/
+Route::prefix('telecalling')->name('telecalling.')->middleware(['auth', 'throttle:120,1', 'area:telecalling'])->group(function () {
+    Route::get('/', fn() => redirect()->route('telecalling.dashboard'));
+    Route::get('/dashboard', [TelecallingController::class, 'index'])->name('dashboard');
 });

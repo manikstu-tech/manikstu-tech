@@ -15,11 +15,17 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'role' => \App\Http\Middleware\EnsureUserRole::class,
+            'area' => \App\Http\Middleware\RoleArea::class,
             'captcha' => \App\Http\Middleware\VerifyCaptcha::class,
         ]);
         $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
         $middleware->redirectGuestsTo(fn (Request $request) => route('admin.login'));
-        $middleware->redirectUsersTo('/admin/dashboard');
+        // Send already-authenticated users to their own dashboard by role.
+        $middleware->redirectUsersTo(
+            fn (Request $request) => optional($request->user())->role === 'telecaller'
+                ? '/telecalling/dashboard'
+                : '/admin/dashboard'
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
