@@ -7,7 +7,7 @@
 | Latest main branch | :white_check_mark: |
 | Previous releases | :x: |
 
-This is a private repository. Only the latest deployment on `main` receives security updates. older versions are not maintained.
+This is a private repository. Only the latest deployment on `main` receives security updates. Older versions are not maintained.
 
 ## Reporting a Vulnerability
 
@@ -42,11 +42,13 @@ We will confirm receipt, provide an estimated timeline, and keep you updated thr
 This policy covers:
 
 - **manikstu.com** (customer-facing website)
+- **api.manikstu.com** (REST API)
 - **Admin panel** (Laravel Blade backend)
+- **Telecalling module** (staff interface)
 - **REST API** (Laravel + Sanctum)
-- **Payment integration** (Razorpay)
 - **Authentication and session management**
 - **Data handling and storage**
+- **Hostinger hosting panel**
 
 ### Out of Scope
 
@@ -56,27 +58,71 @@ This policy covers:
 
 ## Security Measures
 
-### Backend (Laravel)
+### Backend (Laravel 13)
 
-- CSRF protection enabled on all routes
-- Login brute-force throttling (5 attempts/minute)
+#### Headers & Transport
+
+- **SecurityHeaders middleware** applied to all responses:
+  - `Strict-Transport-Security: max-age=31536000; includeSubDomains` (production only)
+  - `Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-ancestors 'self'` (production only)
+  - `X-Content-Type-Options: nosniff`
+  - `X-Frame-Options: SAMEORIGIN`
+  - `Referrer-Policy: strict-origin-when-cross-origin`
+  - `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+- HTTPS enforced in production via `AppServiceProvider`
+- `SESSION_SECURE_COOKIE=true` in production
+
+#### Authentication & Authorization
+
+- CSRF protection enabled on all web routes (no exceptions)
+- Login brute-force throttling: 5 attempts/minute
+- Admin area throttling: 120 requests/minute
 - bcrypt password hashing
 - Session cookies: `httpOnly`, `same_site=lax`
-- HTTPS enforced in production
-- `APP_DEBUG=false` in production
-- Environment variables stored outside version control
+- Role-based access control: Admin, Developer, Telecaller
+- Area guard middleware (`area:admin`, `area:telecalling`) prevents cross-area access
+- DELETE operations restricted to `role:developer` only
+- User administration restricted to `role:developer` only
+- Password reset flow with rate limiting (5 requests/minute)
 
-### Frontend (Next.js)
+#### Input Validation & Sanitization
+
+- Locale whitelist validation in ApiController (14 allowed locales)
+- `per_page` parameter clamped to 1–100 in all paginated endpoints
+- Server-side order total calculation (client price never trusted)
+- Filename sanitization: `strip_tags()` on upload names
+- LIKE query escaping: `addcslashes()` on search inputs
+- File upload validation: type whitelist (jpg, jpeg, png, gif, webp, pdf), max 10MB
+- SVG upload disabled (XML-based stored XSS prevention)
+- Path traversal protection in MediaController destroy (realpath + directory whitelist)
+
+#### Configuration
+
+- `APP_DEBUG=false` in production (no stack traces, env, or queries exposed)
+- CORS origins configurable via `CORS_ORIGINS` environment variable (not hardcoded)
+- `.env` file outside version control
+- Admin password read from `ADMIN_PASSWORD` env var (not hardcoded in seeder)
+- HTML purification via `mews/purifier` for rich text content
+
+### Frontend (Next.js 14)
 
 - No secrets or API keys in client-side code
-- Razorpay key IDs are public; key secrets stay server-side
-- CORS configured for allowed origins only
+- Razorpay integration removed from frontend (backend models exist but keys not exposed)
+- `next/image` used for all images (automatic optimization, no external image rendering risks)
+- `robots.ts` auto-generated: blocks `/api/` and `/admin/` paths
+- `sitemap.ts` with hreflang alternates for all 14 locales
+- `metadataBase` set to `https://manikstu.com` for correct OG/Twitter URLs
+- JSON-LD structured data (Organization, WebSite, Product, FAQPage) — no sensitive data exposed
 
 ### Infrastructure
 
-- Database credentials rotated regularly
+- Hostinger shared hosting with PHP 8.5+
+- MySQL database with separate credentials from application secrets
+- `proc_open` disabled on Hostinger PHP (limits CLI-based attacks)
+- Database credentials stored in `.env` (not in version control)
 - Admin panel accessible only over HTTPS
-- Regular dependency updates
+- Storage symlink for public file access
+- Git-based deployment with automatic builds
 
 ## Safe Harbor
 

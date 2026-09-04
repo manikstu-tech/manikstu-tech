@@ -17,14 +17,15 @@ class AdminSeeder extends Seeder
     {
         $password = env('ADMIN_PASSWORD') ?? Str::random(24);
 
-        $user = User::create([
-            'name' => 'Admin',
-            'email' => 'admin@manikstu.com',
-            'password' => Hash::make($password),
-        ]);
-        $user->role = 'developer';
-        $user->is_active = true;
-        $user->save();
+        User::updateOrCreate(
+            ['email' => 'admin@manikstu.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make($password),
+                'role' => 'developer',
+                'is_active' => true,
+            ]
+        );
 
         // ponytail: no fixed default; if ADMIN_PASSWORD unset we emit the random one to logs once
         if (!env('ADMIN_PASSWORD')) {

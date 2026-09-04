@@ -1,167 +1,281 @@
-# 🐐 Manikstu Agro — Website Revamp
+# Manikstu Agro — Website
 
-> 🚀 Revolutionizing Goat Farming Ecosystem Worldwide
+> Revolutionizing Goat Farming Ecosystem Worldwide
 
-## 📋 Overview
+## Overview
 
-Complete redesign of [manikstu.com](https://manikstu.com) — a goat farming ecosystem website for Manikstu Agro Private Limited, founded 2015 in Kalahandi, Odisha, India.
+Complete website for [manikstu.com](https://manikstu.com) — a goat farming ecosystem platform for Manikstu Agro Private Limited, founded 2015 in Kalahandi, Odisha, India.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| 🎨 Frontend | Next.js 14 (App Router) + Tailwind CSS |
-| ⚙️ Backend | Laravel 11 REST API |
-| 🗄️ Database | MySQL 8 |
-| 🔐 Auth | Laravel Sanctum (Staff/Dealer/Farmer) |
-| 💳 Payments | Razorpay |
-| 🖥️ Admin | Custom Laravel Blade |
-| 🌐 Hosting | Vercel (frontend) + VPS (backend) |
+| Frontend | Next.js 14 (App Router) + Tailwind CSS + TypeScript |
+| Backend | Laravel 13 (requires PHP 8.3+) + Blade admin panel |
+| Database | SQLite (local dev) / MySQL 8 (production) |
+| Auth | Laravel Sanctum (Admin / Developer / Telecaller roles) |
+| i18n | next-intl v4.13 — 14 languages, `[locale]` URL routing |
+| Images | sharp (next/image optimization) |
+| Hosting | Hostinger (frontend + backend) |
+| DNS | GoDaddy (manikstu.com) |
 
-## 🚀 Getting Started
+## Getting Started
+
+### Frontend
 
 ```bash
-# Frontend
 cd frontend
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site 🎉
+Open [http://localhost:3000](http://localhost:3000)
 
-### ⚙️ Backend (Laravel 11)
+### Backend
 
 ```bash
 cd backend
 composer install
-cp .env.example .env        # then edit .env (see Security below)
+cp .env.example .env
 php artisan key:generate
-php artisan migrate --seed  # seeds admin; see ADMIN_PASSWORD note
+php artisan migrate --seed
 php artisan serve
 ```
 
 Admin panel: [http://localhost:8000/admin/login](http://localhost:8000/admin/login)
 
-## 📁 Project Structure
+Default admin credentials: `admin@manikstu.com` / `password` (change for production).
+
+## Project Structure
 
 ```
 manikstu-tech/
-├── 📚 docs/                           # Project documentation
-│   ├── PRD.MD                      # Requirements, features, target users
-│   ├── ARCHITECTURE.MD             # System design, API endpoints, DB schema
-│   ├── RULES.MD                    # Laravel + Next.js conventions
-│   ├── PHASES.MD                   # 6 development phases with tasks
-│   ├── DESIGN.MD                   # Colors, typography, component specs
-│   └── MEMORY.MD                   # Progress tracker, decisions log
-├── 🎨 frontend/                       # Next.js 14 frontend
+├── docs/                               # Project documentation
+│   ├── PRD.MD                          # Requirements, features, target users
+│   ├── ARCHITECTURE.MD                 # System design, API endpoints, DB schema
+│   ├── RULES.MD                        # Laravel + Next.js conventions
+│   ├── PHASES.MD                       # Development phases with tasks
+│   ├── DESIGN.MD                       # Colors, typography, component specs
+│   └── MEMORY.MD                       # Progress tracker, decisions log
+├── frontend/                           # Next.js 14 frontend
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── layout.tsx          # Root layout (fonts, metadata, ThemeProvider)
-│   │   │   ├── page.tsx            # Homepage (10 sections)
-│   │   │   └── globals.css         # Tailwind + dark mode overrides
+│   │   │   ├── [locale]/               # i18n routed pages (14 locales)
+│   │   │   │   ├── layout.tsx          # Locale layout (fonts, metadata)
+│   │   │   │   ├── page.tsx            # Homepage
+│   │   │   │   ├── about/              # About page
+│   │   │   │   ├── services/           # Services page
+│   │   │   │   ├── products/           # Product catalog
+│   │   │   │   ├── careers/            # Job listings
+│   │   │   │   ├── collaborate/        # Collaboration (includes /ajah)
+│   │   │   │   ├── training/           # Training programs
+│   │   │   │   ├── blog/               # Blog posts
+│   │   │   │   ├── help/               # Help center
+│   │   │   │   ├── contact/            # Contact form
+│   │   │   │   ├── privacy/            # Privacy policy
+│   │   │   │   └── terms/              # Terms of service
+│   │   │   ├── robots.ts               # SEO: robots.txt generation
+│   │   │   ├── sitemap.ts              # SEO: sitemap.xml with hreflang
+│   │   │   └── globals.css             # Tailwind + dark mode overrides
 │   │   ├── components/
-│   │   │   ├── layout/
-│   │   │   │   ├── Header.tsx      # Responsive header with dark mode toggle
-│   │   │   │   ├── Footer.tsx      # 4-column footer with social icons
-│   │   │   │   └── ThemeProvider.tsx # Dark mode context + localStorage
-│   │   │   └── patterns/
-│   │   │       ├── SauraBorder.tsx      # Inline SVG tribal border (top)
-│   │   │       ├── GodnaBorder.tsx      # Inline SVG tattoo border (bottom)
-│   │   │       ├── CulturalDivider.tsx  # Inline SVG gold diamond divider
-│   │   │       ├── DiamondAccent.tsx    # Inline SVG gold diamond for pill labels
-│   │   │       ├── PaperTexture.tsx     # Inline SVG tileable paper grain
-│   │   │       └── CornerOrnament.tsx   # Inline SVG Saura corner decoration
-│   │   └── lib/
-│   │       └── utils.ts            # cn() utility, formatPrice()
-│   ├── tailwind.config.ts          # Custom color palette, dark mode, fonts
-│   ├── next.config.mjs             # Image domains
+│   │   │   ├── layout/                 # Header, Footer, ThemeProvider
+│   │   │   ├── patterns/               # 6 SVG cultural patterns
+│   │   │   └── seo/                    # JsonLd structured data component
+│   │   ├── i18n/
+│   │   │   ├── request.ts              # next-intl request config
+│   │   │   └── routing.ts              # 14 locale routing definition
+│   │   ├── lib/
+│   │   │   └── utils.ts                # cn(), formatPrice()
+│   │   ├── types/
+│   │   │   └── index.ts                # TypeScript interfaces
+│   │   └── middleware.ts               # next-intl locale middleware
+│   ├── messages/                       # Translation files (14 locales)
+│   │   ├── en.json, hi.json, bn.json, ta.json, te.json,
+│   │   ├── mr.json, gu.json, kn.json, ml.json, or.json,
+│   │   ├── ja.json, de.json, fr.json, es.json
+│   ├── tailwind.config.ts
+│   ├── next.config.mjs
 │   └── package.json
-├── ⚙️ backend/                        # Laravel 11 (pending Phase 1)
+├── backend/                            # Laravel 13
+│   ├── app/
+│   │   ├── Http/
+│   │   │   ├── Controllers/
+│   │   │   │   ├── ApiController.php       # Public REST API
+│   │   │   │   ├── Admin/                  # Admin panel controllers
+│   │   │   │   └── Telecalling/            # Telecalling module
+│   │   │   └── Middleware/
+│   │   │       ├── SecurityHeaders.php     # HSTS, CSP, X-Frame-Options, etc.
+│   │   │       ├── EnsureUserRole.php      # Role-based access
+│   │   │       ├── RoleArea.php            # Area guard (admin/telecalling)
+│   │   │       └── VerifyCaptcha.php       # CAPTCHA verification
+│   │   └── Models/                         # Eloquent models
+│   ├── config/cors.php                     # Env-based CORS origins
+│   ├── routes/
+│   │   ├── web.php                         # Admin + Telecalling routes
+│   │   └── api.php                         # Public REST API routes
+│   ├── bootstrap/app.php                   # Middleware registration
+│   └── deploy/                             # Deployment guides
 ├── README.md
+├── SECURITY.md
 └── .gitignore
 ```
 
-## 📊 Progress
+## Pages (13)
 
-### ✅ Phase 1: Foundation — Complete
-| Task | Status |
-|------|--------|
-| ✅ Next.js 14 project init | Done |
-| ✅ Tailwind CSS + custom palette | Done |
-| ✅ Path aliases (`@/`) | Done |
-| ✅ Root layout + fonts (Playfair Display, Inter) | Done |
-| ✅ `cn()` utility (clsx + tailwind-merge) | Done |
-| ✅ Header component (responsive, mobile nav) | Done |
-| ✅ Footer component (white bg, 4-column, social icons) | Done |
-| ✅ Homepage (all 10 sections) | Done |
-| ✅ Dark mode toggle (localStorage persistence) | Done |
-| ✅ Homepage redesign (reference layout match) | Done |
-| ✅ SVG pattern library (6 inline React components) | Done |
-| ⏳ API client | Pending |
-| ⏳ TypeScript interfaces | Pending |
-| ⏳ `.env.local` | Pending |
-| ✅ Laravel backend setup | Done |
-| ✅ Database migrations | Done |
-| ✅ Admin panel | Done |
+| Page | Route | Description |
+|------|-------|-------------|
+| Homepage | `/{locale}` | Hero, mission, stats, flagship, associations, mobile app, news, testimonials, newsletter |
+| About | `/{locale}/about` | Company history, team, values |
+| Services | `/{locale}/services` | Goat farming services |
+| Products | `/{locale}/products` | Product catalog with categories |
+| Careers | `/{locale}/careers` | Job openings |
+| Collaborate | `/{locale}/collaborate` | Partnership opportunities |
+| AJAH | `/{locale}/collaborate/ajah` | AJAH collaboration program |
+| Training | `/{locale}/training` | Training programs |
+| Blog | `/{locale}/blog` | Blog posts with categories |
+| Help | `/{locale}/help` | Help center |
+| Contact | `/{locale}/contact` | Contact form (enquiry submission) |
+| Privacy | `/{locale}/privacy` | Privacy policy |
+| Terms | `/{locale}/terms` | Terms of service |
 
-### 🗺️ Phase 2-6
-See [PHASES.MD](./docs/PHASES.MD) for full roadmap.
+## Internationalization (i18n)
 
-## 🏠 Homepage Sections
+14 languages supported via `next-intl`:
 
-1. 🎯 **Hero** — White bg, headline with green accent, dual CTAs, photo area, floating cards (Mann Ki Baat + Product), trust badges
-2. 🌍 **Mission** — "Our Mission" label, 4 feature cards (Technology, Collaborations, Livelihoods, Innovation)
-3. 📈 **Stats** — "Impacting Lives" with 4 metrics (70K farmers, 10K villages, 7L goats, 10 states)
-4. 🏆 **Flagship** — Project Samarth spotlight with CTA and photo area
-5. 🤝 **Associations** — Two-lane marquee with tribal art decorations (Saura border, Godna border, corner ornaments, paper texture, gold diamond dividers). Pill-style category labels with gold diamond accents. Museum-style cards with hover effects. Lane 1 → (Operational, Incubation, Supporting), Lane 2 ← (CSR, Investing, Banking). Pauses on hover.
-6. 📱 **Mobile App** — Phone mockup, feature checklist, QR code, app store badges
-7. 📰 **News** — 4 cards with images, dates, category badges (Featured, Event, Press, Media)
-8. 💬 **Testimonials** — 2 cards with star ratings, quotes, farmer names
-9. 📣 **Newsletter** — Green bg, email input + Subscribe button
-10. 🔗 **Footer** — White bg, logo, social icons, Quick Links, Support, Contact Us
+| Code | Language | Code | Language |
+|------|----------|------|----------|
+| en | English | kn | Kannada |
+| hi | Hindi | ml | Malayalam |
+| bn | Bengali | or | Odia |
+| ta | Tamil | ja | Japanese |
+| te | Telugu | de | German |
+| mr | Marathi | fr | French |
+| gu | Gujarati | es | Spanish |
 
-## 🌙 Dark Mode
+- Default locale: `en`
+- URL format: `https://manikstu.com/hi/products`
+- Middleware auto-detects browser locale and redirects
 
-- Toggle via Moon/Sun icon in header
-- Persists to localStorage
-- System preference detection on first visit
-- CSS overrides for backgrounds, text, borders, inputs
+## SEO
 
-## 🎨 Brand Colors
+- `metadataBase` set to `https://manikstu.com`
+- `robots.ts` — auto-generated, blocks `/api/` and `/admin/`
+- `sitemap.ts` — 182 URLs (13 routes x 14 locales), with hreflang alternates
+- JSON-LD structured data: Organization, WebSite, Product, FAQPage
+- `next/image` used for all images (automatic optimization)
+- Twitter cards and Open Graph metadata per page
+
+## API Endpoints
+
+Public REST API at `api.manikstu.com/api`:
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/settings` | GET | Site settings |
+| `/navigation` | GET | Navigation menus (locale-aware) |
+| `/footer` | GET | Footer links (locale-aware) |
+| `/pages/{slug}` | GET | Page content with blocks |
+| `/blog` | GET | Blog posts (paginated, filterable) |
+| `/blog/{slug}` | GET | Single blog post |
+| `/blog/categories` | GET | Blog categories |
+| `/press` | GET | Press releases |
+| `/press/{slug}` | GET | Single press release |
+| `/products` | GET | Products (paginated, filterable) |
+| `/products/{slug}` | GET | Single product |
+| `/categories` | GET | Categories (filterable by type) |
+| `/testimonials` | GET | Testimonials |
+| `/team` | GET | Team members |
+| `/careers` | GET | Job openings |
+| `/training` | GET | Training programs |
+| `/awareness` | GET | Awareness initiatives |
+| `/stats` | GET | Impact statistics |
+| `/gallery` | GET | Gallery images (paginated) |
+| `/partners` | GET | Partners |
+| `/enquiries` | POST | Submit enquiry |
+| `/orders` | POST | Create order (Sanctum auth) |
+
+## Backend Features
+
+- **Admin Panel** — Laravel Blade with dashboard, CRUD for all content types
+- **Telecalling Module** — Separate area for telecallers (farmers, orders, complaints, franchise, reports)
+- **Role-based Access** — Admin, Developer (destructive ops), Telecaller
+- **Password Reset** — Email-based password reset flow
+- **Media Management** — File upload with type/size validation
+- **Category System** — Type-filterable categories (blog, product, press)
+
+## Brand Colors
 
 | Color | Hex | Usage |
 |-------|-----|-------|
-| 💚 Manikstu Green | `#4A8C3F` | Primary buttons, links |
-| ❤️ Manikstu Red | `#D4342C` | CTA buttons, urgency |
-| 🌿 Leaf Dark | `#3A7030` | Header, footer, dark backgrounds |
-| 🧈 Cream Silk | `#FDF6EC` | Warm section backgrounds |
-| ✨ Bamboo Gold | `#C4952A` | Accents, highlights |
-| 🔥 Saura Red | `#9F5233` | Tribal art accents |
+| Manikstu Green | `#4A8C3F` | Primary buttons, links |
+| Manikstu Red | `#D4342C` | CTA buttons, urgency |
+| Leaf Dark | `#3A7030` | Header, footer, dark backgrounds |
+| Forest Green | `#2D5016` | Deep accents |
+| Cream Silk | `#FDF6EC` | Warm section backgrounds |
+| Bamboo Gold | `#C4952A` | Accents, highlights |
+| Saura Red | `#9F5233` | Tribal art accents |
+| Charcoal | `#1A1A1A` | Dark backgrounds |
+| Grey | `#5A5A5A` | Secondary text |
 
-## 📖 Documentation
+## Deployment
+
+### Architecture
+
+```
+manikstu.com (GoDaddy DNS)
+    ├── manikstu.com → Hostinger (Next.js frontend)
+    └── api.manikstu.com → Hostinger (Laravel API + MySQL)
+```
+
+### Frontend (Hostinger)
+
+- Deployed via Hostinger Git integration (auto-deploys from `main` branch)
+- Build: `next build` with production optimizations
+- Performance score: 96 (desktop)
+
+### Backend (Hostinger)
+
+- Files at: `/home/u304297356/domains/api.manikstu.com/public_html/`
+- MySQL: `u304297356_manikstu` database
+- `proc_open` disabled on Hostinger PHP — CLI commands unavailable
+- Web-based `setup.php` for migrations/seeders (delete after use)
+
+### Deployment Guides
 
 | Document | Description |
 |----------|-------------|
-| 📄 [PRD.MD](./docs/PRD.MD) | What to build, target users, features |
-| 📐 [ARCHITECTURE.MD](./docs/ARCHITECTURE.MD) | System design, folders, API endpoints, DB schema |
-| 📏 [RULES.MD](./docs/RULES.MD) | Laravel + Next.js rules, anti-patterns |
-| 📅 [PHASES.MD](./docs/PHASES.MD) | 6 development phases with tasks |
-| 🎨 [DESIGN.MD](./docs/DESIGN.MD) | Colors, typography, admin panel design |
-| 🧠 [MEMORY.MD](./docs/MEMORY.MD) | Progress tracker, agent team, decisions |
+| `deploy/01-DEPLOYMENT-GUIDE.md` | Architecture overview |
+| `deploy/02-HOSTINGER-BACKEND.md` | Backend deployment steps |
+| `deploy/03-VERCEL-FRONTEND.md` | Frontend deployment (legacy, now on Hostinger) |
+| `deploy/04-GODADDY-DNS.md` | DNS configuration |
+| `deploy/05-FINAL-CHECKS.md` | Pre-launch checklist |
 
-## 🔒 Security
+## Documentation
 
-Security baseline applied to the Laravel backend (see commit history for details):
+| Document | Description |
+|----------|-------------|
+| [PRD.MD](./docs/PRD.MD) | Requirements, features, target users |
+| [ARCHITECTURE.MD](./docs/ARCHITECTURE.MD) | System design, API endpoints, DB schema |
+| [RULES.MD](./docs/RULES.MD) | Laravel + Next.js conventions |
+| [PHASES.MD](./docs/PHASES.MD) | Development phases with tasks |
+| [DESIGN.MD](./docs/DESIGN.MD) | Colors, typography, admin panel design |
+| [MEMORY.MD](./docs/MEMORY.MD) | Progress tracker, agent team, decisions |
 
-- **No hardcoded credentials** — `AdminSeeder` reads the admin password from `ADMIN_PASSWORD`; if unset it generates a random 24-char password and logs it once. Set `ADMIN_PASSWORD` in `.env` and rotate any admin seeded with the old default.
-- **CSRF** — `VerifyCsrfToken` is active on all `web` routes including `/admin/login` (no CSRF exceptions).
-- **Login brute-force protection** — `POST /admin/login` is throttled to 5 attempts/minute.
-- **Debug off by default** — `.env.example` ships `APP_DEBUG=false`. Keep it `false` in production (debug exposes stack traces, env, and queries).
-- **HTTPS in production** — `AppServiceProvider` forces the HTTPS scheme when `APP_ENV=production`; serve behind TLS and set `SESSION_SECURE_COOKIE=true`.
-- **Session cookies** — `http_only` is on and `same_site=lax` by default.
+## Security
 
-Before deploying to production, also review: password complexity at user-creation time, email verification if self-serve admin accounts are added, Razorpay webhook signature verification, and rate limiting / CORS on the public REST API.
+See [SECURITY.md](./SECURITY.md) for the full security policy.
 
-## 📜 License
+Key measures:
+- SecurityHeaders middleware (HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
+- CORS env-based origins (not hardcoded)
+- Login throttling (5 attempts/minute)
+- Role-based route access (DELETE ops behind `role:developer`)
+- Server-side order total calculation
+- Filename sanitization and path traversal protection
+- SVG upload disabled (stored XSS prevention)
+- `APP_DEBUG=false` in production
+- `robots.txt` blocks `/api/` and `/admin/`
 
-🔒 Private — Manikstu Agro Private Limited
+## License
+
+Private — Manikstu Agro Private Limited
