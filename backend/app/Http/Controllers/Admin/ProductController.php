@@ -256,8 +256,9 @@ class ProductController extends Controller
         if (! $path || str_starts_with($path, '/') || str_starts_with($path, 'http')) {
             return; // external / frontend-relative paths are not ours to delete
         }
-        $full = storage_path('app/public/' . $path);
-        if (is_file($full)) {
+        $full = realpath(storage_path('app/public/' . $path));
+        $allowed = realpath(storage_path('app/public'));
+        if ($full && $allowed && str_starts_with($full, $allowed . DIRECTORY_SEPARATOR) && is_file($full)) {
             @unlink($full);
         }
     }

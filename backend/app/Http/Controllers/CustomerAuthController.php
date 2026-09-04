@@ -17,8 +17,10 @@ class CustomerAuthController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:customers,email',
+            'email' => ['required', 'email', 'max:255', \Illuminate\Validation\Rule::unique('customers', 'email')],
             'password' => ['required', 'string', 'min:8', 'regex:/[A-Z]/', 'regex:/[a-z]/', 'regex:/[0-9]/'],
+        ], [
+            'email.unique' => 'If this email is available, your account has been created.',
         ]);
 
         $customer = Customer::create([

@@ -376,6 +376,11 @@ class ApiController extends Controller
             $total += ($product->price ?? 0) * $item['quantity'];
         }
 
+        $customer = $request->user('sanctum');
+        if ($customer && ! $customer->is_active) {
+            return $this->json(['message' => 'Account is inactive.'], 403);
+        }
+
         $order = Order::create([
             'order_number' => 'ORD-' . strtoupper(bin2hex(random_bytes(8))),
             'total' => $total,
