@@ -164,7 +164,7 @@ export default function Footer() {
             <div className="mt-4 flex flex-col gap-2">
               <Link
                 href="/careers"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-manikstu-green px-4 py-2 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green px-4 py-2 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
               >
                 {t("careers")} <ArrowRight className="h-4 w-4" />
               </Link>
@@ -185,13 +185,13 @@ export default function Footer() {
               </span>
               {t("stayUpdated")}
             </h3>
-            <p className="mt-3 text-sm text-grey leading-relaxed">
+            <p className="mt-2 text-sm text-grey leading-relaxed">
               {t("newsletterDesc")}
             </p>
             <input
               type="email"
               placeholder={tCommon("enterEmail")}
-              className="mt-3 w-full rounded-lg border border-light-grey px-4 py-2.5 text-sm text-charcoal placeholder:text-grey/50 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+              className="mt-2 w-full rounded-lg border border-light-grey px-4 py-2.5 text-sm text-charcoal placeholder:text-grey/50 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
             />
             <button className="mt-3 w-full rounded-lg bg-manikstu-green px-4 py-2.5 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors">
               {tCommon("subscribe")}
@@ -202,7 +202,7 @@ export default function Footer() {
 
       {/* Our Offices */}
       <div className="mx-auto max-w-7xl px-4 pt-1 pb-6 sm:py-6 sm:px-6 md:px-8">
-        <div className="rounded-xl border border-light-grey p-4 sm:p-6">
+        <div className="rounded-xl border border-light-grey p-5 sm:p-6">
           <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />

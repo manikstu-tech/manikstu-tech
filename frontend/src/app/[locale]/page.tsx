@@ -283,23 +283,25 @@ export default async function HomePage() {
                   </Link>
                   <Link
                     href="/about"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-charcoal/5 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
                   >
                     {t("learnMore")}
                   </Link>
                 </div>
                 {/* Trust badges */}
-                <div className="mt-5 sm:mt-8 flex items-center gap-3">
+                <div className="mt-5 sm:mt-6 flex items-center gap-3">
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-grey">
                     <Shield className="h-4 w-4 text-manikstu-green" />
                     {t("trustedBy")}
                   </div>
                   <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
+                    {["F", "A", "R", "S"].map((letter, i) => (
                       <div
                         key={i}
-                        className="h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 border-white bg-manikstu-cream"
-                      />
+                        className="h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 border-white bg-manikstu-green/20 flex items-center justify-center text-[10px] sm:text-xs font-bold text-manikstu-green"
+                      >
+                        {letter}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -308,9 +310,11 @@ export default async function HomePage() {
               {/* Right content */}
               <div className="relative">
                 {/* Main photo placeholder */}
-                <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
+                <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] group cursor-pointer">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Users className="h-24 w-24 text-manikstu-green/30" />
+                    <div className="flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-full bg-manikstu-green/90 text-white shadow-lg group-hover:scale-110 transition-transform">
+                      <Play className="h-8 w-8 sm:h-10 sm:w-10 ml-1 fill-current" />
+                    </div>
                   </div>
                   {/* Watch Our Story overlay — top-right & compact on mobile, bottom-right on desktop */}
                   <div className="absolute top-3 right-3 sm:top-auto sm:bottom-4 sm:right-4 flex items-center gap-2 sm:gap-3 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white/90 backdrop-blur-sm px-2.5 py-1.5 sm:px-4 sm:py-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
@@ -599,7 +603,7 @@ export default async function HomePage() {
                 <div className="flex items-center justify-center lg:justify-start gap-2">
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.15em] text-manikstu-green sm:text-sm">
                     {t("flagshipPill")}
                   </p>
                   <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
@@ -705,11 +709,11 @@ export default async function HomePage() {
             {/* Left and Right Fade Gradients */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-28 bg-gradient-to-r from-manikstu-cream dark:from-gray-800 to-transparent z-10"
+              className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-manikstu-cream dark:from-gray-800 to-transparent z-10"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-28 bg-gradient-to-l from-manikstu-cream dark:from-gray-800 to-transparent z-10"
+              className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-manikstu-cream dark:from-gray-800 to-transparent z-10"
             />
 
             {/* Track 1 */}
@@ -717,14 +721,14 @@ export default async function HomePage() {
               {[...allPartnersRow1, ...allPartnersRow1, ...allPartnersRow1].map((partner, idx) => (
                 <div
                   key={`${partner.name}-${idx}`}
-                  className="partner-card flex h-16 w-32 sm:h-18 sm:w-36 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
+                  className="partner-card flex h-16 w-36 sm:h-18 sm:w-40 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
                 >
                   <Image
                     src={partner.image}
                     alt={partner.name}
-                    width={110}
-                    height={45}
-                    className="max-h-10 w-auto max-w-[100px] object-contain"
+                    width={120}
+                    height={50}
+                    className="max-h-12 w-auto max-w-[120px] object-contain"
                   />
                 </div>
               ))}
@@ -735,14 +739,14 @@ export default async function HomePage() {
               {[...allPartnersRow2, ...allPartnersRow2, ...allPartnersRow2].map((partner, idx) => (
                 <div
                   key={`${partner.name}-${idx}`}
-                  className="partner-card flex h-16 w-32 sm:h-18 sm:w-36 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
+                  className="partner-card flex h-16 w-36 sm:h-18 sm:w-40 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
                 >
                   <Image
                     src={partner.image}
                     alt={partner.name}
-                    width={110}
-                    height={45}
-                    className="max-h-10 w-auto max-w-[100px] object-contain"
+                    width={120}
+                    height={50}
+                    className="max-h-12 w-auto max-w-[120px] object-contain"
                   />
                 </div>
               ))}
