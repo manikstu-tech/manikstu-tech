@@ -6,7 +6,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ArrowLeft, Package, CheckCircle2, ShoppingBag } from "lucide-react";
 import { getProducts } from "@/lib/api";
-import { type Product } from "../data";
+import { FALLBACK_PRODUCTS, type Product } from "../data";
 import { readCart, subscribeCart, clearCart, type CartMap } from "../cart";
 
 type Address = {
@@ -34,7 +34,7 @@ const emptyAddress: Address = {
 };
 
 export default function CheckoutPage() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const [cart, setCart] = useState<CartMap>({});
   const [address, setAddress] = useState<Address>(emptyAddress);
   const [placed, setPlaced] = useState(false);
@@ -42,9 +42,13 @@ export default function CheckoutPage() {
   useEffect(() => {
     getProducts(1, 50)
       .then((res) => {
-        setProducts(Array.isArray(res.data) ? res.data : []);
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          setProducts(res.data);
+        }
       })
-      .catch(() => setProducts([]));
+      .catch(() => {
+        /* keep FALLBACK_PRODUCTS when the API isn't reachable */
+      });
   }, []);
 
   useEffect(() => {

@@ -3,6 +3,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import HeroSlider from "@/components/home/HeroSlider";
+import GoatIcon from "@/components/icons/GoatIcon";
+import WatchStoryButton from "@/components/home/WatchStoryButton";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
 import PageHero from "@/components/layout/PageHero";
 import JsonLd from "@/components/seo/JsonLd";
@@ -12,6 +15,7 @@ import {
   Play,
   FileText,
   Users,
+  Map,
   MapPin,
   Sprout,
   Shield,
@@ -69,10 +73,10 @@ export default async function HomePage() {
   ];
 
   const stats = [
-    { value: "70,000+", label: t("stat1Label"), icon: Users, image: "/patterns/impact-panel-1.png" },
+    { value: "25,000+", label: t("stat1Label"), icon: Users, image: "/patterns/impact-panel-1.png" },
     { value: "10,000+", label: t("stat2Label"), icon: MapPin, image: "/patterns/impact-panel-2.png" },
-    { value: "7,00,000+", label: t("stat3Label"), icon: Sprout, image: "/patterns/impact-panel-3.png" },
-    { value: "10+", label: t("stat4Label"), icon: Shield, image: "/patterns/impact-panel-4.png" },
+    { value: "7,00,000+", label: t("stat3Label"), icon: GoatIcon, image: "/patterns/impact-panel-3.png" },
+    { value: "10+", label: t("stat4Label"), icon: Map, image: "/patterns/impact-panel-4.png" },
   ];
 
   const partnerCategories = [
@@ -159,29 +163,43 @@ export default async function HomePage() {
       date: "Feb 25, 2024",
       category: tBlogCategories("featured"),
       categoryColor: "bg-manikstu-green",
-      title: t("featuredIn"),
-      image: "/1.png",
+      title:
+        'What is the "Goat Bank" PM Modi spoke today in his "Mann ki Baat" address?',
+      excerpt:
+        'Prime Minister Narendra Modi lauded an Odisha couple\'s innovative "Goat Bank" initiative in his Mann Ki Baat address.',
+      image: "/pm-modi-mann-ki-baat.png",
+      imageFit: "cover",
     },
     {
-      date: "Jan 14, 2024",
+      date: "Jul 25, 2020",
       category: tBlogCategories("event"),
       categoryColor: "bg-manikstu-red",
-      title: t("featuredIn"), // Use same for now
-      image: "/2.png",
+      title: "CEO Manikstu Agro received Emerging Women Entrepreneur Award.",
+      excerpt:
+        "Jayanti Mahapatra, CEO Manikstu Agro received Emerging Women Entrepreneur Award at KIIT Technology Business Incubator.",
+      image: "/women-entrepreneur-award.jpg",
+      imageFit: "cover",
     },
     {
-      date: "Dec 15, 2023",
+      date: "May 08, 2026",
       category: tBlogCategories("press"),
       categoryColor: "bg-manikstu-gold",
-      title: t("featuredIn"), // Use same for now
-      image: "/3.png",
+      title: "Initiative to Promote Scientific Goat Farming in the Dhamtari District",
+      excerpt:
+        "Goat Farming Center to be Established at Bhatgaon; To Be Developed as a Modern Research-cum-Integrated Breeding Center",
+      image: "/5866_press_release.jpeg",
+      imageFit: "cover",
     },
     {
-      date: "Mar 08, 2024",
+      date: "May 14, 2026",
       category: tBlogCategories("media"),
       categoryColor: "bg-saura-red",
-      title: t("featuredIn"), // Use same for now
-      image: "/4.png",
+      title:
+        "Visit of Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India at Raipur Office",
+      excerpt:
+        "Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India visited the Manikstu Agro Raipur Office.",
+      image: "/minister-visit-raipur.jpg",
+      imageFit: "cover",
     },
   ];
 
@@ -309,30 +327,32 @@ export default async function HomePage() {
 
               {/* Right content */}
               <div className="relative">
-                {/* Main photo placeholder */}
-                <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] group cursor-pointer">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-full bg-manikstu-green/90 text-white shadow-lg group-hover:scale-110 transition-transform">
-                      <Play className="h-8 w-8 sm:h-10 sm:w-10 ml-1 fill-current" />
-                    </div>
-                  </div>
-                  {/* Watch Our Story overlay — top-right & compact on mobile, bottom-right on desktop */}
-                  <div className="absolute top-3 right-3 sm:top-auto sm:bottom-4 sm:right-4 flex items-center gap-2 sm:gap-3 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white/90 backdrop-blur-sm px-2.5 py-1.5 sm:px-4 sm:py-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
-                    <div className="flex h-7 w-7 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-manikstu-green text-white shadow-xs">
-                      <Play className="h-3 w-3 sm:h-4 sm:w-4 ml-0.5 fill-current" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] sm:text-xs font-semibold leading-tight text-charcoal">{t("watchOurStory").split("\n")[0]}</p>
-                      <p className="text-[9px] sm:text-xs leading-tight text-grey">{t("watchOurStory").split("\n")[1]}</p>
-                    </div>
-                  </div>
+                {/* Main photo */}
+                <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
+                  <HeroSlider
+                    images={["/hero-slide-1.png"]}
+                    alt="Manikstu Agro — goat farming ecosystem"
+                    intervalMs={4000}
+                  />
+                  {/* Watch Our Story — opens a YouTube popup */}
+                  <WatchStoryButton
+                    videoId="eurGt7tXTFw"
+                    topLabel={t("watchOurStory").split("\n")[0]}
+                    bottomLabel={t("watchOurStory").split("\n")[1]}
+                  />
                 </div>
 
                 {/* Floating card — safe inside bottom-left on mobile, floating on desktop */}
                 <div className="absolute bottom-3 left-3 sm:-bottom-6 sm:-left-4 md:-left-8 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white p-2 sm:p-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="flex h-7 w-7 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                      <FileText className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
+                    <div className="relative h-8 w-8 sm:h-11 sm:w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-manikstu-cream shadow-sm">
+                      <Image
+                        src="/pm-modi-mann-ki-baat.png"
+                        alt="PM Narendra Modi — Mann Ki Baat"
+                        fill
+                        sizes="44px"
+                        className="object-cover object-top"
+                      />
                     </div>
                     <p className="text-[10px] sm:text-xs leading-tight text-charcoal max-w-[145px] sm:max-w-[180px] font-medium">
                       {t("featuredIn")}
@@ -638,9 +658,13 @@ export default async function HomePage() {
                 </Link>
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] shadow-sm border border-manikstu-gold/20">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Sprout className="h-24 w-24 text-manikstu-green/30" />
-                </div>
+                <Image
+                  src="/ajah-hero.png"
+                  alt="Project AJAH — Aajivika Jyoti Adhaarit Hastantaran"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
                 {/* Badge — compact in bottom-right corner on mobile, full pill on desktop */}
                 <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 rounded-lg sm:rounded-full bg-manikstu-green px-2.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-semibold text-white shadow-md max-w-[85%] sm:max-w-none text-right leading-tight z-10">
                   {t("ajahBadge")}
@@ -716,54 +740,39 @@ export default async function HomePage() {
               className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-manikstu-cream dark:from-gray-800 to-transparent z-10"
             />
 
-            {/* Track 1 */}
+            {/* Single continuous marquee — every partner logo in one line */}
             <div className="flex gap-4 animate-marquee py-1.5">
-              {[...allPartnersRow1, ...allPartnersRow1, ...allPartnersRow1].map((partner, idx) => (
-                <div
-                  key={`${partner.name}-${idx}`}
-                  className="partner-card flex h-16 w-36 sm:h-18 sm:w-40 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
-                >
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    width={120}
-                    height={50}
-                    className="max-h-12 w-auto max-w-[120px] object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Track 2 (Reverse) */}
-            <div className="mt-3 flex gap-4 animate-marquee-reverse py-1.5">
-              {[...allPartnersRow2, ...allPartnersRow2, ...allPartnersRow2].map((partner, idx) => (
-                <div
-                  key={`${partner.name}-${idx}`}
-                  className="partner-card flex h-16 w-36 sm:h-18 sm:w-40 items-center justify-center rounded-lg border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white px-3 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
-                >
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    width={120}
-                    height={50}
-                    className="max-h-12 w-auto max-w-[120px] object-contain"
-                  />
-                </div>
-              ))}
+              {(() => {
+                const all = [...allPartnersRow1, ...allPartnersRow2];
+                return [...all, ...all, ...all].map((partner, idx) => (
+                  <div
+                    key={`${partner.name}-${idx}`}
+                    className="partner-card flex h-24 w-44 sm:h-28 sm:w-52 md:h-32 md:w-56 items-center justify-center rounded-xl border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
+                  >
+                    <Image
+                      src={partner.image}
+                      alt={partner.name}
+                      width={220}
+                      height={90}
+                      className="max-h-16 sm:max-h-20 md:max-h-24 w-auto max-w-full object-contain"
+                    />
+                  </div>
+                ));
+              })()}
             </div>
           </div>
         </section>
 
         {/* Mobile App */}
         <section className="relative bg-white overflow-hidden">
-          {/* Left mandala background — moved upward behind phone on mobile, left-aligned on desktop */}
+          {/* Top-left corner mandala */}
           <Image
-            src="/patterns/mobile-app-mandala.png"
+            src="/patterns/mandala-corner-top.png"
             alt=""
             aria-hidden
-            width={1300}
-            height={1300}
-            className="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 top-12 sm:top-16 lg:left-[4%] lg:top-[46%] lg:translate-x-0 lg:-translate-y-1/2 h-[420px] sm:h-[480px] lg:h-[550px] w-auto max-w-none opacity-[0.20]"
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.14] sm:opacity-[0.18]"
           />
 
           <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
@@ -992,21 +1001,29 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {newsItems.map((item) => (
+              {newsItems.map((item, idx) => (
                 <Link
-                  key={item.title}
+                  key={`${item.title}-${idx}`}
                   href="/blog"
-                  className="group rounded-xl bg-white shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                  className="group flex flex-col rounded-xl border border-light-grey bg-white shadow-sm overflow-hidden hover:shadow-md transition-all dark:border-gray-800 dark:bg-gray-800"
                 >
                   {/* Image container */}
-                  <div className="relative flex h-40 w-full items-center justify-center overflow-hidden bg-manikstu-cream p-3">
+                  <div
+                    className={`relative flex h-40 w-full items-center justify-center overflow-hidden bg-manikstu-cream ${
+                      item.imageFit === "cover" ? "p-0" : "p-3"
+                    }`}
+                  >
                     {item.image ? (
                       <Image
                         src={item.image}
                         alt={item.title}
                         width={400}
                         height={300}
-                        className="max-h-full max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        className={
+                          item.imageFit === "cover"
+                            ? "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            : "max-h-full max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        }
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -1019,14 +1036,19 @@ export default async function HomePage() {
                       {item.category}
                     </span>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 flex flex-col flex-1">
                     <p className="flex items-center gap-1 text-xs text-grey">
                       <Calendar className="h-3 w-3" /> {item.date}
                     </p>
                     <h3 className="mt-2 text-sm font-semibold text-charcoal line-clamp-2 group-hover:text-manikstu-green transition-colors">
                       {item.title}
                     </h3>
-                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-manikstu-green">
+                    {item.excerpt && (
+                      <p className="mt-1.5 text-xs text-grey line-clamp-2">
+                        {item.excerpt}
+                      </p>
+                    )}
+                    <span className="mt-auto pt-3 inline-flex items-center gap-1 text-xs font-medium text-manikstu-green">
                       {tCommon("readMore")} <ArrowRight className="h-3 w-3" />
                     </span>
                   </div>

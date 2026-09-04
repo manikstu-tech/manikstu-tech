@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
 import { getSettings, getFooter } from "@/lib/api";
 import type { FooterLink } from "@/types";
 
@@ -75,15 +75,29 @@ export default function Footer() {
               {settings.brand_tagline || t("brandTagline")}
             </p>
             <div className="mt-4 flex gap-3">
-              {[Facebook, Instagram, Linkedin, Twitter, Youtube].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              {(() => {
+                const pick = (v?: string, fallback = "") =>
+                  v && v.startsWith("http") ? v : fallback;
+                return [
+                  { Icon: Facebook, label: "Facebook", href: pick(settings.facebook, "https://www.facebook.com/ManikstuAgroPrivateLimited?mibextid=ZbWKwL") },
+                  { Icon: Instagram, label: "Instagram", href: pick(settings.instagram, "https://www.instagram.com/manikstuagro?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D") },
+                  { Icon: Linkedin, label: "LinkedIn", href: pick(settings.linkedin, "https://www.linkedin.com/company/manikstu-agro-private-limited/posts/?feedView=all") },
+                  { Icon: Youtube, label: "YouTube", href: pick(settings.youtube, "https://www.youtube.com/@manikstuagro5847") },
+                ];
+              })().map(({ Icon, label, href }, i) => {
+                const external = href.startsWith("http");
+                return (
+                  <a
+                    key={i}
+                    href={href}
+                    aria-label={label}
+                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -146,19 +160,21 @@ export default function Footer() {
                 <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Phone className="h-3.5 w-3.5" />
                 </span>
-                {settings.phone}
+                <a href={`tel:${settings.phone.replace(/\s+/g, "")}`} className="hover:text-manikstu-green transition-colors">
+                  {settings.phone}
+                </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Mail className="h-3.5 w-3.5" />
                 </span>
-                <span>{settings.email_sales}<br /><span className="text-xs text-grey/70">{t("forSalesEnquiry")}</span></span>
+                <span><a href={`mailto:${settings.email_sales}`} className="hover:text-manikstu-green transition-colors">{settings.email_sales}</a><br /><span className="text-xs text-grey/70">{t("forSalesEnquiry")}</span></span>
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Send className="h-3.5 w-3.5" />
                 </span>
-                <span>{settings.email_info}<br /><span className="text-xs text-grey/70">{t("forOtherEnquiry")}</span></span>
+                <span><a href={`mailto:${settings.email_info}`} className="hover:text-manikstu-green transition-colors">{settings.email_info}</a><br /><span className="text-xs text-grey/70">{t("forOtherEnquiry")}</span></span>
               </li>
             </ul>
             <div className="mt-4 flex flex-col gap-2">

@@ -23,14 +23,33 @@ class LoginController extends Controller
         ]);
 
         if (!Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+            // Generic message — never reveal whether the account exists.
             throw ValidationException::withMessages([
                 'email' => ['Invalid credentials.'],
             ]);
         }
 
+        $user = Auth::user();
+
+        // An account with no role can't be routed — block it.
+        if (empty($user->role)) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            throw ValidationException::withMessages([
+                'email' => ['Your account has no role assigned. Please contact support.'],
+            ]);
+        }
+
         $request->session()->regenerate();
 
-        return redirect()->intended(route('admin.dashboard'));
+        // Route by role: telecaller -> telecalling dashboard, everyone else -> admin.
+        $home = $user->role === 'telecaller'
+            ? route('telecalling.dashboard')
+            : route('admin.dashboard');
+
+        return redirect()->intended($home);
     }
 
     public function logout(Request $request)

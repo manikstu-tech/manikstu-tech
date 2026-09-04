@@ -90,7 +90,7 @@ export default function BlogPage() {
         {/* Articles — third section */}
         <section
           id="articles"
-          className="section-padding bg-white scroll-mt-6"
+          className="section-padding !pt-4 sm:!pt-12 md:!pt-16 bg-white scroll-mt-6"
         >
           <div className="mx-auto max-w-6xl">
             <div className="text-center">

@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\PasswordResetController;
+use App\Http\Controllers\Telecalling\TelecallingController;
 
 Route::get('/', fn() => redirect()->route('admin.login'));
 
@@ -34,7 +35,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [PasswordResetController::class, 'reset'])->name('password.update')->middleware('throttle:5,1');
 
-    Route::middleware(['auth', 'throttle:120,1'])->group(function () {
+    Route::middleware(['auth', 'throttle:120,1', 'area:admin'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('products', ProductController::class)->except('destroy');
@@ -89,4 +90,26 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/media', [MediaController::class, 'index'])->name('media.index');
         Route::post('/media/upload', [MediaController::class, 'upload'])->name('media.upload');
     });
+});
+
+/*
+| Telecalling area — same shared login (/admin/login) routes telecallers here.
+| Only accounts with role = "telecaller" may access; anyone else is redirected
+| to the admin dashboard by the `area:telecalling` guard.
+*/
+Route::prefix('telecalling')->name('telecalling.')->middleware(['auth', 'throttle:120,1', 'area:telecalling'])->group(function () {
+    Route::get('/', fn() => redirect()->route('telecalling.dashboard'));
+    Route::get('/dashboard', [TelecallingController::class, 'index'])->name('dashboard');
+
+    // Order tracking detail (register before the section catch so /orders stays the list).
+    Route::get('/orders/{id}', [TelecallingController::class, 'orderDetail'])->name('order.show');
+    Route::get('/complaints/{id}', [TelecallingController::class, 'complaintDetail'])->name('complaint.show');
+    Route::get('/franchise/{id}', [TelecallingController::class, 'franchiseDetail'])->name('franchise.show');
+    Route::put('/settings/profile', [TelecallingController::class, 'updateProfile'])->name('settings.profile');
+    Route::put('/notifications/read', [TelecallingController::class, 'markNotificationsRead'])->name('notifications.read');
+
+    // Sidebar sections (placeholder pages for now; dashboard is the live one).
+    foreach (['farmers', 'orders', 'products', 'delivery', 'complaints', 'telecalling', 'franchise', 'reports', 'settings'] as $section) {
+        Route::get("/{$section}", [TelecallingController::class, 'section'])->name($section);
+    }
 });

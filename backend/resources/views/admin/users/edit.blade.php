@@ -10,7 +10,7 @@
         <x-admin.form-field label="Email" name="email" type="email" :value="$user->email" required />
         <x-admin.form-field label="Password" name="password" type="password" placeholder="Leave blank to keep current" help="Leave blank to keep current password" />
         <x-admin.form-field label="Confirm Password" name="password_confirmation" type="password" />
-        <x-admin.form-field label="Role" name="role" type="select" :options="['developer'=>'Developer','telesales'=>'Telesales','hr'=>'HR']" :value="$user->role" required />
+        <x-admin.form-field label="Role" name="role" type="select" :options="['developer'=>'Developer','telesales'=>'Telesales','hr'=>'HR','telecaller'=>'Telecaller']" :value="$user->role" required />
         <x-admin.form-field label="Active" name="is_active" type="toggle" :value="$user->is_active" />
     </div>
     <div class="form-actions"><a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Cancel</a><button type="submit" class="btn btn-primary">Update</button></div>

@@ -5,6 +5,7 @@
 
 const KEY = "manikstu.cart";
 const EVENT = "manikstu:cart";
+const DRAWER_EVENT = "manikstu:cart:drawer";
 
 export type CartMap = Record<number, number>;
 
@@ -90,3 +91,26 @@ export function subscribeCart(cb: (cart: CartMap) => void): () => void {
     window.removeEventListener("storage", onStorage);
   };
 }
+
+export function openCartDrawer() {
+  if (!isBrowser()) return;
+  window.dispatchEvent(new CustomEvent(DRAWER_EVENT, { detail: { open: true } }));
+}
+
+export function closeCartDrawer() {
+  if (!isBrowser()) return;
+  window.dispatchEvent(new CustomEvent(DRAWER_EVENT, { detail: { open: false } }));
+}
+
+export function subscribeCartDrawer(cb: (open: boolean) => void): () => void {
+  if (!isBrowser()) return () => {};
+  const handler = (e: Event) => {
+    const detail = (e as CustomEvent<{ open: boolean }>).detail;
+    if (detail && typeof detail.open === "boolean") cb(detail.open);
+  };
+  window.addEventListener(DRAWER_EVENT, handler as EventListener);
+  return () => {
+    window.removeEventListener(DRAWER_EVENT, handler as EventListener);
+  };
+}
+

@@ -386,14 +386,20 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {awards.map((item) => {
                     const Icon = item.icon;
                     return (
                       <div
                         key={item.title}
-                        className="group relative flex flex-col justify-between overflow-hidden rounded-xl sm:rounded-2xl border-2 border-saura-red/50 bg-white/95 p-4 sm:p-7 shadow-xs sm:shadow-sm transition-all duration-300 hover:shadow-xl"
+                        className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 pt-5 pb-5 px-5 sm:pt-6 sm:pb-6 sm:px-6 shadow-sm transition-all duration-300 hover:shadow-xl"
                       >
+                        {/* Inner dashed border */}
+                        <div
+                          aria-hidden
+                          className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                        />
+
                         <div className="relative z-10 flex flex-col items-center text-center">
                           {/* Dashed-ring icon badge */}
                           <div className="relative mb-2.5 sm:mb-4 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">

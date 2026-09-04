@@ -17,6 +17,7 @@
         'viewer'          => ['label' => 'Viewer',          'bg' => 'rgba(91,141,239,0.14)', 'text' => '#3E6FD0'],
         'developer'       => ['label' => 'Developer',       'bg' => 'rgba(196,149,42,0.12)', 'text' => '#C4952A'],
         'telesales'       => ['label' => 'Telesales',       'bg' => 'rgba(74,140,63,0.12)',  'text' => '#3A7030'],
+        'telecaller'      => ['label' => 'Telecaller',      'bg' => 'rgba(91,141,239,0.14)', 'text' => '#3E6FD0'],
         'hr'              => ['label' => 'HR',               'bg' => 'rgba(91,141,239,0.14)', 'text' => '#3E6FD0'],
     ];
     $roleDefault = ['bg' => 'rgba(90,90,90,0.10)', 'text' => '#5A5A5A'];

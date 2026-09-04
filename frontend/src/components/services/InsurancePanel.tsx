@@ -17,27 +17,23 @@ export default function InsurancePanel({ heading, paragraphs }: Props) {
       </h3>
 
       <div className="space-y-4">
-        {expanded ? (
-          paragraphs.map((p, i) => (
-            <p key={i} className="text-sm leading-relaxed text-grey">
-              {p}
-            </p>
-          ))
-        ) : (
-          <p className="line-clamp-3 text-sm leading-relaxed text-grey">
-            {paragraphs[0]}
+        {(expanded ? paragraphs : paragraphs.slice(0, 2)).map((p, i) => (
+          <p key={i} className="text-sm leading-relaxed text-grey">
+            {p}
           </p>
-        )}
+        ))}
       </div>
 
-      <button
-        type="button"
-        onClick={() => setExpanded(!expanded)}
-        aria-expanded={expanded}
-        className="mt-4 text-sm font-semibold text-manikstu-green transition-colors hover:text-manikstu-leaf"
-      >
-        {expanded ? "Show Less" : "View All"}
-      </button>
+      {paragraphs.length > 2 && (
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          aria-expanded={expanded}
+          className="mt-4 text-sm font-semibold text-manikstu-green transition-colors hover:text-manikstu-leaf"
+        >
+          {expanded ? "Show Less" : "Read More"}
+        </button>
+      )}
     </div>
   );
 }

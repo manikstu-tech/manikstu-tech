@@ -99,3 +99,6 @@ export interface PressRelease {
   published_at: string | null;
   category: BlogCategory | null;
 }
+
+// Re-export Product from data module for convenience
+export type { Product } from "@/app/[locale]/products/data";

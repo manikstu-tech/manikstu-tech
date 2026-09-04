@@ -41,6 +41,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Poshak Tatwa',
                 'category' => 'Health',
                 'size' => '300 ml',
+                'price' => 249,
                 'description' => 'Ayurvedic multivitamin syrup that boosts livestock health, growth, and productivity.',
                 'long' => 'Poshak Tatwa is an Ayurvedic multivitamin and nutritional tonic designed to enhance livestock health, growth, and productivity. Its blend of natural herbal extracts improves metabolism, immunity, digestion, and physical strength. Essential for bone, muscle, and reproductive development, it is highly beneficial for growing, pregnant, lactating, and recovering animals. Regular supplementation ensures optimal body condition, better feed utilization, and improved overall performance.',
                 'highlights' => [
@@ -71,12 +72,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '300 ml'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/poshak-tatwa/1.png',
+                'images' => [
+                    '/products/poshak-tatwa/1.png',
+                    '/products/poshak-tatwa/2.png',
+                    '/products/poshak-tatwa/3.png',
+                    '/products/poshak-tatwa/4.png',
+                ],
             ],
 
             [
                 'name' => 'Livtherapy Syrup',
                 'category' => 'Health',
-                'size' => '200 ml',
+                'size' => '1 Kg',
+                'price' => 173,
                 'description' => 'Powerful Ayurvedic liver tonic that supports hepatic function and recovery.',
                 'long' => 'Livtherapy Syrup is a powerful Ayurvedic liver tonic formulated to protect and enhance liver function in livestock. It aids in detoxifying the bloodstream by supporting hepatic activity, improving liver enzyme function, and promoting bile secretion. Regular use helps animals recover from infections, stress, or deworming, and improves their overall vitality and health.',
                 'highlights' => [
@@ -104,12 +113,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '200 ml'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/livtherapy-syrup/1.png',
+                'images' => [
+                    '/products/livtherapy-syrup/1.png',
+                    '/products/livtherapy-syrup/2.png',
+                    '/products/livtherapy-syrup/3.png',
+                    '/products/livtherapy-syrup/4.png',
+                ],
             ],
 
             [
                 'name' => 'Pachak Tatwa',
                 'category' => 'Health',
                 'size' => '200 ml',
+                'price' => 172,
                 'description' => 'Potent Ayurvedic digestive tonic that stimulates appetite and gut health.',
                 'long' => 'Pachak Tatwa is a potent Ayurvedic formulation designed to improve digestion and appetite in livestock. It enhances the functioning of the gastrointestinal system by stimulating the secretion of proteolytic, amylolytic, and lipolytic enzymes. This action supports gut health, nutrient absorption, and overall well-being in animals.',
                 'highlights' => [
@@ -137,12 +154,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '200 ml'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/pachak-tatwa/1.png',
+                'images' => [
+                    '/products/pachak-tatwa/1.png',
+                    '/products/pachak-tatwa/2.png',
+                    '/products/pachak-tatwa/3.png',
+                    '/products/pachak-tatwa/4.png',
+                ],
             ],
 
             [
                 'name' => 'Kurmi Nashak',
                 'category' => 'Health',
-                'size' => '10 Tablets',
+                'size' => 'Pack of 10',
+                'price' => 150,
                 'description' => 'Ayurvedic deworming tablets for internal parasite control.',
                 'long' => 'Kurmi Nashak is an Ayurvedic deworming formulation designed to eliminate internal parasitic infections in livestock. It effectively targets a wide range of intestinal worms including tapeworms, roundworms, hookworms, and whipworms. Regular deworming not only protects animals from parasite-induced diseases but also improves digestion, nutrient uptake, and productivity. The formulation is safe, natural, and also helps reduce the risk of parasite transmission to humans handling the animals.',
                 'highlights' => [
@@ -170,12 +195,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Strip of 10 Tablets'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/kurmi-nashak/1.png',
+                'images' => [
+                    '/products/kurmi-nashak/1.png',
+                    '/products/kurmi-nashak/2.png',
+                    '/products/kurmi-nashak/3.png',
+                    '/products/kurmi-nashak/4.png',
+                ],
             ],
 
             [
                 'name' => 'Tickclear Soap',
                 'category' => 'Health',
-                'size' => '75 gm',
+                'size' => '125 gm',
+                'price' => 130,
                 'description' => 'Medicated soap that protects livestock from ticks, lice, mites and other external parasites.',
                 'long' => "Manikstu TickClear Soap protects livestock from ticks, lice, mites, and other external parasites. It combines insecticidal Permethrin to quickly paralyze and eliminate pests, with antibacterial Cetrimide to prevent secondary skin infections caused by scratching. Regular use relieves severe irritation, maintains essential hygiene, and ensures a clean, healthy coat.",
                 'highlights' => [
@@ -204,12 +237,19 @@ class ProductSeeder extends Seeder
                     ['Packaging', 'A Block of 75 gm'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/tickclear-soap/1.png',
+                'images' => [
+                    '/products/tickclear-soap/1.png',
+                    '/products/tickclear-soap/2.png',
+                    '/products/tickclear-soap/3.png',
+                ],
             ],
 
             [
                 'name' => 'Fungi Rakshak',
                 'category' => 'Health',
                 'size' => '100 gm',
+                'price' => 185,
                 'description' => 'Natural plant-based antifungal cream for livestock skin health.',
                 'long' => 'Fungi Rakshak Cream is a natural, plant-based antifungal formulation designed to effectively manage fungal skin infections in domestic animals. The synergistic action of essential oils provides strong antifungal, antiseptic, and soothing effects, helping restore skin health while preventing secondary infections.',
                 'highlights' => [
@@ -237,12 +277,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', 'A Pack of 100 gm'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/fungi-rakshak/1.png',
+                'images' => [
+                    '/products/fungi-rakshak/1.png',
+                    '/products/fungi-rakshak/2.png',
+                    '/products/fungi-rakshak/3.png',
+                    '/products/fungi-rakshak/4.png',
+                ],
             ],
 
             [
                 'name' => 'Multi Mineral Lick Block',
                 'category' => 'Nutrition',
                 'size' => '1 kg',
+                'price' => 250,
                 'description' => 'Natural trace mineral lick block that supports livestock health and performance.',
                 'long' => 'The Mineral Block is a natural and practical supplement that provides a range of essential trace minerals required for optimum livestock health and performance. Designed as a free-choice lick, it allows animals to self-regulate their intake based on individual needs. Especially useful in mineral-deficient regions or during physiologically demanding phases like pregnancy, lactation, or heat stress.',
                 'highlights' => [
@@ -269,12 +317,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Block of 1 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/multi-mineral-lick-block/1.png',
+                'images' => [
+                    '/products/multi-mineral-lick-block/1.png',
+                    '/products/multi-mineral-lick-block/2.png',
+                    '/products/multi-mineral-lick-block/3.png',
+                    '/products/multi-mineral-lick-block/4.png',
+                ],
             ],
 
             [
                 'name' => 'Black Salt Block',
                 'category' => 'Nutrition',
                 'size' => '1 kg',
+                'price' => 250,
                 'description' => 'Ayurvedic black-salt lick for digestion, electrolyte balance and detox.',
                 'long' => 'The Black Salt Block is a natural mineral lick enriched with Ayurvedic digestive and detoxifying properties. Known for its high mineral content and lower sodium levels compared to regular salt, black salt (Kala Namak) supports gastrointestinal health, electrolyte balance, and respiratory comfort in livestock. This block serves as both a digestive aid and a mineral replenisher, especially in hot or stressful conditions.',
                 'highlights' => [
@@ -302,12 +358,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Block of 1 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/black-salt-block/1.png',
+                'images' => [
+                    '/products/black-salt-block/1.png',
+                    '/products/black-salt-block/2.png',
+                    '/products/black-salt-block/3.png',
+                    '/products/black-salt-block/4.png',
+                ],
             ],
 
             [
                 'name' => 'Sulphur Block',
                 'category' => 'Nutrition',
                 'size' => '1 kg',
+                'price' => 220,
                 'description' => 'Sulphur-rich lick block for skin, metabolism and detoxification support.',
                 'long' => 'The Sulphur Block is a natural sulphur-rich lick designed to support various metabolic, dermatological, and digestive functions in livestock. Sulphur is essential for amino acid, vitamin, and enzyme formation. Free-choice licking delivers sulphur in a controlled, safe manner, contributing to improved skin condition, disease resistance, and overall productivity.',
                 'highlights' => [
@@ -335,12 +399,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Block of 1 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/sulphur-block/1.png',
+                'images' => [
+                    '/products/sulphur-block/1.png',
+                    '/products/sulphur-block/2.png',
+                    '/products/sulphur-block/3.png',
+                    '/products/sulphur-block/4.png',
+                ],
             ],
 
             [
                 'name' => 'Calcium Block',
                 'category' => 'Nutrition',
                 'size' => '1 kg',
+                'price' => 250,
                 'description' => 'Pure plant-derived calcium block for daily livestock calcium needs.',
                 'long' => 'The Calcium Block is a pure, plant-derived supplement designed to meet the daily calcium needs of livestock. Highly beneficial for young, pregnant, lactating, and high-producing animals, it offers a stress-free way to prevent deficiency through self-licking. Free from animal residues, it ensures safety while supporting strong bones, optimal muscle function, and improved productivity.',
                 'highlights' => [
@@ -368,12 +440,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Block of 1 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/calcium-block/1.png',
+                'images' => [
+                    '/products/calcium-block/1.png',
+                    '/products/calcium-block/2.png',
+                    '/products/calcium-block/3.png',
+                    '/products/calcium-block/4.png',
+                ],
             ],
 
             [
                 'name' => 'Pink Salt Block',
                 'category' => 'Nutrition',
                 'size' => '1 kg',
+                'price' => 275,
                 'description' => 'Natural pink-salt lick rich in essential trace minerals and electrolytes.',
                 'long' => 'The Pink Salt Block is a natural mineral lick made from high-quality pink salt, rich in essential trace minerals required for maintaining electrolyte balance and overall health in livestock. It supports daily mineral intake through free-choice licking, especially beneficial in hot climates and mineral-deficient feeding systems.',
                 'highlights' => [
@@ -401,12 +481,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Block of 1 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/pink-salt-block/1.png',
+                'images' => [
+                    '/products/pink-salt-block/1.png',
+                    '/products/pink-salt-block/2.png',
+                    '/products/pink-salt-block/3.png',
+                    '/products/pink-salt-block/4.png',
+                ],
             ],
 
             [
                 'name' => 'Protein Block',
                 'category' => 'Nutrition',
                 'size' => '1 kg',
+                'price' => 275,
                 'description' => 'Nutritional lick block that supplements essential protein for growth and milk production.',
                 'long' => 'Protein Block is a nutritional lick block that supplements the essential protein required for livestock growth and productivity. It actively supports body development, muscle formation, and milk production. By instinctively licking the block, animals fulfill their specific nutritional needs and maintain a proper protein balance in their diet.',
                 'highlights' => [
@@ -434,12 +522,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Block of 1 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/protein-block/1.png',
+                'images' => [
+                    '/products/protein-block/1.png',
+                    '/products/protein-block/2.png',
+                    '/products/protein-block/3.png',
+                    '/products/protein-block/4.png',
+                ],
             ],
 
             [
                 'name' => 'Cobalt Block',
                 'category' => 'Nutrition',
                 'size' => '1 kg',
+                'price' => 275,
                 'description' => 'Cobalt-rich lick block for rumen Vitamin B12 synthesis and energy metabolism.',
                 'long' => 'Cobalt Block is a mineral lick block formulated to supply cobalt, an essential trace mineral required for proper rumen function in ruminant animals. Cobalt plays a crucial role in the production of Vitamin B12 by rumen microbes, which is necessary for energy metabolism, red blood cell formation, and overall animal health. Regular access to cobalt helps maintain optimal growth, productivity, and metabolic efficiency in livestock.',
                 'highlights' => [
@@ -467,12 +563,20 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Block of 1 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/cobalt-block/1.png',
+                'images' => [
+                    '/products/cobalt-block/1.png',
+                    '/products/cobalt-block/2.png',
+                    '/products/cobalt-block/3.png',
+                    '/products/cobalt-block/4.png',
+                ],
             ],
 
             [
                 'name' => 'Super Supplement Block',
                 'category' => 'Nutrition',
                 'size' => '1 kg',
+                'price' => 250,
                 'description' => 'Premium multi-nutrient lick block for balanced daily supplementation.',
                 'long' => 'Super Supplement Block is a premium multi-nutrient lick block specially formulated to provide a balanced combination of essential minerals and nutrients required for optimum livestock health and productivity. It helps bridge nutritional gaps in the regular diet and supports overall growth, reproduction, immunity, and milk production. Animals naturally consume the block according to their nutritional requirements.',
                 'highlights' => [
@@ -500,6 +604,13 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Block of 1 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/super-supplement-block/1.png',
+                'images' => [
+                    '/products/super-supplement-block/1.png',
+                    '/products/super-supplement-block/2.png',
+                    '/products/super-supplement-block/3.png',
+                    '/products/super-supplement-block/4.png',
+                ],
             ],
 
             [
@@ -533,6 +644,13 @@ class ProductSeeder extends Seeder
                     ['Packaging', 'A Sachet of 20 gm'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/hydracharge/1.png',
+                'images' => [
+                    '/products/hydracharge/1.png',
+                    '/products/hydracharge/2.png',
+                    '/products/hydracharge/3.png',
+                    '/products/hydracharge/4.png',
+                ],
             ],
 
             [
@@ -567,6 +685,13 @@ class ProductSeeder extends Seeder
                     ['Packaging', '1 Pack of 10 kg'],
                     ['Country of Origin', 'Made in India'],
                 ]),
+                'image' => '/products/goat-feed/goat-feed-main.png',
+                'images' => [
+                    '/products/goat-feed/goat-feed-main.png',
+                    '/products/goat-feed/goat-feed-front.png',
+                    '/products/goat-feed/goat-feed-back.png',
+                    '/products/goat-feed/goat-feed-banner.png',
+                ],
             ],
         ];
 
@@ -579,10 +704,10 @@ class ProductSeeder extends Seeder
                 'sku' => null,
                 'description' => $p['description'],
                 'long_description' => $p['long'],
-                'price' => null,
+                'price' => $p['price'] ?? null,
                 'stock_quantity' => 0,
-                'image' => null,
-                'images' => [],
+                'image' => $p['image'] ?? null,
+                'images' => $p['images'] ?? [],
                 'highlights' => $p['highlights'],
                 'specifications' => $p['specs'],
                 'usage_instructions' => $p['usage'],

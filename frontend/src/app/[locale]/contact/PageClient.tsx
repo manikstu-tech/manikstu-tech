@@ -112,15 +112,17 @@ export default function ContactPage() {
                 icon: Phone,
                 title: t("callUs"),
                 value: "+91 8270331856",
+                href: "tel:+918270331856",
                 subtitle: "Mon – Sat | 9:00 AM – 6:00 PM",
               },
               {
                 icon: Mail,
                 title: t("emailUs"),
                 value: "contact@manikstu.com",
+                href: "mailto:contact@manikstu.com",
                 subtitle: "We typically reply within 24 hours",
               },
-            ].map(({ icon: Icon, title, value, subtitle }) => (
+            ].map(({ icon: Icon, title, value, href, subtitle }) => (
               <div
                 key={title}
                 className="group flex items-center gap-5 rounded-2xl border border-manikstu-gold/25 bg-manikstu-cream/60 p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5"
@@ -137,7 +139,9 @@ export default function ContactPage() {
                     {title}
                   </p>
                   <p className="mt-1 text-sm font-semibold text-manikstu-green break-words">
-                    {value}
+                    <a href={href} className="hover:text-manikstu-leaf hover:underline transition-colors">
+                      {value}
+                    </a>
                   </p>
                   <p className="mt-1 text-xs text-grey">{subtitle}</p>
                 </div>

@@ -10,7 +10,7 @@
         <x-admin.form-field label="Email" name="email" type="email" :value="$user->email ?? ''" required />
         <x-admin.form-field label="Password" name="password" type="password" :value="" placeholder="{{ isset($user) ? 'Leave blank to keep current' : '' }}" {{ isset($user) ? '' : 'required' }} help="{{ isset($user) ? 'Leave blank to keep current password' : '' }}" />
         <x-admin.form-field label="Confirm Password" name="password_confirmation" type="password" :value="" />
-        <x-admin.form-field label="Role" name="role" type="select" :options="['developer'=>'Developer','telesales'=>'Telesales','hr'=>'HR']" :value="$user->role ?? 'telesales'" required />
+        <x-admin.form-field label="Role" name="role" type="select" :options="['developer'=>'Developer','telesales'=>'Telesales','hr'=>'HR','telecaller'=>'Telecaller']" :value="$user->role ?? 'telesales'" required />
         @if(isset($user))<x-admin.form-field label="Active" name="is_active" type="toggle" :value="$user->is_active" />@endif
     </div>
     <div class="form-actions"><a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Cancel</a><button type="submit" class="btn btn-primary">{{ isset($user) ? 'Update' : 'Create' }}</button></div>
