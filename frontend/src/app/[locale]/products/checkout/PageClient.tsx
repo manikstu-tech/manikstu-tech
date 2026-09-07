@@ -280,7 +280,7 @@ export default function CheckoutPage() {
                     <span>Delivery</span>
                     <span className="text-manikstu-green">Free</span>
                   </div>
-                  <div className="flex justify-between border-t border-light-grey/70 pt-3 font-heading text-lg font-bold text-charcoal">
+                  <div className="flex justify-between border-t border-light-grey/70 pt-3 font-body text-lg font-bold text-charcoal">
                     <span>Total</span>
                     <span className="text-manikstu-green">
                       ₹{cartTotal.toLocaleString("en-IN")}

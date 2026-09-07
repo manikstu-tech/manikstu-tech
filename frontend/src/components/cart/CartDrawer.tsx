@@ -265,7 +265,7 @@ export default function CartDrawer() {
                 <span className="text-sm text-grey dark:text-gray-400">
                   Subtotal
                 </span>
-                <span className="font-heading text-xl font-bold text-charcoal dark:text-white">
+                <span className="font-body text-xl font-bold text-charcoal dark:text-white">
                   ₹{cartTotal.toLocaleString("en-IN")}
                 </span>
               </div>

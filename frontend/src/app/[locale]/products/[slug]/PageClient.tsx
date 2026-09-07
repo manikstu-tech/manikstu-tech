@@ -493,7 +493,7 @@ export default function ProductDetailPage() {
 
               {/* Price */}
               <div className="mt-6 flex items-baseline gap-3">
-                <p className="font-heading text-3xl font-bold text-manikstu-green">
+                <p className="font-body text-3xl font-bold text-manikstu-green">
                   ₹{Number(product.price).toLocaleString("en-IN")}
                 </p>
                 {product.size && (
@@ -1220,7 +1220,7 @@ export default function ProductDetailPage() {
                       {p.description}
                     </p>
                     <p className="mt-2 text-sm font-bold text-manikstu-green">
-                      Γé╣{Number(p.price).toLocaleString("en-IN")}
+                      ₹{Number(p.price).toLocaleString("en-IN")}
                     </p>
                   </div>
                 </Link>

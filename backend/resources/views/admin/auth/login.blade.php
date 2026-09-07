@@ -234,6 +234,7 @@
         }
         .field-group:nth-child(1) { animation-delay: 0.5s; }
         .field-group:nth-child(2) { animation-delay: 0.58s; }
+        .field-group:nth-child(3) { animation-delay: 0.62s; }
 
         .field-group.shake { animation: shake 0.3s ease; }
 
@@ -294,6 +295,75 @@
         .login-input:focus:-webkit-autofill {
             border-color: var(--green);
             -webkit-box-shadow: 0 0 0 1000px #fff inset, 0 0 0 3px rgba(74,140,63,0.12);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .role-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 14px 8px;
+            border: 1.5px solid var(--light-grey);
+            border-radius: 12px;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .role-card:hover {
+            border-color: var(--green);
+            background: rgba(74, 140, 63, 0.04);
+        }
+
+        .role-card:has(input:checked) {
+            border-color: var(--green);
+            background: rgba(74, 140, 63, 0.08);
+            box-shadow: 0 0 0 3px rgba(74,140,63,0.12);
+        }
+
+        .role-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(74, 140, 63, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            transition: all 0.2s;
+        }
+
+        .role-card:has(input:checked) .role-card-icon {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .role-card-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .role-card:has(input:checked) .role-card-name {
+            color: var(--green);
         }
 
         .pw-toggle {
@@ -506,6 +576,11 @@
             .ornament-diamond { width: 6px; height: 6px; }
             .field-group { margin-bottom: 12px; }
             .remember-row { margin-bottom: 14px; }
+            .role-cards { gap: 8px; }
+            .role-card { padding: 12px 6px; }
+            .role-card-icon { width: 36px; height: 36px; }
+            .role-card-icon svg { width: 20px; height: 20px; }
+            .role-card-name { font-size: 11px; }
         }
     </style>
 </head>
@@ -590,6 +665,43 @@
                         <button type="button" id="password_toggle" class="pw-toggle" aria-label="Toggle password visibility">
                             <svg id="eye_icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                         </button>
+                    </div>
+                </div>
+
+                <div class="field-group" id="roleGroup">
+                    <label class="field-label">Select Your Role</label>
+                    <div class="role-cards">
+                        <label class="role-card" data-role="admin">
+                            <input type="radio" name="role" value="admin" checked class="sr-only">
+                            <div class="role-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <path d="m9 12 2 2 4-4"/>
+                                </svg>
+                            </div>
+                            <span class="role-card-name">Admin</span>
+                        </label>
+
+                        <label class="role-card" data-role="developer">
+                            <input type="radio" name="role" value="developer" class="sr-only">
+                            <div class="role-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"/>
+                                    <polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <span class="role-card-name">Developer</span>
+                        </label>
+
+                        <label class="role-card" data-role="telecaller">
+                            <input type="radio" name="role" value="telecaller" class="sr-only">
+                            <div class="role-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <span class="role-card-name">Telecaller</span>
+                        </label>
                     </div>
                 </div>
 

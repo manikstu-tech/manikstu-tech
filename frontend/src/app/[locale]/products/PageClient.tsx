@@ -289,7 +289,7 @@ export default function ProductsPage() {
 
                   {/* Price + Add to Cart row */}
                   <div className="mt-auto flex items-center justify-between gap-3 border-t border-light-grey/70 px-4 py-3 dark:border-gray-700">
-                    <p className="font-heading text-lg font-bold text-manikstu-green">
+                    <p className="font-body text-lg font-bold text-manikstu-green">
                       ₹{Number(product.price).toLocaleString("en-IN")}
                     </p>
                     <div className="flex items-center gap-2">
@@ -442,7 +442,7 @@ export default function ProductsPage() {
                     <p className="text-[11px] uppercase tracking-wider text-grey dark:text-gray-300">
                       Total to pay
                     </p>
-                    <p className="font-heading text-2xl font-bold text-manikstu-green">
+                    <p className="font-body text-2xl font-bold text-manikstu-green">
                       ₹{cartTotal.toLocaleString("en-IN")}
                     </p>
                   </div>
