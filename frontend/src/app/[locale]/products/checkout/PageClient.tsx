@@ -2,12 +2,19 @@
 
 import { useState, useEffect, type FormEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ArrowLeft, Package, CheckCircle2, ShoppingBag } from "lucide-react";
-import { getProducts } from "@/lib/api";
-import { FALLBACK_PRODUCTS, type Product } from "../data";
-import { readCart, subscribeCart, clearCart, type CartMap } from "../cart";
+import {
+  readCart,
+  subscribeCart,
+  clearCart,
+  cartLines as cartLinesOf,
+  cartCount as cartCountOf,
+  cartTotal as cartTotalOf,
+  type CartMap,
+} from "../cart";
 
 type Address = {
   fullName: string;
@@ -34,22 +41,9 @@ const emptyAddress: Address = {
 };
 
 export default function CheckoutPage() {
-  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const [cart, setCart] = useState<CartMap>({});
   const [address, setAddress] = useState<Address>(emptyAddress);
   const [placed, setPlaced] = useState(false);
-
-  useEffect(() => {
-    getProducts(1, 50)
-      .then((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          setProducts(res.data);
-        }
-      })
-      .catch(() => {
-        /* keep FALLBACK_PRODUCTS when the API isn't reachable */
-      });
-  }, []);
 
   useEffect(() => {
     setCart(readCart());
@@ -57,23 +51,23 @@ export default function CheckoutPage() {
     return unsub;
   }, []);
 
-  const cartLines = Object.entries(cart)
-    .map(([idStr, qty]) => {
-      const p = products.find((prod) => prod.id === Number(idStr));
-      if (!p) return null;
-      return { product: p, qty };
-    })
-    .filter((l): l is { product: Product; qty: number } => l !== null);
-
-  const cartTotal = cartLines.reduce(
-    (sum, l) => sum + Number(l.product.price) * l.qty,
-    0
-  );
-  const cartCount = cartLines.reduce((sum, l) => sum + l.qty, 0);
+  const cartLines = cartLinesOf(cart);
+  const cartTotal = cartTotalOf(cart);
+  const cartCount = cartCountOf(cart);
 
   const update = (key: keyof Address) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => setAddress((a) => ({ ...a, [key]: e.target.value }));
+
+  const updatePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setAddress((a) => ({ ...a, phone: digits }));
+  };
+
+  const updatePincode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const digits = e.target.value.replace(/\D/g, "").slice(0, 6);
+    setAddress((a) => ({ ...a, pincode: digits }));
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -100,25 +94,29 @@ export default function CheckoutPage() {
             Enter your delivery address to place the order.
           </p>
 
-          {placed ? (
-            <div className="mt-10 rounded-2xl border border-light-grey bg-white p-8 text-center shadow-sm md:p-12">
-              <CheckCircle2 className="mx-auto h-14 w-14 text-manikstu-green" />
-              <h2 className="mt-4 font-heading text-2xl font-bold text-charcoal">
-                Order placed successfully!
-              </h2>
-              <p className="mx-auto mt-2 max-w-md text-grey">
-                Thank you, {address.fullName || "friend"}. Our team will contact
-                you on {address.phone || "your phone"} to confirm delivery to{" "}
-                {address.city || "your address"}.
-              </p>
-              <Link
-                href="/products"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
-              >
-                Continue shopping
-              </Link>
+          {placed && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/50 p-4 backdrop-blur-sm">
+              <div className="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-xl">
+                <CheckCircle2 className="mx-auto h-14 w-14 text-manikstu-green" />
+                <h2 className="mt-4 font-heading text-2xl font-bold text-charcoal">
+                  Order placed successfully!
+                </h2>
+                <p className="mx-auto mt-2 max-w-md text-grey">
+                  Thank you, {address.fullName || "friend"}. Our team will
+                  contact you on {address.phone || "your phone"} to confirm
+                  delivery to {address.city || "your address"}.
+                </p>
+                <Link
+                  href="/products"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
+                >
+                  Continue shopping
+                </Link>
+              </div>
             </div>
-          ) : cartCount === 0 ? (
+          )}
+
+          {cartCount === 0 && !placed ? (
             <div className="mt-10 rounded-2xl border border-light-grey bg-white p-8 text-center shadow-sm md:p-12">
               <ShoppingBag className="mx-auto h-12 w-12 text-grey/50" />
               <h2 className="mt-4 font-heading text-xl font-bold text-charcoal">
@@ -160,8 +158,11 @@ export default function CheckoutPage() {
                     <input
                       type="tel"
                       required
+                      inputMode="numeric"
+                      pattern="[0-9]{10}"
+                      maxLength={10}
                       value={address.phone}
-                      onChange={update("phone")}
+                      onChange={updatePhone}
                       className={inputCls}
                       placeholder="10-digit mobile number"
                     />
@@ -219,8 +220,10 @@ export default function CheckoutPage() {
                       type="text"
                       required
                       inputMode="numeric"
+                      pattern="[0-9]{6}"
+                      maxLength={6}
                       value={address.pincode}
-                      onChange={update("pincode")}
+                      onChange={updatePincode}
                       className={inputCls}
                       placeholder="6-digit PIN code"
                     />
@@ -250,22 +253,32 @@ export default function CheckoutPage() {
                   Order Summary
                 </h2>
                 <ul className="mt-5 space-y-4">
-                  {cartLines.map(({ product, qty }) => (
-                    <li key={product.id} className="flex items-center gap-3">
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-manikstu-cream">
-                        <Package className="h-5 w-5 text-manikstu-green" />
+                  {cartLines.map((line) => (
+                    <li key={line.slug} className="flex items-center gap-3">
+                      <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-manikstu-cream">
+                        {line.image ? (
+                          <Image
+                            src={line.image}
+                            alt={line.name}
+                            fill
+                            sizes="48px"
+                            className="object-contain p-1"
+                          />
+                        ) : (
+                          <Package className="h-5 w-5 text-manikstu-green" />
+                        )}
                       </span>
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-semibold text-charcoal">
-                          {product.name}
+                          {line.name}
                         </p>
                         <p className="text-xs text-grey">
-                          Qty {qty}
-                          {product.size ? ` · ${product.size}` : ""}
+                          Qty {line.qty}
+                          {line.size ? ` · ${line.size}` : ""}
                         </p>
                       </div>
                       <p className="text-sm font-semibold text-charcoal">
-                        ₹{(Number(product.price) * qty).toLocaleString("en-IN")}
+                        ₹{(line.price * line.qty).toLocaleString("en-IN")}
                       </p>
                     </li>
                   ))}
