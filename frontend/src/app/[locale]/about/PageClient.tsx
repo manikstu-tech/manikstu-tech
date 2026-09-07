@@ -472,6 +472,13 @@ export default function AboutPage() {
           ];
           const executionEngine = [
             {
+              name: "Aftab Khan",
+              role: "Assistant Vice President Technology",
+              tag: "Technology",
+              photo: "/team/aftab-khan.jpeg",
+              bio: "Technology leader driving digital transformation, product innovation, and scalable technology strategy.",
+            },
+            {
               name: "Manoj Sahoo",
               role: "Marketing Manager- Goat Bank",
               tag: "Marketing",
@@ -609,7 +616,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <span
-                          className={`absolute left-2.5 top-2.5 sm:left-3 sm:top-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
+                          className={`absolute left-2.5 bottom-2.5 sm:left-3 sm:bottom-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
                         >
                           {l.tag}
                         </span>
@@ -657,7 +664,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Execution Engine cards */}
-                <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
                   {executionEngine.map((l) => (
                     <article
                       key={l.name}
@@ -681,7 +688,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <span
-                          className={`absolute left-2.5 top-2.5 sm:left-3 sm:top-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
+                          className={`absolute left-2.5 bottom-2.5 sm:left-3 sm:bottom-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
                         >
                           {l.tag}
                         </span>
@@ -835,7 +842,7 @@ export default function AboutPage() {
                             src={l.photo}
                             alt={l.name}
                             fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         ) : (
@@ -846,7 +853,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <span
-                          className={`absolute left-2.5 top-2.5 sm:left-3 sm:top-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
+                          className={`absolute left-2.5 bottom-2.5 sm:left-3 sm:bottom-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
                         >
                           {l.tag}
                         </span>
