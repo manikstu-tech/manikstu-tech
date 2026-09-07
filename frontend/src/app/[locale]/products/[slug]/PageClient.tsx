@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { addToCart as addToCartStore, openCartDrawer } from "../cart";
+import { addToCart as addToCartStore } from "../cart";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
@@ -91,8 +91,18 @@ export default function ProductDetailPage() {
 
   const handleAddToCart = () => {
     if (!product) return;
-    addToCartStore(product.id, qty);
-    openCartDrawer();
+    addToCartStore(
+      {
+        slug: product.slug,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        size: product.size,
+      },
+      qty
+    );
+    // Land on the products page cart so the item is visible in Your Cart.
+    router.push("/products#cart");
   };
 
   // Write-a-review form state (client-only, no backend)
@@ -543,7 +553,16 @@ export default function ProductDetailPage() {
                   type="button"
                   onClick={() => {
                     if (!product) return;
-                    addToCartStore(product.id, qty);
+                    addToCartStore(
+                      {
+                        slug: product.slug,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        size: product.size,
+                      },
+                      qty
+                    );
                     router.push("/products/checkout");
                   }}
                   className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-red px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-saura-red focus:outline-none focus:ring-2 focus:ring-manikstu-red focus:ring-offset-2 active:scale-[0.98]"

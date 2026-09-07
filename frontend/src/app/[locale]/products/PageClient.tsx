@@ -22,13 +22,14 @@ import { getProducts } from "@/lib/api";
 import { trustFeatures, FALLBACK_PRODUCTS, type Product } from "./data";
 import {
   readCart,
-  writeCart,
   subscribeCart,
   addToCart as addToCartStore,
   setQty as setQtyStore,
   removeFromCart as removeFromCartStore,
   clearCart as clearCartStore,
-  openCartDrawer,
+  cartLines as cartLinesOf,
+  cartCount as cartCountOf,
+  cartTotal as cartTotalOf,
   type CartMap,
 } from "./cart";
 
@@ -73,29 +74,26 @@ export default function ProductsPage() {
     return () => clearTimeout(t);
   }, [cart]);
 
-  const addToCart = (id: number) => {
-    setCart(addToCartStore(id));
-    openCartDrawer();
+  const addToCart = (product: Product) => {
+    setCart(
+      addToCartStore({
+        slug: product.slug,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        size: product.size,
+      })
+    );
   };
-  const decrement = (id: number) => {
+  const decrement = (slug: string) => {
     const cur = readCart();
-    setCart(setQtyStore(id, (cur[id] ?? 0) - 1));
+    setCart(setQtyStore(slug, (cur[slug]?.qty ?? 0) - 1));
   };
-  const removeFromCart = (id: number) => setCart(removeFromCartStore(id));
+  const removeFromCart = (slug: string) => setCart(removeFromCartStore(slug));
 
-  const cartLines = Object.entries(cart)
-    .map(([idStr, qty]) => {
-      const p = products.find((prod) => prod.id === Number(idStr));
-      if (!p) return null;
-      return { product: p, qty };
-    })
-    .filter((l): l is { product: Product; qty: number } => l !== null);
-
-  const cartTotal = cartLines.reduce(
-    (sum, l) => sum + Number(l.product.price) * l.qty,
-    0
-  );
-  const cartCount = cartLines.reduce((sum, l) => sum + l.qty, 0);
+  const cartLines = cartLinesOf(cart);
+  const cartTotal = cartTotalOf(cart);
+  const cartCount = cartCountOf(cart);
 
   return (
     <>
@@ -299,22 +297,22 @@ export default function ProductsPage() {
                       >
                         View Details
                       </Link>
-                    {cart[product.id] ? (
+                    {cart[product.slug] ? (
                       <div className="inline-flex items-center gap-1 rounded-full border border-manikstu-green bg-white text-xs font-semibold text-manikstu-green">
                         <button
                           type="button"
-                          onClick={() => decrement(product.id)}
+                          onClick={() => decrement(product.slug)}
                           aria-label={`Remove one ${product.name}`}
                           className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-manikstu-green/10 focus:outline-none focus:ring-2 focus:ring-manikstu-green"
                         >
                           <Minus className="h-3.5 w-3.5" />
                         </button>
                         <span className="min-w-[1.25rem] text-center tabular-nums">
-                          {cart[product.id]}
+                          {cart[product.slug].qty}
                         </span>
                         <button
                           type="button"
-                          onClick={() => addToCart(product.id)}
+                          onClick={() => addToCart(product)}
                           aria-label={`Add one more ${product.name}`}
                           className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-manikstu-green/10 focus:outline-none focus:ring-2 focus:ring-manikstu-green"
                         >
@@ -324,7 +322,7 @@ export default function ProductsPage() {
                     ) : (
                       <button
                         type="button"
-                        onClick={() => addToCart(product.id)}
+                        onClick={() => addToCart(product)}
                         className="inline-flex items-center gap-1.5 rounded-full border border-manikstu-green bg-white px-3 py-1.5 text-xs font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1"
                       >
                         <ShoppingBag className="h-3.5 w-3.5" />
@@ -369,18 +367,18 @@ export default function ProductsPage() {
                 </div>
 
                 <ul className="divide-y divide-light-grey/70 dark:divide-gray-700">
-                  {cartLines.map(({ product, qty }) => {
-                    const lineTotal = Number(product.price) * qty;
+                  {cartLines.map((line) => {
+                    const lineTotal = line.price * line.qty;
                     return (
                       <li
-                        key={product.id}
+                        key={line.slug}
                         className="flex items-center gap-3 px-5 py-3"
                       >
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-light-grey/70 bg-white dark:border-gray-700 dark:bg-gray-700">
-                          {product.image ? (
+                          {line.image ? (
                             <Image
-                              src={product.image}
-                              alt={product.name}
+                              src={line.image}
+                              alt={line.name}
                               width={48}
                               height={48}
                               className="h-full w-full object-cover"
@@ -391,30 +389,32 @@ export default function ProductsPage() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="text-sm font-semibold text-charcoal dark:text-white line-clamp-1">
-                            {product.name}
+                            {line.name}
                           </p>
                           <p className="text-[11px] text-grey dark:text-gray-300">
-                            ₹{Number(product.price).toLocaleString("en-IN")}
-                            {product.size ? ` · ${product.size}` : ""}
+                            ₹{line.price.toLocaleString("en-IN")}
+                            {line.size ? ` · ${line.size}` : ""}
                           </p>
                         </div>
 
                         <div className="inline-flex items-center gap-1 rounded-full border border-light-grey text-xs font-semibold text-charcoal dark:border-gray-600 dark:text-gray-200">
                           <button
                             type="button"
-                            onClick={() => decrement(product.id)}
-                            aria-label={`Decrease ${product.name}`}
+                            onClick={() => decrement(line.slug)}
+                            aria-label={`Decrease ${line.name}`}
                             className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10"
                           >
                             <Minus className="h-3 w-3" />
                           </button>
                           <span className="min-w-[1.25rem] text-center tabular-nums">
-                            {qty}
+                            {line.qty}
                           </span>
                           <button
                             type="button"
-                            onClick={() => addToCart(product.id)}
-                            aria-label={`Increase ${product.name}`}
+                            onClick={() =>
+                              setCart(setQtyStore(line.slug, line.qty + 1))
+                            }
+                            aria-label={`Increase ${line.name}`}
                             className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10"
                           >
                             <Plus className="h-3 w-3" />
@@ -426,8 +426,8 @@ export default function ProductsPage() {
                         </p>
                         <button
                           type="button"
-                          onClick={() => removeFromCart(product.id)}
-                          aria-label={`Remove ${product.name} from cart`}
+                          onClick={() => removeFromCart(line.slug)}
+                          aria-label={`Remove ${line.name} from cart`}
                           className="flex h-7 w-7 items-center justify-center rounded-full text-grey hover:bg-manikstu-red/10 hover:text-manikstu-red transition-colors"
                         >
                           <X className="h-4 w-4" />

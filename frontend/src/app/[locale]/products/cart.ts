@@ -1,13 +1,35 @@
-// Client-side shopping cart shared between the products listing and the
-// product detail page. Persists to localStorage so state survives navigation
-// and reloads. Kept intentionally tiny — no reducer / no context — so both
-// pages can use it directly without extra plumbing.
+// Single source of truth for the shopping cart across the whole site.
+// Stores a full line-item snapshot keyed by product SLUG (stable across the
+// API and the baked-in fallback catalogue), so every surface — product
+// listing, View Details, checkout — renders the exact same cart without
+// re-matching ids against a separate product array.
+// Persists to localStorage and broadcasts changes to same-tab and cross-tab
+// listeners.
 
 const KEY = "manikstu.cart";
 const EVENT = "manikstu:cart";
 const DRAWER_EVENT = "manikstu:cart:drawer";
 
-export type CartMap = Record<number, number>;
+export interface CartLine {
+  slug: string;
+  name: string;
+  price: number;
+  image?: string;
+  size?: string;
+  qty: number;
+}
+
+/** Cart keyed by product slug. */
+export type CartMap = Record<string, CartLine>;
+
+/** Minimal product shape needed to add a line to the cart. */
+export interface CartProduct {
+  slug: string;
+  name: string;
+  price?: number | string | null;
+  image?: string;
+  size?: string;
+}
 
 function isBrowser() {
   return typeof window !== "undefined";
@@ -20,12 +42,22 @@ export function readCart(): CartMap {
     if (!raw) return {};
     const parsed = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object") return {};
-    // Coerce to Record<number, number>
     const out: CartMap = {};
-    for (const [k, v] of Object.entries(parsed)) {
-      const id = Number(k);
-      const qty = Number(v);
-      if (Number.isFinite(id) && Number.isFinite(qty) && qty > 0) out[id] = qty;
+    for (const [slug, v] of Object.entries(parsed)) {
+      if (!slug || typeof v !== "object" || v === null) continue;
+      const line = v as Partial<CartLine>;
+      const qty = Number(line.qty);
+      if (typeof line.name !== "string" || !Number.isFinite(qty) || qty <= 0) {
+        continue; // discard incompatible / legacy entries
+      }
+      out[slug] = {
+        slug,
+        name: line.name,
+        price: Number(line.price) || 0,
+        image: typeof line.image === "string" ? line.image : undefined,
+        size: typeof line.size === "string" ? line.size : undefined,
+        qty,
+      };
     }
     return out;
   } catch {
@@ -37,33 +69,47 @@ export function writeCart(next: CartMap) {
   if (!isBrowser()) return;
   try {
     window.localStorage.setItem(KEY, JSON.stringify(next));
-    // Notify same-window listeners (storage event only fires cross-window)
     window.dispatchEvent(new CustomEvent(EVENT, { detail: next }));
   } catch {
     // ignore quota / privacy errors
   }
 }
 
-export function addToCart(productId: number, qty = 1): CartMap {
+/** Add (or increment) a product in the cart. Deduplicates by slug. */
+export function addToCart(product: CartProduct, qty = 1): CartMap {
   const cur = readCart();
-  const next: CartMap = { ...cur, [productId]: (cur[productId] ?? 0) + qty };
+  const existing = cur[product.slug];
+  const next: CartMap = {
+    ...cur,
+    [product.slug]: {
+      slug: product.slug,
+      name: product.name,
+      price: Number(product.price) || 0,
+      image: product.image,
+      size: product.size,
+      qty: (existing?.qty ?? 0) + qty,
+    },
+  };
   writeCart(next);
   return next;
 }
 
-export function setQty(productId: number, qty: number): CartMap {
+export function setQty(slug: string, qty: number): CartMap {
   const cur = readCart();
   const next: CartMap = { ...cur };
-  if (qty <= 0) delete next[productId];
-  else next[productId] = qty;
+  if (qty <= 0 || !next[slug]) {
+    delete next[slug];
+  } else {
+    next[slug] = { ...next[slug], qty };
+  }
   writeCart(next);
   return next;
 }
 
-export function removeFromCart(productId: number): CartMap {
+export function removeFromCart(slug: string): CartMap {
   const cur = readCart();
   const next: CartMap = { ...cur };
-  delete next[productId];
+  delete next[slug];
   writeCart(next);
   return next;
 }
@@ -71,6 +117,21 @@ export function removeFromCart(productId: number): CartMap {
 export function clearCart(): CartMap {
   writeCart({});
   return {};
+}
+
+/** Line items as an array, in insertion order. */
+export function cartLines(cart: CartMap): CartLine[] {
+  return Object.values(cart);
+}
+
+/** Total number of units across all lines. */
+export function cartCount(cart: CartMap): number {
+  return Object.values(cart).reduce((sum, l) => sum + l.qty, 0);
+}
+
+/** Sum of price × qty across all lines. */
+export function cartTotal(cart: CartMap): number {
+  return Object.values(cart).reduce((sum, l) => sum + l.price * l.qty, 0);
 }
 
 /** Subscribe to cart changes from THIS tab or another tab. */
@@ -113,4 +174,3 @@ export function subscribeCartDrawer(cb: (open: boolean) => void): () => void {
     window.removeEventListener(DRAWER_EVENT, handler as EventListener);
   };
 }
-
