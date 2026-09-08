@@ -201,15 +201,15 @@ export default function AboutPage() {
                   <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                    OUR STORY
+                    {t("ourStoryPill")}
                   </p>
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                 </div>
 
                 <h2 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                  From a Vision to a<br />
-                  <span className="text-manikstu-green">Movement</span>
+                  {t("storyHeadline1")}<br />
+                  <span className="text-manikstu-green">{t("storyHeadline2")}</span>
                 </h2>
 
                 {/* Ornamental Divider with Framed Diamond */}
@@ -226,10 +226,10 @@ export default function AboutPage() {
 
                 <div className="mt-6 space-y-4 text-sm sm:text-base leading-relaxed text-grey">
                   <p>
-                    Founded in 2015 in the tribal heartland of Keonjhar, Odisha, Manikstu Agro began as a small initiative to support marginal farmers through goat farming. What started with a handful of farmers has now grown into a movement that is transforming lives across states.
+                    {t("storyP1")}
                   </p>
                   <p>
-                    We believe in the power of collective growth and sustainable livelihoods. Our journey is rooted in trust, local knowledge, and a deep understanding of rural India.
+                    {t("storyP2")}
                   </p>
                 </div>
               </div>
@@ -245,10 +245,10 @@ export default function AboutPage() {
                       </div>
                       <div>
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
-                          People First
+                          {t("valuePeopleFirst")}
                         </h3>
                         <p className="mt-1.5 text-xs sm:text-sm text-grey leading-relaxed">
-                          We place smallholder farmers, tribal women, and rural families at the heart of our mission, ensuring equitable income, fair livestock trade, and holistic community dignity.
+                          {t("valuePeopleFirstDesc")}
                         </p>
                       </div>
                     </div>
@@ -260,10 +260,10 @@ export default function AboutPage() {
                       </div>
                       <div>
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
-                          Integrity & Trust
+                          {t("valueIntegrity")}
                         </h3>
                         <p className="mt-1.5 text-xs sm:text-sm text-grey leading-relaxed">
-                          We uphold uncompromising honesty, ethical breed care, fair market price guarantees, and deep accountability to every farmer partner, SHG group, and institution.
+                          {t("valueIntegrityDesc")}
                         </p>
                       </div>
                     </div>
@@ -275,10 +275,10 @@ export default function AboutPage() {
                       </div>
                       <div>
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
-                          Sustainability
+                          {t("valueSustainability")}
                         </h3>
                         <p className="mt-1.5 text-xs sm:text-sm text-grey leading-relaxed">
-                          We promote eco-friendly goat rearing, indigenous forage cultivation, and climate-resilient farming models that preserve natural biodiversity for decades to come.
+                          {t("valueSustainabilityDesc")}
                         </p>
                       </div>
                     </div>
@@ -290,10 +290,10 @@ export default function AboutPage() {
                       </div>
                       <div>
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
-                          Smart Innovation
+                          {t("valueInnovation")}
                         </h3>
                         <p className="mt-1.5 text-xs sm:text-sm text-grey leading-relaxed">
-                          We harness mobile vet tele-diagnostics, genetic selective breeding, and digital farm management to build scalable, modern solutions for rural India&apos;s challenges.
+                          {t("valueInnovationDesc")}
                         </p>
                       </div>
                     </div>
@@ -320,38 +320,38 @@ export default function AboutPage() {
             {
               year: "2024",
               icon: Crown,
-              title: "Mann Ki Baat Feature",
-              description: 'Featured in Prime Minister Narendra Modi\'s "Mann ki Baat", 2024',
+              title: t("award2024Title"),
+              description: t("award2024Desc"),
             },
             {
               year: "2023",
               icon: Trophy,
-              title: "Pride of Odisha",
-              description: "Pride of Odisha 2023 by Sambad",
+              title: t("award2023PrideTitle"),
+              description: t("award2023PrideDesc"),
             },
             {
               year: "2023",
               icon: Sprout,
-              title: "Agri Startup of the Year",
-              description: "Agri Startup of the Year 2023 by OCF",
+              title: t("award2023AgriTitle"),
+              description: t("award2023AgriDesc"),
             },
             {
               year: "2022",
               icon: Medal,
-              title: "Odisha StartUp Carnival",
-              description: "Top 5 in Odisha StartUp Carnival in 2022 organized by AIC – Nalanda",
+              title: t("award2022CarnivalTitle"),
+              description: t("award2022CarnivalDesc"),
             },
             {
               year: "2022",
               icon: Award,
-              title: "Shakti Awards",
-              description: "Shakti Awards 2022 by FICCI",
+              title: t("award2022ShaktiTitle"),
+              description: t("award2022ShaktiDesc"),
             },
             {
               year: "2021",
               icon: Star,
-              title: "40 Under 40",
-              description: 'One of the top 40 Startups in India in "40 under 40"',
+              title: t("award2021Title"),
+              description: t("award2021Desc"),
             },
           ];
 
@@ -363,14 +363,14 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                      Our Awards
+                      {t("awardsPill")}
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
 
                   <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    Awards & <span className="text-manikstu-green">Recognition</span>
+                    {t("awardsHeadline1")} <span className="text-manikstu-green">{t("awardsHeadline2")}</span>
                   </h2>
 
                   {/* Ornamental Divider with Framed Diamond */}
@@ -580,14 +580,14 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      Our Leadership
+                      {t("leadershipPill")}
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
                   <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    Leading with{" "}
-                    <span className="text-manikstu-green">Purpose</span>
+                    {t("leadershipHeadline1")}{" "}
+                    <span className="text-manikstu-green">{t("leadershipHeadline2")}</span>
                   </h2>
                 </div>
 
@@ -653,13 +653,13 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      Key Management
+                      {t("executionPill")}
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
                   <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    The Execution <span className="text-manikstu-green">Engine</span>
+                    {t("executionHeadline1")} <span className="text-manikstu-green">{t("executionHeadline2")}</span>
                   </h2>
                 </div>
 
@@ -725,13 +725,13 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      Our Team
+                      {t("teamPill")}
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
                   <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    Our Amazing <span className="text-manikstu-green">Team</span>
+                    {t("teamHeadline1")} <span className="text-manikstu-green">{t("teamHeadline2")}</span>
                   </h2>
                 </div>
 
@@ -806,13 +806,13 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      Strategic Guidance
+                      {t("advisorsPill")}
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
                   <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    The <span className="text-manikstu-green">Advisors</span>
+                    {t("advisorsHeadline1")} <span className="text-manikstu-green">{t("advisorsHeadline2")}</span>
                   </h2>
 
                   {/* Ornamental Divider with Framed Diamond */}
