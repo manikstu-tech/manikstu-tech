@@ -7,7 +7,6 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "manikstu.com" },
@@ -18,8 +17,20 @@ const nextConfig = {
     config.resolve.alias['@'] = path.join(__dirname, 'src');
     return config;
   },
-  // ponytail: redirects removed — output:'export' can't do runtime redirects.
-  // Equivalent rewrite handled in .htaccess on Apache.
+  async redirects() {
+    return [
+      {
+        source: "/get-in-touch",
+        destination: "/en/contact",
+        permanent: true,
+      },
+      {
+        source: "/:locale/get-in-touch",
+        destination: "/:locale/contact",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
