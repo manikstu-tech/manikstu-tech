@@ -4,13 +4,17 @@ RewriteEngine On
 RewriteRule ^get-in-touch$ /en/contact [R=301,L]
 RewriteRule ^([a-z]{2})/get-in-touch$ /$1/contact [R=301,L]
 
-# Serve existing files/dirs directly
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
+# Serve existing FILES directly
+RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# Locale homepage: /en → /en.html
-RewriteCond %{REQUEST_FILENAME}/index.html !-f
+# If it's a directory that has a matching .html file, serve the .html
+# (e.g. /en → en.html, since /en is both a dir and en.html exists)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# Clean URLs: /en/about → /en/about.html
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+)$ $1.html [L]
 

@@ -21,6 +21,9 @@ import {
   clearCart,
   subscribeCartDrawer,
   closeCartDrawer,
+  cartLines as cartLinesOf,
+  cartCount as cartCountOf,
+  cartTotal as cartTotalOf,
   type CartMap,
 } from "@/app/[locale]/products/cart";
 
@@ -29,7 +32,6 @@ export default function CartDrawer() {
   const [cart, setCart] = useState<CartMap>({});
   const router = useRouter();
 
-  // Hydrate cart and subscribe to updates
   useEffect(() => {
     setCart(readCart());
     const unsubCart = subscribeCart(setCart);
@@ -40,7 +42,6 @@ export default function CartDrawer() {
     };
   }, []);
 
-  // Lock body scroll when drawer is open
   useEffect(() => {
     if (isOpen) {
       const prev = document.body.style.overflow;
@@ -56,17 +57,9 @@ export default function CartDrawer() {
     }
   }, [isOpen]);
 
-  const lines = useMemo(() => Object.values(cart), [cart]);
-
-  const total = useMemo(
-    () => lines.reduce((sum, l) => sum + l.price * l.qty, 0),
-    [lines]
-  );
-
-  const count = useMemo(
-    () => lines.reduce((sum, l) => sum + l.qty, 0),
-    [lines]
-  );
+  const cartLines = useMemo(() => cartLinesOf(cart), [cart]);
+  const cartTotal = useMemo(() => cartTotalOf(cart), [cart]);
+  const cartCount = useMemo(() => cartCountOf(cart), [cart]);
 
   const handleCheckout = () => {
     closeCartDrawer();
@@ -77,7 +70,6 @@ export default function CartDrawer() {
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
-      {/* Backdrop */}
       <div
         onClick={closeCartDrawer}
         className="fixed inset-0 bg-charcoal/60 backdrop-blur-sm transition-opacity animate-in fade-in duration-300"
@@ -101,7 +93,7 @@ export default function CartDrawer() {
                   Shopping Cart
                 </h2>
                 <p className="text-xs text-grey dark:text-gray-400">
-                  {count} {count === 1 ? "item" : "items"}
+                  {cartCount} {cartCount === 1 ? "item" : "items"}
                 </p>
               </div>
             </div>
@@ -118,7 +110,7 @@ export default function CartDrawer() {
 
           {/* Body */}
           <div className="flex-1 overflow-y-auto p-6">
-            {lines.length === 0 ? (
+            {cartLines.length === 0 ? (
               <div className="flex h-full flex-col items-center justify-center text-center">
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green mb-4">
                   <ShoppingBag className="h-10 w-10 opacity-70" />
@@ -142,11 +134,10 @@ export default function CartDrawer() {
               </div>
             ) : (
               <ul className="divide-y divide-light-grey/60 dark:divide-gray-800">
-                {lines.map((line) => {
+                {cartLines.map((line) => {
                   const linePrice = line.price * line.qty;
                   return (
                     <li key={line.slug} className="py-4 flex gap-3.5 items-start">
-                      {/* Product Thumbnail */}
                       <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-light-grey/80 bg-white dark:border-gray-700 dark:bg-gray-800">
                         {line.image ? (
                           <Image
@@ -163,7 +154,6 @@ export default function CartDrawer() {
                         )}
                       </div>
 
-                      {/* Details */}
                       <div className="min-w-0 flex-1">
                         <Link
                           href={`/products/${line.slug}`}
@@ -181,7 +171,6 @@ export default function CartDrawer() {
                           ₹{line.price.toLocaleString("en-IN")}
                         </p>
 
-                        {/* Quantity controls */}
                         <div className="mt-2.5 flex items-center justify-between">
                           <div className="inline-flex items-center gap-1 rounded-full border border-light-grey/80 bg-white text-xs font-semibold text-charcoal dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-2xs">
                             <button
@@ -228,25 +217,22 @@ export default function CartDrawer() {
           </div>
 
           {/* Footer */}
-          {lines.length > 0 && (
+          {cartLines.length > 0 && (
             <div className="border-t border-light-grey/80 bg-light-grey/20 p-6 dark:border-gray-800 dark:bg-gray-900/50">
-              {/* Delivery notice */}
               <div className="flex items-center gap-2 text-xs text-manikstu-green font-medium mb-3">
                 <Truck className="h-4 w-4 shrink-0" />
                 <span>Free delivery across Odisha & Pan India</span>
               </div>
 
-              {/* Subtotal */}
               <div className="flex items-baseline justify-between mb-4">
                 <span className="text-sm text-grey dark:text-gray-400">
                   Subtotal
                 </span>
                 <span className="font-body text-xl font-bold text-charcoal dark:text-white">
-                  ₹{total.toLocaleString("en-IN")}
+                  ₹{cartTotal.toLocaleString("en-IN")}
                 </span>
               </div>
 
-              {/* CTA buttons */}
               <div className="space-y-2.5">
                 <button
                   type="button"
@@ -274,7 +260,6 @@ export default function CartDrawer() {
                 </div>
               </div>
 
-              {/* Trust micro-banner */}
               <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-grey dark:text-gray-400 border-t border-light-grey/60 dark:border-gray-800 pt-3">
                 <ShieldCheck className="h-3.5 w-3.5 text-manikstu-green" />
                 <span>100% Genuine Ayurvedic & Farm Direct Products</span>

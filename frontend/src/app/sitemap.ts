@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const BASE_URL = "https://manikstu.com";
 const locales = [
   "en", "hi", "bn", "ta", "te", "mr", "gu", "kn", "ml", "or", "ja", "de", "fr", "es",
