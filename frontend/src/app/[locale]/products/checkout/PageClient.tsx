@@ -5,8 +5,6 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ArrowLeft, Package, CheckCircle2, ShoppingBag } from "lucide-react";
-import { getProducts } from "@/lib/api";
-import { FALLBACK_PRODUCTS, type Product } from "../data";
 import { readCart, subscribeCart, clearCart, type CartMap } from "../cart";
 
 type Address = {
@@ -34,22 +32,9 @@ const emptyAddress: Address = {
 };
 
 export default function CheckoutPage() {
-  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const [cart, setCart] = useState<CartMap>({});
   const [address, setAddress] = useState<Address>(emptyAddress);
   const [placed, setPlaced] = useState(false);
-
-  useEffect(() => {
-    getProducts(1, 50)
-      .then((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          setProducts(res.data);
-        }
-      })
-      .catch(() => {
-        /* keep FALLBACK_PRODUCTS when the API isn't reachable */
-      });
-  }, []);
 
   useEffect(() => {
     setCart(readCart());
@@ -57,19 +42,9 @@ export default function CheckoutPage() {
     return unsub;
   }, []);
 
-  const cartLines = Object.entries(cart)
-    .map(([idStr, qty]) => {
-      const p = products.find((prod) => prod.id === Number(idStr));
-      if (!p) return null;
-      return { product: p, qty };
-    })
-    .filter((l): l is { product: Product; qty: number } => l !== null);
-
-  const cartTotal = cartLines.reduce(
-    (sum, l) => sum + Number(l.product.price) * l.qty,
-    0
-  );
-  const cartCount = cartLines.reduce((sum, l) => sum + l.qty, 0);
+  const lines = Object.values(cart);
+  const total = lines.reduce((sum, l) => sum + l.price * l.qty, 0);
+  const count = lines.reduce((sum, l) => sum + l.qty, 0);
 
   const update = (key: keyof Address) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -118,7 +93,7 @@ export default function CheckoutPage() {
                 Continue shopping
               </Link>
             </div>
-          ) : cartCount === 0 ? (
+          ) : count === 0 ? (
             <div className="mt-10 rounded-2xl border border-light-grey bg-white p-8 text-center shadow-sm md:p-12">
               <ShoppingBag className="mx-auto h-12 w-12 text-grey/50" />
               <h2 className="mt-4 font-heading text-xl font-bold text-charcoal">
@@ -250,22 +225,22 @@ export default function CheckoutPage() {
                   Order Summary
                 </h2>
                 <ul className="mt-5 space-y-4">
-                  {cartLines.map(({ product, qty }) => (
-                    <li key={product.id} className="flex items-center gap-3">
+                  {lines.map((line) => (
+                    <li key={line.slug} className="flex items-center gap-3">
                       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-manikstu-cream">
                         <Package className="h-5 w-5 text-manikstu-green" />
                       </span>
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-semibold text-charcoal">
-                          {product.name}
+                          {line.name}
                         </p>
                         <p className="text-xs text-grey">
-                          Qty {qty}
-                          {product.size ? ` · ${product.size}` : ""}
+                          Qty {line.qty}
+                          {line.size ? ` · ${line.size}` : ""}
                         </p>
                       </div>
                       <p className="text-sm font-semibold text-charcoal">
-                        ₹{(Number(product.price) * qty).toLocaleString("en-IN")}
+                        ₹{(line.price * line.qty).toLocaleString("en-IN")}
                       </p>
                     </li>
                   ))}
@@ -273,8 +248,8 @@ export default function CheckoutPage() {
 
                 <div className="mt-5 space-y-2 border-t border-light-grey/70 pt-4 text-sm">
                   <div className="flex justify-between text-grey">
-                    <span>Items ({cartCount})</span>
-                    <span>₹{cartTotal.toLocaleString("en-IN")}</span>
+                    <span>Items ({count})</span>
+                    <span>₹{total.toLocaleString("en-IN")}</span>
                   </div>
                   <div className="flex justify-between text-grey">
                     <span>Delivery</span>
@@ -283,7 +258,7 @@ export default function CheckoutPage() {
                   <div className="flex justify-between border-t border-light-grey/70 pt-3 font-body text-lg font-bold text-charcoal">
                     <span>Total</span>
                     <span className="text-manikstu-green">
-                      ₹{cartTotal.toLocaleString("en-IN")}
+                      ₹{total.toLocaleString("en-IN")}
                     </span>
                   </div>
                 </div>

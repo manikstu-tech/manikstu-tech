@@ -19,7 +19,7 @@ import {
   Layers,
   type LucideIcon,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 type Block = {
   title: string;
@@ -279,7 +279,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function ServicesPage() {
+export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("Services");
   return (
     <>

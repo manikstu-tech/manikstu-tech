@@ -247,15 +247,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="border-t border-light-grey bg-white">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:py-3 text-center text-xs text-grey sm:px-6 md:px-8">
-          <div className="flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:gap-2">
-            <span>&copy; {new Date().getFullYear()} {t("copyright")}</span>
-            <span className="hidden sm:inline" aria-hidden>&bull;</span>
-            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5">
-              <span>GSTIN: {settings.gstin}</span>
-              <span aria-hidden>&bull;</span>
-              <span>CIN: {settings.cin}</span>
-            </div>
-          </div>
+          <span>&copy; {new Date().getFullYear()} {t("copyright")}</span>
         </div>
       </div>
     </footer>

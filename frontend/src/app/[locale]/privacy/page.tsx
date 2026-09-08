@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -9,7 +9,9 @@ export const metadata: Metadata = {
     "How Manikstu Agro collects, uses, and protects your personal information. Read our complete privacy policy.",
 };
 
-export default async function PrivacyPage() {
+export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("Privacy");
 
   return (

@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import PageClient from "./PageClient";
 import JsonLd from "@/components/seo/JsonLd";
+import { FALLBACK_PRODUCTS } from "../data";
+import { setRequestLocale } from "next-intl/server";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+
+export function generateStaticParams() {
+  return FALLBACK_PRODUCTS.map((p) => ({ slug: p.slug }));
+}
 
 type ProductData = {
   data: {
@@ -71,9 +77,10 @@ export async function generateMetadata({
 export default async function ProductDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
   const product = await getProduct(slug);
   const p = product?.data;
 

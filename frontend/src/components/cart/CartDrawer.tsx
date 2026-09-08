@@ -23,26 +23,11 @@ import {
   closeCartDrawer,
   type CartMap,
 } from "@/app/[locale]/products/cart";
-import { FALLBACK_PRODUCTS } from "@/app/[locale]/products/data";
-import { getProducts } from "@/lib/api";
-import type { Product } from "@/types";
 
 export default function CartDrawer() {
   const [isOpen, setIsOpen] = useState(false);
   const [cart, setCart] = useState<CartMap>({});
-  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const router = useRouter();
-
-  // Load products from API / fallback
-  useEffect(() => {
-    getProducts(1, 50)
-      .then((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          setProducts(res.data);
-        }
-      })
-      .catch(() => {});
-  }, []);
 
   // Hydrate cart and subscribe to updates
   useEffect(() => {
@@ -71,25 +56,16 @@ export default function CartDrawer() {
     }
   }, [isOpen]);
 
-  const cartLines = useMemo(() => {
-    return Object.entries(cart)
-      .map(([idStr, qty]) => {
-        const id = Number(idStr);
-        const p = products.find((prod) => prod.id === id);
-        if (!p) return null;
-        return { product: p, qty };
-      })
-      .filter((l): l is { product: Product; qty: number } => l !== null);
-  }, [cart, products]);
+  const lines = useMemo(() => Object.values(cart), [cart]);
 
-  const cartTotal = useMemo(
-    () => cartLines.reduce((sum, l) => sum + Number(l.product.price || 0) * l.qty, 0),
-    [cartLines]
+  const total = useMemo(
+    () => lines.reduce((sum, l) => sum + l.price * l.qty, 0),
+    [lines]
   );
 
-  const cartCount = useMemo(
-    () => cartLines.reduce((sum, l) => sum + l.qty, 0),
-    [cartLines]
+  const count = useMemo(
+    () => lines.reduce((sum, l) => sum + l.qty, 0),
+    [lines]
   );
 
   const handleCheckout = () => {
@@ -125,7 +101,7 @@ export default function CartDrawer() {
                   Shopping Cart
                 </h2>
                 <p className="text-xs text-grey dark:text-gray-400">
-                  {cartCount} {cartCount === 1 ? "item" : "items"}
+                  {count} {count === 1 ? "item" : "items"}
                 </p>
               </div>
             </div>
@@ -142,7 +118,7 @@ export default function CartDrawer() {
 
           {/* Body */}
           <div className="flex-1 overflow-y-auto p-6">
-            {cartLines.length === 0 ? (
+            {lines.length === 0 ? (
               <div className="flex h-full flex-col items-center justify-center text-center">
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green mb-4">
                   <ShoppingBag className="h-10 w-10 opacity-70" />
@@ -166,16 +142,16 @@ export default function CartDrawer() {
               </div>
             ) : (
               <ul className="divide-y divide-light-grey/60 dark:divide-gray-800">
-                {cartLines.map(({ product, qty }) => {
-                  const linePrice = Number(product.price || 0) * qty;
+                {lines.map((line) => {
+                  const linePrice = line.price * line.qty;
                   return (
-                    <li key={product.id} className="py-4 flex gap-3.5 items-start">
+                    <li key={line.slug} className="py-4 flex gap-3.5 items-start">
                       {/* Product Thumbnail */}
                       <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-light-grey/80 bg-white dark:border-gray-700 dark:bg-gray-800">
-                        {product.image ? (
+                        {line.image ? (
                           <Image
-                            src={product.image}
-                            alt={product.name}
+                            src={line.image}
+                            alt={line.name}
                             fill
                             sizes="80px"
                             className="object-contain p-1.5"
@@ -190,19 +166,19 @@ export default function CartDrawer() {
                       {/* Details */}
                       <div className="min-w-0 flex-1">
                         <Link
-                          href={`/products/${product.slug}`}
+                          href={`/products/${line.slug}`}
                           onClick={closeCartDrawer}
                           className="font-heading text-sm font-bold text-charcoal dark:text-white hover:text-manikstu-green transition-colors line-clamp-1"
                         >
-                          {product.name}
+                          {line.name}
                         </Link>
-                        {product.size && (
+                        {line.size && (
                           <p className="text-xs text-grey dark:text-gray-400 mt-0.5">
-                            {product.size}
+                            {line.size}
                           </p>
                         )}
                         <p className="text-xs font-semibold text-manikstu-green mt-1">
-                          ₹{Number(product.price || 0).toLocaleString("en-IN")}
+                          ₹{line.price.toLocaleString("en-IN")}
                         </p>
 
                         {/* Quantity controls */}
@@ -210,18 +186,18 @@ export default function CartDrawer() {
                           <div className="inline-flex items-center gap-1 rounded-full border border-light-grey/80 bg-white text-xs font-semibold text-charcoal dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-2xs">
                             <button
                               type="button"
-                              onClick={() => setQty(product.id, qty - 1)}
+                              onClick={() => setQty(line.slug, line.qty - 1)}
                               aria-label="Decrease quantity"
                               className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10 hover:text-manikstu-green transition-colors"
                             >
                               <Minus className="h-3 w-3" />
                             </button>
                             <span className="min-w-[1.25rem] text-center tabular-nums font-bold">
-                              {qty}
+                              {line.qty}
                             </span>
                             <button
                               type="button"
-                              onClick={() => setQty(product.id, qty + 1)}
+                              onClick={() => setQty(line.slug, line.qty + 1)}
                               aria-label="Increase quantity"
                               className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10 hover:text-manikstu-green transition-colors"
                             >
@@ -235,8 +211,8 @@ export default function CartDrawer() {
                             </span>
                             <button
                               type="button"
-                              onClick={() => removeFromCart(product.id)}
-                              aria-label={`Remove ${product.name}`}
+                              onClick={() => removeFromCart(line.slug)}
+                              aria-label={`Remove ${line.name}`}
                               className="text-grey hover:text-manikstu-red dark:text-gray-400 transition-colors"
                             >
                               <Trash2 className="h-3.5 w-3.5" />
@@ -252,7 +228,7 @@ export default function CartDrawer() {
           </div>
 
           {/* Footer */}
-          {cartLines.length > 0 && (
+          {lines.length > 0 && (
             <div className="border-t border-light-grey/80 bg-light-grey/20 p-6 dark:border-gray-800 dark:bg-gray-900/50">
               {/* Delivery notice */}
               <div className="flex items-center gap-2 text-xs text-manikstu-green font-medium mb-3">
@@ -266,7 +242,7 @@ export default function CartDrawer() {
                   Subtotal
                 </span>
                 <span className="font-body text-xl font-bold text-charcoal dark:text-white">
-                  ₹{cartTotal.toLocaleString("en-IN")}
+                  ₹{total.toLocaleString("en-IN")}
                 </span>
               </div>
 

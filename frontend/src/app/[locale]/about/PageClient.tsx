@@ -573,7 +573,7 @@ export default function AboutPage() {
           return (
             <>
               <section className="pt-6 sm:pt-12 pb-12 sm:pb-20 md:pb-24 bg-white px-4 md:px-8">
-              <div className="mx-auto max-w-6xl">
+              <div className="mx-auto max-w-7xl">
                 {/* Leadership header */}
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2">

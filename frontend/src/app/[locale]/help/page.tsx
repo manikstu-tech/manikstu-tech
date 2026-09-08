@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -13,7 +13,9 @@ export const metadata: Metadata = {
     "Get help with Manikstu Agro products and services. Frequently asked questions, contact support, and more.",
 };
 
-export default async function HelpPage() {
+export default async function HelpPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("Help");
 
   const faqs = [
