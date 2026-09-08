@@ -129,13 +129,13 @@ export default function ProductsPage() {
                 href="#products-grid"
                 className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Browse Products <ArrowRight className="h-4 w-4" />
+                {t("browseProducts")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
-                Enquire Now
+                {t("enquireNow")}
               </Link>
             </div>
 
@@ -145,7 +145,7 @@ export default function ProductsPage() {
                 <Sprout className="h-3.5 w-3.5 text-manikstu-green" />
               </span>
               <p className="text-sm text-grey">
-                Sourced with care, priced for rural households
+                {t("microStatement")}
               </p>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function ProductsPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               <Image
                 src="/products-hero.png"
-                alt="Farm-first product range"
+                alt={t("heroAlt")}
                 fill
                 priority
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -166,7 +166,7 @@ export default function ProductsPage() {
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
                 <Package className="h-4 w-4 text-manikstu-green" />
                 <span className="text-xs font-semibold text-charcoal">
-                  Farm-first product range
+                  {t("cornerBadge")}
                 </span>
               </div>
             </div>
@@ -197,8 +197,8 @@ export default function ProductsPage() {
               </div>
 
               <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
-                Explore Our{" "}
-                <span className="text-manikstu-green">Product Range</span>
+                {t("exploreOur")}{" "}
+                <span className="text-manikstu-green">{t("productRange")}</span>
               </h2>
 
               {/* Ornamental Divider with Framed Diamond */}
@@ -214,13 +214,13 @@ export default function ProductsPage() {
               </div>
 
               <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey dark:text-gray-300">
-                Trusted by farmers, for healthier animals and better livelihoods.
+                {t("trustedByFarmers")}
               </p>
             </div>
 
             {loading ? (
               <div className="mt-10 py-16 text-center text-grey dark:text-gray-300">
-                Loading products…
+                {t("loadingProducts")}
               </div>
             ) : products.length === 0 ? (
               <div className="mt-10 flex flex-col items-center rounded-2xl border border-light-grey/70 py-16 text-center dark:border-gray-700">
@@ -228,17 +228,16 @@ export default function ProductsPage() {
                   <ShoppingBag className="h-7 w-7 text-manikstu-green/40" />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-bold text-charcoal dark:text-white">
-                  No Products Available
+                  {t("noProductsAvailable")}
                 </h3>
                 <p className="mt-1 max-w-md text-sm text-grey dark:text-gray-300">
-                  There are no products listed at the moment. Please check back
-                  soon or reach out to us for assistance.
+                  {t("noProductsDesc")}
                 </p>
                 <Link
                   href="/contact"
                   className="mt-5 inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green px-5 py-2.5 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white"
                 >
-                  Contact us for enquiries <ArrowRight className="h-4 w-4" />
+                  {t("contactUsEnquiries")} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             ) : (
@@ -295,7 +294,7 @@ export default function ProductsPage() {
                         href={`/products/${product.slug}`}
                         className="inline-flex items-center gap-1 text-xs font-semibold text-manikstu-green hover:text-manikstu-leaf transition-colors underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1 rounded"
                       >
-                        View Details
+                        {t("viewDetails")}
                       </Link>
                     {cart[product.slug] ? (
                       <div className="inline-flex items-center gap-1 rounded-full border border-manikstu-green bg-white text-xs font-semibold text-manikstu-green">
@@ -326,7 +325,7 @@ export default function ProductsPage() {
                         className="inline-flex items-center gap-1.5 rounded-full border border-manikstu-green bg-white px-3 py-1.5 text-xs font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1"
                       >
                         <ShoppingBag className="h-3.5 w-3.5" />
-                        Add to Cart
+                        {t("addToCart")}
                       </button>
                     )}
                     </div>
@@ -350,10 +349,10 @@ export default function ProductsPage() {
                     </span>
                     <div>
                       <p className="font-heading text-sm font-bold text-charcoal dark:text-white">
-                        Your Cart
+                        {t("yourCart")}
                       </p>
                       <p className="text-[11px] text-grey dark:text-gray-300">
-                        {cartCount} {cartCount === 1 ? "item" : "items"}
+                        {cartCount} {cartCount === 1 ? t("item") : t("items")}
                       </p>
                     </div>
                   </div>
@@ -362,7 +361,7 @@ export default function ProductsPage() {
                     onClick={() => setCart(clearCartStore())}
                     className="text-xs font-semibold text-grey hover:text-manikstu-red transition-colors"
                   >
-                    Clear all
+                    {t("clearAll")}
                   </button>
                 </div>
 
@@ -440,7 +439,7 @@ export default function ProductsPage() {
                 <div className="flex flex-col items-stretch gap-3 border-t border-light-grey/70 bg-manikstu-cream/40 px-5 py-4 dark:border-gray-700 dark:bg-gray-700/40 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="text-[11px] uppercase tracking-wider text-grey dark:text-gray-300">
-                      Total to pay
+                      {t("totalToPay")}
                     </p>
                     <p className="font-body text-2xl font-bold text-manikstu-green">
                       ₹{cartTotal.toLocaleString("en-IN")}
@@ -450,7 +449,7 @@ export default function ProductsPage() {
                     href="/products/checkout"
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
                   >
-                    Proceed to Checkout <ArrowRight className="h-4 w-4" />
+                    {t("proceedToCheckout")} <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               </div>

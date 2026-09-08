@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, type FormEvent } from "react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/layout/Header";
@@ -41,6 +42,7 @@ const emptyAddress: Address = {
 };
 
 export default function CheckoutPage() {
+  const t = useTranslations("Checkout");
   const [cart, setCart] = useState<CartMap>({});
   const [address, setAddress] = useState<Address>(emptyAddress);
   const [placed, setPlaced] = useState(false);
@@ -84,14 +86,14 @@ export default function CheckoutPage() {
             href="/products"
             className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-manikstu-green hover:text-manikstu-leaf"
           >
-            <ArrowLeft className="h-4 w-4" /> Back to products
+            <ArrowLeft className="h-4 w-4" /> {t("backToProducts")}
           </Link>
 
           <h1 className="font-heading text-3xl font-bold text-charcoal md:text-4xl">
-            Checkout
+            {t("checkout")}
           </h1>
           <p className="mt-2 text-grey">
-            Enter your delivery address to place the order.
+            {t("enterDeliveryAddress")}
           </p>
 
           {placed && (
@@ -99,18 +101,16 @@ export default function CheckoutPage() {
               <div className="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-xl">
                 <CheckCircle2 className="mx-auto h-14 w-14 text-manikstu-green" />
                 <h2 className="mt-4 font-heading text-2xl font-bold text-charcoal">
-                  Order placed successfully!
+                  {t("orderPlacedSuccess")}
                 </h2>
                 <p className="mx-auto mt-2 max-w-md text-grey">
-                  Thank you, {address.fullName || "friend"}. Our team will
-                  contact you on {address.phone || "your phone"} to confirm
-                  delivery to {address.city || "your address"}.
+                  {t("orderThankYou", { name: address.fullName || t("friend"), phone: address.phone || t("yourPhone"), city: address.city || t("yourAddress") })}
                 </p>
                 <Link
                   href="/products"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
                 >
-                  Continue shopping
+                  {t("continueShopping")}
                 </Link>
               </div>
             </div>
@@ -120,16 +120,16 @@ export default function CheckoutPage() {
             <div className="mt-10 rounded-2xl border border-light-grey bg-white p-8 text-center shadow-sm md:p-12">
               <ShoppingBag className="mx-auto h-12 w-12 text-grey/50" />
               <h2 className="mt-4 font-heading text-xl font-bold text-charcoal">
-                Your cart is empty
+                {t("cartEmpty")}
               </h2>
               <p className="mt-2 text-grey">
-                Add some products before checking out.
+                {t("addProductsBefore")}
               </p>
               <Link
                 href="/products"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
               >
-                Browse products
+                {t("browseProducts")}
               </Link>
             </div>
           ) : (
@@ -140,21 +140,21 @@ export default function CheckoutPage() {
                 className="rounded-2xl border border-light-grey bg-white p-6 shadow-sm md:p-8"
               >
                 <h2 className="font-heading text-xl font-bold text-charcoal">
-                  Delivery Address
+                  {t("deliveryAddress")}
                 </h2>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  <Field label="Full Name" required>
+                  <Field label={t("fullName")} required>
                     <input
                       type="text"
                       required
                       value={address.fullName}
                       onChange={update("fullName")}
                       className={inputCls}
-                      placeholder="Your full name"
+                      placeholder={t("fullNamePlaceholder")}
                     />
                   </Field>
-                  <Field label="Phone Number" required>
+                  <Field label={t("phone")} required>
                     <input
                       type="tel"
                       required
@@ -164,58 +164,58 @@ export default function CheckoutPage() {
                       value={address.phone}
                       onChange={updatePhone}
                       className={inputCls}
-                      placeholder="10-digit mobile number"
+                      placeholder={t("phonePlaceholder")}
                     />
                   </Field>
-                  <Field label="Email" className="sm:col-span-2">
+                  <Field label={t("email")} className="sm:col-span-2">
                     <input
                       type="email"
                       value={address.email}
                       onChange={update("email")}
                       className={inputCls}
-                      placeholder="you@example.com (optional)"
+                      placeholder={t("emailPlaceholder")}
                     />
                   </Field>
-                  <Field label="Address" required className="sm:col-span-2">
+                  <Field label={t("address")} required className="sm:col-span-2">
                     <input
                       type="text"
                       required
                       value={address.line1}
                       onChange={update("line1")}
                       className={inputCls}
-                      placeholder="House / street / village"
+                      placeholder={t("addressPlaceholder")}
                     />
                   </Field>
-                  <Field label="Landmark / Area" className="sm:col-span-2">
+                  <Field label={t("landmarkArea")} className="sm:col-span-2">
                     <input
                       type="text"
                       value={address.line2}
                       onChange={update("line2")}
                       className={inputCls}
-                      placeholder="Nearby landmark (optional)"
+                      placeholder={t("landmarkPlaceholder")}
                     />
                   </Field>
-                  <Field label="City / Village" required>
+                  <Field label={t("cityVillage")} required>
                     <input
                       type="text"
                       required
                       value={address.city}
                       onChange={update("city")}
                       className={inputCls}
-                      placeholder="City or village"
+                      placeholder={t("cityPlaceholder")}
                     />
                   </Field>
-                  <Field label="State" required>
+                  <Field label={t("state")} required>
                     <input
                       type="text"
                       required
                       value={address.state}
                       onChange={update("state")}
                       className={inputCls}
-                      placeholder="State"
+                      placeholder={t("statePlaceholder")}
                     />
                   </Field>
-                  <Field label="PIN Code" required>
+                  <Field label={t("pinCode")} required>
                     <input
                       type="text"
                       required
@@ -225,16 +225,16 @@ export default function CheckoutPage() {
                       value={address.pincode}
                       onChange={updatePincode}
                       className={inputCls}
-                      placeholder="6-digit PIN code"
+                      placeholder={t("pinPlaceholder")}
                     />
                   </Field>
-                  <Field label="Order Notes" className="sm:col-span-2">
+                  <Field label={t("orderNotes")} className="sm:col-span-2">
                     <textarea
                       rows={3}
                       value={address.notes}
                       onChange={update("notes")}
                       className={inputCls}
-                      placeholder="Any delivery instructions (optional)"
+                      placeholder={t("notesPlaceholder")}
                     />
                   </Field>
                 </div>
@@ -243,14 +243,14 @@ export default function CheckoutPage() {
                   type="submit"
                   className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
                 >
-                  Proceed to Pay
+                  {t("proceedToPay")}
                 </button>
               </form>
 
               {/* Order summary */}
               <aside className="h-fit rounded-2xl border border-light-grey bg-white p-6 shadow-sm md:p-8">
                 <h2 className="font-heading text-xl font-bold text-charcoal">
-                  Order Summary
+                  {t("orderSummary")}
                 </h2>
                 <ul className="mt-5 space-y-4">
                   {cartLines.map((line) => (
@@ -286,15 +286,15 @@ export default function CheckoutPage() {
 
                 <div className="mt-5 space-y-2 border-t border-light-grey/70 pt-4 text-sm">
                   <div className="flex justify-between text-grey">
-                    <span>Items ({cartCount})</span>
+                    <span>{t("items")} ({cartCount})</span>
                     <span>₹{cartTotal.toLocaleString("en-IN")}</span>
                   </div>
                   <div className="flex justify-between text-grey">
-                    <span>Delivery</span>
-                    <span className="text-manikstu-green">Free</span>
+                    <span>{t("delivery")}</span>
+                    <span className="text-manikstu-green">{t("free")}</span>
                   </div>
                   <div className="flex justify-between border-t border-light-grey/70 pt-3 font-body text-lg font-bold text-charcoal">
-                    <span>Total</span>
+                    <span>{t("total")}</span>
                     <span className="text-manikstu-green">
                       ₹{cartTotal.toLocaleString("en-IN")}
                     </span>

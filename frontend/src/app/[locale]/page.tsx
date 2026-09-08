@@ -1063,7 +1063,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {t("testimonialsTitle")}
               </h2>
               <Link
-                href="/testimonials"
+                href="/about"
                 className="text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors"
               >
                 {tCommon("viewAll")}

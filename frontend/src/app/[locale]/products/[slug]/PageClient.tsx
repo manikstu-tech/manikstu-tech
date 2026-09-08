@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -73,6 +74,7 @@ function StarRow({
 export default function ProductDetailPage() {
   const params = useParams<{ slug: string }>();
   const router = useRouter();
+  const t = useTranslations("ProductDetail");
   const slug = params?.slug ?? "";
 
   // Hydrate from the baked-in catalogue so the page renders immediately;
@@ -284,7 +286,7 @@ export default function ProductDetailPage() {
           id="main-content"
           className="mx-auto max-w-3xl px-4 py-24 text-center text-grey sm:px-6 md:px-8"
         >
-          Loading productΓÇª
+          {t("loadingProduct")}
         </main>
         <Footer />
       </>
@@ -301,7 +303,7 @@ export default function ProductDetailPage() {
         >
           <ShoppingBag className="mx-auto h-12 w-12 text-manikstu-green/30" />
           <h1 className="mt-4 font-heading text-2xl font-bold text-charcoal">
-            Product not found
+            {t("productNotFound")}
           </h1>
           <p className="mt-2 text-grey">
             The product you&apos;re looking for isn&apos;t available right now.
@@ -310,7 +312,7 @@ export default function ProductDetailPage() {
             href="/products"
             className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green px-5 py-2.5 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white"
           >
-            <ArrowLeft className="h-4 w-4" /> Back to products
+            <ArrowLeft className="h-4 w-4" /> {t("backToProducts")}
           </Link>
         </main>
         <Footer />
@@ -333,13 +335,13 @@ export default function ProductDetailPage() {
             <ol className="flex flex-wrap items-center gap-1">
               <li>
                 <Link href="/" className="hover:text-manikstu-green">
-                  Home
+                  {t("home")}
                 </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
                 <Link href="/products" className="hover:text-manikstu-green">
-                  Products
+                  {t("products")}
                 </Link>
               </li>
               <li aria-hidden>/</li>
@@ -489,9 +491,9 @@ export default function ProductDetailPage() {
                       href="#reviews"
                       className="text-sm font-semibold text-grey hover:text-manikstu-green transition-colors dark:text-gray-300"
                     >
-                      {stripCount.toLocaleString("en-IN")} Ratings
+                      {stripCount.toLocaleString("en-IN")} {t("ratings")}
                       {" & "}
-                      {reviewsShown} Reviews
+                      {reviewsShown} {t("reviews")}
                     </a>
                   </div>
                 );
@@ -544,7 +546,7 @@ export default function ProductDetailPage() {
                     className="flex flex-1 items-center justify-center gap-2 rounded-full bg-manikstu-green px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98]"
                   >
                     <ShoppingBag className="h-4 w-4" />
-                    <span>Add {qty > 1 ? `${qty} ` : ""}to Cart</span>
+                    <span>{t("addToCart")}</span>
                   </button>
                 </div>
 
@@ -568,7 +570,7 @@ export default function ProductDetailPage() {
                   className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-red px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-saura-red focus:outline-none focus:ring-2 focus:ring-manikstu-red focus:ring-offset-2 active:scale-[0.98]"
                 >
                   <ArrowRight className="h-4 w-4" />
-                  <span>Buy Now</span>
+                  <span>{t("buyNow")}</span>
                 </button>
               </div>
 
@@ -576,7 +578,7 @@ export default function ProductDetailPage() {
               {product.highlights && product.highlights.length > 0 && (
                 <div className="mt-8 rounded-2xl border border-light-grey/70 bg-white p-5 dark:border-gray-700 dark:bg-gray-800">
                   <h2 className="text-sm font-bold uppercase tracking-wider text-charcoal dark:text-white">
-                    Why farmers choose it
+                    {t("whyFarmersChooseIt")}
                   </h2>
                   <ul className="mt-3 space-y-2.5">
                     {product.highlights.map((h) => (
@@ -627,7 +629,7 @@ export default function ProductDetailPage() {
             className="mx-auto max-w-7xl border-t border-light-grey/70 px-4 py-12 sm:px-6 md:px-8 dark:border-gray-700"
           >
             <h2 id="product-details-heading" className="sr-only">
-              Product details
+              {t("productDetails")}
             </h2>
 
             <div className="grid gap-6 lg:grid-cols-[minmax(0,22rem)_1fr] lg:items-stretch">
@@ -635,7 +637,7 @@ export default function ProductDetailPage() {
               {product.specifications && product.specifications.length > 0 ? (
                 <div className="flex h-full flex-col">
                   <h3 className="font-heading text-lg font-bold text-manikstu-green">
-                    Product Specifications
+                    {t("productSpecifications")}
                   </h3>
                   <div className="mt-3 overflow-hidden rounded-lg border border-light-grey/80 dark:border-gray-700">
                     <table className="w-full border-collapse text-sm">
@@ -667,7 +669,7 @@ export default function ProductDetailPage() {
                   {product.ingredients && (
                     <div className="mt-5">
                       <p className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-white">
-                        Composition
+                        {t("composition")}
                       </p>
                       <p className="mt-1.5 text-xs leading-relaxed text-grey dark:text-gray-300">
                         {product.ingredients}
@@ -678,7 +680,7 @@ export default function ProductDetailPage() {
                   {product.storage && (
                     <div className="mt-5">
                       <p className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-white">
-                        Storage &amp; handling
+                        {t("storageHandling")}
                       </p>
                       <p className="mt-1.5 text-xs leading-relaxed text-grey dark:text-gray-300">
                         {product.storage}
@@ -693,7 +695,7 @@ export default function ProductDetailPage() {
               {/* Right ΓÇö Product Description */}
               <div className="flex h-full flex-col rounded-2xl border border-light-grey/70 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
                 <h3 className="font-heading text-2xl font-bold text-manikstu-green">
-                  Product Description
+                  {t("productDescription")}
                 </h3>
 
                 {(product.longDescription || product.description) && (
@@ -705,7 +707,7 @@ export default function ProductDetailPage() {
                 {product.highlights && product.highlights.length > 0 && (
                   <>
                     <p className="mt-6 font-bold text-charcoal dark:text-white">
-                      Key Features:
+                      {t("keyFeatures")}
                     </p>
                     <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed text-charcoal dark:text-gray-200 sm:text-base">
                       {product.highlights.map((h) => (
@@ -718,7 +720,7 @@ export default function ProductDetailPage() {
                 {product.recommendedFor && product.recommendedFor.length > 0 && (
                   <>
                     <p className="mt-6 font-bold text-charcoal dark:text-white">
-                      Recommended For:
+                      {t("recommendedFor")}
                     </p>
                     <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-charcoal dark:text-gray-200 sm:text-base">
                       {product.recommendedFor.map((r) => (
@@ -730,7 +732,7 @@ export default function ProductDetailPage() {
 
                 {product.usage && (
                   <p className="mt-6 text-sm leading-relaxed text-charcoal dark:text-gray-200 sm:text-base">
-                    <span className="font-bold">Dosage:</span> {product.usage}
+                    <span className="font-bold">{t("dosage")}</span> {product.usage}
                   </p>
                 )}
               </div>
@@ -779,7 +781,7 @@ export default function ProductDetailPage() {
                 {/* Left ΓÇö summary card */}
                 <aside>
                   <h2 className="font-heading text-2xl font-bold text-charcoal dark:text-white">
-                    Ratings &amp; Reviews
+                    {t("ratingsAndReviews")}
                   </h2>
 
                   <div className="mt-4 rounded-2xl border border-light-grey/70 bg-white p-5 dark:border-gray-700 dark:bg-gray-800">
@@ -794,8 +796,7 @@ export default function ProductDetailPage() {
                       />
                     </div>
                     <p className="mt-1 text-xs text-grey dark:text-gray-300">
-                      Based on {totalRatings.toLocaleString("en-IN")} ratings
-                      &amp; {reviews.length} reviews
+                      {t("basedOnRatings")} {totalRatings.toLocaleString("en-IN")} {t("ratingsAnd")} {reviews.length} {t("reviewsCount")}
                     </p>
 
                     {/* Distribution bars */}
@@ -847,7 +848,7 @@ export default function ProductDetailPage() {
                       className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-manikstu-green px-4 py-2.5 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1"
                     >
                       <Star className="h-4 w-4" />
-                      {reviewFormOpen ? "Cancel" : "Write a Review"}
+                      {reviewFormOpen ? t("cancel") : t("writeAReview")}
                     </button>
                   </div>
 
@@ -859,16 +860,16 @@ export default function ProductDetailPage() {
                       className="mt-4 rounded-2xl border border-manikstu-gold/40 bg-white p-5 dark:border-gray-700 dark:bg-gray-800"
                     >
                       <h3 className="font-heading text-base font-bold text-charcoal dark:text-white">
-                        Share your experience
+                        {t("shareYourExperience")}
                       </h3>
                       <p className="mt-1 text-xs text-grey dark:text-gray-300">
-                        Help other farmers by rating and reviewing this product.
+                        {t("helpOtherFarmers")}
                       </p>
 
                       {/* Star picker */}
                       <div className="mt-4">
                         <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200">
-                          Your rating <span className="text-manikstu-red">*</span>
+                          {t("yourRating")} <span className="text-manikstu-red">*</span>
                         </label>
                         <div
                           className="mt-2 flex items-center gap-1"
@@ -911,7 +912,7 @@ export default function ProductDetailPage() {
                           htmlFor="review-name"
                           className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
                         >
-                          Your name <span className="text-manikstu-red">*</span>
+                          {t("yourName")} <span className="text-manikstu-red">*</span>
                         </label>
                         <input
                           id="review-name"
@@ -919,7 +920,7 @@ export default function ProductDetailPage() {
                           required
                           value={formName}
                           onChange={(e) => setFormName(e.target.value)}
-                          placeholder="e.g. Ramesh Pradhan"
+                          placeholder={t("namePlaceholder")}
                           className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
                       </div>
@@ -930,14 +931,14 @@ export default function ProductDetailPage() {
                           htmlFor="review-location"
                           className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
                         >
-                          Location <span className="text-grey">(optional)</span>
+                          {t("location")} <span className="text-grey">{t("optional")}</span>
                         </label>
                         <input
                           id="review-location"
                           type="text"
                           value={formLocation}
                           onChange={(e) => setFormLocation(e.target.value)}
-                          placeholder="e.g. Mayurbhanj, Odisha"
+                          placeholder={t("locationPlaceholder")}
                           maxLength={80}
                           className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
@@ -949,14 +950,14 @@ export default function ProductDetailPage() {
                           htmlFor="review-title"
                           className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
                         >
-                          Headline <span className="text-grey">(optional)</span>
+                          {t("headline")} <span className="text-grey">{t("optional")}</span>
                         </label>
                         <input
                           id="review-title"
                           type="text"
                           value={formTitle}
                           onChange={(e) => setFormTitle(e.target.value)}
-                          placeholder="Sum up your review in a line"
+                          placeholder={t("headlinePlaceholder")}
                           maxLength={80}
                           className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
@@ -968,7 +969,7 @@ export default function ProductDetailPage() {
                           htmlFor="review-body"
                           className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
                         >
-                          Your review <span className="text-manikstu-red">*</span>
+                          {t("yourReview")} <span className="text-manikstu-red">*</span>
                         </label>
                         <textarea
                           id="review-body"
@@ -976,7 +977,7 @@ export default function ProductDetailPage() {
                           rows={4}
                           value={formBody}
                           onChange={(e) => setFormBody(e.target.value)}
-                          placeholder="Tell others what worked (or didn't) for you and your herd."
+                          placeholder={t("reviewPlaceholder")}
                           className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
                         <p className="mt-1 text-[10px] text-grey">
@@ -993,7 +994,7 @@ export default function ProductDetailPage() {
                           }
                           className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-manikstu-green px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         >
-                          <Check className="h-4 w-4" /> Submit Review
+                          <Check className="h-4 w-4" /> {t("submitReview")}
                         </button>
                         <button
                           type="button"
@@ -1003,7 +1004,7 @@ export default function ProductDetailPage() {
                           }}
                           className="text-xs font-semibold text-grey hover:text-manikstu-red transition-colors"
                         >
-                          Cancel
+                          {t("cancel")}
                         </button>
                       </div>
 
@@ -1013,7 +1014,7 @@ export default function ProductDetailPage() {
                           className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-manikstu-green/10 px-2.5 py-1.5 text-xs font-semibold text-manikstu-green"
                         >
                           <BadgeCheck className="h-3.5 w-3.5" />
-                          Thanks! Your review has been posted.
+                          {t("reviewPosted")}
                         </p>
                       )}
                     </form>
@@ -1024,10 +1025,10 @@ export default function ProductDetailPage() {
                 <div>
                   <div className="flex items-center justify-between gap-3">
                     <h3 className="font-heading text-lg font-bold text-charcoal dark:text-white">
-                      Latest reviews
+                      {t("latestReviews")}
                     </h3>
                     <span className="text-xs text-grey dark:text-gray-300">
-                      Sorted by most helpful
+                      {t("sortedByMostHelpful")}
                     </span>
                   </div>
 
@@ -1070,7 +1071,7 @@ export default function ProductDetailPage() {
                           {r.verified && (
                             <span className="inline-flex items-center gap-1 text-manikstu-green">
                               <BadgeCheck className="h-3.5 w-3.5" />
-                              Verified purchase
+                              {t("verifiedPurchase")}
                             </span>
                           )}
                           <span aria-hidden>┬╖</span>
@@ -1086,8 +1087,8 @@ export default function ProductDetailPage() {
                                 aria-pressed={marked}
                                 aria-label={
                                   marked
-                                    ? "Unmark as helpful"
-                                    : "Mark as helpful"
+                                    ? t("unmarkHelpful")
+                                    : t("markHelpful")
                                 }
                                 className={
                                   "inline-flex items-center gap-1 rounded-full border px-2.5 py-1 transition-colors " +
@@ -1101,7 +1102,7 @@ export default function ProductDetailPage() {
                                   fill={marked ? "currentColor" : "none"}
                                   strokeWidth={1.5}
                                 />
-                                {marked ? "Marked helpful" : "Helpful"}
+                                {marked ? t("markedHelpful") : t("helpful")}
                                 {count > 0 && (
                                   <span className="tabular-nums">
                                     {" "}
@@ -1120,7 +1121,7 @@ export default function ProductDetailPage() {
                     type="button"
                     className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-manikstu-green hover:text-manikstu-leaf"
                   >
-                    Show all {reviews.length} reviews{" "}
+                    {t("showAllReviews")} {reviews.length} {t("reviewsLabel")}{" "}
                     <ArrowRight className="h-4 w-4" />
                   </button>
 
@@ -1128,7 +1129,7 @@ export default function ProductDetailPage() {
                   <div className="mt-12">
                     <div className="flex items-end justify-between gap-3">
                       <h3 className="font-heading text-lg font-bold text-charcoal dark:text-white">
-                        Questions &amp; Answers
+                        {t("questionsAndAnswers")}
                       </h3>
                       <button
                         type="button"
@@ -1136,7 +1137,7 @@ export default function ProductDetailPage() {
                         className="inline-flex items-center gap-1.5 rounded-full border border-manikstu-green px-3 py-1.5 text-xs font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
                       >
                         <MessageCircleQuestion className="h-3.5 w-3.5" />
-                        Ask a Question
+                        {t("askAQuestion")}
                       </button>
                     </div>
 
@@ -1155,7 +1156,7 @@ export default function ProductDetailPage() {
                                 {q.question}
                               </p>
                               <p className="mt-1 text-[11px] text-grey dark:text-gray-300">
-                                Asked by {q.asker} ┬╖ {q.askedAt}
+                                {t("askedBy")} {q.asker} ┬╖ {q.askedAt}
                               </p>
                             </div>
                           </div>
@@ -1170,7 +1171,7 @@ export default function ProductDetailPage() {
                                   {q.answer}
                                 </p>
                                 <p className="mt-1 text-[11px] text-grey dark:text-gray-300">
-                                  Answered by{" "}
+                                  {t("answeredBy")}{" "}
                                   <span className="font-semibold text-manikstu-green">
                                     {q.answerer}
                                   </span>
@@ -1187,7 +1188,7 @@ export default function ProductDetailPage() {
                       type="button"
                       className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-manikstu-green hover:text-manikstu-leaf"
                     >
-                      See all questions <ArrowRight className="h-4 w-4" />
+                      {t("seeAllQuestions")} <ArrowRight className="h-4 w-4" />
                     </button>
                   </div>
                 </div>
@@ -1201,13 +1202,13 @@ export default function ProductDetailPage() {
           <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8">
             <div className="flex items-end justify-between gap-4">
               <h2 className="font-heading text-2xl font-bold text-charcoal dark:text-white sm:text-3xl">
-                You may also like
+                {t("youMayAlsoLike")}
               </h2>
               <Link
                 href="/products"
                 className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-manikstu-green hover:text-manikstu-leaf"
               >
-                View all <ArrowRight className="h-4 w-4" />
+                {t("viewAll")} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
@@ -1277,10 +1278,10 @@ export default function ProductDetailPage() {
                     id="ask-modal-title"
                     className="font-heading text-base font-bold text-charcoal dark:text-white"
                   >
-                    Ask a Question
+                    {t("askAQuestion")}
                   </h3>
                   <p className="text-[11px] text-grey dark:text-gray-300 line-clamp-1">
-                    About {product.name}
+                    {t("aboutProduct")} {product.name}
                   </p>
                 </div>
               </div>
@@ -1299,7 +1300,7 @@ export default function ProductDetailPage() {
                 htmlFor="ask-name"
                 className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
               >
-                Your name <span className="text-manikstu-red">*</span>
+                {t("yourName")} <span className="text-manikstu-red">*</span>
               </label>
               <input
                 id="ask-name"
@@ -1307,7 +1308,7 @@ export default function ProductDetailPage() {
                 required
                 value={askName}
                 onChange={(e) => setAskName(e.target.value)}
-                placeholder="e.g. Ramesh Pradhan"
+                placeholder={t("namePlaceholder")}
                 className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
               />
 
@@ -1315,7 +1316,7 @@ export default function ProductDetailPage() {
                 htmlFor="ask-text"
                 className="mt-4 block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
               >
-                Your question <span className="text-manikstu-red">*</span>
+                {t("yourQuestion")} <span className="text-manikstu-red">*</span>
               </label>
               <textarea
                 id="ask-text"
@@ -1323,13 +1324,12 @@ export default function ProductDetailPage() {
                 rows={4}
                 value={askText}
                 onChange={(e) => setAskText(e.target.value)}
-                placeholder="Ask anything about this product ΓÇö dosage, safety, delivery, use casesΓÇª"
+                placeholder={t("questionPlaceholder")}
                 maxLength={500}
                 className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
               />
               <p className="mt-1 text-[10px] text-grey">
-                {askText.length}/500 ┬╖ Manikstu Support usually replies within a
-                day.
+                {askText.length}/500 ┬╖ {t("supportReplies")}
               </p>
 
               <div className="mt-5 flex items-center gap-3">
@@ -1338,14 +1338,14 @@ export default function ProductDetailPage() {
                   disabled={!askName.trim() || !askText.trim()}
                   className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-manikstu-green px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <Check className="h-4 w-4" /> Post Question
+                  <Check className="h-4 w-4" /> {t("postQuestion")}
                 </button>
                 <button
                   type="button"
                   onClick={closeAskModal}
                   className="text-xs font-semibold text-grey hover:text-manikstu-red transition-colors"
                 >
-                  Cancel
+                  {t("cancel")}
                 </button>
               </div>
 
@@ -1355,7 +1355,7 @@ export default function ProductDetailPage() {
                   className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-manikstu-green/10 px-2.5 py-1.5 text-xs font-semibold text-manikstu-green"
                 >
                   <BadgeCheck className="h-3.5 w-3.5" />
-                  Question posted ΓÇö we&apos;ll get back with an answer soon.
+                  {t("questionPosted")}
                 </p>
               )}
             </form>
