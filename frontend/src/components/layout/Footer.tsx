@@ -62,7 +62,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div>
-            <Link href="/">
+            <Link href="/" className="flex items-start">
               <Image
                 src="/logo.png"
                 alt="Manikstu Agro"
@@ -70,6 +70,7 @@ export default function Footer() {
                 height={48}
                 className="h-12 w-auto"
               />
+              <span className="text-[10px] text-grey/70 -mt-3.5">&reg;</span>
             </Link>
             <p className="mt-3 text-sm text-grey">
               {settings.brand_tagline || t("brandTagline")}

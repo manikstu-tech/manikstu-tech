@@ -45,6 +45,7 @@ export default function Header() {
             className="h-12 w-auto"
             priority
           />
+          <span className="text-[10px] text-grey/70 -mt-3.5">&reg;</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6">
