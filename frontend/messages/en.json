@@ -592,7 +592,13 @@
     "sending": "Sending...",
     "successTitle": "Message Sent",
     "successDesc": "Thank you for reaching out. We will get back to you within 24 hours.",
-    "sendAnother": "Send Another Message"
+    "sendAnother": "Send Another Message",
+    "callHours": "Mon – Sat | 9:00 AM – 6:00 PM",
+    "replyWithin": "We typically reply within 24 hours",
+    "registeredOffice": "Registered Office",
+    "corporateOffice": "Corporate Office",
+    "farmOffice": "Farm Office",
+    "regionalOffice": "Regional Office"
   },
   "Help": {
     "pill": "Help Center",

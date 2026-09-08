@@ -113,14 +113,14 @@ export default function ContactPage() {
                 title: t("callUs"),
                 value: "+91 8270331856",
                 href: "tel:+918270331856",
-                subtitle: "Mon – Sat | 9:00 AM – 6:00 PM",
+                subtitle: t("callHours"),
               },
               {
                 icon: Mail,
                 title: t("emailUs"),
                 value: "contact@manikstu.com",
                 href: "mailto:contact@manikstu.com",
-                subtitle: "We typically reply within 24 hours",
+                subtitle: t("replyWithin"),
               },
             ].map(({ icon: Icon, title, value, href, subtitle }) => (
               <div
@@ -156,29 +156,29 @@ export default function ContactPage() {
                 <MapPin className="h-6 w-6 text-manikstu-green" />
               </span>
               <p className="font-heading text-base font-bold text-charcoal">
-                Visit Us
+                {t("visitUs")}
               </p>
             </div>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {
-                  label: "Registered Office",
+                  label: t("registeredOffice"),
                   address:
                     "Row House No - 94, Ravi Garden, Pune Solapur Road, Manjri Budruk, Hadapsar, Pune – 412307",
                 },
                 {
-                  label: "Corporate Office",
+                  label: t("corporateOffice"),
                   address:
                     "Plot No-754, 14, Gangadhar Meher Marg, near Pabitra Guest House, Jayadev Vihar, Bhubaneswar, Odisha – 751013",
                 },
                 {
-                  label: "Farm Office",
+                  label: t("farmOffice"),
                   address:
                     "At/Po: Salebhata, P.S: Kegaon, via: Borda, Kalahandi, Odisha – 766036",
                 },
                 {
-                  label: "Regional Office",
+                  label: t("regionalOffice"),
                   address:
                     "CMTC Campus, Serikhedi, Chhattisgarh – 492012",
                 },

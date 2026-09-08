@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CareersHero from "@/components/careers/CareersHero";
@@ -14,64 +15,21 @@ import type { CareerBenefit } from "@/components/careers/CareerBenefits";
 import { getPage, getJobOpenings } from "@/lib/api";
 import { parseContent } from "@/lib/pages";
 
-const fallbackValues: CareerValue[] = [
-  {
-    icon: "impact",
-    title: "Impact That Matters",
-    description:
-      "Your work directly contributes to improving rural livelihoods and farmer communities.",
-  },
-  {
-    icon: "growth",
-    title: "Learning & Growth",
-    description:
-      "Opportunities to learn continuously and develop professionally in a growing organization.",
-  },
-  {
-    icon: "culture",
-    title: "Collaborative Culture",
-    description:
-      "Work with passionate people who support, challenge and inspire you.",
-  },
-  {
-    icon: "sustainability",
-    title: "Sustainability at Heart",
-    description:
-      "Contribute to ethical and sustainable agricultural development that transforms communities.",
-  },
-];
-
-const fallbackBenefits: CareerBenefit[] = [
-  {
-    icon: "health",
-    title: "Health & Wellness",
-    description: "Comprehensive health support for you and your family.",
-  },
-  {
-    icon: "learning",
-    title: "Learning Support",
-    description: "Access to training and professional development.",
-  },
-  {
-    icon: "flexible",
-    title: "Flexible Work",
-    description: "Balanced work arrangements to support your lifestyle.",
-  },
-  {
-    icon: "impact",
-    title: "Impact Leave",
-    description: "Time to contribute to community development initiatives.",
-  },
-  {
-    icon: "growth",
-    title: "Growth Path",
-    description: "Clear career progression and leadership opportunities.",
-  },
-];
-
 export default function CareersPage() {
-  const [values, setValues] = useState<CareerValue[]>(fallbackValues);
-  const [benefits, setBenefits] = useState<CareerBenefit[]>(fallbackBenefits);
+  const t = useTranslations("Careers");
+  const [values, setValues] = useState<CareerValue[]>([
+    { icon: "impact", title: t("value1Title"), description: t("value1Desc") },
+    { icon: "growth", title: t("value2Title"), description: t("value2Desc") },
+    { icon: "culture", title: t("value3Title"), description: t("value3Desc") },
+    { icon: "sustainability", title: t("value4Title"), description: t("value4Desc") },
+  ]);
+  const [benefits, setBenefits] = useState<CareerBenefit[]>([
+    { icon: "health", title: t("benefit1Title"), description: t("benefit1Desc") },
+    { icon: "learning", title: t("benefit2Title"), description: t("benefit2Desc") },
+    { icon: "flexible", title: t("benefit3Title"), description: t("benefit3Desc") },
+    { icon: "impact", title: t("benefit4Title"), description: t("benefit4Desc") },
+    { icon: "growth", title: t("benefit5Title"), description: t("benefit5Desc") },
+  ]);
   const [jobs, setJobs] = useState<JobOpening[]>([]);
 
   useEffect(() => {
