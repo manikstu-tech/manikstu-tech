@@ -5,9 +5,11 @@ import { useState } from "react";
 type Props = {
   heading: string;
   paragraphs: string[];
+  showLess?: string;
+  readMore?: string;
 };
 
-export default function InsurancePanel({ heading, paragraphs }: Props) {
+export default function InsurancePanel({ heading, paragraphs, showLess = "Show Less", readMore = "Read More" }: Props) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -31,7 +33,7 @@ export default function InsurancePanel({ heading, paragraphs }: Props) {
           aria-expanded={expanded}
           className="mt-4 text-sm font-semibold text-manikstu-green transition-colors hover:text-manikstu-leaf"
         >
-          {expanded ? "Show Less" : "Read More"}
+          {expanded ? showLess : readMore}
         </button>
       )}
     </div>
