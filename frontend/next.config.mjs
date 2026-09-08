@@ -8,10 +8,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "manikstu.com" },
-      { protocol: "https", hostname: "api.manikstu.com" },
-    ],
+    unoptimized: true,
   },
   webpack(config) {
     config.resolve.alias['@'] = path.join(__dirname, 'src');
