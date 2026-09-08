@@ -19,6 +19,7 @@ export const routing = defineRouting({
     'es', // Spanish
   ],
   defaultLocale: 'en',
+  localePrefix: 'as-needed',
 });
 
 export const {Link, redirect, usePathname, useRouter} =
