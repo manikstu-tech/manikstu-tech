@@ -100,7 +100,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         { name: "ILS", image: "/6.png" },
         { name: "Miller Center", image: "/7.png" },
         { name: "Startup Odisha", image: "/8.png" },
-        { name: "Startup India", image: "/9.png" },
+        { name: "Startup India", image: "/startup-india.png" },
         { name: "MSME", image: "/10.png" },
         { name: "Next Bharat", image: "/next-bharat.png" },
       ],
@@ -151,7 +151,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { name: "ILS", image: "/6.png" },
     { name: "Miller Center", image: "/7.png" },
     { name: "Startup Odisha", image: "/8.png" },
-    { name: "Startup India", image: "/9.png" },
+    { name: "Startup India", image: "/startup-india.png", imgClassName: "max-w-[80%]" },
     { name: "MSME", image: "/10.png" },
     { name: "Next Bharat", image: "/next-bharat.png", imgClassName: "max-w-[62%]" },
   ];
