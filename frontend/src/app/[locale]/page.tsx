@@ -102,6 +102,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         { name: "Startup Odisha", image: "/8.png" },
         { name: "Startup India", image: "/9.png" },
         { name: "MSME", image: "/10.png" },
+        { name: "Next Bharat", image: "/next-bharat.png" },
       ],
     },
     {
@@ -123,6 +124,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       title: t("partnersInvesting"),
       partners: [
         { name: "Upaya", image: "/18.png" },
+        { name: "Beneficial Returns", image: "/beneficial-returns.jpeg" },
       ],
     },
     {
@@ -135,7 +137,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     },
   ];
 
-  const allPartnersRow1 = [
+  // Wide wordmarks hit the card width limit before the height limit, so they
+  // need a narrower cap to sit optically level with the square logos.
+  type MarqueePartner = { name: string; image: string; imgClassName?: string };
+
+  const allPartnersRow1: MarqueePartner[] = [
     { name: "Krimanshi", image: "/1.png" },
     { name: "Bharat Herbs Co.", image: "/2.png" },
     { name: "Goat Bank Odisha", image: "/3.png" },
@@ -147,15 +153,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { name: "Startup Odisha", image: "/8.png" },
     { name: "Startup India", image: "/9.png" },
     { name: "MSME", image: "/10.png" },
+    { name: "Next Bharat", image: "/next-bharat.png", imgClassName: "max-w-[62%]" },
   ];
 
-  const allPartnersRow2 = [
+  const allPartnersRow2: MarqueePartner[] = [
     { name: "Supporting Partner", image: "/11.png" },
     { name: "Supporting Partner 2", image: "/12.png" },
     { name: "Kalinga Kusum", image: "/15.png" },
     { name: "HDFC Parivartan", image: "/16.png" },
     { name: "Oxfam", image: "/17.png" },
     { name: "Upaya", image: "/18.png" },
+    { name: "Beneficial Returns", image: "/beneficial-returns.jpeg" },
     { name: "Sambhav", image: "/20.png" },
     { name: "HDFC Bank", image: "/21.png" },
     { name: "Atal Incubation Centre", image: "/AIC.png" },
@@ -751,7 +759,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                       alt={partner.name}
                       width={220}
                       height={90}
-                      className="max-h-16 sm:max-h-20 md:max-h-24 w-auto max-w-full object-contain"
+                      className={`max-h-16 sm:max-h-20 md:max-h-24 w-auto object-contain ${partner.imgClassName ?? "max-w-full"}`}
                     />
                   </div>
                 ));
