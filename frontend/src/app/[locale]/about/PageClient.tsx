@@ -127,43 +127,16 @@ export default function AboutPage() {
 
           {/* Right — visual panel */}
           <div className="relative lg:self-start lg:mt-2 -mt-3 sm:-mt-5">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
-              {/* Ecosystem & community line-art illustration */}
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 480 360"
-                className="pointer-events-none absolute inset-0 h-full w-full"
-                fill="none"
-                stroke="#4A8C3F"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {/* Ground line */}
-                <path d="M40 300 H440" opacity="0.35" />
-                {/* Central Mandala Motif */}
-                <circle cx="240" cy="180" r="52" fill="#C4952A" fillOpacity="0.14" stroke="#C4952A" strokeDasharray="3 4" />
-                <circle cx="240" cy="180" r="28" fill="#4A8C3F" fillOpacity="0.2" />
-                <path d="M240 180 V130" />
-                <path d="M240 155 C224 150 214 138 214 122 C230 125 240 138 240 155 Z" fill="#4A8C3F" fillOpacity="0.18" />
-                <path d="M240 145 C256 140 266 128 266 112 C250 115 240 128 240 145 Z" fill="#4A8C3F" fillOpacity="0.12" />
-                <circle cx="240" cy="112" r="8" fill="#C4952A" fillOpacity="0.55" stroke="none" />
-                {/* Left Person */}
-                <circle cx="130" cy="195" r="20" />
-                <path d="M130 215 V295" />
-                <path d="M130 240 L100 265" />
-                <path d="M130 240 L160 260" />
-                {/* Right Person */}
-                <circle cx="350" cy="195" r="20" />
-                <path d="M350 215 V295" />
-                <path d="M350 240 L320 260" />
-                <path d="M350 240 L380 265" />
-                {/* Connecting arc */}
-                <path d="M150 175 C190 135 290 135 330 175" opacity="0.5" strokeDasharray="4 6" />
-                {/* Small leaves */}
-                <path d="M80 115 C90 100 110 95 120 105 C110 120 90 125 80 115 Z" fill="#4A8C3F" fillOpacity="0.15" />
-                <path d="M380 95 C390 80 410 75 420 85 C410 100 390 105 380 95 Z" fill="#C4952A" fillOpacity="0.2" />
-              </svg>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-lg ring-1 ring-black/5">
+              {/* Community gathering photo */}
+              <Image
+                src="/about-hero.png"
+                alt={t("heroTitle")}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
 
               {/* Corner accent */}
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3.5 py-1.5 shadow-sm">

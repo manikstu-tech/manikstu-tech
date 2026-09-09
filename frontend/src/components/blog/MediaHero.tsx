@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ArrowRight, Newspaper, Radio, Camera } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
@@ -60,45 +61,16 @@ export default function MediaHero() {
 
           {/* Right — visual panel */}
           <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
-              {/* Media / broadcast line-art illustration */}
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 480 360"
-                className="pointer-events-none absolute inset-0 h-full w-full"
-                fill="none"
-                stroke="#4A8C3F"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {/* Ground line */}
-                <path d="M40 300 H440" opacity="0.35" />
-                {/* Central open newspaper */}
-                <path d="M180 210 L240 195 L300 210 L300 290 L240 275 L180 290 Z" fill="#4A8C3F" fillOpacity="0.08" />
-                <path d="M240 195 V275" />
-                <path d="M195 225 H230" opacity="0.5" />
-                <path d="M195 240 H230" opacity="0.5" />
-                <path d="M195 255 H230" opacity="0.5" />
-                <path d="M250 225 H285" opacity="0.5" />
-                <path d="M250 240 H285" opacity="0.5" />
-                <path d="M250 255 H285" opacity="0.5" />
-                {/* Broadcast tower (right) */}
-                <path d="M400 300 L390 200 L410 200 L400 300 Z" />
-                <path d="M390 240 H410" opacity="0.5" />
-                <path d="M395 220 H405" opacity="0.5" />
-                {/* Signal waves from tower */}
-                <path d="M370 190 Q400 165 430 190" opacity="0.5" strokeDasharray="4 6" />
-                <path d="M355 175 Q400 140 445 175" opacity="0.35" strokeDasharray="4 6" />
-                {/* Camera icon (left) */}
-                <rect x="70" y="205" width="60" height="42" rx="4" fill="#4A8C3F" fillOpacity="0.10" />
-                <circle cx="100" cy="226" r="12" />
-                <circle cx="100" cy="226" r="5" fill="#C4952A" fillOpacity="0.6" stroke="none" />
-                <rect x="115" y="200" width="10" height="6" rx="1" />
-                {/* Small leaves */}
-                <path d="M90 120 C100 105 120 100 130 110 C120 125 100 130 90 120 Z" fill="#4A8C3F" fillOpacity="0.15" />
-                <path d="M370 100 C380 85 400 80 410 90 C400 105 380 110 370 100 Z" fill="#C4952A" fillOpacity="0.2" />
-              </svg>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-lg ring-1 ring-black/5">
+              {/* Community gathering photo */}
+              <Image
+                src="/media-hero.png"
+                alt={t("heroTitle")}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
 
               {/* Corner accent */}
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
