@@ -5,7 +5,51 @@
 <form method="POST" action="{{ route('admin.media.upload') }}" enctype="multipart/form-data" id="uploadForm">
     @csrf
     <input type="hidden" name="type" id="typeInput" value="photo">
-    <input type="file" name="file" id="fileInput" accept="image/*,.pdf" style="display:none;" onchange="this.form.submit()">
+    <input type="file" name="file" id="fileInput" accept="image/*,.pdf" style="display:none;" onchange="onFileChosen(this)">
+
+    <!-- Upload details (inside the form so name/category submit with the file) -->
+    <div class="details-overlay" id="detailsOverlay" onclick="if(event.target===this)closeDetails()">
+        <div class="details" role="dialog" aria-modal="true" aria-label="Upload details">
+            <h3 class="details-title" id="detailsHeading">Photo details</h3>
+            <p class="details-sub">Give it a name and category, then upload.</p>
+
+            <div class="details-body">
+                <div class="details-preview" id="detailsPreview"><!-- filled by JS --></div>
+                <div class="details-fields">
+                    <label class="fld">
+                        <span class="fld-label">Name</span>
+                        <input type="text" name="title" id="titleInput" class="fld-input" placeholder="e.g. Field day at Kalahandi" maxlength="150">
+                    </label>
+                    <label class="fld">
+                        <span class="fld-label">Category</span>
+                        <select name="category" id="categoryInput" class="fld-input">
+                            <option value="">— Select category —</option>
+                            <option value="Events">Events</option>
+                            <option value="News">News</option>
+                            <option value="Fields">Fields</option>
+                            <option value="Training">Training</option>
+                            <option value="Awareness">Awareness</option>
+                            <option value="Farmers">Farmers</option>
+                            <option value="General">General</option>
+                        </select>
+                    </label>
+                    <label class="fld">
+                        <span class="fld-label">Date</span>
+                        <input type="text" id="dateDisplay" class="fld-input fld-readonly" value="{{ now()->format('d M Y') }}" readonly>
+                        <span class="fld-hint">Automatically set to the upload date</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="details-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeDetails()">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="detailsUploadBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                    Upload
+                </button>
+            </div>
+        </div>
+    </div>
 </form>
 
 <!-- Photo / Video chooser -->
@@ -108,8 +152,11 @@
                 <div class="media-info-main">
                     <div class="media-name-row">
                         <span class="ext-badge">{{ $ext }}</span>
-                        <span class="media-name" title="{{ $m->file_name }}">{{ $m->file_name }}</span>
+                        <span class="media-name" title="{{ $m->name }} ({{ $m->file_name }})">{{ $m->name }}</span>
                     </div>
+                    @if($m->category)
+                        <span class="cat-chip">{{ $m->category }}</span>
+                    @endif
                     <p class="media-size">{{ $sizeLabel }}</p>
                     <p class="media-date">{{ $m->created_at?->format('d M Y') }}</p>
                 </div>
@@ -275,9 +322,31 @@
 .chooser-cancel{margin-top:10px;background:none;border:none;color:#8A8A8A;font-size:13px;font-weight:600;cursor:pointer;padding:8px 14px;font-family:'Inter',sans-serif}
 .chooser-cancel:hover{color:#1A1A1A}
 
+/* Category chip on cards */
+.cat-chip{display:inline-block;margin-top:7px;font-size:10px;font-weight:700;letter-spacing:0.02em;color:#B4711A;background:rgba(196,149,42,0.14);padding:2px 8px;border-radius:6px;text-transform:uppercase}
+
+/* Upload details modal */
+.details-overlay{display:none;position:fixed;inset:0;background:rgba(26,26,26,0.45);z-index:200;align-items:center;justify-content:center;padding:20px}
+.details-overlay.open{display:flex}
+.details{background:#fff;border-radius:18px;padding:24px;max-width:560px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,0.25)}
+.details-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1A1A1A}
+.details-sub{font-size:13px;color:#8A8A8A;margin-top:3px}
+.details-body{display:grid;grid-template-columns:180px 1fr;gap:20px;margin:20px 0}
+.details-preview{border-radius:12px;overflow:hidden;background:#F5F3EE;border:1px solid #EDE9E1;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1}
+.dp-media{width:100%;height:100%;object-fit:cover;display:block}
+.details-fields{display:flex;flex-direction:column;gap:14px}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld-label{font-size:12px;font-weight:600;color:#5A5A5A}
+.fld-input{height:42px;padding:0 13px;border:1px solid #E3DECF;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#1A1A1A;background:#fff;outline:none;transition:border-color 0.15s,box-shadow 0.15s}
+select.fld-input{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%239A9A9A'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:15px;padding-right:34px}
+.fld-input:focus{border-color:#4A8C3F;box-shadow:0 0 0 3px rgba(74,140,63,0.08)}
+.fld-readonly{background:#F6F4EF;color:#8A8A8A;cursor:default}
+.fld-hint{font-size:11px;color:#9A9A9A}
+.details-actions{display:flex;justify-content:flex-end;gap:10px;border-top:1px solid #F0ECE2;padding-top:16px}
+
 @media (max-width:1100px){.media-grid{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:860px){.media-grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:600px){.media-grid{grid-template-columns:repeat(2,1fr)}.toolbar-left,.search-input{flex:1}.search-input{width:100%}.chooser-options{grid-template-columns:1fr}}
+@media (max-width:600px){.media-grid{grid-template-columns:repeat(2,1fr)}.toolbar-left,.search-input{flex:1}.search-input{width:100%}.chooser-options{grid-template-columns:1fr}.details-body{grid-template-columns:1fr}.details-preview{aspect-ratio:16/9;max-height:200px}}
 </style>
 
 <script>
@@ -323,7 +392,41 @@ function pickType(type){
     closeChooser();
     input.click();
 }
-document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeChooser(); });
+
+// After a file is chosen (picker or drop), show the details form
+function onFileChosen(input){
+    if(!input.files || !input.files.length) return;
+    showDetails(input.files[0]);
+}
+function showDetails(file){
+    var type = document.getElementById('typeInput').value;
+    var isVideo = type === 'video' || (file.type && file.type.indexOf('video/') === 0);
+    document.getElementById('typeInput').value = isVideo ? 'video' : 'photo';
+
+    // Heading + default name (file name without extension)
+    document.getElementById('detailsHeading').textContent = isVideo ? 'Video details' : 'Photo details';
+    var base = file.name.replace(/\.[^.]+$/, '');
+    document.getElementById('titleInput').value = base;
+
+    // Preview
+    var prev = document.getElementById('detailsPreview');
+    var url = URL.createObjectURL(file);
+    if(isVideo){
+        prev.innerHTML = '<video src="'+url+'" controls class="dp-media"></video>';
+    } else {
+        prev.innerHTML = '<img src="'+url+'" alt="preview" class="dp-media">';
+    }
+
+    document.getElementById('detailsOverlay').classList.add('open');
+    setTimeout(function(){ document.getElementById('titleInput').focus(); }, 50);
+}
+function closeDetails(){
+    document.getElementById('detailsOverlay').classList.remove('open');
+    // Reset the file input so re-selecting the same file fires change again
+    document.getElementById('fileInput').value = '';
+    document.getElementById('detailsPreview').innerHTML = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeChooser(); closeDetails(); } });
 
 (function(){
     var dz = document.getElementById('dropzone');
@@ -333,11 +436,10 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeCh
     ['dragleave','drop'].forEach(function(ev){ dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.remove('dragover'); }); });
     dz.addEventListener('drop', function(e){
         if(e.dataTransfer.files.length){
-            // Infer type from the dropped file so the right rules apply.
             var f = e.dataTransfer.files[0];
             typeInput.value = (f.type && f.type.indexOf('video/') === 0) ? 'video' : 'photo';
             input.files = e.dataTransfer.files;
-            input.form.submit();
+            showDetails(f);
         }
     });
 })();

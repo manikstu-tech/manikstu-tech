@@ -91,6 +91,7 @@ export interface MediaItem {
   id: number;
   type: "photo" | "video";
   title: string;
+  category: string | null;
   url: string;
   mime_type: string;
   date: string | null;

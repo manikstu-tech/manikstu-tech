@@ -30,6 +30,8 @@ class MediaController extends Controller
 
         $request->validate([
             'type' => 'nullable|in:photo,video',
+            'title' => 'nullable|string|max:150',
+            'category' => 'nullable|in:Events,News,Fields,Training,Awareness,Farmers,General',
             'file' => $type === 'video'
                 // Videos: common web formats, larger cap (50 MB).
                 ? 'required|file|max:51200|mimes:mp4,webm,ogg,mov,m4v'
@@ -48,9 +50,16 @@ class MediaController extends Controller
         $path = $file->store('uploads', 'public');
         $originalName = strip_tags(basename($file->getClientOriginalName()));
 
+        // Prefer the name the user typed in the details form; fall back to the file name.
+        $title = trim(strip_tags((string) $request->input('title')));
+        if ($title === '') {
+            $title = pathinfo($originalName, PATHINFO_FILENAME);
+        }
+
         $media = Media::create([
-            'name' => pathinfo($originalName, PATHINFO_FILENAME),
+            'name' => $title,
             'type' => $type,
+            'category' => $request->input('category') ?: null,
             'is_public' => true,
             'file_name' => $originalName,
             'mime_type' => $file->getMimeType(),

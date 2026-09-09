@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
-    protected $fillable = ['name', 'type', 'is_public', 'file_name', 'mime_type', 'size', 'path', 'disk', 'alt_text', 'width', 'height'];
+    protected $fillable = ['name', 'type', 'category', 'is_public', 'file_name', 'mime_type', 'size', 'path', 'disk', 'alt_text', 'width', 'height'];
 
     protected function casts(): array
     {

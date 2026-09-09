@@ -372,6 +372,7 @@ class ApiController extends Controller
             'id' => $m->id,
             'type' => $m->type,
             'title' => $m->alt_text ?: $m->name,
+            'category' => $m->category,
             'url' => asset('storage/' . $m->path),
             'mime_type' => $m->mime_type,
             'date' => $m->created_at?->toDateString(),
