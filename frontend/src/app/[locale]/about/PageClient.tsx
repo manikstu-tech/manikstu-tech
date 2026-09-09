@@ -370,7 +370,7 @@ export default function AboutPage() {
                   </div>
 
                   <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    {t("awardsHeadline1")} <span className="text-manikstu-green">{t("awardsHeadline2")}</span>
+                    Awards & <span className="text-manikstu-green">Recognition</span>
                   </h2>
 
                   {/* Ornamental Divider with Framed Diamond */}
@@ -580,14 +580,14 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      {t("leadershipPill")}
+                      Our Leadership
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
                   <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    {t("leadershipHeadline1")}{" "}
-                    <span className="text-manikstu-green">{t("leadershipHeadline2")}</span>
+                    Leading with{" "}
+                    <span className="text-manikstu-green">Purpose</span>
                   </h2>
                 </div>
 
@@ -653,13 +653,13 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      {t("executionPill")}
+                      Key Management
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
                   <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    {t("executionHeadline1")} <span className="text-manikstu-green">{t("executionHeadline2")}</span>
+                    The Execution <span className="text-manikstu-green">Engine</span>
                   </h2>
                 </div>
 
@@ -725,13 +725,13 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      {t("teamPill")}
+                      Our Team
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
                   <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    {t("teamHeadline1")} <span className="text-manikstu-green">{t("teamHeadline2")}</span>
+                    Our Amazing <span className="text-manikstu-green">Team</span>
                   </h2>
                 </div>
 
@@ -806,13 +806,13 @@ export default function AboutPage() {
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      {t("advisorsPill")}
+                      Strategic Guidance
                     </p>
                     <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                     <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   </div>
                   <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    {t("advisorsHeadline1")} <span className="text-manikstu-green">{t("advisorsHeadline2")}</span>
+                    The <span className="text-manikstu-green">Advisors</span>
                   </h2>
 
                   {/* Ornamental Divider with Framed Diamond */}

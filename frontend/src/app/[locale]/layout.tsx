@@ -24,7 +24,8 @@ const inter = Inter({
 
 const BASE_URL = "https://manikstu.com";
 
-export function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const alternatesLanguages: Record<string, string> = {};
   for (const loc of routing.locales) {
     alternatesLanguages[loc] = `${BASE_URL}/${loc}`;
@@ -82,7 +83,7 @@ export function generateMetadata({ params }: { params: Promise<{ locale: string 
       },
     },
     alternates: {
-      canonical: `${BASE_URL}/en`,
+      canonical: `${BASE_URL}/${locale}`,
       languages: alternatesLanguages,
     },
   };

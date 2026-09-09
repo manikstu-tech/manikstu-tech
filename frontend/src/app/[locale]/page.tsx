@@ -876,10 +876,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                       <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
                     </div>
                     <div className="mt-3 flex justify-center lg:justify-start gap-2">
-                      <a
-                        href="#"
-                        aria-label={t("googlePlay")}
-                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf shadow-xs"
+                      <span
+                        aria-label={`${t("googlePlay")} — Coming Soon`}
+                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal/50 px-3 text-white/60 cursor-not-allowed shadow-xs"
                       >
                         {/* Google Play brand triangle */}
                         <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" aria-hidden>
@@ -892,11 +891,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                           <span className="text-[9px] opacity-80">GET IT ON</span>
                           <span className="text-[11px] font-semibold">Google Play</span>
                         </span>
-                      </a>
-                      <a
-                        href="#"
-                        aria-label={t("appStore")}
-                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white transition-colors hover:bg-manikstu-leaf shadow-xs"
+                      </span>
+                      <span
+                        aria-label={`${t("appStore")} — Coming Soon`}
+                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal/50 px-3 text-white/60 cursor-not-allowed shadow-xs"
                       >
                         {/* Apple brand icon */}
                         <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" fill="currentColor" aria-hidden>
@@ -906,7 +904,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                           <span className="text-[9px] opacity-80">Download on the</span>
                           <span className="text-[11px] font-semibold">App Store</span>
                         </span>
-                      </a>
+                      </span>
                     </div>
                   </div>
                 </div>
