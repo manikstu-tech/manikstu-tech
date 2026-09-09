@@ -201,8 +201,10 @@
 .sort-chev{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:#9A9A9A;pointer-events:none}
 
 .media-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:24px}
-.media-item{background:#fff;border:1px solid #EDE9E1;border-radius:14px;overflow:hidden;transition:box-shadow 0.15s,transform 0.15s}
+.media-item{background:#fff;border:1px solid #EDE9E1;border-radius:14px;position:relative;transition:box-shadow 0.15s,transform 0.15s}
 .media-item:hover{box-shadow:0 6px 18px rgba(26,26,26,0.08);transform:translateY(-2px)}
+/* Elevate a card while its options menu is open so the dropdown isn't clipped/covered */
+.media-item.menu-open{z-index:50}
 .media-thumb-wrap{padding:8px 8px 0}
 .media-thumb{width:100%;height:118px;object-fit:cover;display:block;background:#FAFAFA;border-radius:9px}
 .media-doc{display:flex;align-items:center;justify-content:center;background:#F5F5F5;color:#B0B0B0;font-size:15px;font-weight:700;letter-spacing:0.04em}
@@ -291,15 +293,23 @@ function setView(view){
     try { if (localStorage.getItem('mediaView') === 'list') setView('list'); } catch(e){}
 })();
 
+function closeAllMenus(){
+    document.querySelectorAll('.kebab-menu.open').forEach(function(m){ m.classList.remove('open'); });
+    document.querySelectorAll('.media-item.menu-open').forEach(function(i){ i.classList.remove('menu-open'); });
+}
 function toggleMenu(btn){
     var menu = btn.nextElementSibling;
     var isOpen = menu.classList.contains('open');
-    document.querySelectorAll('.kebab-menu.open').forEach(function(m){ m.classList.remove('open'); });
-    if(!isOpen) menu.classList.add('open');
+    closeAllMenus();
+    if(!isOpen){
+        menu.classList.add('open');
+        var item = btn.closest('.media-item');
+        if(item) item.classList.add('menu-open');
+    }
 }
 document.addEventListener('click', function(e){
     if(!e.target.closest('.media-menu')){
-        document.querySelectorAll('.kebab-menu.open').forEach(function(m){ m.classList.remove('open'); });
+        closeAllMenus();
     }
 });
 
