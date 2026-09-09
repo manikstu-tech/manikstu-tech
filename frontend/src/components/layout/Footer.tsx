@@ -70,7 +70,7 @@ export default function Footer() {
                 height={48}
                 className="h-12 w-auto"
               />
-              <span className="text-[10px] text-grey/70 -mt-3.5">&reg;</span>
+              <span className="text-[10px] font-bold text-manikstu-green ml-0 mt-1">&reg;</span>
             </Link>
             <p className="mt-3 text-sm text-grey">
               {settings.brand_tagline || t("brandTagline")}

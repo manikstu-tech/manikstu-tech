@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import Image from "next/image";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Moon, Sun } from "lucide-react";
+import { useThemeToggle } from "./ThemeProvider";
 import { getNavigation } from "@/lib/api";
 import type { NavigationMenuItem } from "@/types";
 const fallbackLinks: NavigationMenuItem[] = [
@@ -20,6 +21,7 @@ const fallbackLinks: NavigationMenuItem[] = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>(fallbackLinks);
+  const { toggle } = useThemeToggle();
   const pathname = usePathname() ?? "/";
   const t = useTranslations("Navigation");
 
@@ -43,7 +45,7 @@ export default function Header() {
             className="h-12 w-auto"
             priority
           />
-          <span className="text-[10px] text-grey/70 -mt-3.5">&reg;</span>
+          <span className="text-[10px] font-bold text-manikstu-green ml-0 mt-1">&reg;</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6">
@@ -71,6 +73,10 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          <button onClick={toggle} className="flex items-center justify-center h-9 w-9 rounded-full text-charcoal dark:text-white hover:text-manikstu-green hover:bg-manikstu-cream/60 dark:hover:bg-white/10 transition-colors" aria-label={t("toggleDarkMode")}>
+            <Moon className="h-5 w-5 dark:hidden" />
+            <Sun className="h-5 w-5 hidden dark:block" />
+          </button>
           {/* <LanguageSwitcher /> */}
           <Link
             href="/contact"
