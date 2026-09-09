@@ -30,7 +30,7 @@ export default function ResumeCTA() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#FAF4EB] dark:bg-gray-900 pt-6 pb-8 sm:pt-8 sm:pb-10 md:pt-10 md:pb-12 px-4 sm:px-6 md:px-8">
+    <section className="relative overflow-hidden bg-[#FAF4EB] pt-6 pb-8 sm:pt-8 sm:pb-10 md:pt-10 md:pb-12 px-4 sm:px-6 md:px-8">
       {/* Top-left quarter mandala */}
       <Image
         src="/patterns/mandala-top-right.png"
@@ -38,7 +38,7 @@ export default function ResumeCTA() {
         aria-hidden
         width={768}
         height={768}
-        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] dark:opacity-[0.10] -scale-x-100"
+        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
       />
 
       {/* Top-right quarter floral artwork */}
@@ -48,13 +48,13 @@ export default function ResumeCTA() {
         aria-hidden
         width={768}
         height={768}
-        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] dark:opacity-[0.10]"
+        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18]"
       />
 
       {/* Bottom village panoramic scene banner */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-3 sm:-bottom-5 md:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-45 dark:opacity-25"
+        className="pointer-events-none absolute inset-x-0 -bottom-3 sm:-bottom-5 md:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-45"
       >
         <Image
           src="/patterns/village-figures.png"
@@ -84,7 +84,7 @@ export default function ResumeCTA() {
           <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
         </div>
 
-        <h2 className="mx-auto mt-3 max-w-3xl font-heading text-xl font-bold leading-tight text-charcoal sm:text-2xl lg:text-3xl dark:text-white">
+        <h2 className="mx-auto mt-3 max-w-3xl font-heading text-xl font-bold leading-tight text-charcoal sm:text-2xl lg:text-3xl">
           {t("resumeTitle").split("Always")[0]}
           <span className="text-manikstu-green">
             {t("resumeTitle").split("Always")[1]?.trim()}
@@ -103,7 +103,7 @@ export default function ResumeCTA() {
           <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
         </div>
 
-        <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-grey dark:text-gray-300 leading-relaxed">
+        <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-grey leading-relaxed">
           {t("resumeDesc")}
         </p>
 
@@ -127,17 +127,17 @@ export default function ResumeCTA() {
                 className="group flex flex-col items-center text-center p-2 rounded-xl transition-transform hover:-translate-y-0.5"
               >
                 {/* Circular badge with gold dashed ring */}
-                <div className="relative mb-2 flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-manikstu-green/20 dark:bg-gray-800">
+                <div className="relative mb-2 flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-manikstu-green/20">
                   <Icon className="h-5 w-5 text-manikstu-green transition-transform group-hover:scale-110" />
                   <span
                     aria-hidden
                     className="pointer-events-none absolute inset-[-4px] rounded-full border border-dashed border-manikstu-gold/70"
                   />
                 </div>
-                <h3 className="font-heading text-xs sm:text-sm font-bold text-charcoal dark:text-white">
+                <h3 className="font-heading text-xs sm:text-sm font-bold text-charcoal">
                   {pillar.title}
                 </h3>
-                <p className="mt-0.5 text-[10px] sm:text-[11px] text-grey dark:text-gray-400">
+                <p className="mt-0.5 text-[10px] sm:text-[11px] text-grey">
                   {pillar.subtitle}
                 </p>
               </div>

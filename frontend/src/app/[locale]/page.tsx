@@ -280,7 +280,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 width={1300}
                 height={1300}
                 priority
-                className="select-none absolute right-0 translate-x-1/2 md:translate-x-0 md:right-2 top-1/3 sm:top-1/2 -translate-y-1/2 h-[65%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.12] sm:opacity-[0.14] dark:opacity-[0.18]"
+                className="select-none absolute right-0 translate-x-1/2 md:translate-x-0 md:right-2 top-1/3 sm:top-1/2 -translate-y-1/2 h-[65%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.12] sm:opacity-[0.14]"
               />
             </div>
           }
@@ -367,7 +367,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </PageHero>
 
         {/* Mission */}
-        <section className="relative pt-4 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 px-4 sm:px-6 md:px-8 bg-white overflow-hidden dark:bg-gray-900">
+        <section className="relative pt-4 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 px-4 sm:px-6 md:px-8 bg-white overflow-hidden">
           <div className="relative z-10 mx-auto max-w-7xl">
             {/* Ornamental pill heading */}
             <div className="flex items-center justify-center gap-2">
@@ -380,7 +380,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
             </div>
 
-            <h2 className="mx-auto mt-3 sm:mt-6 max-w-4xl text-center font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
+            <h2 className="mx-auto mt-3 sm:mt-6 max-w-4xl text-center font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
               {t("missionTitle")}
             </h2>
 
@@ -396,7 +396,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
             </div>
 
-            <p className="mx-auto mt-6 max-w-2xl text-center text-grey leading-relaxed dark:text-gray-300">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-grey leading-relaxed">
               {t("missionDesc1")}
             </p>
 
@@ -406,7 +406,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 return (
                   <div
                     key={card.title}
-                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 dark:bg-gray-800/90 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
                   >
                     {/* Inner dashed border */}
                     <div
@@ -443,7 +443,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         />
                       </div>
 
-                      <h3 className="mt-6 font-heading text-lg italic font-bold leading-snug text-manikstu-leaf dark:text-white group-hover:text-manikstu-green transition-colors">
+                      <h3 className="mt-6 font-heading text-lg italic font-bold leading-snug text-manikstu-leaf group-hover:text-manikstu-green transition-colors">
                         {card.title}
                       </h3>
 
@@ -454,7 +454,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
                       </div>
 
-                      <p className="mt-3 text-sm text-grey leading-relaxed dark:text-gray-300">
+                      <p className="mt-3 text-sm text-grey leading-relaxed">
                         {card.description}
                       </p>
                     </div>
@@ -466,7 +466,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
 
         {/* Stats / Impacting Lives */}
-        <section className="relative overflow-hidden pt-8 pb-14 sm:pt-9 sm:pb-16 md:pt-10 md:pb-20 px-4 sm:px-6 md:px-8 bg-manikstu-cream dark:bg-gray-900">
+        <section className="relative overflow-hidden pt-8 pb-14 sm:pt-9 sm:pb-16 md:pt-10 md:pb-20 px-4 sm:px-6 md:px-8 bg-manikstu-cream">
           {/* Top tribal floral border */}
           <div
             aria-hidden
@@ -498,7 +498,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           {/* Bottom village panoramic scene banner — mobile single full-width lower banner, desktop original two-side panoramic banner */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-40 sm:opacity-50 dark:opacity-25"
+            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-40 sm:opacity-50"
           >
             {/* Left figures (Desktop/tablet only) */}
             <Image
@@ -539,7 +539,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
               </div>
 
-              <h2 className="mx-auto mt-2.5 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl lg:text-4xl dark:text-white">
+              <h2 className="mx-auto mt-2.5 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl lg:text-4xl">
                 {t("statsTitle")}
               </h2>
 
@@ -555,7 +555,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <span aria-hidden className="h-px w-10 sm:w-14 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm text-grey leading-relaxed dark:text-gray-300">
+              <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm text-grey leading-relaxed">
                 {t("statsDesc")}
               </p>
             </div>
@@ -566,7 +566,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 return (
                   <div
                     key={stat.label}
-                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 p-4 sm:p-5 text-center transition-shadow hover:shadow-lg dark:bg-gray-800/90"
+                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 p-4 sm:p-5 text-center transition-shadow hover:shadow-lg"
                   >
                     {/* Inner dashed border */}
                     <div
@@ -584,7 +584,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         />
                       </div>
 
-                      <p className="mt-3 font-heading text-2xl sm:text-3xl font-bold leading-none text-charcoal dark:text-white group-hover:text-manikstu-green transition-colors duration-200">
+                      <p className="mt-3 font-heading text-2xl sm:text-3xl font-bold leading-none text-charcoal group-hover:text-manikstu-green transition-colors duration-200">
                         {stat.value}
                       </p>
 
@@ -595,7 +595,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         <span aria-hidden className="h-px w-5 bg-manikstu-gold" />
                       </div>
 
-                      <p className="mt-2 text-xs sm:text-sm font-medium leading-snug text-grey dark:text-gray-300">
+                      <p className="mt-2 text-xs sm:text-sm font-medium leading-snug text-grey">
                         {stat.label}
                       </p>
                     </div>
@@ -672,7 +672,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
 
         {/* Associations */}
-        <section className="partner-section relative py-8 sm:py-10 md:py-12 bg-manikstu-cream dark:bg-gray-800 overflow-hidden">
+        <section className="partner-section relative py-8 sm:py-10 md:py-12 bg-manikstu-cream overflow-hidden">
           {/* Top tribal border */}
           <div
             aria-hidden
@@ -695,16 +695,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="relative mx-auto max-w-7xl px-4 text-center">
             {/* Top Pill / Badge */}
             <div className="flex items-center justify-center gap-2">
-              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70 dark:bg-manikstu-gold/80" />
+              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70" />
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-leaf dark:text-manikstu-gold sm:text-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-leaf sm:text-sm">
                 {t("networkPill")}
               </p>
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70 dark:bg-manikstu-gold/80" />
+              <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/70" />
             </div>
 
-            <h2 className="mt-2.5 font-heading text-3xl font-bold text-charcoal sm:text-4xl dark:text-white">
+            <h2 className="mt-2.5 font-heading text-3xl font-bold text-charcoal sm:text-4xl">
               {t("networkTitle")}
             </h2>
 
@@ -720,7 +720,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
             </div>
 
-            <p className="mt-2 text-xs text-grey sm:text-sm dark:text-gray-400">
+            <p className="mt-2 text-xs text-grey sm:text-sm">
               {t("networkDesc")}
             </p>
           </div>
@@ -730,11 +730,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {/* Left and Right Fade Gradients */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-manikstu-cream dark:from-gray-800 to-transparent z-10"
+              className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-manikstu-cream to-transparent z-10"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-manikstu-cream dark:from-gray-800 to-transparent z-10"
+              className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-manikstu-cream to-transparent z-10"
             />
 
             {/* Single continuous marquee — every partner logo in one line */}
@@ -744,7 +744,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 return [...all, ...all, ...all].map((partner, idx) => (
                   <div
                     key={`${partner.name}-${idx}`}
-                    className="partner-card flex h-24 w-44 sm:h-28 sm:w-52 md:h-32 md:w-56 items-center justify-center rounded-xl border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:border-b-manikstu-gold dark:bg-gray-700 flex-shrink-0"
+                    className="partner-card flex h-24 w-44 sm:h-28 sm:w-52 md:h-32 md:w-56 items-center justify-center rounded-xl border border-light-grey border-b-[3px] border-b-saura-red/80 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 flex-shrink-0"
                   >
                     <Image
                       src={partner.image}
@@ -877,8 +877,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     </div>
                     <div className="mt-3 flex justify-center lg:justify-start gap-2">
                       <span
-                        aria-label={`${t("googlePlay")} — Coming Soon`}
-                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal/50 px-3 text-white/60 cursor-not-allowed shadow-xs"
+                        aria-label={t("googlePlay")}
+                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white shadow-xs"
                       >
                         {/* Google Play brand triangle */}
                         <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" aria-hidden>
@@ -893,8 +893,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         </span>
                       </span>
                       <span
-                        aria-label={`${t("appStore")} — Coming Soon`}
-                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal/50 px-3 text-white/60 cursor-not-allowed shadow-xs"
+                        aria-label={t("appStore")}
+                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white shadow-xs"
                       >
                         {/* Apple brand icon */}
                         <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" fill="currentColor" aria-hidden>
@@ -960,7 +960,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
 
         {/* News */}
-        <section className="relative overflow-hidden section-padding bg-manikstu-cream dark:bg-gray-900">
+        <section className="relative overflow-hidden section-padding bg-manikstu-cream">
           {/* Top-right mandala corner artwork */}
           <div aria-hidden className="pointer-events-none absolute right-0 top-0 select-none z-0">
             <Image
@@ -968,7 +968,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               alt=""
               width={504}
               height={560}
-              className="h-auto w-24 sm:w-32 md:w-40 lg:w-48 object-contain object-right-top opacity-[0.12] sm:opacity-[0.18] dark:opacity-[0.10]"
+              className="h-auto w-24 sm:w-32 md:w-40 lg:w-48 object-contain object-right-top opacity-[0.12] sm:opacity-[0.18]"
             />
           </div>
 
@@ -979,18 +979,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               alt=""
               width={420}
               height={1024}
-              className="h-auto w-20 sm:w-28 md:w-36 lg:w-44 max-h-[85%] object-contain object-left-bottom opacity-[0.12] sm:opacity-[0.18] dark:opacity-[0.10]"
+              className="h-auto w-20 sm:w-28 md:w-36 lg:w-44 max-h-[85%] object-contain object-left-bottom opacity-[0.12] sm:opacity-[0.18]"
             />
           </div>
 
           <div className="relative z-10 mx-auto max-w-7xl">
             <div className="flex items-center justify-between">
-              <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl dark:text-white">
+              <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl">
                 {t("newsTitle")}
               </h2>
               <Link
                 href="/blog"
-                className="text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors dark:text-manikstu-gold"
+                className="text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors"
               >
                 {tCommon("viewAll")}
               </Link>
@@ -1000,7 +1000,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <Link
                   key={`${item.title}-${idx}`}
                   href="/blog"
-                  className="group flex flex-col rounded-xl border border-light-grey bg-white shadow-sm overflow-hidden hover:shadow-md transition-all dark:border-gray-800 dark:bg-gray-800"
+                  className="group flex flex-col rounded-xl border border-light-grey bg-white shadow-sm overflow-hidden hover:shadow-md transition-all"
                 >
                   {/* Image container */}
                   <div

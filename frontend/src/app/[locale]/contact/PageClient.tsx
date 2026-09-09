@@ -55,7 +55,7 @@ export default function ContactPage() {
                 aria-hidden
                 width={504}
                 height={560}
-                className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14] dark:opacity-[0.18]"
+                className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14]"
               />
               {/* Left-side mandala */}
               <Image
@@ -202,7 +202,7 @@ export default function ContactPage() {
           </div>
         </PageHero>
 
-        <section className="relative section-padding bg-manikstu-cream dark:bg-gray-900 overflow-hidden">
+        <section className="relative section-padding bg-manikstu-cream overflow-hidden">
           {/* Top tribal border */}
           <div
             aria-hidden
@@ -256,7 +256,7 @@ export default function ContactPage() {
                 <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
               </div>
 
-              <h2 className="mx-auto mt-6 max-w-3xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
+              <h2 className="mx-auto mt-6 max-w-3xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
                 We&apos;d Love to{" "}
                 <span className="text-manikstu-green">Hear From You</span>
               </h2>
@@ -273,14 +273,14 @@ export default function ContactPage() {
                 <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed dark:text-gray-300">
+              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
                 Drop us a line — questions, partnership ideas, feedback or
                 anything else. Our team responds within a working day.
               </p>
             </div>
 
             {/* Ornate form card — matches Training program card */}
-            <div className="relative mt-10 overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white p-6 shadow-sm sm:p-8 dark:bg-gray-800">
+            <div className="relative mt-10 overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white p-6 shadow-sm sm:p-8">
               {/* Inner dashed border */}
               <div
                 aria-hidden

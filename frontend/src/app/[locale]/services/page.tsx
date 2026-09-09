@@ -38,7 +38,7 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
   return (
     <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
       <div className={`relative h-full ${flipped ? "lg:order-2" : ""}`}>
-        <div className="group relative h-full overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/90 py-10 px-6 shadow-sm transition-all duration-300 hover:shadow-xl md:px-8 dark:bg-gray-800/90 flex flex-col items-center justify-center">
+        <div className="group relative h-full overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/90 py-10 px-6 shadow-sm transition-all duration-300 hover:shadow-xl md:px-8 flex flex-col items-center justify-center">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
@@ -65,7 +65,7 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
                 {item.subtitle}
               </p>
             )}
-            <h3 className="mt-2 font-heading text-2xl italic font-bold leading-snug text-manikstu-leaf group-hover:text-manikstu-green transition-colors dark:text-white md:text-3xl">
+            <h3 className="mt-2 font-heading text-2xl italic font-bold leading-snug text-manikstu-leaf group-hover:text-manikstu-green transition-colors md:text-3xl">
               {item.title}
             </h3>
             <div className="mt-3 flex items-center justify-center gap-1.5">
@@ -78,7 +78,7 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
                 {item.highlight}
               </p>
             )}
-            <p className="mt-4 text-sm leading-relaxed text-grey dark:text-gray-300 md:text-base">
+            <p className="mt-4 text-sm leading-relaxed text-grey md:text-base">
               {item.description}
             </p>
           </div>
@@ -333,7 +333,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
               </div>
 
-              <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
+              <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
                 {t("ourServices")}{" "}
                 <span className="text-manikstu-green">{t("servicesTitle")}</span>
               </h2>
@@ -349,7 +349,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed dark:text-gray-300">
+              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
                 {t("servicesDesc")}
               </p>
             </div>

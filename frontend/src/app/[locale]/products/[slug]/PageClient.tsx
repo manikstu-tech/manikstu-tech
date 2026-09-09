@@ -325,12 +325,12 @@ export default function ProductDetailPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="bg-white dark:bg-gray-900">
+      <main id="main-content" className="bg-white">
         <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 md:px-8">
           {/* Breadcrumb */}
           <nav
             aria-label="Breadcrumb"
-            className="text-xs text-grey dark:text-gray-300"
+            className="text-xs text-grey"
           >
             <ol className="flex flex-wrap items-center gap-1">
               <li>
@@ -345,7 +345,7 @@ export default function ProductDetailPage() {
                 </Link>
               </li>
               <li aria-hidden>/</li>
-              <li className="font-semibold text-charcoal dark:text-white line-clamp-1">
+              <li className="font-semibold text-charcoal line-clamp-1">
                 {product.name}
               </li>
             </ol>
@@ -357,7 +357,7 @@ export default function ProductDetailPage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             {/* Left ΓÇö image + details */}
             <div className="relative">
-              <div className="relative aspect-square overflow-hidden rounded-3xl border border-light-grey/80 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+              <div className="relative aspect-square overflow-hidden rounded-3xl border border-light-grey/80 bg-white shadow-sm">
                 {activeImage ? (
                   <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
                     <div className="relative h-full w-full">
@@ -421,12 +421,12 @@ export default function ProductDetailPage() {
                           aria-label={`View image ${i + 1}`}
                           aria-pressed={isActive}
                           className={
-                            "relative aspect-square overflow-hidden rounded-xl border bg-white transition-all duration-300 dark:bg-gray-800 " +
+                            "relative aspect-square overflow-hidden rounded-xl border bg-white transition-all duration-300 " +
                             (isPlaceholder
-                              ? "cursor-default border-light-grey/60 opacity-70 dark:border-gray-700"
+                              ? "cursor-default border-light-grey/60 opacity-70"
                               : isActive
                               ? "border-manikstu-green ring-2 ring-manikstu-green/40 shadow-sm"
-                              : "border-light-grey hover:border-manikstu-green/50 hover:shadow-sm dark:border-gray-700")
+                              : "border-light-grey hover:border-manikstu-green/50 hover:shadow-sm")
                           }
                         >
                           {src ? (
@@ -460,7 +460,7 @@ export default function ProductDetailPage() {
                   {product.category.name}
                 </p>
               )}
-              <h1 className="mt-2 font-heading text-3xl font-bold leading-tight text-charcoal dark:text-white sm:text-4xl lg:text-5xl">
+              <h1 className="mt-2 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
                 {product.name}
               </h1>
 
@@ -489,7 +489,7 @@ export default function ProductDetailPage() {
                     <StarRow value={stripRating} size="md" />
                     <a
                       href="#reviews"
-                      className="text-sm font-semibold text-grey hover:text-manikstu-green transition-colors dark:text-gray-300"
+                      className="text-sm font-semibold text-grey hover:text-manikstu-green transition-colors"
                     >
                       {stripCount.toLocaleString("en-IN")} {t("ratings")}
                       {" & "}
@@ -499,7 +499,7 @@ export default function ProductDetailPage() {
                 );
               })()}
 
-              <p className="mt-4 text-base leading-relaxed text-grey dark:text-gray-300">
+              <p className="mt-4 text-base leading-relaxed text-grey">
                 {product.longDescription ?? product.description}
               </p>
 
@@ -509,7 +509,7 @@ export default function ProductDetailPage() {
                   ₹{Number(product.price).toLocaleString("en-IN")}
                 </p>
                 {product.size && (
-                  <span className="text-sm text-grey dark:text-gray-300">
+                  <span className="text-sm text-grey">
                     per {product.size}
                   </span>
                 )}
@@ -518,7 +518,7 @@ export default function ProductDetailPage() {
               {/* Qty + Add to Cart + Buy Now */}
               <div className="mt-6 w-full sm:max-w-md">
                 <div className="flex items-center gap-2.5 sm:gap-4">
-                  <div className="inline-flex shrink-0 items-center gap-1 rounded-full border border-manikstu-green/60 bg-white text-sm font-semibold text-manikstu-green dark:bg-gray-800">
+                  <div className="inline-flex shrink-0 items-center gap-1 rounded-full border border-manikstu-green/60 bg-white text-sm font-semibold text-manikstu-green">
                     <button
                       type="button"
                       onClick={() => setQty((q) => Math.max(1, q - 1))}
@@ -576,8 +576,8 @@ export default function ProductDetailPage() {
 
               {/* Highlights */}
               {product.highlights && product.highlights.length > 0 && (
-                <div className="mt-8 rounded-2xl border border-light-grey/70 bg-white p-5 dark:border-gray-700 dark:bg-gray-800">
-                  <h2 className="text-sm font-bold uppercase tracking-wider text-charcoal dark:text-white">
+                <div className="mt-8 rounded-2xl border border-light-grey/70 bg-white p-5">
+                  <h2 className="text-sm font-bold uppercase tracking-wider text-charcoal">
                     {t("whyFarmersChooseIt")}
                   </h2>
                   <ul className="mt-3 space-y-2.5">
@@ -586,7 +586,7 @@ export default function ProductDetailPage() {
                         <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10">
                           <Check className="h-3 w-3 text-manikstu-green" />
                         </span>
-                        <span className="text-sm text-grey dark:text-gray-300">
+                        <span className="text-sm text-grey">
                           {h}
                         </span>
                       </li>
@@ -602,10 +602,10 @@ export default function ProductDetailPage() {
                   return (
                     <div
                       key={f.title}
-                      className="flex items-center gap-2 rounded-lg border border-light-grey/70 bg-white px-3 py-2 dark:border-gray-700 dark:bg-gray-800"
+                      className="flex items-center gap-2 rounded-lg border border-light-grey/70 bg-white px-3 py-2"
                     >
                       <Icon className="h-4 w-4 shrink-0 text-manikstu-green" />
-                      <span className="text-[11px] font-semibold text-charcoal dark:text-white">
+                      <span className="text-[11px] font-semibold text-charcoal">
                         {f.title}
                       </span>
                     </div>
@@ -626,7 +626,7 @@ export default function ProductDetailPage() {
           product.recommendedFor?.length) && (
           <section
             aria-labelledby="product-details-heading"
-            className="mx-auto max-w-7xl border-t border-light-grey/70 px-4 py-12 sm:px-6 md:px-8 dark:border-gray-700"
+            className="mx-auto max-w-7xl border-t border-light-grey/70 px-4 py-12 sm:px-6 md:px-8"
           >
             <h2 id="product-details-heading" className="sr-only">
               {t("productDetails")}
@@ -639,7 +639,7 @@ export default function ProductDetailPage() {
                   <h3 className="font-heading text-lg font-bold text-manikstu-green">
                     {t("productSpecifications")}
                   </h3>
-                  <div className="mt-3 overflow-hidden rounded-lg border border-light-grey/80 dark:border-gray-700">
+                  <div className="mt-3 overflow-hidden rounded-lg border border-light-grey/80">
                     <table className="w-full border-collapse text-sm">
                       <tbody>
                         {product.specifications.map((s, i) => (
@@ -647,17 +647,17 @@ export default function ProductDetailPage() {
                             key={s.label}
                             className={
                               i > 0
-                                ? "border-t border-light-grey/70 dark:border-gray-700"
+                                ? "border-t border-light-grey/70"
                                 : ""
                             }
                           >
                             <th
                               scope="row"
-                              className="w-1/2 border-r border-light-grey/70 px-4 py-3 text-left font-normal text-charcoal dark:border-gray-700 dark:text-gray-200"
+                              className="w-1/2 border-r border-light-grey/70 px-4 py-3 text-left font-normal text-charcoal"
                             >
                               {s.label}
                             </th>
-                            <td className="px-4 py-3 text-charcoal dark:text-gray-100">
+                            <td className="px-4 py-3 text-charcoal">
                               {s.value}
                             </td>
                           </tr>
@@ -668,10 +668,10 @@ export default function ProductDetailPage() {
 
                   {product.ingredients && (
                     <div className="mt-5">
-                      <p className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-white">
+                      <p className="text-xs font-bold uppercase tracking-wider text-charcoal">
                         {t("composition")}
                       </p>
-                      <p className="mt-1.5 text-xs leading-relaxed text-grey dark:text-gray-300">
+                      <p className="mt-1.5 text-xs leading-relaxed text-grey">
                         {product.ingredients}
                       </p>
                     </div>
@@ -679,10 +679,10 @@ export default function ProductDetailPage() {
 
                   {product.storage && (
                     <div className="mt-5">
-                      <p className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-white">
+                      <p className="text-xs font-bold uppercase tracking-wider text-charcoal">
                         {t("storageHandling")}
                       </p>
-                      <p className="mt-1.5 text-xs leading-relaxed text-grey dark:text-gray-300">
+                      <p className="mt-1.5 text-xs leading-relaxed text-grey">
                         {product.storage}
                       </p>
                     </div>
@@ -693,23 +693,23 @@ export default function ProductDetailPage() {
               )}
 
               {/* Right ΓÇö Product Description */}
-              <div className="flex h-full flex-col rounded-2xl border border-light-grey/70 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+              <div className="flex h-full flex-col rounded-2xl border border-light-grey/70 bg-white p-6">
                 <h3 className="font-heading text-2xl font-bold text-manikstu-green">
                   {t("productDescription")}
                 </h3>
 
                 {(product.longDescription || product.description) && (
-                  <p className="mt-3 text-sm leading-relaxed text-charcoal dark:text-gray-200 sm:text-base">
+                  <p className="mt-3 text-sm leading-relaxed text-charcoal sm:text-base">
                     {product.longDescription ?? product.description}
                   </p>
                 )}
 
                 {product.highlights && product.highlights.length > 0 && (
                   <>
-                    <p className="mt-6 font-bold text-charcoal dark:text-white">
+                    <p className="mt-6 font-bold text-charcoal">
                       {t("keyFeatures")}
                     </p>
-                    <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed text-charcoal dark:text-gray-200 sm:text-base">
+                    <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed text-charcoal sm:text-base">
                       {product.highlights.map((h) => (
                         <li key={h}>{h}</li>
                       ))}
@@ -719,10 +719,10 @@ export default function ProductDetailPage() {
 
                 {product.recommendedFor && product.recommendedFor.length > 0 && (
                   <>
-                    <p className="mt-6 font-bold text-charcoal dark:text-white">
+                    <p className="mt-6 font-bold text-charcoal">
                       {t("recommendedFor")}
                     </p>
-                    <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-charcoal dark:text-gray-200 sm:text-base">
+                    <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-charcoal sm:text-base">
                       {product.recommendedFor.map((r) => (
                         <li key={r}>{r}</li>
                       ))}
@@ -731,7 +731,7 @@ export default function ProductDetailPage() {
                 )}
 
                 {product.usage && (
-                  <p className="mt-6 text-sm leading-relaxed text-charcoal dark:text-gray-200 sm:text-base">
+                  <p className="mt-6 text-sm leading-relaxed text-charcoal sm:text-base">
                     <span className="font-bold">{t("dosage")}</span> {product.usage}
                   </p>
                 )}
@@ -775,18 +775,18 @@ export default function ProductDetailPage() {
           return (
             <section
               id="reviews"
-              className="mx-auto max-w-7xl scroll-mt-6 border-t border-light-grey/70 px-4 py-14 sm:px-6 md:px-8 dark:border-gray-700"
+              className="mx-auto max-w-7xl scroll-mt-6 border-t border-light-grey/70 px-4 py-14 sm:px-6 md:px-8"
             >
               <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_1fr]">
                 {/* Left ΓÇö summary card */}
                 <aside>
-                  <h2 className="font-heading text-2xl font-bold text-charcoal dark:text-white">
+                  <h2 className="font-heading text-2xl font-bold text-charcoal">
                     {t("ratingsAndReviews")}
                   </h2>
 
-                  <div className="mt-4 rounded-2xl border border-light-grey/70 bg-white p-5 dark:border-gray-700 dark:bg-gray-800">
+                  <div className="mt-4 rounded-2xl border border-light-grey/70 bg-white p-5">
                     <div className="flex items-baseline gap-2">
-                      <span className="font-heading text-5xl font-bold text-charcoal dark:text-white">
+                      <span className="font-heading text-5xl font-bold text-charcoal">
                         {liveRating.toFixed(1)}
                       </span>
                       <Star
@@ -795,7 +795,7 @@ export default function ProductDetailPage() {
                         strokeWidth={1.5}
                       />
                     </div>
-                    <p className="mt-1 text-xs text-grey dark:text-gray-300">
+                    <p className="mt-1 text-xs text-grey">
                       {t("basedOnRatings")} {totalRatings.toLocaleString("en-IN")} {t("ratingsAnd")} {reviews.length} {t("reviewsCount")}
                     </p>
 
@@ -812,7 +812,7 @@ export default function ProductDetailPage() {
                             key={stars}
                             className="grid grid-cols-[2.5rem_1fr_3rem] items-center gap-2 text-xs"
                           >
-                            <span className="inline-flex items-center gap-0.5 text-charcoal dark:text-gray-200">
+                            <span className="inline-flex items-center gap-0.5 text-charcoal">
                               {stars}
                               <Star
                                 className="h-3 w-3 text-manikstu-gold"
@@ -820,7 +820,7 @@ export default function ProductDetailPage() {
                                 strokeWidth={1.5}
                               />
                             </span>
-                            <div className="h-1.5 overflow-hidden rounded-full bg-light-grey/70 dark:bg-gray-700">
+                            <div className="h-1.5 overflow-hidden rounded-full bg-light-grey/70">
                               <div
                                 className={
                                   stars >= 4
@@ -832,7 +832,7 @@ export default function ProductDetailPage() {
                                 style={{ width: `${pct}%` }}
                               />
                             </div>
-                            <span className="text-right tabular-nums text-grey dark:text-gray-300">
+                            <span className="text-right tabular-nums text-grey">
                               {count.toLocaleString("en-IN")}
                             </span>
                           </div>
@@ -857,18 +857,18 @@ export default function ProductDetailPage() {
                     <form
                       id="write-review-form"
                       onSubmit={submitReview}
-                      className="mt-4 rounded-2xl border border-manikstu-gold/40 bg-white p-5 dark:border-gray-700 dark:bg-gray-800"
+                      className="mt-4 rounded-2xl border border-manikstu-gold/40 bg-white p-5"
                     >
-                      <h3 className="font-heading text-base font-bold text-charcoal dark:text-white">
+                      <h3 className="font-heading text-base font-bold text-charcoal">
                         {t("shareYourExperience")}
                       </h3>
-                      <p className="mt-1 text-xs text-grey dark:text-gray-300">
+                      <p className="mt-1 text-xs text-grey">
                         {t("helpOtherFarmers")}
                       </p>
 
                       {/* Star picker */}
                       <div className="mt-4">
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200">
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal">
                           {t("yourRating")} <span className="text-manikstu-red">*</span>
                         </label>
                         <div
@@ -899,7 +899,7 @@ export default function ProductDetailPage() {
                             );
                           })}
                           {formRating > 0 && (
-                            <span className="ml-2 text-xs font-semibold text-charcoal dark:text-white">
+                            <span className="ml-2 text-xs font-semibold text-charcoal">
                               {formRating}.0
                             </span>
                           )}
@@ -910,7 +910,7 @@ export default function ProductDetailPage() {
                       <div className="mt-4">
                         <label
                           htmlFor="review-name"
-                          className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
+                          className="block text-xs font-semibold uppercase tracking-wider text-charcoal"
                         >
                           {t("yourName")} <span className="text-manikstu-red">*</span>
                         </label>
@@ -921,7 +921,7 @@ export default function ProductDetailPage() {
                           value={formName}
                           onChange={(e) => setFormName(e.target.value)}
                           placeholder={t("namePlaceholder")}
-                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                         />
                       </div>
 
@@ -929,7 +929,7 @@ export default function ProductDetailPage() {
                       <div className="mt-3">
                         <label
                           htmlFor="review-location"
-                          className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
+                          className="block text-xs font-semibold uppercase tracking-wider text-charcoal"
                         >
                           {t("location")} <span className="text-grey">{t("optional")}</span>
                         </label>
@@ -940,7 +940,7 @@ export default function ProductDetailPage() {
                           onChange={(e) => setFormLocation(e.target.value)}
                           placeholder={t("locationPlaceholder")}
                           maxLength={80}
-                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                         />
                       </div>
 
@@ -948,7 +948,7 @@ export default function ProductDetailPage() {
                       <div className="mt-3">
                         <label
                           htmlFor="review-title"
-                          className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
+                          className="block text-xs font-semibold uppercase tracking-wider text-charcoal"
                         >
                           {t("headline")} <span className="text-grey">{t("optional")}</span>
                         </label>
@@ -959,7 +959,7 @@ export default function ProductDetailPage() {
                           onChange={(e) => setFormTitle(e.target.value)}
                           placeholder={t("headlinePlaceholder")}
                           maxLength={80}
-                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                         />
                       </div>
 
@@ -967,7 +967,7 @@ export default function ProductDetailPage() {
                       <div className="mt-3">
                         <label
                           htmlFor="review-body"
-                          className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
+                          className="block text-xs font-semibold uppercase tracking-wider text-charcoal"
                         >
                           {t("yourReview")} <span className="text-manikstu-red">*</span>
                         </label>
@@ -978,7 +978,7 @@ export default function ProductDetailPage() {
                           value={formBody}
                           onChange={(e) => setFormBody(e.target.value)}
                           placeholder={t("reviewPlaceholder")}
-                          className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                          className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                         />
                         <p className="mt-1 text-[10px] text-grey">
                           {formBody.length}/1000
@@ -1024,10 +1024,10 @@ export default function ProductDetailPage() {
                 {/* Right ΓÇö reviews list */}
                 <div>
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="font-heading text-lg font-bold text-charcoal dark:text-white">
+                    <h3 className="font-heading text-lg font-bold text-charcoal">
                       {t("latestReviews")}
                     </h3>
-                    <span className="text-xs text-grey dark:text-gray-300">
+                    <span className="text-xs text-grey">
                       {t("sortedByMostHelpful")}
                     </span>
                   </div>
@@ -1036,7 +1036,7 @@ export default function ProductDetailPage() {
                     {reviews.map((r) => (
                       <li
                         key={r.id}
-                        className="rounded-2xl border border-light-grey/70 bg-white p-5 dark:border-gray-700 dark:bg-gray-800"
+                        className="rounded-2xl border border-light-grey/70 bg-white p-5"
                       >
                         <div className="flex flex-wrap items-center gap-2">
                           <span className="inline-flex items-center gap-1 rounded-md bg-manikstu-green px-1.5 py-0.5 text-xs font-bold text-white">
@@ -1048,18 +1048,18 @@ export default function ProductDetailPage() {
                             />
                           </span>
                           {r.title && (
-                            <p className="font-heading text-sm font-bold text-charcoal dark:text-white">
+                            <p className="font-heading text-sm font-bold text-charcoal">
                               {r.title}
                             </p>
                           )}
                         </div>
 
-                        <p className="mt-3 text-sm leading-relaxed text-charcoal dark:text-gray-200">
+                        <p className="mt-3 text-sm leading-relaxed text-charcoal">
                           {r.body}
                         </p>
 
-                        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-grey dark:text-gray-300">
-                          <span className="font-semibold text-charcoal dark:text-white">
+                        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-grey">
+                          <span className="font-semibold text-charcoal">
                             {r.author}
                           </span>
                           {r.location && (
@@ -1094,7 +1094,7 @@ export default function ProductDetailPage() {
                                   "inline-flex items-center gap-1 rounded-full border px-2.5 py-1 transition-colors " +
                                   (marked
                                     ? "border-manikstu-green bg-manikstu-green/10 text-manikstu-green"
-                                    : "border-light-grey/70 hover:border-manikstu-green hover:text-manikstu-green dark:border-gray-600")
+                                    : "border-light-grey/70 hover:border-manikstu-green hover:text-manikstu-green")
                                 }
                               >
                                 <ThumbsUp
@@ -1128,7 +1128,7 @@ export default function ProductDetailPage() {
                   {/* Q&A */}
                   <div className="mt-12">
                     <div className="flex items-end justify-between gap-3">
-                      <h3 className="font-heading text-lg font-bold text-charcoal dark:text-white">
+                      <h3 className="font-heading text-lg font-bold text-charcoal">
                         {t("questionsAndAnswers")}
                       </h3>
                       <button
@@ -1145,32 +1145,32 @@ export default function ProductDetailPage() {
                       {questions.map((q) => (
                         <li
                           key={q.id}
-                          className="rounded-2xl border border-light-grey/70 bg-white p-5 dark:border-gray-700 dark:bg-gray-800"
+                          className="rounded-2xl border border-light-grey/70 bg-white p-5"
                         >
                           <div className="flex items-start gap-2">
                             <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-[10px] font-bold text-manikstu-green">
                               Q
                             </span>
                             <div className="min-w-0 flex-1">
-                              <p className="text-sm font-semibold text-charcoal dark:text-white">
+                              <p className="text-sm font-semibold text-charcoal">
                                 {q.question}
                               </p>
-                              <p className="mt-1 text-[11px] text-grey dark:text-gray-300">
+                              <p className="mt-1 text-[11px] text-grey">
                                 {t("askedBy")} {q.asker} ┬╖ {q.askedAt}
                               </p>
                             </div>
                           </div>
 
                           {q.answer && (
-                            <div className="mt-3 flex items-start gap-2 rounded-xl bg-manikstu-cream/40 p-3 dark:bg-gray-700/50">
+                            <div className="mt-3 flex items-start gap-2 rounded-xl bg-manikstu-cream/40 p-3">
                               <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-manikstu-green text-[10px] font-bold text-white">
                                 A
                               </span>
                               <div className="min-w-0 flex-1">
-                                <p className="text-sm leading-relaxed text-charcoal dark:text-gray-200">
+                                <p className="text-sm leading-relaxed text-charcoal">
                                   {q.answer}
                                 </p>
-                                <p className="mt-1 text-[11px] text-grey dark:text-gray-300">
+                                <p className="mt-1 text-[11px] text-grey">
                                   {t("answeredBy")}{" "}
                                   <span className="font-semibold text-manikstu-green">
                                     {q.answerer}
@@ -1201,7 +1201,7 @@ export default function ProductDetailPage() {
         {related.length > 0 && (
           <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8">
             <div className="flex items-end justify-between gap-4">
-              <h2 className="font-heading text-2xl font-bold text-charcoal dark:text-white sm:text-3xl">
+              <h2 className="font-heading text-2xl font-bold text-charcoal sm:text-3xl">
                 {t("youMayAlsoLike")}
               </h2>
               <Link
@@ -1217,7 +1217,7 @@ export default function ProductDetailPage() {
                 <Link
                   key={p.id}
                   href={`/products/${p.slug}`}
-                  className="group flex items-start gap-3 rounded-2xl border border-manikstu-gold/20 bg-white p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-gray-800"
+                  className="group flex items-start gap-3 rounded-2xl border border-manikstu-gold/20 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-manikstu-cream">
                     {p.image ? (
@@ -1233,10 +1233,10 @@ export default function ProductDetailPage() {
                     )}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-heading text-sm font-bold text-charcoal group-hover:text-manikstu-green transition-colors dark:text-white line-clamp-1">
+                    <h3 className="font-heading text-sm font-bold text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-1">
                       {p.name}
                     </h3>
-                    <p className="mt-1 text-xs text-grey dark:text-gray-300 line-clamp-2">
+                    <p className="mt-1 text-xs text-grey line-clamp-2">
                       {p.description}
                     </p>
                     <p className="mt-2 text-sm font-bold text-manikstu-green">
@@ -1267,8 +1267,8 @@ export default function ProductDetailPage() {
           />
 
           {/* Card */}
-          <div className="relative z-10 w-full max-w-md rounded-2xl border border-manikstu-gold/30 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-800">
-            <div className="flex items-start justify-between gap-3 border-b border-light-grey/70 px-5 py-4 dark:border-gray-700">
+          <div className="relative z-10 w-full max-w-md rounded-2xl border border-manikstu-gold/30 bg-white shadow-2xl">
+            <div className="flex items-start justify-between gap-3 border-b border-light-grey/70 px-5 py-4">
               <div className="flex items-center gap-2.5">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-manikstu-green/10">
                   <MessageCircleQuestion className="h-4 w-4 text-manikstu-green" />
@@ -1276,11 +1276,11 @@ export default function ProductDetailPage() {
                 <div>
                   <h3
                     id="ask-modal-title"
-                    className="font-heading text-base font-bold text-charcoal dark:text-white"
+                    className="font-heading text-base font-bold text-charcoal"
                   >
                     {t("askAQuestion")}
                   </h3>
-                  <p className="text-[11px] text-grey dark:text-gray-300 line-clamp-1">
+                  <p className="text-[11px] text-grey line-clamp-1">
                     {t("aboutProduct")} {product.name}
                   </p>
                 </div>
@@ -1298,7 +1298,7 @@ export default function ProductDetailPage() {
             <form onSubmit={submitQuestion} className="px-5 py-5">
               <label
                 htmlFor="ask-name"
-                className="block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
+                className="block text-xs font-semibold uppercase tracking-wider text-charcoal"
               >
                 {t("yourName")} <span className="text-manikstu-red">*</span>
               </label>
@@ -1309,12 +1309,12 @@ export default function ProductDetailPage() {
                 value={askName}
                 onChange={(e) => setAskName(e.target.value)}
                 placeholder={t("namePlaceholder")}
-                className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
               />
 
               <label
                 htmlFor="ask-text"
-                className="mt-4 block text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-gray-200"
+                className="mt-4 block text-xs font-semibold uppercase tracking-wider text-charcoal"
               >
                 {t("yourQuestion")} <span className="text-manikstu-red">*</span>
               </label>
@@ -1326,7 +1326,7 @@ export default function ProductDetailPage() {
                 onChange={(e) => setAskText(e.target.value)}
                 placeholder={t("questionPlaceholder")}
                 maxLength={500}
-                className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
               />
               <p className="mt-1 text-[10px] text-grey">
                 {askText.length}/500 ┬╖ {t("supportReplies")}

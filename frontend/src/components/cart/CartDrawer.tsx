@@ -80,19 +80,19 @@ export default function CartDrawer() {
           role="dialog"
           aria-modal="true"
           aria-label="Shopping Cart"
-          className="w-screen max-w-md bg-white shadow-2xl transition-transform dark:bg-charcoal flex flex-col"
+          className="w-screen max-w-md bg-white shadow-2xl transition-transform flex flex-col"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-light-grey/80 px-6 py-4 dark:border-gray-800">
+          <div className="flex items-center justify-between border-b border-light-grey/80 px-6 py-4">
             <div className="flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green">
                 <ShoppingBag className="h-5 w-5" />
               </span>
               <div>
-                <h2 className="font-heading text-lg font-bold text-charcoal dark:text-white">
+                <h2 className="font-heading text-lg font-bold text-charcoal">
                   Shopping Cart
                 </h2>
-                <p className="text-xs text-grey dark:text-gray-400">
+                <p className="text-xs text-grey">
                   {cartCount} {cartCount === 1 ? "item" : "items"}
                 </p>
               </div>
@@ -102,7 +102,7 @@ export default function CartDrawer() {
               type="button"
               onClick={closeCartDrawer}
               aria-label="Close cart"
-              className="flex h-8 w-8 items-center justify-center rounded-full text-grey hover:bg-light-grey/50 hover:text-charcoal dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white transition-colors"
+              className="flex h-8 w-8 items-center justify-center rounded-full text-grey hover:bg-light-grey/50 hover:text-charcoal transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
@@ -115,10 +115,10 @@ export default function CartDrawer() {
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green mb-4">
                   <ShoppingBag className="h-10 w-10 opacity-70" />
                 </div>
-                <h3 className="font-heading text-lg font-bold text-charcoal dark:text-white">
+                <h3 className="font-heading text-lg font-bold text-charcoal">
                   Your cart is empty
                 </h3>
-                <p className="mt-1 text-sm text-grey dark:text-gray-400 max-w-xs">
+                <p className="mt-1 text-sm text-grey max-w-xs">
                   Looks like you haven&apos;t added any products yet.
                 </p>
                 <button
@@ -133,12 +133,12 @@ export default function CartDrawer() {
                 </button>
               </div>
             ) : (
-              <ul className="divide-y divide-light-grey/60 dark:divide-gray-800">
+              <ul className="divide-y divide-light-grey/60">
                 {cartLines.map((line) => {
                   const linePrice = line.price * line.qty;
                   return (
                     <li key={line.slug} className="py-4 flex gap-3.5 items-start">
-                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-light-grey/80 bg-white dark:border-gray-700 dark:bg-gray-800">
+                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-light-grey/80 bg-white">
                         {line.image ? (
                           <Image
                             src={line.image}
@@ -158,12 +158,12 @@ export default function CartDrawer() {
                         <Link
                           href={`/products/${line.slug}`}
                           onClick={closeCartDrawer}
-                          className="font-heading text-sm font-bold text-charcoal dark:text-white hover:text-manikstu-green transition-colors line-clamp-1"
+                          className="font-heading text-sm font-bold text-charcoal hover:text-manikstu-green transition-colors line-clamp-1"
                         >
                           {line.name}
                         </Link>
                         {line.size && (
-                          <p className="text-xs text-grey dark:text-gray-400 mt-0.5">
+                          <p className="text-xs text-grey mt-0.5">
                             {line.size}
                           </p>
                         )}
@@ -172,7 +172,7 @@ export default function CartDrawer() {
                         </p>
 
                         <div className="mt-2.5 flex items-center justify-between">
-                          <div className="inline-flex items-center gap-1 rounded-full border border-light-grey/80 bg-white text-xs font-semibold text-charcoal dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-2xs">
+                          <div className="inline-flex items-center gap-1 rounded-full border border-light-grey/80 bg-white text-xs font-semibold text-charcoal shadow-2xs">
                             <button
                               type="button"
                               onClick={() => setQty(line.slug, line.qty - 1)}
@@ -195,14 +195,14 @@ export default function CartDrawer() {
                           </div>
 
                           <div className="flex items-center gap-3">
-                            <span className="text-xs font-bold text-charcoal dark:text-white">
+                            <span className="text-xs font-bold text-charcoal">
                               ₹{linePrice.toLocaleString("en-IN")}
                             </span>
                             <button
                               type="button"
                               onClick={() => removeFromCart(line.slug)}
                               aria-label={`Remove ${line.name}`}
-                              className="text-grey hover:text-manikstu-red dark:text-gray-400 transition-colors"
+                              className="text-grey hover:text-manikstu-red transition-colors"
                             >
                               <Trash2 className="h-3.5 w-3.5" />
                             </button>
@@ -218,17 +218,17 @@ export default function CartDrawer() {
 
           {/* Footer */}
           {cartLines.length > 0 && (
-            <div className="border-t border-light-grey/80 bg-light-grey/20 p-6 dark:border-gray-800 dark:bg-gray-900/50">
+            <div className="border-t border-light-grey/80 bg-light-grey/20 p-6">
               <div className="flex items-center gap-2 text-xs text-manikstu-green font-medium mb-3">
                 <Truck className="h-4 w-4 shrink-0" />
                 <span>Free delivery across Odisha & Pan India</span>
               </div>
 
               <div className="flex items-baseline justify-between mb-4">
-                <span className="text-sm text-grey dark:text-gray-400">
+                <span className="text-sm text-grey">
                   Subtotal
                 </span>
-                <span className="font-body text-xl font-bold text-charcoal dark:text-white">
+                <span className="font-body text-xl font-bold text-charcoal">
                   ₹{cartTotal.toLocaleString("en-IN")}
                 </span>
               </div>
@@ -260,7 +260,7 @@ export default function CartDrawer() {
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-grey dark:text-gray-400 border-t border-light-grey/60 dark:border-gray-800 pt-3">
+              <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-grey border-t border-light-grey/60 pt-3">
                 <ShieldCheck className="h-3.5 w-3.5 text-manikstu-green" />
                 <span>100% Genuine Ayurvedic & Farm Direct Products</span>
               </div>

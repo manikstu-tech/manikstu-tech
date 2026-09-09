@@ -5,7 +5,6 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import ThemeProvider from "@/components/layout/ThemeProvider";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import JsonLd from "@/components/seo/JsonLd";
 import "../globals.css";
@@ -149,12 +148,10 @@ export default async function LocaleLayout({
         >
           Skip to content
         </a>
-        <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
-            {children}
-            <WhatsAppButton />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+          <WhatsAppButton />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

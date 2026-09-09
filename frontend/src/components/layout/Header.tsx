@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import Image from "next/image";
-import { Menu, X, Phone, Moon, Sun } from "lucide-react";
-import { useThemeToggle } from "./ThemeProvider";
+import { Menu, X, Phone } from "lucide-react";
 import { getNavigation } from "@/lib/api";
 import type { NavigationMenuItem } from "@/types";
 const fallbackLinks: NavigationMenuItem[] = [
@@ -21,7 +20,6 @@ const fallbackLinks: NavigationMenuItem[] = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [navLinks, setNavLinks] = useState<NavigationMenuItem[]>(fallbackLinks);
-  const { toggle } = useThemeToggle();
   const pathname = usePathname() ?? "/";
   const t = useTranslations("Navigation");
 
@@ -34,7 +32,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-charcoal shadow-sm transition-colors">
+    <header className="sticky top-0 z-50 bg-white shadow-sm transition-colors">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 md:px-8">
         <Link href="/" className="flex items-center">
           <Image
@@ -63,7 +61,7 @@ export default function Header() {
                 className={
                   active
                     ? "text-sm font-semibold text-manikstu-green transition-colors"
-                    : "text-sm font-medium text-charcoal dark:text-white hover:text-manikstu-green transition-colors"
+                    : "text-sm font-medium text-charcoal hover:text-manikstu-green transition-colors"
                 }
               >
                 {translatedLabel}
@@ -73,10 +71,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <button onClick={toggle} className="flex items-center justify-center h-9 w-9 rounded-full text-charcoal dark:text-white hover:text-manikstu-green hover:bg-manikstu-cream/60 dark:hover:bg-white/10 transition-colors" aria-label={t("toggleDarkMode")}>
-            <Moon className="h-5 w-5 dark:hidden" />
-            <Sun className="h-5 w-5 hidden dark:block" />
-          </button>
           {/* <LanguageSwitcher /> */}
           <Link
             href="/contact"

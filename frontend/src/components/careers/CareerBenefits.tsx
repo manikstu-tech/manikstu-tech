@@ -81,7 +81,7 @@ export default function CareerBenefits({
             return (
               <div
                 key={benefit.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/40 bg-manikstu-cream/40 p-5 text-center transition-shadow hover:shadow-md dark:bg-gray-800/80"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/40 bg-manikstu-cream/40 p-5 text-center transition-shadow hover:shadow-md"
               >
                 {/* Inner dashed border */}
                 <div
@@ -97,7 +97,7 @@ export default function CareerBenefits({
                       className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-saura-red/40"
                     />
                   </div>
-                  <h3 className="mt-4 font-heading text-base font-bold text-charcoal dark:text-white group-hover:text-manikstu-green transition-colors">
+                  <h3 className="mt-4 font-heading text-base font-bold text-charcoal group-hover:text-manikstu-green transition-colors">
                     {benefit.title}
                   </h3>
 
@@ -108,7 +108,7 @@ export default function CareerBenefits({
                     <span aria-hidden className="h-px w-4 bg-manikstu-gold" />
                   </div>
 
-                  <p className="mt-2 text-xs leading-relaxed text-grey dark:text-gray-300">
+                  <p className="mt-2 text-xs leading-relaxed text-grey">
                     {benefit.description}
                   </p>
                 </div>

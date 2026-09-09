@@ -180,7 +180,7 @@ export default function ProductsPage() {
 
         <section
           id="products-grid"
-          className="section-padding bg-white dark:bg-gray-900"
+          className="section-padding bg-white"
         >
           <div className="mx-auto max-w-7xl">
             {/* Ornamental section heading */}
@@ -196,7 +196,7 @@ export default function ProductsPage() {
                 <span aria-hidden className="h-px w-10 sm:w-14 bg-manikstu-gold/60" />
               </div>
 
-              <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl dark:text-white">
+              <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
                 {t("exploreOur")}{" "}
                 <span className="text-manikstu-green">{t("productRange")}</span>
               </h2>
@@ -213,24 +213,24 @@ export default function ProductsPage() {
                 <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey dark:text-gray-300">
+              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey">
                 {t("trustedByFarmers")}
               </p>
             </div>
 
             {loading ? (
-              <div className="mt-10 py-16 text-center text-grey dark:text-gray-300">
+              <div className="mt-10 py-16 text-center text-grey">
                 {t("loadingProducts")}
               </div>
             ) : products.length === 0 ? (
-              <div className="mt-10 flex flex-col items-center rounded-2xl border border-light-grey/70 py-16 text-center dark:border-gray-700">
+              <div className="mt-10 flex flex-col items-center rounded-2xl border border-light-grey/70 py-16 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-cream">
                   <ShoppingBag className="h-7 w-7 text-manikstu-green/40" />
                 </div>
-                <h3 className="mt-4 font-heading text-lg font-bold text-charcoal dark:text-white">
+                <h3 className="mt-4 font-heading text-lg font-bold text-charcoal">
                   {t("noProductsAvailable")}
                 </h3>
-                <p className="mt-1 max-w-md text-sm text-grey dark:text-gray-300">
+                <p className="mt-1 max-w-md text-sm text-grey">
                   {t("noProductsDesc")}
                 </p>
                 <Link
@@ -245,11 +245,11 @@ export default function ProductsPage() {
               {products.map((product) => (
                 <article
                   key={product.id}
-                  className="group flex flex-col rounded-2xl border border-manikstu-gold/20 bg-white shadow-sm transition-shadow hover:shadow-md dark:bg-gray-800"
+                  className="group flex flex-col rounded-2xl border border-manikstu-gold/20 bg-white shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="flex items-start gap-3 p-4">
                     {/* Product image tile */}
-                    <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-light-grey/70 bg-white dark:border-gray-700 dark:bg-gray-700">
+                    <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-light-grey/70 bg-white">
                       {product.image ? (
                         <Image
                           src={product.image}
@@ -270,14 +270,14 @@ export default function ProductsPage() {
                           {product.category.name}
                         </p>
                       )}
-                      <h3 className="font-heading text-base font-bold text-charcoal group-hover:text-manikstu-green transition-colors dark:text-white line-clamp-1">
+                      <h3 className="font-heading text-base font-bold text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-1">
                         {product.name}
                       </h3>
-                      <p className="mt-1 text-xs text-grey dark:text-gray-300 leading-snug line-clamp-3">
+                      <p className="mt-1 text-xs text-grey leading-snug line-clamp-3">
                         {product.description}
                       </p>
                       {product.size && (
-                        <span className="mt-2 inline-flex items-center rounded-md border border-light-grey bg-white px-2 py-0.5 text-[10px] font-semibold text-charcoal/80 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200">
+                        <span className="mt-2 inline-flex items-center rounded-md border border-light-grey bg-white px-2 py-0.5 text-[10px] font-semibold text-charcoal/80">
                           {product.size}
                         </span>
                       )}
@@ -285,7 +285,7 @@ export default function ProductsPage() {
                   </div>
 
                   {/* Price + Add to Cart row */}
-                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-light-grey/70 px-4 py-3 dark:border-gray-700">
+                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-light-grey/70 px-4 py-3">
                     <p className="font-body text-lg font-bold text-manikstu-green">
                       ₹{Number(product.price).toLocaleString("en-IN")}
                     </p>
@@ -340,18 +340,18 @@ export default function ProductsPage() {
               <div
                 id="cart"
                 aria-live="polite"
-                className="mt-10 overflow-hidden rounded-2xl border border-manikstu-gold/30 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800"
+                className="mt-10 overflow-hidden rounded-2xl border border-manikstu-gold/30 bg-white shadow-md"
               >
-                <div className="flex items-center justify-between gap-3 border-b border-light-grey/70 bg-manikstu-cream/50 px-5 py-3 dark:border-gray-700 dark:bg-gray-700/50">
+                <div className="flex items-center justify-between gap-3 border-b border-light-grey/70 bg-manikstu-cream/50 px-5 py-3">
                   <div className="flex items-center gap-2.5">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-manikstu-green text-white">
                       <ShoppingCart className="h-4 w-4" />
                     </span>
                     <div>
-                      <p className="font-heading text-sm font-bold text-charcoal dark:text-white">
+                      <p className="font-heading text-sm font-bold text-charcoal">
                         {t("yourCart")}
                       </p>
-                      <p className="text-[11px] text-grey dark:text-gray-300">
+                      <p className="text-[11px] text-grey">
                         {cartCount} {cartCount === 1 ? t("item") : t("items")}
                       </p>
                     </div>
@@ -365,7 +365,7 @@ export default function ProductsPage() {
                   </button>
                 </div>
 
-                <ul className="divide-y divide-light-grey/70 dark:divide-gray-700">
+                <ul className="divide-y divide-light-grey/70">
                   {cartLines.map((line) => {
                     const lineTotal = line.price * line.qty;
                     return (
@@ -373,7 +373,7 @@ export default function ProductsPage() {
                         key={line.slug}
                         className="flex items-center gap-3 px-5 py-3"
                       >
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-light-grey/70 bg-white dark:border-gray-700 dark:bg-gray-700">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-light-grey/70 bg-white">
                           {line.image ? (
                             <Image
                               src={line.image}
@@ -387,16 +387,16 @@ export default function ProductsPage() {
                           )}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm font-semibold text-charcoal dark:text-white line-clamp-1">
+                          <p className="text-sm font-semibold text-charcoal line-clamp-1">
                             {line.name}
                           </p>
-                          <p className="text-[11px] text-grey dark:text-gray-300">
+                          <p className="text-[11px] text-grey">
                             ₹{line.price.toLocaleString("en-IN")}
                             {line.size ? ` · ${line.size}` : ""}
                           </p>
                         </div>
 
-                        <div className="inline-flex items-center gap-1 rounded-full border border-light-grey text-xs font-semibold text-charcoal dark:border-gray-600 dark:text-gray-200">
+                        <div className="inline-flex items-center gap-1 rounded-full border border-light-grey text-xs font-semibold text-charcoal">
                           <button
                             type="button"
                             onClick={() => decrement(line.slug)}
@@ -436,9 +436,9 @@ export default function ProductsPage() {
                   })}
                 </ul>
 
-                <div className="flex flex-col items-stretch gap-3 border-t border-light-grey/70 bg-manikstu-cream/40 px-5 py-4 dark:border-gray-700 dark:bg-gray-700/40 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col items-stretch gap-3 border-t border-light-grey/70 bg-manikstu-cream/40 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-[11px] uppercase tracking-wider text-grey dark:text-gray-300">
+                    <p className="text-[11px] uppercase tracking-wider text-grey">
                       {t("totalToPay")}
                     </p>
                     <p className="font-body text-2xl font-bold text-manikstu-green">
@@ -456,7 +456,7 @@ export default function ProductsPage() {
             )}
 
             {/* Trust bar */}
-            <div className="mt-10 rounded-2xl border border-light-grey/70 px-5 py-6 dark:border-gray-700">
+            <div className="mt-10 rounded-2xl border border-light-grey/70 px-5 py-6">
               <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
                 {trustFeatures.map((f) => {
                   const Icon = f.icon;
@@ -466,10 +466,10 @@ export default function ProductsPage() {
                         <Icon className="h-5 w-5 text-manikstu-green" />
                       </span>
                       <div>
-                        <h4 className="text-sm font-bold text-charcoal dark:text-white">
+                        <h4 className="text-sm font-bold text-charcoal">
                           {f.title}
                         </h4>
-                        <p className="mt-0.5 text-xs text-grey dark:text-gray-300 leading-snug">
+                        <p className="mt-0.5 text-xs text-grey leading-snug">
                           {f.subtitle}
                         </p>
                       </div>

@@ -92,7 +92,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
             return (
               <div
                 key={value.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 p-6 text-center transition-shadow hover:shadow-lg dark:bg-gray-800/90"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 p-6 text-center transition-shadow hover:shadow-lg"
               >
                 {/* Inner dashed border */}
                 <div
@@ -110,7 +110,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
                     />
                   </div>
 
-                  <h3 className="mt-5 font-heading text-lg font-bold leading-snug text-charcoal dark:text-white group-hover:text-manikstu-green transition-colors duration-200">
+                  <h3 className="mt-5 font-heading text-lg font-bold leading-snug text-charcoal group-hover:text-manikstu-green transition-colors duration-200">
                     {value.title}
                   </h3>
 
@@ -121,7 +121,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
                     <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
                   </div>
 
-                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-grey dark:text-gray-300">
+                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-grey">
                     {value.description}
                   </p>
                 </div>
