@@ -64,7 +64,7 @@ export default function MediaHero() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-lg ring-1 ring-black/5">
               {/* Community gathering photo */}
               <Image
-                src="/media-hero.png"
+                src="/media-hero.webp"
                 alt={t("heroTitle")}
                 fill
                 priority

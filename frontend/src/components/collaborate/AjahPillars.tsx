@@ -125,7 +125,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
             return (
               <div
                 key={pillar.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 pt-8 pb-28 px-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-manikstu-cream/50 flex flex-col justify-between"
+                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 py-8 px-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-manikstu-cream/50"
               >
                 <div className="relative text-center">
                   {/* Icon with dashed decorative ring */}

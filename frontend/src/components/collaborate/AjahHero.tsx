@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { ArrowLeft, ArrowRight, Users, Sparkles, HeartHandshake, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, Users, Sparkles, ShieldCheck } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
 
 export default function AjahHero() {
@@ -65,23 +65,20 @@ export default function AjahHero() {
       {/* Right — visual panel */}
       <div className="relative">
         <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-[#FAF4EB] p-6 shadow-md transition-all duration-300 hover:shadow-xl">
-          {/* Top tribal floral border */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-0 h-4 bg-repeat-x opacity-60 -scale-y-100"
-            style={{
-              backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
-              backgroundSize: "auto 100%",
-            }}
+          {/* Project AJAH event photo */}
+          <Image
+            src="/ajah-hero.webp"
+            alt="Project AJAH — women-led integrated livestock program"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
           />
 
-          {/* Background tribal watermark illustration */}
+          {/* Legibility scrim (top + bottom) */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-no-repeat bg-contain bg-bottom opacity-35 transition-opacity duration-300 group-hover:opacity-50"
-            style={{
-              backgroundImage: "url('/patterns/training-women-youth.png')",
-            }}
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/45"
           />
 
           {/* Central content overlay */}
@@ -91,25 +88,9 @@ export default function AjahHero() {
                 <Sparkles className="h-3.5 w-3.5 text-manikstu-gold" />
                 Empowerment Model
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-manikstu-gold/15 px-3 py-1 text-xs font-semibold text-charcoal">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-manikstu-gold/90 px-3 py-1 text-xs font-semibold text-charcoal shadow-xs">
                 Odisha Heartland
               </span>
-            </div>
-
-            <div className="my-auto text-center px-4">
-              <div className="relative mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-manikstu-green/20">
-                <HeartHandshake className="h-8 w-8 text-manikstu-green" />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
-                />
-              </div>
-              <h3 className="font-heading text-xl font-bold text-charcoal">
-                Project <span className="text-[#9F5233]">AJAH</span>
-              </h3>
-              <p className="mt-1 text-xs text-grey">
-                Holistic goat & poultry livelihood ecosystem
-              </p>
             </div>
 
             {/* Bottom badge */}
@@ -120,21 +101,11 @@ export default function AjahHero() {
                   {t("cornerAccent")}
                 </span>
               </div>
-              <div className="hidden sm:flex items-center gap-1 text-[11px] font-medium text-manikstu-green bg-manikstu-green/10 rounded-full px-2.5 py-1">
+              <div className="hidden sm:flex items-center gap-1 text-[11px] font-medium text-white bg-manikstu-green/90 rounded-full px-2.5 py-1 shadow-xs">
                 <ShieldCheck className="h-3.5 w-3.5" /> 100% Verified
               </div>
             </div>
           </div>
-
-          {/* Bottom tribal floral border */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-0 right-0 bottom-0 h-4 bg-repeat-x opacity-60"
-            style={{
-              backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
-              backgroundSize: "auto 100%",
-            }}
-          />
         </div>
 
         {/* Floating circular icon badge */}

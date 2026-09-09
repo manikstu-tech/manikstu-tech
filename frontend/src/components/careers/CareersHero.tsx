@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ArrowRight, Leaf, Sprout, Users } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
@@ -60,41 +61,16 @@ export default function CareersHero() {
 
           {/* Right — visual panel */}
           <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
-              {/* Community / purpose line-art illustration */}
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 480 360"
-                className="pointer-events-none absolute inset-0 h-full w-full"
-                fill="none"
-                stroke="#4A8C3F"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {/* Ground line */}
-                <path d="M40 300 H440" opacity="0.35" />
-                {/* Central sprout */}
-                <path d="M240 300 V210" />
-                <path d="M240 240 C220 235 205 220 205 200 C225 205 240 220 240 240 Z" fill="#4A8C3F" fillOpacity="0.12" />
-                <path d="M240 240 C260 235 275 220 275 200 C255 205 240 220 240 240 Z" fill="#4A8C3F" fillOpacity="0.12" />
-                <circle cx="240" cy="192" r="10" fill="#C4952A" fillOpacity="0.5" stroke="none" />
-                {/* Left person */}
-                <circle cx="140" cy="200" r="22" />
-                <path d="M140 222 V300" />
-                <path d="M140 245 L110 270" />
-                <path d="M140 245 L170 265" />
-                {/* Right person */}
-                <circle cx="340" cy="200" r="22" />
-                <path d="M340 222 V300" />
-                <path d="M340 245 L310 265" />
-                <path d="M340 245 L370 270" />
-                {/* Connecting arc */}
-                <path d="M162 180 C200 140 280 140 318 180" opacity="0.5" strokeDasharray="4 6" />
-                {/* Small leaves */}
-                <path d="M90 120 C100 105 120 100 130 110 C120 125 100 130 90 120 Z" fill="#4A8C3F" fillOpacity="0.15" />
-                <path d="M370 100 C380 85 400 80 410 90 C400 105 380 110 370 100 Z" fill="#C4952A" fillOpacity="0.2" />
-              </svg>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-lg ring-1 ring-black/5">
+              {/* Team / awards group photo */}
+              <Image
+                src="/careers-hero.webp"
+                alt={t("heroTitle")}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
 
               {/* Corner accent */}
               <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3.5 py-1.5 shadow-sm">

@@ -66,7 +66,7 @@ export default function TrainingHero() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-lg ring-1 ring-black/5">
               {/* Training / community photo */}
               <Image
-                src="/training-hero.png"
+                src="/training-hero.webp"
                 alt={t("heroTitle")}
                 fill
                 priority
