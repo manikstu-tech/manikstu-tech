@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     metadataBase: new URL(BASE_URL),
     title: {
-      default: "Manikstu Agro — Revolutionizing Goat Farming Ecosystem",
+      default: "Manikstu Agro — India's #1 Goat Farming Company | Goat Bank, Insurance, Training",
       template: "%s | Manikstu Agro",
     },
     description:
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       type: "website",
       locale: "en_IN",
       siteName: "Manikstu Agro",
-      title: "Manikstu Agro — Revolutionizing Goat Farming Ecosystem",
+      title: "Manikstu Agro — India's Leading Goat Farming Company",
       description:
         "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
       url: BASE_URL,
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       card: "summary_large_image",
-      title: "Manikstu Agro — Revolutionizing Goat Farming Ecosystem",
+      title: "Manikstu Agro — India's Leading Goat Farming Company",
       description:
         "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
       images: ["/og-image.png"],
@@ -139,7 +139,39 @@ export default async function LocaleLayout({
               contactType: "customer service",
               email: "contact@manikstu.com",
             },
-            sameAs: [],
+            sameAs: [
+              "https://www.facebook.com/ManikstuAgroPrivateLimited",
+              "https://www.instagram.com/manikstuagro",
+              "https://www.linkedin.com/company/manikstu-agro-private-limited",
+              "https://www.youtube.com/@manikstuagro5847",
+            ],
+          }}
+        />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Manikstu Agro Private Limited",
+            url: BASE_URL,
+            logo: `${BASE_URL}/logo.png`,
+            image: `${BASE_URL}/og-image.png`,
+            telephone: "+91-8270331856",
+            email: "contact@manikstu.com",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Kalahandi",
+              addressRegion: "Odisha",
+              addressCountry: "IN",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: "20.0",
+              longitude: "82.5",
+            },
+            foundingDate: "2015",
+            description:
+              "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
+            priceRange: "$$",
           }}
         />
         <a

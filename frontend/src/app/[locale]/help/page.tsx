@@ -8,9 +8,13 @@ import JsonLd from "@/components/seo/JsonLd";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Help Center",
+  title: "Help Center — Goat Farming FAQs & Support | Manikstu Agro",
   description:
     "Get help with Manikstu Agro products and services. Frequently asked questions, contact support, and more.",
+  openGraph: {
+    title: "Help Center — FAQs & Support | Manikstu Agro",
+    description: "Get help with Manikstu Agro goat farming products and services.",
+  },
 };
 
 export default async function HelpPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -27,6 +31,16 @@ export default async function HelpPage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `https://manikstu.com/${locale}` },
+            { "@type": "ListItem", position: 2, name: "Help", item: `https://manikstu.com/${locale}/help` },
+          ],
+        }}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",

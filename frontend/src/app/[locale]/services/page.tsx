@@ -5,6 +5,7 @@ import ServiceAccordion, {
   type AccordionItem,
 } from "@/components/services/ServiceAccordion";
 import InsurancePanel from "@/components/services/InsurancePanel";
+import JsonLd from "@/components/seo/JsonLd";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -246,6 +247,16 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `https://manikstu.com/${locale}` },
+            { "@type": "ListItem", position: 2, name: "Services", item: `https://manikstu.com/${locale}/services` },
+          ],
+        }}
+      />
       <Header />
       <main id="main-content">
         <PageHero>
