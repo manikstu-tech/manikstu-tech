@@ -31,7 +31,7 @@ class MediaController extends Controller
         $request->validate([
             'type' => 'nullable|in:photo,video',
             'title' => 'nullable|string|max:150',
-            'category' => 'nullable|in:Events,News,Fields,Training,Awareness,Farmers,General',
+            'date' => 'nullable|date',
             'file' => $type === 'video'
                 // Videos: common web formats, larger cap (50 MB).
                 ? 'required|file|max:51200|mimes:mp4,webm,ogg,mov,m4v'
@@ -59,7 +59,6 @@ class MediaController extends Controller
         $media = Media::create([
             'name' => $title,
             'type' => $type,
-            'category' => $request->input('category') ?: null,
             'is_public' => true,
             'file_name' => $originalName,
             'mime_type' => $file->getMimeType(),
@@ -67,6 +66,16 @@ class MediaController extends Controller
             'path' => $path,
             'disk' => 'public',
         ]);
+
+        // Honour the date the user chose (keep the current time so same-day items order by upload).
+        if ($request->filled('date')) {
+            try {
+                $media->created_at = \Illuminate\Support\Carbon::parse($request->input('date'))->setTimeFrom(now());
+                $media->save();
+            } catch (\Throwable $e) {
+                // Invalid date — keep the automatic upload timestamp.
+            }
+        }
 
         if ($request->expectsJson()) {
             return response()->json(['id' => $media->id, 'url' => asset('storage/' . $path)]);

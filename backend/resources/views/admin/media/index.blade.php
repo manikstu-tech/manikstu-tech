@@ -11,32 +11,19 @@
     <div class="details-overlay" id="detailsOverlay" onclick="if(event.target===this)closeDetails()">
         <div class="details" role="dialog" aria-modal="true" aria-label="Upload details">
             <h3 class="details-title" id="detailsHeading">Photo details</h3>
-            <p class="details-sub">Give it a name and category, then upload.</p>
+            <p class="details-sub">Give it an event name and date, then upload.</p>
 
             <div class="details-body">
                 <div class="details-preview" id="detailsPreview"><!-- filled by JS --></div>
                 <div class="details-fields">
                     <label class="fld">
-                        <span class="fld-label">Name</span>
+                        <span class="fld-label">Event Name</span>
                         <input type="text" name="title" id="titleInput" class="fld-input" placeholder="e.g. Field day at Kalahandi" maxlength="150">
                     </label>
                     <label class="fld">
-                        <span class="fld-label">Category</span>
-                        <select name="category" id="categoryInput" class="fld-input">
-                            <option value="">— Select category —</option>
-                            <option value="Events">Events</option>
-                            <option value="News">News</option>
-                            <option value="Fields">Fields</option>
-                            <option value="Training">Training</option>
-                            <option value="Awareness">Awareness</option>
-                            <option value="Farmers">Farmers</option>
-                            <option value="General">General</option>
-                        </select>
-                    </label>
-                    <label class="fld">
                         <span class="fld-label">Date</span>
-                        <input type="text" id="dateDisplay" class="fld-input fld-readonly" value="{{ now()->format('d M Y') }}" readonly>
-                        <span class="fld-hint">Automatically set to the upload date</span>
+                        <input type="date" name="date" id="dateInput" class="fld-input" value="{{ now()->format('Y-m-d') }}" max="{{ now()->format('Y-m-d') }}">
+                        <span class="fld-hint">The date this photo/video was taken</span>
                     </label>
                 </div>
             </div>
@@ -407,6 +394,12 @@ function showDetails(file){
     document.getElementById('detailsHeading').textContent = isVideo ? 'Video details' : 'Photo details';
     var base = file.name.replace(/\.[^.]+$/, '');
     document.getElementById('titleInput').value = base;
+
+    // Default the date to today (local)
+    var d = new Date();
+    var mm = String(d.getMonth() + 1).padStart(2, '0');
+    var dd = String(d.getDate()).padStart(2, '0');
+    document.getElementById('dateInput').value = d.getFullYear() + '-' + mm + '-' + dd;
 
     // Preview
     var prev = document.getElementById('detailsPreview');
