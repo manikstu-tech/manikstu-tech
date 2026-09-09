@@ -353,8 +353,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   />
                 </div>
 
-                {/* Floating card — safe inside bottom-left on mobile, floating on desktop */}
-                <div className="absolute bottom-1 left-3 sm:-bottom-8 sm:-left-4 md:-left-8 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white p-2 sm:p-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
+                {/* Floating card — hidden on mobile, floating on desktop */}
+                <div className="hidden sm:block absolute sm:-bottom-8 sm:-left-4 md:-left-8 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white p-2 sm:p-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <div className="relative h-8 w-8 sm:h-11 sm:w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-manikstu-cream shadow-sm">
                       <Image
