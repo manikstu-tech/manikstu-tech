@@ -86,6 +86,16 @@ export interface GalleryImage {
   is_active: boolean;
 }
 
+// Media Library items (photos + videos uploaded from admin)
+export interface MediaItem {
+  id: number;
+  type: "photo" | "video";
+  title: string;
+  url: string;
+  mime_type: string;
+  date: string | null;
+}
+
 // Press Releases
 export interface PressRelease {
   id: number;

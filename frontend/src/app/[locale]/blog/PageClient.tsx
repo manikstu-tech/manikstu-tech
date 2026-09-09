@@ -11,18 +11,20 @@ import ArticleGrid from "@/components/blog/ArticleGrid";
 import {
   articles as fallbackArticles,
   galleryPhotos as fallbackGallery,
-  videos,
+  videos as fallbackVideos,
   categoryColorMap,
   type Category,
   type Article,
   type GalleryPhoto,
+  type VideoItem,
 } from "@/lib/blog-data";
-import { getBlogPosts, getPressReleases, getGallery } from "@/lib/api";
+import { getBlogPosts, getPressReleases, getGallery, getMedia } from "@/lib/api";
 
 export default function BlogPage() {
   const [filter, setFilter] = useState<"All" | Category>("All");
   const [allArticles, setAllArticles] = useState<Article[]>(fallbackArticles);
   const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>(fallbackGallery);
+  const [videos, setVideos] = useState<VideoItem[]>(fallbackVideos);
 
   useEffect(() => {
     // Fetch blog posts + press releases, normalize into unified Article shape
@@ -68,6 +70,37 @@ export default function BlogPage() {
           image: g.image,
         }));
         setGalleryPhotos(mapped);
+      }
+    }).catch(() => {});
+
+    // Photos uploaded from the admin Media Library → prepend to the gallery
+    getMedia("photo").then((res) => {
+      if (res.data?.length) {
+        const mediaPhotos: GalleryPhoto[] = res.data.map((m) => ({
+          id: `media-${m.id}`,
+          title: m.title || "",
+          location: "",
+          date: m.date || "",
+          image: m.url,
+        }));
+        setGalleryPhotos((prev) => [...mediaPhotos, ...prev.filter((p) => !p.id.startsWith("media-"))]);
+      }
+    }).catch(() => {});
+
+    // Videos uploaded from the admin Media Library → prepend to the videos list
+    getMedia("video").then((res) => {
+      if (res.data?.length) {
+        const mediaVideos: VideoItem[] = res.data.map((m) => ({
+          id: `media-${m.id}`,
+          title: m.title || "",
+          url: m.url,
+          thumbnail: "",
+          duration: "",
+          date: m.date || "",
+          description: "",
+          isFile: true,
+        }));
+        setVideos((prev) => [...mediaVideos, ...prev.filter((v) => !v.id.startsWith("media-"))]);
       }
     }).catch(() => {});
   }, []);

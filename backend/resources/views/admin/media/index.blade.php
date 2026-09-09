@@ -4,15 +4,37 @@
 
 <form method="POST" action="{{ route('admin.media.upload') }}" enctype="multipart/form-data" id="uploadForm">
     @csrf
+    <input type="hidden" name="type" id="typeInput" value="photo">
     <input type="file" name="file" id="fileInput" accept="image/*,.pdf" style="display:none;" onchange="this.form.submit()">
 </form>
+
+<!-- Photo / Video chooser -->
+<div class="chooser-overlay" id="chooserOverlay" onclick="if(event.target===this)closeChooser()">
+    <div class="chooser" role="dialog" aria-modal="true" aria-label="Choose media type">
+        <h3 class="chooser-title">What are you uploading?</h3>
+        <p class="chooser-sub">Choose the type of media to add to the website.</p>
+        <div class="chooser-options">
+            <button type="button" class="chooser-opt" onclick="pickType('photo')">
+                <span class="chooser-ico photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.35-4.35a2 2 0 0 0-2.83 0L4 21"/></svg></span>
+                <span class="chooser-name">Photo</span>
+                <span class="chooser-hint">JPG, PNG, GIF, WebP — Max 10MB</span>
+            </button>
+            <button type="button" class="chooser-opt" onclick="pickType('video')">
+                <span class="chooser-ico video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
+                <span class="chooser-name">Video</span>
+                <span class="chooser-hint">MP4, WebM, MOV — Max 50MB</span>
+            </button>
+        </div>
+        <button type="button" class="chooser-cancel" onclick="closeChooser()">Cancel</button>
+    </div>
+</div>
 
 <div class="page-header">
     <div class="page-heading">
         <h1 class="page-title">Media Library<svg class="title-sprig" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 26C10 18 16 14 26 12" stroke="#C4952A" stroke-width="1.6" stroke-linecap="round"/><path d="M13 20c-1.6-1-3.6-1-5.4-.2 1 1.7 2.8 2.6 4.7 2.2M17 16.6c-1.4-1.2-3.4-1.5-5.3-.9.8 1.8 2.5 2.9 4.4 2.7M21 13.8c-1.2-1.3-3.1-1.9-5.1-1.5.6 1.9 2.2 3.1 4.1 3.1M25 11.8c-1-1.4-2.9-2.2-4.9-2 .4 1.9 1.9 3.3 3.8 3.4" stroke="#4A8C3F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></h1>
         <p class="page-subtitle">Upload and manage images</p>
     </div>
-    <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+    <button type="button" class="btn btn-primary" onclick="openChooser()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
         Upload Media
     </button>
@@ -21,12 +43,12 @@
 @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
 @if($errors->any())<div class="alert alert-error">{{ $errors->first() }}</div>@endif
 
-<div class="upload-zone" id="dropzone" onclick="document.getElementById('fileInput').click()">
+<div class="upload-zone" id="dropzone" onclick="openChooser()">
     <div class="upload-cloud">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4-4 4 4"/></svg>
     </div>
     <p class="upload-text">Drag &amp; drop files here or <span class="upload-browse">browse</span></p>
-    <small class="upload-hint">JPG, PNG, GIF, WebP, SVG, PDF — Max 10MB</small>
+    <small class="upload-hint">Photos: JPG, PNG, GIF, WebP (10MB) &nbsp;·&nbsp; Videos: MP4, WebM, MOV (50MB)</small>
 </div>
 
 <form method="GET" class="toolbar" id="toolbar">
@@ -63,11 +85,21 @@
             $sizeLabel = $bytes >= 1048576 ? round($bytes / 1048576, 2) . ' MB' : round($bytes / 1024) . ' KB';
             $ext = strtoupper(pathinfo($m->file_name, PATHINFO_EXTENSION)) ?: 'FILE';
             $isImage = str_starts_with($m->mime_type, 'image/');
+            $isVideo = str_starts_with($m->mime_type, 'video/');
         @endphp
         <div class="media-item">
             <div class="media-thumb-wrap">
-                @if($isImage)
-                    <img src="{{ asset('storage/' . $m->path) }}" alt="{{ $m->name }}" class="media-thumb" loading="lazy">
+                @if($isVideo)
+                    <div class="media-thumb media-video">
+                        <video src="{{ asset('storage/' . $m->path) }}#t=0.5" preload="metadata" muted class="media-video-el"></video>
+                        <span class="media-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                        <span class="type-tag video">Video</span>
+                    </div>
+                @elseif($isImage)
+                    <div class="media-thumb-img">
+                        <img src="{{ asset('storage/' . $m->path) }}" alt="{{ $m->name }}" class="media-thumb" loading="lazy">
+                        <span class="type-tag photo">Photo</span>
+                    </div>
                 @else
                     <div class="media-thumb media-doc">{{ $ext }}</div>
                 @endif
@@ -212,9 +244,38 @@
 .pg-btn.disabled{opacity:0.4;pointer-events:none}
 .pg-ellipsis{min-width:24px;text-align:center;color:#B0B0B0;font-weight:600}
 
+/* Type tags + video thumbs */
+.media-thumb-img,.media-video{position:relative}
+.media-thumb-img{padding:0;background:transparent}
+.type-tag{position:absolute;top:8px;left:8px;font-size:9px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;padding:3px 7px;border-radius:6px;color:#fff}
+.type-tag.photo{background:rgba(74,140,63,0.92)}
+.type-tag.video{background:rgba(62,111,208,0.92)}
+.media-video{display:flex;align-items:center;justify-content:center;background:#111;overflow:hidden}
+.media-video-el{width:100%;height:118px;object-fit:cover;display:block}
+.media-play{position:absolute;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;color:#3E6FD0;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.media-play svg{width:18px;height:18px;margin-left:2px}
+
+/* Photo / Video chooser modal */
+.chooser-overlay{display:none;position:fixed;inset:0;background:rgba(26,26,26,0.45);z-index:200;align-items:center;justify-content:center;padding:20px}
+.chooser-overlay.open{display:flex}
+.chooser{background:#fff;border-radius:18px;padding:26px 24px 20px;max-width:460px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,0.25);text-align:center}
+.chooser-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1A1A1A}
+.chooser-sub{font-size:13px;color:#8A8A8A;margin-top:4px}
+.chooser-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 8px}
+.chooser-opt{display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 14px;border:1.5px solid #E8E2D6;border-radius:14px;background:#FBFAF7;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif}
+.chooser-opt:hover{border-color:#4A8C3F;background:rgba(74,140,63,0.05);transform:translateY(-2px)}
+.chooser-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.chooser-ico svg{width:26px;height:26px}
+.chooser-ico.photo{background:rgba(74,140,63,0.12);color:#3A7030}
+.chooser-ico.video{background:rgba(62,111,208,0.12);color:#3E6FD0}
+.chooser-name{font-size:15px;font-weight:700;color:#1A1A1A}
+.chooser-hint{font-size:11px;color:#9A9A9A;line-height:1.4}
+.chooser-cancel{margin-top:10px;background:none;border:none;color:#8A8A8A;font-size:13px;font-weight:600;cursor:pointer;padding:8px 14px;font-family:'Inter',sans-serif}
+.chooser-cancel:hover{color:#1A1A1A}
+
 @media (max-width:1100px){.media-grid{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:860px){.media-grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:600px){.media-grid{grid-template-columns:repeat(2,1fr)}.toolbar-left,.search-input{flex:1}.search-input{width:100%}}
+@media (max-width:600px){.media-grid{grid-template-columns:repeat(2,1fr)}.toolbar-left,.search-input{flex:1}.search-input{width:100%}.chooser-options{grid-template-columns:1fr}}
 </style>
 
 <script>
@@ -242,13 +303,32 @@ document.addEventListener('click', function(e){
     }
 });
 
+// Photo / Video chooser
+function openChooser(){ document.getElementById('chooserOverlay').classList.add('open'); }
+function closeChooser(){ document.getElementById('chooserOverlay').classList.remove('open'); }
+function pickType(type){
+    document.getElementById('typeInput').value = type;
+    var input = document.getElementById('fileInput');
+    input.setAttribute('accept', type === 'video' ? 'video/mp4,video/webm,video/ogg,video/quicktime,.mp4,.webm,.mov,.m4v' : 'image/*,.pdf');
+    closeChooser();
+    input.click();
+}
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeChooser(); });
+
 (function(){
     var dz = document.getElementById('dropzone');
     var input = document.getElementById('fileInput');
+    var typeInput = document.getElementById('typeInput');
     ['dragenter','dragover'].forEach(function(ev){ dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.add('dragover'); }); });
     ['dragleave','drop'].forEach(function(ev){ dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.remove('dragover'); }); });
     dz.addEventListener('drop', function(e){
-        if(e.dataTransfer.files.length){ input.files = e.dataTransfer.files; input.form.submit(); }
+        if(e.dataTransfer.files.length){
+            // Infer type from the dropped file so the right rules apply.
+            var f = e.dataTransfer.files[0];
+            typeInput.value = (f.type && f.type.indexOf('video/') === 0) ? 'video' : 'photo';
+            input.files = e.dataTransfer.files;
+            input.form.submit();
+        }
     });
 })();
 </script>

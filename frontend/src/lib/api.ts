@@ -1,5 +1,5 @@
 // src/lib/api.ts
-import type { ApiResponse, NavigationMenuItem, FooterLink, Page, BlogPost, GalleryImage, PressRelease } from '@/types';
+import type { ApiResponse, NavigationMenuItem, FooterLink, Page, BlogPost, GalleryImage, PressRelease, MediaItem } from '@/types';
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
@@ -17,6 +17,8 @@ export const getFooter = () => apiFetch<ApiResponse<Record<string, FooterLink[]>
 export const getPage = (slug: string) => apiFetch<ApiResponse<Page>>(`/pages/${slug}`);
 export const getBlogPosts = (page = 1) => apiFetch<ApiResponse<BlogPost[]>>(`/blog?page=${page}`);
 export const getGallery = (page = 1) => apiFetch<ApiResponse<GalleryImage[]>>(`/gallery?page=${page}`);
+export const getMedia = (type?: 'photo' | 'video') =>
+  apiFetch<ApiResponse<MediaItem[]>>(`/media${type ? `?type=${type}` : ''}`);
 export const getPressReleases = (page = 1) => apiFetch<ApiResponse<PressRelease[]>>(`/press?page=${page}`);
 
 // Job Openings

@@ -88,46 +88,78 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {videos.map((video) => (
-            <Link
-              key={video.id}
-              href={video.url}
-              className="group relative overflow-hidden rounded-xl border border-light-grey bg-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
-            >
-              <div className="relative aspect-video w-full bg-charcoal/5">
-                <Image
-                  src={video.thumbnail}
-                  alt={video.title}
-                  fill
-                  sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                  className="object-contain p-6"
-                />
-                {/* Dark overlay + play button */}
-                <div className="absolute inset-0 flex items-center justify-center bg-charcoal/20 transition-colors group-hover:bg-charcoal/35">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-manikstu-green shadow-md transition-transform group-hover:scale-110">
-                    <PlayCircle className="h-8 w-8" />
+          {videos.map((video) =>
+            video.isFile ? (
+              // Uploaded video file — inline HTML5 player
+              <figure
+                key={video.id}
+                className="group relative overflow-hidden rounded-xl border border-light-grey bg-white shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="relative aspect-video w-full bg-charcoal">
+                  <video
+                    src={video.url}
+                    controls
+                    preload="metadata"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                {(video.title || video.date) && (
+                  <figcaption className="px-4 py-4">
+                    {video.title && (
+                      <h3 className="text-sm font-semibold text-charcoal line-clamp-2">
+                        {video.title}
+                      </h3>
+                    )}
+                    {video.date && (
+                      <div className="mt-3 flex items-center gap-1 text-xs text-grey">
+                        <Calendar className="h-3 w-3 text-manikstu-green" />
+                        {video.date}
+                      </div>
+                    )}
+                  </figcaption>
+                )}
+              </figure>
+            ) : (
+              <Link
+                key={video.id}
+                href={video.url}
+                className="group relative overflow-hidden rounded-xl border border-light-grey bg-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+              >
+                <div className="relative aspect-video w-full bg-charcoal/5">
+                  <Image
+                    src={video.thumbnail}
+                    alt={video.title}
+                    fill
+                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                    className="object-contain p-6"
+                  />
+                  {/* Dark overlay + play button */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-charcoal/20 transition-colors group-hover:bg-charcoal/35">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-manikstu-green shadow-md transition-transform group-hover:scale-110">
+                      <PlayCircle className="h-8 w-8" />
+                    </span>
+                  </div>
+                  {/* Duration chip */}
+                  <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-md bg-charcoal/80 px-2 py-1 text-[10px] font-semibold text-white">
+                    <Clock className="h-3 w-3" />
+                    {video.duration}
                   </span>
                 </div>
-                {/* Duration chip */}
-                <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-md bg-charcoal/80 px-2 py-1 text-[10px] font-semibold text-white">
-                  <Clock className="h-3 w-3" />
-                  {video.duration}
-                </span>
-              </div>
-              <div className="px-4 py-4">
-                <h3 className="text-sm font-semibold text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-2">
-                  {video.title}
-                </h3>
-                <p className="mt-2 text-xs text-grey line-clamp-2">
-                  {video.description}
-                </p>
-                <div className="mt-3 flex items-center gap-1 text-xs text-grey">
-                  <Calendar className="h-3 w-3 text-manikstu-green" />
-                  {video.date}
+                <div className="px-4 py-4">
+                  <h3 className="text-sm font-semibold text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-2">
+                    {video.title}
+                  </h3>
+                  <p className="mt-2 text-xs text-grey line-clamp-2">
+                    {video.description}
+                  </p>
+                  <div className="mt-3 flex items-center gap-1 text-xs text-grey">
+                    <Calendar className="h-3 w-3 text-manikstu-green" />
+                    {video.date}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            )
+          )}
         </div>
       </div>
     </section>

@@ -25,9 +25,23 @@ class MediaController extends Controller
 
     public function upload(Request $request)
     {
+        // Photo or video decides which rules apply and where the item shows on the website.
+        $type = $request->input('type') === 'video' ? 'video' : 'photo';
+
         $request->validate([
-            // ponytail: svg dropped — it's XML and executes scripts when rendered (stored XSS)
-            'file' => 'required|file|max:10240|mimes:jpg,jpeg,png,gif,webp,pdf',
+            'type' => 'nullable|in:photo,video',
+            'file' => $type === 'video'
+                // Videos: common web formats, larger cap (50 MB).
+                ? 'required|file|max:51200|mimes:mp4,webm,ogg,mov,m4v'
+                // ponytail: svg dropped — it's XML and executes scripts when rendered (stored XSS)
+                : 'required|file|max:10240|mimes:jpg,jpeg,png,gif,webp,pdf',
+        ], [
+            'file.mimes' => $type === 'video'
+                ? 'Please upload a video file (MP4, WebM, OGG, MOV).'
+                : 'Please upload an image (JPG, PNG, GIF, WebP) or PDF.',
+            'file.max' => $type === 'video'
+                ? 'The video may not be larger than 50 MB.'
+                : 'The file may not be larger than 10 MB.',
         ]);
 
         $file = $request->file('file');
@@ -36,6 +50,8 @@ class MediaController extends Controller
 
         $media = Media::create([
             'name' => pathinfo($originalName, PATHINFO_FILENAME),
+            'type' => $type,
+            'is_public' => true,
             'file_name' => $originalName,
             'mime_type' => $file->getMimeType(),
             'size' => $file->getSize(),
@@ -47,7 +63,7 @@ class MediaController extends Controller
             return response()->json(['id' => $media->id, 'url' => asset('storage/' . $path)]);
         }
 
-        return redirect()->route('admin.media.index')->with('success', 'File uploaded.');
+        return redirect()->route('admin.media.index')->with('success', ucfirst($type) . ' uploaded.');
     }
 
     public function destroy(Media $media)

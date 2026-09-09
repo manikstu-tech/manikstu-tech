@@ -15,6 +15,7 @@ use App\Models\TrainingProgram;
 use App\Models\AwarenessInitiative;
 use App\Models\ImpactStat;
 use App\Models\GalleryImage;
+use App\Models\Media;
 use App\Models\Partner;
 use App\Models\NavigationMenu;
 use App\Models\FooterLink;
@@ -345,6 +346,38 @@ class ApiController extends Controller
     public function getPartners(): JsonResponse
     {
         return $this->json(['data' => Partner::active()->orderBy('order')->get()]);
+    }
+
+    /**
+     * Public media uploaded from the admin Media Library.
+     * ?type=photo|video filters; images (not PDFs) and videos are returned.
+     */
+    public function getMedia(Request $request): JsonResponse
+    {
+        $type = $request->query('type');
+
+        $query = Media::query()->public()->latest();
+
+        if (in_array($type, ['photo', 'video'], true)) {
+            $query->ofType($type);
+        }
+
+        // Only serve real media (images + videos); skip PDFs and other docs.
+        $query->where(function ($q) {
+            $q->where('mime_type', 'like', 'image/%')
+              ->orWhere('mime_type', 'like', 'video/%');
+        });
+
+        $items = $query->get()->map(fn (Media $m) => [
+            'id' => $m->id,
+            'type' => $m->type,
+            'title' => $m->alt_text ?: $m->name,
+            'url' => asset('storage/' . $m->path),
+            'mime_type' => $m->mime_type,
+            'date' => $m->created_at?->toDateString(),
+        ]);
+
+        return $this->json(['data' => $items]);
     }
 
     public function storeEnquiry(Request $request): JsonResponse

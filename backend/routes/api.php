@@ -25,6 +25,7 @@ Route::middleware('throttle:60,1')->group(function () {
     Route::get('/awareness', [ApiController::class, 'getAwareness']);
     Route::get('/stats', [ApiController::class, 'getStats']);
     Route::get('/gallery', [ApiController::class, 'getGallery']);
+    Route::get('/media', [ApiController::class, 'getMedia']);
     Route::get('/partners', [ApiController::class, 'getPartners']);
 });
 

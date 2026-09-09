@@ -20,6 +20,8 @@ export interface VideoItem {
   duration: string;
   date: string;
   description: string;
+  // True when `url` is a direct video file (admin upload) rather than a link/embed.
+  isFile?: boolean;
 }
 
 export interface GalleryPhoto {
