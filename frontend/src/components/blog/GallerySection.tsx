@@ -67,6 +67,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
                   src={photo.image}
                   alt={photo.title}
                   fill
+                  loading="eager"
                   sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
                   className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                 />
