@@ -14,6 +14,25 @@ export type Testimonial = {
 
 const AUTOPLAY_MS = 3000;
 
+// Common female name tokens (Odia/Indian) used to pick a gender-appropriate avatar.
+const FEMALE_TOKENS = [
+  "devi", "lakshmi", "laxmi", "anita", "sita", "priya", "sunita", "geeta", "gita",
+  "rina", "kunti", "sabita", "menaka", "champa", "jashoda", "bharatee", "kamana",
+  "rohini", "monalisa", "priyadarshini", "vijaya", "banita", "ganga", "sarita",
+  "radha", "manju", "rekha", "sasmita", "puja", "pooja", "mamata", "kumari", "bala",
+];
+
+// Pick a gender-appropriate illustrated avatar, deterministic per name.
+function avatarFor(name: string): string {
+  // Match whole name-words (not substrings) so e.g. "Pradhan" isn't read as "Radha".
+  const words = name.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/).filter(Boolean);
+  const isFemale = words.some((w) => FEMALE_TOKENS.includes(w));
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) & 0xffff;
+  const variant = (h % 2) + 1;
+  return `/team/avatars/${isFemale ? "female" : "male"}-${variant}.svg`;
+}
+
 function useVisibleCount() {
   const [n, setN] = useState(1);
   useEffect(() => {
@@ -104,11 +123,13 @@ export default function TestimonialsSlider({
                   &ldquo;{tItem.quote}&rdquo;
                 </p>
                 <div className="mt-6 flex items-center gap-3">
-                  <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-full ${tItem.color} text-white text-sm font-semibold`}
-                  >
-                    {tItem.initials}
-                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={avatarFor(tItem.name)}
+                    alt={tItem.name}
+                    loading="eager"
+                    className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-black/5"
+                  />
                   <div>
                     <p className="text-sm font-semibold text-charcoal">
                       — {tItem.name}

@@ -1,0 +1,27 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Farmer avatar">
+  <circle cx="50" cy="50" r="50" fill="#EAF3E6"/>
+  <!-- shoulders / kurta -->
+  <path d="M14 100c0-19 16-30 36-30s36 11 36 30z" fill="#4A8C3F"/>
+  <path d="M50 70c-6 0-11 3-14 7l14 10 14-10c-3-4-8-7-14-7z" fill="#3A7030"/>
+  <!-- neck -->
+  <rect x="44" y="60" width="12" height="14" rx="4" fill="#C98A50"/>
+  <!-- head -->
+  <ellipse cx="50" cy="46" rx="19" ry="21" fill="#E0A96B"/>
+  <!-- ears -->
+  <circle cx="31" cy="47" r="3.5" fill="#E0A96B"/>
+  <circle cx="69" cy="47" r="3.5" fill="#E0A96B"/>
+  <!-- hair -->
+  <path d="M31 44c-1-16 9-24 19-24s20 8 19 24c-2-8-6-11-6-11-4 3-22 3-26 0 0 0-4 3-6 11z" fill="#2A2018"/>
+  <!-- eyebrows -->
+  <rect x="39" y="42" width="8" height="2" rx="1" fill="#2A2018"/>
+  <rect x="53" y="42" width="8" height="2" rx="1" fill="#2A2018"/>
+  <!-- eyes -->
+  <circle cx="43" cy="47" r="2.1" fill="#2A2018"/>
+  <circle cx="57" cy="47" r="2.1" fill="#2A2018"/>
+  <!-- nose -->
+  <path d="M50 49v5" stroke="#B9793F" stroke-width="2" stroke-linecap="round"/>
+  <!-- mustache -->
+  <path d="M42 57c3 3 13 3 16 0" stroke="#2A2018" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+  <!-- smile -->
+  <path d="M44 61c3 3 9 3 12 0" stroke="#8A5A33" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+</svg>
