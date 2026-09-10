@@ -22,15 +22,12 @@ const FEMALE_TOKENS = [
   "radha", "manju", "rekha", "sasmita", "puja", "pooja", "mamata", "kumari", "bala",
 ];
 
-// Pick a gender-appropriate illustrated avatar, deterministic per name.
+// Pick a gender-appropriate farmer photo from the reviewer's name.
 function avatarFor(name: string): string {
   // Match whole name-words (not substrings) so e.g. "Pradhan" isn't read as "Radha".
   const words = name.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/).filter(Boolean);
   const isFemale = words.some((w) => FEMALE_TOKENS.includes(w));
-  let h = 0;
-  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) & 0xffff;
-  const variant = (h % 2) + 1;
-  return `/team/avatars/${isFemale ? "female" : "male"}-${variant}.svg`;
+  return `/team/avatars/farmer-${isFemale ? "female" : "male"}.jpg`;
 }
 
 function useVisibleCount() {
