@@ -526,7 +526,8 @@ export default function AboutPage() {
               name: "Dr. C Vijaya",
               role: "Project & Compliance Advisor",
               tag: "Compliance",
-              photo: "",
+              photo: "/team/c-vijaya.png",
+              objectPosition: "center 15%",
               bio: "A Veteran of the development sector with PhD in Statistics, Retd. Deputy Director of MICM & Director of Corporate Society.",
             },
           ];
