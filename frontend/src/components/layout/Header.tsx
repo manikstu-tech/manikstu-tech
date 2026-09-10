@@ -15,6 +15,7 @@ const fallbackLinks: NavigationMenuItem[] = [
   { id: 5, label: "Media", url: "/blog", parent_id: null, order: 5, is_active: true, target: "_self" },
   { id: 6, label: "Collaborate", url: "/collaborate", parent_id: null, order: 6, is_active: true, target: "_self" },
   { id: 7, label: "Training & Awareness", url: "/training", parent_id: null, order: 7, is_active: true, target: "_self" },
+  { id: 8, label: "Partners", url: "/partners", parent_id: null, order: 8, is_active: true, target: "_self" },
 ];
 
 export default function Header() {

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Partner extends Model
 {
-    protected $fillable = ['name', 'logo', 'website_url', 'category', 'order', 'is_active'];
+    protected $fillable = ['name', 'logo', 'description', 'website_url', 'category', 'order', 'is_active'];
 
     protected function casts(): array
     {

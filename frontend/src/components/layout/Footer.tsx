@@ -15,6 +15,7 @@ const fallbackQuickLinks: FooterLink[] = [
   { id: 4, group: "quick", label: "Media", url: "/blog", order: 4, is_active: true },
   { id: 5, group: "quick", label: "Collaborate", url: "/collaborate", order: 5, is_active: true },
   { id: 6, group: "quick", label: "Training & Awareness", url: "/training", order: 6, is_active: true },
+  { id: 7, group: "quick", label: "Partners", url: "/partners", order: 7, is_active: true },
 ];
 
 const fallbackSupportLinks: FooterLink[] = [

@@ -36,7 +36,8 @@
     "contactUs": "お問い合わせ",
     "callUs": "お電話でのお問い合わせ",
     "closeMenu": "メニューを閉じる",
-    "openMenu": "メニューを開く"
+    "openMenu": "メニューを開く",
+    "partners": "Partners"
   },
   "Footer": {
     "quickLinks": "クイックリンク",
@@ -762,5 +763,17 @@
     "delivery": "Delivery",
     "free": "Free",
     "total": "Total"
+  },
+  "Partners": {
+    "pill": "Our Partners",
+    "title": "Our Partners",
+    "description": "Meet the organizations partnering with us to transform goat farming and rural livelihoods across India.",
+    "partnerCount": "Partner Organizations",
+    "loading": "Loading partners...",
+    "noPartners": "No partners found in this category.",
+    "visitWebsite": "Visit website",
+    "ctaTitle": "Become a Partner",
+    "ctaDesc": "Join our growing network of partners making a real impact in rural India.",
+    "becomePartner": "Partner With Us"
   }
 }

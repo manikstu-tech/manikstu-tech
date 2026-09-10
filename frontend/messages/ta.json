@@ -36,7 +36,8 @@
     "contactUs": "எங்களைத் தொடர்பு கொள்ளுங்கள்",
     "callUs": "எங்களை அழையுங்கள்",
     "closeMenu": "மெனுவை மூடு",
-    "openMenu": "மெனுவைத் திற"
+    "openMenu": "மெனுவைத் திற",
+    "partners": "Partners"
   },
   "Footer": {
     "quickLinks": "விரைவு இணைப்புகள்",
@@ -762,5 +763,17 @@
     "delivery": "Delivery",
     "free": "Free",
     "total": "Total"
+  },
+  "Partners": {
+    "pill": "Our Partners",
+    "title": "Our Partners",
+    "description": "Meet the organizations partnering with us to transform goat farming and rural livelihoods across India.",
+    "partnerCount": "Partner Organizations",
+    "loading": "Loading partners...",
+    "noPartners": "No partners found in this category.",
+    "visitWebsite": "Visit website",
+    "ctaTitle": "Become a Partner",
+    "ctaDesc": "Join our growing network of partners making a real impact in rural India.",
+    "becomePartner": "Partner With Us"
   }
 }

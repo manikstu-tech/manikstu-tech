@@ -1,5 +1,5 @@
 // src/lib/api.ts
-import type { ApiResponse, NavigationMenuItem, FooterLink, Page, BlogPost, GalleryImage, PressRelease, MediaItem } from '@/types';
+import type { ApiResponse, NavigationMenuItem, FooterLink, Page, BlogPost, GalleryImage, PressRelease, MediaItem, Partner } from '@/types';
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
@@ -23,6 +23,9 @@ export const getPressReleases = (page = 1) => apiFetch<ApiResponse<PressRelease[
 
 // Job Openings
 export const getJobOpenings = () => apiFetch<ApiResponse<any[]>>('/careers');
+
+// Partners
+export const getPartners = () => apiFetch<ApiResponse<Partner[]>>('/partners');
 
 // Products
 export const getProducts = async (page = 1, limit = 10) => {

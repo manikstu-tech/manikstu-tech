@@ -111,5 +111,17 @@ export interface PressRelease {
   category: BlogCategory | null;
 }
 
+// Partners
+export interface Partner {
+  id: number;
+  name: string;
+  logo: string | null;
+  description: string | null;
+  website_url: string | null;
+  category: string | null;
+  order: number;
+  is_active: boolean;
+}
+
 // Re-export Product from data module for convenience
 export type { Product } from "@/app/[locale]/products/data";
