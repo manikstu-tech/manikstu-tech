@@ -352,25 +352,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     bottomLabel={t("watchOurStory").split("\n")[1]}
                   />
                 </div>
-
-                {/* Floating card — hidden on mobile, floating on desktop */}
-                <div className="hidden sm:block absolute sm:-bottom-8 sm:-left-4 md:-left-8 rounded-lg sm:rounded-xl bg-white/95 sm:bg-white p-2 sm:p-3 shadow-md sm:shadow-lg border border-manikstu-gold/20 sm:border-transparent z-10">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="relative h-8 w-8 sm:h-11 sm:w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-manikstu-cream shadow-sm">
-                      <Image
-                        src="/pm-modi-mann-ki-baat.png"
-                        alt="PM Narendra Modi — Mann Ki Baat"
-                        fill
-                        sizes="44px"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                    <p className="text-[10px] sm:text-xs leading-tight text-charcoal max-w-[145px] sm:max-w-[180px] font-medium">
-                      {t("featuredIn")}
-                    </p>
-                  </div>
-                </div>
-
               </div>
         </PageHero>
 
