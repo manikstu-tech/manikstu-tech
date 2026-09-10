@@ -324,13 +324,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     {t("trustedBy")}
                   </div>
                   <div className="flex -space-x-2">
-                    {["F", "A", "R", "S"].map((letter, i) => (
-                      <div
-                        key={i}
-                        className="h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 border-white bg-manikstu-green/20 flex items-center justify-center text-[10px] sm:text-xs font-bold text-manikstu-green"
-                      >
-                        {letter}
-                      </div>
+                    {[1, 2, 3, 4].map((n) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={n}
+                        src={`/team/avatars/trust-${n}.jpg`}
+                        alt="Manikstu farmer"
+                        loading="eager"
+                        className="h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 border-white object-cover shadow-sm"
+                      />
                     ))}
                   </div>
                 </div>
