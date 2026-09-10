@@ -80,7 +80,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
               type="button"
               onClick={() => setLightbox(photo)}
               style={{ animationDelay: `${(i % INITIAL_COUNT) * 60}ms` }}
-              className="animate-gallery-fade group relative block w-full overflow-hidden rounded-xl border border-light-grey bg-white text-left shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+              className="animate-gallery-fade group relative block w-full overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-white text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-manikstu-green/40 hover:shadow-[0_14px_32px_rgba(74,140,63,0.16)] focus:outline-none focus:ring-2 focus:ring-manikstu-green"
             >
               {/* Thumbnail (matches the video card size/shape) */}
               <div className="relative aspect-video w-full bg-manikstu-cream">
@@ -103,12 +103,16 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
                 </span>
               </div>
 
-              {/* Caption below (matches the video card) */}
-              <div className="px-4 py-4">
-                <h3 className="line-clamp-2 text-sm font-semibold text-charcoal group-hover:text-manikstu-green transition-colors">
+              {/* Caption below — gentle cream tint + gold accent */}
+              <div className="relative bg-gradient-to-b from-white to-[#FBF6EC] px-4 py-4">
+                {/* thin gold divider between image and caption */}
+                <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-manikstu-gold/40 to-transparent" />
+                <h3 className="line-clamp-2 text-sm font-semibold text-charcoal transition-colors group-hover:text-manikstu-green">
                   {photo.title}
                 </h3>
-                <div className="mt-3 flex items-center gap-3 text-xs text-grey">
+                {/* gold underline that grows on hover */}
+                <span className="mt-2 block h-0.5 w-8 rounded-full bg-manikstu-gold transition-all duration-300 group-hover:w-14" />
+                <div className="mt-2.5 flex items-center gap-3 text-xs text-grey">
                   {photo.location && (
                     <span className="inline-flex items-center gap-1">
                       <MapPin className="h-3 w-3 text-manikstu-green" />
