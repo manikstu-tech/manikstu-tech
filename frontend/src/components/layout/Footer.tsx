@@ -146,6 +146,12 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <Link
+              href="/careers"
+              className="mt-4 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green px-4 py-2 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
+            >
+              {t("careers")} <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
 
           {/* Contact Us */}
@@ -178,20 +184,6 @@ export default function Footer() {
                 <span><a href={`mailto:${settings.email_info}`} className="hover:text-manikstu-green transition-colors">{settings.email_info}</a><br /><span className="text-xs text-grey/70">{t("forOtherEnquiry")}</span></span>
               </li>
             </ul>
-            <div className="mt-4 flex flex-col gap-2">
-              <Link
-                href="/careers"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green px-4 py-2 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
-              >
-                {t("careers")} <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/get-in-touch"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green bg-white px-4 py-2 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
-              >
-                {t("getInTouch")} <Phone className="h-4 w-4" />
-              </Link>
-            </div>
           </div>
 
           {/* Stay Updated */}
@@ -213,6 +205,12 @@ export default function Footer() {
             <button className="mt-3 w-full rounded-lg bg-manikstu-green px-4 py-2.5 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors">
               {tCommon("subscribe")}
             </button>
+            <Link
+              href="/get-in-touch"
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green bg-white px-4 py-2.5 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
+            >
+              {t("getInTouch")} <Phone className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </div>
