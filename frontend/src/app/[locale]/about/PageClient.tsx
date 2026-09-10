@@ -527,7 +527,7 @@ export default function AboutPage() {
               role: "Project & Compliance Advisor",
               tag: "Compliance",
               photo: "/team/c-vijaya.png",
-              objectPosition: "center 15%",
+              objectPosition: "center 30%",
               bio: "A Veteran of the development sector with PhD in Statistics, Retd. Deputy Director of MICM & Director of Corporate Society.",
             },
           ];
@@ -583,7 +583,7 @@ export default function AboutPage() {
                             loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             style={{ objectPosition: (l as { objectPosition?: string }).objectPosition }}
-                            className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                            className={`${(l as { fit?: string }).fit === "contain" ? "object-contain" : "object-cover object-top"} transition-transform duration-300 group-hover:scale-105`}
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-manikstu-cream/40 to-manikstu-cream">
@@ -657,7 +657,7 @@ export default function AboutPage() {
                             loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             style={{ objectPosition: (l as { objectPosition?: string }).objectPosition }}
-                            className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                            className={`${(l as { fit?: string }).fit === "contain" ? "object-contain" : "object-cover object-top"} transition-transform duration-300 group-hover:scale-105`}
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-manikstu-cream/40 to-manikstu-cream">
@@ -824,7 +824,7 @@ export default function AboutPage() {
                             loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             style={{ objectPosition: (l as { objectPosition?: string }).objectPosition }}
-                            className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                            className={`${(l as { fit?: string }).fit === "contain" ? "object-contain" : "object-cover object-top"} transition-transform duration-300 group-hover:scale-105`}
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-manikstu-cream/40 to-manikstu-cream">
