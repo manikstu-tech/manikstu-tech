@@ -1,11 +1,31 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { PlayCircle, Clock, Calendar } from "lucide-react";
+import { PlayCircle, Clock, Calendar, X } from "lucide-react";
 import type { VideoItem } from "@/lib/blog-data";
 
 export default function VideosSection({ videos }: { videos: VideoItem[] }) {
   const t = useTranslations("Blog");
+  // Currently playing YouTube video (id) shown in the popup, or null when closed.
+  const [activeVideo, setActiveVideo] = useState<VideoItem | null>(null);
+
+  // Close on Escape and lock body scroll while the popup is open.
+  useEffect(() => {
+    if (!activeVideo) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveVideo(null);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [activeVideo]);
 
   return (
     <section
@@ -119,6 +139,41 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                   </figcaption>
                 )}
               </figure>
+            ) : video.youtubeId ? (
+              // YouTube video — opens in a popup player on click
+              <button
+                key={video.id}
+                type="button"
+                onClick={() => setActiveVideo(video)}
+                className="group relative overflow-hidden rounded-xl border border-light-grey bg-white text-left shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+              >
+                <div className="relative aspect-video w-full bg-charcoal">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    loading="eager"
+                    className="h-full w-full object-cover"
+                  />
+                  {/* Dark overlay + YouTube-style play button */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-charcoal/25 transition-colors group-hover:bg-charcoal/40">
+                    <span className="flex h-14 w-20 items-center justify-center rounded-xl bg-[#FF0000] text-white shadow-lg transition-transform group-hover:scale-110">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7"><path d="M8 5v14l11-7z" /></svg>
+                    </span>
+                  </div>
+                </div>
+                <div className="px-4 py-4">
+                  <h3 className="text-sm font-semibold text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-2">
+                    {video.title}
+                  </h3>
+                  {video.date && (
+                    <div className="mt-3 flex items-center gap-1 text-xs text-grey">
+                      <Calendar className="h-3 w-3 text-manikstu-green" />
+                      {video.date}
+                    </div>
+                  )}
+                </div>
+              </button>
             ) : (
               <Link
                 key={video.id}
@@ -162,6 +217,45 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
           )}
         </div>
       </div>
+
+      {/* Popup player */}
+      {activeVideo?.youtubeId && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeVideo.title}
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            className="relative w-full max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setActiveVideo(null)}
+              aria-label="Close video"
+              className="absolute -top-11 right-0 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-2xl">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${activeVideo.youtubeId}?autoplay=1&rel=0`}
+                title={activeVideo.title}
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            {activeVideo.title && (
+              <p className="mt-3 text-center text-sm font-medium text-white/90 line-clamp-2">
+                {activeVideo.title}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

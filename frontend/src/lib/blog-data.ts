@@ -22,6 +22,8 @@ export interface VideoItem {
   description: string;
   // True when `url` is a direct video file (admin upload) rather than a link/embed.
   isFile?: boolean;
+  // Set when this is a YouTube video — opens in a popup player instead of navigating.
+  youtubeId?: string;
 }
 
 export interface GalleryPhoto {

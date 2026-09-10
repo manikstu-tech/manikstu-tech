@@ -19,12 +19,25 @@ import {
   type VideoItem,
 } from "@/lib/blog-data";
 import { getBlogPosts, getPressReleases, getGallery, getMedia } from "@/lib/api";
+import { youtubeVideos } from "@/lib/youtube-videos";
+
+// YouTube channel videos, mapped into the shared VideoItem shape (open in a popup).
+const channelVideos: VideoItem[] = youtubeVideos.map((v) => ({
+  id: `yt-${v.id}`,
+  title: v.title,
+  url: `https://www.youtube.com/watch?v=${v.id}`,
+  thumbnail: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`,
+  duration: "",
+  date: v.date || "",
+  description: "",
+  youtubeId: v.id,
+}));
 
 export default function BlogPage() {
   const [filter, setFilter] = useState<"All" | Category>("All");
   const [allArticles, setAllArticles] = useState<Article[]>(fallbackArticles);
   const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>(fallbackGallery);
-  const [videos, setVideos] = useState<VideoItem[]>(fallbackVideos);
+  const [videos, setVideos] = useState<VideoItem[]>(channelVideos.length ? channelVideos : fallbackVideos);
 
   useEffect(() => {
     // Fetch blog posts + press releases, normalize into unified Article shape
