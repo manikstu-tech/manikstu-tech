@@ -512,7 +512,8 @@ export default function AboutPage() {
               name: "Dr. Deepak Ahiwale",
               role: "Technical & Medical Advisor",
               tag: "Technical",
-              photo: "",
+              photo: "/team/deepak-ahiwale.png",
+              objectPosition: "center 30%",
               bio: "A Veteran Doctor with specialization into Animal Science having 25 years of experience with NARI.",
             },
             {
