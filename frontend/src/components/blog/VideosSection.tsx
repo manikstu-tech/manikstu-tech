@@ -4,13 +4,19 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { PlayCircle, Clock, Calendar, X } from "lucide-react";
+import { PlayCircle, Clock, Calendar, X, ChevronDown, ChevronUp } from "lucide-react";
 import type { VideoItem } from "@/lib/blog-data";
+
+const INITIAL_COUNT = 4;
 
 export default function VideosSection({ videos }: { videos: VideoItem[] }) {
   const t = useTranslations("Blog");
   // Currently playing YouTube video (id) shown in the popup, or null when closed.
   const [activeVideo, setActiveVideo] = useState<VideoItem | null>(null);
+  // Show only the first row until "View all videos" is clicked.
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = videos.length > INITIAL_COUNT;
+  const visible = expanded ? videos : videos.slice(0, INITIAL_COUNT);
 
   // Close on Escape and lock body scroll while the popup is open.
   useEffect(() => {
@@ -108,12 +114,13 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {videos.map((video) =>
+          {visible.map((video, i) =>
             video.isFile ? (
               // Uploaded video file — inline HTML5 player
               <figure
                 key={video.id}
-                className="group relative overflow-hidden rounded-xl border border-light-grey bg-white shadow-sm transition-shadow hover:shadow-md"
+                style={{ animationDelay: `${(i % INITIAL_COUNT) * 60}ms` }}
+                className="animate-gallery-fade group relative overflow-hidden rounded-xl border border-light-grey bg-white shadow-sm transition-shadow hover:shadow-md"
               >
                 <div className="relative aspect-video w-full bg-charcoal">
                   <video
@@ -145,7 +152,8 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                 key={video.id}
                 type="button"
                 onClick={() => setActiveVideo(video)}
-                className="group relative overflow-hidden rounded-xl border border-light-grey bg-white text-left shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                style={{ animationDelay: `${(i % INITIAL_COUNT) * 60}ms` }}
+                className="animate-gallery-fade group relative overflow-hidden rounded-xl border border-light-grey bg-white text-left shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
               >
                 <div className="relative aspect-video w-full bg-charcoal">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -178,7 +186,8 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
               <Link
                 key={video.id}
                 href={video.url}
-                className="group relative overflow-hidden rounded-xl border border-light-grey bg-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                style={{ animationDelay: `${(i % INITIAL_COUNT) * 60}ms` }}
+                className="animate-gallery-fade group relative overflow-hidden rounded-xl border border-light-grey bg-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
               >
                 <div className="relative aspect-video w-full bg-charcoal/5">
                   <Image
@@ -216,6 +225,24 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
             )
           )}
         </div>
+
+        {/* View all / show less toggle */}
+        {hasMore && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
+            >
+              {expanded ? (
+                <>Show less <ChevronUp className="h-4 w-4" /></>
+              ) : (
+                <>View all videos ({videos.length}) <ChevronDown className="h-4 w-4" /></>
+              )}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Popup player */}
