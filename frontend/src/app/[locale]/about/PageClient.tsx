@@ -433,6 +433,7 @@ export default function AboutPage() {
               role: "Chief Business Officer",
               tag: "CBO",
               photo: "/team/biswabandhu-padhi.png",
+              objectPosition: "center 18%",
               bio: "Driving strategic partnerships, commercial market reach, and enterprise growth.",
             },
             {
@@ -580,6 +581,7 @@ export default function AboutPage() {
                             fill
                             loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            style={{ objectPosition: (l as { objectPosition?: string }).objectPosition }}
                             className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                           />
                         ) : (
@@ -653,6 +655,7 @@ export default function AboutPage() {
                             fill
                             loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            style={{ objectPosition: (l as { objectPosition?: string }).objectPosition }}
                             className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                           />
                         ) : (
@@ -819,6 +822,7 @@ export default function AboutPage() {
                             fill
                             loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            style={{ objectPosition: (l as { objectPosition?: string }).objectPosition }}
                             className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                           />
                         ) : (
