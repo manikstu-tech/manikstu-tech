@@ -157,8 +157,8 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                   />
                   {/* Dark overlay + YouTube-style play button */}
                   <div className="absolute inset-0 flex items-center justify-center bg-charcoal/25 transition-colors group-hover:bg-charcoal/40">
-                    <span className="flex h-8 w-11 items-center justify-center rounded-lg bg-[#FF0000] text-white shadow-lg transition-transform group-hover:scale-110">
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M8 5v14l11-7z" /></svg>
+                    <span className="flex h-6 w-9 items-center justify-center rounded-md bg-[#FF0000] text-white shadow-lg transition-transform group-hover:scale-110">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5"><path d="M8 5v14l11-7z" /></svg>
                     </span>
                   </div>
                 </div>
