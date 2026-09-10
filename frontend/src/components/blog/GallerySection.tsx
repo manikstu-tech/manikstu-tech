@@ -80,57 +80,49 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
               type="button"
               onClick={() => setLightbox(photo)}
               style={{ animationDelay: `${(i % INITIAL_COUNT) * 60}ms` }}
-              className="animate-gallery-fade group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-manikstu-cream text-left shadow-[0_2px_14px_rgba(26,26,26,0.08)] ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(26,26,26,0.20)] focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+              className="animate-gallery-fade group relative block w-full overflow-hidden rounded-xl border border-light-grey bg-white text-left shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
             >
-              {/* Image fills the card */}
-              <Image
-                src={photo.image}
-                alt={photo.title}
-                fill
-                loading="eager"
-                sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
-                className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.06]"
-              />
+              {/* Thumbnail (matches the video card size/shape) */}
+              <div className="relative aspect-video w-full bg-manikstu-cream">
+                <Image
+                  src={photo.image}
+                  alt={photo.title}
+                  fill
+                  loading="eager"
+                  sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* PHOTO badge */}
+                <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-manikstu-green shadow-sm">
+                  <Camera className="h-3 w-3" />
+                  {t("photoBadge")}
+                </span>
+                {/* Hover expand icon */}
+                <span className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                  <Maximize2 className="h-4 w-4" />
+                </span>
+              </div>
 
-              {/* Gradient scrim so the caption always reads */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-
-              {/* Glassy PHOTO badge */}
-              <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-manikstu-green shadow-sm backdrop-blur-sm">
-                <Camera className="h-3 w-3" />
-                {t("photoBadge")}
-              </span>
-
-              {/* Hover "expand" pill */}
-              <span className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
-                <Maximize2 className="h-4 w-4" />
-              </span>
-
-              {/* Caption over the scrim */}
-              <figcaption className="absolute inset-x-0 bottom-0 p-4">
-                <h3 className="line-clamp-2 text-sm font-semibold text-white drop-shadow-sm">
+              {/* Caption below (matches the video card) */}
+              <div className="px-4 py-4">
+                <h3 className="line-clamp-2 text-sm font-semibold text-charcoal group-hover:text-manikstu-green transition-colors">
                   {photo.title}
                 </h3>
-                <div className="mt-1.5 flex items-center gap-2 text-[11px] text-white/85">
+                <div className="mt-3 flex items-center gap-3 text-xs text-grey">
                   {photo.location && (
-                    <>
-                      <span className="inline-flex items-center gap-1">
-                        <MapPin className="h-3 w-3" />
-                        {photo.location}
-                      </span>
-                      {photo.date && <span aria-hidden>•</span>}
-                    </>
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin className="h-3 w-3 text-manikstu-green" />
+                      {photo.location}
+                    </span>
                   )}
                   {photo.date && (
                     <span className="inline-flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
+                      <Calendar className="h-3 w-3 text-manikstu-green" />
                       {photo.date}
                     </span>
                   )}
                 </div>
-                {/* Gold accent underline that grows on hover */}
-                <span className="mt-3 block h-0.5 w-8 rounded-full bg-manikstu-gold transition-all duration-300 group-hover:w-14" />
-              </figcaption>
+              </div>
             </button>
           ))}
         </div>
