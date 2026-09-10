@@ -429,10 +429,10 @@ export default function AboutPage() {
               bio: "Leading field operations, supply chain integrity, and farmer community engagement.",
             },
             {
-              name: "Bhawanindhu Padhi",
+              name: "Biswabandhu Padhi",
               role: "Chief Business Officer",
               tag: "CBO",
-              photo: "",
+              photo: "/team/biswabandhu-padhi.png",
               bio: "Driving strategic partnerships, commercial market reach, and enterprise growth.",
             },
             {
@@ -578,6 +578,7 @@ export default function AboutPage() {
                             src={l.photo}
                             alt={l.name}
                             fill
+                            loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                           />
@@ -650,6 +651,7 @@ export default function AboutPage() {
                             src={l.photo}
                             alt={l.name}
                             fill
+                            loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                           />
@@ -815,6 +817,7 @@ export default function AboutPage() {
                             src={l.photo}
                             alt={l.name}
                             fill
+                            loading="eager"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                           />
