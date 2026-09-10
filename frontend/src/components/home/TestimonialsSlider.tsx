@@ -22,10 +22,21 @@ const FEMALE_TOKENS = [
   "radha", "manju", "rekha", "sasmita", "puja", "pooja", "mamata", "kumari", "bala",
 ];
 
-// Pick a gender-appropriate farmer photo from the reviewer's name.
+// A distinct farmer photo per testimonial (by name).
+const AVATAR_BY_NAME: Record<string, string> = {
+  "ramesh pradhan": "/team/avatars/ramesh.jpg",
+  "lakshmi devi": "/team/avatars/lakshmi.jpg",
+  "sanjay nayak": "/team/avatars/sanjay.jpg",
+  "anita majhi": "/team/avatars/anita.jpg",
+  "prakash behera": "/team/avatars/prakash.jpg",
+};
+
+// Pick the person's own photo; fall back to a gender-appropriate farmer photo.
 function avatarFor(name: string): string {
+  const key = name.toLowerCase().trim();
+  if (AVATAR_BY_NAME[key]) return AVATAR_BY_NAME[key];
   // Match whole name-words (not substrings) so e.g. "Pradhan" isn't read as "Radha".
-  const words = name.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/).filter(Boolean);
+  const words = key.replace(/[^a-z\s]/g, "").split(/\s+/).filter(Boolean);
   const isFemale = words.some((w) => FEMALE_TOKENS.includes(w));
   return `/team/avatars/farmer-${isFemale ? "female" : "male"}.jpg`;
 }
