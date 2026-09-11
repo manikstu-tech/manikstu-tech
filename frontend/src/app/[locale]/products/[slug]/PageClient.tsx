@@ -30,6 +30,29 @@ import {
   type Question,
 } from "../data";
 
+// YouTube product videos from the Manikstu Agro channel, keyed by product slug.
+// Products without a specific video fall back to the general company video.
+const PRODUCT_VIDEOS: Record<string, string> = {
+  "poshak-tatwa": "Wu1fHoBKAtM",
+  "pachak-tatwa": "0lfALmUA0mw",
+  "kurmi-nashak": "qGOj-ybgQL4",
+  "livtherapy-syrup": "vw1VK5uFiyA",
+  "goat-feed": "ptdZbTfgfV8",
+  "multi-mineral-lick-block": "DSDTOyG9kHI",
+  "black-salt-block": "DSDTOyG9kHI",
+  "sulphur-block": "DSDTOyG9kHI",
+  "calcium-block": "DSDTOyG9kHI",
+  "pink-salt-block": "DSDTOyG9kHI",
+  "protein-block": "DSDTOyG9kHI",
+  "cobalt-block": "DSDTOyG9kHI",
+  "super-supplement-block": "DSDTOyG9kHI",
+};
+const DEFAULT_PRODUCT_VIDEO = "nEXXWvS2hbg"; // Best Agro Company in Odisha | Manikstu Agro
+
+function productVideoId(slug: string): string {
+  return PRODUCT_VIDEOS[slug] ?? DEFAULT_PRODUCT_VIDEO;
+}
+
 function StarRow({
   value,
   size = "sm",
@@ -90,6 +113,8 @@ export default function ProductDetailPage() {
   // Bumps whenever autoplay ticks or the user clicks a thumb, so the interval
   // restarts and the main image re-mounts (triggering the fade animation).
   const [autoplayNonce, setAutoplayNonce] = useState(0);
+  // Product video popup (YouTube) open/closed.
+  const [videoOpen, setVideoOpen] = useState(false);
 
   const handleAddToCart = () => {
     if (!product) return;
@@ -278,6 +303,23 @@ export default function ProductDetailPage() {
     setAutoplayNonce((n) => n + 1);
   };
 
+  const videoId = product ? productVideoId(product.slug) : DEFAULT_PRODUCT_VIDEO;
+
+  // Close the product-video popup on Escape and lock body scroll while open.
+  useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setVideoOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [videoOpen]);
+
   if (loading) {
     return (
       <>
@@ -451,6 +493,46 @@ export default function ProductDetailPage() {
                   </div>
                 );
               })()}
+
+              {/* Product video ΓÇö YouTube card + prompt */}
+              <div className="mt-4 flex flex-col items-stretch gap-4 rounded-2xl border border-light-grey/80 bg-white p-3 shadow-sm sm:flex-row sm:items-center sm:p-4">
+                {/* Video thumbnail with play button, opens a popup player */}
+                <button
+                  type="button"
+                  onClick={() => setVideoOpen(true)}
+                  aria-label="Play product video"
+                  className="group relative aspect-video w-full shrink-0 overflow-hidden rounded-xl bg-charcoal sm:w-56"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                    alt={`${product.name} video`}
+                    loading="eager"
+                    className="h-full w-full object-cover"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center bg-charcoal/25 transition-colors group-hover:bg-charcoal/40">
+                    <span className="flex h-9 w-12 items-center justify-center rounded-lg bg-[#FF0000] text-white shadow-lg transition-transform group-hover:scale-110">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
+                  </span>
+                </button>
+
+                {/* Prompt text beside the video */}
+                <div className="min-w-0 sm:flex-1">
+                  <p className="text-sm font-semibold leading-snug text-charcoal">
+                    Want to watch the product video?
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setVideoOpen(true)}
+                    className="mt-1 text-sm font-semibold text-manikstu-green underline-offset-2 hover:underline"
+                  >
+                    You can watch it here.
+                  </button>
+                </div>
+              </div>
             </div>
 
             {/* Right ΓÇö info */}
@@ -1359,6 +1441,43 @@ export default function ProductDetailPage() {
                 </p>
               )}
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Product video popup player */}
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${product.name} video`}
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setVideoOpen(false)}
+              aria-label="Close video"
+              className="absolute -top-11 right-0 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-2xl">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`}
+                title={`${product.name} video`}
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            <p className="mt-3 text-center text-sm font-medium text-white/90 line-clamp-2">
+              {product.name}
+            </p>
           </div>
         </div>
       )}
