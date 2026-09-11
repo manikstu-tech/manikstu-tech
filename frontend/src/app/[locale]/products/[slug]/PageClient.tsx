@@ -501,7 +501,7 @@ export default function ProductDetailPage() {
                   type="button"
                   onClick={() => setVideoOpen(true)}
                   aria-label="Play product video"
-                  className="group relative aspect-video w-full shrink-0 overflow-hidden rounded-xl bg-charcoal sm:w-56"
+                  className="group relative aspect-video w-40 shrink-0 overflow-hidden rounded-xl bg-charcoal sm:w-44"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
