@@ -498,6 +498,139 @@ export default function ProductDetailPage() {
                   </div>
                 );
               })()}
+
+              {/* Product video ΓÇö premium card (below thumbnails) */}
+              <div className="relative mt-4 overflow-hidden rounded-3xl border border-manikstu-green/15 bg-gradient-to-br from-[#F1F9EC] via-white to-[#EAF5E3] p-4 shadow-sm sm:p-5">
+                {/* Decorative rolling hills, bottom-right */}
+                <svg
+                  aria-hidden
+                  viewBox="0 0 400 120"
+                  preserveAspectRatio="none"
+                  className="pointer-events-none absolute bottom-0 right-0 h-20 w-2/3 text-manikstu-green/15"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M0,120 C60,70 120,60 180,80 C240,100 300,50 360,60 C380,63 400,55 400,55 L400,120 Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    fillOpacity="0.6"
+                    d="M120,120 C170,90 220,85 280,95 C330,103 380,88 400,90 L400,120 Z"
+                  />
+                </svg>
+                {/* Decorative leaf, top-right */}
+                <Sprout
+                  aria-hidden
+                  className="pointer-events-none absolute right-5 top-4 h-7 w-7 -rotate-12 text-manikstu-green/25"
+                />
+
+                <div className="relative">
+                  {/* Pill badge */}
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-manikstu-green/12 px-3 py-1 text-xs font-bold text-manikstu-green">
+                    <PlayCircle className="h-4 w-4" />
+                    Product Video
+                  </span>
+
+                  {/* Video thumbnail with play button */}
+                  <button
+                    type="button"
+                    onClick={() => setVideoOpen(true)}
+                    aria-label="Play product video"
+                    className="group relative mt-3 block aspect-video w-full overflow-hidden rounded-2xl bg-charcoal shadow-md ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                      alt={`${product.name} video`}
+                      loading="eager"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center bg-charcoal/25 transition-colors group-hover:bg-charcoal/40">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF0000] text-white shadow-xl transition-transform group-hover:scale-110">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-6 w-6">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </span>
+                    </span>
+                    {/* Watch chip, bottom-left */}
+                    <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-md bg-black/70 px-2 py-1 text-[11px] font-semibold text-white">
+                      <Play className="h-3 w-3" fill="currentColor" strokeWidth={0} />
+                      Watch
+                    </span>
+                  </button>
+
+                  {/* Heading + subtext */}
+                  <h2 className="mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl">
+                    Want to watch the{" "}
+                    <span className="text-manikstu-green">product video?</span>
+                  </h2>
+                  <p className="mt-1.5 text-sm font-medium text-grey sm:text-base">
+                    You can watch it here.
+                  </p>
+
+                  {/* Feature highlights */}
+                  <div className="mt-4 flex items-stretch gap-3 sm:gap-4">
+                    {[
+                      { icon: ShieldCheck, label: "Safe Livestock" },
+                      { icon: Sprout, label: "Better Health" },
+                      { icon: TrendingUp, label: "Higher Income" },
+                    ].map((f, i) => {
+                      const Icon = f.icon;
+                      return (
+                        <div key={f.label} className="flex items-stretch gap-3 sm:gap-4">
+                          {i > 0 && (
+                            <span aria-hidden className="w-px self-stretch bg-manikstu-green/15" />
+                          )}
+                          <div className="flex flex-col items-center text-center">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-manikstu-green/12 text-manikstu-green sm:h-11 sm:w-11">
+                              <Icon className="h-5 w-5" />
+                            </span>
+                            <span className="mt-1.5 max-w-[5rem] text-[11px] font-semibold leading-tight text-charcoal">
+                              {f.label}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Tagline + Watch Now */}
+                  <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-manikstu-green/10 pt-4">
+                    <div className="relative">
+                      <p className="font-heading text-lg font-bold italic leading-tight text-manikstu-green sm:text-xl">
+                        Healthy Goats
+                        <br />
+                        Brighter Future
+                      </p>
+                      <svg
+                        aria-hidden
+                        viewBox="0 0 200 12"
+                        preserveAspectRatio="none"
+                        className="mt-0.5 h-2 w-32 text-manikstu-gold"
+                      >
+                        <path
+                          d="M2,8 C50,2 150,2 198,6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setVideoOpen(true)}
+                      className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-5 py-3 text-sm font-bold text-white shadow-lg shadow-manikstu-green/25 transition-all hover:bg-manikstu-leaf hover:shadow-manikstu-green/40 focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98]"
+                    >
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+                        <Play className="ml-0.5 h-3 w-3" fill="currentColor" strokeWidth={0} />
+                      </span>
+                      Watch Now
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Right ΓÇö info */}
@@ -658,141 +791,6 @@ export default function ProductDetailPage() {
                     </div>
                   );
                 })}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Product video banner */}
-        <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-16 md:px-8 md:pb-20">
-          <div className="relative overflow-hidden rounded-[2rem] border border-manikstu-green/15 bg-gradient-to-br from-[#F1F9EC] via-white to-[#EAF5E3] p-4 shadow-sm sm:p-6 lg:p-8">
-            {/* Decorative rolling hills, bottom-right */}
-            <svg
-              aria-hidden
-              viewBox="0 0 400 120"
-              preserveAspectRatio="none"
-              className="pointer-events-none absolute bottom-0 right-0 h-24 w-2/3 text-manikstu-green/15 sm:w-1/2"
-            >
-              <path
-                fill="currentColor"
-                d="M0,120 C60,70 120,60 180,80 C240,100 300,50 360,60 C380,63 400,55 400,55 L400,120 Z"
-              />
-              <path
-                fill="currentColor"
-                fillOpacity="0.6"
-                d="M120,120 C170,90 220,85 280,95 C330,103 380,88 400,90 L400,120 Z"
-              />
-            </svg>
-            {/* Decorative leaves, top-right */}
-            <Sprout
-              aria-hidden
-              className="pointer-events-none absolute right-6 top-5 h-7 w-7 -rotate-12 text-manikstu-green/25 sm:h-9 sm:w-9"
-            />
-
-            <div className="relative grid items-center gap-6 lg:grid-cols-[minmax(0,22rem)_1fr_auto] lg:gap-8">
-              {/* Video thumbnail with play button */}
-              <button
-                type="button"
-                onClick={() => setVideoOpen(true)}
-                aria-label="Play product video"
-                className="group relative aspect-video w-full shrink-0 overflow-hidden rounded-2xl bg-charcoal shadow-md ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-manikstu-green"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                  alt={`${product.name} video`}
-                  loading="eager"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute inset-0 flex items-center justify-center bg-charcoal/25 transition-colors group-hover:bg-charcoal/40">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#FF0000] text-white shadow-xl transition-transform group-hover:scale-110">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-7 w-7">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
-                </span>
-                {/* Watch chip, bottom-left */}
-                <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-md bg-black/70 px-2 py-1 text-[11px] font-semibold text-white">
-                  <Play className="h-3 w-3" fill="currentColor" strokeWidth={0} />
-                  Watch
-                </span>
-              </button>
-
-              {/* Text + feature highlights */}
-              <div className="min-w-0">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-manikstu-green/12 px-3 py-1 text-xs font-bold text-manikstu-green">
-                  <PlayCircle className="h-4 w-4" />
-                  Product Video
-                </span>
-                <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl">
-                  Want to watch the{" "}
-                  <span className="text-manikstu-green">product video?</span>
-                </h2>
-                <p className="mt-2 text-base font-medium text-grey sm:text-lg">
-                  You can watch it here.
-                </p>
-
-                {/* Feature highlights */}
-                <div className="mt-5 flex items-stretch gap-3 sm:gap-5">
-                  {[
-                    { icon: ShieldCheck, label: "Safe Livestock" },
-                    { icon: Sprout, label: "Better Health" },
-                    { icon: TrendingUp, label: "Higher Income" },
-                  ].map((f, i) => {
-                    const Icon = f.icon;
-                    return (
-                      <div key={f.label} className="flex items-stretch gap-3 sm:gap-5">
-                        {i > 0 && (
-                          <span aria-hidden className="w-px self-stretch bg-manikstu-green/15" />
-                        )}
-                        <div className="flex flex-col items-center text-center">
-                          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-manikstu-green/12 text-manikstu-green sm:h-12 sm:w-12">
-                            <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
-                          </span>
-                          <span className="mt-2 max-w-[5rem] text-[11px] font-semibold leading-tight text-charcoal sm:text-xs">
-                            {f.label}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Script tagline + Watch Now button */}
-              <div className="flex flex-col items-start gap-5 lg:items-end lg:text-right">
-                <div className="relative">
-                  <p className="font-heading text-2xl font-bold italic leading-tight text-manikstu-green sm:text-3xl">
-                    Healthy Goats
-                    <br />
-                    Brighter Future
-                  </p>
-                  <svg
-                    aria-hidden
-                    viewBox="0 0 200 12"
-                    preserveAspectRatio="none"
-                    className="mt-1 h-2.5 w-40 text-manikstu-gold"
-                  >
-                    <path
-                      d="M2,8 C50,2 150,2 198,6"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setVideoOpen(true)}
-                  className="inline-flex items-center gap-2.5 rounded-full bg-manikstu-green px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-manikstu-green/25 transition-all hover:bg-manikstu-leaf hover:shadow-manikstu-green/40 focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98] sm:text-base"
-                >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
-                    <Play className="ml-0.5 h-3.5 w-3.5" fill="currentColor" strokeWidth={0} />
-                  </span>
-                  Watch Now
-                  <ArrowRight className="h-4 w-4" />
-                </button>
               </div>
             </div>
           </div>
