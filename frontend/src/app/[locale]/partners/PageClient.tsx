@@ -77,13 +77,14 @@ export default function PartnersPage() {
               {t("description")}
             </p>
           </div>
-          <div className="flex items-center justify-center">
-            <div className="relative h-64 w-64 overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream sm:h-80 sm:w-80">
+          <div className="relative lg:self-start lg:mt-2 -mt-3 sm:-mt-5">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-lg ring-1 ring-black/5">
               <Image
                 src="/patterns/village-figures.png"
                 alt="Partner network"
                 fill
-                className="object-contain p-6 opacity-30"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain p-8 opacity-30"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
