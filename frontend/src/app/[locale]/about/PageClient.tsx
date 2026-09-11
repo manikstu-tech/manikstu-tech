@@ -69,7 +69,7 @@ function AwardsCarousel({ awards }: { awards: AwardItem[] }) {
       onMouseLeave={resume}
       onTouchStart={pause}
       onTouchEnd={resume}
-      className="flex gap-6 overflow-x-auto pb-4 pt-1 -mx-4 px-4 sm:mx-0 sm:px-1 [scrollbar-width:thin]"
+      className="flex gap-6 overflow-x-auto pb-4 pt-1 -mx-4 px-4 sm:mx-0 sm:px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
     >
       {loop.map((item, i) => {
         const Icon = item.icon;
