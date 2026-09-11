@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Heart, Users, Target, Sprout, MapPin, Linkedin, User, Leaf, Lightbulb } from "lucide-react";
+import { ArrowRight, Heart, Users, Target, Sprout, MapPin, Linkedin, User, Leaf, Lightbulb, Award, Trophy, Medal, Crown, Star } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { getPage } from "@/lib/api";
 import { parseContent } from "@/lib/pages";
 import type { PageBlock } from "@/types";
@@ -13,6 +14,112 @@ import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
 
 const iconMap: Record<string, any> = { Heart, Users, Target };
+
+type AwardItem = {
+  year: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+/**
+ * Awards row that auto-scrolls slowly (readable pace) and loops seamlessly.
+ * Pauses on hover / touch so the reader can stop on any card, and still
+ * supports manual horizontal scrolling. Respects reduced-motion.
+ */
+function AwardsCarousel({ awards }: { awards: AwardItem[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
+  // Render the list twice so the scroll can wrap around seamlessly.
+  const loop = [...awards, ...awards];
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
+
+    const SPEED = 28; // px per second — slow enough to read comfortably
+    const TICK = 16; // ms between steps (~60fps)
+    let last = performance.now();
+    const id = window.setInterval(() => {
+      const now = performance.now();
+      const dt = (now - last) / 1000;
+      last = now;
+      if (!pausedRef.current && el.scrollWidth > el.clientWidth) {
+        el.scrollLeft += SPEED * dt;
+        // First copy ends at half the scroll width; wrap back seamlessly.
+        const half = el.scrollWidth / 2;
+        if (el.scrollLeft >= half) el.scrollLeft -= half;
+      }
+    }, TICK);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const pause = () => (pausedRef.current = true);
+  const resume = () => (pausedRef.current = false);
+
+  return (
+    <div
+      ref={scrollRef}
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+      onTouchStart={pause}
+      onTouchEnd={resume}
+      className="flex gap-6 overflow-x-auto pb-4 pt-1 -mx-4 px-4 sm:mx-0 sm:px-1 [scrollbar-width:thin]"
+    >
+      {loop.map((item, i) => {
+        const Icon = item.icon;
+        return (
+          <div
+            key={`${item.title}-${i}`}
+            aria-hidden={i >= awards.length}
+            className="group relative flex w-[270px] sm:w-[320px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 pt-5 pb-5 px-5 sm:pt-6 sm:pb-6 sm:px-6 shadow-sm transition-all duration-300 hover:shadow-xl"
+          >
+            {/* Inner dashed border */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+            />
+
+            <div className="relative z-10 flex flex-col items-center text-center">
+              {/* Dashed-ring icon badge */}
+              <div className="relative mb-2.5 sm:mb-4 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                <Icon className="h-5 w-5 sm:h-7 sm:w-7 text-manikstu-green transition-transform duration-300 group-hover:scale-110" />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-[-3.5px] sm:inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
+                />
+              </div>
+
+              <span className="inline-block rounded-full bg-manikstu-green/10 px-2.5 py-0.5 sm:px-3.5 sm:py-0.5 font-heading text-[10px] sm:text-xs font-bold text-manikstu-green ring-1 ring-manikstu-green/30 mb-2 sm:mb-3">
+                {item.year}
+              </span>
+
+              <h3 className="font-heading text-base sm:text-lg italic font-bold text-manikstu-leaf group-hover:text-manikstu-green transition-colors leading-snug">
+                {item.title}
+              </h3>
+
+              {/* Line-diamond-line ornament */}
+              <div className="mt-1.5 mb-2 sm:mt-2.5 sm:mb-3 flex items-center justify-center gap-1.5">
+                <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
+              </div>
+
+              <p className="text-[11px] sm:text-sm text-grey leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function AboutPage() {
   const t = useTranslations("About");
@@ -107,7 +214,7 @@ export default function AboutPage() {
                 {t("joinMission")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="#story"
+                href="#awards"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
                 {t("ourJourney")}
@@ -155,7 +262,7 @@ export default function AboutPage() {
         </PageHero>
 
         {/* Our Purpose & Story Section */}
-        <section id="story" className="relative section-padding bg-manikstu-cream overflow-hidden">
+        <section className="relative section-padding bg-manikstu-cream overflow-hidden">
           {/* Top tribal floral border */}
           <div
             aria-hidden
@@ -286,6 +393,84 @@ export default function AboutPage() {
             }}
           />
         </section>
+
+        {/* Awards & Recognition */}
+        {(() => {
+          const awards = [
+            {
+              year: "2024",
+              icon: Crown,
+              title: t("award2024Title"),
+              description: t("award2024Desc"),
+            },
+            {
+              year: "2023",
+              icon: Trophy,
+              title: t("award2023PrideTitle"),
+              description: t("award2023PrideDesc"),
+            },
+            {
+              year: "2023",
+              icon: Sprout,
+              title: t("award2023AgriTitle"),
+              description: t("award2023AgriDesc"),
+            },
+            {
+              year: "2022",
+              icon: Medal,
+              title: t("award2022CarnivalTitle"),
+              description: t("award2022CarnivalDesc"),
+            },
+            {
+              year: "2022",
+              icon: Award,
+              title: t("award2022ShaktiTitle"),
+              description: t("award2022ShaktiDesc"),
+            },
+            {
+              year: "2021",
+              icon: Star,
+              title: t("award2021Title"),
+              description: t("award2021Desc"),
+            },
+          ];
+
+          return (
+            <section id="awards" className="relative pt-8 pb-3 sm:pt-16 md:pt-20 bg-white overflow-hidden">
+              <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-8">
+                <div className="text-center mb-6 sm:mb-12">
+                  <div className="flex items-center justify-center gap-2">
+                    <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                      {t("awardsPill")}
+                    </p>
+                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                    <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
+                  </div>
+
+                  <h2 className="mx-auto mt-2.5 sm:mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                    Awards & <span className="text-manikstu-green">Recognition</span>
+                  </h2>
+
+                  {/* Ornamental Divider with Framed Diamond */}
+                  <div className="mt-2.5 sm:mt-4 flex items-center justify-center gap-2">
+                    <span aria-hidden className="h-px w-10 sm:w-20 bg-manikstu-gold/70" />
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                    <div aria-hidden className="relative flex items-center justify-center">
+                      <span className="h-3 sm:h-3.5 w-3 sm:w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
+                      <span className="absolute h-1 sm:h-1.5 w-1 sm:w-1.5 rotate-45 bg-manikstu-gold" />
+                    </div>
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
+                    <span aria-hidden className="h-px w-10 sm:w-20 bg-manikstu-gold/70" />
+                  </div>
+                </div>
+
+                <AwardsCarousel awards={awards} />
+              </div>
+            </section>
+          );
+        })()}
 
         {/* Leadership + Team */}
         {(() => {
