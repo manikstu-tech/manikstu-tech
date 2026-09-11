@@ -508,7 +508,7 @@ export default function AboutPage() {
               name: "Sidhant Mohanty",
               role: "Vice President — Finance & Strategy",
               tag: "VP Finance",
-              photo: "",
+              photo: "/team/sidhant-mohanty.jpg",
               bio: "Building robust financial systems, expanding investor reach, and strengthening farmer finance support.",
             },
           ];
