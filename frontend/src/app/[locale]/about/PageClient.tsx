@@ -504,6 +504,13 @@ export default function AboutPage() {
               photo: "",
               bio: "Ensuring financial governance, sustainable capital strategy, and investor relations.",
             },
+            {
+              name: "Sidhant Mohanty",
+              role: "Vice President — Finance & Strategy",
+              tag: "VP Finance",
+              photo: "",
+              bio: "Building robust financial systems, expanding investor reach, and strengthening farmer finance support.",
+            },
           ];
           const executionEngine = [
             {
