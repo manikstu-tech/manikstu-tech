@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, ArrowRight, Users } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { getPartners } from "@/lib/api";
 import type { Partner } from "@/types";
 import Header from "@/components/layout/Header";
@@ -66,10 +66,15 @@ export default function PartnersPage() {
           }
         >
           <div>
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-manikstu-gold/30 bg-manikstu-gold/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-manikstu-gold">
-              <Users className="h-3.5 w-3.5" />
-              {t("pill")}
-            </span>
+            <div className="mb-4 flex items-center gap-2">
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
+                {t("pill")}
+              </p>
+              <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+            </div>
             <h1 className="font-heading text-4xl font-bold tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
               {t("title")}
             </h1>
