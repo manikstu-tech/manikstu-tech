@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Heart, Users, Target, Sprout, MapPin, Linkedin, User, Leaf, Lightbulb, Award, Trophy, Medal, Crown, Star } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { getPage } from "@/lib/api";
 import { parseContent } from "@/lib/pages";
 import type { PageBlock } from "@/types";
@@ -13,6 +14,112 @@ import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
 
 const iconMap: Record<string, any> = { Heart, Users, Target };
+
+type AwardItem = {
+  year: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+/**
+ * Awards row that auto-scrolls slowly (readable pace) and loops seamlessly.
+ * Pauses on hover / touch so the reader can stop on any card, and still
+ * supports manual horizontal scrolling. Respects reduced-motion.
+ */
+function AwardsCarousel({ awards }: { awards: AwardItem[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
+  // Render the list twice so the scroll can wrap around seamlessly.
+  const loop = [...awards, ...awards];
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
+
+    const SPEED = 28; // px per second — slow enough to read comfortably
+    const TICK = 16; // ms between steps (~60fps)
+    let last = performance.now();
+    const id = window.setInterval(() => {
+      const now = performance.now();
+      const dt = (now - last) / 1000;
+      last = now;
+      if (!pausedRef.current && el.scrollWidth > el.clientWidth) {
+        el.scrollLeft += SPEED * dt;
+        // First copy ends at half the scroll width; wrap back seamlessly.
+        const half = el.scrollWidth / 2;
+        if (el.scrollLeft >= half) el.scrollLeft -= half;
+      }
+    }, TICK);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const pause = () => (pausedRef.current = true);
+  const resume = () => (pausedRef.current = false);
+
+  return (
+    <div
+      ref={scrollRef}
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+      onTouchStart={pause}
+      onTouchEnd={resume}
+      className="flex gap-6 overflow-x-auto pb-4 pt-1 -mx-4 px-4 sm:mx-0 sm:px-1 [scrollbar-width:thin]"
+    >
+      {loop.map((item, i) => {
+        const Icon = item.icon;
+        return (
+          <div
+            key={`${item.title}-${i}`}
+            aria-hidden={i >= awards.length}
+            className="group relative flex w-[270px] sm:w-[320px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 pt-5 pb-5 px-5 sm:pt-6 sm:pb-6 sm:px-6 shadow-sm transition-all duration-300 hover:shadow-xl"
+          >
+            {/* Inner dashed border */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+            />
+
+            <div className="relative z-10 flex flex-col items-center text-center">
+              {/* Dashed-ring icon badge */}
+              <div className="relative mb-2.5 sm:mb-4 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                <Icon className="h-5 w-5 sm:h-7 sm:w-7 text-manikstu-green transition-transform duration-300 group-hover:scale-110" />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-[-3.5px] sm:inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
+                />
+              </div>
+
+              <span className="inline-block rounded-full bg-manikstu-green/10 px-2.5 py-0.5 sm:px-3.5 sm:py-0.5 font-heading text-[10px] sm:text-xs font-bold text-manikstu-green ring-1 ring-manikstu-green/30 mb-2 sm:mb-3">
+                {item.year}
+              </span>
+
+              <h3 className="font-heading text-base sm:text-lg italic font-bold text-manikstu-leaf group-hover:text-manikstu-green transition-colors leading-snug">
+                {item.title}
+              </h3>
+
+              {/* Line-diamond-line ornament */}
+              <div className="mt-1.5 mb-2 sm:mt-2.5 sm:mb-3 flex items-center justify-center gap-1.5">
+                <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
+              </div>
+
+              <p className="text-[11px] sm:text-sm text-grey leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function AboutPage() {
   const t = useTranslations("About");
@@ -359,53 +466,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 pt-1 -mx-4 px-4 sm:mx-0 sm:px-1 [scrollbar-width:thin]">
-                  {awards.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div
-                        key={item.title}
-                        className="group relative flex w-[270px] sm:w-[320px] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 pt-5 pb-5 px-5 sm:pt-6 sm:pb-6 sm:px-6 shadow-sm transition-all duration-300 hover:shadow-xl"
-                      >
-                        {/* Inner dashed border */}
-                        <div
-                          aria-hidden
-                          className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
-                        />
-
-                        <div className="relative z-10 flex flex-col items-center text-center">
-                          {/* Dashed-ring icon badge */}
-                          <div className="relative mb-2.5 sm:mb-4 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
-                            <Icon className="h-5 w-5 sm:h-7 sm:w-7 text-manikstu-green transition-transform duration-300 group-hover:scale-110" />
-                            <span
-                              aria-hidden
-                              className="pointer-events-none absolute inset-[-3.5px] sm:inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
-                            />
-                          </div>
-
-                          <span className="inline-block rounded-full bg-manikstu-green/10 px-2.5 py-0.5 sm:px-3.5 sm:py-0.5 font-heading text-[10px] sm:text-xs font-bold text-manikstu-green ring-1 ring-manikstu-green/30 mb-2 sm:mb-3">
-                            {item.year}
-                          </span>
-
-                          <h3 className="font-heading text-base sm:text-lg italic font-bold text-manikstu-leaf group-hover:text-manikstu-green transition-colors leading-snug">
-                            {item.title}
-                          </h3>
-
-                          {/* Line-diamond-line ornament */}
-                          <div className="mt-1.5 mb-2 sm:mt-2.5 sm:mb-3 flex items-center justify-center gap-1.5">
-                            <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
-                            <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                            <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
-                          </div>
-
-                          <p className="text-[11px] sm:text-sm text-grey leading-relaxed">
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <AwardsCarousel awards={awards} />
               </div>
             </section>
           );
