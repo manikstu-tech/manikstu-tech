@@ -135,6 +135,15 @@ export default function Footer() {
               {t("support")}
             </h3>
             <ul className="mt-3 space-y-2">
+              <li>
+                <Link
+                  href="/careers"
+                  className="flex items-center gap-1 text-sm text-grey hover:text-manikstu-green transition-colors"
+                >
+                  <ChevronRight className="h-3 w-3 flex-shrink-0 text-manikstu-green" />
+                  {t("careers")}
+                </Link>
+              </li>
               {supportLinks.map((link) => (
                 <li key={link.id}>
                   <Link
@@ -146,15 +155,6 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/careers"
-                  className="flex items-center gap-1 text-sm text-grey hover:text-manikstu-green transition-colors"
-                >
-                  <ChevronRight className="h-3 w-3 flex-shrink-0 text-manikstu-green" />
-                  {t("careers")}
-                </Link>
-              </li>
             </ul>
           </div>
 
