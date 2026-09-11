@@ -359,13 +359,13 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 pt-1 -mx-4 px-4 sm:mx-0 sm:px-1 [scrollbar-width:thin]">
                   {awards.map((item) => {
                     const Icon = item.icon;
                     return (
                       <div
                         key={item.title}
-                        className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 pt-5 pb-5 px-5 sm:pt-6 sm:pb-6 sm:px-6 shadow-sm transition-all duration-300 hover:shadow-xl"
+                        className="group relative flex w-[270px] sm:w-[320px] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 pt-5 pb-5 px-5 sm:pt-6 sm:pb-6 sm:px-6 shadow-sm transition-all duration-300 hover:shadow-xl"
                       >
                         {/* Inner dashed border */}
                         <div
