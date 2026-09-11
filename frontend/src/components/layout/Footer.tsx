@@ -33,7 +33,7 @@ const fallbackSettings: Record<string, string> = {
   address_registered: "Row House No - 94, Ravi Garden, Pune Solapur Road, Manjri Budruk, Hadapsar, Pune - 412307",
   address_corporate: "Plot No-754, 14, Gangadhar Meher Marg, near Pabitra Guest House, Jayadev Vihar, Bhubaneswar, Odisha 751013",
   address_farm: "At/Po: Salebhata, P.S: Kegaon, via: Borda, Kalahandi, Odisha - 766036",
-  address_regional: "CMTC Campus, Serikhedi, Chhattisgarh - 492012",
+  address_regional: "CMTC Campus, Serikhedi, Raipur, Chhattisgarh - 492012",
   gstin: "21AAJCM6881B1ZM",
   cin: "U74900PN2015PTC154344",
 };

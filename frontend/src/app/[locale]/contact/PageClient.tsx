@@ -180,7 +180,7 @@ export default function ContactPage() {
                 {
                   label: t("regionalOffice"),
                   address:
-                    "CMTC Campus, Serikhedi, Chhattisgarh – 492012",
+                    "CMTC Campus, Serikhedi, Raipur, Chhattisgarh – 492012",
                 },
               ].map((office) => (
                 <div
