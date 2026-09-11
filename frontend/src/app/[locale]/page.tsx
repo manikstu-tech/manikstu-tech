@@ -225,7 +225,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     {
       quote: t("test2"),
       name: "Lakshmi Devi",
-      role: "Farmer, Keonjhar, Odisha",
+      role: "Farmer, Kalahandi, Odisha",
       initials: "LD",
       color: "bg-manikstu-red",
     },

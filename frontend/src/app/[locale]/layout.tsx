@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import JsonLd from "@/components/seo/JsonLd";
+import { ReticleDev } from "../reticle-dev";
 import "../globals.css";
 
 const playfair = Playfair_Display({
@@ -115,6 +116,7 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://api.manikstu.com" />
       </head>
       <body>
+        {process.env.NODE_ENV === 'development' ? <ReticleDev /> : null}
         <JsonLd
           data={{
             "@context": "https://schema.org",

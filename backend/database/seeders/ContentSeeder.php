@@ -304,7 +304,7 @@ class ContentSeeder extends Seeder
                 'title' => 'What Farmers Say',
                 'content' => json_encode([
                     ['quote' => "Manikstu's support has transformed our lives. The loans and insurance helped me grow my goat farm and income.", 'name' => 'Ramesh Pradhan', 'role' => 'Farmer, Mayurbhanj, Odisha', 'initials' => 'RP', 'color' => 'bg-manikstu-green'],
-                    ['quote' => 'With training and proper guidance, our goats are healthier and our earnings have increased significantly.', 'name' => 'Lakshmi Devi', 'role' => 'Farmer, Keonjhar, Odisha', 'initials' => 'LD', 'color' => 'bg-manikstu-red'],
+                    ['quote' => 'With training and proper guidance, our goats are healthier and our earnings have increased significantly.', 'name' => 'Lakshmi Devi', 'role' => 'Farmer, Kalahandi, Odisha', 'initials' => 'LD', 'color' => 'bg-manikstu-red'],
                     ['quote' => 'The veterinary support at my doorstep saved my herd during the last outbreak. I owe my livelihood to their team.', 'name' => 'Sanjay Nayak', 'role' => 'Farmer, Kalahandi, Odisha', 'initials' => 'SN', 'color' => 'bg-manikstu-gold'],
                     ['quote' => 'Being part of the women-led initiative gave me both confidence and a steady income. My family is proud of me.', 'name' => 'Anita Majhi', 'role' => 'Farmer, Balangir, Odisha', 'initials' => 'AM', 'color' => 'bg-saura-red'],
                     ['quote' => 'The Goat Care app makes tracking vaccinations and sales simple. What used to take a whole day now takes minutes.', 'name' => 'Prakash Behera', 'role' => 'Farmer, Sundargarh, Odisha', 'initials' => 'PB', 'color' => 'bg-manikstu-leaf'],

@@ -1,4 +1,6 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+// ponytail: @reticlehq/next loader conflicts with Next 16.3.4 webpack.
+// SDK connect() still works without source mapping — skip for now.
 import path from 'path';
 import { fileURLToPath } from 'url';
 

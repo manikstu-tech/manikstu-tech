@@ -43,7 +43,7 @@ export const galleryPhotos: GalleryPhoto[] = [
   { id: "g2", title: "Vaccination Camp, Balangir", location: "Balangir, Odisha", date: "Feb 24, 2024", image: "/2.png" },
   { id: "g3", title: "Women SHG Meeting", location: "Sundargarh, Odisha", date: "Mar 05, 2024", image: "/3.png" },
   { id: "g4", title: "Goat Bank Handover Day", location: "Mayurbhanj, Odisha", date: "Mar 18, 2024", image: "/4.png" },
-  { id: "g5", title: "Demo Plot Field Day", location: "Keonjhar, Odisha", date: "Apr 02, 2024", image: "/5.png" },
+  { id: "g5", title: "Demo Plot Field Day", location: "Kalahandi, Odisha", date: "Apr 02, 2024", image: "/5.png" },
   { id: "g6", title: "Community Awareness Drive", location: "Rayagada, Odisha", date: "Apr 15, 2024", image: "/6.png" },
   { id: "g7", title: "Youth Training Workshop", location: "Ganjam, Odisha", date: "Apr 22, 2024", image: "/7.png" },
   { id: "g8", title: "Livestock Insurance Sign-up", location: "Nabarangpur, Odisha", date: "May 04, 2024", image: "/8.png" },
