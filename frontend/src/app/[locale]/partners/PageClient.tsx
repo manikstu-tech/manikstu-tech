@@ -178,8 +178,68 @@ export default function PartnersPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-manikstu-cream">
-          <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 md:px-8">
+        <section className="relative overflow-hidden bg-manikstu-cream px-4 pt-10 pb-24 text-center sm:px-6 sm:pt-12 sm:pb-28 md:px-8">
+          {/* Top tribal floral border */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 right-0 top-0 h-4 sm:h-6 bg-repeat-x -scale-y-100 opacity-60"
+            style={{
+              backgroundImage: "url('/patterns/tribal-floral-border-seamless.png')",
+              backgroundSize: "auto 100%",
+            }}
+          />
+
+          {/* Top-left mandala corner */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18]"
+          />
+          {/* Top-right mandala corner (mirrored) */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+          />
+
+          {/* Bottom village panoramic scene */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-40 sm:opacity-50"
+          >
+            {/* Left figures (desktop/tablet only) */}
+            <Image
+              src="/patterns/village-figures.png"
+              alt=""
+              width={1920}
+              height={300}
+              className="hidden sm:block h-22 sm:h-26 md:h-30 lg:h-36 xl:h-40 w-auto max-w-none -scale-x-100 object-contain object-left"
+            />
+            {/* Mobile full-width banner */}
+            <Image
+              src="/patterns/village-figures.png"
+              alt=""
+              width={1920}
+              height={300}
+              className="sm:hidden w-full h-16 object-cover object-bottom"
+            />
+            {/* Right figures (desktop/tablet only) */}
+            <Image
+              src="/patterns/village-figures.png"
+              alt=""
+              width={1920}
+              height={300}
+              className="hidden sm:block h-22 sm:h-26 md:h-30 lg:h-36 xl:h-40 w-auto max-w-none object-contain object-right"
+            />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-7xl">
             <h2 className="font-heading text-3xl font-bold text-charcoal">{t("ctaTitle")}</h2>
             <p className="mt-3 text-grey">{t("ctaDesc")}</p>
             <Link
