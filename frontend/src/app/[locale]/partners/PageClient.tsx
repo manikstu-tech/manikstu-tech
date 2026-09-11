@@ -98,7 +98,7 @@ export default function PartnersPage() {
 
         {/* Category Filter */}
         <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.key}
