@@ -521,13 +521,14 @@ export default function ProductDetailPage() {
 
                 {/* Prompt text beside the video */}
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold leading-snug text-charcoal">
-                    Want to watch the product video?
-                  </p>
+                  <h3 className="font-heading text-xl font-bold leading-tight text-charcoal sm:text-2xl">
+                    Want to watch the{" "}
+                    <span className="text-manikstu-green">product video?</span>
+                  </h3>
                   <button
                     type="button"
                     onClick={() => setVideoOpen(true)}
-                    className="mt-1 text-sm font-semibold text-manikstu-green underline-offset-2 hover:underline"
+                    className="mt-1.5 text-base font-medium text-grey underline-offset-2 transition-colors hover:text-manikstu-green hover:underline"
                   >
                     You can watch it here.
                   </button>
