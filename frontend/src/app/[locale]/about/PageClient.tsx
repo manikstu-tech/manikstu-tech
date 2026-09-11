@@ -501,7 +501,7 @@ export default function AboutPage() {
               name: "Om Singh",
               role: "Chief Financial Officer",
               tag: "CFO",
-              photo: "",
+              photo: "/team/om-singh.jpg",
               bio: "Ensuring financial governance, sustainable capital strategy, and investor relations.",
             },
             {
