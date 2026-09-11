@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Heart, Users, Target, Sprout, MapPin, Linkedin, User, Leaf, Lightbulb, Award, Trophy, Medal, Crown, Star } from "lucide-react";
+import { ArrowRight, Heart, Users, Target, Sprout, MapPin, Linkedin, Mail, User, Leaf, Lightbulb, Award, Trophy, Medal, Crown, Star } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { getPage } from "@/lib/api";
 import { parseContent } from "@/lib/pages";
@@ -655,13 +655,22 @@ export default function AboutPage() {
                           </p>
                         </div>
 
-                        <a
-                          href="#"
-                          aria-label={`${l.name} on LinkedIn`}
-                          className="mt-3 sm:mt-4 inline-flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green"
-                        >
-                          <Linkedin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                        </a>
+                        <div className="mt-3 sm:mt-4 flex items-center gap-2">
+                          <a
+                            href="#"
+                            aria-label={`${l.name} on LinkedIn`}
+                            className="inline-flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                          >
+                            <Linkedin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                          </a>
+                          <a
+                            href="#"
+                            aria-label={`Email ${l.name}`}
+                            className="inline-flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                          >
+                            <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                          </a>
+                        </div>
                       </div>
                     </article>
                   ))}
