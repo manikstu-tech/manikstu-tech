@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, ArrowRight, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
 import { getSettings, getFooter } from "@/lib/api";
 import type { FooterLink } from "@/types";
 
@@ -146,13 +146,16 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/careers"
+                  className="flex items-center gap-1 text-sm text-grey hover:text-manikstu-green transition-colors"
+                >
+                  <ChevronRight className="h-3 w-3 flex-shrink-0 text-manikstu-green" />
+                  {t("careers")}
+                </Link>
+              </li>
             </ul>
-            <Link
-              href="/careers"
-              className="mt-4 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green px-4 py-2 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
-            >
-              {t("careers")} <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
 
           {/* Contact Us */}
