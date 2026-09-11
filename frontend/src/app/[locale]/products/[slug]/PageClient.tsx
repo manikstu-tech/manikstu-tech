@@ -499,14 +499,14 @@ export default function ProductDetailPage() {
                 );
               })()}
 
-              {/* Product video ΓÇö premium card (below thumbnails) */}
+              {/* Product video ΓÇö premium horizontal card (below thumbnails) */}
               <div className="relative mt-4 overflow-hidden rounded-3xl border border-manikstu-green/15 bg-gradient-to-br from-[#F1F9EC] via-white to-[#EAF5E3] p-4 shadow-sm sm:p-5">
                 {/* Decorative rolling hills, bottom-right */}
                 <svg
                   aria-hidden
                   viewBox="0 0 400 120"
                   preserveAspectRatio="none"
-                  className="pointer-events-none absolute bottom-0 right-0 h-20 w-2/3 text-manikstu-green/15"
+                  className="pointer-events-none absolute bottom-0 right-0 h-16 w-1/2 text-manikstu-green/15"
                 >
                   <path
                     fill="currentColor"
@@ -521,22 +521,16 @@ export default function ProductDetailPage() {
                 {/* Decorative leaf, top-right */}
                 <Sprout
                   aria-hidden
-                  className="pointer-events-none absolute right-5 top-4 h-7 w-7 -rotate-12 text-manikstu-green/25"
+                  className="pointer-events-none absolute right-5 top-4 h-6 w-6 -rotate-12 text-manikstu-green/25"
                 />
 
-                <div className="relative">
-                  {/* Pill badge */}
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-manikstu-green/12 px-3 py-1 text-xs font-bold text-manikstu-green">
-                    <PlayCircle className="h-4 w-4" />
-                    Product Video
-                  </span>
-
+                <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
                   {/* Video thumbnail with play button */}
                   <button
                     type="button"
                     onClick={() => setVideoOpen(true)}
                     aria-label="Play product video"
-                    className="group relative mt-3 block aspect-video w-full overflow-hidden rounded-2xl bg-charcoal shadow-md ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                    className="group relative aspect-video w-full shrink-0 overflow-hidden rounded-2xl bg-charcoal shadow-md ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-manikstu-green sm:w-[44%] lg:w-[46%]"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -546,88 +540,97 @@ export default function ProductDetailPage() {
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <span className="absolute inset-0 flex items-center justify-center bg-charcoal/25 transition-colors group-hover:bg-charcoal/40">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF0000] text-white shadow-xl transition-transform group-hover:scale-110">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-6 w-6">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FF0000] text-white shadow-xl transition-transform group-hover:scale-110">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-5 w-5">
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       </span>
                     </span>
                     {/* Watch chip, bottom-left */}
-                    <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-md bg-black/70 px-2 py-1 text-[11px] font-semibold text-white">
-                      <Play className="h-3 w-3" fill="currentColor" strokeWidth={0} />
+                    <span className="absolute bottom-2.5 left-2.5 inline-flex items-center gap-1.5 rounded-md bg-black/70 px-2 py-0.5 text-[10px] font-semibold text-white">
+                      <Play className="h-2.5 w-2.5" fill="currentColor" strokeWidth={0} />
                       Watch
                     </span>
                   </button>
 
-                  {/* Heading + subtext */}
-                  <h2 className="mt-4 font-heading text-2xl font-bold leading-tight text-charcoal sm:text-3xl">
-                    Want to watch the{" "}
-                    <span className="text-manikstu-green">product video?</span>
-                  </h2>
-                  <p className="mt-1.5 text-sm font-medium text-grey sm:text-base">
-                    You can watch it here.
-                  </p>
+                  {/* Content ΓÇö beside the video */}
+                  <div className="min-w-0 flex-1">
+                    {/* Pill badge */}
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-manikstu-green/12 px-2.5 py-1 text-[11px] font-bold text-manikstu-green">
+                      <PlayCircle className="h-3.5 w-3.5" />
+                      Product Video
+                    </span>
 
-                  {/* Feature highlights */}
-                  <div className="mt-4 flex items-stretch gap-3 sm:gap-4">
-                    {[
-                      { icon: ShieldCheck, label: "Safe Livestock" },
-                      { icon: Sprout, label: "Better Health" },
-                      { icon: TrendingUp, label: "Higher Income" },
-                    ].map((f, i) => {
-                      const Icon = f.icon;
-                      return (
-                        <div key={f.label} className="flex items-stretch gap-3 sm:gap-4">
-                          {i > 0 && (
-                            <span aria-hidden className="w-px self-stretch bg-manikstu-green/15" />
-                          )}
-                          <div className="flex flex-col items-center text-center">
-                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-manikstu-green/12 text-manikstu-green sm:h-11 sm:w-11">
-                              <Icon className="h-5 w-5" />
-                            </span>
-                            <span className="mt-1.5 max-w-[5rem] text-[11px] font-semibold leading-tight text-charcoal">
-                              {f.label}
-                            </span>
+                    {/* Heading + subtext */}
+                    <h2 className="mt-2 font-heading text-xl font-bold leading-tight text-charcoal sm:text-2xl">
+                      Want to watch the{" "}
+                      <span className="text-manikstu-green">product video?</span>
+                    </h2>
+                    <p className="mt-1 text-sm font-medium text-grey">
+                      You can watch it here.
+                    </p>
+
+                    {/* Feature highlights */}
+                    <div className="mt-3 flex items-stretch gap-2.5">
+                      {[
+                        { icon: ShieldCheck, label: "Safe Livestock" },
+                        { icon: Sprout, label: "Better Health" },
+                        { icon: TrendingUp, label: "Higher Income" },
+                      ].map((f, i) => {
+                        const Icon = f.icon;
+                        return (
+                          <div key={f.label} className="flex items-stretch gap-2.5">
+                            {i > 0 && (
+                              <span aria-hidden className="w-px self-stretch bg-manikstu-green/15" />
+                            )}
+                            <div className="flex flex-col items-center text-center">
+                              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-manikstu-green/12 text-manikstu-green">
+                                <Icon className="h-[18px] w-[18px]" />
+                              </span>
+                              <span className="mt-1 max-w-[4.5rem] text-[10px] font-semibold leading-tight text-charcoal">
+                                {f.label}
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Tagline + Watch Now */}
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-manikstu-green/10 pt-4">
-                    <div className="relative">
-                      <p className="font-heading text-lg font-bold italic leading-tight text-manikstu-green sm:text-xl">
-                        Healthy Goats
-                        <br />
-                        Brighter Future
-                      </p>
-                      <svg
-                        aria-hidden
-                        viewBox="0 0 200 12"
-                        preserveAspectRatio="none"
-                        className="mt-0.5 h-2 w-32 text-manikstu-gold"
-                      >
-                        <path
-                          d="M2,8 C50,2 150,2 198,6"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                        />
-                      </svg>
+                        );
+                      })}
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => setVideoOpen(true)}
-                      className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-5 py-3 text-sm font-bold text-white shadow-lg shadow-manikstu-green/25 transition-all hover:bg-manikstu-leaf hover:shadow-manikstu-green/40 focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98]"
-                    >
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
-                        <Play className="ml-0.5 h-3 w-3" fill="currentColor" strokeWidth={0} />
-                      </span>
-                      Watch Now
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
+
+                    {/* Tagline + Watch Now */}
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setVideoOpen(true)}
+                        className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-manikstu-green/25 transition-all hover:bg-manikstu-leaf hover:shadow-manikstu-green/40 focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98]"
+                      >
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+                          <Play className="ml-0.5 h-3 w-3" fill="currentColor" strokeWidth={0} />
+                        </span>
+                        Watch Now
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                      <div className="relative">
+                        <p className="font-heading text-sm font-bold italic leading-tight text-manikstu-green">
+                          Healthy Goats,
+                          <br />
+                          Brighter Future
+                        </p>
+                        <svg
+                          aria-hidden
+                          viewBox="0 0 200 12"
+                          preserveAspectRatio="none"
+                          className="mt-0.5 h-1.5 w-24 text-manikstu-gold"
+                        >
+                          <path
+                            d="M2,8 C50,2 150,2 198,6"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
