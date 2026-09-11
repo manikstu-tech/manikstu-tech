@@ -610,7 +610,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Leader cards */}
-                <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
                   {leaders.map((l) => (
                     <article
                       key={l.name}
