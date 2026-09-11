@@ -481,32 +481,6 @@ export default function AboutPage() {
               bio: "Sailesh Nayak is a highly energetic professional managing the Manikstu Goat Bank franchise business expansion.",
             },
           ];
-          const team = [
-            { name: "Naresh Sahu",            role: "Marketing Executive - Goat Bank",                     photo: "" },
-            { name: "Chulamani Sahu",         role: "Sr. Vet",                                             photo: "" },
-            { name: "Jeetendra Kumar Behera", role: "Jr. PSA",                                             photo: "" },
-            { name: "Sabita Bag",             role: "Accounts Executive",                                  photo: "" },
-            { name: "Geeta Sahu",             role: "Jr. PSA",                                             photo: "" },
-            { name: "Priyadarshini Rout",     role: "Accountant",                                          photo: "" },
-            { name: "Monalisa Sahu",          role: "Executive Trainee Officer – Goat Bank Division",      photo: "" },
-            { name: "Sagar Juad",             role: "Jr. PSA",                                             photo: "" },
-            { name: "Bharatee Nag",           role: "Jr. PSA",                                             photo: "" },
-            { name: "Kamana Nag",             role: "Jr. PSA",                                             photo: "" },
-            { name: "Rohini Rana",            role: "Jr. PSA",                                             photo: "" },
-            { name: "Champa Bag",             role: "Jr. PSA",                                             photo: "" },
-            { name: "Jashoda Bag",            role: "Jr. PSA",                                             photo: "" },
-            { name: "Menaka Bag",             role: "Jr. PSA",                                             photo: "" },
-            { name: "Kunti Danguri",          role: "Jr. PSA",                                             photo: "" },
-            { name: "Nanda Behera",           role: "Field Supervisor",                                    photo: "" },
-            { name: "Sephali Bag",            role: "Field Staff",                                         photo: "" },
-            { name: "Anita Bag",              role: "Field Staff",                                         photo: "" },
-            { name: "Kulabati Juad",          role: "Field Staff",                                         photo: "" },
-            { name: "Kalpa Bachha",           role: "Farm Executive",                                      photo: "" },
-            { name: "Salkhan Tudu",           role: "Field Executive",                                     photo: "" },
-            { name: "Subhashri Samal",        role: "Sales Coordinator",                                   photo: "" },
-            { name: "Sasmita Parida",         role: "Sales Coordinator",                                   photo: "" },
-            { name: "Anil Kumar Pati",        role: "Sales Executive Position – Kendujhar District",       photo: "" },
-          ];
           const advisors = [
             {
               name: "Dr. Deepak Ahiwale",
@@ -696,52 +670,6 @@ export default function AboutPage() {
                         </a>
                       </div>
                     </article>
-                  ))}
-                </div>
-
-                {/* Team header */}
-                <div className="mt-16 text-center sm:mt-20">
-                  <div className="flex items-center justify-center gap-2">
-                    <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                    <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                      Our Team
-                    </p>
-                    <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                    <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
-                  </div>
-                  <h2 className="mx-auto mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                    Our Amazing <span className="text-manikstu-green">Team</span>
-                  </h2>
-                </div>
-
-                {/* Team cards, 6 members per row with round photo design */}
-                <div className="mt-10 grid gap-x-4 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
-                  {team.map((m) => (
-                    <div key={m.name} className="group text-center flex flex-col items-center">
-                      <div className="relative mx-auto aspect-square w-24 sm:w-28 overflow-hidden rounded-full bg-manikstu-cream ring-2 ring-manikstu-cream/80 transition-transform duration-300 group-hover:scale-105 group-hover:ring-manikstu-green/40 shadow-xs">
-                        {m.photo ? (
-                          <Image
-                            src={m.photo}
-                            alt={m.name}
-                            width={112}
-                            height={112}
-                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                          />
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-manikstu-cream/60 to-manikstu-cream">
-                            <User className="h-10 w-10 text-manikstu-green/35 transition-transform duration-300 group-hover:scale-110" />
-                          </div>
-                        )}
-                      </div>
-
-                      <h4 className="mt-3 font-heading text-xs sm:text-sm font-bold text-charcoal leading-snug group-hover:text-manikstu-green transition-colors">
-                        {m.name}
-                      </h4>
-                      <p className="mt-0.5 text-[11px] text-grey leading-tight">
-                        {m.role}
-                      </p>
-                    </div>
                   ))}
                 </div>
               </div>
