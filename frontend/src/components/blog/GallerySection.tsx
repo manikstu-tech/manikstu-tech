@@ -103,7 +103,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
                 </span>
               </div>
 
-              {/* Caption below — gentle cream tint + gold accent */}
+              {/* Caption below, gentle cream tint + gold accent */}
               <div className="relative bg-gradient-to-b from-white to-[#FBF6EC] px-4 py-4">
                 {/* thin gold divider between image and caption */}
                 <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-manikstu-gold/40 to-transparent" />

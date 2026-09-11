@@ -6,10 +6,10 @@ import JsonLd from "@/components/seo/JsonLd";
 const BASE_URL = "https://manikstu.com";
 
 export const metadata: Metadata = {
-  title: "Goat Farming Products — Supplements, Feed, Organic Manure | Manikstu",
-  description: "Explore Manikstu Agro's range of ethically sourced goat products — supplements, feed, organic manure, and more.",
+  title: "Goat Farming Products, Supplements, Feed, Organic Manure | Manikstu",
+  description: "Explore Manikstu Agro's range of ethically sourced goat products, supplements, feed, organic manure, and more.",
   openGraph: {
-    title: "Goat Farming Products — Supplements, Feed, Organic Manure",
+    title: "Goat Farming Products, Supplements, Feed, Organic Manure",
     description: "Ethically sourced goat products: supplements, feed, and organic manure from Manikstu Agro.",
   },
 };

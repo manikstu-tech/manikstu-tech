@@ -40,7 +40,7 @@ export interface VideoItem {
 
 export const galleryPhotos: GalleryPhoto[] = [
   { id: "g1", title: "Farmer Field School in Kalahandi", location: "Kalahandi, Odisha", date: "Feb 12, 2024", image: "/1.png" },
-  { id: "g2", title: "Vaccination Camp — Balangir", location: "Balangir, Odisha", date: "Feb 24, 2024", image: "/2.png" },
+  { id: "g2", title: "Vaccination Camp, Balangir", location: "Balangir, Odisha", date: "Feb 24, 2024", image: "/2.png" },
   { id: "g3", title: "Women SHG Meeting", location: "Sundargarh, Odisha", date: "Mar 05, 2024", image: "/3.png" },
   { id: "g4", title: "Goat Bank Handover Day", location: "Mayurbhanj, Odisha", date: "Mar 18, 2024", image: "/4.png" },
   { id: "g5", title: "Demo Plot Field Day", location: "Keonjhar, Odisha", date: "Apr 02, 2024", image: "/5.png" },
@@ -56,7 +56,7 @@ export const galleryPhotos: GalleryPhoto[] = [
 export const videos: VideoItem[] = [
   {
     id: "v1",
-    title: "Manikstu's Goat Bank — Farmer Story",
+    title: "Manikstu's Goat Bank, Farmer Story",
     description: "Meet Ramesh, a farmer whose life changed with Manikstu's Goat Bank model.",
     duration: "3:42",
     date: "Mar 20, 2024",
@@ -75,7 +75,7 @@ export const videos: VideoItem[] = [
   {
     id: "v3",
     title: "Women Leading Rural Livelihoods",
-    description: "Project AJAH — women farmers building a livestock-led rural economy.",
+    description: "Project AJAH, women farmers building a livestock-led rural economy.",
     duration: "4:57",
     date: "Feb 28, 2024",
     thumbnail: "/3.png",
@@ -83,7 +83,7 @@ export const videos: VideoItem[] = [
   },
   {
     id: "v4",
-    title: "Goat Care App — Field Walkthrough",
+    title: "Goat Care App, Field Walkthrough",
     description: "How our field team uses the app to onboard farmers and log visits in real time.",
     duration: "3:05",
     date: "Feb 14, 2024",

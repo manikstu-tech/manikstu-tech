@@ -68,7 +68,7 @@ export const trustFeatures: TrustFeature[] = [
 /**
  * Full 16-product catalogue baked into the client bundle. Used when the
  * backend hasn't been seeded (no shared DB yet). If the API returns a
- * non-empty product list the API data wins — the admin panel is still the
+ * non-empty product list the API data wins, the admin panel is still the
  * source of truth when it's populated.
  *
  * Data mirrors backend/database/seeders/ProductSeeder.php exactly.
@@ -107,7 +107,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     ingredients:
       "Composition (per 10 ml): Sahjan (Moringa) 100 mg, Apple Extract 100 mg, Amrud (Guava) 50 mg, Nashpati (Pear) 50 mg, Ashwagandha 30 mg, Shilajit 30 mg, Shatavari 45 mg, Amla (Indian Gooseberry) 15 mg, Aloe Vera 20 mg, Mulethi (Licorice) 15 mg, Safed Musli 20 mg, Papaya (Papita) 10 mg, Wheat Extract 20 mg, Bael (Wood Apple) 20 mg, Giloy (Tinospora cordifolia) 21 mg.",
     usage:
-      "Small Ruminants (Goats/Sheep) — Weak Kids: 10 ml/day for 30 days; Pregnant Goats: 20 ml/day for 30 days.\nCattle — Weak Calves: 25 ml/day for 30 days; Pregnant Cows: 50 ml/day for 30 days.",
+      "Small Ruminants (Goats/Sheep), Weak Kids: 10 ml/day for 30 days; Pregnant Goats: 20 ml/day for 30 days.\nCattle, Weak Calves: 25 ml/day for 30 days; Pregnant Cows: 50 ml/day for 30 days.",
     storage: "Store in a cool, dry place away from direct sunlight. Keep tightly closed when not in use.",
     recommendedFor: [
       "Growing kids, lambs and calves",
@@ -152,7 +152,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     ingredients:
       "Composition (per 10 ml): Andrographis paniculata 250 mg, Eclipta alba 260 mg, Fumaria parviflora 255 mg, Phyllanthus niruri 245 mg, Terminalia chebula 250 mg, Tecomella undulata 245 mg, Chicorium endivia 200 mg, Emblica officinalis (Amla) 210 mg, Achyranthes aspera 200 mg, Terminalia arjuna 195 mg, Berberis aristata 200 mg, Potassium carbonate 140 mg, Piper longum (Long Pepper) 50 mg.",
     usage:
-      "Goats & Sheep — Kids: 5 ml/day for 10 days; Adults: 10 ml/day for 10 days.\nCattle — Calves: 10 ml/day for 10 days; Adults: 20 ml/day for 10 days.",
+      "Goats & Sheep, Kids: 5 ml/day for 10 days; Adults: 10 ml/day for 10 days.\nCattle, Calves: 10 ml/day for 10 days; Adults: 20 ml/day for 10 days.",
     storage: "Store in a cool, dry place away from direct sunlight.",
     recommendedFor: [
       "Post-deworming recovery",
@@ -198,7 +198,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     ingredients:
       "Composition (per 10 ml): Amla 300 mg, Nagarmotha (Nutgrass) 295 mg, Harad (Chebulic Myrobalan) 250 mg, Baheda (Beleric Myrobalan) 255 mg, Chavya (Java Long Pepper) 155 mg, Sonth (Dry Ginger) 100 mg, Chitrakmool (Leadwort Root) 95 mg, Kala Namak (Black Salt) 90 mg, Dhaniya (Coriander) 95 mg, Peepalimool (Long Pepper Root) 55 mg, Dalchini (Cinnamon) 55 mg, Jeera (Cumin) 50 mg, Peepali (Long Pepper) 20 mg, Kali Mirch (Black Pepper) 35 mg, Hing (Asafoetida) 5 mg, Sendha Namak (Rock Salt) 100 mg.",
     usage:
-      "Goats & Sheep — Kids: 5 ml/day for 3 days; Adults: 10 ml/day for 3 days.\nCattle — Calves: 10 ml/day for 3 days; Adults: 20 ml/day for 3 days.",
+      "Goats & Sheep, Kids: 5 ml/day for 3 days; Adults: 10 ml/day for 3 days.\nCattle, Calves: 10 ml/day for 3 days; Adults: 20 ml/day for 3 days.",
     storage: "Store in a cool, dry place away from direct sunlight.",
     recommendedFor: [
       "Animals with reduced appetite or indigestion",
@@ -243,7 +243,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     ingredients:
       "Composition (per tablet): Haridra (Curcuma longa) 500 mg, Chiraita (Swertia chirata) 500 mg, Maricha (Piper nigrum / Black Pepper) 500 mg, Vidanga (Embelia ribes) 500 mg, Katira (Astragalus gummifer) 500 mg.",
     usage:
-      "Small Animals (Goats, Sheep, Calves) — Initial deworming: 1 tablet/day for 3 days; Maintenance: 1 tablet monthly.\nLarge Animals (Cattle, Buffalo) — Initial deworming: 2 tablets/day for 3 days; Maintenance: 2 tablets monthly.",
+      "Small Animals (Goats, Sheep, Calves), Initial deworming: 1 tablet/day for 3 days; Maintenance: 1 tablet monthly.\nLarge Animals (Cattle, Buffalo), Initial deworming: 2 tablets/day for 3 days; Maintenance: 2 tablets monthly.",
     storage: "Store in a cool, dry place away from children and direct sunlight.",
     recommendedFor: [
       "Routine quarterly deworming schedules",
@@ -450,12 +450,12 @@ export const FALLBACK_PRODUCTS: Product[] = [
     longDescription:
       "The Sulphur Block is a natural sulphur-rich lick designed to support various metabolic, dermatological, and digestive functions in livestock. Sulphur is essential for amino acid, vitamin, and enzyme formation. Free-choice licking delivers sulphur in a controlled, safe manner, contributing to improved skin condition, disease resistance, and overall productivity.",
     highlights: [
-      "Skin, coat & parasite defense — builds resilient skin and a healthy, shiny coat",
-      "Hoof & joint durability — hardens hooves and improves joint flexibility",
-      "Optimized digestion — boosts rumen microbial activity and feed conversion",
-      "Immunity & detoxification — strengthens cellular defenses and liver function",
-      "Metabolic & nervous system health — drives biotin and thiamine production",
-      "Tissue repair & growth — fuels amino acid & enzyme synthesis for healing",
+      "Skin, coat & parasite defense, builds resilient skin and a healthy, shiny coat",
+      "Hoof & joint durability, hardens hooves and improves joint flexibility",
+      "Optimized digestion, boosts rumen microbial activity and feed conversion",
+      "Immunity & detoxification, strengthens cellular defenses and liver function",
+      "Metabolic & nervous system health, drives biotin and thiamine production",
+      "Tissue repair & growth, fuels amino acid & enzyme synthesis for healing",
     ],
     ingredients: "Elemental sulphur with supporting minerals.",
     usage: "Hang the Sulphur Block in the livestock shed or near the feeding area using a rope. Animals will lick as needed based on their individual sulphur requirements.",
@@ -493,19 +493,19 @@ export const FALLBACK_PRODUCTS: Product[] = [
     longDescription:
       "The Calcium Block is a pure, plant-derived supplement designed to meet the daily calcium needs of livestock. Highly beneficial for young, pregnant, lactating, and high-producing animals, it offers a stress-free way to prevent deficiency through self-licking. Free from animal residues, it ensures safety while supporting strong bones, optimal muscle function, and improved productivity.",
     highlights: [
-      "Bone & skeletal strength — dense, strong bones and teeth at every growth stage",
-      "Deficiency prevention — protects against milk fever, rickets and osteomalacia",
-      "Increased dairy yield — optimises calcium metabolism for milk quality and volume",
-      "Vital system support — healthy heart, muscle, nerve and enzyme functions",
-      "Reproductive health — safe reproduction and fewer post-partum complications",
-      "Stress & recovery aid — accelerates recovery during high-stress periods",
+      "Bone & skeletal strength, dense, strong bones and teeth at every growth stage",
+      "Deficiency prevention, protects against milk fever, rickets and osteomalacia",
+      "Increased dairy yield, optimises calcium metabolism for milk quality and volume",
+      "Vital system support, healthy heart, muscle, nerve and enzyme functions",
+      "Reproductive health, safe reproduction and fewer post-partum complications",
+      "Stress & recovery aid, accelerates recovery during high-stress periods",
     ],
     ingredients: "Plant-derived calcium sources with essential trace mineral support.",
     usage: "Hang the block using a rope inside the livestock shed or feeding area. Animals will lick the block voluntarily based on their calcium needs.",
     storage: "Store in a dry place. Protect from rain and moisture.",
     recommendedFor: [
       "High-yielding lactating dairy animals",
-      "Late-pregnancy females — prevents milk fever",
+      "Late-pregnancy females, prevents milk fever",
       "Growing kids and calves with weak bones",
     ],
     specifications: spec([
@@ -538,7 +538,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     highlights: [
       "Helps maintain electrolyte balance and prevents salt deficiency",
       "Supports proper nerve and muscle function, reducing weakness and fatigue",
-      "Improves hydration levels — especially during heat stress",
+      "Improves hydration levels, especially during heat stress",
       "Enhances feed intake and digestion by stimulating appetite",
       "Supports metabolic activities and overall vitality",
       "Helps reduce stress-related issues in working and grazing animals",
@@ -762,7 +762,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     ingredients:
       "DORB, Food Byproducts & Rice Bran (20%); Maize / Broken Rice (25%); DDGS (15%); Mustard / Groundnut / Soya DOC (15%); Molasses (5%); Calcium & Salt (2%); Vitamin & Mineral Mix (1%); Urea (2%); Wheat Bran / Fillers (15%).",
     usage:
-      "Goats and Sheep — Kids: 100 gram/day; Large Animals: 200 gram/day.\nCattle — Calves: 200 gram/day; Large Animals: 400 gram/day.",
+      "Goats and Sheep, Kids: 100 gram/day; Large Animals: 200 gram/day.\nCattle, Calves: 200 gram/day; Large Animals: 400 gram/day.",
     storage: "Store in a cool, dry place away from direct sunlight. Reseal the bag after every use. Keep out of reach of children.",
     recommendedFor: [
       "Growing kids and lambs",

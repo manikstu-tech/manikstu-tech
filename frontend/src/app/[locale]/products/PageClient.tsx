@@ -36,7 +36,7 @@ import {
 export default function ProductsPage() {
   // Start with the baked-in catalogue so pages render instantly and the site
   // works even when there's no shared DB yet. If the backend returns products
-  // (admin panel populated), those take precedence — admin remains the source
+  // (admin panel populated), those take precedence, admin remains the source
   // of truth whenever it has data.
   const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const [loading, setLoading] = useState(false);
@@ -100,7 +100,7 @@ export default function ProductsPage() {
       <Header />
       <main id="main-content">
         <PageHero>
-          {/* Left — copy */}
+          {/* Left, copy */}
           <div>
             <div className="flex items-center gap-2">
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
@@ -150,7 +150,7 @@ export default function ProductsPage() {
             </div>
           </div>
 
-          {/* Right — visual panel */}
+          {/* Right, visual panel */}
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               <Image
@@ -335,7 +335,7 @@ export default function ProductsPage() {
               </div>
             )}
 
-            {/* Cart card — appears below the listing when items are added */}
+            {/* Cart card, appears below the listing when items are added */}
             {cartLines.length > 0 && (
               <div
                 id="cart"

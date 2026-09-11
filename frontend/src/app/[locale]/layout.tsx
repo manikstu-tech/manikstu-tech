@@ -33,11 +33,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     metadataBase: new URL(BASE_URL),
     title: {
-      default: "Manikstu Agro — India's #1 Goat Farming Company | Goat Bank, Insurance, Training",
+      default: "Manikstu Agro, India's #1 Goat Farming Company | Goat Bank, Insurance, Training",
       template: "%s | Manikstu Agro",
     },
     description:
-      "Manikstu Agro Private Limited — comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products. Founded 2015, Kalahandi, Odisha.",
+      "Manikstu Agro Private Limited, comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products. Founded 2015, Kalahandi, Odisha.",
     keywords: [
       "goat farming",
       "goat bank",
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       type: "website",
       locale: "en_IN",
       siteName: "Manikstu Agro",
-      title: "Manikstu Agro — India's Leading Goat Farming Company",
+      title: "Manikstu Agro, India's Leading Goat Farming Company",
       description:
         "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
       url: BASE_URL,
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       card: "summary_large_image",
-      title: "Manikstu Agro — India's Leading Goat Farming Company",
+      title: "Manikstu Agro, India's Leading Goat Farming Company",
       description:
         "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
       images: ["/og-image.png"],

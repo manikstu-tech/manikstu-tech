@@ -56,7 +56,7 @@ export default function HeroSlider({
         className="animate-gallery-fade absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* Slide indicator dots — clickable */}
+      {/* Slide indicator dots, clickable */}
       {images.length > 1 && (
         <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5">
           {images.map((_, i) => (

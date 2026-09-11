@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Floating WhatsApp widget — a green launcher button that opens a small
+ * Floating WhatsApp widget, a green launcher button that opens a small
  * WhatsApp-style chat panel. Typing a response and pressing send opens the
  * real WhatsApp chat (wa.me) with that message pre-filled.
  */
@@ -51,7 +51,7 @@ export default function WhatsAppButton() {
 
   return (
     <>
-      {/* Click-away layer (transparent — does not dim the page) */}
+      {/* Click-away layer (transparent, does not dim the page) */}
       {open && (
         <div
           className="fixed inset-0 z-[94]"

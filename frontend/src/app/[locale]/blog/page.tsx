@@ -7,7 +7,7 @@ const BASE_URL = "https://manikstu.com";
 
 export const metadata: Metadata = {
   title: "Goat Farming News, Press & Media | Manikstu Agro",
-  description: "Latest news, articles, and media from Manikstu Agro — insights on goat farming, agriculture, and rural development.",
+  description: "Latest news, articles, and media from Manikstu Agro, insights on goat farming, agriculture, and rural development.",
   openGraph: {
     title: "Goat Farming News, Press & Media",
     description: "Latest news and media coverage from Manikstu Agro on goat farming and rural development.",

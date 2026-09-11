@@ -140,7 +140,7 @@ export default function TestimonialsSlider({
                   />
                   <div>
                     <p className="text-sm font-semibold text-charcoal">
-                      — {tItem.name}
+                     , {tItem.name}
                     </p>
                     <p className="text-xs text-grey">{tItem.role}</p>
                   </div>

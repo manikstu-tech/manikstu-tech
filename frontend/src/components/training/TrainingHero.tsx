@@ -11,7 +11,7 @@ export default function TrainingHero() {
 
   return (
     <PageHero>
-          {/* Left — copy */}
+          {/* Left, copy */}
           <div>
             <div className="flex items-center gap-2">
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
@@ -61,7 +61,7 @@ export default function TrainingHero() {
             </div>
           </div>
 
-          {/* Right — visual panel */}
+          {/* Right, visual panel */}
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-lg ring-1 ring-black/5">
               {/* Training / community photo */}

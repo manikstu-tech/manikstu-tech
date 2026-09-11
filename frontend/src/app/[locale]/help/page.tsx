@@ -8,11 +8,11 @@ import JsonLd from "@/components/seo/JsonLd";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Help Center — Goat Farming FAQs & Support | Manikstu Agro",
+  title: "Help Center, Goat Farming FAQs & Support | Manikstu Agro",
   description:
     "Get help with Manikstu Agro products and services. Frequently asked questions, contact support, and more.",
   openGraph: {
-    title: "Help Center — FAQs & Support | Manikstu Agro",
+    title: "Help Center, FAQs & Support | Manikstu Agro",
     description: "Get help with Manikstu Agro goat farming products and services.",
   },
 };

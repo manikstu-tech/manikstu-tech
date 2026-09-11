@@ -37,7 +37,7 @@ export default function CollaborateImpact({ stats: propStats }: { stats?: Stat[]
   const stats = propStats?.length ? propStats : fallbackStats;
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#23581D] via-manikstu-green to-[#1F4E1A] py-12 text-white md:py-16">
-      {/* Top tribal floral border — white line art */}
+      {/* Top tribal floral border, white line art */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-0 right-0 top-0 h-5 sm:h-6 bg-repeat-x opacity-60 brightness-0 invert -scale-y-100"
@@ -47,7 +47,7 @@ export default function CollaborateImpact({ stats: propStats }: { stats?: Stat[]
         }}
       />
 
-      {/* Left & Right Mandala line art — white */}
+      {/* Left & Right Mandala line art, white */}
       <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-15 brightness-0 invert">
         <Image
           src="/patterns/mandala-left.png"
@@ -125,7 +125,7 @@ export default function CollaborateImpact({ stats: propStats }: { stats?: Stat[]
         </div>
       </div>
 
-      {/* Bottom tribal floral border — white line art */}
+      {/* Bottom tribal floral border, white line art */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-0 right-0 bottom-0 h-5 sm:h-6 bg-repeat-x opacity-60 brightness-0 invert"

@@ -2,7 +2,7 @@ import type { SVGProps } from "react";
 
 /**
  * Line-art goat head icon in the lucide style (24×24, currentColor stroke).
- * Drop-in replacement wherever a lucide icon is used — accepts the same
+ * Drop-in replacement wherever a lucide icon is used, accepts the same
  * className / stroke props.
  */
 export default function GoatIcon({

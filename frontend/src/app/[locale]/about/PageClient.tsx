@@ -75,7 +75,7 @@ export default function AboutPage() {
       <main id="main-content" className="min-h-screen bg-white">
         {/* Hero */}
         <PageHero>
-          {/* Left — copy */}
+          {/* Left, copy */}
           <div>
             <div className="flex items-center gap-2">
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
@@ -125,7 +125,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Right — visual panel */}
+          {/* Right, visual panel */}
           <div className="relative lg:self-start lg:mt-2 -mt-3 sm:-mt-5">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream shadow-lg ring-1 ring-black/5">
               {/* Community gathering photo */}
@@ -715,7 +715,7 @@ export default function AboutPage() {
                   </h2>
                 </div>
 
-                {/* Team cards — 6 members per row with round photo design */}
+                {/* Team cards, 6 members per row with round photo design */}
                 <div className="mt-10 grid gap-x-4 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
                   {team.map((m) => (
                     <div key={m.name} className="group text-center flex flex-col items-center">
@@ -808,7 +808,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Advisors cards — 3 columns grid */}
+                {/* Advisors cards, 3 columns grid */}
                 <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
                   {advisors.map((l) => (
                     <article

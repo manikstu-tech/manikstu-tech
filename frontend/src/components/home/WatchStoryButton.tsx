@@ -6,9 +6,9 @@ import { Play, X } from "lucide-react";
 interface WatchStoryButtonProps {
   /** YouTube video id, e.g. "eurGt7tXTFw" */
   videoId: string;
-  /** Top label ("Watch") — first line */
+  /** Top label ("Watch"), first line */
   topLabel: string;
-  /** Bottom label ("Our Story") — second line */
+  /** Bottom label ("Our Story"), second line */
   bottomLabel: string;
 }
 

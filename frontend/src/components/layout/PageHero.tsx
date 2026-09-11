@@ -9,7 +9,7 @@ type PageHeroProps = {
    */
   background?: ReactNode | null;
   /**
-   * Optional element(s) rendered inside the <section> AFTER the grid — e.g.
+   * Optional element(s) rendered inside the <section> AFTER the grid, e.g.
    * a bottom SauraBorder overlay.
    */
   afterGrid?: ReactNode;

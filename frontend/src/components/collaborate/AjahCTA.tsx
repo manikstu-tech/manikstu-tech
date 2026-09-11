@@ -141,7 +141,7 @@ export default function AjahCTA() {
         </div>
       </div>
 
-      {/* Bottom village scene illustration — left */}
+      {/* Bottom village scene illustration, left */}
       <Image
         src="/patterns/training-bottom-left.png"
         alt=""
@@ -151,7 +151,7 @@ export default function AjahCTA() {
         className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-20 sm:opacity-25"
       />
 
-      {/* Bottom village scene illustration — right */}
+      {/* Bottom village scene illustration, right */}
       <Image
         src="/patterns/training-bottom-right.png"
         alt=""

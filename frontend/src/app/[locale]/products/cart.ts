@@ -1,7 +1,7 @@
 // Single source of truth for the shopping cart across the whole site.
 // Stores a full line-item snapshot keyed by product SLUG (stable across the
-// API and the baked-in fallback catalogue), so every surface — product
-// listing, View Details, checkout — renders the exact same cart without
+// API and the baked-in fallback catalogue), so every surface, product
+// listing, View Details, checkout, renders the exact same cart without
 // re-matching ids against a separate product array.
 // Persists to localStorage and broadcasts changes to same-tab and cross-tab
 // listeners.

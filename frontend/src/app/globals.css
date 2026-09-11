@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-/* Product gallery — main image crossfade */
+/* Product gallery, main image crossfade */
 @keyframes galleryFadeIn {
   from {
     opacity: 0;
@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Watch Our Story play button — gentle heartbeat scale */
+/* Watch Our Story play button, gentle heartbeat scale */
 @keyframes watch-pulse {
   0%, 100% {
     transform: scale(1);

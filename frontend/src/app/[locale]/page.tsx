@@ -31,11 +31,11 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Manikstu Agro — Revolutionizing Goat Farming Ecosystem",
+  title: "Manikstu Agro, Revolutionizing Goat Farming Ecosystem",
   description:
     "Manikstu Agro provides comprehensive goat farming solutions including veterinary services, goat bank programs, professional training, and ethically sourced goat products. Founded 2015, Kalahandi, Odisha.",
   openGraph: {
-    title: "Manikstu Agro — Revolutionizing Goat Farming Ecosystem",
+    title: "Manikstu Agro, Revolutionizing Goat Farming Ecosystem",
     description:
       "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
   },
@@ -344,10 +344,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
                   <HeroSlider
                     images={["/hero-slide-1.png"]}
-                    alt="Manikstu Agro — goat farming ecosystem"
+                    alt="Manikstu Agro, goat farming ecosystem"
                     intervalMs={4000}
                   />
-                  {/* Watch Our Story — opens a YouTube popup */}
+                  {/* Watch Our Story, opens a YouTube popup */}
                   <WatchStoryButton
                     videoId="eurGt7tXTFw"
                     topLabel={t("watchOurStory").split("\n")[0]}
@@ -486,7 +486,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             height={1155}
             className="pointer-events-none select-none absolute right-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
           />
-          {/* Bottom village panoramic scene banner — mobile single full-width lower banner, desktop original two-side panoramic banner */}
+          {/* Bottom village panoramic scene banner, mobile single full-width lower banner, desktop original two-side panoramic banner */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-40 sm:opacity-50"
@@ -599,7 +599,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         {/* Flagship Program */}
         <section className="relative section-padding bg-white overflow-hidden">
-          {/* Background Manikstu logo watermark — positioned lower & centered on mobile, left-aligned on desktop */}
+          {/* Background Manikstu logo watermark, positioned lower & centered on mobile, left-aligned on desktop */}
           <div className="pointer-events-none select-none absolute inset-0 flex items-start justify-center pt-24 sm:pt-28 lg:pt-0 lg:items-center lg:justify-start lg:left-[5%] overflow-hidden">
             <Image
               src="/logo.png"
@@ -653,7 +653,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] shadow-sm border border-manikstu-gold/20">
                 <AjahVideo videoId="aKnwiUhA4Yw" />
-                {/* Badge — compact in bottom-right corner on mobile, full pill on desktop */}
+                {/* Badge, compact in bottom-right corner on mobile, full pill on desktop */}
                 <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 rounded-lg sm:rounded-full bg-manikstu-green px-2.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-semibold text-white shadow-md max-w-[85%] sm:max-w-none text-right leading-tight z-10">
                   {t("ajahBadge")}
                 </div>
@@ -728,7 +728,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-manikstu-cream to-transparent z-10"
             />
 
-            {/* Single continuous marquee — every partner logo in one line */}
+            {/* Single continuous marquee, every partner logo in one line */}
             <div className="flex gap-4 animate-marquee py-1.5">
               {(() => {
                 const all = [...allPartnersRow1, ...allPartnersRow2];
@@ -794,7 +794,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
               </div>
 
-              {/* Content — centered on mobile, left-aligned on desktop */}
+              {/* Content, centered on mobile, left-aligned on desktop */}
               <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 {/* Ornamental pill heading */}
                 <div className="flex items-center justify-center lg:justify-start gap-2">

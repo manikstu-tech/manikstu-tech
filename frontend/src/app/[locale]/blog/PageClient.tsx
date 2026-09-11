@@ -72,7 +72,7 @@ export default function BlogPage() {
       if (merged.length) setAllArticles(merged);
     }).catch(() => {});
 
-    // Fetch gallery — normalize API shape → GalleryPhoto shape
+    // Fetch gallery, normalize API shape → GalleryPhoto shape
     getGallery().then((res) => {
       if (res.data?.length) {
         const mapped: GalleryPhoto[] = res.data.map((g) => ({
@@ -127,13 +127,13 @@ export default function BlogPage() {
       <main id="main-content">
         <MediaHero />
 
-        {/* Gallery — first section down */}
+        {/* Gallery, first section down */}
         <GallerySection photos={galleryPhotos} />
 
-        {/* Videos — second section */}
+        {/* Videos, second section */}
         <VideosSection videos={videos} />
 
-        {/* Articles — third section */}
+        {/* Articles, third section */}
         <section
           id="articles"
           className="section-padding !pt-4 sm:!pt-12 md:!pt-16 bg-white scroll-mt-6"
@@ -177,7 +177,7 @@ export default function BlogPage() {
               </div>
 
               <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
-                In-depth reads, event recaps and press coverage — filter by
+                In-depth reads, event recaps and press coverage, filter by
                 category or browse the featured piece.
               </p>
             </div>
@@ -187,7 +187,7 @@ export default function BlogPage() {
               <CategoryFilter active={filter} onFilter={setFilter} />
             </div>
 
-            {/* Article grid — featured article included inline, no special banner */}
+            {/* Article grid, featured article included inline, no special banner */}
             <ArticleGrid articles={filtered} />
           </div>
         </section>

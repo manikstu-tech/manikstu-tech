@@ -9,7 +9,7 @@ export default function AjahHero() {
 
   return (
     <PageHero>
-      {/* Left — copy */}
+      {/* Left, copy */}
       <div>
         <Link
           href="/collaborate"
@@ -62,13 +62,13 @@ export default function AjahHero() {
         </div>
       </div>
 
-      {/* Right — visual panel */}
+      {/* Right, visual panel */}
       <div className="relative">
         <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-[#FAF4EB] p-6 shadow-md transition-all duration-300 hover:shadow-xl">
           {/* Project AJAH event photo */}
           <Image
             src="/ajah-hero.webp"
-            alt="Project AJAH — women-led integrated livestock program"
+            alt="Project AJAH, women-led integrated livestock program"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"

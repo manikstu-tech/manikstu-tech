@@ -54,7 +54,7 @@ export async function generateMetadata({
   const title = p.name || "Product";
   const description =
     p.description?.slice(0, 160) ||
-    `${p.name} — available at Manikstu Agro. ${p.category?.name ? `Category: ${p.category.name}.` : ""}`;
+    `${p.name}, available at Manikstu Agro. ${p.category?.name ? `Category: ${p.category.name}.` : ""}`;
 
   return {
     title,

@@ -116,7 +116,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {visible.map((video, i) =>
             video.isFile ? (
-              // Uploaded video file — inline HTML5 player
+              // Uploaded video file, inline HTML5 player
               <figure
                 key={video.id}
                 style={{ animationDelay: `${(i % INITIAL_COUNT) * 60}ms` }}
@@ -147,7 +147,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                 )}
               </figure>
             ) : video.youtubeId ? (
-              // YouTube video — opens in a popup player on click
+              // YouTube video, opens in a popup player on click
               <button
                 key={video.id}
                 type="button"

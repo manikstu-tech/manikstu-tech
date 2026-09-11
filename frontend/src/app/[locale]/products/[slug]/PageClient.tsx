@@ -377,7 +377,7 @@ export default function ProductDetailPage() {
                   </div>
                 )}
 
-                {/* Slide indicator dots — visible only when >1 image */}
+                {/* Slide indicator dots, visible only when >1 image */}
                 {gallery.length > 1 && (
                   <div className="absolute bottom-4 right-4 flex items-center gap-1.5">
                     {gallery.map((_, i) => (
@@ -403,7 +403,7 @@ export default function ProductDetailPage() {
                 )}
               </div>
 
-              {/* Image gallery thumbnails — click to swap the main image */}
+              {/* Image gallery thumbnails, click to swap the main image */}
               {(() => {
                 // Always render 4 slots so the strip looks complete
                 const slots = Array.from({ length: 4 }, (_, i) => gallery[i] ?? null);
@@ -550,7 +550,7 @@ export default function ProductDetailPage() {
                   </button>
                 </div>
 
-                {/* Buy Now — spans full width of container */}
+                {/* Buy Now, spans full width of container */}
                 <button
                   type="button"
                   onClick={() => {

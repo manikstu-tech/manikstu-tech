@@ -69,7 +69,7 @@ export default function ContactPage() {
             </>
           }
         >
-          {/* Left — copy */}
+          {/* Left, copy */}
           <div>
             <div className="flex items-center gap-2">
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
@@ -105,7 +105,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* Right — contact cards */}
+          {/* Right, contact cards */}
           <div className="flex flex-col gap-4">
             {[
               {
@@ -149,7 +149,7 @@ export default function ContactPage() {
             ))}
           </div>
 
-          {/* Visit Us — spans full hero width so it captures the left empty area */}
+          {/* Visit Us, spans full hero width so it captures the left empty area */}
           <div className="rounded-2xl border border-manikstu-gold/25 bg-manikstu-cream/60 p-5 shadow-sm sm:p-6 lg:col-span-2">
             <div className="flex items-center gap-4">
               <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-manikstu-green/20">
@@ -243,7 +243,7 @@ export default function ContactPage() {
           />
 
           <div className="relative z-10 mx-auto max-w-4xl">
-            {/* Section header — matches Training "What We Do" */}
+            {/* Section header, matches Training "What We Do" */}
             <div className="text-center">
               {/* Ornamental pill heading */}
               <div className="flex items-center justify-center gap-2">
@@ -274,12 +274,12 @@ export default function ContactPage() {
               </div>
 
               <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
-                Drop us a line — questions, partnership ideas, feedback or
+                Drop us a line, questions, partnership ideas, feedback or
                 anything else. Our team responds within a working day.
               </p>
             </div>
 
-            {/* Ornate form card — matches Training program card */}
+            {/* Ornate form card, matches Training program card */}
             <div className="relative mt-10 overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white p-6 shadow-sm sm:p-8">
               {/* Inner dashed border */}
               <div

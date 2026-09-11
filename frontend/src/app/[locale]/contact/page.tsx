@@ -6,10 +6,10 @@ import JsonLd from "@/components/seo/JsonLd";
 const BASE_URL = "https://manikstu.com";
 
 export const metadata: Metadata = {
-  title: "Contact Manikstu Agro — Phone, Email, Office Addresses",
+  title: "Contact Manikstu Agro, Phone, Email, Office Addresses",
   description: "Get in touch with Manikstu Agro. Reach us via phone, email, or visit our offices in Kalahandi, Odisha.",
   openGraph: {
-    title: "Contact Manikstu Agro — Phone, Email, Office",
+    title: "Contact Manikstu Agro, Phone, Email, Office",
     description: "Contact Manikstu Agro for goat farming services. Phone: +91 82703 31856",
   },
 };

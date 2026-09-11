@@ -23,7 +23,7 @@ export const youtubeVideos: YouTubeVideo[] = [
   { id: "0lfALmUA0mw", title: "Manikstu Pachak Tatwa", date: "2025-06-08" },
   { id: "vw1VK5uFiyA", title: "Manikstu Livtherapy – Ayurvedic Liver Health for Happier Goats", date: "2025-05-13" },
   { id: "Wu1fHoBKAtM", title: "Manikstu Poshak Tatwa - Ayurvedic Secret for Goat Health", date: "2025-04-16" },
-  { id: "eurGt7tXTFw", title: "Mann Ki Baat — 25th Feb 2024", date: "2024-07-13" },
+  { id: "eurGt7tXTFw", title: "Mann Ki Baat, 25th Feb 2024", date: "2024-07-13" },
   { id: "p59qEVkkds0", title: "Harvesting Gold: The Art of Crafting Manikstu Goat Manure for our own farm and vibrant pits", date: "2023-12-07" },
   { id: "u0G7ii27yxk", title: "Boosting Ginger Farming Success: Manikstu Goat Manure Farmer Shares Insights", date: "2023-09-27" },
   { id: "8z7PbrIQBu4", title: "Cultivating Success: The Riteshraj Rose Polyhouse Journey with Manikstu Goat Farm Manure", date: "2023-09-19" },

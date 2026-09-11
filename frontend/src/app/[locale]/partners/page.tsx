@@ -6,10 +6,10 @@ import JsonLd from "@/components/seo/JsonLd";
 const BASE_URL = "https://manikstu.com";
 
 export const metadata: Metadata = {
-  title: "Our Partners — Manikstu Agro | Collaborators in Rural Transformation",
+  title: "Our Partners, Manikstu Agro | Collaborators in Rural Transformation",
   description: "Meet the organizations partnering with Manikstu Agro to transform goat farming and rural livelihoods across India.",
   openGraph: {
-    title: "Our Partners — Manikstu Agro",
+    title: "Our Partners, Manikstu Agro",
     description: "Organizations partnering with us to transform rural livelihoods across India.",
   },
 };

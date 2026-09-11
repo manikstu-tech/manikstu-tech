@@ -6,10 +6,10 @@ import JsonLd from "@/components/seo/JsonLd";
 const BASE_URL = "https://manikstu.com";
 
 export const metadata: Metadata = {
-  title: "About Manikstu Agro — Goat Farming Company Since 2015 | Odisha, India",
-  description: "Learn about Manikstu Agro Private Limited — our mission to revolutionize goat farming in India, our team, and our journey from Kalahandi, Odisha.",
+  title: "About Manikstu Agro, Goat Farming Company Since 2015 | Odisha, India",
+  description: "Learn about Manikstu Agro Private Limited, our mission to revolutionize goat farming in India, our team, and our journey from Kalahandi, Odisha.",
   openGraph: {
-    title: "About Manikstu Agro — Goat Farming Since 2015",
+    title: "About Manikstu Agro, Goat Farming Since 2015",
     description: "Our mission to revolutionize goat farming in India. Founded in Kalahandi, Odisha.",
   },
 };

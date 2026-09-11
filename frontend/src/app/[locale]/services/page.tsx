@@ -103,7 +103,7 @@ export const metadata: Metadata = {
   description:
     "Comprehensive goat farming services including veterinary care, insurance, goat bank programs, training, and ethical partnerships from Manikstu Agro.",
   openGraph: {
-    title: "Goat Farming Services — Veterinary, Insurance, Training | Manikstu Agro",
+    title: "Goat Farming Services, Veterinary, Insurance, Training | Manikstu Agro",
     description:
       "Professional goat farming services: veterinary care, livestock insurance, goat bank programs, and training.",
   },
