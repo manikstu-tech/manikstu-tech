@@ -78,6 +78,15 @@ const nextConfig = {
       },
     ];
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/api/backend/:path*",
+        destination: "https://api.manikstu.com/api/:path*",
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
