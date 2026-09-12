@@ -1,0 +1,2029 @@
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 3.5s
+ ○ Compiling / ...
+ ✓ Compiled / in 4.4s (629 modules)
+ GET / 200 in 5026ms
+ ✓ Compiled in 1756ms (597 modules)
+ ✓ Compiled in 678ms (292 modules)
+ ✓ Compiled in 314ms (292 modules)
+ ✓ Compiled in 276ms (292 modules)
+ ✓ Compiled in 359ms (292 modules)
+ ✓ Compiled in 266ms (292 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1443ms (614 modules)
+ GET /_next/static/webpack/ac9372a04e7075b4.webpack.hot-update.json 404 in 256ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 417ms
+ GET /_next/static/css/app/layout.css?v=1787347157532 404 in 174ms
+ GET /_next/static/chunks/main-app.js?v=1787347157532 404 in 154ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 154ms
+ GET /_next/static/chunks/app/page.js 404 in 31ms
+ ✓ Compiled in 259ms (294 modules)
+ ✓ Compiled in 342ms (294 modules)
+ ✓ Compiled in 297ms (294 modules)
+ ✓ Compiled in 371ms (292 modules)
+ ✓ Compiled in 473ms (292 modules)
+ ✓ Compiled in 350ms (292 modules)
+ ✓ Compiled in 1598ms (292 modules)
+ ✓ Compiled in 1784ms (292 modules)
+ ✓ Compiled in 1154ms (292 modules)
+ ✓ Compiled in 1222ms (292 modules)
+ ✓ Compiled in 1082ms (292 modules)
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:33:42)
+    at JSON.parse (<anonymous>)
+digest: "2086212465"
+TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:33:42)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:40:20064)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108376
+    at ea (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108583)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:110813
+    at Object._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:111370)
+    at JSON.parse (<anonymous>)
+    at ec (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:109078)
+    at eo (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108123)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115291
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115308
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115341
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115358
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115581)
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:33:42)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:40:20064)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108376
+    at ea (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108583)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:110813
+    at Object._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:111370)
+    at JSON.parse (<anonymous>)
+    at ec (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:109078)
+    at eo (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108123)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115291
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115308
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115341
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115358
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115581) {
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 5.3s (838 modules)
+ GET / 500 in 6856ms
+ ✓ Compiled in 583ms (478 modules)
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\pages\_document.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:46179
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:46223)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\pages\\_document.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 500 in 105ms
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\pages\_document.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:46179
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:46223)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\pages\\_document.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ GET / 500 in 141ms
+ ✓ Compiled in 600ms (478 modules)
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\pages\_document.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:46179
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:46223)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\pages\\_document.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ GET / 500 in 98ms
+ ✓ Compiled in 323ms (478 modules)
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\pages\_document.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:46179
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:46223)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\pages\\_document.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ GET / 500 in 50ms
+ ✓ Compiled in 519ms (478 modules)
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\pages\_document.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:46179
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:46223)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\pages\\_document.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ GET / 500 in 66ms
+ ✓ Compiled in 303ms (478 modules)
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\pages\_document.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:46179
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:46223)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\pages\\_document.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ GET / 500 in 43ms
+ ✓ Compiled in 404ms (478 modules)
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\pages\_document.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:46179
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:46223)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\pages\\_document.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ GET / 500 in 57ms
+ ✓ Compiled in 273ms (478 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 664ms (841 modules)
+ GET / 404 in 704ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 201ms
+ GET /_next/static/webpack/481eb6573ac64859.webpack.hot-update.json 404 in 1036ms
+ GET / 404 in 112ms
+ GET /_next/static/css/app/layout.css?v=1787348449972 404 in 152ms
+ GET /_next/static/chunks/main-app.js?v=1787348449972 404 in 212ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 63ms
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:21918
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:21966)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\app\\_not-found\\page.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './682.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\pages\_document.js:1:335
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\pages\_document.js:1:376)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\app\\_not-found\\page.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET / 500 in 7671ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat 'E:\Manikstu Website\frontend\.next\server\vendor-chunks\@swc.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/next' in E:\Manikstu Website\frontend\.next\server for build dependencies doesn't lead to expected result 'E:\Manikstu Website\frontend\.next\server\vendor-chunks\next.js', but to 'Error: Can't resolve './vendor-chunks/next' in 'E:\Manikstu Website\frontend\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/next (expected E:\Manikstu Website\frontend\.next\server\vendor-chunks\next.js)
+<w>  at file dependencies E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+<w>  at file E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+<w>  at file dependencies E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+<w>  at file E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\build\handle-externals.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\build\handle-externals.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs E:\Manikstu Website\frontend\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/@swc' in E:\Manikstu Website\frontend\.next\server for build dependencies doesn't lead to expected result 'E:\Manikstu Website\frontend\.next\server\vendor-chunks\@swc.js', but to 'Error: Can't resolve './vendor-chunks/@swc' in 'E:\Manikstu Website\frontend\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/@swc (expected E:\Manikstu Website\frontend\.next\server\vendor-chunks\@swc.js)
+<w>  at file dependencies E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+<w>  at file E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+<w>  at file dependencies E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+<w>  at file E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\build\handle-externals.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\build\handle-externals.js
+<w>  at file dependencies E:\Manikstu Website\frontend\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file E:\Manikstu Website\frontend\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs E:\Manikstu Website\frontend\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+ ✓ Compiled in 600ms (480 modules)
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:21918
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:21966)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\app\\_not-found\\page.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './682.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\pages\_document.js:1:335
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\pages\_document.js:1:376)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\app\\_not-found\\page.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 500 in 94ms
+ GET /_next/static/webpack/5d3d97850cc3beec.webpack.hot-update.json 404 in 114ms
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:21918
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:21966)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\app\\_not-found\\page.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './682.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\pages\_document.js:1:335
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\pages\_document.js:1:376)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\app\\_not-found\\page.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET / 500 in 47ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, stat 'E:\Manikstu Website\frontend\.next\cache\webpack\client-development\2.pack.gz'
+ ✓ Compiled in 904ms (478 modules)
+ ⨯ Error: Cannot find module './99.js'
+Require stack:
+- E:\Manikstu Website\frontend\.next\server\webpack-runtime.js
+- E:\Manikstu Website\frontend\.next\server\app\_not-found\page.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\build\utils.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-middleware.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js
+- E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1517:15)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:198:28)
+    at E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:162:22)
+    at E:\Manikstu Website\frontend\.next\server\app\page.js:1:21918
+    at Object.<anonymous> (E:\Manikstu Website\frontend\.next\server\app\page.js:1:21966)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1617:12)
+    at mod.require (E:\Manikstu Website\frontend\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (E:\Manikstu Website\frontend\node_modules\next\dist\server\require.js:109:84)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\base-server.js:818:17)
+    at async E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (E:\Manikstu Website\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (E:\Manikstu Website\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\Manikstu Website\\frontend\\.next\\server\\webpack-runtime.js',
+    'E:\\Manikstu Website\\frontend\\.next\\server\\app\\_not-found\\page.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\require.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\load-components.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\build\\utils.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'E:\\Manikstu Website\\frontend\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/'
+}
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 3.9s (841 modules)
+ GET / 500 in 3797ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/webpack/5d3d97850cc3beec.webpack.hot-update.json 500 in 3950ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 218ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3053230250"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640) {
+  page: '/'
+}
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640) {
+  page: '/'
+}
+ GET / 500 in 97ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ GET /_next/static/chunks/main.js 500 in 87ms
+ GET /_next/static/chunks/react-refresh.js 500 in 79ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/chunks/pages/_app.js 500 in 53ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/chunks/pages/_error.js 500 in 80ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640) {
+  page: '/'
+}
+ GET / 500 in 104ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+ GET /_next/static/chunks/main.js 500 in 76ms
+ GET /_next/static/chunks/react-refresh.js 500 in 75ms
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/chunks/pages/_app.js 500 in 81ms
+ GET /_next/static/chunks/pages/_error.js 500 in 69ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640) {
+  page: '/'
+}
+ GET / 500 in 133ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/chunks/webpack.js 500 in 120ms
+ GET /_next/static/chunks/main.js 500 in 116ms
+ GET /_next/static/chunks/pages/_app.js 500 in 112ms
+ GET /_next/static/chunks/react-refresh.js 500 in 111ms
+ GET /_next/static/development/_buildManifest.js 500 in 108ms
+ GET /_next/static/chunks/pages/_error.js 500 in 116ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/development/_ssgManifest.js 500 in 38ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640) {
+  page: '/'
+}
+ GET / 500 in 91ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ GET /_next/static/chunks/webpack.js 500 in 133ms
+ GET /_next/static/chunks/main.js 500 in 123ms
+ GET /_next/static/chunks/react-refresh.js 500 in 120ms
+ GET /_next/static/chunks/pages/_app.js 500 in 119ms
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/development/_buildManifest.js 500 in 126ms
+ GET /_next/static/chunks/pages/_error.js 500 in 95ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/development/_ssgManifest.js 500 in 66ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640) {
+  page: '/'
+}
+ GET / 500 in 100ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "3200328711"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/chunks/webpack.js 500 in 121ms
+ GET /_next/static/chunks/main.js 500 in 117ms
+ GET /_next/static/chunks/react-refresh.js 500 in 115ms
+ GET /_next/static/chunks/pages/_app.js 500 in 113ms
+ GET /_next/static/development/_buildManifest.js 500 in 112ms
+ GET /_next/static/chunks/pages/_error.js 500 in 109ms
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at JSON.parse (<anonymous>)
+digest: "1732302441"
+TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ ⨯ TypeError: e[o] is not a function
+    at Object.t [as require] (E:\Manikstu Website\frontend\.next\server\webpack-runtime.js:1:127)
+    at require (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:17:18811)
+    at A (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94398)
+    at E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96726
+    at B._fromJSON (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97164)
+    at JSON.parse (<anonymous>)
+    at I (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94119)
+    at t (E:\Manikstu Website\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100640)
+ GET /_next/static/development/_ssgManifest.js 500 in 81ms
+^C
