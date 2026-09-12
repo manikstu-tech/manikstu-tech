@@ -514,13 +514,6 @@ export default function AboutPage() {
           ];
           const executionEngine = [
             {
-              name: "Aftab Khan",
-              role: "AVP Tech & Operations",
-              tag: "Tech & Ops",
-              photo: "/team/aftab-khan.jpeg",
-              bio: "Technology leader driving digital transformation, product innovation, and scalable technology strategy.",
-            },
-            {
               name: "Suman Sourav",
               role: "Assistant Vice President — Infrastructure & Quality",
               tag: "Infrastructure",
@@ -528,12 +521,11 @@ export default function AboutPage() {
               bio: "B.Tech Civil Engineering from IGIT Sarang. 6+ years in structural design and quality maintenance across reputed engineering organizations.",
             },
             {
-              name: "Manoj Sahoo",
-              role: "Manager Sales",
-              tag: "Sales",
-              photo: "/team/manoj-sahoo.jpg",
-              objectPosition: "center 30%",
-              bio: "With over 15 years of experience in rural sales, Manoj is a vital member of the team driving farmer outreach and market connectivity.",
+              name: "Aftab Khan",
+              role: "AVP Tech & Operations",
+              tag: "Tech & Ops",
+              photo: "/team/aftab-khan.jpeg",
+              bio: "Technology leader driving digital transformation, product innovation, and scalable technology strategy.",
             },
             {
               name: "Rashmi Dash",
@@ -549,16 +541,16 @@ export default function AboutPage() {
               photo: "/team/nabin-meher.jpg",
               bio: "Nabin Meher is a highly energetic professional managing the Manikstu Goat Bank franchise business expansion.",
             },
+            {
+              name: "Manoj Sahoo",
+              role: "Manager Sales",
+              tag: "Sales",
+              photo: "/team/manoj-sahoo.jpg",
+              objectPosition: "center 30%",
+              bio: "With over 15 years of experience in rural sales, Manoj is a vital member of the team driving farmer outreach and market connectivity.",
+            },
           ];
           const advisors = [
-            {
-              name: "Dr. Deepak Ahiwale",
-              role: "Technical & Medical Advisor",
-              tag: "Technical",
-              photo: "/team/deepak-ahiwale.png",
-              objectPosition: "center 30%",
-              bio: "A Veteran Doctor with specialization into Animal Science having 25 years of experience with NARI.",
-            },
             {
               name: "Mr. Sujeet Kumar",
               role: "Statutory & Legal Advisor",
@@ -577,9 +569,17 @@ export default function AboutPage() {
             {
               name: "Swati Sinha",
               role: "Board Advisor",
-              tag: "Board",
+              tag: "GTM",
               photo: "/team/swati-sinha.jpg",
               bio: "Board advisor supporting strategic governance and organizational growth.",
+            },
+            {
+              name: "Dr. Deepak Ahiwale",
+              role: "Technical & Medical Advisor",
+              tag: "Technical",
+              photo: "/team/deepak-ahiwale.png",
+              objectPosition: "center 30%",
+              bio: "A Veteran Doctor with specialization into Animal Science having 25 years of experience with NARI.",
             },
           ];
           const tagColor = (t: string) =>
@@ -598,6 +598,7 @@ export default function AboutPage() {
               Legal: "bg-saura-red",
               Compliance: "bg-manikstu-gold",
               Board: "bg-manikstu-green",
+              GTM: "bg-saura-red",
             } as Record<string, string>)[t] ?? "bg-manikstu-green";
           return (
             <>
