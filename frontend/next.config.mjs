@@ -11,6 +11,33 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.manikstu.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'manikstu.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '/**',
+      },
+    ],
   },
   experimental: {
     serverActions: {

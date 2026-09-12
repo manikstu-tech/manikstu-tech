@@ -72,33 +72,35 @@ export default function BlogPage() {
       if (merged.length) setAllArticles(merged);
     }).catch(() => {});
 
-    // Fetch gallery, normalize API shape → GalleryPhoto shape
-    getGallery().then((res) => {
-      if (res.data?.length) {
-        const mapped: GalleryPhoto[] = res.data.map((g) => ({
-          id: String(g.id),
-          title: g.caption || "",
-          location: "",
-          date: "",
-          image: g.image,
-        }));
-        setGalleryPhotos(mapped);
-      }
-    }).catch(() => {});
+    // Fetch gallery and media photos, combining them cleanly without race conditions
+    Promise.allSettled([getGallery(), getMedia("photo")]).then(([galleryRes, mediaRes]) => {
+      const galleryItems: GalleryPhoto[] =
+        galleryRes.status === "fulfilled" && galleryRes.value.data?.length
+          ? galleryRes.value.data.map((g) => ({
+              id: `gallery-${g.id}`,
+              title: g.caption || "",
+              location: "",
+              date: "",
+              image: g.image,
+            }))
+          : [];
 
-    // Photos uploaded from the admin Media Library → prepend to the gallery
-    getMedia("photo").then((res) => {
-      if (res.data?.length) {
-        const mediaPhotos: GalleryPhoto[] = res.data.map((m) => ({
-          id: `media-${m.id}`,
-          title: m.title || "",
-          location: "",
-          date: m.date || "",
-          image: m.url,
-        }));
-        setGalleryPhotos((prev) => [...mediaPhotos, ...prev.filter((p) => !p.id.startsWith("media-"))]);
+      const mediaItems: GalleryPhoto[] =
+        mediaRes.status === "fulfilled" && mediaRes.value.data?.length
+          ? mediaRes.value.data.map((m) => ({
+              id: `media-${m.id}`,
+              title: m.title || "",
+              location: "",
+              date: m.date || "",
+              image: m.url,
+            }))
+          : [];
+
+      const combined = [...mediaItems, ...galleryItems];
+      if (combined.length > 0) {
+        setGalleryPhotos(combined);
       }
-    }).catch(() => {});
+    });
 
     // Videos uploaded from the admin Media Library → prepend to the videos list
     getMedia("video").then((res) => {

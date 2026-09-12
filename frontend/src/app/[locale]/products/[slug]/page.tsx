@@ -4,7 +4,9 @@ import JsonLd from "@/components/seo/JsonLd";
 import { FALLBACK_PRODUCTS } from "../data";
 import { setRequestLocale } from "next-intl/server";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (process.env.NODE_ENV === "production" ? "https://api.manikstu.com/api" : "http://localhost:8000/api");
 
 export function generateStaticParams() {
   return FALLBACK_PRODUCTS.map((p) => ({ slug: p.slug }));
