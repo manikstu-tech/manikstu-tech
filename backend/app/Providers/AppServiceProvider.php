@@ -29,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Live notification feed for the telecalling topbar bell.
         View::composer('telecalling.layouts.app', TelecallingNotificationsComposer::class);
+        // Same feed for the view-only preview copy of the telecalling layout.
+        View::composer('telecalling_preview.layouts.app', TelecallingNotificationsComposer::class);
     }
 }
