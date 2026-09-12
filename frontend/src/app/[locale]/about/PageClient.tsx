@@ -532,6 +532,7 @@ export default function AboutPage() {
               role: "Marketing Manager- Goat Bank",
               tag: "Marketing",
               photo: "/team/manoj-sahoo.jpg",
+              objectPosition: "center 30%",
               bio: "With over 15 years of experience in rural sales, Manoj is a vital member of the team driving farmer outreach and market connectivity.",
             },
             {
@@ -539,6 +540,7 @@ export default function AboutPage() {
               role: "Human Resource Manager",
               tag: "HR",
               photo: "/team/rashmi-dash.jpg",
+              objectPosition: "10% center",
               bio: "Rashmi Dash is a passionate HR professional who effectively manages the diverse rural talent and organizational culture.",
             },
             {
