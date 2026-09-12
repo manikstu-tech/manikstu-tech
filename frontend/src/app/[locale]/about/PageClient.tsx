@@ -563,7 +563,7 @@ export default function AboutPage() {
               name: "Mr. Sujeet Kumar",
               role: "Statutory & Legal Advisor",
               tag: "Legal",
-              photo: "",
+              photo: "/team/sujeet-kumar.jpg",
               bio: "MBA from Oxford, second master's from Harvard, 20 years in development sector (UNDP, WEF). Now a Supreme Court legal practitioner and Rajya Sabha member.",
             },
             {
