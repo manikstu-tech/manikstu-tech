@@ -28,6 +28,8 @@ import {
   BarChart3,
   ShoppingBag,
   User,
+  Heart,
+  GraduationCap,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -659,10 +661,43 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
               </div>
             </div>
+
+            {/* Stats Row */}
+            <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 text-center">
+              <div>
+                <p className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-manikstu-green">500+</p>
+                <p className="mt-1 text-xs sm:text-sm text-grey">Women Empowered</p>
+              </div>
+              <div>
+                <p className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-manikstu-green">5,000+</p>
+                <p className="mt-1 text-xs sm:text-sm text-grey">Goats Supported</p>
+              </div>
+              <div>
+                <p className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-manikstu-green">25+</p>
+                <p className="mt-1 text-xs sm:text-sm text-grey">Villages Covered</p>
+              </div>
+            </div>
+
+            {/* Benefits Row */}
+            <div className="mt-6 sm:mt-8 flex gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:overflow-visible scrollbar-hide">
+              {[
+                { Icon: GoatIcon, label: "Improved Livestock Productivity" },
+                { Icon: Users, label: "Women Entrepreneurship" },
+                { Icon: Heart, label: "Access to Veterinary Healthcare" },
+                { Icon: GraduationCap, label: "Training & Capacity Building" },
+                { Icon: Shield, label: "Insurance & Risk Protection" },
+                { Icon: Sprout, label: "Market Linkage & Income Growth" },
+              ].map(({ Icon, label }) => (
+                <div key={label} className="flex min-w-[140px] sm:min-w-0 flex-col items-center gap-2 rounded-xl border border-manikstu-green/20 bg-white px-3 py-3 sm:px-2 sm:py-4 text-center shadow-xs">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green">
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                  </span>
+                  <span className="text-[10px] sm:text-xs font-medium text-charcoal leading-tight">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
-
-        {/* Associations */}
         <section className="partner-section relative py-8 sm:py-10 md:py-12 bg-manikstu-cream overflow-hidden">
           {/* Top tribal border */}
           <div
