@@ -19,8 +19,8 @@
 - **Auth & Session**: Laravel Sanctum with dual guards (`sanctum` for customers, `auth:admin-api` for staff/admin users).
 - **Database**: SQLite (local) / MySQL (production) with Eloquent ORM.
 - **Media Optimization Engine (`MediaOptimizer.php`)**:
-  - **Photos (Up to 10MB upload)**: Proportional resize to max 1920px Full HD & auto-conversion to WebP (82% quality), shrinking 5MB-10MB files to 150KB-400KB with lossless visual clarity.
-  - **Videos (Up to 100MB upload)**: Automatic H.264/AAC compression via FFmpeg (CRF 26, 1080p max, `+faststart` progressive streaming atom), reducing video sizes by 60%-80% while enabling instant web playback without buffering.
+  - **Photos (Up to 10MB upload)**: High-fidelity preservation up to 2560px 2K QHD, natural sharpness edge restoration, & auto-conversion to WebP (92% quality), maintaining visually lossless original clarity while reducing 5MB-10MB files to ~300KB-700KB (85%+ storage saving).
+  - **Videos (Up to 100MB upload)**: Automatic H.264/AAC compression via FFmpeg (CRF 24, 1080p max, `+faststart` progressive streaming atom), reducing video sizes by 60%-80% while enabling instant web playback without buffering.
 
 ### 3. Design Tokens & Styling
 - `manikstu-green`: `#4A8C3F`
