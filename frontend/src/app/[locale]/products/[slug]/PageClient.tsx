@@ -1353,8 +1353,8 @@ export default function ProductDetailPage() {
           <div className="relative z-10 w-full max-w-md rounded-2xl border border-manikstu-gold/30 bg-white shadow-2xl">
             <div className="flex items-start justify-between gap-3 border-b border-light-grey/70 px-5 py-4">
               <div className="flex items-center gap-2.5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-manikstu-green/10">
-                  <MessageCircleQuestion className="h-4 w-4 text-manikstu-green" />
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10">
+                  <MessageCircleQuestion className="h-4 w-4 shrink-0 text-manikstu-green" />
                 </span>
                 <div>
                   <h3

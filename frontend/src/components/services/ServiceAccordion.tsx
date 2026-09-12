@@ -40,8 +40,8 @@ export default function ServiceAccordion({
                 aria-expanded={isOpen}
                 className="flex w-full items-center gap-3 py-3 text-left"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-manikstu-gold text-manikstu-green">
-                  {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-manikstu-gold text-manikstu-green">
+                  {isOpen ? <Minus className="h-4 w-4 shrink-0" /> : <Plus className="h-4 w-4 shrink-0" />}
                 </span>
                 <span
                   className={`font-semibold ${

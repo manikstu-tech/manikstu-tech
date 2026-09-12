@@ -11,17 +11,18 @@ Complete website for [manikstu.com](https://manikstu.com) — a goat farming eco
 | Layer | Technology |
 |-------|-----------|
 | Frontend | Next.js 14 (App Router) + Tailwind CSS + TypeScript |
-| Backend | Laravel 13 (requires PHP 8.3+) + Blade admin panel |
+| Backend | Laravel 13 (requires PHP 8.3+) Headless REST API |
+| Admin & Telecalling | Next.js Admin Portal (`/admin/*`) with Sanctum token auth |
 | Database | SQLite (local dev) / MySQL 8 (production) |
 | Auth | Laravel Sanctum (Admin / Developer / Telecaller roles) |
 | i18n | next-intl v4.13 — 14 languages, `[locale]` URL routing |
-| Images | sharp (next/image optimization) |
+| Images | sharp (next/image optimization) & WebP Media Optimizer |
 | Hosting | Hostinger (frontend + backend) |
 | DNS | GoDaddy (manikstu.com) |
 
 ## Getting Started
 
-### Frontend
+### Frontend (Website + Admin & Telecalling Portal)
 
 ```bash
 cd frontend
@@ -29,12 +30,13 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+- Website: [http://localhost:3000](http://localhost:3000)
+- Admin & Telecalling Portal: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
 
-### Backend
+### Backend (Standalone REST API)
 
 ```bash
-cd backend
+cd backend # or ../manikstu-backend
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -42,9 +44,11 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-Admin panel: [http://localhost:8000/admin/login](http://localhost:8000/admin/login)
+Backend API: [http://localhost:8000/api](http://localhost:8000/api)
 
-Default admin credentials: `admin@manikstu.com` / `password` (change for production).
+Default credentials:
+- Developer / Admin: `admin@manikstu.com` / `password`
+- Telecaller: `telecalling@manikstu.com` / `password`
 
 ## Project Structure
 
@@ -60,7 +64,7 @@ manikstu-tech/
 ├── frontend/                           # Next.js 14 frontend
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── [locale]/               # i18n routed pages (14 locales)
+│   │   │   ├── [locale]/               # i18n routed customer pages (14 locales)
 │   │   │   │   ├── layout.tsx          # Locale layout (fonts, metadata)
 │   │   │   │   ├── page.tsx            # Homepage
 │   │   │   │   ├── about/              # About page
@@ -74,6 +78,10 @@ manikstu-tech/
 │   │   │   │   ├── contact/            # Contact form
 │   │   │   │   ├── privacy/            # Privacy policy
 │   │   │   │   └── terms/              # Terms of service
+│   │   │   ├── admin/                  # Admin & Telecalling Portal (Next.js UI)
+│   │   │   │   ├── (auth)/login/       # Admin & Telecalling login page
+│   │   │   │   ├── (panel)/            # Dashboard, Products, Media, CMS CRUD
+│   │   │   │   └── telecalling/        # CRM, Farmers, Calls, Complaints, Leads
 │   │   │   ├── robots.ts               # SEO: robots.txt generation
 │   │   │   ├── sitemap.ts              # SEO: sitemap.xml with hreflang
 │   │   │   └── globals.css             # Tailwind + dark mode overrides
@@ -194,14 +202,14 @@ Public REST API at `api.manikstu.com/api`:
 | `/enquiries` | POST | Submit enquiry |
 | `/orders` | POST | Create order (Sanctum auth) |
 
-## Backend Features
+## Backend Features (Standalone API)
 
-- **Admin Panel** — Laravel Blade with dashboard, CRUD for all content types
-- **Telecalling Module** — Separate area for telecallers (farmers, orders, complaints, franchise, reports)
-- **Role-based Access** — Admin, Developer (destructive ops), Telecaller
-- **Password Reset** — Email-based password reset flow
-- **Media Management** — File upload with type/size validation
+- **Headless REST API** — High-performance API endpoints for frontend & mobile consumers
+- **Sanctum Authentication** — Secure Bearer token auth with role guards (`admin`, `developer`, `telecaller`)
+- **Media Optimization Engine** — Auto WebP conversion (up to 10MB) & video compression (up to 100MB H.264/AAC via FFmpeg)
+- **Role-based Access & Security** — Destructive operations protected behind `role:developer`, rate limiting, and security headers
 - **Category System** — Type-filterable categories (blog, product, press)
+- **Enquiry & Order Pipelines** — Server-side verified enquiry submissions and order management
 
 ## Brand Colors
 

@@ -127,8 +127,8 @@ export default function ContactPage() {
                 key={title}
                 className="group flex items-center gap-5 rounded-2xl border border-manikstu-gold/25 bg-manikstu-cream/60 p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5"
               >
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-manikstu-green/20">
-                  <Icon className="h-6 w-6 text-manikstu-green" />
+                <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-manikstu-green/20">
+                  <Icon className="h-6 w-6 shrink-0 text-manikstu-green" />
                 </span>
                 <span
                   aria-hidden
@@ -152,8 +152,8 @@ export default function ContactPage() {
           {/* Visit Us, spans full hero width so it captures the left empty area */}
           <div className="rounded-2xl border border-manikstu-gold/25 bg-manikstu-cream/60 p-5 shadow-sm sm:p-6 lg:col-span-2">
             <div className="flex items-center gap-4">
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-manikstu-green/20">
-                <MapPin className="h-6 w-6 text-manikstu-green" />
+              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-manikstu-green/20">
+                <MapPin className="h-6 w-6 shrink-0 text-manikstu-green" />
               </span>
               <p className="font-heading text-base font-bold text-charcoal">
                 {t("visitUs")}

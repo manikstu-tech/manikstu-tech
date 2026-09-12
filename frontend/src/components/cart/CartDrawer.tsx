@@ -85,8 +85,8 @@ export default function CartDrawer() {
           {/* Header */}
           <div className="flex items-center justify-between border-b border-light-grey/80 px-6 py-4">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green">
-                <ShoppingBag className="h-5 w-5" />
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green">
+                <ShoppingBag className="h-5 w-5 shrink-0" />
               </span>
               <div>
                 <h2 className="font-heading text-lg font-bold text-charcoal">
