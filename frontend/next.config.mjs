@@ -10,6 +10,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    serverActions: {
+      // Admin uploads: Media allows 100MB videos (product form: 4 x 5MB), plus multipart overhead.
+      bodySizeLimit: '110mb',
+    },
+  },
   webpack(config) {
     config.resolve.alias['@'] = path.join(__dirname, 'src');
     return config;

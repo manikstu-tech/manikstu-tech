@@ -116,8 +116,8 @@ export default function AboutPage() {
 
             {/* Micro-statement */}
             <div className="mt-8 flex items-center gap-2.5">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-manikstu-green/10">
-                <Heart className="h-3.5 w-3.5 text-manikstu-green" />
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
+                <Heart className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
               <p className="text-sm text-grey">
                 {t("microStatement")}

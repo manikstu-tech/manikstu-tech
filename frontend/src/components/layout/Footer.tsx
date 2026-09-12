@@ -105,8 +105,8 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-charcoal">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                <Link2 className="h-3.5 w-3.5" />
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                <Link2 className="h-4 w-4 shrink-0" />
               </span>
               {t("quickLinks")}
             </h3>
@@ -128,8 +128,8 @@ export default function Footer() {
           {/* Support */}
           <div>
             <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-charcoal">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                <Headphones className="h-3.5 w-3.5" />
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                <Headphones className="h-4 w-4 shrink-0" />
               </span>
               {t("support")}
             </h3>
@@ -151,29 +151,29 @@ export default function Footer() {
           {/* Contact Us */}
           <div className="flex flex-col">
             <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-charcoal">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                <Phone className="h-3.5 w-3.5" />
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                <Phone className="h-4 w-4 shrink-0" />
               </span>
               {t("contactUs")}
             </h3>
             <ul className="mt-3 space-y-3">
               <li className="flex items-center gap-2 text-sm text-grey">
-                <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                  <Phone className="h-3.5 w-3.5" />
+                <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                  <Phone className="h-4 w-4 shrink-0" />
                 </span>
                 <a href={`tel:${settings.phone.replace(/\s+/g, "")}`} className="hover:text-manikstu-green transition-colors">
                   {settings.phone}
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
-                <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                  <Mail className="h-3.5 w-3.5" />
+                <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                  <Mail className="h-4 w-4 shrink-0" />
                 </span>
                 <span><a href={`mailto:${settings.email_sales}`} className="hover:text-manikstu-green transition-colors">{settings.email_sales}</a><br /><span className="text-xs text-grey/70">{t("forSalesEnquiry")}</span></span>
               </li>
               <li className="flex items-start gap-2 text-sm text-grey">
-                <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                  <Send className="h-3.5 w-3.5" />
+                <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                  <Send className="h-4 w-4 shrink-0" />
                 </span>
                 <span><a href={`mailto:${settings.email_info}`} className="hover:text-manikstu-green transition-colors">{settings.email_info}</a><br /><span className="text-xs text-grey/70">{t("forOtherEnquiry")}</span></span>
               </li>
@@ -197,8 +197,8 @@ export default function Footer() {
           {/* Stay Updated */}
           <div>
             <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-charcoal">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                <Mail className="h-3.5 w-3.5" />
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                <Mail className="h-4 w-4 shrink-0" />
               </span>
               {t("stayUpdated")}
             </h3>

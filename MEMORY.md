@@ -1,110 +1,109 @@
 # Project Memory & Architecture (MEMORY.md)
 
 ## Overview
-**Manikstu Agro** is a tech-enabled social enterprise revolutionizing the goat farming ecosystem in rural India (headquartered in Odisha). The platform combines digital tools (Goat Care mobile app, web platform) with grassroots capacity building, breed improvement, livestock insurance, and market access (e.g., Project AJAH, Goat Bank).
+**Manikstu Agro** is a tech-enabled social enterprise revolutionizing the goat farming ecosystem in rural India (headquartered in Odisha). The platform combines digital tools (Goat Care mobile app, web platform, telecalling CRM, admin management portal) with grassroots capacity building, breed improvement, livestock insurance, and market access (e.g., Project AJAH, Goat Bank).
 
 ---
 
-## Tech Stack & Structure
-- **Frontend**: Next.js 14 (App Router) with `next-intl` multi-language routing (`[locale]`), TypeScript, Tailwind CSS, Lucide React, Framer Motion.
-- **Backend**: Laravel 11 REST API & Admin Panel (`backend/` directory).
-- **Styling Tokens**:
-  - `manikstu-green`: `#4A8C3F`
-  - `manikstu-leaf`: `#3A7030`
-  - `manikstu-gold`: `#C4952A`
-  - `manikstu-cream`: `#FDF6EC` / `#FAF4EB`
-  - `saura-red`: `#9F5233`
-  - `charcoal`: `#1A1A1A`
-  - `grey`: `#5A5A5A`
-- **Fonts**:
-  - Heading: Playfair Display / Serif (`font-heading`)
-  - Body: Inter / Sans-serif (`font-body`)
+## Tech Stack & Architecture
+
+### 1. Frontend: Next.js 14 (App Router)
+- **Framework**: Next.js 14 (TypeScript, App Router, React Server Components & Server Actions).
+- **Internationalization**: `next-intl` multi-language routing across 14 supported locales under `[locale]`.
+- **Styling**: Tailwind CSS, Lucide React, Framer Motion, Vanilla CSS custom animations.
+- **Admin & Telecalling**: Migrated entirely into Next.js (`/admin/*`), communicating directly with Laravel API via Sanctum bearer tokens.
+
+### 2. Backend: Laravel 11/13 REST API (Standalone Repo)
+- **Standalone Location**: `C:\Users\biswa\.gemini\antigravity-ide\scratch\manikstu-backend`
+- **API Server**: Laravel REST API serving both public customer-facing queries and internal staff operations.
+- **Auth & Session**: Laravel Sanctum with dual guards (`sanctum` for customers, `auth:admin-api` for staff/admin users).
+- **Database**: SQLite (local) / MySQL (production) with Eloquent ORM.
+- **Media Optimization Engine (`MediaOptimizer.php`)**:
+  - **Photos (Up to 10MB upload)**: Proportional resize to max 1920px Full HD & auto-conversion to WebP (82% quality), shrinking 5MB-10MB files to 150KB-400KB with lossless visual clarity.
+  - **Videos (Up to 100MB upload)**: Automatic H.264/AAC compression via FFmpeg (CRF 26, 1080p max, `+faststart` progressive streaming atom), reducing video sizes by 60%-80% while enabling instant web playback without buffering.
+
+### 3. Design Tokens & Styling
+- `manikstu-green`: `#4A8C3F`
+- `manikstu-leaf`: `#3A7030`
+- `manikstu-gold`: `#C4952A`
+- `manikstu-cream`: `#FDF6EC` / `#FAF4EB`
+- `saura-red`: `#9F5233`
+- `charcoal`: `#1A1A1A`
+- `grey`: `#5A5A5A`
+- **Typography**: Playfair Display (`font-heading`) & Inter (`font-body`).
 
 ---
 
-## Core UI Components & Recent Enhancements
+## Credentials & Seeders Reference
 
-### 1. Training & Awareness Page (`frontend/src/app/training/page.tsx`)
-- **TrainingHero (`TrainingHero.tsx`)**: Hero introducing capability building and transformation.
-- **TrainingPrograms (`TrainingPrograms.tsx`)**: 6 program cards with Warli illustration panels and the double-diamond ornamental divider.
-- **AwarenessInitiatives (`AwarenessInitiatives.tsx`)**: Reaching Every Village & Household with community drives, vet camps, demo plots, and the standard framed double-diamond divider.
-- **TrainingImpact (`TrainingImpact.tsx`)**:
-  - Redesigned "Our Reach" section with emerald gradient background (`#23581D` → `#4A8C3F` → `#1F4E1A`).
-  - Top header pill: `— ◆ OUR REACH ◆ —` in gold uppercase tracking.
-  - Heading: `Knowledge That Scales Across the Heartland` with **"Scales"** highlighted in gold.
-  - Ornamental framed double-diamond divider with dots and lines.
-  - Seamless top and bottom white tribal floral borders (`tribal-floral-border-seamless.png`).
-  - Left & right subtle white mandala line art watermarks (`mandala-left.png`, `mandala-right.png`).
-  - 4 compact glassmorphic stat cards (`10,000+ Farmers Trained`, `700+ Villages Reached`, `3+ States Covered`, `7,00,000+ Goats Impacted`) with white line art icon badges.
-- **TrainingCTA (`TrainingCTA.tsx`)**:
-  - Redesigned "Get Involved" section on warm cream background (`#FAF4EB`).
-  - Header pill: `— ◆ GET INVOLVED ◆ —` with green text (`text-manikstu-green`).
-  - Heading: `Partner With Us to Train the Next Generation of Farmers` with "Partner With Us" in dark green.
-  - Pill button: `Request a Training Program →` in solid green with hover elevation.
-  - 4 circular feature pillars with gold dashed-border rings and clean icons:
-    1. *Empowering Communities* (`Users`)
-    2. *Practical Training* (`GraduationCap`)
-    3. *Stronger Partnerships* (`Handshake`)
-    4. *Sustainable Impact* (`Sprout`)
-  - Framed by large top-left quarter-mandala (`mandala-top-right.png`), right circular mandala (`mandala-right.png`), bottom-left tree/goat illustration, bottom-right village figures/hut, and bottom continuous tribal border.
+| Role | Email / ID | Default Password | Environment Variable | Assigned Area |
+| :--- | :--- | :--- | :--- | :--- |
+| **Admin / Developer** | `admin@manikstu.com` | `password` | `ADMIN_PASSWORD` (in `backend/.env`) | `/admin/dashboard` |
+| **Telecaller** | `telecalling@manikstu.com` | `password` | `TELECALLER_PASSWORD` | `/admin/telecalling` |
 
-### 2. Collaborate Page (`frontend/src/app/collaborate/page.tsx`)
-- **CollaborateHero (`CollaborateHero.tsx`)**:
-  - Refined to match TrainingHero with top-right corner mandala artwork (`mandala-top-right-corner.png`), ornamental pill badge, Playfair serif typography with green highlight, and ecosystem line art.
-- **PartnerTypes (`PartnerTypes.tsx`)**:
-  - "Who We Partner With" -> "A Coalition for Lasting Impact".
-  - Top-left & top-right corner mandalas (`mandala-corner-top.png`) and top tribal border.
-  - Standardized framed double-diamond divider.
-  - 6 clean partner category cards with dashed inner borders, dashed circular icon badges, title, and descriptions (bottom images removed for a clean, elegant look).
-- **HowItWorks (`HowItWorks.tsx`)**:
-  - "How It Works" -> "From First Conversation to Shared Impact".
-  - Standardized framed double-diamond divider.
-  - 4 clean step cards with step pill badges, dashed circular icon rings, title, and description (bottom images removed for a clean, focused process flow).
-- **CollaborateImpact (`CollaborateImpact.tsx`)**:
-  - "Our Network" -> "Collaboration That Reaches Across the Heartland" styled identically to TrainingImpact.
-  - Emerald gradient background, top & bottom white tribal floral borders, side white mandala watermarks, and 4 compact glassmorphic metric cards (`50+ Partner Organizations`, `700+ Villages Reached`, `10,000+ Farmers Engaged`, `3+ States Covered`).
-- **CollaborateCTA (`CollaborateCTA.tsx`)**:
-  - "Get Involved" -> "Partner With Us to Build the Future of Rural Livelihoods" styled identically to TrainingCTA.
-  - Warm cream background, top-left quarter mandala, right circular mandala, green "GET INVOLVED" pill, green CTA button `Become a Partner →`, 4 circular dashed-ring feature pillars (*Institutional Trust*, *Grassroots Delivery*, *Shared Governance*, *Sustainable Value*), and bottom village artwork.
-
-### 3. Home Page (`frontend/src/app/page.tsx`)
-- **Our Mission**: Standardized ornamental framed double-diamond divider under `Worldwide, fostering a prosperous and sustainable agricultural future.`
-- **Project AJAH**: Standardized ornamental framed double-diamond divider under `Project AJAH` heading.
-- **Impacting Lives Section (`page.tsx`)**:
-  - Redesigned with compact vertical height (`pt-8 pb-14 sm:pt-9 sm:pb-16 md:pt-10 md:pb-20`), top-left & top-right corner mandalas (`mandala-corner-top.png`), top tribal floral border (`tribal-floral-border-seamless.png`), large prominent bottom village figures panoramic landscape banner (`village-figures.png` fine-tuned to `-bottom-2 sm:-bottom-2.5 md:-bottom-3 lg:-bottom-4` mirrored at left and right), and standardized framed double-diamond divider.
-  - 4 impact metric cards styled with dashed inner borders, dashed circular icon rings, large serif numbers, line-diamond ornaments, and descriptive labels.
-- **Our Associations Section**:
-  - Redesigned to a compact section height (`py-8 sm:py-10 md:py-12`) with top and bottom tribal border strips (`tribal-border.png`).
-  - Implemented continuous, smooth infinite horizontal scrolling marquee tracks with pause-on-hover (`.animate-marquee` and `.animate-marquee-reverse` in `globals.css`).
-  - Retained the exact same partner card design: white rounded card with `border-b-[3px] border-b-saura-red/80`, dark mode support, and partner logos.
-  - Features gradient edge fades on left and right for seamless entrance/exit.
-- **Impact Stats / Mobile App / Testimonials**: Cohesive tribal and mandala design system with cultural Warli patterns and partner showcase.
-
-### 4. Media & Stories Page (`frontend/src/app/blog/page.tsx`)
-- **MediaHero (`MediaHero.tsx`)**:
-  - Redesigned to match the split-grid layout of Collaborate and Training heroes with compact bottom padding.
-  - Top-right corner mandala artwork (`mandala-top-right-corner.png`), gold diamond pill badge (`— ◆ MEDIA & STORIES ◆ —`), and Playfair serif typography.
-  - Right-hand visual card with `aspect-[4/3] rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream`, rural hills & goats landscape artwork (`/media-card.png`), gradient overlay, corner pill badge (`Grassroots Coverage`), and floating green icon badge (`Radio`).
-- **Standard Framed Double-Diamond Dividers**:
-  - **Moments from the Field (`GallerySection.tsx`)**: Standardized framed double-diamond divider under section heading.
-  - **Stories in Motion (`VideosSection.tsx`)**: Standardized framed double-diamond divider under section heading.
-  - **Latest Press & News (`blog/page.tsx`)**: Standardized framed double-diamond divider under section heading.
-### 5. Careers Page (`frontend/src/app/careers/page.tsx`)
-- **CareersHero (`CareersHero.tsx`)**:
-  - Redesigned with top-right corner mandala artwork (`mandala-top-right-corner.png`), gold diamond pill badge (`— ◆ CAREERS AT MANIKSTU ◆ —`), two-tone Playfair serif typography (`Build Your Career. Grow Rural India.`), micro-statement with green leaf badge, and framed visual line-art panel with corner badge (`Purpose-driven work`) and floating badge (`Users`).
-- **WhyJoinUs (`WhyJoinUs.tsx`)**:
-  - Redesigned with top seamless tribal floral border (`tribal-floral-border-seamless.png`), top-left and top-right corner mandalas (`mandala-corner-top.png`), ornamental pill badge, Playfair heading, standard framed double-diamond divider, and 4 value cards with dashed inner borders, circular dashed icon rings, and line-diamond ornaments.
-- **OpenPositions (`OpenPositions.tsx`)**:
-  - Redesigned with top and bottom tribal border strips (`tribal-border.png`), corner mandalas, ornamental pill badge, standard framed double-diamond divider, and dashed empty state / job cards.
-- **CareerBenefits (`CareerBenefits.tsx`)**:
-  - Redesigned with ornamental pill badge, standard framed double-diamond divider, and 5 dashed benefit cards with circular icon rings and line-diamond ornaments.
-- **ResumeCTA (`ResumeCTA.tsx`)**:
-  - Redesigned to match CollaborateCTA & TrainingCTA with warm cream background (`#FAF4EB`), top-left quarter mandala, right circular mandala, green "GET IN TOUCH" pill, green CTA button `Send Us Your Resume →`, 4 circular dashed-ring feature pillars (*Impact-Driven Culture*, *Continuous Learning*, *Collaborative Teams*, *Inclusive Growth*), and bottom panoramic village scene artwork (`village-figures.png`).
+- **Seeders**:
+  - `DatabaseSeeder.php` calls `AdminSeeder`, `TelecallerSeeder`, `ContentSeeder`, `ProductSeeder`.
+  - `AdminSeeder.php`: Creates or updates `admin@manikstu.com` with role `developer`.
+  - `TelecallerSeeder.php`: Creates or updates `telecalling@manikstu.com` with role `telecaller`.
 
 ---
 
-## Design System & Divider Standard
-The standard heading ornament divider across the site consists of:
+## Authentication & Authorization Flow
+
+### Next.js Frontend Flow
+1. **Login Page**: `frontend/src/app/admin/(auth)/login/` (`/admin/login`) accepts email/password.
+2. **Server Action**: `loginAction` calls `adminLogin(email, password)` in `frontend/src/lib/admin/auth.ts`.
+3. **API Request**: Posts credentials to Laravel endpoint `/api/admin/login`.
+4. **Token Storage**: On success, bearer token is stored securely in an `httpOnly` cookie (`ADMIN_COOKIE`).
+5. **Role Redirection**:
+   - `role === "telecaller"` ➔ redirected to `/admin/telecalling`
+   - `role === "developer" | "admin"` ➔ redirected to `/admin/dashboard`
+6. **Middleware & Route Guards**:
+   - `frontend/src/middleware.ts`: Optimistically checks cookie existence for `/admin/*` routes.
+   - `requireAdmin()`: Calls `/api/admin/me`; redirects telecallers to `/admin/telecalling` and unauthenticated to `/admin/session-expired`.
+   - `requireTelecaller()`: Calls `/api/admin/me`; redirects non-telecallers to `/admin/dashboard`.
+
+### Laravel Backend API Flow (`backend/routes/api.php`)
+- `POST /api/admin/login` (rate-limited via `throttle:admin-login`)
+- `POST /api/admin/logout`
+- `GET /api/admin/me` (rate-limited 120 req/min)
+- Middleware Guards:
+  - `admin.area`: Allows `developer` and `admin` roles only.
+  - `telecalling.area`: Allows `telecaller` role only.
+  - `role:developer`: Restricts destructive operations (DELETE) and sensitive settings/user management.
+
+---
+
+## Admin Portal Modules (`frontend/src/app/admin/(panel)`)
+
+1. **Dashboard** (`/admin/dashboard`): Metrics, quick stats, recent enquiries & orders.
+2. **Products** (`/admin/products`): Full product management, pricing, stock, categories, images, toggle publish.
+3. **Sections CRUD** (`/admin/[section]`):
+   - Categories, Team, Testimonials, Partners, Training Programs, Awareness Initiatives, Careers, Blog Posts, Press Releases, Customers, Orders.
+4. **Pages & Blocks** (`/admin/pages`): Visual block editor (`BlocksEditor.tsx`) and page content management.
+5. **Media Library** (`/admin/media`): Image and asset manager with upload sanitization.
+6. **Site Settings** (`/admin/settings`): Developer-only global configuration and contact settings.
+7. **User Management** (`/admin/users`): Developer-only staff account creation and role assignment.
+
+---
+
+## Telecalling Operations Portal (`frontend/src/app/admin/telecalling`)
+
+1. **Dashboard** (`/admin/telecalling`): Quick stats, call queues, daily assignments, urgent alerts.
+2. **Orders** (`/admin/telecalling/orders` & `/orders/[id]`): Order verification, customer notes, status tracking.
+3. **Complaints** (`/admin/telecalling/complaints` & `/complaints/[id]`): Resolution workflows, severity tags, internal notes.
+4. **Farmers** (`/admin/telecalling/farmers`): Farmer directory, goat health records, scheme enrollments.
+5. **Franchise** (`/admin/telecalling/franchise` & `/franchise/[id]`): Leads, vetting pipeline, onboarding.
+6. **Calls** (`/admin/telecalling/calls`): Inbound/outbound call logs, follow-up reminders.
+7. **Delivery** (`/admin/telecalling/delivery`): Dispatch tracking, delivery partner coordination.
+8. **Reports** (`/admin/telecalling/reports`): Call performance, complaint resolution rates, order conversions.
+9. **Settings & Profile** (`/admin/telecalling/settings`): Profile updates, notification preferences, internal notes.
+
+---
+
+## Core UI Components & Tribal Art System
+
+### Standard Ornamental Heading Divider
 ```tsx
 {/* Ornamental Divider with Framed Diamond */}
 <div className="mt-4 flex items-center justify-center gap-2">
@@ -118,6 +117,13 @@ The standard heading ornament divider across the site consists of:
   <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
 </div>
 ```
+
+### Visual Assets & Motif Standards
+- **Mandala Corners**: `mandala-corner-top.png`, `mandala-top-right-corner.png`, `mandala-left.png`, `mandala-right.png`.
+- **Tribal Borders**: `tribal-floral-border-seamless.png`, `tribal-border.png`.
+- **Village Landscape Art**: `village-figures.png`, `media-card.png`.
+- **Cards**: Dashed inner borders (`border-dashed border-manikstu-gold/40`), circular dashed icon rings, soft glassmorphic backdrops.
+- **Image Skeleton Loaders (`ImageWithSkeleton.tsx`)**: YouTube-style animated shimmer wave gradients with smooth `opacity-0` ➔ `opacity-100` crossfades during asset download.
 
 ---
 

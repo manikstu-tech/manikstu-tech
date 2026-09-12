@@ -105,7 +105,7 @@ export default function TestimonialsSlider({
                 </p>
                 <div className="mt-6 flex items-center gap-3">
                   <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-full ${tItem.color} text-white text-sm font-semibold`}
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${tItem.color || "bg-manikstu-green"} text-white text-sm font-semibold`}
                   >
                     {tItem.initials}
                   </div>
