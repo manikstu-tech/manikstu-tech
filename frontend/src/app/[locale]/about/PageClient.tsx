@@ -830,8 +830,8 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Advisors cards, 3 columns grid */}
-                <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+                {/* Advisors cards, 4 columns grid */}
+                <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
                   {advisors.map((l) => (
                     <article
                       key={l.name}
