@@ -573,6 +573,13 @@ export default function AboutPage() {
               objectPosition: "center 30%",
               bio: "A Veteran of the development sector with PhD in Statistics, Retd. Deputy Director of MICM & Director of Corporate Society.",
             },
+            {
+              name: "Swati Sinha",
+              role: "Board Advisor",
+              tag: "Board",
+              photo: "",
+              bio: "Board advisor supporting strategic governance and organizational growth.",
+            },
           ];
           const tagColor = (t: string) =>
             ({
@@ -587,6 +594,7 @@ export default function AboutPage() {
               Technical: "bg-manikstu-green",
               Legal: "bg-saura-red",
               Compliance: "bg-manikstu-gold",
+              Board: "bg-manikstu-green",
             } as Record<string, string>)[t] ?? "bg-manikstu-green";
           return (
             <>
