@@ -535,11 +535,11 @@ export default function AboutPage() {
               bio: "With over 15 years of experience in rural sales, Manoj is a vital member of the team driving farmer outreach and market connectivity.",
             },
             {
-              name: "Sandhya Singh",
+              name: "Rashmi Dash",
               role: "Human Resource Manager",
               tag: "HR",
-              photo: "",
-              bio: "Sandhya Singh is a passionate HR professional who effectively manages the diverse rural talent and organizational culture.",
+              photo: "/team/rashmi-dash.jpg",
+              bio: "Rashmi Dash is a passionate HR professional who effectively manages the diverse rural talent and organizational culture.",
             },
             {
               name: "Sailesh Nayak",
