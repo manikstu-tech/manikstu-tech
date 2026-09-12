@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "learned": {
+    "routes": [
+      "/",
+      "/contact"
+    ]
+  },
+  "runs": []
+}

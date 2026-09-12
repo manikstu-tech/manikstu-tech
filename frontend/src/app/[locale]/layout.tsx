@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const alternatesLanguages: Record<string, string> = {};
   for (const loc of routing.locales) {
-    alternatesLanguages[loc] = `${BASE_URL}/${loc}`;
+    alternatesLanguages[loc] = loc === "en" ? BASE_URL : `${BASE_URL}/${loc}`;
   }
 
   return {
@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     alternates: {
-      canonical: `${BASE_URL}/${locale}`,
+      canonical: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       languages: alternatesLanguages,
     },
   };
