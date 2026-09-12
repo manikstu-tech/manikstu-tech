@@ -547,7 +547,7 @@ export default function AboutPage() {
               role: "Sr. Manager-Sales",
               tag: "Sales",
               photo: "",
-              bio: "Sailesh Nayak is a highly energetic professional managing the Manikstu Goat Bank franchise business expansion.",
+              bio: "Nabin Meher is a highly energetic professional managing the Manikstu Goat Bank franchise business expansion.",
             },
           ];
           const advisors = [
