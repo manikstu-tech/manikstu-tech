@@ -540,7 +540,6 @@ export default function AboutPage() {
               role: "Human Resource Manager",
               tag: "HR",
               photo: "/team/rashmi-dash.jpg",
-              objectPosition: "10% center",
               bio: "Rashmi Dash is a passionate HR professional who effectively manages the diverse rural talent and organizational culture.",
             },
             {
