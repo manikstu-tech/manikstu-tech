@@ -578,7 +578,7 @@ export default function AboutPage() {
               name: "Swati Sinha",
               role: "Board Advisor",
               tag: "Board",
-              photo: "",
+              photo: "/team/swati-sinha.jpg",
               bio: "Board advisor supporting strategic governance and organizational growth.",
             },
           ];
