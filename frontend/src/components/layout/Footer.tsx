@@ -59,7 +59,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-white border-t border-light-grey">
-      <div className="mx-auto max-w-7xl px-4 pt-6 pb-2 sm:py-8 sm:px-6 md:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-4 pb-1 sm:py-6 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div>
@@ -220,7 +220,7 @@ export default function Footer() {
       </div>
 
       {/* Our Offices */}
-      <div className="mx-auto max-w-7xl px-4 pt-0 pb-4 sm:py-4 sm:px-6 md:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-0 pb-2 sm:py-2 sm:px-6 md:px-8">
         <div className="rounded-xl border border-light-grey p-5 sm:p-6">
           <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
             <div>
