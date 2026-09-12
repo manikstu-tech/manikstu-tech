@@ -1,0 +1,634 @@
+<?php
+    use Illuminate\Support\Str;
+    $isEdit = isset($product);
+    $galleryImages = (array) ($product->images ?? []);
+    $highlightsText = implode("\n", (array) ($product->highlights ?? []));
+    $recommendedText = implode("\n", (array) ($product->recommended_for ?? []));
+
+    // Canonical specification fields — exactly what the website spec table renders.
+    // Each row: [label, placeholder]
+    $specFields = [
+        ['Form', 'e.g. Pellet / Powder / Liquid'],
+        ['Packaging Type', 'e.g. Bag / Bottle / Sachet'],
+        ['Grade Standard', 'e.g. Feed Grade / Food Grade'],
+        ['Shelf Life', 'e.g. 12 months'],
+        ['Type Of Supplement', 'e.g. Nutritional Supplement'],
+        ['Packaging', 'e.g. 500 ml / 25 kg'],
+        ['Country of Origin', 'e.g. Made in India'],
+    ];
+    $specsMap = [];
+    foreach ((array) ($product->specifications ?? []) as $s) {
+        $key = strtolower(trim($s['label'] ?? ''));
+        if ($key !== '') $specsMap[$key] = $s['value'] ?? '';
+    }
+    $galSrc = fn ($path) => Str::startsWith($path, ['http://', 'https://', '/']) ? $path : asset('storage/' . $path);
+    // Fixed 4-image layout: 1 main + 3 angle views.
+    $imageSlots = [
+        ['key' => 'main',   'label' => 'Main Image',    'sub' => 'Featured — shown first on the website'],
+        ['key' => 'angle1', 'label' => 'Angle View 1',  'sub' => 'Side / detail view'],
+        ['key' => 'angle2', 'label' => 'Angle View 2',  'sub' => 'Side / detail view'],
+        ['key' => 'angle3', 'label' => 'Angle View 3',  'sub' => 'Side / detail view'],
+    ];
+    $slotValues = [
+        'main'   => $galleryImages[0] ?? null,
+        'angle1' => $galleryImages[1] ?? null,
+        'angle2' => $galleryImages[2] ?? null,
+        'angle3' => $galleryImages[3] ?? null,
+    ];
+?>
+
+<div class="page-header">
+    <div class="page-heading">
+        <h1 class="page-title"><?php echo e($isEdit ? 'Edit Product' : 'Add Product'); ?></h1>
+        <p class="page-subtitle"><?php echo e($isEdit ? 'Update product information and gallery' : 'Create a product that will appear on the website'); ?></p>
+    </div>
+    <a href="<?php echo e(route('admin.products.index')); ?>" class="btn btn-light">← Back to Products</a>
+</div>
+
+<?php if($errors->any()): ?>
+    <div class="alert alert-danger"><?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><div><?php echo e($e); ?></div><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></div>
+<?php endif; ?>
+
+<form method="POST" action="<?php echo e($isEdit ? route('admin.products.update', $product) : route('admin.products.store')); ?>" enctype="multipart/form-data" id="productForm">
+    <?php echo csrf_field(); ?>
+    <?php if($isEdit): ?> <?php echo method_field('PUT'); ?> <?php endif; ?>
+
+    <div class="form-grid">
+        <div class="form-main">
+            <div class="form-card pad">
+                <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Product Name','name' => 'name','value' => $product->name ?? '','required' => true]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Product Name','name' => 'name','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->name ?? ''),'required' => true]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Slug','name' => 'slug','value' => $product->slug ?? '','help' => 'Leave blank to auto-generate from the name.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Slug','name' => 'slug','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->slug ?? ''),'help' => 'Leave blank to auto-generate from the name.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Short Description','name' => 'description','type' => 'textarea','value' => $product->description ?? '','rows' => 2,'help' => 'One-line summary shown on the product cards.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Short Description','name' => 'description','type' => 'textarea','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->description ?? ''),'rows' => 2,'help' => 'One-line summary shown on the product cards.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Full Description','name' => 'long_description','type' => 'textarea','value' => $product->long_description ?? '','rows' => 5,'help' => 'Detailed description shown on the product detail page.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Full Description','name' => 'long_description','type' => 'textarea','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->long_description ?? ''),'rows' => 5,'help' => 'Detailed description shown on the product detail page.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+            </div>
+
+            <div class="form-card">
+                <div class="card-header">Highlights &amp; Details</div>
+                <div class="pad">
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Highlights (Why farmers choose it)','name' => 'highlights','type' => 'textarea','value' => $highlightsText,'rows' => 4,'help' => 'One highlight per line — shown as the bullet checklist.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Highlights (Why farmers choose it)','name' => 'highlights','type' => 'textarea','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($highlightsText),'rows' => 4,'help' => 'One highlight per line — shown as the bullet checklist.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Recommended For','name' => 'recommended_for','type' => 'textarea','value' => $recommendedText,'rows' => 4,'help' => 'One item per line.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Recommended For','name' => 'recommended_for','type' => 'textarea','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($recommendedText),'rows' => 4,'help' => 'One item per line.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <div class="form-field">
+                        <label class="field-label">Product Specifications</label>
+                        <p class="field-help specs-help">Fill any of the rows below. Only rows with a value will appear on the website.</p>
+                        <div class="specs-table">
+                            <?php $__currentLoopData = $specFields; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as [$label, $placeholder]): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="specs-row">
+                                    <div class="specs-key"><?php echo e($label); ?></div>
+                                    <input
+                                        type="text"
+                                        name="specs[<?php echo e($label); ?>]"
+                                        value="<?php echo e($specsMap[strtolower($label)] ?? ''); ?>"
+                                        placeholder="<?php echo e($placeholder); ?>"
+                                        class="specs-input" />
+                                </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                    </div>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Usage / Dosage','name' => 'usage_instructions','type' => 'textarea','value' => $product->usage_instructions ?? '','rows' => 3]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Usage / Dosage','name' => 'usage_instructions','type' => 'textarea','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->usage_instructions ?? ''),'rows' => 3]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Storage &amp; Handling','name' => 'storage_instructions','type' => 'textarea','value' => $product->storage_instructions ?? '','rows' => 3]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Storage &amp; Handling','name' => 'storage_instructions','type' => 'textarea','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->storage_instructions ?? ''),'rows' => 3]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Composition / Ingredients','name' => 'ingredients','type' => 'textarea','value' => $product->ingredients ?? '','rows' => 3]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Composition / Ingredients','name' => 'ingredients','type' => 'textarea','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->ingredients ?? ''),'rows' => 3]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <div class="card-header">Product Images &amp; Gallery</div>
+                <div class="pad">
+                    <p class="gallery-hint">Upload <strong>4 images</strong> — one <strong>Main Image</strong> (featured, shown first on the website) and <strong>3 angle / side views</strong>. Uploaded images are stored and served to the website automatically.</p>
+
+                    <div class="slot-grid">
+                        <?php $__currentLoopData = $imageSlots; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slot): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $cur = $slotValues[$slot['key']]; ?>
+                            <div class="img-slot <?php echo e($slot['key'] === 'main' ? 'is-main' : ''); ?>" data-slot="<?php echo e($slot['key']); ?>">
+                                <div class="slot-label">
+                                    <span><?php echo e($slot['label']); ?></span>
+                                    <?php if($slot['key'] === 'main'): ?><span class="slot-tag">Featured</span><?php endif; ?>
+                                </div>
+                                <label class="slot-drop" id="drop-<?php echo e($slot['key']); ?>">
+                                    <input type="file" name="images[<?php echo e($slot['key']); ?>]" id="input-<?php echo e($slot['key']); ?>" accept="image/*" hidden onchange="slotPreview('<?php echo e($slot['key']); ?>', this)">
+                                    <input type="hidden" name="existing_images[<?php echo e($slot['key']); ?>]" id="existing-<?php echo e($slot['key']); ?>" value="<?php echo e($cur); ?>">
+                                    <div class="slot-preview <?php echo e($cur ? '' : 'empty'); ?>" id="preview-<?php echo e($slot['key']); ?>">
+                                        <?php if($cur): ?>
+                                            <img src="<?php echo e($galSrc($cur)); ?>" alt="" onerror="this.style.display='none'">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="slot-placeholder" id="placeholder-<?php echo e($slot['key']); ?>" style="<?php echo e($cur ? 'display:none;' : ''); ?>">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4-4 4 4"/></svg>
+                                        <span>Upload</span>
+                                        <small><?php echo e($slot['sub']); ?></small>
+                                    </div>
+                                    <button type="button" class="slot-remove" id="remove-<?php echo e($slot['key']); ?>" style="<?php echo e($cur ? '' : 'display:none;'); ?>" title="Remove" onclick="slotRemove(event, '<?php echo e($slot['key']); ?>')">&times;</button>
+                                </label>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                    <p class="slot-note">JPG, PNG, WebP — up to 5MB each. Leave slots empty if you have fewer images; the Main Image is recommended.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-side">
+            <div class="form-card">
+                <div class="card-header">Publish</div>
+                <div class="pad">
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Status (Published)','name' => 'is_active','type' => 'toggle','value' => $product->is_active ?? true,'help' => 'On = live on the website. Off = draft (hidden).']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Status (Published)','name' => 'is_active','type' => 'toggle','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->is_active ?? true),'help' => 'On = live on the website. Off = draft (hidden).']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Featured','name' => 'is_featured','type' => 'toggle','value' => $product->is_featured ?? false]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Featured','name' => 'is_featured','type' => 'toggle','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->is_featured ?? false)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <button type="submit" class="btn btn-primary full"><?php echo e($isEdit ? 'Update Product' : 'Create Product'); ?></button>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <div class="card-header">Organisation</div>
+                <div class="pad">
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Category','name' => 'category_id','type' => 'select','options' => $categories->pluck('name','id')->toArray(),'value' => $product->category_id ?? '']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Category','name' => 'category_id','type' => 'select','options' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($categories->pluck('name','id')->toArray()),'value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->category_id ?? '')]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Order','name' => 'order','type' => 'number','value' => $product->order ?? 0,'help' => 'Lower numbers show first.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Order','name' => 'order','type' => 'number','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->order ?? 0),'help' => 'Lower numbers show first.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <div class="card-header">Pricing &amp; Stock</div>
+                <div class="pad">
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Price (₹)','name' => 'price','type' => 'number','value' => $product->price ?? '']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Price (₹)','name' => 'price','type' => 'number','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->price ?? '')]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Size / Unit','name' => 'size','value' => $product->size ?? '','placeholder' => 'e.g. 25 kg','help' => 'Shown as “per 25 kg” next to the price.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Size / Unit','name' => 'size','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->size ?? ''),'placeholder' => 'e.g. 25 kg','help' => 'Shown as “per 25 kg” next to the price.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'SKU / Product ID','name' => 'sku','value' => $product->sku ?? '']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'SKU / Product ID','name' => 'sku','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->sku ?? '')]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Stock Quantity','name' => 'stock_quantity','type' => 'number','value' => $product->stock_quantity ?? 0,'help' => 'Used for availability and future ordering.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Stock Quantity','name' => 'stock_quantity','type' => 'number','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->stock_quantity ?? 0),'help' => 'Used for availability and future ordering.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <div class="card-header">Ratings</div>
+                <div class="pad">
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Rating (0–5)','name' => 'rating','type' => 'number','value' => $product->rating ?? '','placeholder' => 'e.g. 4.5']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Rating (0–5)','name' => 'rating','type' => 'number','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->rating ?? ''),'placeholder' => 'e.g. 4.5']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form-field','data' => ['label' => 'Ratings Count','name' => 'rating_count','type' => 'number','value' => $product->rating_count ?? 0]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.form-field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['label' => 'Ratings Count','name' => 'rating_count','type' => 'number','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->rating_count ?? 0)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $attributes = $__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__attributesOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1)): ?>
+<?php $component = $__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1; ?>
+<?php unset($__componentOriginal5b1ac8d34e19cb09f7e0b3fea691ade1); ?>
+<?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<style>
+.page-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom: 22px; }
+.page-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; }
+.page-subtitle { font-size: 14px; color: #5A5A5A; margin-top: 4px; }
+.btn { padding: 11px 18px; border-radius: 9px; font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; border: none; transition: all 0.15s; text-decoration: none; display: inline-flex; align-items: center; justify-content:center; gap: 6px; }
+.btn-primary { background: #4A8C3F; color: #fff; }
+.btn-primary:hover { background: #3A7030; }
+.btn-light { background:#fff; border:1px solid #E8E2D6; color:#5A5A5A; }
+.btn-light:hover { border-color:#D9D2C4; }
+.btn.full { width: 100%; margin-top: 6px; }
+.form-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: start; }
+.form-card { background: #fff; border: 1px solid #EDE9E1; border-radius: 14px; box-shadow: 0 2px 10px rgba(26,26,26,0.04); margin-bottom: 20px; }
+.form-card .pad { padding: 20px; }
+.form-card.pad { padding: 22px; }
+.card-header { padding: 15px 20px; border-bottom: 1px solid #F0ECE2; background:#FBFAF7; font-family:'Playfair Display',serif; font-weight: 700; font-size: 15px; }
+.alert { padding: 12px 16px; border-radius: 8px; font-size: 13.5px; font-weight: 500; margin-bottom: 20px; }
+.alert-danger { background: rgba(212,52,44,0.08); color: #D4342C; border: 1px solid rgba(212,52,44,0.15); }
+.translation-heading { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: #5A5A5A; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid #E5E5E5; }
+
+.gallery-hint { font-size: 12.5px; color: #7A7A7A; margin-bottom: 16px; line-height: 1.55; }
+.slot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.img-slot.is-main { grid-column: span 1; }
+.slot-label { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 7px; }
+.slot-label span:first-child { font-size: 12px; font-weight: 700; color: #5A5A5A; }
+.slot-tag { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #4A8C3F; padding: 2px 7px; border-radius: 5px; }
+.slot-drop { position: relative; display: block; aspect-ratio: 1; border: 1.5px dashed #D9D2C4; border-radius: 12px; overflow: hidden; cursor: pointer; background: #FAF8F3; transition: border-color 0.15s, background 0.15s; }
+.slot-drop:hover, .slot-drop.dragover { border-color: #4A8C3F; background: rgba(74,140,63,0.03); }
+.is-main .slot-drop { border-color: rgba(74,140,63,0.5); border-style: solid; }
+.slot-preview { position: absolute; inset: 0; }
+.slot-preview.empty { display: none; }
+.slot-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slot-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; color: #9A9A8E; padding: 8px; }
+.slot-placeholder svg { width: 24px; height: 24px; color: #4A8C3F; }
+.slot-placeholder span { font-size: 12px; font-weight: 600; }
+.slot-placeholder small { font-size: 10px; color: #B0A98E; line-height: 1.3; }
+.slot-remove { position: absolute; top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; font-size: 15px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
+.slot-remove:hover { background: rgba(212,52,44,0.92); }
+.slot-note { font-size: 11.5px; color: #A8A8A8; margin-top: 12px; }
+@media (max-width: 700px) { .slot-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } }
+
+/* Structured product specifications */
+.form-field { margin-bottom: 18px; }
+.field-label { display:block; font-size: 13px; font-weight: 600; color:#3A3A3A; margin-bottom: 6px; font-family:'Inter',sans-serif; }
+.specs-help { font-size: 12px; color:#7A7A7A; margin: 0 0 10px; line-height: 1.5; }
+.specs-table { border: 1px solid #E8E2D6; border-radius: 10px; overflow: hidden; background: #FBFAF7; }
+.specs-row { display: grid; grid-template-columns: minmax(140px, 220px) 1fr; align-items: stretch; border-bottom: 1px solid #EDE9E1; }
+.specs-row:last-child { border-bottom: none; }
+.specs-key { padding: 11px 14px; font-size: 13px; font-weight: 600; color: #3A3A3A; background: #F5F1E6; border-right: 1px solid #EDE9E1; display: flex; align-items: center; font-family:'Inter',sans-serif; }
+.specs-input { border: none; background: transparent; padding: 11px 14px; font-size: 13.5px; font-family:'Inter',sans-serif; color:#1A1A1A; outline: none; width: 100%; }
+.specs-input::placeholder { color:#B5AC9A; font-style: italic; }
+.specs-input:focus { background: #fff; box-shadow: inset 0 0 0 2px rgba(74,140,63,0.2); }
+@media (max-width: 620px) {
+    .specs-row { grid-template-columns: 1fr; }
+    .specs-key { border-right: none; border-bottom: 1px solid #EDE9E1; padding-bottom: 8px; }
+}
+</style>
+
+<script>
+// Preview a picked file inside its slot.
+function slotPreview(key, input) {
+    var file = input.files && input.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        var preview = document.getElementById('preview-' + key);
+        preview.innerHTML = '<img src="' + e.target.result + '" alt="">';
+        preview.classList.remove('empty');
+        document.getElementById('placeholder-' + key).style.display = 'none';
+        document.getElementById('remove-' + key).style.display = 'flex';
+    };
+    reader.readAsDataURL(file);
+}
+
+// Clear a slot (removes the picked file and any existing stored image).
+function slotRemove(ev, key) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    document.getElementById('input-' + key).value = '';
+    document.getElementById('existing-' + key).value = '';
+    var preview = document.getElementById('preview-' + key);
+    preview.innerHTML = '';
+    preview.classList.add('empty');
+    document.getElementById('placeholder-' + key).style.display = '';
+    document.getElementById('remove-' + key).style.display = 'none';
+}
+
+// Drag-and-drop onto each slot.
+document.querySelectorAll('.slot-drop').forEach(function (drop) {
+    var key = drop.id.replace('drop-', '');
+    var input = document.getElementById('input-' + key);
+    ['dragenter', 'dragover'].forEach(function (evn) {
+        drop.addEventListener(evn, function (e) { e.preventDefault(); drop.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (evn) {
+        drop.addEventListener(evn, function (e) { e.preventDefault(); drop.classList.remove('dragover'); });
+    });
+    drop.addEventListener('drop', function (e) {
+        if (e.dataTransfer.files && e.dataTransfer.files.length) {
+            input.files = e.dataTransfer.files;
+            slotPreview(key, input);
+        }
+    });
+});
+</script>
+<?php /**PATH E:\Manikstu Website\backend\resources\views/admin/products/_form.blade.php ENDPATH**/ ?>

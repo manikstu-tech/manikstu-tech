@@ -476,31 +476,31 @@ export default function AboutPage() {
         {(() => {
           const leaders = [
             {
-              name: "Jayanti Mahapatra",
-              role: "Chief Executive Officer",
-              tag: "CEO",
+              name: "Biren Sahoo",
+              role: "Founder and Managing Director",
+              tag: "FMD",
               photo: "",
               bio: "Pioneering sustainable rural development and livestock empowerment across Odisha.",
             },
             {
-              name: "Biren Sahoo",
-              role: "Chief Operating Officer",
-              tag: "COO",
+              name: "Jayanti Mahapatra",
+              role: "Chief Executive Officer",
+              tag: "CEO",
               photo: "",
-              bio: "Leading field operations, supply chain integrity, and farmer community engagement.",
+              bio: "Driving strategic vision, business growth, and organizational excellence.",
             },
             {
               name: "Biswabandhu Padhi",
-              role: "Chief Business Officer",
-              tag: "CBO",
+              role: "Director- Growth",
+              tag: "Growth",
               photo: "/team/biswabandhu-padhi.png",
               objectPosition: "center 18%",
               bio: "Driving strategic partnerships, commercial market reach, and enterprise growth.",
             },
             {
               name: "Om Singh",
-              role: "Chief Financial Officer",
-              tag: "CFO",
+              role: "SVP Accounts",
+              tag: "Accounts",
               photo: "/team/om-singh.jpg",
               bio: "Ensuring financial governance, sustainable capital strategy, and investor relations.",
             },
@@ -515,8 +515,8 @@ export default function AboutPage() {
           const executionEngine = [
             {
               name: "Aftab Khan",
-              role: "Assistant Vice President Technology",
-              tag: "Technology",
+              role: "AVP Tech & Operations",
+              tag: "Tech & Ops",
               photo: "/team/aftab-khan.jpeg",
               bio: "Technology leader driving digital transformation, product innovation, and scalable technology strategy.",
             },
@@ -529,15 +529,15 @@ export default function AboutPage() {
             },
             {
               name: "Manoj Sahoo",
-              role: "Marketing Manager- Goat Bank",
-              tag: "Marketing",
+              role: "Manager Sales",
+              tag: "Sales",
               photo: "/team/manoj-sahoo.jpg",
               objectPosition: "center 30%",
               bio: "With over 15 years of experience in rural sales, Manoj is a vital member of the team driving farmer outreach and market connectivity.",
             },
             {
               name: "Rashmi Dash",
-              role: "Human Resource Manager",
+              role: "Manager HR",
               tag: "HR",
               photo: "/team/rashmi-dash.jpg",
               bio: "Rashmi Dash is a passionate HR professional who effectively manages the diverse rural talent and organizational culture.",
@@ -584,11 +584,12 @@ export default function AboutPage() {
           ];
           const tagColor = (t: string) =>
             ({
+              FMD: "bg-manikstu-green",
               CEO: "bg-manikstu-green",
-              CBO: "bg-manikstu-gold",
-              COO: "bg-saura-red",
-              CFO: "bg-manikstu-leaf",
+              Growth: "bg-manikstu-gold",
+              Accounts: "bg-manikstu-leaf",
               Marketing: "bg-manikstu-green",
+              "Tech & Ops": "bg-manikstu-gold",
               Operations: "bg-manikstu-leaf",
               Infrastructure: "bg-manikstu-gold",
               HR: "bg-manikstu-gold",
