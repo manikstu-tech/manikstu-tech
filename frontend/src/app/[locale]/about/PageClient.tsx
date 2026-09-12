@@ -528,11 +528,11 @@ export default function AboutPage() {
               bio: "B.Tech Civil Engineering from IGIT Sarang. 6+ years in structural design and quality maintenance across reputed engineering organizations.",
             },
             {
-              name: "Sanatan Sahu",
-              role: "Operation Manager- Feed & Fodder Division",
-              tag: "Operations",
-              photo: "",
-              bio: "Sanatan Sahu, a founding member of the company, has been with the organization since inception driving feed and fodder operations.",
+              name: "Manoj Sahoo",
+              role: "Marketing Manager- Goat Bank",
+              tag: "Marketing",
+              photo: "/team/manoj-sahoo.jpg",
+              bio: "With over 15 years of experience in rural sales, Manoj is a vital member of the team driving farmer outreach and market connectivity.",
             },
             {
               name: "Sandhya Singh",
