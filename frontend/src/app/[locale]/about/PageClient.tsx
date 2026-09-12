@@ -543,8 +543,8 @@ export default function AboutPage() {
               bio: "Rashmi Dash is a passionate HR professional who effectively manages the diverse rural talent and organizational culture.",
             },
             {
-              name: "Sailesh Nayak",
-              role: "Sales Manager- Franchise Business",
+              name: "Nabin Meher",
+              role: "Sr. Manager-Sales",
               tag: "Sales",
               photo: "",
               bio: "Sailesh Nayak is a highly energetic professional managing the Manikstu Goat Bank franchise business expansion.",
