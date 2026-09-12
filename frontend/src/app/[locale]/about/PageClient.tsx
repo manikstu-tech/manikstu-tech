@@ -546,7 +546,7 @@ export default function AboutPage() {
               name: "Nabin Meher",
               role: "Sr. Manager-Sales",
               tag: "Sales",
-              photo: "",
+              photo: "/team/nabin-meher.jpg",
               bio: "Nabin Meher is a highly energetic professional managing the Manikstu Goat Bank franchise business expansion.",
             },
           ];
