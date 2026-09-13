@@ -5,6 +5,14 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSlider from "@/components/home/HeroSlider";
 import GoatIcon from "@/components/icons/GoatIcon";
+import {
+  GoatSolidIcon,
+  PeopleSolidIcon,
+  HeartPulseSolidIcon,
+  GraduationCapSolidIcon,
+  ShieldCheckSolidIcon,
+  StoreSolidIcon,
+} from "@/components/icons/BenefitIcons";
 import AjahVideo from "@/components/home/AjahVideo";
 import WatchStoryButton from "@/components/home/WatchStoryButton";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
@@ -28,10 +36,6 @@ import {
   BarChart3,
   ShoppingBag,
   User,
-  GraduationCap,
-  HeartPulse,
-  ShieldCheck,
-  Store,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -683,12 +687,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {/* Benefits strip — icon left, two-line label right, divided */}
             <div className="mt-10 sm:mt-12 flex gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:overflow-visible scrollbar-hide">
               {[
-                { Icon: GoatIcon, l1: "Improved", l2: "Livestock Productivity" },
-                { Icon: Users, l1: "Women", l2: "Entrepreneurship" },
-                { Icon: HeartPulse, l1: "Access to", l2: "Veterinary Healthcare" },
-                { Icon: GraduationCap, l1: "Training &", l2: "Capacity Building" },
-                { Icon: ShieldCheck, l1: "Insurance", l2: "& Risk Protection" },
-                { Icon: Store, l1: "Market Linkages", l2: "& Better Livelihoods" },
+                { Icon: GoatSolidIcon, l1: "Improved", l2: "Livestock Productivity" },
+                { Icon: PeopleSolidIcon, l1: "Women", l2: "Entrepreneurship" },
+                { Icon: HeartPulseSolidIcon, l1: "Access to", l2: "Veterinary Healthcare" },
+                { Icon: GraduationCapSolidIcon, l1: "Training &", l2: "Capacity Building" },
+                { Icon: ShieldCheckSolidIcon, l1: "Insurance", l2: "& Risk Protection" },
+                { Icon: StoreSolidIcon, l1: "Market Linkages", l2: "& Better Livelihoods" },
               ].map(({ Icon, l1, l2 }, i) => (
                 <div
                   key={l1 + l2}
