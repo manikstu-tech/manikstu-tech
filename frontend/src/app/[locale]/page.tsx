@@ -652,6 +652,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 >
                   {t("exploreAjah")} <ArrowRight className="h-4 w-4" />
                 </Link>
+
+                {/* Stats Row — label on top, colour-coded figure below */}
+                <div className="mt-8 grid w-full grid-cols-3 gap-4 sm:gap-6 text-left">
+                  <div>
+                    <p className="text-xs sm:text-sm text-grey">Women Empowered</p>
+                    <p className="mt-0.5 font-heading text-3xl sm:text-4xl font-bold text-manikstu-green">500+</p>
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm text-grey">Goats Supported</p>
+                    <p className="mt-0.5 font-heading text-3xl sm:text-4xl font-bold text-[#9F5233]">5,000+</p>
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm text-grey">Villages Covered</p>
+                    <p className="mt-0.5 font-heading text-3xl sm:text-4xl font-bold text-manikstu-green">25+</p>
+                  </div>
+                </div>
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] shadow-sm border border-manikstu-gold/20">
                 <AjahVideo videoId="aKnwiUhA4Yw" />
@@ -659,22 +675,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 rounded-lg sm:rounded-full bg-manikstu-green px-2.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-semibold text-white shadow-md max-w-[85%] sm:max-w-none text-right leading-tight z-10">
                   {t("ajahBadge")}
                 </div>
-              </div>
-            </div>
-
-            {/* Stats Row — label on top, colour-coded figure below */}
-            <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6 text-left">
-              <div>
-                <p className="text-xs sm:text-sm text-grey">Women Empowered</p>
-                <p className="mt-0.5 font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-manikstu-green">500+</p>
-              </div>
-              <div>
-                <p className="text-xs sm:text-sm text-grey">Goats Supported</p>
-                <p className="mt-0.5 font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-[#9F5233]">5,000+</p>
-              </div>
-              <div>
-                <p className="text-xs sm:text-sm text-grey">Villages Covered</p>
-                <p className="mt-0.5 font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-manikstu-green">25+</p>
               </div>
             </div>
 
