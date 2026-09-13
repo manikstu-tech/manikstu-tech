@@ -36,6 +36,7 @@ import {
   BarChart3,
   ShoppingBag,
   User,
+  Download,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -715,6 +716,111 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               ))}
             </div>
         </section>
+
+        {/* About Project AJAH — Livelihoods Today */}
+        <section className="relative overflow-hidden bg-white px-4 pt-10 pb-14 sm:px-6 sm:pt-12 sm:pb-16 md:px-8 md:pt-14 md:pb-20">
+          {/* Faint rural landscape line-art, bottom-right */}
+          <svg
+            aria-hidden
+            viewBox="0 0 420 170"
+            preserveAspectRatio="xMaxYMax meet"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="pointer-events-none absolute bottom-0 right-0 hidden h-44 w-[48%] text-manikstu-green/20 lg:block"
+          >
+            {/* rolling hills */}
+            <path d="M0 150c60-26 120-26 180-8s120 20 240-14" />
+            <path d="M120 168c50-30 110-34 170-16s90 14 130 2" />
+            {/* trees */}
+            <g>
+              <path d="M60 150v-16" />
+              <circle cx="60" cy="126" r="9" />
+              <path d="M96 150v-12" />
+              <circle cx="96" cy="132" r="7" />
+            </g>
+            {/* houses (village) */}
+            <path d="M250 150v-20h26v20M247 130l16-12 16 12" />
+            <path d="M300 150v-16h20v16M297 134l13-10 13 10" />
+            {/* far tree */}
+            <path d="M360 150v-14" />
+            <circle cx="360" cy="129" r="8" />
+          </svg>
+
+          {/* Script tagline, top-right (large screens) */}
+          <div className="pointer-events-none absolute right-6 top-8 hidden xl:block">
+            <p className="-rotate-6 text-right font-heading text-2xl font-semibold italic leading-tight text-manikstu-green">
+              From Rural Roots
+              <br />
+              to Brighter Futures
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 200 12"
+              preserveAspectRatio="none"
+              className="ml-auto mt-1 h-2.5 w-44 text-manikstu-gold"
+            >
+              <path d="M2 8C50 2 150 2 198 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          </div>
+
+          <div className="relative mx-auto max-w-7xl">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+              {/* Video card — same style/proportions as the home dashboard card */}
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
+                <AjahVideo videoId="9ywHq6H3-wU" />
+                <div className="absolute bottom-2.5 right-2.5 z-10 max-w-[85%] rounded-lg bg-manikstu-green px-2.5 py-1.5 text-right text-[10px] font-semibold leading-tight text-white shadow-md sm:bottom-4 sm:right-4 sm:max-w-none sm:rounded-full sm:px-4 sm:py-2 sm:text-xs">
+                  Empowered women build stronger communities
+                </div>
+              </div>
+
+              {/* Content */}
+              <div>
+                {/* Ornamental pill heading */}
+                <div className="flex items-center gap-2">
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                  <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
+                    About Project AJAH
+                  </p>
+                  <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
+                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                </div>
+
+                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                  Livelihoods Today.
+                  <br />
+                  <span className="text-[#9F5233]">Stronger Tomorrow.</span>
+                </h2>
+
+                <p className="mt-5 max-w-xl text-sm leading-relaxed text-grey sm:text-base">
+                  Project AJAH is an integrated livestock development initiative led by
+                  women, for stronger families and resilient rural communities. We enable
+                  women to build sustainable livelihoods through scientific livestock
+                  management, healthcare, training, insurance, and market support.
+                </p>
+
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <Link
+                    href="/collaborate/ajah"
+                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-manikstu-leaf"
+                  >
+                    Explore Project AJAH <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/collaborate/ajah"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white"
+                  >
+                    <Download className="h-4 w-4" /> Download Brochure
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="partner-section relative py-8 sm:py-10 md:py-12 bg-manikstu-cream overflow-hidden">
           {/* Top tribal border */}
           <div
