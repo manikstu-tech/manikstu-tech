@@ -719,6 +719,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         {/* About Project AJAH — Livelihoods Today */}
         <section className="relative overflow-hidden bg-white px-4 pt-10 pb-14 sm:px-6 sm:pt-12 sm:pb-16 md:px-8 md:pt-14 md:pb-20">
+          {/* Top-left corner mandala (same artwork as the Mobile App section) */}
+          <Image
+            src="/patterns/mandala-corner-top.png"
+            alt=""
+            aria-hidden
+            width={1370}
+            height={1155}
+            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.14] sm:opacity-[0.18]"
+          />
+
           {/* Faint rural landscape line-art, bottom-right */}
           <svg
             aria-hidden
