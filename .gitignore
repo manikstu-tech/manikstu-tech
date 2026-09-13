@@ -8,3 +8,6 @@ playwright-mcp
 frontend/out/
 .playwright-mcp/
 
+# Decoupled Laravel backend now lives in its own repo; ignore any local leftover copy
+/backend/
+
