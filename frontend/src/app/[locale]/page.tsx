@@ -684,8 +684,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
             </div>
 
-            {/* Benefits strip — icon left, two-line label right, divided */}
-            <div className="mt-10 sm:mt-12 flex gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:overflow-visible scrollbar-hide">
+            {/* Benefits strip — icon left, two-line label right, divided, light-green band */}
+            <div className="mt-10 sm:mt-12 flex gap-4 overflow-x-auto rounded-2xl bg-[#EEF5E7] px-4 py-6 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:px-6 sm:overflow-visible scrollbar-hide">
               {[
                 { Icon: GoatSolidIcon, l1: "Improved", l2: "Livestock Productivity" },
                 { Icon: PeopleSolidIcon, l1: "Women", l2: "Entrepreneurship" },
