@@ -14,26 +14,34 @@ const svgBase = {
   "aria-hidden": true,
 } as const;
 
-/** Solid full-body goat silhouette (side profile, facing left). */
+/** Solid full-body goat silhouette (side profile, facing left) matching the reference. */
 export function GoatSolidIcon(props: IconProps) {
   return (
-    <svg {...svgBase} {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" aria-hidden="true" {...props}>
       <g fill="currentColor">
-        {/* horn curving back */}
-        <path d="M8.1 6.2C7.4 4.4 6 3.3 4.1 3.1c.9 1 1.3 2.1 1.2 3.4-.6-.5-1.3-.8-2.1-.8.6.9 1.5 1.5 2.6 1.7z" />
-        {/* head + snout (facing left) */}
-        <path d="M8 6.4C6.9 6.2 5.9 6.6 5.2 7.4c-.5.6-.8 1.3-.8 2.1l.1.9 1.5.6 2.6-.3z" />
+        {/* horns curving up and back */}
+        <path d="M20 22C21 14 24 9 29 5C28 11 27 17 25 22Z" />
+        <path d="M23 23C25 16 29 12 34 9C31 15 29 19 27 23Z" />
         {/* ear */}
-        <path d="M8.8 6.6c-.9-.2-1.8 0-2.5.6.7.4 1.5.5 2.3.3z" />
+        <path d="M17 22C13 18 10 17 7 18C9 21 12 24 16 24Z" />
+        {/* head */}
+        <ellipse cx="15" cy="27" rx="8" ry="6.5" />
+        {/* snout */}
+        <path d="M7 28C4 28 2 30 3 33C4 35 7 35 9 34L12 32L11 28Z" />
         {/* beard */}
-        <path d="M4.6 10.4c-.1.9 0 1.7.4 2.5l.9-.9-.1-1.9z" />
-        {/* body */}
-        <path d="M7 9.2c1.6-.6 3.4-.6 5 0l4.2.3c1.6.1 2.9 1 3.6 2.4.3.6-.1 1.3-.8 1.3h-1.2c-.9 0-1.7.4-2.2 1.1l-.5.7H8.2l-.6-.8c-.5-.7-1.3-1.1-2.2-1.1H4.4c-.5 0-.9-.4-.9-.9 0-1.4 1.4-2.6 3.5-3z" />
-        {/* tail */}
-        <path d="M18.8 11.3c.9-.2 1.7 0 2.4.6-.7.5-1 1.2-1 2z" />
-        {/* four legs */}
-        <path d="M6 14.8h1.6V19H6zM9 15h1.6v4H9zM13.5 15h1.6v4h-1.6zM16.4 14.8H18V19h-1.6z" />
+        <path d="M9 32C8 37 8.5 43 10 48C11 45 12.3 45 13.2 47C14 41 13.6 35 12.5 32Z" />
+        {/* neck + body */}
+        <path d="M18 26C23 27 27 30 31 33L49 33C55 33 59 38 59 44C59 51 53 56 46 56L26 56C20 56 16 51 16 45C16 38 15 30 18 26Z" />
+        {/* tail (bushy, upturned) */}
+        <path d="M56 36C61 32 66 34 67 39C63 39 62 42 62 46C59 43 57 39 56 37Z" />
+        {/* legs with hooves */}
+        <path d="M23 54h4.5v9c0 1-.6 1.5-1.5 1.5h-1.5c-.9 0-1.5-.5-1.5-1.5Z" />
+        <path d="M30 54h4v9c0 1-.6 1.5-1.4 1.5h-1.2c-.9 0-1.4-.5-1.4-1.5Z" />
+        <path d="M44 54h4.5v9c0 1-.6 1.5-1.5 1.5h-1.5c-.9 0-1.5-.5-1.5-1.5Z" />
+        <path d="M51 54h4v9c0 1-.6 1.5-1.4 1.5h-1.2c-.9 0-1.4-.5-1.4-1.5Z" />
       </g>
+      {/* eye */}
+      <path d="M12 26c1.6-.9 3.4-.9 5 0" fill="none" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" />
     </svg>
   );
 }
