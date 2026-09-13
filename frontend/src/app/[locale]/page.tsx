@@ -683,9 +683,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Benefits strip — icon left, two-line label right, divided, light-green band */}
-            <div className="mt-10 sm:mt-12 flex gap-4 overflow-x-auto rounded-2xl bg-[#EEF5E7] px-4 py-6 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:px-6 sm:overflow-visible scrollbar-hide">
+          {/* Benefits strip — full-bleed light-green band, pushed down so the watermark above stays visible */}
+          <div className="relative -mx-4 mt-16 flex gap-4 overflow-x-auto rounded-2xl bg-[#EEF5E7] px-4 py-6 sm:-mx-6 sm:mt-20 sm:grid sm:grid-cols-3 md:-mx-8 md:grid-cols-6 sm:gap-y-6 sm:px-6 sm:overflow-visible scrollbar-hide">
               {[
                 { Icon: GoatSolidIcon, l1: "Improved", l2: "Livestock Productivity" },
                 { Icon: PeopleSolidIcon, l1: "Women", l2: "Entrepreneurship" },
@@ -713,7 +714,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
               ))}
             </div>
-          </div>
         </section>
         <section className="partner-section relative py-8 sm:py-10 md:py-12 bg-manikstu-cream overflow-hidden">
           {/* Top tribal border */}
