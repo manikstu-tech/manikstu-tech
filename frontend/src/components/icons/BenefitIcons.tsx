@@ -14,29 +14,25 @@ const svgBase = {
   "aria-hidden": true,
 } as const;
 
-/** Solid full-body goat silhouette (side profile, facing right). */
+/** Solid full-body goat silhouette (side profile, facing left). */
 export function GoatSolidIcon(props: IconProps) {
   return (
     <svg {...svgBase} {...props}>
       <g fill="currentColor">
-        {/* body */}
-        <ellipse cx="9.5" cy="11" rx="6" ry="3.2" />
-        {/* neck */}
-        <path d="M12.5 8.4c.4-1.4 1.3-2.5 2.6-3.1l2.4.6-.6 4.6-3.8.3z" />
-        {/* head */}
-        <ellipse cx="17.9" cy="7.9" rx="2.3" ry="1.8" />
-        {/* snout */}
-        <path d="M19.6 7c1-.2 1.8.1 2.1 1 .3.8-.2 1.5-1 1.7l-2 .35-.3-2.8z" />
-        {/* horn */}
-        <path d="M16.6 6.1c-.5-1.7-1.6-2.9-3.2-3.3.6 1.1.8 2.3.4 3.5z" />
+        {/* horn curving back */}
+        <path d="M8.1 6.2C7.4 4.4 6 3.3 4.1 3.1c.9 1 1.3 2.1 1.2 3.4-.6-.5-1.3-.8-2.1-.8.6.9 1.5 1.5 2.6 1.7z" />
+        {/* head + snout (facing left) */}
+        <path d="M8 6.4C6.9 6.2 5.9 6.6 5.2 7.4c-.5.6-.8 1.3-.8 2.1l.1.9 1.5.6 2.6-.3z" />
         {/* ear */}
-        <path d="M19 6.1c.7-.8 1.6-1.1 2.6-1-.5.8-.6 1.6-.3 2.4z" />
+        <path d="M8.8 6.6c-.9-.2-1.8 0-2.5.6.7.4 1.5.5 2.3.3z" />
         {/* beard */}
-        <path d="M18.1 9.4c.2 1 .1 1.9-.3 2.8l1.2-.8.1-1.8z" />
+        <path d="M4.6 10.4c-.1.9 0 1.7.4 2.5l.9-.9-.1-1.9z" />
+        {/* body */}
+        <path d="M7 9.2c1.6-.6 3.4-.6 5 0l4.2.3c1.6.1 2.9 1 3.6 2.4.3.6-.1 1.3-.8 1.3h-1.2c-.9 0-1.7.4-2.2 1.1l-.5.7H8.2l-.6-.8c-.5-.7-1.3-1.1-2.2-1.1H4.4c-.5 0-.9-.4-.9-.9 0-1.4 1.4-2.6 3.5-3z" />
         {/* tail */}
-        <path d="M3.8 8.7c-.7-.5-1.1-1.3-1.2-2.2.9.2 1.6.7 2.1 1.4z" />
+        <path d="M18.8 11.3c.9-.2 1.7 0 2.4.6-.7.5-1 1.2-1 2z" />
         {/* four legs */}
-        <path d="M5.5 13.6h1.6V19H5.5zM8.4 13.9h1.6V19H8.4zM11.5 13.9h1.6V19h-1.6zM13.9 13.6h1.6V19h-1.6z" />
+        <path d="M6 14.8h1.6V19H6zM9 15h1.6v4H9zM13.5 15h1.6v4h-1.6zM16.4 14.8H18V19h-1.6z" />
       </g>
     </svg>
   );
