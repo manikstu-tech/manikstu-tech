@@ -736,7 +736,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             aria-hidden
             width={1920}
             height={300}
-            className="pointer-events-none select-none absolute -bottom-8 right-0 hidden h-auto w-[52%] object-contain object-bottom opacity-60 lg:block"
+            className="pointer-events-none select-none absolute -bottom-[52px] right-0 hidden h-auto w-[52%] object-contain object-bottom opacity-60 lg:block"
           />
 
           {/* Script tagline, top-right (large screens) */}
