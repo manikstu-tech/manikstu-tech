@@ -662,19 +662,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
             </div>
 
-            {/* Stats Row */}
-            <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 text-center">
+            {/* Stats Row — label on top, colour-coded figure below */}
+            <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6 text-left">
               <div>
-                <p className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-manikstu-green">500+</p>
-                <p className="mt-1 text-xs sm:text-sm text-grey">Women Empowered</p>
+                <p className="text-xs sm:text-sm text-grey">Women Empowered</p>
+                <p className="mt-0.5 font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-manikstu-green">500+</p>
               </div>
               <div>
-                <p className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-manikstu-green">5,000+</p>
-                <p className="mt-1 text-xs sm:text-sm text-grey">Goats Supported</p>
+                <p className="text-xs sm:text-sm text-grey">Goats Supported</p>
+                <p className="mt-0.5 font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-[#9F5233]">5,000+</p>
               </div>
               <div>
-                <p className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-manikstu-green">25+</p>
-                <p className="mt-1 text-xs sm:text-sm text-grey">Villages Covered</p>
+                <p className="text-xs sm:text-sm text-grey">Villages Covered</p>
+                <p className="mt-0.5 font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-manikstu-green">25+</p>
               </div>
             </div>
 
