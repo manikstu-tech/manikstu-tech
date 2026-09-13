@@ -606,7 +606,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
 
         {/* Flagship Program */}
-        <section className="relative section-padding bg-white overflow-hidden">
+        <section className="relative px-4 pt-14 pb-6 sm:px-6 sm:pt-16 sm:pb-8 md:px-8 md:pt-20 md:pb-10 bg-white overflow-hidden">
           {/* Background Manikstu logo watermark, positioned lower & centered on mobile, left-aligned on desktop */}
           <div className="pointer-events-none select-none absolute inset-0 flex items-start justify-center pt-24 sm:pt-28 lg:pt-0 lg:items-center lg:justify-start lg:left-[5%] overflow-hidden">
             <Image
