@@ -739,23 +739,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             className="pointer-events-none select-none absolute -bottom-[52px] right-0 hidden h-auto w-[52%] object-contain object-bottom opacity-60 lg:block"
           />
 
-          {/* Script tagline, top-right (large screens) */}
-          <div className="pointer-events-none absolute right-6 top-8 hidden xl:block">
-            <p className="-rotate-6 text-right font-heading text-2xl font-semibold italic leading-tight text-manikstu-green">
-              From Rural Roots
-              <br />
-              to Brighter Futures
-            </p>
-            <svg
-              aria-hidden
-              viewBox="0 0 200 12"
-              preserveAspectRatio="none"
-              className="ml-auto mt-1 h-2.5 w-44 text-manikstu-gold"
-            >
-              <path d="M2 8C50 2 150 2 198 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-            </svg>
-          </div>
-
           <div className="relative mx-auto max-w-7xl">
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
               {/* Video card — same style/proportions as the home dashboard card */}
