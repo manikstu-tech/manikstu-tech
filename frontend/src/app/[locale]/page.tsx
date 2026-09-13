@@ -28,6 +28,10 @@ import {
   BarChart3,
   ShoppingBag,
   User,
+  GraduationCap,
+  HeartPulse,
+  ShieldCheck,
+  Store,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -674,6 +678,36 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   {t("ajahBadge")}
                 </div>
               </div>
+            </div>
+
+            {/* Benefits strip — icon left, two-line label right, divided */}
+            <div className="mt-10 sm:mt-12 flex gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:overflow-visible scrollbar-hide">
+              {[
+                { Icon: GoatIcon, l1: "Improved", l2: "Livestock Productivity" },
+                { Icon: Users, l1: "Women", l2: "Entrepreneurship" },
+                { Icon: HeartPulse, l1: "Access to", l2: "Veterinary Healthcare" },
+                { Icon: GraduationCap, l1: "Training &", l2: "Capacity Building" },
+                { Icon: ShieldCheck, l1: "Insurance", l2: "& Risk Protection" },
+                { Icon: Store, l1: "Market Linkages", l2: "& Better Livelihoods" },
+              ].map(({ Icon, l1, l2 }, i) => (
+                <div
+                  key={l1 + l2}
+                  className={
+                    "flex min-w-[190px] sm:min-w-0 items-center gap-3 px-4 " +
+                    // sm (3-col): divider before every item except the first of each row
+                    (i % 3 !== 0 ? "sm:border-l sm:border-manikstu-green/15 " : "") +
+                    // md (6-col, single row): add the divider before the 4th item too
+                    (i === 3 ? "md:border-l md:border-manikstu-green/15" : "")
+                  }
+                >
+                  <Icon className="h-8 w-8 shrink-0 text-manikstu-green" strokeWidth={1.75} />
+                  <span className="text-[13px] font-semibold text-charcoal leading-snug">
+                    {l1}
+                    <br />
+                    {l2}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
