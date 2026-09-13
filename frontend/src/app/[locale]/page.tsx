@@ -28,8 +28,6 @@ import {
   BarChart3,
   ShoppingBag,
   User,
-  Heart,
-  GraduationCap,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -676,25 +674,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   {t("ajahBadge")}
                 </div>
               </div>
-            </div>
-
-            {/* Benefits Row */}
-            <div className="mt-6 sm:mt-8 flex gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:overflow-visible scrollbar-hide">
-              {[
-                { Icon: GoatIcon, label: "Improved Livestock Productivity" },
-                { Icon: Users, label: "Women Entrepreneurship" },
-                { Icon: Heart, label: "Access to Veterinary Healthcare" },
-                { Icon: GraduationCap, label: "Training & Capacity Building" },
-                { Icon: Shield, label: "Insurance & Risk Protection" },
-                { Icon: Sprout, label: "Market Linkage & Income Growth" },
-              ].map(({ Icon, label }) => (
-                <div key={label} className="flex min-w-[140px] sm:min-w-0 flex-col items-center gap-2 rounded-xl border border-manikstu-green/20 bg-white px-3 py-3 sm:px-2 sm:py-4 text-center shadow-xs">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green">
-                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </span>
-                  <span className="text-[10px] sm:text-xs font-medium text-charcoal leading-tight">{label}</span>
-                </div>
-              ))}
             </div>
           </div>
         </section>
