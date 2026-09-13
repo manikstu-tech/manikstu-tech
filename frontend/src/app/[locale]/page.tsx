@@ -729,35 +729,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             className="pointer-events-none select-none absolute left-0 top-0 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.14] sm:opacity-[0.18]"
           />
 
-          {/* Faint rural landscape line-art, bottom-right */}
-          <svg
+          {/* Warli village figures artwork, bottom-right */}
+          <Image
+            src="/patterns/village-figures.png"
+            alt=""
             aria-hidden
-            viewBox="0 0 420 170"
-            preserveAspectRatio="xMaxYMax meet"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="pointer-events-none absolute bottom-0 right-0 hidden h-44 w-[48%] text-manikstu-green/20 lg:block"
-          >
-            {/* rolling hills */}
-            <path d="M0 150c60-26 120-26 180-8s120 20 240-14" />
-            <path d="M120 168c50-30 110-34 170-16s90 14 130 2" />
-            {/* trees */}
-            <g>
-              <path d="M60 150v-16" />
-              <circle cx="60" cy="126" r="9" />
-              <path d="M96 150v-12" />
-              <circle cx="96" cy="132" r="7" />
-            </g>
-            {/* houses (village) */}
-            <path d="M250 150v-20h26v20M247 130l16-12 16 12" />
-            <path d="M300 150v-16h20v16M297 134l13-10 13 10" />
-            {/* far tree */}
-            <path d="M360 150v-14" />
-            <circle cx="360" cy="129" r="8" />
-          </svg>
+            width={1920}
+            height={300}
+            className="pointer-events-none select-none absolute bottom-0 right-0 hidden h-auto w-[52%] object-contain object-bottom opacity-60 lg:block"
+          />
 
           {/* Script tagline, top-right (large screens) */}
           <div className="pointer-events-none absolute right-6 top-8 hidden xl:block">
