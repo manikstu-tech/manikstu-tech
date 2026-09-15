@@ -5,6 +5,21 @@ import { Calendar, ArrowRight } from "lucide-react";
 import type { Article } from "@/lib/blog-data";
 import { categoryColors } from "@/lib/blog-data";
 
+function formatArticleDate(dateStr?: string): string {
+  if (!dateStr) return "";
+  try {
+    const d = new Date(dateStr);
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleDateString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      });
+    }
+  } catch {}
+  return dateStr.slice(0, 10);
+}
+
 export default function ArticleGrid({ articles }: { articles: Article[] }) {
   const t = useTranslations("Blog");
 
@@ -34,16 +49,18 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
 
             {/* Content */}
             <div className="p-5">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-between gap-2">
                 <span
-                  className={`rounded-full px-2.5 py-0.5 text-xs font-semibold text-white ${categoryColors[article.category]}`}
+                  className={`rounded-full px-2.5 py-0.5 text-xs font-semibold text-white ${categoryColors[article.category] || "bg-manikstu-green"}`}
                 >
                   {article.category}
                 </span>
-                <span className="flex items-center gap-1.5 text-xs text-grey">
-                  <Calendar className="h-3 w-3" />
-                  {article.date}
-                </span>
+                {article.date && (
+                  <span className="inline-flex items-center gap-1.5 text-xs text-grey whitespace-nowrap">
+                    <Calendar className="h-3.5 w-3.5 text-manikstu-green" />
+                    {formatArticleDate(article.date)}
+                  </span>
+                )}
               </div>
               <h3 className="mt-3 text-lg font-bold text-charcoal font-heading group-hover:text-manikstu-green transition-colors line-clamp-2">
                 {article.title}
