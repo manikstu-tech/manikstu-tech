@@ -4,11 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
-  AlertTriangle, BarChart3, Bell, Home, LogOut, Menu, MessageSquare, Phone, PhoneCall, Settings, ShoppingBag, ShoppingCart,
+  AlertTriangle, BarChart3, Bell, Home, LogOut, Menu, MessageSquare, Phone, PhoneCall, Search, Settings, ShoppingBag, ShoppingCart,
   Truck, User, Users, X, type LucideIcon,
 } from "lucide-react";
 import type { TcNotifications } from "@/lib/admin/telecalling";
 import type { AdminUser } from "@/lib/admin/types";
+import UserMenu from "@/components/admin/UserMenu";
 
 const BASE = "/admin/telecalling";
 
@@ -168,20 +169,24 @@ export default function TelecallingShell({ user, notifications, markReadAction, 
         </div>
       </aside>
 
-      <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-3 border-b border-[#ECE7DC] bg-white/90 px-4 backdrop-blur sm:px-6 lg:px-10">
-        <button type="button" onClick={() => setOpen(true)} className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#ECE7DC] bg-white text-grey lg:hidden" aria-label="Open menu">
+      <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-[#ECE7DC] bg-white/90 px-4 backdrop-blur sm:px-6 lg:px-10">
+        <button type="button" onClick={() => setOpen(true)} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#ECE7DC] bg-white text-grey lg:hidden" aria-label="Open menu">
           <Menu className="h-5 w-5" />
         </button>
-        <p className="hidden text-sm font-semibold text-manikstu-leaf lg:block">Telecalling Workspace</p>
-        <div className="ml-auto flex items-center gap-3">
+
+        {/* Search */}
+        <div className="relative w-full max-w-md">
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
+          <input
+            type="text"
+            placeholder="Search anything..."
+            className="h-11 w-full rounded-xl border border-light-grey bg-manikstu-cream/40 pl-10 pr-4 text-sm text-charcoal outline-none transition placeholder:text-grey/60 focus:border-manikstu-green focus:bg-white focus:ring-4 focus:ring-manikstu-green/10"
+          />
+        </div>
+
+        <div className="ml-auto flex items-center gap-2 sm:gap-3">
           <NotificationBell notifications={notifications} markReadAction={markReadAction} />
-          <div className="hidden items-center gap-2.5 sm:flex">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-manikstu-green/10 text-sm font-bold text-manikstu-leaf">{initial}</div>
-            <div className="leading-tight">
-              <p className="text-[13px] font-semibold">{user.name}</p>
-              <p className="text-[11px] capitalize text-grey">{user.role}</p>
-            </div>
-          </div>
+          <UserMenu user={user} logoutAction={logoutAction} />
         </div>
       </header>
       <div className="h-1 bg-gradient-to-r from-manikstu-green via-manikstu-gold to-manikstu-leaf" aria-hidden />
