@@ -707,7 +707,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           {/* Benefits strip — full-bleed light-green band, pushed down so the watermark above stays visible */}
-          <div className="relative mx-[calc(50%-50vw)] mt-16 flex gap-4 overflow-x-auto bg-[#EEF5E7] px-4 py-6 sm:mt-20 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:px-6 sm:overflow-visible scrollbar-hide">
+          <div className="relative mx-[calc(50%-50vw)] mt-16 flex snap-x snap-mandatory gap-4 overflow-x-auto bg-[#EEF5E7] sm:snap-none px-4 py-6 sm:mt-20 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:px-6 sm:overflow-visible scrollbar-hide">
               {[
                 { Icon: GoatSolidIcon, l1: "Improved", l2: "Livestock Productivity" },
                 { Icon: PeopleSolidIcon, l1: "Women", l2: "Entrepreneurship" },
@@ -719,7 +719,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div
                   key={l1 + l2}
                   className={
-                    "flex min-w-[190px] sm:min-w-0 items-center gap-3 px-4 " +
+                    "flex shrink-0 snap-start whitespace-nowrap sm:shrink sm:whitespace-normal items-center gap-3 px-4 " +
                     // sm (3-col): divider before every item except the first of each row
                     (i % 3 !== 0 ? "sm:border-l sm:border-manikstu-green/15 " : "") +
                     // md (6-col, single row): add the divider before the 4th item too
