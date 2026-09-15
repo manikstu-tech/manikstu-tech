@@ -5,7 +5,6 @@ import {
   ArrowUpRight, Calendar, ChevronRight, Contact, FileText, MessageSquare, Newspaper, Package,
   PenSquare, Plus, Settings, ShoppingCart, type LucideIcon,
 } from "lucide-react";
-import { GoatSolidIcon } from "@/components/icons/BenefitIcons";
 import { PageHeader } from "@/components/admin/AdminUi";
 import { requireAdmin } from "@/lib/admin/auth";
 import { getDashboard } from "@/lib/admin/sections-api";
@@ -85,8 +84,42 @@ function ChartWatermark() {
     </svg>
   );
 }
-function GoatWatermark() {
-  return <GoatSolidIcon className={`${wmClass} h-28 w-28`} />;
+/** Farm scene — goat, child and a woman in a saree — for the orders card. */
+function FarmSceneWatermark() {
+  return (
+    <svg viewBox="0 0 210 115" className={`${wmClass} h-20 w-36`} fill="currentColor">
+      {/* goat (faces left) */}
+      <g transform="translate(6 44) scale(1.02)">
+        <path d="M20 22C21 14 24 9 29 5C28 11 27 17 25 22Z" />
+        <path d="M23 23C25 16 29 12 34 9C31 15 29 19 27 23Z" />
+        <path d="M17 22C13 18 10 17 7 18C9 21 12 24 16 24Z" />
+        <ellipse cx="15" cy="27" rx="8" ry="6.5" />
+        <path d="M7 28C4 28 2 30 3 33C4 35 7 35 9 34L12 32L11 28Z" />
+        <path d="M9 32C8 37 8.5 43 10 48C11 45 12.3 45 13.2 47C14 41 13.6 35 12.5 32Z" />
+        <path d="M18 26C23 27 27 30 31 33L49 33C55 33 59 38 59 44C59 51 53 56 46 56L26 56C20 56 16 51 16 45C16 38 15 30 18 26Z" />
+        <path d="M56 36C61 32 66 34 67 39C63 39 62 42 62 46C59 43 57 39 56 37Z" />
+        <path d="M23 54h4.5v9c0 1-.6 1.5-1.5 1.5h-1.5c-.9 0-1.5-.5-1.5-1.5Z" />
+        <path d="M30 54h4v9c0 1-.6 1.5-1.4 1.5h-1.2c-.9 0-1.4-.5-1.4-1.5Z" />
+        <path d="M44 54h4.5v9c0 1-.6 1.5-1.5 1.5h-1.5c-.9 0-1.5-.5-1.5-1.5Z" />
+        <path d="M51 54h4v9c0 1-.6 1.5-1.4 1.5h-1.2c-.9 0-1.4-.5-1.4-1.5Z" />
+      </g>
+      {/* child */}
+      <g transform="translate(108 62) scale(1.05)">
+        <circle cx="0" cy="8" r="5.5" />
+        <path d="M-5 16 Q-6 12 0 12 Q6 12 5 16 L7 40 Q0 43 -7 40 Z" />
+        <rect x="-5" y="40" width="3.6" height="7" rx="1.4" />
+        <rect x="1.4" y="40" width="3.6" height="7" rx="1.4" />
+      </g>
+      {/* woman in a saree (faces left) */}
+      <g transform="translate(150 15) scale(1.05)">
+        <circle cx="0" cy="13" r="7.5" />
+        <path d="M-8 15 Q-9 4 0 3.5 Q9 4 8 15 Q4 20 0 19 Q-4 20 -8 15 Z" />
+        <path d="M-6 26 Q-7 20 0 20 Q7 20 6 26 L13 88 Q0 93 -13 88 Z" />
+        <path d="M6 27 Q13 34 12 50 Q9 44 4 40 Z" />
+        <path d="M9 20 Q16 40 15 72 L11 70 Q9 44 5 30 Z" />
+      </g>
+    </svg>
+  );
 }
 
 /* ---- stat card ---- */
@@ -247,7 +280,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
       {/* Stat cards */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Total Products" value={n(stats.products)} icon={Package} href="/admin/products" watermark={<LeafSprigWatermark />} hint="In catalogue" />
-        <StatCard label="Total Orders" value={n(stats.orders)} icon={ShoppingCart} href="/admin/orders" watermark={<GoatWatermark />} hint="All-time" />
+        <StatCard label="Total Orders" value={n(stats.orders)} icon={ShoppingCart} href="/admin/orders" watermark={<FarmSceneWatermark />} hint="All-time" />
         <StatCard label="Active Enquiries" value={n(stats.new_enquiries)} icon={MessageSquare} href="/admin/enquiries?status=new" watermark={<PlantWatermark />} accent hint={`${n(stats.new_enquiries)} pending`} hintTone="gold" />
         <StatCard label="Total Revenue" value={compactINR(stats.revenue)} icon={Contact} href="/admin/orders?payment_status=paid" watermark={<ChartWatermark />} hint="Paid" up />
       </div>
