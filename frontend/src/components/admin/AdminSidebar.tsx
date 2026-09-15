@@ -99,13 +99,13 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex h-20 items-center justify-between border-b border-white/10 px-5">
+        <div className="relative flex h-20 items-center justify-center border-b border-white/10 px-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Manikstu Agro" className="h-11 w-auto brightness-0 invert" />
+          <img src="/logo.png" alt="Manikstu Agro" className="h-14 w-auto brightness-0 invert" />
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-white/70 hover:bg-white/10 lg:hidden"
+            className="absolute right-4 flex h-8 w-8 items-center justify-center rounded-lg text-white/70 hover:bg-white/10 lg:hidden"
             aria-label="Close menu"
           >
             <X className="h-5 w-5" />
