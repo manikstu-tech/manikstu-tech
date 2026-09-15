@@ -5,7 +5,6 @@ import {
   ArrowUpRight, Calendar, ChevronRight, FileText, MessageSquare,
   PenSquare, Plus, Settings, ShoppingCart, type LucideIcon,
 } from "lucide-react";
-import { PageHeader } from "@/components/admin/AdminUi";
 import { requireAdmin } from "@/lib/admin/auth";
 import { getDashboard } from "@/lib/admin/sections-api";
 
@@ -218,15 +217,33 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
   return (
     <div className="relative">
-      <PageHeader
-        title="Dashboard"
-        subtitle={
-          data.date === today
-            ? `Welcome back, ${user.name.split(" ")[0]}. Here's what's happening today.`
-            : `Figures as of ${new Date(`${data.date}T00:00:00`).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}.`
-        }
-        actions={
-          <form method="get" className="flex items-center gap-2 rounded-full border border-[#E8E2D6] bg-white px-3.5 py-1.5 shadow-sm">
+      {/* Header with rural banner behind it. Swap /patterns/dashboard-hero.png for the farmer artwork. */}
+      <div className="relative mb-6 overflow-hidden rounded-2xl border border-[#ECE7DC] bg-manikstu-cream/40">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-60"
+          style={{ backgroundImage: "url('/patterns/dashboard-hero.png')" }}
+        />
+        {/* Cream fade so the title stays legible on the left */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-manikstu-cream via-manikstu-cream/60 to-transparent" />
+
+        <div className="relative flex flex-col gap-4 px-5 py-5 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
+            <h1 className="text-3xl font-bold text-[#2D5016]">Dashboard</h1>
+            <div className="my-2 flex items-center gap-2" aria-hidden>
+              <span className="h-0.5 w-10 rounded bg-manikstu-gold/60" />
+              <span className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span className="h-0.5 w-5 rounded bg-manikstu-gold/30" />
+            </div>
+            <p className="text-sm text-grey">
+              {data.date === today
+                ? `Welcome back, ${user.name.split(" ")[0]}. Here's what's happening today.`
+                : `Figures as of ${new Date(`${data.date}T00:00:00`).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}.`}
+            </p>
+          </div>
+
+          {/* Date picker — solid pill sits in front of the artwork, no overlap */}
+          <form method="get" className="flex shrink-0 items-center gap-2 rounded-full border border-[#E8E2D6] bg-white px-3.5 py-1.5 shadow-sm">
             <Calendar className="h-4 w-4 shrink-0 text-manikstu-green" />
             <input
               type="date"
@@ -240,8 +257,8 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
               <ChevronRight className="h-4 w-4" />
             </button>
           </form>
-        }
-      />
+        </div>
+      </div>
 
       {/* Stat cards */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
