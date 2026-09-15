@@ -8,7 +8,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const { expired } = await searchParams;
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FBF3E6] px-4 pt-10 pb-24">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FBF3E6] px-4 pt-10 pb-36">
       {/* Background rural line-art scene — fixed so it stays put while the card scrolls */}
       <div
         aria-hidden
@@ -16,14 +16,16 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         style={{ backgroundImage: "url('/patterns/village-scene.png')" }}
       />
 
-      {/* Footer band — dark green with a rough top edge */}
+      {/* Footer — layered green hills for depth */}
       <svg
         aria-hidden
-        viewBox="0 0 1440 130"
+        viewBox="0 0 1440 170"
         preserveAspectRatio="none"
-        className="pointer-events-none fixed inset-x-0 bottom-0 h-14 w-full sm:h-16"
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-0 h-28 w-full sm:h-32"
       >
-        <path fill="#2D5016" d="M0 28 72 20 144 33 216 22 288 34 360 24 432 31 504 19 576 33 648 23 720 32 792 21 864 34 936 25 1008 32 1080 20 1152 33 1224 24 1296 31 1368 21 1440 29V130H0Z" />
+        <path fill="#4A8C3F" fillOpacity="0.45" d="M0 74C240 38 470 102 720 72S1200 96 1440 62V170H0Z" />
+        <path fill="#3A7030" d="M0 100C270 70 520 122 780 96S1240 106 1440 90V170H0Z" />
+        <path fill="#2D5016" d="M0 126C300 106 560 138 820 120S1260 130 1440 118V170H0Z" />
       </svg>
 
       {/* Login card + trust badge */}
@@ -71,10 +73,17 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         </div>
       </div>
 
-      {/* Footer */}
-      <p className="fixed bottom-3 left-0 right-0 z-10 px-4 text-center text-xs font-semibold text-white">
-        &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
-      </p>
+      {/* Footer content — gold ornament + copyright */}
+      <div className="pointer-events-none fixed inset-x-0 bottom-3 z-10 flex flex-col items-center gap-1.5 px-4">
+        <div className="flex items-center gap-2">
+          <span aria-hidden className="h-px w-6 bg-manikstu-gold/70" />
+          <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+          <span aria-hidden className="h-px w-6 bg-manikstu-gold/70" />
+        </div>
+        <p className="text-center text-xs font-semibold tracking-wide text-white">
+          &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
+        </p>
+      </div>
     </main>
   );
 }
