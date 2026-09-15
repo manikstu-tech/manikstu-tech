@@ -8,7 +8,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const { expired } = await searchParams;
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FBF3E6] px-4 pt-10 pb-24">
+    <main className="relative flex min-h-screen items-start justify-center overflow-hidden bg-[#FBF3E6] px-4 pb-24 pt-0">
       {/* Background rural line-art scene — fixed so it stays put while the card scrolls */}
       <div
         aria-hidden
@@ -33,7 +33,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       </svg>
 
       {/* Login card + trust badge */}
-      <div className="relative z-10 flex w-full max-w-sm -translate-y-6 flex-col items-center">
+      <div className="relative z-10 flex w-full max-w-sm flex-col items-center">
         {/* Login card */}
         <div className="w-full overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white shadow-2xl shadow-charcoal/10">
         {/* Warli art strip above the card body */}
