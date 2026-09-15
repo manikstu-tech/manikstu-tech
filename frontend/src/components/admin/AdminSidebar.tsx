@@ -81,11 +81,11 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
       {/* Top bar */}
       <header className="fixed inset-x-0 top-0 z-30 lg:left-64">
         <div className="flex h-16 items-center gap-3 border-b border-light-grey bg-white px-4 sm:px-6">
-          {/* Hamburger */}
+          {/* Hamburger — only needed on mobile; sidebar is always visible on desktop */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green/20"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green/20 lg:hidden"
             aria-label="Toggle menu"
           >
             <Menu className="h-5 w-5" />
