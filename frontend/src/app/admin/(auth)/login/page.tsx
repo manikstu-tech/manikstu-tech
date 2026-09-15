@@ -50,7 +50,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         <div className="px-6 pb-6 pt-5 sm:px-8">
           <div className="text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Manikstu Agro" className="mx-auto h-11 w-auto" />
+            <img src="/logo.png" alt="Manikstu Agro" className="mx-auto h-14 w-auto" />
             <h1 className="mt-3 font-heading text-2xl font-bold text-charcoal">Admin Panel</h1>
             <p className="mt-1 text-xs text-grey">Manikstu Agro Management System</p>
             {/* Ornamental divider */}
