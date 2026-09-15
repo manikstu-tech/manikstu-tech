@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ShieldCheck } from "lucide-react";
 import LoginForm from "./LoginForm";
 
 export const metadata: Metadata = { title: "Sign in" };
@@ -26,8 +27,10 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         <path fill="#2D5016" d="M0 100C260 70 520 120 780 96 1040 72 1240 106 1440 90V150H0Z" />
       </svg>
 
-      {/* Login card */}
-      <div className="relative z-10 w-full max-w-sm -translate-y-6 overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white shadow-2xl shadow-charcoal/10">
+      {/* Login card + trust badge */}
+      <div className="relative z-10 flex w-full max-w-sm -translate-y-6 flex-col items-center">
+        {/* Login card */}
+        <div className="w-full overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white shadow-2xl shadow-charcoal/10">
         {/* Warli art strip above the card body */}
         <div
           aria-hidden
@@ -56,6 +59,16 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           <div className="mt-5">
             <LoginForm notice={expired ? "Your session has ended. Please sign in again." : undefined} />
           </div>
+        </div>
+        </div>
+
+        {/* Secure Admin Access badge */}
+        <div className="mt-5 text-center">
+          <p className="flex items-center justify-center gap-1.5 text-sm font-semibold text-manikstu-green">
+            <ShieldCheck className="h-4 w-4" />
+            Secure Admin Access
+          </p>
+          <p className="mt-0.5 text-xs text-grey">Protected by Manikstu Agro</p>
         </div>
       </div>
 
