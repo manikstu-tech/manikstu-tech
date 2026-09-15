@@ -27,7 +27,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       </svg>
 
       {/* Login card */}
-      <div className="relative z-10 w-full max-w-sm overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white shadow-2xl shadow-charcoal/10">
+      <div className="relative z-10 w-full max-w-sm -translate-y-6 overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white shadow-2xl shadow-charcoal/10">
         {/* Warli art strip above the card body */}
         <div
           aria-hidden
