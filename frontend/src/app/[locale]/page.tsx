@@ -707,8 +707,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           {/* Benefits strip — full-bleed light-green band, pushed down so the watermark above stays visible */}
-          <div className="relative mx-[calc(50%-50vw)] mt-16 flex snap-x snap-mandatory gap-4 overflow-x-auto bg-[#EEF5E7] sm:snap-none px-4 py-6 sm:mt-20 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:px-6 sm:overflow-visible scrollbar-hide">
-              {[
+          {/* Mobile: items rendered twice and slid left by 50% for a seamless auto-scroll loop */}
+          <div className="relative mx-[calc(50%-50vw)] mt-16 overflow-hidden bg-[#EEF5E7] py-6 sm:mt-20 sm:px-6 motion-reduce:overflow-x-auto">
+            <div className="flex w-max animate-[benefits-marquee_30s_linear_infinite] motion-reduce:animate-none sm:grid sm:w-auto sm:animate-none sm:grid-cols-3 sm:gap-4 sm:gap-y-6 md:grid-cols-6">
+              {[0, 1].flatMap((copy) => [
                 { Icon: GoatSolidIcon, l1: "Improved", l2: "Livestock Productivity" },
                 { Icon: PeopleSolidIcon, l1: "Women", l2: "Entrepreneurship" },
                 { Icon: HeartPulseSolidIcon, l1: "Access to", l2: "Veterinary Healthcare" },
@@ -717,9 +719,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 { Icon: StoreSolidIcon, l1: "Market Linkages", l2: "& Better Livelihoods" },
               ].map(({ Icon, l1, l2 }, i) => (
                 <div
-                  key={l1 + l2}
+                  key={copy + l1 + l2}
+                  aria-hidden={copy === 1 || undefined}
                   className={
-                    "flex shrink-0 snap-start whitespace-nowrap sm:shrink sm:whitespace-normal items-center gap-3 px-4 " +
+                    "flex shrink-0 whitespace-nowrap sm:shrink sm:whitespace-normal items-center gap-3 px-4 " +
+                    (copy === 1 ? "sm:hidden " : "") +
                     // sm (3-col): divider before every item except the first of each row
                     (i % 3 !== 0 ? "sm:border-l sm:border-manikstu-green/15 " : "") +
                     // md (6-col, single row): add the divider before the 4th item too
@@ -733,8 +737,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     {l2}
                   </span>
                 </div>
-              ))}
+              )))}
             </div>
+          </div>
         </section>
 
         {/* About Project AJAH — Livelihoods Today */}
