@@ -21,7 +21,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         aria-hidden
         viewBox="0 0 1440 170"
         preserveAspectRatio="none"
-        className="pointer-events-none fixed inset-x-0 bottom-0 z-0 h-28 w-full sm:h-32"
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-28 w-full sm:h-32"
       >
         <path fill="#4A8C3F" fillOpacity="0.45" d="M0 74C240 38 470 102 720 72S1200 96 1440 62V170H0Z" />
         <path fill="#3A7030" d="M0 100C270 70 520 122 780 96S1240 106 1440 90V170H0Z" />
@@ -74,7 +74,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       </div>
 
       {/* Footer content — copyright */}
-      <p className="pointer-events-none fixed inset-x-0 bottom-3 z-10 px-4 text-center text-xs font-semibold tracking-wide text-white">
+      <p className="pointer-events-none fixed inset-x-0 bottom-3 z-20 px-4 text-center text-xs font-semibold tracking-wide text-white">
         &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
       </p>
     </main>
