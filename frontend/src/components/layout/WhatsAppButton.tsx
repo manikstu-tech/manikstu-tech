@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
  * WhatsApp-style chat panel. Typing a response and pressing send opens the
  * real WhatsApp chat (wa.me) with that message pre-filled.
  */
-const PHONE = "918270331856"; // +91 82703 31856 (digits only, with country code)
+const PHONE = "919833030312"; // +91 98330 30312 (digits only, with country code)
 const DEFAULT_MSG =
   "Hello Manikstu Agro, I'd like to know more about your goat farming products and services.";
 

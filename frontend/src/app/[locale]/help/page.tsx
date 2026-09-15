@@ -194,8 +194,8 @@ export default async function HelpPage({ params }: { params: Promise<{ locale: s
                 {
                   icon: Phone,
                   label: t("callUs"),
-                  value: "+91 8270331856",
-                  href: "tel:+918270331856",
+                  value: "+91 9833030312",
+                  href: "tel:+919833030312",
                   isExternal: true,
                 },
               ].map(({ icon: Icon, label, value, href, isExternal }) => {

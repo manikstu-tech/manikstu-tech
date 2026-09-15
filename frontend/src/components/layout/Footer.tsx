@@ -27,7 +27,7 @@ const fallbackSupportLinks: FooterLink[] = [
 
 const fallbackSettings: Record<string, string> = {
   brand_tagline: "Building a prosperous and sustainable agricultural future through innovation, collaboration and empowerment.",
-  phone: "+91 82703 31856",
+  phone: "+91 98330 30312",
   email_sales: "sales@manikstu.com",
   email_info: "info@manikstu.com",
   address_registered: "Row House No - 94, Ravi Garden, Pune Solapur Road, Manjri Budruk, Hadapsar, Pune - 412307",

@@ -118,7 +118,7 @@ export default function Header() {
               );
             })}
             <a
-              href="tel:+918270331856"
+              href="tel:+919833030312"
               className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-manikstu-green py-3 text-sm font-semibold"
             >
               <Phone className="h-4 w-4" />

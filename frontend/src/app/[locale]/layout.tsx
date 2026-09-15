@@ -136,7 +136,7 @@ export default async function LocaleLayout({
             ],
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+91-8270331856",
+              telephone: "+91-9833030312",
               contactType: "customer service",
               email: "contact@manikstu.com",
             },
@@ -156,7 +156,7 @@ export default async function LocaleLayout({
             url: BASE_URL,
             logo: `${BASE_URL}/logo.png`,
             image: `${BASE_URL}/og-image.png`,
-            telephone: "+91-8270331856",
+            telephone: "+91-9833030312",
             email: "contact@manikstu.com",
             address: {
               "@type": "PostalAddress",
