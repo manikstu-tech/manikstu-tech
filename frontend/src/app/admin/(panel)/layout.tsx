@@ -19,7 +19,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <div
           aria-hidden
           className="pointer-events-none h-24 w-full bg-repeat-x bg-bottom opacity-60 mix-blend-multiply"
-          style={{ backgroundImage: "url('/patterns/village-scene.png')", backgroundSize: "auto 100%" }}
+          style={{ backgroundImage: "url('/patterns/village-scene.png?v=2')", backgroundSize: "auto 100%" }}
         />
       </footer>
     </div>
