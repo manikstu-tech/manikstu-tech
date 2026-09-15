@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import {
-  ArrowUpRight, Calendar, ChevronRight, Contact, FileText, MessageSquare, Newspaper, Package,
+  ArrowUpRight, Calendar, ChevronRight, FileText, MessageSquare,
   PenSquare, Plus, Settings, ShoppingCart, type LucideIcon,
 } from "lucide-react";
 import { PageHeader } from "@/components/admin/AdminUi";
@@ -32,124 +32,89 @@ function timeAgo(iso: string): string {
   return `${d} day${d === 1 ? "" : "s"} ago`;
 }
 
-/* ---- decorative card watermarks (faint, brand-green line art) ---- */
-const wmClass = "pointer-events-none absolute -bottom-2 -right-1 text-manikstu-green opacity-[0.07]";
-
-function PlantWatermark() {
+/* ---- solid stat-card icons ---- */
+type IconProps = { className?: string };
+function BagCheckIcon({ className }: IconProps) {
   return (
-    <svg viewBox="0 0 100 100" className={`${wmClass} h-24 w-24`} fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round">
-      <path d="M50 92V44" />
-      <path d="M50 62c-15 0-25-9-25-24 15 0 25 9 25 24Z" />
-      <path d="M50 52c13 0 23-8 23-21-13 0-23 8-23 21Z" />
+    <svg viewBox="0 0 24 24" className={className} fill="none">
+      <path fill="currentColor" d="M7 8V7a5 5 0 0 1 10 0v1h1.4a1.6 1.6 0 0 1 1.6 1.46l.86 9.9A2 2 0 0 1 20.33 21H3.67a2 2 0 0 1-1.99-2.18l.86-9.9A1.6 1.6 0 0 1 4.6 8H7Zm2 0h6V7a3 3 0 1 0-6 0v1Z" />
+      <path d="m9 13.6 2 2 4-4.4" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function CartIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path d="M2.5 3a1 1 0 1 0 0 2h1.2l.42 1.9 1.66 7.4A2.2 2.2 0 0 0 7.95 17H18a1 1 0 1 0 0-2H8.15a.2.2 0 0 1-.2-.16L7.78 14l10.34-1.02a2 2 0 0 0 1.77-1.57l1.1-5.02A1 1 0 0 0 21 5.2H6.06l-.3-1.36A1.1 1.1 0 0 0 4.7 3H2.5Z" />
+      <circle cx="9" cy="20" r="1.7" />
+      <circle cx="17.5" cy="20" r="1.7" />
+    </svg>
+  );
+}
+function ChatIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none">
+      <path fill="currentColor" d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9.4L5 21v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+      <path stroke="#fff" strokeWidth="2" strokeLinecap="round" d="M6.5 8.5h11M6.5 12h7" />
+    </svg>
+  );
+}
+function RupeeIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6.5 5h11M6.5 9h11M6.5 13h4.4a4 4 0 0 0 0-8M6.5 13 15 20" />
     </svg>
   );
 }
 
-/** Two leafy plant sprigs (a taller and a shorter), matching the products art. */
-function LeafSprigWatermark() {
-  const leaf = "M0 0 C7 -3 10 -11 2 -19 C0 -12 -1 -6 0 0 Z";
-  const sprig = (leaves: number, stemH: number) => (
-    <>
-      {/* stem */}
-      <rect x={-1} y={-stemH} width={2} height={stemH} rx={1} />
-      {/* terminal leaf pointing straight up */}
-      <path d={leaf} transform={`translate(0 ${-stemH})`} />
-      {/* opposite leaf pairs up the stem */}
-      {Array.from({ length: leaves }).map((_, i) => {
-        const y = -stemH + 12 + i * ((stemH - 14) / leaves);
-        const s = 0.7 + (0.5 * (leaves - 1 - i)) / leaves;
-        return (
-          <g key={i}>
-            <path d={leaf} transform={`translate(0 ${y}) rotate(48) scale(${s})`} />
-            <path d={leaf} transform={`translate(0 ${y}) rotate(-48) scale(${s})`} />
-          </g>
-        );
-      })}
-    </>
-  );
+/** Decorative sparkline wave along the bottom of a stat card. */
+function Sparkline({ id, color }: { id: string; color: string }) {
+  const line = "M0 34 C22 26 40 40 62 32 S104 18 132 30 S186 44 216 27 S270 12 300 24";
   return (
-    <svg viewBox="0 0 120 120" className={`${wmClass} h-24 w-24`} fill="currentColor">
-      <g transform="translate(42 116)">{sprig(3, 52)}</g>
-      <g transform="translate(78 116)">{sprig(4, 74)}</g>
-    </svg>
-  );
-}
-function ChartWatermark() {
-  return (
-    <svg viewBox="0 0 100 100" className={`${wmClass} h-24 w-24`} fill="currentColor">
-      <rect x="16" y="60" width="14" height="28" rx="2" />
-      <rect x="38" y="46" width="14" height="42" rx="2" />
-      <rect x="60" y="30" width="14" height="58" rx="2" />
-      <rect x="82" y="16" width="14" height="72" rx="2" />
-    </svg>
-  );
-}
-/** Farm scene — goat, child and a woman in a saree — for the orders card. */
-function FarmSceneWatermark() {
-  return (
-    <svg viewBox="0 0 210 115" className={`${wmClass} h-20 w-36`} fill="currentColor">
-      {/* goat (faces left) */}
-      <g transform="translate(6 44) scale(1.02)">
-        <path d="M20 22C21 14 24 9 29 5C28 11 27 17 25 22Z" />
-        <path d="M23 23C25 16 29 12 34 9C31 15 29 19 27 23Z" />
-        <path d="M17 22C13 18 10 17 7 18C9 21 12 24 16 24Z" />
-        <ellipse cx="15" cy="27" rx="8" ry="6.5" />
-        <path d="M7 28C4 28 2 30 3 33C4 35 7 35 9 34L12 32L11 28Z" />
-        <path d="M9 32C8 37 8.5 43 10 48C11 45 12.3 45 13.2 47C14 41 13.6 35 12.5 32Z" />
-        <path d="M18 26C23 27 27 30 31 33L49 33C55 33 59 38 59 44C59 51 53 56 46 56L26 56C20 56 16 51 16 45C16 38 15 30 18 26Z" />
-        <path d="M56 36C61 32 66 34 67 39C63 39 62 42 62 46C59 43 57 39 56 37Z" />
-        <path d="M23 54h4.5v9c0 1-.6 1.5-1.5 1.5h-1.5c-.9 0-1.5-.5-1.5-1.5Z" />
-        <path d="M30 54h4v9c0 1-.6 1.5-1.4 1.5h-1.2c-.9 0-1.4-.5-1.4-1.5Z" />
-        <path d="M44 54h4.5v9c0 1-.6 1.5-1.5 1.5h-1.5c-.9 0-1.5-.5-1.5-1.5Z" />
-        <path d="M51 54h4v9c0 1-.6 1.5-1.4 1.5h-1.2c-.9 0-1.4-.5-1.4-1.5Z" />
-      </g>
-      {/* child */}
-      <g transform="translate(108 62) scale(1.05)">
-        <circle cx="0" cy="8" r="5.5" />
-        <path d="M-5 16 Q-6 12 0 12 Q6 12 5 16 L7 40 Q0 43 -7 40 Z" />
-        <rect x="-5" y="40" width="3.6" height="7" rx="1.4" />
-        <rect x="1.4" y="40" width="3.6" height="7" rx="1.4" />
-      </g>
-      {/* woman in a saree (faces left) */}
-      <g transform="translate(150 15) scale(1.05)">
-        <circle cx="0" cy="13" r="7.5" />
-        <path d="M-8 15 Q-9 4 0 3.5 Q9 4 8 15 Q4 20 0 19 Q-4 20 -8 15 Z" />
-        <path d="M-6 26 Q-7 20 0 20 Q7 20 6 26 L13 88 Q0 93 -13 88 Z" />
-        <path d="M6 27 Q13 34 12 50 Q9 44 4 40 Z" />
-        <path d="M9 20 Q16 40 15 72 L11 70 Q9 44 5 30 Z" />
-      </g>
-    </svg>
+    <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 block h-10">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none" className="h-full w-full">
+        <defs>
+          <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity="0.2" />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d={`${line} L300 48 L0 48 Z`} fill={`url(#${id})`} />
+        <path d={line} fill="none" stroke={color} strokeWidth={2.5} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+      </svg>
+      <span className="absolute h-2 w-2 rounded-full ring-2 ring-white" style={{ right: "3px", bottom: "18px", backgroundColor: color }} />
+    </span>
   );
 }
 
 /* ---- stat card ---- */
-type PillTone = "green" | "gold";
+type Tone = "green" | "gold";
 function StatCard({
-  label, value, icon: Icon, href, watermark, accent, hint, hintTone = "green", up,
+  label, value, icon, iconTone = "green", href, waveId, waveColor, accent, hint, hintTone = "green", up,
 }: {
   label: string;
   value: string;
-  icon: LucideIcon;
+  icon: ReactNode;
+  iconTone?: Tone;
   href: string;
-  watermark: ReactNode;
+  waveId: string;
+  waveColor: string;
   accent?: boolean;
   hint: string;
-  hintTone?: PillTone;
+  hintTone?: Tone;
   up?: boolean;
 }) {
+  const tile = iconTone === "gold" ? "bg-manikstu-gold/15 text-[#8A6414]" : "bg-manikstu-green/10 text-manikstu-leaf";
   const hintStyle = hintTone === "gold" ? "bg-manikstu-gold/15 text-[#8A6414]" : "bg-manikstu-green/10 text-manikstu-leaf";
   return (
     <Link
       href={href}
-      className={`group relative overflow-hidden rounded-2xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
+      className={`group relative overflow-hidden rounded-2xl border bg-white p-5 pb-10 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
         accent ? "border-manikstu-gold/60" : "border-[#ECE7DC]"
       }`}
     >
-      {watermark}
       <div className="relative flex items-start justify-between gap-2">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-manikstu-green/10 text-manikstu-leaf">
-          <Icon className="h-[22px] w-[22px]" />
-        </span>
+        <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${tile}`}>{icon}</span>
         <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold ${hintStyle}`}>
           {up && <ArrowUpRight className="h-3 w-3" />}
           {hint}
@@ -157,6 +122,7 @@ function StatCard({
       </div>
       <p className="relative mt-4 font-heading text-4xl font-bold lining-nums tabular-nums text-charcoal">{value}</p>
       <p className="relative mt-1 text-sm font-medium text-grey">{label}</p>
+      <Sparkline id={waveId} color={waveColor} />
     </Link>
   );
 }
@@ -279,10 +245,10 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
       {/* Stat cards */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Total Products" value={n(stats.products)} icon={Package} href="/admin/products" watermark={<LeafSprigWatermark />} hint="In catalogue" />
-        <StatCard label="Total Orders" value={n(stats.orders)} icon={ShoppingCart} href="/admin/orders" watermark={<FarmSceneWatermark />} hint="All-time" />
-        <StatCard label="Active Enquiries" value={n(stats.new_enquiries)} icon={MessageSquare} href="/admin/enquiries?status=new" watermark={<PlantWatermark />} accent hint={`${n(stats.new_enquiries)} pending`} hintTone="gold" />
-        <StatCard label="Total Revenue" value={compactINR(stats.revenue)} icon={Contact} href="/admin/orders?payment_status=paid" watermark={<ChartWatermark />} hint="Paid" up />
+        <StatCard label="Total Products" value={n(stats.products)} icon={<BagCheckIcon className="h-[22px] w-[22px]" />} href="/admin/products" waveId="wave-products" waveColor="#4A8C3F" hint="In catalogue" />
+        <StatCard label="Total Orders" value={n(stats.orders)} icon={<CartIcon className="h-[22px] w-[22px]" />} href="/admin/orders" waveId="wave-orders" waveColor="#3A7030" hint="All-time" />
+        <StatCard label="New Enquiries" value={n(stats.new_enquiries)} icon={<ChatIcon className="h-[22px] w-[22px]" />} iconTone="gold" href="/admin/enquiries?status=new" waveId="wave-enquiries" waveColor="#E08A2B" accent hint={`${n(stats.new_enquiries)} pending`} hintTone="gold" />
+        <StatCard label="Total Revenue" value={compactINR(stats.revenue)} icon={<RupeeIcon className="h-[22px] w-[22px]" />} href="/admin/orders?payment_status=paid" waveId="wave-revenue" waveColor="#4A8C3F" hint="Paid" up />
       </div>
 
       {/* Activity + Quick actions */}
