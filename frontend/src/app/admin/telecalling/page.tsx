@@ -9,6 +9,7 @@ import { Pill } from "@/components/admin/AdminUi";
 import { GoatSolidIcon } from "@/components/icons/BenefitIcons";
 import { Donut, ORDER_TONES, PRIORITY_TONES, rowClass, rupees, tableClass, theadClass, ViewLink } from "@/components/telecalling/TcUi";
 import { requireTelecaller } from "@/lib/admin/auth";
+import { getTcList, type TcOrder } from "@/lib/admin/telecalling";
 
 export const metadata: Metadata = { title: "Telecalling Dashboard" };
 
@@ -41,14 +42,6 @@ const TEAM: { label: string; value: string; delta: string }[] = [
   { label: "Connected", value: "32", delta: "8%" },
   { label: "Follow-ups Done", value: "18", delta: "9%" },
   { label: "Complaints Handled", value: "7", delta: "22%" },
-];
-
-const ORDERS: { id: string; farmer: string; product: string; amount: number; status: string; date: string }[] = [
-  { id: "MS-2026-00482", farmer: "Ramesh Kumar", product: "Goat Feed - 100 KG", amount: 2400, status: "In Transit", date: "01 Sep 2026" },
-  { id: "MS-2026-00481", farmer: "Sita Tudu", product: "Goat Medicine", amount: 1280, status: "Issue Reported", date: "01 Sep 2026" },
-  { id: "MS-2026-00480", farmer: "Mohan Nayak", product: "Equipment Set", amount: 3560, status: "Delivered", date: "31 Aug 2026" },
-  { id: "MS-2026-00479", farmer: "Ganga Majhi", product: "Mineral Mixture", amount: 950, status: "Pending", date: "31 Aug 2026" },
-  { id: "MS-2026-00478", farmer: "Laxman Sahu", product: "Vaccination Kit", amount: 1750, status: "Confirmed", date: "31 Aug 2026" },
 ];
 
 const STATUS_SEGMENTS = [
@@ -117,6 +110,8 @@ function Section({ children, className = "" }: { children: ReactNode; className?
 
 export default async function TelecallingDashboard() {
   const user = await requireTelecaller();
+  const { data: orders } = await getTcList<TcOrder>("orders");
+  const recentOrders = orders.slice(0, 5);
   const now = new Date();
   const hour = now.getHours();
   const greeting = hour < 12 ? "Good Morning" : hour < 17 ? "Good Afternoon" : "Good Evening";
@@ -244,19 +239,20 @@ export default async function TelecallingDashboard() {
                 </tr>
               </thead>
               <tbody>
-                {ORDERS.map((o) => (
+                {recentOrders.map((o) => (
                   <tr key={o.id} className={rowClass}>
                     <td className="whitespace-nowrap px-5 py-3 font-semibold text-charcoal">{o.id}</td>
                     <td className="whitespace-nowrap px-5 py-3">{o.farmer}</td>
-                    <td className="px-5 py-3 text-grey">{o.product}</td>
+                    <td className="px-5 py-3 text-grey">{o.qty ? `${o.product} - ${o.qty}` : o.product}</td>
                     <td className="whitespace-nowrap px-5 py-3 font-semibold">{rupees(o.amount)}</td>
                     <td className="px-5 py-3"><Pill tone={ORDER_TONES[o.status] ?? "grey"}>{o.status}</Pill></td>
                     <td className="whitespace-nowrap px-5 py-3 text-grey">{o.date}</td>
-                    <td className="px-5 py-3"><ViewLink href={`${BASE}/orders`} label={`View order ${o.id}`} /></td>
+                    <td className="px-5 py-3"><ViewLink href={`${BASE}/orders/${o.id}`} label={`View order ${o.id}`} /></td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            {recentOrders.length === 0 && <p className="px-5 py-12 text-center text-sm text-grey">No orders yet.</p>}
           </div>
         </Section>
 
