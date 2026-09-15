@@ -120,7 +120,7 @@ export default function TelecallingShell({ user, notifications, markReadAction, 
   const initial = user.name.charAt(0).toUpperCase();
 
   return (
-    <div className="min-h-screen lg:pl-64">
+    <div className="flex min-h-screen flex-col lg:pl-64">
       {open && <button type="button" aria-label="Close menu" onClick={() => setOpen(false)} className="fixed inset-0 z-40 bg-charcoal/40 lg:hidden" />}
 
       <aside
@@ -189,9 +189,30 @@ export default function TelecallingShell({ user, notifications, markReadAction, 
           <UserMenu user={user} logoutAction={logoutAction} />
         </div>
       </header>
-      <div className="h-1 bg-gradient-to-r from-manikstu-green via-manikstu-gold to-manikstu-leaf" aria-hidden />
+      {/* Warli border strip — same art as the admin panel */}
+      <div
+        aria-hidden
+        className="h-7 w-full border-b border-light-grey bg-manikstu-cream bg-repeat-x"
+        style={{
+          backgroundImage: "url('/patterns/saura-border-top.png?v=2')",
+          backgroundSize: "auto 285%",
+          backgroundPosition: "center 48%",
+        }}
+      />
 
-      <main className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-10">{children}</main>
+      <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-16 pt-8 sm:px-6 lg:px-10">{children}</main>
+
+      {/* Village-art footer — same as the admin panel */}
+      <footer className="relative">
+        <p className="px-4 pb-2 text-center text-xs font-medium text-grey">
+          &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
+        </p>
+        <div
+          aria-hidden
+          className="pointer-events-none h-24 w-full bg-repeat-x bg-bottom opacity-60 mix-blend-multiply"
+          style={{ backgroundImage: "url('/patterns/village-scene.png?v=2')", backgroundSize: "auto 100%" }}
+        />
+      </footer>
     </div>
   );
 }
