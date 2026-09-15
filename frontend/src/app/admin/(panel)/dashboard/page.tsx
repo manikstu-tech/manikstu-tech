@@ -45,6 +45,36 @@ function PlantWatermark() {
     </svg>
   );
 }
+
+/** Two leafy plant sprigs (a taller and a shorter), matching the products art. */
+function LeafSprigWatermark() {
+  const leaf = "M0 0 C7 -3 10 -11 2 -19 C0 -12 -1 -6 0 0 Z";
+  const sprig = (leaves: number, stemH: number) => (
+    <>
+      {/* stem */}
+      <rect x={-1} y={-stemH} width={2} height={stemH} rx={1} />
+      {/* terminal leaf pointing straight up */}
+      <path d={leaf} transform={`translate(0 ${-stemH})`} />
+      {/* opposite leaf pairs up the stem */}
+      {Array.from({ length: leaves }).map((_, i) => {
+        const y = -stemH + 12 + i * ((stemH - 14) / leaves);
+        const s = 0.7 + (0.5 * (leaves - 1 - i)) / leaves;
+        return (
+          <g key={i}>
+            <path d={leaf} transform={`translate(0 ${y}) rotate(48) scale(${s})`} />
+            <path d={leaf} transform={`translate(0 ${y}) rotate(-48) scale(${s})`} />
+          </g>
+        );
+      })}
+    </>
+  );
+  return (
+    <svg viewBox="0 0 120 120" className={`${wmClass} h-24 w-24`} fill="currentColor">
+      <g transform="translate(42 116)">{sprig(3, 52)}</g>
+      <g transform="translate(78 116)">{sprig(4, 74)}</g>
+    </svg>
+  );
+}
 function ChartWatermark() {
   return (
     <svg viewBox="0 0 100 100" className={`${wmClass} h-24 w-24`} fill="currentColor">
@@ -216,7 +246,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
       {/* Stat cards */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Total Products" value={n(stats.products)} icon={Package} href="/admin/products" watermark={<PlantWatermark />} hint="In catalogue" />
+        <StatCard label="Total Products" value={n(stats.products)} icon={Package} href="/admin/products" watermark={<LeafSprigWatermark />} hint="In catalogue" />
         <StatCard label="Total Orders" value={n(stats.orders)} icon={ShoppingCart} href="/admin/orders" watermark={<GoatWatermark />} hint="All-time" />
         <StatCard label="Active Enquiries" value={n(stats.new_enquiries)} icon={MessageSquare} href="/admin/enquiries?status=new" watermark={<PlantWatermark />} accent hint={`${n(stats.new_enquiries)} pending`} hintTone="gold" />
         <StatCard label="Total Revenue" value={compactINR(stats.revenue)} icon={Contact} href="/admin/orders?payment_status=paid" watermark={<ChartWatermark />} hint="Paid" up />
