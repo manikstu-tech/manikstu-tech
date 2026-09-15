@@ -82,18 +82,19 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
               style={{ animationDelay: `${(i % INITIAL_COUNT) * 60}ms` }}
               className="animate-gallery-fade group relative block w-full overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-white text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-manikstu-green/40 hover:shadow-[0_14px_32px_rgba(74,140,63,0.16)] focus:outline-none focus:ring-2 focus:ring-manikstu-green"
             >
-              {/* Thumbnail (matches the video card size/shape) */}
-              <div className="relative aspect-video w-full bg-manikstu-cream">
+              {/* Thumbnail (clean 4:3 aspect ratio so photos aren't cropped/distorted) */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-manikstu-cream">
                 <Image
                   src={photo.image}
                   alt={photo.title}
                   fill
+                  unoptimized
                   loading="eager"
-                  sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
+                  sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* PHOTO badge */}
-                <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-manikstu-green shadow-sm">
+                <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-manikstu-green shadow-sm backdrop-blur-xs">
                   <Camera className="h-3 w-3" />
                   {t("photoBadge")}
                 </span>
@@ -158,14 +159,14 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
       {/* Lightbox */}
       {lightbox && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 sm:p-6"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-6"
           role="dialog"
           aria-modal="true"
           aria-label={lightbox.title}
           onClick={() => setLightbox(null)}
         >
           <div
-            className="relative flex max-h-full w-full max-w-4xl flex-col items-center"
+            className="relative flex max-h-full w-full max-w-5xl flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -176,12 +177,12 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
             >
               <X className="h-5 w-5" />
             </button>
-            <div className="relative max-h-[80vh] w-full overflow-hidden rounded-xl bg-black shadow-2xl">
+            <div className="relative max-h-[85vh] w-full overflow-hidden rounded-xl bg-black/50 shadow-2xl flex items-center justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={lightbox.image}
                 alt={lightbox.title}
-                className="mx-auto max-h-[80vh] w-auto max-w-full object-contain"
+                className="mx-auto max-h-[85vh] w-auto max-w-full rounded-lg object-contain"
               />
             </div>
             {(lightbox.title || lightbox.date) && (

@@ -65,7 +65,7 @@ export default async function MediaPage({ searchParams }: { searchParams: Promis
               const isPdf = m.mime_type === "application/pdf";
               return (
                 <li key={m.id} className="overflow-hidden rounded-xl border border-[#EDE9E1] bg-[#FBFAF7]">
-                  <a href={m.url} target="_blank" rel="noreferrer" className="relative block aspect-video bg-charcoal/5">
+                  <a href={m.url} target="_blank" rel="noreferrer" className="relative block aspect-[4/3] bg-charcoal/5">
                     {isVideo ? (
                       <video src={`${m.url}#t=0.5`} preload="metadata" muted className="h-full w-full bg-black object-cover" />
                     ) : isPdf ? (
