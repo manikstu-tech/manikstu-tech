@@ -681,7 +681,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </Link>
 
                 {/* Stats Row — label on top, colour-coded figure below */}
-                <div className="mt-8 grid w-full grid-cols-3 gap-4 sm:gap-6 text-left">
+                <div className="mt-8 grid w-full grid-cols-3 gap-4 sm:gap-6 text-center">
                   <div>
                     <p className="text-xs sm:text-sm text-grey">Women Empowered</p>
                     <p className="mt-0.5 font-heading text-3xl sm:text-4xl font-bold text-manikstu-green">500+</p>
