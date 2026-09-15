@@ -708,7 +708,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
           {/* Benefits strip — full-bleed light-green band, pushed down so the watermark above stays visible */}
           {/* Mobile: items rendered twice and slid left by 50% for a seamless auto-scroll loop */}
-          <div className="relative mx-[calc(50%-50vw)] mt-16 overflow-hidden bg-[#EEF5E7] py-6 sm:mt-20 sm:px-6 motion-reduce:overflow-x-auto">
+          <div className="relative mx-[calc(50%-50vw)] mt-8 overflow-hidden bg-[#EEF5E7] py-6 sm:mt-10 sm:px-6 motion-reduce:overflow-x-auto">
             <div className="flex w-max animate-[benefits-marquee_30s_linear_infinite] motion-reduce:animate-none sm:grid sm:w-auto sm:animate-none sm:grid-cols-3 sm:gap-4 sm:gap-y-6 md:grid-cols-6">
               {[0, 1].flatMap((copy) => [
                 { Icon: GoatSolidIcon, l1: "Improved", l2: "Livestock Productivity" },
