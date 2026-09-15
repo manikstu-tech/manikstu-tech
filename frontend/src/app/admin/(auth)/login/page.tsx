@@ -73,17 +73,10 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         </div>
       </div>
 
-      {/* Footer content — gold ornament + copyright */}
-      <div className="pointer-events-none fixed inset-x-0 bottom-3 z-10 flex flex-col items-center gap-1.5 px-4">
-        <div className="flex items-center gap-2">
-          <span aria-hidden className="h-px w-6 bg-manikstu-gold/70" />
-          <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-          <span aria-hidden className="h-px w-6 bg-manikstu-gold/70" />
-        </div>
-        <p className="text-center text-xs font-semibold tracking-wide text-white">
-          &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
-        </p>
-      </div>
+      {/* Footer content — copyright */}
+      <p className="pointer-events-none fixed inset-x-0 bottom-3 z-10 px-4 text-center text-xs font-semibold tracking-wide text-white">
+        &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
+      </p>
     </main>
   );
 }
