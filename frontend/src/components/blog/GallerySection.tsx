@@ -104,16 +104,16 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
                 </span>
               </div>
 
-              {/* Caption below, gentle cream tint + gold accent */}
-              <div className="relative bg-gradient-to-b from-white to-[#FBF6EC] px-4 py-4">
+              {/* Caption below, compact gentle cream tint + gold accent */}
+              <div className="relative bg-gradient-to-b from-white to-[#FBF6EC] px-3.5 py-2.5">
                 {/* thin gold divider between image and caption */}
                 <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-manikstu-gold/40 to-transparent" />
-                <h3 className="line-clamp-2 text-sm font-semibold text-charcoal transition-colors group-hover:text-manikstu-green">
+                <h3 className="line-clamp-1 text-[13px] font-semibold text-charcoal transition-colors group-hover:text-manikstu-green">
                   {photo.title}
                 </h3>
                 {/* gold underline that grows on hover */}
-                <span className="mt-2 block h-0.5 w-8 rounded-full bg-manikstu-gold transition-all duration-300 group-hover:w-14" />
-                <div className="mt-2.5 flex items-center gap-3 text-xs text-grey">
+                <span className="mt-1 block h-0.5 w-6 rounded-full bg-manikstu-gold transition-all duration-300 group-hover:w-10" />
+                <div className="mt-1.5 flex items-center gap-2.5 text-[11px] text-grey">
                   {photo.location && (
                     <span className="inline-flex items-center gap-1">
                       <MapPin className="h-3 w-3 text-manikstu-green" />
