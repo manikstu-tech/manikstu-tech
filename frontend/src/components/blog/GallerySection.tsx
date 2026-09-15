@@ -36,7 +36,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
       id="gallery"
       className="scroll-mt-6 section-padding bg-white"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <div className="text-center">
           {/* Ornamental pill heading */}
           <div className="flex items-center justify-center gap-2">
@@ -73,7 +73,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 md:grid-cols-4">
           {visible.map((photo, i) => (
             <button
               key={photo.id}

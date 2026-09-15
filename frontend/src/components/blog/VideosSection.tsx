@@ -76,7 +76,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
         className="pointer-events-none select-none absolute right-0 top-0 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
       />
 
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-7xl">
         <div className="text-center">
           {/* Ornamental pill heading */}
           <div className="flex items-center justify-center gap-2">
@@ -113,7 +113,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 md:grid-cols-4">
           {visible.map((video, i) =>
             video.isFile ? (
               // Uploaded video file, inline HTML5 player
