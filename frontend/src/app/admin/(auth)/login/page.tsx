@@ -21,7 +21,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         aria-hidden
         viewBox="0 0 1440 130"
         preserveAspectRatio="none"
-        className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-14 w-full sm:h-16"
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-11 w-full sm:h-12"
       >
         <defs>
           <pattern id="footerDiamonds" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="translate(0 44)">
