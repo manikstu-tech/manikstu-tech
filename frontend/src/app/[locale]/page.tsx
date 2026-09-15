@@ -288,6 +288,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <main id="main-content">
         {/* Hero */}
         <PageHero
+          mobileLayout="stacked"
           background={
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
               <Image
@@ -304,30 +305,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         >
               {/* Left content */}
               <div>
-                <h1 className="font-heading text-3xl sm:text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
+                <h1 className="font-heading text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-tight font-bold text-charcoal lg:text-6xl">
                   {t("heroTitle1")}
                   <br />
                   <span className="text-manikstu-green">{t("heroTitle2")}</span>
                 </h1>
-                <p className="mt-3 sm:mt-6 max-w-lg text-sm sm:text-base md:text-lg text-grey leading-relaxed">
+                <p className="mt-4 sm:mt-6 max-w-lg text-base md:text-lg text-grey leading-relaxed">
                   {t("missionDesc2")}
                 </p>
-                <div className="mt-5 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
                   <Link
                     href="/collaborate"
-                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
+                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3.5 sm:py-3 text-base sm:text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
                   >
                     {t("exploreOurWork")} <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href="/about"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-charcoal/5 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
+                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border-2 border-charcoal bg-charcoal/5 px-6 py-3 sm:py-2.5 text-base sm:text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
                   >
                     {t("learnMore")}
                   </Link>
                 </div>
-                {/* Trust badges */}
-                <div className="mt-5 sm:mt-6 flex items-center gap-3">
+                {/* Trust badges (desktop — mobile copy sits below the image) */}
+                <div className="mt-5 sm:mt-6 hidden lg:flex items-center gap-3">
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-grey">
                     <Shield className="h-4 w-4 text-manikstu-green" />
                     {t("trustedBy")}
@@ -350,7 +351,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {/* Right content */}
               <div className="relative">
                 {/* Main photo */}
-                <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
+                <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] shadow-lg lg:shadow-none">
                   <HeroSlider
                     images={["/hero-slide-1.png"]}
                     alt="Manikstu Agro, goat farming ecosystem"
@@ -362,6 +363,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     topLabel={t("watchOurStory").split("\n")[0]}
                     bottomLabel={t("watchOurStory").split("\n")[1]}
                   />
+                </div>
+                {/* Trust badges (mobile) */}
+                <div className="mt-6 flex lg:hidden items-center justify-center gap-3">
+                  <div className="flex items-center gap-2 text-base text-grey">
+                    <Shield className="h-5 w-5 text-manikstu-green" />
+                    {t("trustedBy")}
+                  </div>
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3, 4].map((n) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={n}
+                        src={`/team/avatars/trust-${n}.jpg`}
+                        alt="Manikstu farmer"
+                        loading="eager"
+                        className="h-9 w-9 rounded-full border-2 border-white object-cover shadow-sm"
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
         </PageHero>

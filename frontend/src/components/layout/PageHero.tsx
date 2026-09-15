@@ -19,6 +19,11 @@ type PageHeroProps = {
    */
   children: ReactNode;
   className?: string;
+  /**
+   * Mobile layout: "centered" (default) puts the visual first and centers the
+   * copy; "stacked" keeps the copy first and left-aligned, visual below.
+   */
+  mobileLayout?: "centered" | "stacked";
 };
 
 /**
@@ -34,7 +39,13 @@ export default function PageHero({
   afterGrid,
   children,
   className,
+  mobileLayout = "centered",
 }: PageHeroProps) {
+  const gridClass =
+    mobileLayout === "stacked"
+      ? "grid items-start gap-8 lg:gap-12 lg:grid-cols-2"
+      : "grid items-start gap-8 lg:gap-12 lg:grid-cols-2 [&>*:first-child]:text-center [&>*:first-child_.flex]:justify-center lg:[&>*:first-child]:text-left lg:[&>*:first-child_.flex]:justify-start [&>*:last-child]:order-first lg:[&>*:last-child]:order-none";
+
   const defaultBackground = (
     <Image
       src="/patterns/mandala-top-right-corner.png"
@@ -52,7 +63,7 @@ export default function PageHero({
     >
       {background === undefined ? defaultBackground : background}
       <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 md:px-8 md:py-20 lg:py-24">
-        <div className="grid items-start gap-8 lg:gap-12 lg:grid-cols-2 [&>*:first-child]:text-center [&>*:first-child_.flex]:justify-center lg:[&>*:first-child]:text-left lg:[&>*:first-child_.flex]:justify-start [&>*:last-child]:order-first lg:[&>*:last-child]:order-none">
+        <div className={gridClass}>
           {children}
         </div>
       </div>
