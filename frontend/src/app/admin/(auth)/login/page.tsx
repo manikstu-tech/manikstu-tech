@@ -8,7 +8,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const { expired } = await searchParams;
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FBF3E6] px-4 pt-10 pb-36">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FBF3E6] px-4 pt-10 pb-24">
       {/* Background rural line-art scene — fixed so it stays put while the card scrolls */}
       <div
         aria-hidden
@@ -16,16 +16,20 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         style={{ backgroundImage: "url('/patterns/village-scene.png')" }}
       />
 
-      {/* Footer — layered green hills for depth */}
+      {/* Footer band — dark green with a rough top edge and faint diamond texture */}
       <svg
         aria-hidden
-        viewBox="0 0 1440 170"
+        viewBox="0 0 1440 130"
         preserveAspectRatio="none"
-        className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-28 w-full sm:h-32"
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-16 w-full sm:h-20"
       >
-        <path fill="#4A8C3F" fillOpacity="0.45" d="M0 74C240 38 470 102 720 72S1200 96 1440 62V170H0Z" />
-        <path fill="#3A7030" d="M0 100C270 70 520 122 780 96S1240 106 1440 90V170H0Z" />
-        <path fill="#2D5016" d="M0 126C300 106 560 138 820 120S1260 130 1440 118V170H0Z" />
+        <defs>
+          <pattern id="footerDiamonds" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="translate(0 44)">
+            <path d="M24 12 36 24 24 36 12 24Z" fill="none" stroke="#ffffff" strokeOpacity="0.12" strokeWidth="1.5" />
+          </pattern>
+        </defs>
+        <path fill="#2D5016" d="M0 28 72 20 144 33 216 22 288 34 360 24 432 31 504 19 576 33 648 23 720 32 792 21 864 34 936 25 1008 32 1080 20 1152 33 1224 24 1296 31 1368 21 1440 29V130H0Z" />
+        <path fill="url(#footerDiamonds)" d="M0 28 72 20 144 33 216 22 288 34 360 24 432 31 504 19 576 33 648 23 720 32 792 21 864 34 936 25 1008 32 1080 20 1152 33 1224 24 1296 31 1368 21 1440 29V130H0Z" />
       </svg>
 
       {/* Login card + trust badge */}
