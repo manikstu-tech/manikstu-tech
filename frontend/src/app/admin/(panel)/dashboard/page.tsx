@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import {
   ArrowUpRight, Calendar, ChevronRight, FileText, MessageSquare,
-  PenSquare, Plus, Settings, ShoppingCart, type LucideIcon,
+  PenSquare, Plus, Settings, ShoppingCart, Zap, type LucideIcon,
 } from "lucide-react";
 import { requireAdmin } from "@/lib/admin/auth";
 import { getDashboard } from "@/lib/admin/sections-api";
@@ -158,17 +158,29 @@ function ActivityRow({ item }: { item: Activity }) {
 }
 
 /* ---- quick actions ---- */
-function ActionRow({ label, icon: Icon, href }: { label: string; icon: LucideIcon; href: string }) {
+type ActionTone = "green" | "amber" | "blue" | "purple";
+const ACTION_TONES: Record<ActionTone, { tile: string; row: string; chevron: string }> = {
+  green: { tile: "bg-manikstu-green/12 text-manikstu-green", row: "border-manikstu-green/15 bg-manikstu-green/[0.05] hover:bg-manikstu-green/[0.09]", chevron: "group-hover:text-manikstu-green" },
+  amber: { tile: "bg-[#E8912A]/15 text-[#C77A16]", row: "border-[#E8912A]/20 bg-[#E8912A]/[0.06] hover:bg-[#E8912A]/[0.11]", chevron: "group-hover:text-[#C77A16]" },
+  blue: { tile: "bg-[#5B8DEF]/14 text-[#3E6FD0]", row: "border-[#5B8DEF]/20 bg-[#5B8DEF]/[0.06] hover:bg-[#5B8DEF]/[0.11]", chevron: "group-hover:text-[#3E6FD0]" },
+  purple: { tile: "bg-[#7C5CB0]/14 text-[#7C5CB0]", row: "border-[#7C5CB0]/20 bg-[#7C5CB0]/[0.06] hover:bg-[#7C5CB0]/[0.11]", chevron: "group-hover:text-[#7C5CB0]" },
+};
+
+function ActionRow({ label, description, icon: Icon, href, tone }: { label: string; description: string; icon: LucideIcon; href: string; tone: ActionTone }) {
+  const t = ACTION_TONES[tone];
   return (
     <Link
       href={href}
-      className="group flex items-center gap-3 rounded-xl border border-[#ECE7DC] bg-white px-4 py-3 transition hover:border-manikstu-green/40 hover:bg-manikstu-green/[0.03]"
+      className={`group flex items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${t.row}`}
     >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-leaf">
+      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${t.tile}`}>
         <Icon className="h-[18px] w-[18px]" />
       </span>
-      <span className="flex-1 text-sm font-semibold text-charcoal">{label}</span>
-      <ChevronRight className="h-4 w-4 text-grey transition group-hover:translate-x-0.5 group-hover:text-manikstu-green" />
+      <span className="min-w-0 flex-1">
+        <span className="block text-sm font-semibold text-charcoal">{label}</span>
+        <span className="block truncate text-xs text-grey">{description}</span>
+      </span>
+      <ChevronRight className={`h-4 w-4 shrink-0 text-grey transition group-hover:translate-x-0.5 ${t.chevron}`} />
     </Link>
   );
 }
@@ -290,16 +302,21 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
           )}
         </section>
 
-        <section className="overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white p-5 shadow-sm">
-          <h2 className="font-heading text-lg font-bold text-charcoal">Quick Actions</h2>
-          <div className="mt-3 grid gap-2.5">
-            <ActionRow label="Add New Product" icon={Plus} href="/admin/products/new" />
-            <ActionRow label="Create Blog Post" icon={PenSquare} href="/admin/blog/new" />
-            <ActionRow label="View All Enquiries" icon={MessageSquare} href="/admin/enquiries" />
+        <section className="overflow-hidden rounded-2xl border border-[#ECE7DC] bg-gradient-to-br from-white to-[#FBF7EF] p-5 shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-manikstu-green/12">
+              <Zap className="h-[18px] w-[18px] fill-manikstu-green text-manikstu-green" />
+            </span>
+            <h2 className="font-heading text-lg font-bold text-charcoal">Quick Actions</h2>
+          </div>
+          <div className="mt-4 grid gap-2.5">
+            <ActionRow tone="green" label="Add New Product" description="Create a new product" icon={Plus} href="/admin/products/new" />
+            <ActionRow tone="amber" label="Create Blog Post" description="Write and publish a blog" icon={PenSquare} href="/admin/blog/new" />
+            <ActionRow tone="blue" label="View All Enquiries" description="Manage and reply enquiries" icon={MessageSquare} href="/admin/enquiries" />
             {isDeveloper ? (
-              <ActionRow label="Manage Settings" icon={Settings} href="/admin/settings" />
+              <ActionRow tone="purple" label="Manage Settings" description="Configure your preferences" icon={Settings} href="/admin/settings" />
             ) : (
-              <ActionRow label="Manage Orders" icon={ShoppingCart} href="/admin/orders" />
+              <ActionRow tone="purple" label="Manage Orders" description="View and update orders" icon={ShoppingCart} href="/admin/orders" />
             )}
           </div>
         </section>
