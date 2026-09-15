@@ -766,9 +766,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
 
               {/* Content */}
-              <div>
+              <div className="text-center sm:text-left">
                 {/* Ornamental pill heading */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center gap-2 sm:justify-start">
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
                   <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
@@ -784,14 +784,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <span className="text-[#9F5233]">Stronger Tomorrow.</span>
                 </h2>
 
-                <p className="mt-5 max-w-xl text-sm leading-relaxed text-grey sm:text-base">
+                <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-grey sm:mx-0 sm:text-base">
                   Project AJAH is an integrated livestock development initiative led by
                   women, for stronger families and resilient rural communities. We enable
                   women to build sustainable livelihoods through scientific livestock
                   management, healthcare, training, insurance, and market support.
                 </p>
 
-                <div className="mt-6 flex flex-wrap items-center gap-3">
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
                   <Link
                     href="/collaborate/ajah"
                     className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-manikstu-leaf"
