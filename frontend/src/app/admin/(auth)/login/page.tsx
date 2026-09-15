@@ -27,29 +27,29 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       </svg>
 
       {/* Login card */}
-      <div className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white shadow-2xl shadow-charcoal/10">
+      <div className="relative z-10 w-full max-w-sm overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white shadow-2xl shadow-charcoal/10">
         {/* Warli art strip above the card body */}
         <div
           aria-hidden
-          className="h-9 w-full bg-repeat-x"
+          className="h-7 w-full bg-repeat-x"
           style={{ backgroundImage: "url('/patterns/saura-border-top.png')", backgroundSize: "auto 100%" }}
         />
 
-        <div className="px-8 pb-9 pt-7 sm:px-10">
+        <div className="px-6 pb-6 pt-5 sm:px-8">
           <div className="text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Manikstu Agro" className="mx-auto h-16 w-auto" />
-            <h1 className="mt-4 font-heading text-3xl font-bold text-charcoal">Admin Panel</h1>
-            <p className="mt-1 text-sm text-grey">Manikstu Agro Management System</p>
+            <img src="/logo.png" alt="Manikstu Agro" className="mx-auto h-11 w-auto" />
+            <h1 className="mt-3 font-heading text-2xl font-bold text-charcoal">Admin Panel</h1>
+            <p className="mt-1 text-xs text-grey">Manikstu Agro Management System</p>
             {/* Ornamental divider */}
-            <div className="mt-3.5 flex items-center justify-center gap-2">
-              <span aria-hidden className="h-px w-14 bg-manikstu-gold/50" />
-              <span aria-hidden className="h-2 w-2 rotate-45 bg-manikstu-gold" />
-              <span aria-hidden className="h-px w-14 bg-manikstu-gold/50" />
+            <div className="mt-3 flex items-center justify-center gap-2">
+              <span aria-hidden className="h-px w-12 bg-manikstu-gold/50" />
+              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+              <span aria-hidden className="h-px w-12 bg-manikstu-gold/50" />
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-5">
             <LoginForm notice={expired ? "Your session has ended. Please sign in again." : undefined} />
           </div>
         </div>

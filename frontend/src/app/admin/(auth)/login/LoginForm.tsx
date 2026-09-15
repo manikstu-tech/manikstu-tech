@@ -17,7 +17,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
   const [role, setRole] = useState<string>("admin");
 
   return (
-    <form action={formAction} className="space-y-5" noValidate>
+    <form action={formAction} className="space-y-4" noValidate>
       <input type="hidden" name="role" value={role} />
 
       {notice && !state.error && (
@@ -48,7 +48,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
             autoComplete="username"
             required
             defaultValue={state.email}
-            className="h-12 w-full rounded-xl border border-[#E8E2D6] bg-white pl-10 pr-4 text-sm outline-none transition focus:border-manikstu-green focus:ring-4 focus:ring-manikstu-green/10"
+            className="h-11 w-full rounded-xl border border-[#E8E2D6] bg-white pl-10 pr-4 text-sm outline-none transition focus:border-manikstu-green focus:ring-4 focus:ring-manikstu-green/10"
             placeholder="you@manikstu.com"
           />
         </div>
@@ -67,7 +67,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
             type={showPassword ? "text" : "password"}
             autoComplete="current-password"
             required
-            className="h-12 w-full rounded-xl border border-[#E8E2D6] bg-white pl-10 pr-11 text-sm outline-none transition focus:border-manikstu-green focus:ring-4 focus:ring-manikstu-green/10"
+            className="h-11 w-full rounded-xl border border-[#E8E2D6] bg-white pl-10 pr-11 text-sm outline-none transition focus:border-manikstu-green focus:ring-4 focus:ring-manikstu-green/10"
             placeholder="Enter your password"
           />
           <button
@@ -93,14 +93,14 @@ export default function LoginForm({ notice }: { notice?: string }) {
                 type="button"
                 onClick={() => setRole(key)}
                 aria-pressed={active}
-                className={`flex flex-col items-center gap-2 rounded-xl border px-2 py-3 text-center transition ${
+                className={`flex flex-col items-center gap-1.5 rounded-xl border px-2 py-2.5 text-center transition ${
                   active
                     ? "border-manikstu-green bg-manikstu-green/5 ring-1 ring-manikstu-green/30"
                     : "border-[#E8E2D6] bg-white hover:border-manikstu-green/40"
                 }`}
               >
                 <span
-                  className={`flex h-9 w-9 items-center justify-center rounded-full ${
+                  className={`flex h-8 w-8 items-center justify-center rounded-full ${
                     active ? "bg-manikstu-green text-white" : "bg-manikstu-green/10 text-manikstu-green"
                   }`}
                 >
@@ -132,7 +132,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
       <button
         type="submit"
         disabled={pending}
-        className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-manikstu-green text-sm font-semibold text-white shadow-md shadow-manikstu-leaf/25 transition hover:bg-manikstu-leaf disabled:cursor-wait disabled:opacity-70"
+        className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-manikstu-green text-sm font-semibold text-white shadow-md shadow-manikstu-leaf/25 transition hover:bg-manikstu-leaf disabled:cursor-wait disabled:opacity-70"
       >
         {pending && <Loader2 className="h-4 w-4 animate-spin" />}
         {pending ? "Signing in…" : "Sign In"}
