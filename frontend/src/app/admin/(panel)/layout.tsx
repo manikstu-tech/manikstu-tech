@@ -8,7 +8,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   return (
     <div className="min-h-screen lg:pl-64">
       <AdminSidebar user={user} logoutAction={logoutAction} />
-      <main className="mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 lg:px-10 lg:pt-10">{children}</main>
+      <main className="mx-auto max-w-7xl px-4 pb-16 pt-28 sm:px-6 lg:px-10">{children}</main>
     </div>
   );
 }

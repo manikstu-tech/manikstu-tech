@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
-  Briefcase, Contact, FileText, GraduationCap, Handshake, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
-  Menu, MessageSquare, Newspaper, Package, Quote, Settings, ShieldCheck, ShoppingCart, Sprout, Tags, Users, X,
+  Bell, Briefcase, ChevronDown, Contact, FileText, GraduationCap, Handshake, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
+  Menu, MessageSquare, Newspaper, Package, Quote, Search, Settings, ShieldCheck, ShoppingCart, Sprout, Tags, Users, X,
   type LucideIcon,
 } from "lucide-react";
 import type { AdminUser } from "@/lib/admin/types";
@@ -76,19 +76,65 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
 
   return (
     <>
-      {/* Mobile top bar */}
-      <div className="fixed inset-x-0 top-0 z-30 flex h-14 items-center justify-between border-b border-white/10 bg-manikstu-leaf px-4 lg:hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.png" alt="Manikstu Agro" className="h-8 w-auto brightness-0 invert" />
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="flex h-9 w-9 items-center justify-center rounded-lg text-white hover:bg-white/10"
-          aria-label="Open menu"
-        >
-          <Menu className="h-5 w-5" />
-        </button>
-      </div>
+      {/* Top bar */}
+      <header className="fixed inset-x-0 top-0 z-30 lg:left-64">
+        <div className="flex h-16 items-center gap-3 border-b border-light-grey bg-white px-4 sm:px-6">
+          {/* Hamburger */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-manikstu-green/10 text-manikstu-green transition-colors hover:bg-manikstu-green/20"
+            aria-label="Toggle menu"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+
+          {/* Search */}
+          <div className="relative w-full max-w-md">
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
+            <input
+              type="text"
+              placeholder="Search anything..."
+              className="h-11 w-full rounded-xl border border-light-grey bg-manikstu-cream/40 pl-10 pr-4 text-sm text-charcoal outline-none transition placeholder:text-grey/60 focus:border-manikstu-green focus:bg-white focus:ring-4 focus:ring-manikstu-green/10"
+            />
+          </div>
+
+          <div className="ml-auto flex items-center gap-2 sm:gap-4">
+            {/* Notifications */}
+            <button
+              type="button"
+              className="relative flex h-10 w-10 items-center justify-center rounded-lg text-grey transition-colors hover:bg-manikstu-cream/70 hover:text-charcoal"
+              aria-label="Notifications"
+            >
+              <Bell className="h-5 w-5" />
+              <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-manikstu-red ring-2 ring-white" />
+            </button>
+
+            {/* User */}
+            <div className="flex items-center gap-2">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-manikstu-green text-sm font-semibold text-white">
+                {(user.name?.[0] ?? "A").toUpperCase()}
+              </span>
+              <div className="hidden leading-tight sm:block">
+                <p className="text-sm font-semibold text-charcoal">{user.name}</p>
+                <p className="text-xs font-semibold text-manikstu-gold">{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
+              </div>
+              <ChevronDown className="hidden h-4 w-4 shrink-0 text-grey sm:block" />
+            </div>
+          </div>
+        </div>
+
+        {/* Warli art strip */}
+        <div
+          aria-hidden
+          className="h-7 w-full bg-repeat-x opacity-80"
+          style={{
+            backgroundImage: "url('/patterns/saura-border-top.png')",
+            backgroundSize: "auto 285%",
+            backgroundPosition: "center 48%",
+          }}
+        />
+      </header>
 
       {open && (
         <button type="button" aria-label="Close menu" onClick={() => setOpen(false)} className="fixed inset-0 z-40 bg-charcoal/40 lg:hidden" />
