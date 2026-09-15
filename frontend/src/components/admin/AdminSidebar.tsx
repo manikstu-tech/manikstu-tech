@@ -129,7 +129,7 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
           aria-hidden
           className="h-7 w-full border-b border-light-grey bg-manikstu-cream bg-repeat-x"
           style={{
-            backgroundImage: "url('/patterns/saura-border-top.png')",
+            backgroundImage: "url('/patterns/saura-border-top.png?v=2')",
             backgroundSize: "auto 285%",
             backgroundPosition: "center 48%",
           }}

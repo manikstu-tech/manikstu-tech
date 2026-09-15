@@ -41,7 +41,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           aria-hidden
           className="h-12 w-full bg-repeat-x"
           style={{
-            backgroundImage: "url('/patterns/saura-border-top.png')",
+            backgroundImage: "url('/patterns/saura-border-top.png?v=2')",
             backgroundSize: "auto 285%",
             backgroundPosition: "center 48%",
           }}
