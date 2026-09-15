@@ -8,10 +8,10 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FBF3E6] px-4 py-12">
-      {/* Background rural line-art scene — fills the whole background */}
+      {/* Background rural line-art scene — fixed so it stays put while the card scrolls */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat opacity-[0.18]"
+        className="pointer-events-none fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-[0.18]"
         style={{ backgroundImage: "url('/patterns/village-scene.png')" }}
       />
 
@@ -20,7 +20,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         aria-hidden
         viewBox="0 0 1440 150"
         preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-28 w-full sm:h-32"
+        className="pointer-events-none fixed inset-x-0 bottom-0 h-28 w-full sm:h-32"
       >
         <path fill="#4A8C3F" d="M0 74C240 34 480 112 720 80 960 48 1200 98 1440 64V150H0Z" />
         <path fill="#2D5016" d="M0 100C260 70 520 120 780 96 1040 72 1240 106 1440 90V150H0Z" />
@@ -56,7 +56,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       </div>
 
       {/* Footer */}
-      <p className="absolute bottom-3 left-0 right-0 z-10 px-4 text-center text-xs font-medium text-white">
+      <p className="fixed bottom-3 left-0 right-0 z-10 px-4 text-center text-xs font-medium text-white">
         &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
       </p>
     </main>
