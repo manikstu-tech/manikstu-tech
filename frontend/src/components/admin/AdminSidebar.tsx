@@ -127,7 +127,7 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
         {/* Warli art strip */}
         <div
           aria-hidden
-          className="h-7 w-full bg-repeat-x opacity-80"
+          className="h-7 w-full border-b border-light-grey bg-manikstu-cream bg-repeat-x"
           style={{
             backgroundImage: "url('/patterns/saura-border-top.png')",
             backgroundSize: "auto 285%",
