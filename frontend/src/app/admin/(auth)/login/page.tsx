@@ -31,7 +31,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         {/* Warli art strip above the card body */}
         <div
           aria-hidden
-          className="h-7 w-full bg-repeat-x"
+          className="h-12 w-full bg-repeat-x"
           style={{ backgroundImage: "url('/patterns/saura-border-top.png')", backgroundSize: "auto 100%" }}
         />
 
