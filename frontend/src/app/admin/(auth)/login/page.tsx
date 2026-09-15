@@ -8,10 +8,10 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FBF3E6] px-4 py-12">
-      {/* Background rural line-art scene */}
+      {/* Background rural line-art scene — fills the whole background */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[length:auto_62%] bg-bottom bg-no-repeat opacity-[0.18]"
+        className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat opacity-[0.18]"
         style={{ backgroundImage: "url('/patterns/village-scene.png')" }}
       />
 
