@@ -323,13 +323,14 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
       </div>
 
       {/* Footer artwork + copyright */}
-      <footer className="relative mt-10 pt-6">
+      <footer className="relative mt-12 h-40">
+        {/* Village line-art band — multiply blend drops the white ground so only the ink shows */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-repeat-x bg-bottom opacity-[0.06]"
+          className="pointer-events-none absolute inset-x-0 bottom-8 h-28 bg-repeat-x bg-bottom opacity-60 mix-blend-multiply"
           style={{ backgroundImage: "url('/patterns/village-scene.png')", backgroundSize: "auto 100%" }}
         />
-        <p className="relative pb-6 text-center text-xs font-medium text-grey">
+        <p className="absolute inset-x-0 bottom-0 text-center text-xs font-medium text-grey">
           &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
         </p>
       </footer>
