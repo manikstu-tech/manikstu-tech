@@ -707,7 +707,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           {/* Benefits strip — full-bleed light-green band, pushed down so the watermark above stays visible */}
-          <div className="relative -mx-4 mt-16 flex gap-4 overflow-x-auto rounded-2xl bg-[#EEF5E7] px-4 py-6 sm:-mx-6 sm:mt-20 sm:grid sm:grid-cols-3 md:-mx-8 md:grid-cols-6 sm:gap-y-6 sm:px-6 sm:overflow-visible scrollbar-hide">
+          <div className="relative mx-[calc(50%-50vw)] mt-16 flex gap-4 overflow-x-auto bg-[#EEF5E7] px-4 py-6 sm:mt-20 sm:grid sm:grid-cols-3 md:grid-cols-6 sm:gap-y-6 sm:px-6 sm:overflow-visible scrollbar-hide">
               {[
                 { Icon: GoatSolidIcon, l1: "Improved", l2: "Livestock Productivity" },
                 { Icon: PeopleSolidIcon, l1: "Women", l2: "Entrepreneurship" },
