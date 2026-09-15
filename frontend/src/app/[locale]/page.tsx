@@ -316,7 +316,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
                   <Link
                     href="/collaborate"
-                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3.5 sm:py-3 text-base sm:text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
+                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 [&>svg]:!m-0 rounded-full bg-manikstu-green px-6 py-3.5 sm:py-3 text-base sm:text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
                   >
                     {t("exploreOurWork")} <ArrowRight className="h-4 w-4" />
                   </Link>
