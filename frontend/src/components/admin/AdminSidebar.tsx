@@ -141,7 +141,7 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto px-3 py-3">
+        <nav className="hide-scrollbar flex-1 overflow-y-auto px-3 py-3">
           {NAV.map(({ group, items }) => {
             const visible = items.filter((item) => !item.developerOnly || isDeveloper);
             if (visible.length === 0) return null;
