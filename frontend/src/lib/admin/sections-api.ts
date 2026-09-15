@@ -127,6 +127,17 @@ export async function uploadMedia(input: FormData): Promise<MediaItem> {
   return (await adminFetch<{ data: MediaItem }>("/media", { method: "POST", body: out })).data;
 }
 
+export async function updateMedia(id: number, input: FormData): Promise<MediaItem> {
+  const out = new FormData();
+  for (const key of ["type", "title", "date"]) {
+    const value = input.get(key);
+    if (typeof value === "string") out.set(key, value);
+  }
+  const file = input.get("file");
+  if (file instanceof File && file.size > 0) out.set("file", file);
+  return (await adminFetch<{ data: MediaItem }>(`/media/${id}`, { method: "POST", body: out })).data;
+}
+
 export function deleteMedia(id: number): Promise<unknown> {
   return adminFetch(`/media/${id}`, { method: "DELETE" });
 }

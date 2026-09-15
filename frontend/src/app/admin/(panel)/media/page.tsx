@@ -4,9 +4,10 @@ import { FileText, ImageOff, Search } from "lucide-react";
 import { buttonClass, fieldClass, formatBytes, formatDate, PageHeader, Pagination } from "@/components/admin/AdminUi";
 import DeleteRecordButton from "@/components/admin/DeleteRecordButton";
 import MediaUploader from "@/components/admin/MediaUploader";
+import EditMediaModal from "@/components/admin/EditMediaModal";
 import { requireAdmin } from "@/lib/admin/auth";
 import { listMedia } from "@/lib/admin/sections-api";
-import { deleteMediaAction, uploadMediaAction } from "../section-actions";
+import { deleteMediaAction, updateMediaAction, uploadMediaAction } from "../section-actions";
 
 export const metadata: Metadata = { title: "Media Library" };
 
@@ -89,9 +90,12 @@ export default async function MediaPage({ searchParams }: { searchParams: Promis
                         {formatDate(m.created_at)} · {formatBytes(m.size)}
                       </p>
                     </div>
-                    {user.role === "developer" && (
-                      <DeleteRecordButton name={m.name} action={deleteMediaAction.bind(null, m.id)} note="The file is removed from the website too." />
-                    )}
+                    <div className="flex items-center gap-1 shrink-0">
+                      <EditMediaModal item={m} action={updateMediaAction.bind(null, m.id)} />
+                      {user.role === "developer" && (
+                        <DeleteRecordButton name={m.name} action={deleteMediaAction.bind(null, m.id)} note="The file is removed from the website too." />
+                      )}
+                    </div>
                   </div>
                 </li>
               );

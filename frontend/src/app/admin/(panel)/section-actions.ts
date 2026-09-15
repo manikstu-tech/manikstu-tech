@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { AdminApiError } from "@/lib/admin/api";
 import { toFormState } from "@/lib/admin/form-error";
 import { getSection } from "@/lib/admin/sections";
-import { deleteMedia, deleteRecord, saveRecord, saveSettings, uploadMedia } from "@/lib/admin/sections-api";
+import { deleteMedia, deleteRecord, saveRecord, saveSettings, updateMedia, uploadMedia } from "@/lib/admin/sections-api";
 import type { FormState } from "@/lib/admin/types";
 
 // Every call goes through adminFetch, so Laravel re-checks the admin token and
@@ -51,6 +51,16 @@ export async function uploadMediaAction(_prev: FormState, formData: FormData): P
   }
   revalidatePath("/admin/media");
   return { ok: true, message: "Uploaded." };
+}
+
+export async function updateMediaAction(id: number, _prev: FormState, formData: FormData): Promise<FormState> {
+  try {
+    await updateMedia(id, formData);
+  } catch (e) {
+    return toFormState(e);
+  }
+  revalidatePath("/admin/media");
+  return { ok: true, message: "Updated." };
 }
 
 export async function deleteMediaAction(id: number): Promise<{ error?: string }> {
