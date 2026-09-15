@@ -47,7 +47,8 @@ export default function Footer() {
 
   useEffect(() => {
     getSettings()
-      .then((res) => setSettings(res.data))
+      // Keep the phone number fixed in code (backend still serves the old one).
+      .then((res) => setSettings({ ...res.data, phone: fallbackSettings.phone }))
       .catch(() => {});
     getFooter()
       .then((res) => {
