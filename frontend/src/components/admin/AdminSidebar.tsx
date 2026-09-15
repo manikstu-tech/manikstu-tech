@@ -4,11 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
-  Bell, Briefcase, ChevronDown, Contact, FileText, GraduationCap, Handshake, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
+  Briefcase, Contact, FileText, GraduationCap, Handshake, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
   Menu, MessageSquare, Newspaper, Package, Quote, Search, Settings, ShieldCheck, ShoppingCart, Sprout, Tags, Users, X,
   type LucideIcon,
 } from "lucide-react";
 import type { AdminUser } from "@/lib/admin/types";
+import NotificationBell from "./NotificationBell";
+import UserMenu from "./UserMenu";
 
 type NavItem = { label: string; icon: LucideIcon; href: string; developerOnly?: boolean };
 
@@ -100,27 +102,8 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
           </div>
 
           <div className="ml-auto flex items-center gap-2 sm:gap-4">
-            {/* Notifications */}
-            <button
-              type="button"
-              className="relative flex h-10 w-10 items-center justify-center rounded-lg text-grey transition-colors hover:bg-manikstu-cream/70 hover:text-charcoal"
-              aria-label="Notifications"
-            >
-              <Bell className="h-5 w-5" />
-              <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-manikstu-red ring-2 ring-white" />
-            </button>
-
-            {/* User */}
-            <div className="flex items-center gap-2">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-manikstu-green text-sm font-semibold text-white">
-                {(user.name?.[0] ?? "A").toUpperCase()}
-              </span>
-              <div className="hidden leading-tight sm:block">
-                <p className="text-sm font-semibold text-charcoal">{user.name}</p>
-                <p className="text-xs font-semibold text-manikstu-gold">{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
-              </div>
-              <ChevronDown className="hidden h-4 w-4 shrink-0 text-grey sm:block" />
-            </div>
+            <NotificationBell />
+            <UserMenu user={user} logoutAction={logoutAction} />
           </div>
         </div>
 
