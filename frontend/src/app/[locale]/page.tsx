@@ -719,16 +719,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         {/* About Project AJAH — Livelihoods Today */}
         <section className="relative overflow-hidden bg-white px-4 pt-10 pb-14 sm:px-6 sm:pt-12 sm:pb-16 md:px-8 md:pt-14 md:pb-20">
-          {/* Top-left corner mandala (same artwork as the Mobile App section) */}
-          <Image
-            src="/patterns/mandala-corner-top.png"
-            alt=""
-            aria-hidden
-            width={1370}
-            height={1155}
-            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.14] sm:opacity-[0.18]"
-          />
-
           {/* Warli village figures artwork, bottom-right */}
           <Image
             src="/patterns/village-figures.png"
@@ -741,9 +731,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
           <div className="relative mx-auto max-w-7xl">
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-              {/* Video card — same style/proportions as the home dashboard card */}
+              {/* Image card — same style/proportions as the home dashboard card */}
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
-                <AjahVideo videoId="9ywHq6H3-wU" />
+                <Image
+                  src="/ajah-hero.webp"
+                  alt="Project AJAH — empowering women through livestock"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
                 <div className="absolute bottom-2.5 right-2.5 z-10 max-w-[85%] rounded-lg bg-manikstu-green px-2.5 py-1.5 text-right text-[10px] font-semibold leading-tight text-white shadow-md sm:bottom-4 sm:right-4 sm:max-w-none sm:rounded-full sm:px-4 sm:py-2 sm:text-xs">
                   Empowered women build stronger communities
                 </div>
