@@ -140,11 +140,11 @@ export default function ProductsPage() {
               )}
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+            <p className="mt-6 hidden max-w-lg text-lg leading-relaxed text-grey sm:block">
               {t("heroDesc")}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 hidden flex-wrap gap-4 sm:flex">
               <Link
                 href="#products-grid"
                 className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
@@ -171,7 +171,7 @@ export default function ProductsPage() {
           </div>
 
           {/* Right, visual panel */}
-          <div className="relative">
+          <div className="relative hidden sm:block">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               <Image
                 src="/products-hero.png"
