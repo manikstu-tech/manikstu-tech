@@ -628,7 +628,7 @@ export default function ProductDetailPage() {
                     onClick={handleAddToCart}
                     className="flex flex-1 items-center justify-center gap-2 rounded-full bg-manikstu-green px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98]"
                   >
-                    <ShoppingBag className="h-4 w-4" />
+                    <ShoppingBag className="h-4 w-4 !m-0" />
                     <span>{t("addToCart")}</span>
                   </button>
                 </div>
@@ -652,7 +652,7 @@ export default function ProductDetailPage() {
                   }}
                   className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-red px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-saura-red focus:outline-none focus:ring-2 focus:ring-manikstu-red focus:ring-offset-2 active:scale-[0.98]"
                 >
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 !m-0" />
                   <span>{t("buyNow")}</span>
                 </button>
               </div>
