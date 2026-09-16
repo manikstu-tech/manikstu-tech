@@ -115,7 +115,7 @@ export default function ProductsPage() {
     <>
       <Header />
       <main id="main-content">
-        <PageHero>
+        <PageHero className="[&>div]:pb-4 sm:[&>div]:pb-14 md:[&>div]:pb-20 lg:[&>div]:pb-24">
           {/* Left, copy */}
           <div>
             <div className="flex items-center gap-2">
@@ -200,7 +200,7 @@ export default function ProductsPage() {
 
         <section
           id="products-grid"
-          className="section-padding bg-white"
+          className="section-padding bg-white !pt-0 sm:!pt-16 md:!pt-20"
         >
           <div className="mx-auto max-w-7xl">
             {/* Mobile heading, search and category chips */}
