@@ -330,7 +330,12 @@
     "addToCart": "In den Warenkorb",
     "comingSoon": "Produkte kommen bald.",
     "loading": "Produkte werden geladen...",
-    "contactEnquiry": "Kontaktieren Sie uns für Anfragen"
+    "contactEnquiry": "Kontaktieren Sie uns für Anfragen",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "Schulung & Sensibilisierung",

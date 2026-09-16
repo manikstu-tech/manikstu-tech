@@ -330,7 +330,12 @@
     "addToCart": "कार्ट में जोड़ें",
     "comingSoon": "उत्पाद जल्द आ रहे हैं।",
     "loading": "उत्पाद लोड हो रहे हैं...",
-    "contactEnquiry": "पूछताछ के लिए हमसे संपर्क करें"
+    "contactEnquiry": "पूछताछ के लिए हमसे संपर्क करें",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "प्रशिक्षण और जागरूकता",

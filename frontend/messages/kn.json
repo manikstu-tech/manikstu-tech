@@ -330,7 +330,12 @@
     "addToCart": "ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",
     "comingSoon": "ಉತ್ಪನ್ನಗಳು ಶೀಘ್ರದಲ್ಲಿ ಬರುತ್ತಿವೆ.",
     "loading": "ಉತ್ಪನ್ನಗಳನ್ನು ಲೋಡ್ ಮಾಡುತ್ತಿದೆ...",
-    "contactEnquiry": "ವಿಚಾರಣೆಗಳಿಗಾಗಿ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ"
+    "contactEnquiry": "ವಿಚಾರಣೆಗಳಿಗಾಗಿ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "ತರಬೇತಿ ಮತ್ತು ಜಾಗೃತಿ",

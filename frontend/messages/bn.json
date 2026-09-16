@@ -330,7 +330,12 @@
     "addToCart": "কার্টে যোগ করুন",
     "comingSoon": "পণ্য শীঘ্রই আসছে।",
     "loading": "পণ্য লোড হচ্ছে...",
-    "contactEnquiry": "জিজ্ঞাসার জন্য আমাদের সাথে যোগাযোগ করুন"
+    "contactEnquiry": "জিজ্ঞাসার জন্য আমাদের সাথে যোগাযোগ করুন",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "প্রশিক্ষণ ও সচেতনতা",

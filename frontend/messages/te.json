@@ -330,7 +330,12 @@
     "addToCart": "కార్ట్‌కు జోడించండి",
     "comingSoon": "ఉత్పత్తులు త్వరలో వస్తున్నాయి.",
     "loading": "ఉత్పత్తులు లోడ్ అవుతున్నాయి...",
-    "contactEnquiry": "విచారణల కోసం మమ్మల్ని సంప్రదించండి"
+    "contactEnquiry": "విచారణల కోసం మమ్మల్ని సంప్రదించండి",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "శిక్షణ & అవగాహన",

@@ -330,7 +330,12 @@
     "addToCart": "કાર્ટમાં ઉમેરો",
     "comingSoon": "ઉત્પાદનો ટૂંકમાં આવી રહ્યા છે.",
     "loading": "ઉત્પાદનો લોડ થઈ રહ્યા છે...",
-    "contactEnquiry": "પૂછપરછ માટે અમને સંપર્ક કરો"
+    "contactEnquiry": "પૂછપરછ માટે અમને સંપર્ક કરો",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "તાલીમ અને જાગૃતિ",

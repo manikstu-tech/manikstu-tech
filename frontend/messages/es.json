@@ -330,7 +330,12 @@
     "addToCart": "Añadir al carrito",
     "comingSoon": "Próximamente productos.",
     "loading": "Cargando productos...",
-    "contactEnquiry": "Contáctanos para consultas"
+    "contactEnquiry": "Contáctanos para consultas",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "Capacitación y Concientización",

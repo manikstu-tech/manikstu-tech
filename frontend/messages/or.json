@@ -330,7 +330,12 @@
     "addToCart": "କାର୍ଟରେ ଯୋଡ଼ନ୍ତୁ",
     "comingSoon": "ଉତ୍ପାଦ ଶୀଘ୍ର ଆସୁଛି।",
     "loading": "ଉତ୍ପାଦ ଲୋଡ ହେଉଛି...",
-    "contactEnquiry": "ଅନୁସନ୍ଧାନ ପାଇଁ ଆମ ସହ ସମ୍ପର୍କ କରନ୍ତୁ"
+    "contactEnquiry": "ଅନୁସନ୍ଧାନ ପାଇଁ ଆମ ସହ ସମ୍ପର୍କ କରନ୍ତୁ",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "ପ୍ରଶିକ୍ଷଣ ଏବଂ ସଚେତନତା",

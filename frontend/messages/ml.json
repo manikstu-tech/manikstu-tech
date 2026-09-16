@@ -331,7 +331,12 @@
     "addToCart": "കാർട്ടിൽ ചേർക്കുക",
     "comingSoon": "ഉൽപ്പന്നങ്ങൾ ഉടൻ വരുന്നു.",
     "loading": "ഉൽപ്പന്നങ്ങൾ ലോഡ് ചെയ്യുന്നു...",
-    "contactEnquiry": "അന്വേഷണങ്ങൾക്ക് ഞങ്ങളെ ബന്ധപ്പെടുക"
+    "contactEnquiry": "അന്വേഷണങ്ങൾക്ക് ഞങ്ങളെ ബന്ധപ്പെടുക",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "പരിശീലനം & അവബോധം",

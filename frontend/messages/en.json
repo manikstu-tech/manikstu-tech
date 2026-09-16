@@ -342,7 +342,12 @@
     "addOneMore": "Add one more",
     "decrease": "Decrease",
     "increase": "Increase",
-    "removeFromCart": "Remove from cart"
+    "removeFromCart": "Remove from cart",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "Training & Awareness",

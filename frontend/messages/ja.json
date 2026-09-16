@@ -330,7 +330,12 @@
     "addToCart": "カートに追加",
     "comingSoon": "製品は近日公開予定です。",
     "loading": "製品を読み込み中...",
-    "contactEnquiry": "お問い合わせはこちら"
+    "contactEnquiry": "お問い合わせはこちら",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "研修・啓発",

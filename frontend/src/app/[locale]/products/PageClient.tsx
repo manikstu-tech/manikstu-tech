@@ -17,6 +17,7 @@ import {
   Plus,
   X,
   ShoppingCart,
+  Search,
 } from "lucide-react";
 import { getProducts } from "@/lib/api";
 import { trustFeatures, FALLBACK_PRODUCTS, type Product } from "./data";
@@ -90,6 +91,21 @@ export default function ProductsPage() {
     setCart(setQtyStore(slug, (cur[slug]?.qty ?? 0) - 1));
   };
   const removeFromCart = (slug: string) => setCart(removeFromCartStore(slug));
+
+  // Search + category filter (controls only shown on mobile)
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState<string | null>(null);
+  const categories = Array.from(
+    new Set(products.map((p) => p.category?.name).filter(Boolean) as string[])
+  );
+  const q = query.trim().toLowerCase();
+  const visibleProducts = products.filter(
+    (p) =>
+      (!category || p.category?.name === category) &&
+      (!q ||
+        p.name.toLowerCase().includes(q) ||
+        (p.description ?? "").toLowerCase().includes(q))
+  );
 
   const cartLines = cartLinesOf(cart);
   const cartTotal = cartTotalOf(cart);
@@ -187,8 +203,56 @@ export default function ProductsPage() {
           className="section-padding bg-white"
         >
           <div className="mx-auto max-w-7xl">
+            {/* Mobile heading, search and category chips */}
+            <div className="sm:hidden">
+              <div className="flex items-center gap-1.5">
+                <Leaf className="h-3.5 w-3.5 text-manikstu-green" />
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-green">
+                  {t("pill")}
+                </p>
+              </div>
+              <h2 className="mt-2 font-heading text-3xl font-bold leading-tight text-charcoal">
+                {t("mobileTitleLead")}
+                <br />
+                <span className="text-manikstu-green">{t("mobileTitleAccent")}</span>
+              </h2>
+
+              <div className="relative mt-5">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder={t("searchPlaceholder")}
+                  aria-label={t("searchPlaceholder")}
+                  className="w-full rounded-full border border-light-grey bg-white py-3 pl-11 pr-4 text-sm text-charcoal placeholder:text-grey focus:border-manikstu-green focus:outline-none focus:ring-2 focus:ring-manikstu-green/30"
+                />
+              </div>
+
+              <div className="-mx-4 mt-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none]">
+                {[null, ...categories].map((c) => {
+                  const active = category === c;
+                  return (
+                    <button
+                      key={c ?? "all"}
+                      type="button"
+                      onClick={() => setCategory(c)}
+                      aria-pressed={active}
+                      className={`shrink-0 rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors ${
+                        active
+                          ? "border-manikstu-green bg-manikstu-green text-white"
+                          : "border-light-grey bg-white text-charcoal"
+                      }`}
+                    >
+                      {c ?? t("allCategories")}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Ornamental section heading */}
-            <div className="text-center">
+            <div className="hidden text-center sm:block">
               {/* Ornamental pill heading */}
               <div className="flex items-center justify-center gap-2">
                 <span aria-hidden className="h-px w-10 sm:w-14 bg-manikstu-gold/60" />
@@ -244,22 +308,26 @@ export default function ProductsPage() {
                   {t("contactUsEnquiries")} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
+            ) : visibleProducts.length === 0 ? (
+              <p className="mt-8 py-10 text-center text-sm text-grey">
+                {t("noMatches")}
+              </p>
             ) : (
-              <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {products.map((product) => (
+              <div className="mt-6 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+              {visibleProducts.map((product) => (
                 <article
                   key={product.id}
                   className="group flex flex-col rounded-2xl border border-manikstu-gold/20 bg-white shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="flex items-start gap-3 p-4">
                     {/* Product image tile */}
-                    <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-light-grey/70 bg-white">
+                    <div className="flex h-40 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-light-grey/70 bg-white sm:h-24 sm:w-24">
                       {product.image ? (
                         <Image
                           src={product.image}
                           alt={product.name}
-                          width={96}
-                          height={96}
+                          width={160}
+                          height={160}
                           className="h-full w-full object-contain p-1.5"
                         />
                       ) : (
@@ -270,14 +338,14 @@ export default function ProductsPage() {
                     {/* Content */}
                     <div className="min-w-0 flex-1">
                       {product.category && (
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-manikstu-green">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-manikstu-green sm:text-[10px]">
                           {product.category.name}
                         </p>
                       )}
-                      <h3 className="font-heading text-base font-bold text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-1">
+                      <h3 className="mt-1 font-heading text-xl font-bold leading-tight text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-2 sm:mt-0 sm:text-base sm:line-clamp-1">
                         {product.name}
                       </h3>
-                      <p className="mt-1 text-xs text-grey leading-snug line-clamp-3">
+                      <p className="mt-2 text-sm text-grey leading-snug line-clamp-3 sm:mt-1 sm:text-xs">
                         {product.description}
                       </p>
                       {product.size && (
@@ -288,8 +356,53 @@ export default function ProductsPage() {
                     </div>
                   </div>
 
+                  {/* Mobile: price + full-width actions */}
+                  <div className="mt-auto px-4 pb-4 sm:hidden">
+                    <p className="font-body text-2xl font-bold text-manikstu-green">
+                      ₹{Number(product.price).toLocaleString("en-IN")}
+                    </p>
+                    <div className="mt-3 grid grid-cols-2 gap-3">
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="inline-flex items-center justify-center rounded-xl border border-manikstu-green bg-white py-2.5 text-sm font-semibold text-manikstu-green"
+                      >
+                        {t("viewDetails")}
+                      </Link>
+                      {cart[product.slug] ? (
+                        <div className="flex items-center justify-between rounded-xl bg-manikstu-green px-1 text-sm font-semibold text-white">
+                          <button
+                            type="button"
+                            onClick={() => decrement(product.slug)}
+                            aria-label={`Remove one ${product.name}`}
+                            className="flex h-9 w-9 items-center justify-center"
+                          >
+                            <Minus className="h-4 w-4" />
+                          </button>
+                          <span className="tabular-nums">{cart[product.slug].qty}</span>
+                          <button
+                            type="button"
+                            onClick={() => addToCart(product)}
+                            aria-label={`Add one more ${product.name}`}
+                            className="flex h-9 w-9 items-center justify-center"
+                          >
+                            <Plus className="h-4 w-4" />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => addToCart(product)}
+                          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-manikstu-green py-2.5 text-sm font-semibold text-white"
+                        >
+                          <ShoppingCart className="h-4 w-4" />
+                          {t("addToCart")}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
                   {/* Price + Add to Cart row */}
-                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-light-grey/70 px-4 py-3">
+                  <div className="mt-auto hidden sm:flex items-center justify-between gap-3 border-t border-light-grey/70 px-4 py-3">
                     <p className="font-body text-lg font-bold text-manikstu-green">
                       ₹{Number(product.price).toLocaleString("en-IN")}
                     </p>

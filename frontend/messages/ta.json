@@ -330,7 +330,12 @@
     "addToCart": "கூடையில் சேர்",
     "comingSoon": "தயாரிப்புகள் விரைவில் வருகின்றன.",
     "loading": "தயாரிப்புகளை ஏற்றுகிறது...",
-    "contactEnquiry": "விசாரணைகளுக்கு எங்களைத் தொடர்பு கொள்ளுங்கள்"
+    "contactEnquiry": "விசாரணைகளுக்கு எங்களைத் தொடர்பு கொள்ளுங்கள்",
+    "mobileTitleLead": "Quality Products for",
+    "mobileTitleAccent": "Healthier Farms.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All",
+    "noMatches": "No products match your search."
   },
   "Training": {
     "pill": "பயிற்சி & விழிப்புணர்வு",
