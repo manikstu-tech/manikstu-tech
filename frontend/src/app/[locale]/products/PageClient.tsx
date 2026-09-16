@@ -205,19 +205,7 @@ export default function ProductsPage() {
           <div className="mx-auto max-w-7xl">
             {/* Mobile heading, search and category chips */}
             <div className="sm:hidden">
-              <div className="flex items-center gap-1.5">
-                <Leaf className="h-3.5 w-3.5 text-manikstu-green" />
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-green">
-                  {t("pill")}
-                </p>
-              </div>
-              <h2 className="mt-2 font-heading text-3xl font-bold leading-tight text-charcoal">
-                {t("mobileTitleLead")}
-                <br />
-                <span className="text-manikstu-green">{t("mobileTitleAccent")}</span>
-              </h2>
-
-              <div className="relative mt-5">
+              <div className="relative">
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
                 <input
                   type="search"
