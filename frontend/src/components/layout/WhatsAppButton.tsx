@@ -128,7 +128,7 @@ export default function WhatsAppButton() {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close WhatsApp chat" : "Chat with us on WhatsApp"}
         aria-expanded={open}
-        className="fixed bottom-5 right-5 z-[96] flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 ring-1 ring-black/5 hover:bg-[#1EBE5D] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 sm:bottom-6 sm:right-6"
+        className="fixed bottom-5 right-5 z-[96] flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md shadow-black/15 ring-1 ring-black/5 hover:bg-[#1EBE5D] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 sm:bottom-6 sm:right-6"
       >
         {open ? (
           <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">

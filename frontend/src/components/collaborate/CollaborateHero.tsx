@@ -23,10 +23,14 @@ export default function CollaborateHero() {
 
             <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
               {t("heroTitle").split(".")[0]}.{" "}
-              <br />
-              <span className="text-manikstu-green">
-                {t("heroTitle").split(".")[1]?.trim()}.
-              </span>
+              {t("heroTitle").split(".")[1]?.trim() && (
+                <>
+                  <br />
+                  <span className="text-manikstu-green">
+                    {t("heroTitle").split(".")[1]?.trim()}.
+                  </span>
+                </>
+              )}
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">

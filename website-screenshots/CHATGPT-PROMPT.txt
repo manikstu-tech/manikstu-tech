@@ -1,0 +1,163 @@
+# ChatGPT Prompt — Manikstu Agro Mobile Version Design
+
+Use this prompt with ChatGPT (GPT-4o or GPT-4o with Vision) along with the attached screenshots as reference images to design a mobile-optimized version of the Manikstu Agro website.
+
+---
+
+## Prompt for ChatGPT:
+
+You are a senior UI/UX designer specializing in mobile-first web design. I am sharing screenshots of a desktop website for **Manikstu Agro** — a goat farming and agricultural company based in Odisha, India. Your task is to design a complete mobile version (375px width, iPhone standard) that maintains the exact same brand identity, color palette, typography hierarchy, and visual language — but optimized for mobile screens.
+
+### DESIGN SYSTEM REFERENCE (extracted from desktop screenshots):
+
+**Brand Colors:**
+- Primary Green: #2D7A3A (buttons, nav highlights, accents)
+- Dark Green: #1A5C2A (hover states, darker accents)
+- Cream/Beige Background: #FDF8F0 (main page background)
+- White: #FFFFFF (card backgrounds)
+- Gold/Tan: #C4A35A (decorative accents, ornamental borders)
+- Dark Text: #1A1A1A (headings)
+- Body Text: #4A4A4A (paragraphs)
+- Light Gray: #E8E8E8 (borders, dividers)
+
+**Typography:**
+- Headings: Playfair Display (serif) — large, elegant, editorial feel
+- Subheadings/Labels: Uppercase, letter-spaced, small caps style (e.g., "OUR PRODUCTS", "WHAT WE OFFER")
+- Body Text: Inter or similar clean sans-serif
+- Accent/CTA text: Bold, green colored
+
+**Visual Elements:**
+- Indian mandala/paisala decorative patterns (gold/tan) used as section dividers and background textures
+- Rounded cards with subtle shadows
+- Green pill-shaped buttons for CTAs
+- Circular image frames for team members and testimonials
+- Product cards with image, name, price, and "View Details" + "Add to Cart" actions
+- Star ratings on testimonials
+- Floating WhatsApp button (green, bottom-right)
+
+**Layout Patterns (to adapt for mobile):**
+- Hero: Full-width image + text overlay with 2 CTA buttons
+- Stats bar: Horizontal row of 4 metrics (25,000+ Farmers, 10,000+ Villages, etc.)
+- Service/Product cards: Grid that needs to become single-column on mobile
+- Accordion sections for services (already partially accordion on desktop)
+- Testimonial slider (already carousel on desktop)
+- Contact form: Full-width stacked fields
+- Footer: Multi-column → stacked single column
+
+---
+
+### WHAT TO DESIGN (Mobile Screens):
+
+Create mobile wireframes/mockups (375x812px, iPhone 14 size) for each of these screens:
+
+#### 1. **Home Screen (Mobile)**
+- Hamburger menu replacing top nav
+- Hero section with stacked text + image
+- Mission section
+- 4 feature cards → 2x2 grid or stacked
+- Impact stats → horizontal scroll or 2x2 grid
+- Project AJAH section
+- Associations logos → horizontal scroll
+- Goat Care App section
+- Latest news cards → vertical stack
+- Testimonials → carousel
+- Footer → accordion sections
+
+#### 2. **Navigation Menu (Mobile - Open State)**
+- Full-screen slide-in menu
+- Logo at top
+- Menu items stacked vertically with chevron indicators
+- Contact info at bottom
+- Close button
+
+#### 3. **About Page (Mobile)**
+- Hero with stacked layout
+- Our Story section
+- 4 value cards (People First, Integrity, Sustainability, Innovation) → 2-column grid
+- Awards section
+- Leadership team → horizontal scroll cards
+- Advisors section
+
+#### 4. **Services Page (Mobile)**
+- Hero section
+- Goat Care Services accordion (expandable)
+- ERP Modules section
+- Goat Farming Solutions accordion
+- Goat Insurance section
+
+#### 5. **Products Page (Mobile)**
+- Hero section
+- Product grid → single column cards
+- Each card: product image (left), name, description, price, "View Details" + "Add to Cart" buttons
+- Trust badges row
+- Filter/sort options
+
+#### 6. **Product Detail Page (Mobile)**
+- Product image (full-width)
+- Product name, price, description
+- Quantity selector
+- Add to Cart button (sticky bottom)
+- Product details tabs/accordion
+
+#### 7. **Contact Page (Mobile)**
+- Call Us / Email Us cards → stacked
+- Office locations → vertical scroll
+- Contact form → full-width stacked fields
+- Map placeholder
+
+#### 8. **Collaborate Page (Mobile)**
+- Hero section
+- Partner types → stacked cards
+- How it works → vertical steps
+- Impact section
+
+#### 9. **Training Page (Mobile)**
+- Hero section
+- Training programs → stacked cards
+- Awareness initiatives
+
+#### 10. **Blog/Media Page (Mobile)**
+- Hero section
+- Category filter → horizontal scroll pills
+- Article grid → single column cards
+- Video section
+
+---
+
+### DESIGN RULES:
+
+1. **Touch targets:** Minimum 44x44px for all interactive elements
+2. **Spacing:** Use 16px base spacing, 24px between sections
+3. **Font sizes:** Hero heading 28-32px, section headings 22-24px, body 14-16px
+4. **Buttons:** Full-width on mobile for primary CTAs
+5. **Images:** Use aspect ratios that work on mobile (16:9 for heroes, 1:1 for products)
+6. **Sticky elements:** Bottom CTA bar for product pages, floating WhatsApp button
+7. **Loading:** Consider skeleton states and image lazy loading
+8. **Accessibility:** Proper contrast ratios, readable font sizes, clear hierarchy
+
+---
+
+### OUTPUT FORMAT:
+
+For each screen, provide:
+1. **Visual mockup** (clean, professional design)
+2. **Annotation notes** explaining key design decisions
+3. **Interaction notes** (animations, transitions, gestures)
+
+Also provide:
+- **Mobile Navigation Pattern** (hamburger menu design)
+- **Component Library** (reusable mobile components: cards, buttons, forms, headers)
+- **Responsive Breakpoint Notes** (how desktop components map to mobile)
+
+---
+
+### REFERENCE IMAGES:
+
+Attached are the desktop screenshots for reference. Study the color palette, typography, spacing, visual hierarchy, decorative elements, and overall brand feel. The mobile version must feel like the same brand — same DNA, different body.
+
+**Key brand elements to preserve:**
+- The elegant serif + sans-serif font pairing
+- The green/cream/gold color story
+- The Indian-inspired decorative patterns
+- The warm, trustworthy, agricultural feel
+- The balance between professional and approachable

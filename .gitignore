@@ -10,4 +10,4 @@ frontend/out/
 
 # Decoupled Laravel backend now lives in its own repo; ignore any local leftover copy
 /backend/
-
+.gstack/

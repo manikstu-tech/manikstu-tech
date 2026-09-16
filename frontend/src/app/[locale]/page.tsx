@@ -5,14 +5,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSlider from "@/components/home/HeroSlider";
 import GoatIcon from "@/components/icons/GoatIcon";
-import {
-  GoatSolidIcon,
-  PeopleSolidIcon,
-  HeartPulseSolidIcon,
-  GraduationCapSolidIcon,
-  ShieldCheckSolidIcon,
-  StoreSolidIcon,
-} from "@/components/icons/BenefitIcons";
 import AjahVideo from "@/components/home/AjahVideo";
 import WatchStoryButton from "@/components/home/WatchStoryButton";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
@@ -36,7 +28,8 @@ import {
   BarChart3,
   ShoppingBag,
   User,
-  Download,
+  Heart,
+  GraduationCap,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -288,7 +281,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <main id="main-content">
         {/* Hero */}
         <PageHero
-          mobileLayout="stacked"
           background={
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
               <Image
@@ -305,30 +297,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         >
               {/* Left content */}
               <div>
-                <h1 className="text-center sm:text-left font-heading text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-tight font-bold text-charcoal lg:text-6xl">
+                <h1 className="font-heading text-3xl sm:text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
                   {t("heroTitle1")}
                   <br />
                   <span className="text-manikstu-green">{t("heroTitle2")}</span>
                 </h1>
-                <p className="mt-4 sm:mt-6 max-w-lg text-base md:text-lg text-grey leading-relaxed">
+                <p className="mt-3 sm:mt-6 max-w-lg text-sm sm:text-base md:text-lg text-grey leading-relaxed">
                   {t("missionDesc2")}
                 </p>
-                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
+                <div className="mt-5 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
                   <Link
                     href="/collaborate"
-                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 [&>svg]:!m-0 rounded-full bg-manikstu-green px-6 py-3.5 sm:py-3 text-base sm:text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
+                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
                   >
                     {t("exploreOurWork")} <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href="/about"
-                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border-2 border-charcoal bg-charcoal/5 px-6 py-3 sm:py-2.5 text-base sm:text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-charcoal bg-charcoal/5 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-white transition-colors"
                   >
                     {t("learnMore")}
                   </Link>
                 </div>
-                {/* Trust badges (desktop — mobile copy sits below the image) */}
-                <div className="mt-5 sm:mt-6 hidden lg:flex items-center gap-3">
+                {/* Trust badges */}
+                <div className="mt-5 sm:mt-6 flex items-center gap-3">
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-grey">
                     <Shield className="h-4 w-4 text-manikstu-green" />
                     {t("trustedBy")}
@@ -351,7 +343,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {/* Right content */}
               <div className="relative">
                 {/* Main photo */}
-                <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] shadow-lg lg:shadow-none">
+                <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
                   <HeroSlider
                     images={["/hero-slide-1.png"]}
                     alt="Manikstu Agro, goat farming ecosystem"
@@ -363,25 +355,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     topLabel={t("watchOurStory").split("\n")[0]}
                     bottomLabel={t("watchOurStory").split("\n")[1]}
                   />
-                </div>
-                {/* Trust badges (mobile) */}
-                <div className="mt-6 flex lg:hidden items-center justify-center gap-3">
-                  <div className="flex items-center gap-2 text-base text-grey">
-                    <Shield className="h-5 w-5 text-manikstu-green" />
-                    {t("trustedBy")}
-                  </div>
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((n) => (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        key={n}
-                        src={`/team/avatars/trust-${n}.jpg`}
-                        alt="Manikstu farmer"
-                        loading="eager"
-                        className="h-9 w-9 rounded-full border-2 border-white object-cover shadow-sm"
-                      />
-                    ))}
-                  </div>
                 </div>
               </div>
         </PageHero>
@@ -627,7 +600,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
 
         {/* Flagship Program */}
-        <section className="relative px-4 pt-14 pb-0 sm:px-6 sm:pt-16 md:px-8 md:pt-20 bg-white overflow-hidden">
+        <section className="relative px-4 pt-14 pb-8 sm:px-6 sm:pt-16 sm:pb-10 md:px-8 md:pt-20 md:pb-12 bg-white overflow-hidden">
           {/* Background Manikstu logo watermark, positioned lower & centered on mobile, left-aligned on desktop */}
           <div className="pointer-events-none select-none absolute inset-0 flex items-start justify-center pt-24 sm:pt-28 lg:pt-0 lg:items-center lg:justify-start lg:left-[5%] overflow-hidden">
             <Image
@@ -636,7 +609,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               aria-hidden
               width={600}
               height={600}
-              className="w-56 sm:w-72 md:w-80 lg:w-[450px] max-w-[500px] h-auto opacity-[0.08] lg:opacity-[0.10]"
+              className="w-56 sm:w-72 md:w-80 lg:w-[450px] max-w-[500px] h-auto opacity-[0.04] lg:opacity-[0.06]"
             />
           </div>
           <div className="relative mx-auto max-w-7xl">
@@ -670,31 +643,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <span aria-hidden className="h-px w-10 sm:w-16 bg-manikstu-gold/70" />
                 </div>
 
-                <p className="mt-5 text-sm sm:text-base text-grey leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                <p className="mt-3 sm:mt-4 text-sm sm:text-base text-grey leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
                   {t("flagshipDesc")}
                 </p>
                 <Link
                   href="/collaborate/ajah"
-                  className="mt-6 inline-flex items-center justify-center lg:justify-start gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
+                  className="mt-4 sm:mt-5 inline-flex items-center justify-center lg:justify-start gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors shadow-xs"
                 >
                   {t("exploreAjah")} <ArrowRight className="h-4 w-4" />
                 </Link>
-
-                {/* Stats Row — label on top, colour-coded figure below */}
-                <div className="mt-8 grid w-full grid-cols-3 gap-4 sm:gap-6 text-center">
-                  <div>
-                    <p className="text-xs sm:text-sm text-grey">Women Empowered</p>
-                    <p className="mt-0.5 font-heading text-3xl sm:text-4xl font-bold text-manikstu-green">500+</p>
-                  </div>
-                  <div>
-                    <p className="text-xs sm:text-sm text-grey">Goats Supported</p>
-                    <p className="mt-0.5 font-heading text-3xl sm:text-4xl font-bold text-[#9F5233]">5,000+</p>
-                  </div>
-                  <div>
-                    <p className="text-xs sm:text-sm text-grey">Villages Covered</p>
-                    <p className="mt-0.5 font-heading text-3xl sm:text-4xl font-bold text-manikstu-green">25+</p>
-                  </div>
-                </div>
               </div>
               <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3] shadow-sm border border-manikstu-gold/20">
                 <AjahVideo videoId="aKnwiUhA4Yw" />
@@ -704,122 +661,32 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Benefits strip — full-bleed light-green band, pushed down so the watermark above stays visible */}
-          {/* Mobile: items rendered twice and slid left by 50% for a seamless auto-scroll loop */}
-          <div className="relative mx-[calc(50%-50vw)] mt-8 overflow-hidden bg-[#EEF5E7] py-6 sm:mt-10 sm:px-6 motion-reduce:overflow-x-auto">
-            <div className="flex w-max animate-[benefits-marquee_30s_linear_infinite] motion-reduce:animate-none sm:grid sm:w-auto sm:animate-none sm:grid-cols-3 sm:gap-4 sm:gap-y-6 md:grid-cols-6">
-              {[0, 1].flatMap((copy) => [
-                { Icon: GoatSolidIcon, l1: "Improved", l2: "Livestock Productivity" },
-                { Icon: PeopleSolidIcon, l1: "Women", l2: "Entrepreneurship" },
-                { Icon: HeartPulseSolidIcon, l1: "Access to", l2: "Veterinary Healthcare" },
-                { Icon: GraduationCapSolidIcon, l1: "Training &", l2: "Capacity Building" },
-                { Icon: ShieldCheckSolidIcon, l1: "Insurance", l2: "& Risk Protection" },
-                { Icon: StoreSolidIcon, l1: "Market Linkages", l2: "& Better Livelihoods" },
-              ].map(({ Icon, l1, l2 }, i) => (
-                <div
-                  key={copy + l1 + l2}
-                  aria-hidden={copy === 1 || undefined}
-                  className={
-                    "flex shrink-0 whitespace-nowrap sm:shrink sm:whitespace-normal items-center gap-3 px-4 " +
-                    (copy === 1 ? "sm:hidden " : "") +
-                    // sm (3-col): divider before every item except the first of each row
-                    (i % 3 !== 0 ? "sm:border-l sm:border-manikstu-green/15 " : "") +
-                    // md (6-col, single row): add the divider before the 4th item too
-                    (i === 3 ? "md:border-l md:border-manikstu-green/15" : "")
-                  }
-                >
-                  <Icon className="h-8 w-8 shrink-0 text-manikstu-green" strokeWidth={1.75} />
-                  <span className="text-[13px] font-semibold text-charcoal leading-snug">
-                    {l1}
-                    <br />
-                    {l2}
+            {/* Benefits Row */}
+            <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 md:grid-cols-6">
+              {[
+                { Icon: GoatIcon, label: "Improved Livestock Productivity" },
+                { Icon: Users, label: "Women Entrepreneurship" },
+                { Icon: Heart, label: "Access to Veterinary Healthcare" },
+                { Icon: GraduationCap, label: "Training & Capacity Building" },
+                { Icon: Shield, label: "Insurance & Risk Protection" },
+                { Icon: Sprout, label: "Market Linkage & Income Growth" },
+              ].map(({ Icon, label }) => (
+                <div key={label} className="group flex flex-col items-center gap-2.5 rounded-2xl bg-manikstu-cream/50 border border-manikstu-gold/10 px-3 py-4 sm:px-2 sm:py-5 text-center transition-all duration-200 hover:bg-manikstu-cream hover:shadow-sm hover:-translate-y-0.5">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green transition-colors group-hover:bg-manikstu-green/15">
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                   </span>
+                  <span className="text-[10px] sm:text-xs font-medium text-charcoal leading-snug min-h-[2.5em] flex items-center">{label}</span>
                 </div>
-              )))}
+              ))}
             </div>
           </div>
         </section>
-
-        {/* About Project AJAH — Livelihoods Today */}
-        <section className="relative overflow-hidden bg-white px-4 pt-10 pb-14 sm:px-6 sm:pt-12 sm:pb-16 md:px-8 md:pt-14 md:pb-20">
-          {/* Warli village figures artwork, bottom-right */}
-          <Image
-            src="/patterns/village-figures.png"
-            alt=""
-            aria-hidden
-            width={1920}
-            height={300}
-            className="pointer-events-none select-none absolute -bottom-[52px] right-0 hidden h-auto w-[52%] object-contain object-bottom opacity-40 lg:block"
-          />
-
-          <div className="relative mx-auto max-w-7xl">
-            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-              {/* Image card — same style/proportions as the home dashboard card */}
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
-                <Image
-                  src="/ajah-hero.webp"
-                  alt="Project AJAH — empowering women through livestock"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-                <div className="absolute bottom-2.5 right-2.5 z-10 max-w-[85%] rounded-lg bg-manikstu-green px-2.5 py-1.5 text-right text-[10px] font-semibold leading-tight text-white shadow-md sm:bottom-4 sm:right-4 sm:max-w-none sm:rounded-full sm:px-4 sm:py-2 sm:text-xs">
-                  Empowered women build stronger communities
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="text-center sm:text-left">
-                {/* Ornamental pill heading */}
-                <div className="flex items-center justify-center gap-2 sm:justify-start">
-                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                  <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-sm">
-                    About Project AJAH
-                  </p>
-                  <span aria-hidden className="h-px w-8 bg-manikstu-gold/70" />
-                  <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                </div>
-
-                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                  Livelihoods Today.
-                  <br />
-                  <span className="text-[#9F5233]">Stronger Tomorrow.</span>
-                </h2>
-
-                <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-grey sm:mx-0 sm:text-base">
-                  Project AJAH is an integrated livestock development initiative led by
-                  women, for stronger families and resilient rural communities. We enable
-                  women to build sustainable livelihoods through scientific livestock
-                  management, healthcare, training, insurance, and market support.
-                </p>
-
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
-                  <Link
-                    href="/collaborate/ajah"
-                    className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-manikstu-leaf"
-                  >
-                    Explore Project AJAH <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="/collaborate/ajah"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white"
-                  >
-                    <Download className="h-4 w-4" /> Download Brochure
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="partner-section relative py-8 sm:py-10 md:py-12 bg-manikstu-cream overflow-hidden">
+        <section className="partner-section relative pt-10 sm:pt-12 md:pt-14 pb-8 sm:pb-10 md:pb-12 bg-manikstu-cream overflow-hidden">
           {/* Top tribal border */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-7 bg-repeat-x opacity-70"
+            className="pointer-events-none absolute left-0 right-0 top-0 h-4 sm:h-5 bg-repeat-x opacity-50"
             style={{
               backgroundImage: "url('/patterns/tribal-border.png')",
               backgroundSize: "auto 100%",
@@ -828,7 +695,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           {/* Bottom tribal border (flipped) */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
+            className="pointer-events-none absolute left-0 right-0 bottom-0 h-4 sm:h-5 bg-repeat-x -scale-y-100 opacity-50"
             style={{
               backgroundImage: "url('/patterns/tribal-border.png')",
               backgroundSize: "auto 100%",
