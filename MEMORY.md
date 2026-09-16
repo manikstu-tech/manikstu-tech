@@ -127,6 +127,8 @@
 - Relies on CSS `:has()` (Chrome 105+, Safari 15.4+); older browsers fall back to copy-then-visual order.
 - Home hero `<h1>` ("Revolutionizing Goat Farming. Empowering Lives.") is `sr-only lg:not-sr-only`: visually removed below `lg`, but deliberately kept in the DOM for screen readers and Google's mobile-first indexing. Do not swap this for `hidden`, that would leave the home page with no H1 in the indexed mobile rendering.
 - About page mobile-only rules: the hero's secondary "Our Journey" button (`href="#awards"`) is `hidden lg:inline-flex`, leaving "Join Our Mission" centered alone; the "Our Story" column is `text-center lg:text-left` with `justify-center lg:justify-start` on its eyebrow and diamond-divider rows.
+- About team cards (Leadership / Key Management / Advisors, 3 identical grids) use image banners at `h-56 sm:h-44 md:h-52`, the taller mobile frame keeps portraits readable in the single-column layout. Keep the three grids in sync.
+- **Outstanding:** `Biren Sahoo` (Founder & MD) and `Jayanti Mahapatra` (CEO) have `photo: ""` and no asset in `public/team/`, so their cards render the `User` placeholder. Add the image files and set their `photo` fields to finish the leadership row.
 
 ### Visual Assets & Motif Standards
 - **Mandala Corners**: `mandala-corner-top.png`, `mandala-top-right-corner.png`, `mandala-left.png`, `mandala-right.png`.
