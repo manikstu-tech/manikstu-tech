@@ -35,7 +35,7 @@ export default function TrainingHero() {
               {t("heroDesc")}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 hidden sm:flex flex-wrap gap-4">
               <Link
                 href="#programs"
                 className="inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
@@ -51,7 +51,7 @@ export default function TrainingHero() {
             </div>
 
             {/* Micro-statement */}
-            <div className="mt-8 flex items-center gap-2.5">
+            <div className="mt-8 hidden sm:flex items-center gap-2.5">
               <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                 <Sprout className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
