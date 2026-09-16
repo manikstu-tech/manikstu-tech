@@ -125,6 +125,7 @@
 - `mobileLayout` prop now only controls mobile copy **alignment** ("centered" default vs "stacked"), no longer ordering.
 - Desktop two-column grid, gaps and alignment are untouched.
 - Relies on CSS `:has()` (Chrome 105+, Safari 15.4+); older browsers fall back to copy-then-visual order.
+- Home hero `<h1>` ("Revolutionizing Goat Farming. Empowering Lives.") is `sr-only lg:not-sr-only`: visually removed below `lg`, but deliberately kept in the DOM for screen readers and Google's mobile-first indexing. Do not swap this for `hidden`, that would leave the home page with no H1 in the indexed mobile rendering.
 
 ### Visual Assets & Motif Standards
 - **Mandala Corners**: `mandala-corner-top.png`, `mandala-top-right-corner.png`, `mandala-left.png`, `mandala-right.png`.

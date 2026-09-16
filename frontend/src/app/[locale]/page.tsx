@@ -297,7 +297,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         >
               {/* Left content */}
               <div>
-                <h1 className="font-heading text-3xl sm:text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
+                <h1 className="sr-only lg:not-sr-only font-heading text-3xl sm:text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
                   {t("heroTitle1")}
                   <br />
                   <span className="text-manikstu-green">{t("heroTitle2")}</span>
