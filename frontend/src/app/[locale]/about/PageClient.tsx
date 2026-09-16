@@ -629,7 +629,7 @@ export default function AboutPage() {
                       className="group flex flex-col rounded-xl sm:rounded-2xl border border-manikstu-gold/20 bg-white shadow-xs sm:shadow-sm overflow-hidden hover:shadow-md transition-all"
                     >
                       {/* Image banner container */}
-                      <div className="relative flex h-56 sm:h-44 md:h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
+                      <div className="relative flex h-72 sm:h-44 md:h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
                         {l.photo ? (
                           <Image
                             src={l.photo}
@@ -712,7 +712,7 @@ export default function AboutPage() {
                       className="group flex flex-col rounded-xl sm:rounded-2xl border border-manikstu-gold/20 bg-white shadow-xs sm:shadow-sm overflow-hidden hover:shadow-md transition-all"
                     >
                       {/* Image banner container */}
-                      <div className="relative flex h-56 sm:h-44 md:h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
+                      <div className="relative flex h-72 sm:h-44 md:h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
                         {l.photo ? (
                           <Image
                             src={l.photo}
@@ -842,7 +842,7 @@ export default function AboutPage() {
                       className="group flex flex-col rounded-xl sm:rounded-2xl border border-manikstu-gold/20 bg-white shadow-xs sm:shadow-sm overflow-hidden hover:shadow-md transition-all"
                     >
                       {/* Image banner container */}
-                      <div className="relative flex h-56 sm:h-44 md:h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
+                      <div className="relative flex h-72 sm:h-44 md:h-52 w-full items-center justify-center overflow-hidden bg-manikstu-cream/70">
                         {l.photo ? (
                           <Image
                             src={l.photo}
