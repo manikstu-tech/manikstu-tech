@@ -126,6 +126,7 @@
 - Desktop two-column grid, gaps and alignment are untouched.
 - Relies on CSS `:has()` (Chrome 105+, Safari 15.4+); older browsers fall back to copy-then-visual order.
 - Home hero `<h1>` ("Revolutionizing Goat Farming. Empowering Lives.") is `sr-only lg:not-sr-only`: visually removed below `lg`, but deliberately kept in the DOM for screen readers and Google's mobile-first indexing. Do not swap this for `hidden`, that would leave the home page with no H1 in the indexed mobile rendering.
+- About page mobile-only rules: the hero's secondary "Our Journey" button (`href="#awards"`) is `hidden lg:inline-flex`, leaving "Join Our Mission" centered alone; the "Our Story" column is `text-center lg:text-left` with `justify-center lg:justify-start` on its eyebrow and diamond-divider rows.
 
 ### Visual Assets & Motif Standards
 - **Mandala Corners**: `mandala-corner-top.png`, `mandala-top-right-corner.png`, `mandala-left.png`, `mandala-right.png`.

@@ -215,7 +215,7 @@ export default function AboutPage() {
               </Link>
               <Link
                 href="#awards"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
+                className="hidden lg:inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green bg-white px-6 py-3 text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
               >
                 {t("ourJourney")}
               </Link>
@@ -276,8 +276,8 @@ export default function AboutPage() {
           <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-8">
             <div className="grid items-stretch gap-10 lg:gap-12 lg:grid-cols-12">
               {/* Left Column: Story & Vision */}
-              <div className="flex flex-col justify-center lg:col-span-5">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-col justify-center text-center lg:col-span-5 lg:text-left">
+                <div className="flex items-center justify-center gap-2 lg:justify-start">
                   <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
@@ -293,7 +293,7 @@ export default function AboutPage() {
                 </h2>
 
                 {/* Ornamental Divider with Framed Diamond */}
-                <div className="mt-4 flex items-center gap-2">
+                <div className="mt-4 flex items-center justify-center gap-2 lg:justify-start">
                   <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
                   <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
                   <div aria-hidden className="relative flex items-center justify-center">
