@@ -118,6 +118,14 @@
 </div>
 ```
 
+### Page Hero Mobile Flow (`PageHero.tsx` + `.hero-mobile-flow`)
+- `components/layout/PageHero.tsx` is the single hero layout for all 11 public pages (Home, About, Training, Careers, Collaborate, AJAH, Media, Contact, Services, Partners, Products).
+- Below `lg` (`@media (max-width: 1023px)` in `globals.css`), `.hero-mobile-flow` flattens the copy column with `display: contents` so its children and the visual panel share one flex flow. Mobile order: eyebrow + heading (1) ➔ visual panel (2) ➔ body copy (3) ➔ buttons & micro-statement (4).
+- Selectors key off **structure** (`:has(~ p)`, `p:first-of-type`), not child index, so every hero reorders without per-page edits.
+- `mobileLayout` prop now only controls mobile copy **alignment** ("centered" default vs "stacked"), no longer ordering.
+- Desktop two-column grid, gaps and alignment are untouched.
+- Relies on CSS `:has()` (Chrome 105+, Safari 15.4+); older browsers fall back to copy-then-visual order.
+
 ### Visual Assets & Motif Standards
 - **Mandala Corners**: `mandala-corner-top.png`, `mandala-top-right-corner.png`, `mandala-left.png`, `mandala-right.png`.
 - **Tribal Borders**: `tribal-floral-border-seamless.png`, `tribal-border.png`.

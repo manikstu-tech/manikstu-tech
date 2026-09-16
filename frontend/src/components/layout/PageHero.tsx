@@ -20,8 +20,9 @@ type PageHeroProps = {
   children: ReactNode;
   className?: string;
   /**
-   * Mobile layout: "centered" (default) puts the visual first and centers the
-   * copy; "stacked" keeps the copy first and left-aligned, visual below.
+   * Mobile copy alignment: "centered" (default) centers the copy, "stacked"
+   * leaves it left-aligned. In both cases the visual panel sits between the
+   * heading and the body copy on mobile, see `.hero-mobile-flow` in globals.css.
    */
   mobileLayout?: "centered" | "stacked";
 };
@@ -41,10 +42,15 @@ export default function PageHero({
   className,
   mobileLayout = "centered",
 }: PageHeroProps) {
+  // Mobile ordering lives in `.hero-mobile-flow`; the gap is zeroed there
+  // because the stacked children carry their own margins.
+  const baseGrid =
+    "hero-mobile-flow grid items-start gap-0 lg:gap-12 lg:grid-cols-2";
+
   const gridClass =
     mobileLayout === "stacked"
-      ? "grid items-start gap-8 lg:gap-12 lg:grid-cols-2"
-      : "grid items-start gap-8 lg:gap-12 lg:grid-cols-2 [&>*:first-child]:text-center [&>*:first-child_.flex]:justify-center lg:[&>*:first-child]:text-left lg:[&>*:first-child_.flex]:justify-start [&>*:last-child]:order-first lg:[&>*:last-child]:order-none";
+      ? baseGrid
+      : `${baseGrid} [&>*:first-child]:text-center [&>*:first-child_.flex]:justify-center lg:[&>*:first-child]:text-left lg:[&>*:first-child_.flex]:justify-start`;
 
   const defaultBackground = (
     <Image

@@ -32,6 +32,45 @@ h1, h2, h3, h4, h5, h6 {
   @apply px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-20;
 }
 
+/* Mobile hero flow, the visual panel sits between the heading and the body
+   copy. The copy column is flattened with `display: contents` so its children
+   and the visual panel share a single flex flow and can be ordered against
+   each other. Desktop (lg and up) keeps the plain two-column grid untouched. */
+@media (max-width: 1023px) {
+  .hero-mobile-flow {
+    display: flex;
+    flex-direction: column;
+    /* The grid sets items-start, which would shrink-wrap every row here. */
+    align-items: stretch;
+  }
+
+  .hero-mobile-flow > :first-child {
+    display: contents;
+  }
+
+  /* Heading block, everything above the body copy: eyebrow, title, ornament. */
+  .hero-mobile-flow > :first-child > :has(~ p) {
+    order: 1;
+  }
+
+  /* Visual panel. Overrides the negative top margins some pages use to tuck
+     the image up when it was the first thing on the page. */
+  .hero-mobile-flow > :last-child {
+    order: 2;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .hero-mobile-flow > :first-child > p:first-of-type {
+    order: 3;
+  }
+
+  /* Whatever follows the body copy: buttons, micro-statement. */
+  .hero-mobile-flow > :first-child > p:first-of-type ~ * {
+    order: 4;
+  }
+}
+
 /* Production safeguard for SVG icon centering in badges */
 .rounded-full > svg {
   display: block;
