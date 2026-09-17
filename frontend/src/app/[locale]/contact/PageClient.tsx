@@ -105,8 +105,11 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* Right, contact cards */}
-          <div className="flex flex-col gap-4">
+          {/* Right, contact cards. On mobile the hero flattens into a single
+              flex flow (see `.hero-mobile-flow`), which only orders the first
+              and last child, so this middle child needs its own order to sit
+              below the heading block instead of above it. */}
+          <div className="order-2 mt-6 flex flex-col gap-4 lg:order-none lg:mt-0">
             {[
               {
                 icon: Phone,
