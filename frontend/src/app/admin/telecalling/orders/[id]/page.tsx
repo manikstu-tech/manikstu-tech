@@ -35,32 +35,42 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
         <p className="mt-1 text-sm text-grey">Placed on {order.date}</p>
       </div>
 
-      <Card title="Delivery Journey">
-        <Stepper steps={order.steps} current={order.current} note={order.date.split(",")[0]} />
+      {/* Farmer, order and logistics combined into one card, above the journey. */}
+      <Card>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-[#F0ECE2]">
+          <section className="lg:px-6 lg:first:pl-0">
+            <h3 className="text-[15px] font-bold text-charcoal">Farmer Details</h3>
+            <p className="mt-3 text-sm font-semibold">{order.farmer}</p>
+            <a href={`tel:${order.phone}`} className="mt-1 block text-sm text-manikstu-leaf hover:underline">{order.phone}</a>
+            <p className="mt-1 text-sm text-grey">{order.location}</p>
+          </section>
+
+          <section className="lg:px-6">
+            <h3 className="text-[15px] font-bold text-charcoal">Order Details</h3>
+            <div className="mt-2">
+              <KV label="Product">{order.product}</KV>
+              <KV label="Quantity">{order.qty}</KV>
+              <KV label="Seller">{order.seller}</KV>
+              <KV label="Amount">{rupees(order.amount)}</KV>
+              <KV label="Payment">{order.payment}</KV>
+            </div>
+          </section>
+
+          <section className="lg:px-6 lg:last:pr-0">
+            <h3 className="text-[15px] font-bold text-charcoal">Logistics</h3>
+            <p className="mt-3 text-sm font-semibold">Manikstu Logistics</p>
+            <a href={`tel:${LOGISTICS_PHONE}`} className="mt-1 block text-sm text-manikstu-leaf hover:underline">+91 91234 56789</a>
+            <KV label="Tracking ID"><span className="font-mono">{tracking}</span></KV>
+            <a href={`tel:${LOGISTICS_PHONE}`} className="mt-3 inline-flex items-center gap-2 rounded-xl border border-[#E8E2D6] bg-white px-4 py-2.5 text-sm font-semibold hover:border-manikstu-green hover:text-manikstu-leaf">
+              <Phone className="h-4 w-4" /> Contact Partner
+            </a>
+          </section>
+        </div>
       </Card>
 
-      <div className="mt-5 grid items-start gap-5 lg:grid-cols-3">
-        <Card title="Farmer Details">
-          <p className="text-sm font-semibold">{order.farmer}</p>
-          <a href={`tel:${order.phone}`} className="mt-1 block text-sm text-manikstu-leaf hover:underline">{order.phone}</a>
-          <p className="mt-1 text-sm text-grey">{order.location}</p>
-        </Card>
-        <Card title="Order Details">
-          <KV label="Product">{order.product}</KV>
-          <KV label="Quantity">{order.qty}</KV>
-          <KV label="Seller">{order.seller}</KV>
-          <KV label="Amount">{rupees(order.amount)}</KV>
-          <KV label="Payment">{order.payment}</KV>
-        </Card>
-        <Card title="Logistics">
-          <p className="text-sm font-semibold">Manikstu Logistics</p>
-          <a href={`tel:${LOGISTICS_PHONE}`} className="mt-1 block text-sm text-manikstu-leaf hover:underline">+91 91234 56789</a>
-          <KV label="Tracking ID"><span className="font-mono">{tracking}</span></KV>
-          <a href={`tel:${LOGISTICS_PHONE}`} className="mt-3 inline-flex items-center gap-2 rounded-xl border border-[#E8E2D6] bg-white px-4 py-2.5 text-sm font-semibold hover:border-manikstu-green hover:text-manikstu-leaf">
-            <Phone className="h-4 w-4" /> Contact Partner
-          </a>
-        </Card>
-      </div>
+      <Card title="Delivery Journey" className="mt-5">
+        <Stepper steps={order.steps} current={order.current} note={order.date.split(",")[0]} />
+      </Card>
 
       <Card title="Internal Notes" className="mt-5">
         <InternalNotes />
