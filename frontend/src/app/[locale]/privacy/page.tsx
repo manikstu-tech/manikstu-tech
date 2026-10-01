@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "How Manikstu Agro collects, uses, and protects your personal information. Read our complete privacy policy.",
+  alternates: { canonical: "https://manikstu.com/privacy" },
 };
 
 export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {

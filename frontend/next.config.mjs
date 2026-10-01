@@ -65,10 +65,16 @@ const nextConfig = {
   },
 
   async redirects() {
+    // Retired locales (English-only site): strip the prefix, keep the path.
+    const retiredLocales = ["hi", "bn", "ta", "te", "mr", "gu", "kn", "ml", "or", "ja", "de", "fr", "es"];
     return [
+      ...retiredLocales.flatMap((locale) => [
+        { source: `/${locale}`, destination: "/", permanent: true },
+        { source: `/${locale}/:path*`, destination: "/:path*", permanent: true },
+      ]),
       {
         source: "/get-in-touch",
-        destination: "/en/contact",
+        destination: "/contact",
         permanent: true,
       },
       {

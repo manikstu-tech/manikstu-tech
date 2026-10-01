@@ -8,6 +8,7 @@ const BASE_URL = "https://manikstu.com";
 export const metadata: Metadata = {
   title: "Contact Manikstu Agro, Phone, Email, Office Addresses",
   description: "Get in touch with Manikstu Agro. Reach us via phone, email, or visit our offices in Kalahandi, Odisha.",
+  alternates: { canonical: "https://manikstu.com/contact" },
   openGraph: {
     title: "Contact Manikstu Agro, Phone, Email, Office",
     description: "Contact Manikstu Agro for goat farming services. Phone: +91 98330 30312",
@@ -24,8 +25,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}/${locale}` },
-            { "@type": "ListItem", position: 2, name: "Contact", item: `${BASE_URL}/${locale}/contact` },
+            { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}` },
+            { "@type": "ListItem", position: 2, name: "Contact", item: `${BASE_URL}/contact` },
           ],
         }}
       />

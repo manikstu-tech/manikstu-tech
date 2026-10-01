@@ -72,7 +72,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* <LanguageSwitcher /> */}
           <Link
             href="/contact"
             className="hidden md:inline-flex items-center rounded-full bg-manikstu-green px-5 py-2 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors"

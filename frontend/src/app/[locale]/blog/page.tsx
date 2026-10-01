@@ -8,6 +8,7 @@ const BASE_URL = "https://manikstu.com";
 export const metadata: Metadata = {
   title: "Goat Farming News, Press & Media | Manikstu Agro",
   description: "Latest news, articles, and media from Manikstu Agro, insights on goat farming, agriculture, and rural development.",
+  alternates: { canonical: "https://manikstu.com/blog" },
   openGraph: {
     title: "Goat Farming News, Press & Media",
     description: "Latest news and media coverage from Manikstu Agro on goat farming and rural development.",
@@ -24,8 +25,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}/${locale}` },
-            { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/${locale}/blog` },
+            { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}` },
+            { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
           ],
         }}
       />

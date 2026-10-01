@@ -3,10 +3,8 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 const BASE_URL = "https://manikstu.com";
-const locales = [
-  "en", "hi", "bn", "ta", "te", "mr", "gu", "kn", "ml", "or", "ja", "de", "fr", "es",
-];
 
+// English-only site: single-locale sitemap, bare (unprefixed) URLs.
 const routes = [
   "",
   "/about",
@@ -18,30 +16,16 @@ const routes = [
   "/collaborate/ajah",
   "/training",
   "/blog",
+  "/partners",
   "/help",
   "/privacy",
   "/terms",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [];
-
-  for (const route of routes) {
-    for (const locale of locales) {
-      const url = `${BASE_URL}/${locale}${route}`;
-      entries.push({
-        url,
-        lastModified: new Date(),
-        changeFrequency: route === "" ? "daily" : "weekly",
-        priority: route === "" ? 1.0 : route === "/products" ? 0.9 : 0.7,
-        alternates: {
-          languages: Object.fromEntries(
-            locales.map((loc) => [loc, `${BASE_URL}/${loc}${route}`])
-          ),
-        },
-      });
-    }
-  }
-
-  return entries;
+  return routes.map((route) => ({
+    url: `${BASE_URL}${route}`,
+    changeFrequency: route === "" ? "daily" : "weekly",
+    priority: route === "" ? 1.0 : route === "/products" ? 0.9 : 0.7,
+  }));
 }

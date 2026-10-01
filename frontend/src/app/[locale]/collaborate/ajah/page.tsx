@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 export const metadata: Metadata = {
   title: "Ajah Initiative",
   description: "The Ajah Initiative by Manikstu Agro, empowering communities through sustainable goat farming partnerships.",
+  alternates: { canonical: "https://manikstu.com/collaborate/ajah" },
 };
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {

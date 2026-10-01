@@ -61,6 +61,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: { canonical: `https://manikstu.com/products/${slug}` },
     openGraph: {
       title: `${title} | Manikstu Agro`,
       description,
@@ -96,7 +97,7 @@ export default async function ProductDetailPage({
             name: p.name,
             description: p.description || p.longDescription || "",
             image: p.image || "",
-            url: `https://manikstu.com/en/products/${slug}`,
+                url: `https://manikstu.com/products/${slug}`,
             sku: p.sku || "",
             brand: { "@type": "Brand", name: "Manikstu Agro" },
             ...(p.category?.name && {
@@ -110,7 +111,7 @@ export default async function ProductDetailPage({
                 availability: p.inStock
                   ? "https://schema.org/InStock"
                   : "https://schema.org/OutOfStock",
-                url: `https://manikstu.com/en/products/${slug}`,
+            url: `https://manikstu.com/products/${slug}`,
               },
             }),
             ...(p.rating != null && {

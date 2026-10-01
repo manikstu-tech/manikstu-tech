@@ -8,6 +8,7 @@ const BASE_URL = "https://manikstu.com";
 export const metadata: Metadata = {
   title: "Our Partners, Manikstu Agro | Collaborators in Rural Transformation",
   description: "Meet the organizations partnering with Manikstu Agro to transform goat farming and rural livelihoods across India.",
+  alternates: { canonical: "https://manikstu.com/partners" },
   openGraph: {
     title: "Our Partners, Manikstu Agro",
     description: "Organizations partnering with us to transform rural livelihoods across India.",
@@ -24,8 +25,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}/${locale}` },
-            { "@type": "ListItem", position: 2, name: "Partners", item: `${BASE_URL}/${locale}/partners` },
+            { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}` },
+            { "@type": "ListItem", position: 2, name: "Partners", item: `${BASE_URL}/partners` },
           ],
         }}
       />

@@ -271,7 +271,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           url: "https://manikstu.com",
           potentialAction: {
             "@type": "SearchAction",
-            target: "https://manikstu.com/en/products?search={search_term_string}",
+            target: "https://manikstu.com/products?search={search_term_string}",
             "query-input": "required name=search_term_string",
           },
         }}

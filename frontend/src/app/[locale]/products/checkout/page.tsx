@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 export const metadata: Metadata = {
   title: "Checkout",
   description: "Complete your order of Manikstu Agro products.",
+  alternates: { canonical: "https://manikstu.com/products/checkout" },
 };
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
     "Terms and conditions governing your use of the Manikstu Agro website and services.",
+  alternates: { canonical: "https://manikstu.com/terms" },
 };
 
 export default async function TermsPage({ params }: { params: Promise<{ locale: string }> }) {

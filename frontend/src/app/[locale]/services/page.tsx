@@ -102,6 +102,7 @@ export const metadata: Metadata = {
   title: "Our Services",
   description:
     "Comprehensive goat farming services including veterinary care, insurance, goat bank programs, training, and ethical partnerships from Manikstu Agro.",
+  alternates: { canonical: "https://manikstu.com/services" },
   openGraph: {
     title: "Goat Farming Services, Veterinary, Insurance, Training | Manikstu Agro",
     description:
@@ -252,8 +253,8 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: `https://manikstu.com/${locale}` },
-            { "@type": "ListItem", position: 2, name: "Services", item: `https://manikstu.com/${locale}/services` },
+            { "@type": "ListItem", position: 1, name: "Home", item: `https://manikstu.com` },
+            { "@type": "ListItem", position: 2, name: "Services", item: `https://manikstu.com/services` },
           ],
         }}
       />
