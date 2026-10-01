@@ -30,6 +30,7 @@ import {
   User,
   Heart,
   GraduationCap,
+  Star,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -251,6 +252,44 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       role: "Farmer, Sundargarh, Odisha",
       initials: "PB",
       color: "bg-manikstu-leaf",
+    },
+  ];
+
+  const ajahTestimonials = [
+    {
+      quote: t("ajahTest1"),
+      name: "Sabita Munda",
+      role: "Goat Bank Beneficiary, Project AJAH",
+      avatar: "/team/avatars/farmer-female.jpg",
+      rating: 5,
+    },
+    {
+      quote: t("ajahTest2"),
+      name: "Bijoy Nayak",
+      role: "Farmer, Project AJAH",
+      avatar: "/team/avatars/farmer-male.jpg",
+      rating: 5,
+    },
+    {
+      quote: t("ajahTest3"),
+      name: "Manju Sahu",
+      role: "Women Entrepreneur, Project AJAH SHG",
+      avatar: "/team/avatars/farmer-female.jpg",
+      rating: 5,
+    },
+    {
+      quote: t("ajahTest4"),
+      name: "Debraj Pradhan",
+      role: "Field Coordinator, Project AJAH",
+      avatar: "/team/avatars/farmer-male.jpg",
+      rating: 4,
+    },
+    {
+      quote: t("ajahTest5"),
+      name: "Sasmita Behera",
+      role: "Trainee, Project AJAH Skill Program",
+      avatar: "/team/avatars/farmer-female.jpg",
+      rating: 5,
     },
   ];
 
@@ -679,6 +718,75 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <span className="text-[10px] sm:text-xs font-medium text-charcoal leading-snug min-h-[2.5em] flex items-center">{label}</span>
                 </div>
               ))}
+            </div>
+
+            {/* Ajah Testimonials */}
+            <div className="mt-10 sm:mt-12">
+              <div className="flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-manikstu-green sm:text-sm">
+                  {t("ajahTestimonialsPill")}
+                </p>
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
+                <span aria-hidden className="h-px w-8 sm:w-10 bg-manikstu-gold/60" />
+              </div>
+              <h3 className="mt-3 text-center font-heading text-2xl font-bold text-charcoal sm:text-3xl">
+                {t("ajahTestimonialsTitle")}
+              </h3>
+
+              {/* Continuous horizontal marquee, matching Our Association below */}
+              <div className="relative mt-6 sm:mt-8 overflow-hidden">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-white to-transparent z-10"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-white to-transparent z-10"
+                />
+                <div className="flex gap-4 sm:gap-6 animate-marquee py-1.5">
+                  {[...ajahTestimonials, ...ajahTestimonials, ...ajahTestimonials].map(
+                    (item, idx) => (
+                      <div
+                        key={`${item.name}-${idx}`}
+                        className="flex-shrink-0 w-[280px] sm:w-[340px] rounded-2xl bg-manikstu-cream p-6"
+                      >
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((i) => (
+                            <Star
+                              key={i}
+                              className={`h-4 w-4 ${
+                                i <= item.rating
+                                  ? "fill-manikstu-gold text-manikstu-gold"
+                                  : "text-manikstu-gold/25"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        <p className="mt-4 text-sm text-grey italic line-clamp-4">
+                          &ldquo;{item.quote}&rdquo;
+                        </p>
+                        <div className="mt-6 flex items-center gap-3">
+                          <Image
+                            src={item.avatar}
+                            alt={item.name}
+                            width={40}
+                            height={40}
+                            className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-black/5"
+                          />
+                          <div>
+                            <p className="text-sm font-semibold text-charcoal">
+                              {item.name}
+                            </p>
+                            <p className="text-xs text-grey">{item.role}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </section>

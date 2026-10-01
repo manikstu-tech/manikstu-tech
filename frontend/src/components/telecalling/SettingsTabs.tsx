@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { startTransition, useActionState, useEffect, useState, type FormEvent } from "react";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Loader2, UserPlus } from "lucide-react";
 import { ErrorSummary, Field, inputClass } from "@/components/admin/FormBits";
 import type { TcSettings } from "@/lib/admin/telecalling";
 import type { FormState } from "@/lib/admin/types";
@@ -142,7 +143,15 @@ export default function SettingsTabs({ settings, profileAction }: { settings: Tc
 
       {tab === "team" && (
         <section className={card}>
-          <h2 className={head}>Team members</h2>
+          <div className="flex items-center justify-between border-b border-[#F0ECE2] bg-[#FBFAF7] px-5 py-3.5">
+            <h2 className="text-[15px] font-bold">Team members</h2>
+            <Link
+              href="/admin/telecalling/onboarding"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-manikstu-green px-3 py-1.5 text-xs font-semibold text-white shadow-2xs transition hover:bg-manikstu-leaf"
+            >
+              <UserPlus className="h-3.5 w-3.5" /> Onboard New Staff
+            </Link>
+          </div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[520px] text-sm">
               <thead>

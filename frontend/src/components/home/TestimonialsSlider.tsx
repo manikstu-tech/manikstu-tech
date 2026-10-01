@@ -10,6 +10,8 @@ export type Testimonial = {
   role: string;
   initials: string;
   color: string;
+  /** Filled stars out of 5. Defaults to 5 when omitted. */
+  rating?: number;
 };
 
 const AUTOPLAY_MS = 3000;
@@ -123,7 +125,11 @@ export default function TestimonialsSlider({
                   {[1, 2, 3, 4, 5].map((i) => (
                     <Star
                       key={i}
-                      className="h-4 w-4 fill-manikstu-gold text-manikstu-gold"
+                      className={`h-4 w-4 ${
+                        i <= (tItem.rating ?? 5)
+                          ? "fill-manikstu-gold text-manikstu-gold"
+                          : "text-manikstu-gold/25"
+                      }`}
                     />
                   ))}
                 </div>
