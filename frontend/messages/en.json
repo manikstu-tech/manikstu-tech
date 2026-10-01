@@ -66,26 +66,6 @@
     "termsConditions": "Terms & Conditions",
     "brandTagline": "Building a prosperous and sustainable agricultural future."
   },
-  "LanguageSwitcher": {
-    "label": "Language",
-    "en": "English",
-    "hi": "हिन्दी",
-    "bn": "বাংলা",
-    "ta": "தமிழ்",
-    "te": "తెలుగు",
-    "mr": "मराठी",
-    "gu": "ગુજરાતી",
-    "kn": "ಕನ್ನಡ",
-    "ml": "മലയാളം",
-    "or": "ଓଡ଼ିଆ",
-    "ja": "日本語",
-    "de": "Deutsch",
-    "fr": "Français",
-    "es": "Español",
-    "groupEnglish": "English",
-    "groupIndian": "Indian Languages",
-    "groupInternational": "International"
-  },
   "Home": {
     "heroTitle1": "Revolutionizing Goat Farming.",
     "heroTitle2": "Empowering Lives.",
