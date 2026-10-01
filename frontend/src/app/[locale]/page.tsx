@@ -8,6 +8,7 @@ import GoatIcon from "@/components/icons/GoatIcon";
 import AjahVideo from "@/components/home/AjahVideo";
 import WatchStoryButton from "@/components/home/WatchStoryButton";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
+import { categoryColorMap } from "@/lib/blog-data";
 import PageHero from "@/components/layout/PageHero";
 import JsonLd from "@/components/seo/JsonLd";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -44,12 +45,41 @@ export const metadata: Metadata = {
   },
 };
 
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (process.env.NODE_ENV === "production" ? "https://api.manikstu.com/api" : "http://localhost:8000/api");
+
+async function fetchList(path: string): Promise<any[]> {
+  try {
+    const res = await fetch(`${API_BASE}/${path}`, { next: { revalidate: 3600 } });
+    if (!res.ok) return [];
+    const json = await res.json();
+    return Array.isArray(json.data) ? json.data : [];
+  } catch {
+    return [];
+  }
+}
+
+function formatShortDate(iso?: string | null): string {
+  if (!iso) return "";
+  const d = new Date(iso.includes("T") ? iso.split("T")[0] : iso);
+  return isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" });
+}
+
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Home");
   const tCommon = await getTranslations("Common");
   const tBlogCategories = await getTranslations("Blog.categories");
+
+  // Live content (ISR, hourly). Empty/error responses keep the hardcoded fallbacks below.
+  const [apiPartners, apiBlog, apiPress, apiTestimonials] = await Promise.all([
+    fetchList("partners"),
+    fetchList("blog?page=1"),
+    fetchList("press?page=1"),
+    fetchList("testimonials"),
+  ]);
 
   const missionCards = [
     {
@@ -254,6 +284,45 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       color: "bg-manikstu-leaf",
     },
   ];
+
+  // Live overrides: API rows win, hardcoded arrays stay as fallback.
+  const livePartners: MarqueePartner[] = apiPartners
+    .filter((p: any) => p?.name && p?.logo && p.is_active !== false)
+    .map((p: any) => ({ name: p.name, image: p.logo }));
+  const marqueePartners = livePartners.length ? livePartners : [...allPartnersRow1, ...allPartnersRow2];
+
+  type NewsCard = {
+    date: string; category: string; categoryColor: string; title: string;
+    excerpt: string; image: string; imageFit: string; slug: string | null;
+  };
+  const liveNews: NewsCard[] = [...apiBlog, ...apiPress]
+    .filter((p: any) => p?.title && p?.slug)
+    .sort((a: any, b: any) => new Date(b.published_at || 0).getTime() - new Date(a.published_at || 0).getTime())
+    .slice(0, 4)
+    .map((p: any) => ({
+      date: formatShortDate(p.published_at),
+      category: p.category?.name || "Featured",
+      categoryColor: (categoryColorMap as Record<string, string>)[p.category?.name] || "bg-manikstu-green",
+      title: p.title,
+      excerpt: p.excerpt || "",
+      image: p.featured_image || "",
+      imageFit: "cover",
+      slug: p.slug as string,
+    }));
+  const shownNews: NewsCard[] = liveNews.length ? liveNews : newsItems.map((n) => ({ ...n, slug: null }));
+
+  const testimonialColors = ["bg-manikstu-green", "bg-manikstu-red", "bg-manikstu-gold", "bg-saura-red", "bg-manikstu-leaf"];
+  const liveTestimonials = apiTestimonials
+    .filter((x: any) => x?.quote && x?.name)
+    .map((x: any, i: number) => ({
+      quote: x.quote,
+      name: x.name,
+      role: x.location ? `Farmer, ${x.location}` : "Farmer",
+      initials: String(x.name).split(" ").map((w: string) => w[0]).slice(0, 2).join("").toUpperCase(),
+      color: testimonialColors[i % testimonialColors.length],
+      rating: x.rating ?? 5,
+    }));
+  const shownTestimonials = liveTestimonials.length ? liveTestimonials : testimonials;
 
   const ajahTestimonials = [
     {
@@ -858,7 +927,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {/* Single continuous marquee, every partner logo in one line */}
             <div className="flex gap-4 animate-marquee py-1.5">
               {(() => {
-                const all = [...allPartnersRow1, ...allPartnersRow2];
+                const all = marqueePartners;
                 return [...all, ...all, ...all].map((partner, idx) => (
                   <div
                     key={`${partner.name}-${idx}`}
@@ -1114,10 +1183,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </Link>
             </div>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {newsItems.map((item, idx) => (
+              {shownNews.map((item, idx) => (
                 <Link
                   key={`${item.title}-${idx}`}
-                  href="/blog"
+                  href={item.slug ? `/blog/${item.slug}` : "/blog"}
                   className="group flex flex-col rounded-xl border border-light-grey bg-white shadow-sm overflow-hidden hover:shadow-md transition-all"
                 >
                   {/* Image container */}
@@ -1185,7 +1254,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {tCommon("viewAll")}
               </Link>
             </div>
-            <TestimonialsSlider testimonials={testimonials} />
+            <TestimonialsSlider testimonials={shownTestimonials} />
           </div>
         </section>
 

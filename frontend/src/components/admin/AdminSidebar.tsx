@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
-  Briefcase, Contact, FileText, GraduationCap, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
-  Menu, MessageSquare, Newspaper, Package, Quote, Search, Settings, ShieldCheck, ShoppingCart, Sprout, Tags, Users, X,
+  Briefcase, Contact, FileText, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
+  Menu, MessageSquare, Newspaper, Package, Quote, Search, Settings, ShieldCheck, ShoppingCart, Tags, Users, X,
   type LucideIcon,
 } from "lucide-react";
 import type { AdminUser } from "@/lib/admin/types";
@@ -46,8 +46,6 @@ const NAV: { group: string; items: NavItem[] }[] = [
     items: [
       { label: "Team", icon: Users, href: "/admin/team" },
       { label: "Careers", icon: Briefcase, href: "/admin/careers" },
-      { label: "Training", icon: GraduationCap, href: "/admin/training" },
-      { label: "Awareness", icon: Sprout, href: "/admin/awareness" },
     ],
   },
   {
