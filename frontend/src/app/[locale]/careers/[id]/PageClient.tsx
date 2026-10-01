@@ -9,6 +9,8 @@ import type { JobDetail } from "./page";
 
 export default function JobPageClient({ job }: { job: JobDetail }) {
   const t = useTranslations("Careers");
+  const typeKey = job.type ? `jobTypes.${job.type}` : "";
+  const typeLabel = typeKey && t.has(typeKey) ? t(typeKey) : job.type;
 
   return (
     <>
@@ -36,9 +38,9 @@ export default function JobPageClient({ job }: { job: JobDetail }) {
                   <MapPin className="h-4 w-4 text-manikstu-green" /> {job.location}
                 </span>
               )}
-              {job.type && (
+              {typeLabel && (
                 <span className="flex items-center gap-1">
-                  <Clock className="h-4 w-4 text-manikstu-green" /> {job.type}
+                  <Clock className="h-4 w-4 text-manikstu-green" /> {typeLabel}
                 </span>
               )}
             </div>
