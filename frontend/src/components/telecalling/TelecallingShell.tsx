@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   AlertTriangle, BarChart3, Bell, Home, LogOut, Menu, MessageSquare, Phone, PhoneCall, Search, Settings, ShoppingBag, ShoppingCart,
-  Truck, User, Users, X, type LucideIcon,
+  Truck, User, UserPlus, Users, X, type LucideIcon,
 } from "lucide-react";
 import type { TcNotifications } from "@/lib/admin/telecalling";
 import type { AdminUser } from "@/lib/admin/types";
@@ -21,6 +21,7 @@ const NAV: { label: string; href: string; icon: LucideIcon }[] = [
   { label: "Delivery Tracking", href: `${BASE}/delivery`, icon: Truck },
   { label: "Complaints", href: `${BASE}/complaints`, icon: MessageSquare },
   { label: "Telecalling", href: `${BASE}/calls`, icon: PhoneCall },
+  { label: "Staff Onboarding", href: `${BASE}/onboarding`, icon: UserPlus },
   { label: "Franchise Leads", href: `${BASE}/franchise`, icon: Users },
   { label: "Reports", href: `${BASE}/reports`, icon: BarChart3 },
   { label: "Settings", href: `${BASE}/settings`, icon: Settings },
@@ -145,9 +146,8 @@ export default function TelecallingShell({ user, notifications, markReadAction, 
                 href={href}
                 onClick={() => setOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`my-px flex h-10 items-center gap-2.5 rounded-lg px-3 text-[13.5px] transition ${
-                  active ? "bg-manikstu-green font-semibold text-white" : "font-medium text-white/75 hover:bg-white/10 hover:text-white"
-                }`}
+                className={`my-px flex h-10 items-center gap-2.5 rounded-lg px-3 text-[13.5px] transition ${active ? "bg-manikstu-green font-semibold text-white" : "font-medium text-white/75 hover:bg-white/10 hover:text-white"
+                  }`}
               >
                 <Icon className="h-[18px] w-[18px] shrink-0" />
                 {label}

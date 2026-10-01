@@ -27,7 +27,7 @@ const fallbackSupportLinks: FooterLink[] = [
 
 const fallbackSettings: Record<string, string> = {
   brand_tagline: "Building a prosperous and sustainable agricultural future through innovation, collaboration and empowerment.",
-  phone: "+91 98330 30312",
+  phone: "+91 90781 93191",
   email_sales: "sales@manikstu.com",
   email_info: "info@manikstu.com",
   address_registered: "Row House No - 94, Ravi Garden, Pune Solapur Road, Manjri Budruk, Hadapsar, Pune - 412307",
@@ -210,12 +210,6 @@ export default function Footer() {
             <button className="mt-3 w-full rounded-lg bg-manikstu-green px-4 py-2.5 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors">
               {tCommon("subscribe")}
             </button>
-            <Link
-              href="/get-in-touch"
-              className="mt-3 inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-manikstu-green bg-white px-4 py-2.5 text-sm font-semibold text-manikstu-green hover:bg-manikstu-green hover:text-white transition-colors"
-            >
-              {t("getInTouch")} <Phone className="h-4 w-4" />
-            </Link>
           </div>
         </div>
       </div>

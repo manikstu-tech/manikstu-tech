@@ -114,8 +114,8 @@ export default function ContactPage() {
               {
                 icon: Phone,
                 title: t("callUs"),
-                value: "+91 9833030312",
-                href: "tel:+919833030312",
+                value: "+91 9078193191",
+                href: "tel:+919078193191",
                 subtitle: t("callHours"),
               },
               {

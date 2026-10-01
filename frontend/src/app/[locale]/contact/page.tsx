@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://manikstu.com/contact" },
   openGraph: {
     title: "Contact Manikstu Agro, Phone, Email, Office",
-    description: "Contact Manikstu Agro for goat farming services. Phone: +91 98330 30312",
+    description: "Contact Manikstu Agro for goat farming services. Phone: +91 90781 93191",
   },
 };
 

@@ -18,17 +18,17 @@ export default function CollaborateImpact({ stats: propStats }: { stats?: Stat[]
       icon: Building2,
     },
     {
-      value: "700+",
+      value: "10,000+",
       label: t("stat2Label"),
       icon: MapPin,
     },
     {
-      value: "10,000+",
+      value: "25,000+",
       label: t("stat3Label"),
       icon: Users,
     },
     {
-      value: "3+",
+      value: "10+",
       label: t("stat4Label"),
       icon: Shield,
     },

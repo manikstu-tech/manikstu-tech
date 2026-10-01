@@ -13,17 +13,17 @@ export default function TrainingImpact({ stats: propStats }: { stats?: Stat[] })
 
   const fallbackStats: Stat[] = [
     {
-      value: "10,000+",
+      value: "25,000+",
       label: t("impactStat1Label"),
       icon: GraduationCap,
     },
     {
-      value: "700+",
+      value: "10,000+",
       label: t("impactStat2Label"),
       icon: MapPin,
     },
     {
-      value: "3+",
+      value: "10+",
       label: t("impactStat3Label"),
       icon: Shield,
     },
