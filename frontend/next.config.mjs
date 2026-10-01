@@ -77,6 +77,17 @@ const nextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      // Partners page retired: closest content lives under Collaborate.
+      {
+        source: "/partners",
+        destination: "/collaborate",
+        permanent: true,
+      },
+      {
+        source: "/partners/:path*",
+        destination: "/collaborate",
+        permanent: true,
+      },
       {
         source: "/:locale/get-in-touch",
         destination: "/:locale/contact",

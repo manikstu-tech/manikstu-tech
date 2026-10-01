@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
-  Briefcase, Contact, FileText, GraduationCap, Handshake, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
+  Briefcase, Contact, FileText, GraduationCap, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
   Menu, MessageSquare, Newspaper, Package, Quote, Search, Settings, ShieldCheck, ShoppingCart, Sprout, Tags, Users, X,
   type LucideIcon,
 } from "lucide-react";
@@ -39,7 +39,6 @@ const NAV: { group: string; items: NavItem[] }[] = [
       { label: "Pages", icon: FileText, href: "/admin/pages" },
       { label: "Media", icon: ImageIcon, href: "/admin/media" },
       { label: "Testimonials", icon: Quote, href: "/admin/testimonials" },
-      { label: "Partners", icon: Handshake, href: "/admin/partners" },
     ],
   },
   {

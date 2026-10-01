@@ -272,27 +272,6 @@ export const SECTIONS: SectionDef[] = [
     ],
   },
   {
-    key: "partners",
-    title: "Partners",
-    singular: "Partner",
-    subtitle: "Organisations Manikstu works with",
-    titleField: "name",
-    fields: [
-      { name: "name", label: "Name", required: true },
-      { name: "website_url", label: "Website URL", type: "url", placeholder: "https://…" },
-      { name: "category", label: "Category", placeholder: "e.g. Incubation, Government, CSR" },
-      orderField,
-      activeField,
-    ],
-    columns: [
-      { key: "name", label: "Name", link: true },
-      { key: "category", label: "Category" },
-      { key: "website_url", label: "Website" },
-      activeColumn,
-    ],
-    filters: [{ name: "category", label: "Category", options: { meta: "categories" } }],
-  },
-  {
     key: "team",
     title: "Team",
     singular: "Team Member",

@@ -18,7 +18,6 @@ const routes = [
   "/collaborate/ajah",
   "/training",
   "/blog",
-  "/partners",
   "/help",
   "/privacy",
   "/terms",
