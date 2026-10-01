@@ -34,4 +34,7 @@ export const youtubeVideos: YouTubeVideo[] = [
   { id: "Pdd7EKgRiOQ", title: "Manikstu Goat Farm" },
   { id: "NlifGgsgdNQ", title: "Manikstu Goat Farm" },
   { id: "TvV0aqEA6Pw", title: "Manikstu Goat Farm" },
+  { id: "9NaH7-qu9OA", title: "रायपुर - प्रोजेक्ट अजा: ग्रामीण महिलाओं के लिए आजीविका का नया माध्यम | DD News Chhattisgarh" },
+  { id: "zJQn9LYaZ6I", title: "Biren Sahoo, Manikstu | Miller Center Fall In-Residence 2025 Welcome Reception" },
+  { id: "fHj6Vz1HO3o", title: "#PortfolioSpotlight Manikstu Agro | Gala '26 | Upaya Social Ventures" },
 ];
