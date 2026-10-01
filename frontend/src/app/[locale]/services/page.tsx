@@ -34,7 +34,6 @@ type Block = {
 function AlternatingBlock({ item, index }: { item: Block; index: number }) {
   const Icon = item.icon;
   const flipped = index % 2 === 1;
-  const artOffset = `${(index * 33) % 100}% bottom`;
 
   return (
     <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
@@ -43,15 +42,6 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
           <div
             aria-hidden
             className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-45 z-0"
-            style={{
-              backgroundImage: "url('/patterns/village-figures.png')",
-              backgroundSize: "400% auto",
-              backgroundPosition: artOffset,
-            }}
           />
           <div className="relative z-10 text-center">
             <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
