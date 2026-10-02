@@ -57,14 +57,14 @@ export default function ResumeCTA() {
         className="pointer-events-none absolute inset-x-0 -bottom-3 sm:-bottom-5 md:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-45"
       >
         <Image
-          src="/patterns/village-figures.png"
+          src="/patterns/village-figures.webp"
           alt=""
           width={1920}
           height={300}
           className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto max-w-none -scale-x-100 object-contain object-left"
         />
         <Image
-          src="/patterns/village-figures.png"
+          src="/patterns/village-figures.webp"
           alt=""
           width={1920}
           height={300}

@@ -13,7 +13,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-[0.18]"
-        style={{ backgroundImage: "url('/patterns/village-scene.png')" }}
+        style={{ backgroundImage: "url('/patterns/village-scene.webp')" }}
       />
 
       {/* Footer band — dark green with a rough top edge and faint diamond texture */}
@@ -84,3 +84,4 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
     </main>
   );
 }
+

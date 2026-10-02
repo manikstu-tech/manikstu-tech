@@ -227,7 +227,7 @@ export default function ContactPage() {
 
           {/* Top-left mandala corner */}
           <Image
-            src="/patterns/mandala-corner-top.png"
+            src="/patterns/mandala-corner-top.webp"
             alt=""
             aria-hidden
             width={1370}
@@ -237,7 +237,7 @@ export default function ContactPage() {
 
           {/* Bottom-right mandala corner */}
           <Image
-            src="/patterns/mandala-corner-top.png"
+            src="/patterns/mandala-corner-top.webp"
             alt=""
             aria-hidden
             width={1370}
@@ -439,3 +439,4 @@ export default function ContactPage() {
     </>
   );
 }
+

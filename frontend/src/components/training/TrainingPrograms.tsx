@@ -32,7 +32,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
       icon: Users,
       title: t("program2Title"),
       description: t("program2Desc"),
-      image: "/patterns/training-fpo-shg.png",
+      image: "/patterns/training-fpo-shg.webp",
     },
     {
       icon: Stethoscope,
@@ -75,7 +75,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
       />
       {/* Top-left mandala corner */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={1370}
@@ -84,7 +84,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
       />
       {/* Top-right mandala corner (mirrored) */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={1370}
@@ -93,7 +93,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
       />
       {/* Bottom-left tree + goat silhouette */}
       <Image
-        src="/patterns/training-bottom-left.png"
+        src="/patterns/training-bottom-left.webp"
         alt=""
         aria-hidden
         width={1536}
@@ -102,7 +102,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
       />
       {/* Bottom-right woman + hut + tree silhouette */}
       <Image
-        src="/patterns/training-bottom-right.png"
+        src="/patterns/training-bottom-right.webp"
         alt=""
         aria-hidden
         width={1802}

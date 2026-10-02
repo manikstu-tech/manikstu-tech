@@ -68,7 +68,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
 
       {/* Top-left & Top-right corner mandala watermarks */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={400}
@@ -76,7 +76,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
         className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.12] sm:opacity-[0.16]"
       />
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={400}

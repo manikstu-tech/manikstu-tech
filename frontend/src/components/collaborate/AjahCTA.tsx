@@ -143,7 +143,7 @@ export default function AjahCTA() {
 
       {/* Bottom village scene illustration, left */}
       <Image
-        src="/patterns/training-bottom-left.png"
+        src="/patterns/training-bottom-left.webp"
         alt=""
         aria-hidden
         width={300}
@@ -153,7 +153,7 @@ export default function AjahCTA() {
 
       {/* Bottom village scene illustration, right */}
       <Image
-        src="/patterns/training-bottom-right.png"
+        src="/patterns/training-bottom-right.webp"
         alt=""
         aria-hidden
         width={300}

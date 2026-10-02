@@ -86,7 +86,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       icon: Cpu,
       title: t("missionCard1Title"),
       description: t("missionCard1Desc"),
-      image: "/patterns/mission-driving-progress.png",
+      image: "/patterns/mission-driving-progress.webp",
     },
     {
       icon: Handshake,
@@ -98,7 +98,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       icon: Home,
       title: t("missionCard3Title"),
       description: t("missionCard3Desc"),
-      image: "/patterns/mission-rural-livelihoods.png",
+      image: "/patterns/mission-rural-livelihoods.webp",
     },
     {
       icon: Lightbulb,
@@ -190,8 +190,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   ];
 
   const allPartnersRow2: MarqueePartner[] = [
-    { name: "Supporting Partner", image: "/11.png" },
-    { name: "Supporting Partner 2", image: "/12.png" },
     { name: "Kalinga Kusum", image: "/15.png" },
     { name: "HDFC Parivartan", image: "/16.png" },
     { name: "Oxfam", image: "/17.png" },
@@ -211,7 +209,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         'What is the "Goat Bank" PM Modi spoke today in his "Mann ki Baat" address?',
       excerpt:
         'Prime Minister Narendra Modi lauded an Odisha couple\'s innovative "Goat Bank" initiative in his Mann Ki Baat address.',
-      image: "/pm-modi-mann-ki-baat.png",
+      image: "/pm-modi-mann-ki-baat.webp",
       imageFit: "cover",
     },
     {
@@ -242,7 +240,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         "Visit of Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India at Raipur Office",
       excerpt:
         "Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India visited the Manikstu Agro Raipur Office.",
-      image: "/minister-visit-raipur.jpg",
+      image: "/minister-visit-raipur.webp",
       imageFit: "cover",
     },
   ];
@@ -392,7 +390,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           background={
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
               <Image
-                src="/hero-motif.png"
+                src="/hero-motif.webp"
                 alt=""
                 aria-hidden
                 width={1300}
@@ -405,7 +403,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         >
               {/* Left content */}
               <div>
-                <h1 className="sr-only lg:not-sr-only font-heading text-3xl sm:text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
+                <h1 className="font-heading text-3xl sm:text-4xl font-bold leading-tight text-charcoal md:text-5xl lg:text-6xl">
                   {t("heroTitle1")}
                   <br />
                   <span className="text-manikstu-green">{t("heroTitle2")}</span>
@@ -453,7 +451,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {/* Main photo */}
                 <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
                   <HeroSlider
-                    images={["/hero-slide-1.png"]}
+                    images={["/hero-slide-1.webp"]}
                     alt="Manikstu Agro, goat farming ecosystem"
                     intervalMs={4000}
                   />
@@ -527,7 +525,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                               backgroundPosition: "bottom center",
                             }
                           : {
-                              backgroundImage: "url('/patterns/village-figures.png')",
+                              backgroundImage: "url('/patterns/village-figures.webp')",
                               backgroundSize: "400% auto",
                               backgroundPosition: `${(i * 33) % 100}% bottom`,
                             }
@@ -580,7 +578,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
           {/* Top-left mandala corner */}
           <Image
-            src="/patterns/mandala-corner-top.png"
+            src="/patterns/mandala-corner-top.webp"
             alt=""
             aria-hidden
             width={1370}
@@ -589,7 +587,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           />
           {/* Top-right mandala corner (mirrored) */}
           <Image
-            src="/patterns/mandala-corner-top.png"
+            src="/patterns/mandala-corner-top.webp"
             alt=""
             aria-hidden
             width={1370}
@@ -603,7 +601,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           >
             {/* Left figures (Desktop/tablet only) */}
             <Image
-              src="/patterns/village-figures.png"
+              src="/patterns/village-figures.webp"
               alt=""
               width={1920}
               height={300}
@@ -611,7 +609,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             />
             {/* Mobile full-width banner */}
             <Image
-              src="/patterns/village-figures.png"
+              src="/patterns/village-figures.webp"
               alt=""
               width={1920}
               height={300}
@@ -619,7 +617,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             />
             {/* Right figures (Desktop/tablet only) */}
             <Image
-              src="/patterns/village-figures.png"
+              src="/patterns/village-figures.webp"
               alt=""
               width={1920}
               height={300}
@@ -951,7 +949,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <section className="relative bg-white overflow-hidden">
           {/* Top-left corner mandala */}
           <Image
-            src="/patterns/mandala-corner-top.png"
+            src="/patterns/mandala-corner-top.webp"
             alt=""
             aria-hidden
             width={1370}
@@ -982,7 +980,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     aria-hidden
                     className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom opacity-45"
                     style={{
-                      backgroundImage: "url('/patterns/village-figures.png')",
+                      backgroundImage: "url('/patterns/village-figures.webp')",
                       backgroundSize: "180% auto",
                       backgroundPosition: "center bottom",
                     }}
@@ -1101,7 +1099,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
           {/* Bottom tribal village figures */}
           <Image
-            src="/patterns/village-figures.png"
+            src="/patterns/village-figures.webp"
             alt=""
             aria-hidden
             width={2172}
@@ -1110,7 +1108,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-40 -scale-x-100"
           />
           <Image
-            src="/patterns/village-figures.png"
+            src="/patterns/village-figures.webp"
             alt=""
             aria-hidden
             width={2172}
@@ -1125,13 +1123,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <div
               aria-hidden
               className="pointer-events-none absolute inset-y-0 left-0 w-[18%] bg-no-repeat bg-left bg-contain hidden md:block"
-              style={{ backgroundImage: "url('/patterns/golden-tribal-border.png')" }}
+              style={{ backgroundImage: "url('/patterns/golden-tribal-border.webp')" }}
             />
             {/* Right golden tribal art (mirrored, desktop only) */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-y-0 right-0 w-[18%] bg-no-repeat bg-left bg-contain -scale-x-100 hidden md:block"
-              style={{ backgroundImage: "url('/patterns/golden-tribal-border.png')" }}
+              style={{ backgroundImage: "url('/patterns/golden-tribal-border.webp')" }}
             />
             {/* Centered tagline */}
             <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 text-center">
@@ -1162,7 +1160,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           {/* Bottom-left mandala artwork */}
           <div aria-hidden className="pointer-events-none absolute left-0 bottom-0 select-none z-0">
             <Image
-              src="/patterns/mandala-bottom-left-crop.png"
+              src="/patterns/mandala-bottom-left-crop.webp"
               alt=""
               width={420}
               height={1024}
@@ -1264,3 +1262,4 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     </>
   );
 }
+

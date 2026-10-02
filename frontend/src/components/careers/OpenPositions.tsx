@@ -39,7 +39,7 @@ export default function OpenPositions({ jobs }: { jobs: JobOpening[] }) {
 
       {/* Top-left mandala corner */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={1370}
@@ -48,7 +48,7 @@ export default function OpenPositions({ jobs }: { jobs: JobOpening[] }) {
       />
       {/* Top-right mandala corner (mirrored) */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={1370}

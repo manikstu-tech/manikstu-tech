@@ -66,7 +66,7 @@ export default function PartnerTypes({ partners: propPartners }: { partners?: Pa
       />
       {/* Top-left mandala corner */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={1370}
@@ -75,7 +75,7 @@ export default function PartnerTypes({ partners: propPartners }: { partners?: Pa
       />
       {/* Top-right mandala corner (mirrored) */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={1370}
@@ -84,7 +84,7 @@ export default function PartnerTypes({ partners: propPartners }: { partners?: Pa
       />
       {/* Bottom-left tree + goat silhouette */}
       <Image
-        src="/patterns/training-bottom-left.png"
+        src="/patterns/training-bottom-left.webp"
         alt=""
         aria-hidden
         width={1536}
@@ -93,7 +93,7 @@ export default function PartnerTypes({ partners: propPartners }: { partners?: Pa
       />
       {/* Bottom-right woman + hut + tree silhouette */}
       <Image
-        src="/patterns/training-bottom-right.png"
+        src="/patterns/training-bottom-right.webp"
         alt=""
         aria-hidden
         width={1802}
@@ -154,7 +154,7 @@ export default function PartnerTypes({ partners: propPartners }: { partners?: Pa
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-10 sm:h-12 bg-no-repeat bg-bottom opacity-90"
                   style={{
-                    backgroundImage: "url('/patterns/village-figures.png')",
+                    backgroundImage: "url('/patterns/village-figures.webp')",
                     backgroundSize: "400% auto",
                     backgroundPosition: `${(i * 33) % 100}% bottom`,
                   }}

@@ -59,7 +59,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
 
       {/* Top-left mandala corner */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={1370}
@@ -68,7 +68,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
       />
       {/* Top-right mandala corner (mirrored) */}
       <Image
-        src="/patterns/mandala-corner-top.png"
+        src="/patterns/mandala-corner-top.webp"
         alt=""
         aria-hidden
         width={1370}

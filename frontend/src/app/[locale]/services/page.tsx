@@ -306,7 +306,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-manikstu-cream">
               <Image
-                src="/services-hero.png"
+                src="/services-hero.webp"
                 alt={t("heroAlt")}
                 fill
                 priority
@@ -371,3 +371,4 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
     </>
   );
 }
+

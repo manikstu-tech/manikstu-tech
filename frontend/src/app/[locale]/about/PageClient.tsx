@@ -493,7 +493,7 @@ export default function AboutPage() {
               name: "Biswabandhu Padhi",
               role: "Director- Growth",
               tag: "Growth",
-              photo: "/team/biswabandhu-padhi.png",
+              photo: "/team/biswabandhu-padhi.webp",
               objectPosition: "center 18%",
               bio: "Driving strategic partnerships, commercial market reach, and enterprise growth.",
             },
@@ -501,7 +501,7 @@ export default function AboutPage() {
               name: "Om Singh",
               role: "SVP Accounts",
               tag: "Accounts",
-              photo: "/team/om-singh.jpg",
+              photo: "/team/om-singh.webp",
               bio: "Ensuring financial governance, sustainable capital strategy, and investor relations.",
             },
             {
@@ -562,7 +562,7 @@ export default function AboutPage() {
               name: "Dr. C Vijaya",
               role: "Project & Compliance Advisor",
               tag: "Compliance",
-              photo: "/team/c-vijaya.png",
+              photo: "/team/c-vijaya.webp",
               objectPosition: "center 30%",
               bio: "A Veteran of the development sector with PhD in Statistics, Retd. Deputy Director of MICM & Director of Corporate Society.",
             },
@@ -577,7 +577,7 @@ export default function AboutPage() {
               name: "Dr. Deepak Ahiwale",
               role: "Technical & Medical Advisor",
               tag: "Technical",
-              photo: "/team/deepak-ahiwale.png",
+              photo: "/team/deepak-ahiwale.webp",
               objectPosition: "center 30%",
               bio: "A Veteran Doctor with specialization into Animal Science having 25 years of experience with NARI.",
             },
@@ -777,7 +777,7 @@ export default function AboutPage() {
             <section className="relative section-padding bg-manikstu-cream overflow-hidden">
               {/* Top-left (left upper corner) mandala */}
               <Image
-                src="/patterns/mandala-corner-top.png"
+                src="/patterns/mandala-corner-top.webp"
                 alt=""
                 aria-hidden
                 width={1370}
@@ -787,7 +787,7 @@ export default function AboutPage() {
 
               {/* Bottom-right (right bottom corner) mandala */}
               <Image
-                src="/patterns/mandala-corner-top.png"
+                src="/patterns/mandala-corner-top.webp"
                 alt=""
                 aria-hidden
                 width={1370}
@@ -921,3 +921,4 @@ export default function AboutPage() {
     </>
   );
 }
+

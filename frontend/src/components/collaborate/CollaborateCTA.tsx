@@ -153,7 +153,7 @@ export default function CollaborateCTA({ pillars: propPillars }: { pillars?: Pil
       {/* Bottom village scene artworks & borders */}
       {/* Bottom left tree, goat */}
       <Image
-        src="/patterns/training-bottom-left.png"
+        src="/patterns/training-bottom-left.webp"
         alt=""
         aria-hidden
         width={1536}
@@ -163,7 +163,7 @@ export default function CollaborateCTA({ pillars: propPillars }: { pillars?: Pil
 
       {/* Bottom right woman, hut, tree */}
       <Image
-        src="/patterns/training-bottom-right.png"
+        src="/patterns/training-bottom-right.webp"
         alt=""
         aria-hidden
         width={1802}
