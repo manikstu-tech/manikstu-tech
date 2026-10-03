@@ -1051,7 +1051,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     </div>
                   </div>
                   <div className="flex flex-col items-center lg:items-start">
-                    <div className="flex items-center justify-center lg:justify-start gap-2">
+                    <div className="flex items-center justify-center gap-2">
                       <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
                       <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-manikstu-leaf">
@@ -1060,7 +1060,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                       <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                       <span aria-hidden className="h-px w-6 bg-manikstu-gold/50" />
                     </div>
-                    <div className="mt-3 flex justify-center lg:justify-start gap-2">
+                    <div className="mt-3 flex justify-center gap-2">
                       <span
                         aria-label={t("googlePlay")}
                         className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white shadow-xs"
