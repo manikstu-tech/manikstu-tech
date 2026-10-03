@@ -7,11 +7,11 @@ const BASE_URL = "https://manikstu.com";
 
 export const metadata: Metadata = {
   title: "Goat Farming Products, Supplements, Feed, Organic Manure | Manikstu",
-  description: "Explore Manikstu Agro's range of ethically sourced goat products, supplements, feed, organic manure, and more.",
+  description: "Explore Manikstu Agri Solutions's range of ethically sourced goat products, supplements, feed, organic manure, and more.",
   alternates: { canonical: "https://manikstu.com/products" },
   openGraph: {
     title: "Goat Farming Products, Supplements, Feed, Organic Manure",
-    description: "Ethically sourced goat products: supplements, feed, and organic manure from Manikstu Agro.",
+    description: "Ethically sourced goat products: supplements, feed, and organic manure from Manikstu Agri Solutions.",
   },
 };
 
@@ -34,3 +34,4 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     </>
   );
 }
+

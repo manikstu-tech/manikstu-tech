@@ -27,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(BASE_URL),
     title: {
-      default: "Manikstu Agro, India's #1 Goat Farming Company | Goat Bank, Insurance, Training",
-      template: "%s | Manikstu Agro",
+      default: "Manikstu Agri Solutions, India's #1 Goat Farming Company | Goat Bank, Insurance, Training",
+      template: "%s | Manikstu Agri Solutions",
     },
     description:
       "Manikstu Agro Private Limited, comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products. Founded 2015, Kalahandi, Odisha.",
@@ -46,16 +46,16 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: "en_IN",
-      siteName: "Manikstu Agro",
-      title: "Manikstu Agro, India's Leading Goat Farming Company",
+      siteName: "Manikstu Agri Solutions",
+      title: "Manikstu Agri Solutions, India's Leading Goat Farming Company",
       description:
         "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
       url: BASE_URL,
-      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Manikstu Agro" }],
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Manikstu Agri Solutions" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Manikstu Agro, India's Leading Goat Farming Company",
+      title: "Manikstu Agri Solutions, India's Leading Goat Farming Company",
       description:
         "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
       images: ["/og-image.png"],
@@ -182,3 +182,5 @@ export default async function LocaleLayout({
     </html>
   );
 }
+
+

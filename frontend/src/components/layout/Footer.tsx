@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, Link2, Headphones, ChevronRight, Send, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, Link2, Headphones, ChevronRight, MapPin } from "lucide-react";
 import { getSettings, getFooter } from "@/lib/api";
 import type { FooterLink } from "@/types";
 
@@ -27,8 +27,7 @@ const fallbackSupportLinks: FooterLink[] = [
 const fallbackSettings: Record<string, string> = {
   brand_tagline: "Building a prosperous and sustainable agricultural future through innovation, collaboration and empowerment.",
   phone: "+91 90781 93191",
-  email_sales: "sales@manikstu.com",
-  email_info: "info@manikstu.com",
+  email: "contact@manikstu.com",
   address_registered: "Row House No - 94, Ravi Garden, Pune Solapur Road, Manjri Budruk, Hadapsar, Pune - 412307",
   address_corporate: "Plot No-754, 14, Gangadhar Meher Marg, near Pabitra Guest House, Jayadev Vihar, Bhubaneswar, Odisha 751013",
   address_farm: "At/Po: Salebhata, P.S: Kegaon, via: Borda, Kalahandi, Odisha - 766036",
@@ -66,7 +65,7 @@ export default function Footer() {
             <Link href="/" className="flex items-start">
               <Image
                 src="/logo.png"
-                alt="Manikstu Agro"
+                alt="Manikstu Agri Solutions"
                 width={120}
                 height={48}
                 className="h-12 w-auto"
@@ -179,13 +178,7 @@ export default function Footer() {
                 <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Mail className="h-4 w-4 shrink-0" />
                 </span>
-                <span><a href={`mailto:${settings.email_sales}`} className="hover:text-manikstu-green transition-colors">{settings.email_sales}</a><br /><span className="text-xs text-grey/70">{t("forSalesEnquiry")}</span></span>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-grey">
-                <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-                  <Send className="h-4 w-4 shrink-0" />
-                </span>
-                <span><a href={`mailto:${settings.email_info}`} className="hover:text-manikstu-green transition-colors">{settings.email_info}</a><br /><span className="text-xs text-grey/70">{t("forOtherEnquiry")}</span></span>
+                <span><a href={`mailto:${settings.email}`} className="hover:text-manikstu-green transition-colors">{settings.email}</a></span>
               </li>
             </ul>
           </div>
@@ -250,3 +243,4 @@ export default function Footer() {
     </footer>
   );
 }
+

@@ -127,7 +127,7 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
       >
         <div className="relative flex h-20 items-center justify-center border-b border-white/10 px-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Manikstu Agro" className="h-14 w-auto brightness-0 invert" />
+          <img src="/logo.png" alt="Manikstu Agri Solutions" className="h-14 w-auto brightness-0 invert" />
           <button
             type="button"
             onClick={() => setOpen(false)}
@@ -192,3 +192,4 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
     </>
   );
 }
+

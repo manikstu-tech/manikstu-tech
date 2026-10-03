@@ -130,7 +130,7 @@ export default function TelecallingShell({ user, notifications, markReadAction, 
         <div className="flex h-20 items-center justify-between border-b border-white/10 px-5">
           <Link href={BASE}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Manikstu Agro" className="h-11 w-auto brightness-0 invert" />
+            <img src="/logo.png" alt="Manikstu Agri Solutions" className="h-11 w-auto brightness-0 invert" />
           </Link>
           <button type="button" onClick={() => setOpen(false)} className="flex h-8 w-8 items-center justify-center rounded-lg text-white/70 hover:bg-white/10 lg:hidden" aria-label="Close menu">
             <X className="h-5 w-5" />
@@ -216,4 +216,6 @@ export default function TelecallingShell({ user, notifications, markReadAction, 
     </div>
   );
 }
+
+
 

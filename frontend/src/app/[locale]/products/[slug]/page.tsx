@@ -56,21 +56,21 @@ export async function generateMetadata({
   const title = p.name || "Product";
   const description =
     p.description?.slice(0, 160) ||
-    `${p.name}, available at Manikstu Agro. ${p.category?.name ? `Category: ${p.category.name}.` : ""}`;
+    `${p.name}, available at Manikstu Agri Solutions. ${p.category?.name ? `Category: ${p.category.name}.` : ""}`;
 
   return {
     title,
     description,
     alternates: { canonical: `https://manikstu.com/products/${slug}` },
     openGraph: {
-      title: `${title} | Manikstu Agro`,
+      title: `${title} | Manikstu Agri Solutions`,
       description,
       images: p.image ? [p.image] : [],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | Manikstu Agro`,
+      title: `${title} | Manikstu Agri Solutions`,
       description,
       images: p.image ? [p.image] : [],
     },
@@ -99,7 +99,7 @@ export default async function ProductDetailPage({
             image: p.image || "",
                 url: `https://manikstu.com/products/${slug}`,
             sku: p.sku || "",
-            brand: { "@type": "Brand", name: "Manikstu Agro" },
+            brand: { "@type": "Brand", name: "Manikstu Agri Solutions" },
             ...(p.category?.name && {
               category: p.category.name,
             }),
@@ -128,3 +128,4 @@ export default async function ProductDetailPage({
     </>
   );
 }
+

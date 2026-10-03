@@ -477,15 +477,15 @@ export default function AboutPage() {
           const leaders = [
             {
               name: "Biren Sahoo",
-              role: "Founder and Managing Director",
-              tag: "FMD",
+              role: "Founder & CEO",
+              tag: "CEO",
               photo: "",
               bio: "Pioneering sustainable rural development and livestock empowerment across Odisha.",
             },
             {
               name: "Jayanti Mahapatra",
-              role: "Chief Executive Officer",
-              tag: "CEO",
+              role: "Managing Director",
+              tag: "MD",
               photo: "",
               bio: "Driving strategic vision, business growth, and organizational excellence.",
             },

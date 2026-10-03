@@ -65,14 +65,14 @@ export async function generateMetadata({
     description,
     alternates: { canonical: `https://manikstu.com/blog/${article.slug}` },
     openGraph: {
-      title: `${article.title} | Manikstu Agro`,
+      title: `${article.title} | Manikstu Agri Solutions`,
       description,
       images: article.featured_image ? [article.featured_image] : [],
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${article.title} | Manikstu Agro`,
+      title: `${article.title} | Manikstu Agri Solutions`,
       description,
       images: article.featured_image ? [article.featured_image] : [],
     },
@@ -125,3 +125,4 @@ export default async function ArticleDetailPage({
     </>
   );
 }
+

@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Manikstu Agro collects, uses, and protects your personal information. Read our complete privacy policy.",
+    "How Manikstu Agri Solutions collects, uses, and protects your personal information. Read our complete privacy policy.",
   alternates: { canonical: "https://manikstu.com/privacy" },
 };
 
@@ -38,7 +38,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
 
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-grey sm:text-base">
               How we collect, use and protect your personal information when
-              you interact with Manikstu Agro.
+              you interact with Manikstu Agri Solutions.
             </p>
           </div>
 
@@ -83,3 +83,4 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
     </>
   );
 }
+

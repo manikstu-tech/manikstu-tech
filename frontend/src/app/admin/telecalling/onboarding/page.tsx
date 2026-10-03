@@ -44,7 +44,7 @@ export default async function StaffOnboardingPage() {
     <>
       <PageHeader
         title="Staff Onboarding"
-        subtitle="Onboard telecallers, sales reps, and field executives into the Manikstu Agro network."
+        subtitle="Onboard telecallers, sales reps, and field executives into the Manikstu Agri Solutions network."
       />
 
       {/* Workflow Process Cards */}
@@ -71,3 +71,4 @@ export default async function StaffOnboardingPage() {
     </>
   );
 }
+

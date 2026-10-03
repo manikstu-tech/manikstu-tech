@@ -37,7 +37,7 @@ export default function Header() {
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
-            alt="Manikstu Agro"
+            alt="Manikstu Agri Solutions"
             width={120}
             height={48}
             className="h-12 w-auto"
@@ -133,3 +133,4 @@ function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href + "/");
 }
+

@@ -57,14 +57,14 @@ export async function generateMetadata({
     return { title: "Job Not Found" };
   }
 
-  const description = job.description?.slice(0, 160) || `${job.title} at Manikstu Agro.`;
+  const description = job.description?.slice(0, 160) || `${job.title} at Manikstu Agri Solutions.`;
 
   return {
     title: `${job.title} | Careers`,
     description,
     alternates: { canonical: `https://manikstu.com/careers/${job.id}` },
     openGraph: {
-      title: `${job.title} | Manikstu Agro Careers`,
+      title: `${job.title} | Manikstu Agri Solutions Careers`,
       description,
     },
   };
@@ -116,3 +116,4 @@ export default async function JobDetailPage({
     </>
   );
 }
+

@@ -35,11 +35,11 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Manikstu Agro, Revolutionizing Goat Farming Ecosystem",
+  title: "Manikstu Agri Solutions, Revolutionizing Goat Farming Ecosystem",
   description:
-    "Manikstu Agro provides comprehensive goat farming solutions including veterinary services, goat bank programs, professional training, and ethically sourced goat products. Founded 2015, Kalahandi, Odisha.",
+    "Manikstu Agri Solutions provides comprehensive goat farming solutions including veterinary services, goat bank programs, professional training, and ethically sourced goat products. Founded 2015, Kalahandi, Odisha.",
   openGraph: {
-    title: "Manikstu Agro, Revolutionizing Goat Farming Ecosystem",
+    title: "Manikstu Agri Solutions, Revolutionizing Goat Farming Ecosystem",
     description:
       "Comprehensive goat farming ecosystem with veterinary services, goat bank, training, and ethically sourced products.",
   },
@@ -109,10 +109,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   ];
 
   const stats = [
-    { value: "25,000+", label: t("stat1Label"), icon: Users, image: "/patterns/impact-panel-1.png" },
-    { value: "10,000+", label: t("stat2Label"), icon: MapPin, image: "/patterns/impact-panel-2.png" },
+    { value: "10,000+", label: t("stat1Label"), icon: Users, image: "/patterns/impact-panel-1.png" },
+    { value: "700+", label: t("stat2Label"), icon: MapPin, image: "/patterns/impact-panel-2.png" },
     { value: "7,00,000+", label: t("stat3Label"), icon: GoatIcon, image: "/patterns/impact-panel-3.png" },
-    { value: "10+", label: t("stat4Label"), icon: Map, image: "/patterns/impact-panel-4.png" },
+    { value: "3+", label: t("stat4Label"), icon: Map, image: "/patterns/impact-panel-4.png" },
   ];
 
   const partnerCategories = [
@@ -373,7 +373,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         data={{
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "Manikstu Agro",
+          name: "Manikstu Agri Solutions",
           url: "https://manikstu.com",
           potentialAction: {
             "@type": "SearchAction",
@@ -452,7 +452,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
                   <HeroSlider
                     images={["/hero-slide-1.webp"]}
-                    alt="Manikstu Agro, goat farming ecosystem"
+                    alt="Manikstu Agri Solutions, goat farming ecosystem"
                     intervalMs={4000}
                   />
                   {/* Watch Our Story, opens a YouTube popup */}
@@ -1077,19 +1077,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                           <span className="text-[11px] font-semibold">Google Play</span>
                         </span>
                       </span>
-                      <span
-                        aria-label={t("appStore")}
-                        className="inline-flex h-10 items-center gap-2 rounded-md bg-charcoal px-3 text-white shadow-xs"
-                      >
-                        {/* Apple brand icon */}
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 flex-shrink-0" fill="currentColor" aria-hidden>
-                          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-                        </svg>
-                        <span className="flex flex-col leading-tight">
-                          <span className="text-[9px] opacity-80">Download on the</span>
-                          <span className="text-[11px] font-semibold">App Store</span>
-                        </span>
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -1262,4 +1249,5 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     </>
   );
 }
+
 

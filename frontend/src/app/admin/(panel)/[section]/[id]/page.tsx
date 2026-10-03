@@ -136,7 +136,7 @@ function EnquiryDetail({ enquiry }: { enquiry: AdminRecord }) {
               </a>
             )}
           </div>
-          <a href={`mailto:${email}?subject=${encodeURIComponent("Re: your enquiry to Manikstu Agro")}`} className={`${buttonClass.primary} mt-4 w-full`}>
+          <a href={`mailto:${email}?subject=${encodeURIComponent("Re: your enquiry to Manikstu Agri Solutions")}`} className={`${buttonClass.primary} mt-4 w-full`}>
             Reply by email
           </a>
         </Card>
@@ -194,3 +194,4 @@ export default async function RecordDetailPage({ params, searchParams }: Params)
     </>
   );
 }
+

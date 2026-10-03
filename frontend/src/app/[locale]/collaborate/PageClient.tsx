@@ -48,9 +48,9 @@ export default function CollaboratePage() {
 
   const fallbackStats = [
     { value: "50+", label: t("stat1Label"), icon: "Building2" },
-    { value: "10,000+", label: t("stat2Label"), icon: "MapPin" },
-    { value: "25,000+", label: t("stat3Label"), icon: "Users" },
-    { value: "10+", label: t("stat4Label"), icon: "Shield" },
+    { value: "700+", label: t("stat2Label"), icon: "MapPin" },
+    { value: "10,000+", label: t("stat3Label"), icon: "Users" },
+    { value: "3+", label: t("stat4Label"), icon: "Shield" },
   ];
 
   const fallbackCTAPillars = [

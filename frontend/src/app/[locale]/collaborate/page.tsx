@@ -4,7 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Collaborate With Us",
-  description: "Partner with Manikstu Agro, explore collaboration opportunities in goat farming, research, and rural development.",
+  description: "Partner with Manikstu Agri Solutions, explore collaboration opportunities in goat farming, research, and rural development.",
   alternates: { canonical: "https://manikstu.com/collaborate" },
 };
 
@@ -13,3 +13,4 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   setRequestLocale(locale);
   return <PageClient />;
 }
+

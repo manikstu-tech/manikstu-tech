@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
  */
 const PHONE = "919078193191"; // +91 90781 93191 (digits only, with country code)
 const DEFAULT_MSG =
-  "Hello Manikstu Agro, I'd like to know more about your goat farming products and services.";
+  "Hello Manikstu Agri Solutions, I'd like to know more about your goat farming products and services.";
 
 export default function WhatsAppButton() {
   const [open, setOpen] = useState(false);
@@ -71,10 +71,10 @@ export default function WhatsAppButton() {
           <div className="flex items-center gap-3 bg-[#3AAE60] px-4 py-3.5 text-white">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="Manikstu Agro" className="h-8 w-8 object-contain" />
+              <img src="/logo.png" alt="Manikstu Agri Solutions" className="h-8 w-8 object-contain" />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="font-heading text-base font-bold leading-tight">Manikstu Agro</p>
+              <p className="font-heading text-base font-bold leading-tight">Manikstu Agri Solutions</p>
               <p className="text-xs text-white/85">Typically replies within an hour</p>
             </div>
             <button
@@ -92,7 +92,7 @@ export default function WhatsAppButton() {
           {/* Body */}
           <div className="min-h-[280px] bg-[#E6DDD4] px-4 py-4">
             <div className="max-w-[80%] rounded-xl rounded-tl-sm bg-white px-3.5 py-2.5 shadow-sm">
-              <p className="text-xs font-semibold text-[#3AAE60]">Manikstu Agro</p>
+              <p className="text-xs font-semibold text-[#3AAE60]">Manikstu Agri Solutions</p>
               <p className="mt-1 text-sm text-gray-800">Hi there 👋</p>
               <p className="text-sm text-gray-800">How can I help you?</p>
               <p className="mt-1 text-right text-[10px] text-gray-400">{time}</p>
@@ -143,3 +143,4 @@ export default function WhatsAppButton() {
     </>
   );
 }
+

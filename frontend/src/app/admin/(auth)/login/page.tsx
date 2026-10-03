@@ -50,9 +50,9 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         <div className="px-6 pb-6 pt-5 sm:px-8">
           <div className="text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Manikstu Agro" className="mx-auto h-14 w-auto" />
+            <img src="/logo.png" alt="Manikstu Agri Solutions" className="mx-auto h-14 w-auto" />
             <h1 className="mt-3 font-heading text-2xl font-bold text-charcoal">Admin Panel</h1>
-            <p className="mt-1 text-xs text-grey">Manikstu Agro Management System</p>
+            <p className="mt-1 text-xs text-grey">Manikstu Agri Solutions Management System</p>
             {/* Ornamental divider */}
             <div className="mt-3 flex items-center justify-center gap-2">
               <span aria-hidden className="h-px w-12 bg-manikstu-gold/50" />
@@ -73,7 +73,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
             <ShieldCheck className="h-4 w-4" />
             Secure Admin Access
           </p>
-          <p className="mt-0.5 text-xs text-grey">Protected by Manikstu Agro</p>
+          <p className="mt-0.5 text-xs text-grey">Protected by Manikstu Agri Solutions</p>
         </div>
       </div>
 
@@ -84,4 +84,6 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
     </main>
   );
 }
+
+
 

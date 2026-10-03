@@ -4,7 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Training Programs",
-  description: "Professional goat farming training programs by Manikstu Agro, learn modern techniques, livestock management, and business skills.",
+  description: "Professional goat farming training programs by Manikstu Agri Solutions, learn modern techniques, livestock management, and business skills.",
   alternates: { canonical: "https://manikstu.com/training" },
 };
 
@@ -13,3 +13,4 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   setRequestLocale(locale);
   return <PageClient />;
 }
+

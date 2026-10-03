@@ -91,10 +91,10 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
 export const metadata: Metadata = {
   title: "Our Services",
   description:
-    "Comprehensive goat farming services including veterinary care, insurance, goat bank programs, training, and ethical partnerships from Manikstu Agro.",
+    "Comprehensive goat farming services including veterinary care, insurance, goat bank programs, training, and ethical partnerships from Manikstu Agri Solutions.",
   alternates: { canonical: "https://manikstu.com/services" },
   openGraph: {
-    title: "Goat Farming Services, Veterinary, Insurance, Training | Manikstu Agro",
+    title: "Goat Farming Services, Veterinary, Insurance, Training | Manikstu Agri Solutions",
     description:
       "Professional goat farming services: veterinary care, livestock insurance, goat bank programs, and training.",
   },
@@ -371,4 +371,5 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
     </>
   );
 }
+
 
