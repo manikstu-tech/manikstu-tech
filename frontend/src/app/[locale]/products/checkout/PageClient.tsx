@@ -187,9 +187,10 @@ export default function CheckoutPage() {
                       placeholder={t("phonePlaceholder")}
                     />
                   </Field>
-                  <Field label={t("email")} className="sm:col-span-2">
+                  <Field label={t("email")} required className="sm:col-span-2">
                     <input
                       type="email"
+                      required
                       value={address.email}
                       onChange={update("email")}
                       className={inputCls}
