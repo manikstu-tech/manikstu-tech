@@ -73,7 +73,7 @@
     "watchOurStory": "Watch Our Story",
     "featuredIn": "Manikstu was featured in Mann Ki Baat on February 25, 2024",
     "missionPill": "Our Mission",
-    "missionTitle": "Worldwide, fostering a prosperous and sustainable agricultural future.",
+    "missionTitle": "Across rural India, fostering a prosperous and sustainable agricultural future.",
     "missionDesc1": "Since 2015, we have been empowering India's goat farmers with modern practices, financial support and innovative solutions.",
     "missionDesc2": "Manikstu Agri Solutions is building a sustainable ecosystem that empowers farmers with technology, knowledge and innovative solutions.",
     "statsPill": "Our Impact",
@@ -577,6 +577,7 @@
     "training": "Training",
     "careers": "Careers",
     "support": "Support",
+    "bulk": "Bulk / Dealer",
     "city": "City",
     "state": "State",
     "message": "Message *",
@@ -609,7 +610,7 @@
     "faq3Q": "How can I apply for a job at Manikstu?",
     "faq3A": "Check our Careers page for current openings. If no roles match, send us your resume and we'll keep you in mind for future opportunities.",
     "faq4Q": "Where is Manikstu headquartered?",
-    "faq4A": "Our registered office is in Bhubaneswar, Odisha, India. We also have a farm office in Kalahandi."
+    "faq4A": "Our registered office is in Pune, Maharashtra, India. Our corporate office is in Bhubaneswar, Odisha. We also have a farm office in Kalahandi."
   },
   "Products_detail": {
     "loading": "Loading...",
@@ -760,7 +761,8 @@
     "pinPlaceholder": "6-digit PIN code",
     "orderNotes": "Order Notes",
     "notesPlaceholder": "Any delivery instructions (optional)",
-    "proceedToPay": "Proceed to Pay",
+    "placeOrder": "Place Order",
+    "orderFailed": "Could not send your order. Please check your connection and try again.",
     "orderSummary": "Order Summary",
     "qty": "Qty",
     "items": "Items",

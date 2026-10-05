@@ -7,6 +7,7 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ArrowLeft, Package, CheckCircle2, ShoppingBag } from "lucide-react";
+import { submitContact } from "@/lib/api";
 import {
   readCart,
   subscribeCart,
@@ -46,6 +47,7 @@ export default function CheckoutPage() {
   const [cart, setCart] = useState<CartMap>({});
   const [address, setAddress] = useState<Address>(emptyAddress);
   const [placed, setPlaced] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     setCart(readCart());
@@ -71,10 +73,28 @@ export default function CheckoutPage() {
     setAddress((a) => ({ ...a, pincode: digits }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setPlaced(true);
-    clearCart();
+    setFailed(false);
+    const items = cartLines.map((l) => `${l.name} x ${l.qty} — Rs.${l.price * l.qty}`).join("\n");
+    const addr = [address.line1, address.line2, address.city, address.state, address.pincode]
+      .filter(Boolean)
+      .join(", ");
+    try {
+      await submitContact({
+        name: address.fullName,
+        email: address.email,
+        phone: address.phone,
+        city: address.city,
+        state: address.state,
+        type: "general",
+        message: `WEBSITE ORDER (Rs.${cartTotal})\n\n${items}\n\nDeliver to: ${addr}${address.notes ? `\nNotes: ${address.notes}` : ""}`,
+      });
+      setPlaced(true);
+      clearCart();
+    } catch {
+      setFailed(true);
+    }
   };
 
   return (
@@ -243,8 +263,13 @@ export default function CheckoutPage() {
                   type="submit"
                   className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
                 >
-                  {t("proceedToPay")}
+                  {t("placeOrder")}
                 </button>
+                {failed && (
+                  <p className="mt-3 text-center text-sm font-medium text-manikstu-red">
+                    {t("orderFailed")}
+                  </p>
+                )}
               </form>
 
               {/* Order summary */}

@@ -9,15 +9,21 @@ import PageHero from "@/components/layout/PageHero";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { submitContact } from "@/lib/api";
 
-export default function ContactPage() {
+export default function ContactPage({
+  initialType = "",
+  initialRole = "",
+}: {
+  initialType?: string;
+  initialRole?: string;
+}) {
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     city: "",
     state: "",
-    type: "",
-    message: "",
+    type: initialType,
+    message: initialRole ? `Applying for: ${initialRole}\n\n` : "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const t = useTranslations("Contact");
@@ -371,6 +377,7 @@ export default function ContactPage() {
                         <option value="training">{t("training")}</option>
                         <option value="careers">{t("careers")}</option>
                         <option value="support">{t("support")}</option>
+                        <option value="bulk">{t("bulk")}</option>
                       </select>
                     </div>
                   </div>

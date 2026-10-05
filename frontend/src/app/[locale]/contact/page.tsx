@@ -15,9 +15,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+const ENQUIRY_TYPES = ["general", "partnership", "training", "careers", "support", "bulk"];
+
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ type?: string; role?: string }>;
+}) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const sp = await searchParams;
+  const initialType = ENQUIRY_TYPES.includes(sp.type ?? "") ? sp.type! : "";
+  const initialRole = typeof sp.role === "string" ? sp.role.slice(0, 120) : "";
   return (
     <>
       <JsonLd
@@ -30,7 +41,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           ],
         }}
       />
-      <PageClient />
+      <PageClient initialType={initialType} initialRole={initialRole} />
     </>
   );
 }

@@ -1228,16 +1228,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         {/* Testimonials */}
         <section className="section-padding bg-white">
           <div className="mx-auto max-w-7xl">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center">
               <h2 className="text-3xl font-bold text-charcoal font-heading md:text-4xl">
                 {t("testimonialsTitle")}
               </h2>
-              <Link
-                href="/about"
-                className="text-sm font-semibold text-manikstu-green hover:text-manikstu-red transition-colors"
-              >
-                {tCommon("viewAll")}
-              </Link>
             </div>
             <TestimonialsSlider testimonials={shownTestimonials} />
           </div>

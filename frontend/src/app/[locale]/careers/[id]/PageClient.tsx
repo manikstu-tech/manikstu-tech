@@ -50,7 +50,7 @@ export default function JobPageClient({ job }: { job: JobDetail }) {
             )}
 
             <Link
-              href="/contact"
+              href={`/contact?type=careers&role=${encodeURIComponent(job.title)}`}
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
             >
               {t("applyNow")} <ChevronRight className="h-4 w-4" />
