@@ -7,7 +7,7 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ArrowLeft, Package, CheckCircle2, ShoppingBag } from "lucide-react";
-import { submitContact } from "@/lib/api";
+import { getProductBySlug, placeOrder, type OrderItemInput } from "@/lib/api";
 import {
   readCart,
   subscribeCart,
@@ -76,19 +76,26 @@ export default function CheckoutPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setFailed(false);
-    const items = cartLines.map((l) => `${l.name} x ${l.qty} — Rs.${l.price * l.qty}`).join("\n");
-    const addr = [address.line1, address.line2, address.city, address.state, address.pincode]
-      .filter(Boolean)
-      .join(", ");
     try {
-      await submitContact({
-        name: address.fullName,
-        email: address.email,
+      // Resolve cart slugs to backend product IDs; never place a partial order.
+      const items: OrderItemInput[] = [];
+      for (const l of cartLines) {
+        const res = await getProductBySlug(l.slug).catch(() => null);
+        const productId = Number((res as { data?: { id?: unknown } } | null)?.data?.id);
+        if (!Number.isFinite(productId) || productId <= 0) throw new Error(`unresolvable:${l.slug}`);
+        items.push({ productId, quantity: l.qty });
+      }
+      await placeOrder({
+        items,
+        customer_name: address.fullName,
         phone: address.phone,
+        email: address.email,
+        address_line1: address.line1,
+        address_line2: address.line2 || undefined,
         city: address.city,
         state: address.state,
-        type: "general",
-        message: `WEBSITE ORDER (Rs.${cartTotal})\n\n${items}\n\nDeliver to: ${addr}${address.notes ? `\nNotes: ${address.notes}` : ""}`,
+        pincode: address.pincode,
+        notes: address.notes || undefined,
       });
       setPlaced(true);
       clearCart();

@@ -45,6 +45,35 @@ export const subscribeNewsletter = async (email: string) => {
   return response.json();
 };
 
+// Orders (website checkout posts the full order with delivery details)
+export interface OrderItemInput {
+  productId: number;
+  quantity: number;
+}
+
+export interface OrderInput {
+  items: OrderItemInput[];
+  customer_name?: string;
+  phone?: string;
+  email?: string;
+  address_line1?: string;
+  address_line2?: string;
+  city?: string;
+  state?: string;
+  pincode?: string;
+  notes?: string;
+}
+
+export const placeOrder = async (payload: OrderInput) => {
+  const response = await fetch(`${API_BASE_URL}/orders`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!response.ok) throw new Error('Failed to place order');
+  return response.json();
+};
+
 // Products
 export const getProducts = async (page = 1, limit = 10) => {
   const response = await fetch(`${API_BASE_URL}/products?page=${page}&limit=${limit}`);
