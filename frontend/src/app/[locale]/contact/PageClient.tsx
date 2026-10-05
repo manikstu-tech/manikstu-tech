@@ -24,6 +24,10 @@ export default function ContactPage({
     state: "",
     type: initialType,
     message: initialRole ? `Applying for: ${initialRole}\n\n` : "",
+    orgName: "",
+    orgType: "",
+    budget: "",
+    geography: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const t = useTranslations("Contact");
@@ -39,9 +43,17 @@ export default function ContactPage({
     e.preventDefault();
     setStatus("submitting");
     try {
-      await submitContact(form);
+      const { orgName, orgType, budget, geography, ...base } = form;
+      const payload =
+        form.type === "partnership"
+          ? {
+              ...base,
+              message: `[Partnership Enquiry]\nOrg: ${orgName}\nOrg Type: ${orgType}\nBudget: ${budget}\nGeography: ${geography}\n---\n${form.message}`,
+            }
+          : base;
+      await submitContact(payload);
       setStatus("success");
-      setForm({ name: "", email: "", phone: "", city: "", state: "", type: "", message: "" });
+      setForm({ name: "", email: "", phone: "", city: "", state: "", type: "", message: "", orgName: "", orgType: "", budget: "", geography: "" });
     } catch {
       setStatus("error");
     }
@@ -381,6 +393,73 @@ export default function ContactPage({
                       </select>
                     </div>
                   </div>
+                  {form.type === "partnership" && (
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor="orgName" className="block text-sm font-medium text-charcoal">
+                          {t("orgName")}
+                        </label>
+                        <input
+                          id="orgName"
+                          name="orgName"
+                          value={form.orgName}
+                          onChange={handleChange}
+                          className="mt-1 block w-full rounded-lg border border-light-grey px-3 py-2.5 text-sm text-charcoal focus:border-manikstu-green focus:ring-1 focus:ring-manikstu-green outline-none"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="orgType" className="block text-sm font-medium text-charcoal">
+                          {t("orgType")}
+                        </label>
+                        <select
+                          id="orgType"
+                          name="orgType"
+                          value={form.orgType}
+                          onChange={handleChange}
+                          className="mt-1 block w-full rounded-lg border border-light-grey px-3 py-2.5 text-sm text-charcoal focus:border-manikstu-green focus:ring-1 focus:ring-manikstu-green outline-none"
+                        >
+                          <option value="">{t("selectType")}</option>
+                          <option value="ngo">{t("orgNgo")}</option>
+                          <option value="csr">{t("orgCsr")}</option>
+                          <option value="corporate">{t("orgCorporate")}</option>
+                          <option value="government">{t("orgGovernment")}</option>
+                          <option value="fpo">{t("orgFpo")}</option>
+                          <option value="other">{t("orgOther")}</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="budget" className="block text-sm font-medium text-charcoal">
+                          {t("budget")}
+                        </label>
+                        <select
+                          id="budget"
+                          name="budget"
+                          value={form.budget}
+                          onChange={handleChange}
+                          className="mt-1 block w-full rounded-lg border border-light-grey px-3 py-2.5 text-sm text-charcoal focus:border-manikstu-green focus:ring-1 focus:ring-manikstu-green outline-none"
+                        >
+                          <option value="">{t("selectType")}</option>
+                          <option value="under5l">{t("budgetUnder5l")}</option>
+                          <option value="5to25l">{t("budget5to25l")}</option>
+                          <option value="25lto1cr">{t("budget25lto1cr")}</option>
+                          <option value="above1cr">{t("budgetAbove1cr")}</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="geography" className="block text-sm font-medium text-charcoal">
+                          {t("geography")}
+                        </label>
+                        <input
+                          id="geography"
+                          name="geography"
+                          value={form.geography}
+                          onChange={handleChange}
+                          placeholder={t("geographyPlaceholder")}
+                          className="mt-1 block w-full rounded-lg border border-light-grey px-3 py-2.5 text-sm text-charcoal focus:border-manikstu-green focus:ring-1 focus:ring-manikstu-green outline-none"
+                        />
+                      </div>
+                    </div>
+                  )}
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label htmlFor="city" className="block text-sm font-medium text-charcoal">

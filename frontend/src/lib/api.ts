@@ -1,5 +1,5 @@
 // src/lib/api.ts
-import type { ApiResponse, NavigationMenuItem, FooterLink, Page, BlogPost, GalleryImage, PressRelease, MediaItem, Partner } from '@/types';
+import type { ApiResponse, NavigationMenuItem, FooterLink, Page, BlogPost, GalleryImage, PressRelease, MediaItem, Partner, TeamMember } from '@/types';
 
 export const API_BASE_URL =
   typeof window !== 'undefined'
@@ -30,6 +30,20 @@ export const getJobOpenings = () => apiFetch<ApiResponse<any[]>>('/careers');
 
 // Partners
 export const getPartners = () => apiFetch<ApiResponse<Partner[]>>('/partners');
+
+// Team
+export const getTeamMembers = () => apiFetch<ApiResponse<TeamMember[]>>('/team');
+
+// Newsletter
+export const subscribeNewsletter = async (email: string) => {
+  const response = await fetch(`${API_BASE_URL}/newsletter`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email }),
+  });
+  if (!response.ok) throw new Error('Failed to subscribe');
+  return response.json();
+};
 
 // Products
 export const getProducts = async (page = 1, limit = 10) => {

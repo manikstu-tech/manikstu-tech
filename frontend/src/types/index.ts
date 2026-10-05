@@ -123,5 +123,20 @@ export interface Partner {
   is_active: boolean;
 }
 
+// Team
+export interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  tag: string | null;
+  section: string | null;
+  bio: string | null;
+  image: string | null;
+  email: string | null;
+  phone: string | null;
+  order: number;
+  is_active: boolean;
+}
+
 // Re-export Product from data module for convenience
 export type { Product } from "@/app/[locale]/products/data";

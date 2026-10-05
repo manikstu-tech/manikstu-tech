@@ -81,6 +81,7 @@ const options = (map: Record<string, string>): Option[] => Object.entries(map).m
 
 export const CATEGORY_TYPES = { blog: "Blog", product: "Product", gallery: "Gallery", training: "Training" };
 export const JOB_TYPES = { full_time: "Full-time", part_time: "Part-time", contract: "Contract", internship: "Internship" };
+export const TEAM_SECTIONS = { leadership: "Leadership", management: "Management", advisors: "Advisors" };
 export const ORDER_STATUSES = { pending: "Pending", confirmed: "Confirmed", shipped: "Shipped", delivered: "Delivered", cancelled: "Cancelled" };
 export const PAYMENT_STATUSES = { unpaid: "Unpaid", paid: "Paid", refunded: "Refunded" };
 export const ENQUIRY_STATUSES = { new: "New", read: "Read", replied: "Replied", archived: "Archived" };
@@ -162,6 +163,23 @@ export const SECTIONS: SectionDef[] = [
     filters: [
       { name: "status", label: "Status", options: options(ENQUIRY_STATUSES) },
       { name: "type", label: "Type", options: options(ENQUIRY_TYPES) },
+    ],
+  },
+  {
+    key: "subscribers",
+    title: "Subscribers",
+    singular: "Subscriber",
+    subtitle: "Newsletter signups from the website footer",
+    titleField: "email",
+    searchPlaceholder: "Search email…",
+    fields: [
+      { name: "email", label: "Email", type: "email", required: true },
+      activeField,
+    ],
+    columns: [
+      { key: "email", label: "Email", link: true },
+      { key: "created_at", label: "Subscribed", type: "date" },
+      activeColumn,
     ],
   },
   {
@@ -280,6 +298,8 @@ export const SECTIONS: SectionDef[] = [
     fields: [
       { name: "name", label: "Name", required: true },
       { name: "role", label: "Role", required: true, placeholder: "e.g. Founder & CEO" },
+      { name: "tag", label: "Badge Tag", placeholder: "e.g. CEO", side: true },
+      { name: "section", label: "Section", type: "select", options: options(TEAM_SECTIONS), side: true },
       { name: "bio", label: "Bio", type: "textarea", rows: 4 },
       { name: "email", label: "Email", type: "email" },
       { name: "phone", label: "Phone" },
@@ -291,6 +311,7 @@ export const SECTIONS: SectionDef[] = [
       { key: "image_url", label: "", type: "image" },
       { key: "name", label: "Name", link: true },
       { key: "role", label: "Role" },
+      { key: "section", label: "Section" },
       { key: "email", label: "Email" },
       activeColumn,
     ],

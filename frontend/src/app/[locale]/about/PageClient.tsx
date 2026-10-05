@@ -6,9 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Heart, Users, Target, Sprout, MapPin, Linkedin, Mail, User, Leaf, Lightbulb, Award, Trophy, Medal, Crown, Star } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { getPage } from "@/lib/api";
+import { getPage, getTeamMembers } from "@/lib/api";
 import { parseContent } from "@/lib/pages";
-import type { PageBlock } from "@/types";
+import type { PageBlock, TeamMember } from "@/types";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
@@ -127,6 +127,13 @@ export default function AboutPage() {
   const [mission, setMission] = useState<string[] | null>(null);
   const [timeline, setTimeline] = useState<any[] | null>(null);
   const [values, setValues] = useState<any[] | null>(null);
+  const [team, setTeam] = useState<TeamMember[] | null>(null);
+
+  useEffect(() => {
+    getTeamMembers()
+      .then((res) => setTeam(res.data))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     getPage('about')
@@ -175,6 +182,18 @@ export default function AboutPage() {
   const displayMission = mission || fallbackMission;
   const displayTimeline = timeline || fallbackTimeline;
   const displayValues = values || fallbackValues;
+
+  const liveTeam = team ?? [];
+  const teamCard = (m: TeamMember) => ({
+    name: m.name,
+    role: m.role,
+    tag: m.tag || m.role,
+    photo: m.image || "",
+    bio: m.bio || "",
+  });
+  const liveLeadership = liveTeam.filter((m) => m.section === "leadership").map(teamCard);
+  const liveManagement = liveTeam.filter((m) => m.section === "management").map(teamCard);
+  const liveAdvisors = liveTeam.filter((m) => m.section === "advisors").map(teamCard);
 
   return (
     <>
@@ -512,6 +531,7 @@ export default function AboutPage() {
               bio: "Building robust financial systems, expanding investor reach, and strengthening farmer finance support.",
             },
           ];
+          const displayLeaders = liveLeadership.length ? liveLeadership : leaders;
           const executionEngine = [
             {
               name: "Suman Sourav",
@@ -550,6 +570,7 @@ export default function AboutPage() {
               bio: "With over 15 years of experience in rural sales, Manoj is a vital member of the team driving farmer outreach and market connectivity.",
             },
           ];
+          const displayManagement = liveManagement.length ? liveManagement : executionEngine;
           const advisors = [
             {
               name: "Mr. Sujeet Kumar",
@@ -582,6 +603,7 @@ export default function AboutPage() {
               bio: "A Veteran Doctor with specialization into Animal Science having 25 years of experience with NARI.",
             },
           ];
+          const displayAdvisors = liveAdvisors.length ? liveAdvisors : advisors;
           const tagColor = (t: string) =>
             ({
               FMD: "bg-manikstu-green",
@@ -623,7 +645,7 @@ export default function AboutPage() {
 
                 {/* Leader cards */}
                 <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
-                  {leaders.map((l) => (
+                  {displayLeaders.map((l) => (
                     <article
                       key={l.name}
                       className="group flex flex-col rounded-xl sm:rounded-2xl border border-manikstu-gold/20 bg-white shadow-xs sm:shadow-sm overflow-hidden hover:shadow-md transition-all"
@@ -706,7 +728,7 @@ export default function AboutPage() {
 
                 {/* Execution Engine cards */}
                 <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
-                  {executionEngine.map((l) => (
+                  {displayManagement.map((l) => (
                     <article
                       key={l.name}
                       className="group flex flex-col rounded-xl sm:rounded-2xl border border-manikstu-gold/20 bg-white shadow-xs sm:shadow-sm overflow-hidden hover:shadow-md transition-all"
@@ -836,7 +858,7 @@ export default function AboutPage() {
 
                 {/* Advisors cards, 4 columns grid */}
                 <div className="mt-6 sm:mt-10 grid gap-3.5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-                  {advisors.map((l) => (
+                  {displayAdvisors.map((l) => (
                     <article
                       key={l.name}
                       className="group flex flex-col rounded-xl sm:rounded-2xl border border-manikstu-gold/20 bg-white shadow-xs sm:shadow-sm overflow-hidden hover:shadow-md transition-all"

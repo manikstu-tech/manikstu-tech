@@ -101,7 +101,7 @@ export default function CollaborateCTA({ pillars: propPillars }: { pillars?: Pil
           {/* CTA Button */}
           <div className="mt-5 flex justify-center">
             <Link
-              href="/get-in-touch"
+              href="/contact?type=partnership"
               className="inline-flex items-center gap-2 rounded-full bg-[#3D7830] px-6 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-[#326327] hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
             >
               {t("becomePartner")} <ArrowRight className="h-3.5 w-3.5" />

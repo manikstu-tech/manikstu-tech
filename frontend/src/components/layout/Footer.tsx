@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, Link2, Headphones, ChevronRight, MapPin } from "lucide-react";
-import { getSettings, getFooter } from "@/lib/api";
+import { getSettings, getFooter, subscribeNewsletter } from "@/lib/api";
 import type { FooterLink } from "@/types";
 
 const fallbackQuickLinks: FooterLink[] = [
@@ -38,6 +38,8 @@ const fallbackSettings: Record<string, string> = {
 
 export default function Footer() {
   const [settings, setSettings] = useState(fallbackSettings);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "done" | "error">("idle");
   const [quickLinks, setQuickLinks] = useState(fallbackQuickLinks);
   const [supportLinks, setSupportLinks] = useState(fallbackSupportLinks);
   const t = useTranslations("Footer");
@@ -194,14 +196,38 @@ export default function Footer() {
             <p className="mt-2 text-sm text-grey leading-relaxed">
               {t("newsletterDesc")}
             </p>
-            <input
-              type="email"
-              placeholder={tCommon("enterEmail")}
-              className="mt-2 w-full rounded-lg border border-light-grey px-4 py-2.5 text-sm text-charcoal placeholder:text-grey/50 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
-            />
-            <button className="mt-3 w-full rounded-lg bg-manikstu-green px-4 py-2.5 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors">
-              {tCommon("subscribe")}
-            </button>
+            {newsletterStatus === "done" ? (
+              <p className="mt-2 text-sm font-medium text-manikstu-green">{t("subscribedOk")}</p>
+            ) : (
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setNewsletterStatus("idle");
+                  try {
+                    await subscribeNewsletter(newsletterEmail.trim());
+                    setNewsletterEmail("");
+                    setNewsletterStatus("done");
+                  } catch {
+                    setNewsletterStatus("error");
+                  }
+                }}
+              >
+                <input
+                  type="email"
+                  required
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder={tCommon("enterEmail")}
+                  className="mt-2 w-full rounded-lg border border-light-grey px-4 py-2.5 text-sm text-charcoal placeholder:text-grey/50 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+                />
+                <button className="mt-3 w-full rounded-lg bg-manikstu-green px-4 py-2.5 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors">
+                  {tCommon("subscribe")}
+                </button>
+                {newsletterStatus === "error" && (
+                  <p className="mt-2 text-sm text-manikstu-red">{t("subscribeFail")}</p>
+                )}
+              </form>
+            )}
           </div>
         </div>
       </div>
