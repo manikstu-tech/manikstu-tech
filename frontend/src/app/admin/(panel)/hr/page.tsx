@@ -55,7 +55,7 @@ function ActionRow({ label, description, icon: Icon, href }: { label: string; de
 
 export default async function HrDashboardPage() {
   const user = await requireAdmin();
-  const jobs = await count("careers");
+  const [jobs, applications] = await Promise.all([count("careers"), count("applications")]);
   const n = (v: number | null) => (v === null ? "—" : v.toLocaleString("en-IN"));
 
   return (
@@ -67,7 +67,7 @@ export default async function HrDashboardPage() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <StatTile label="Job Openings" value={n(jobs)} hint="Posted on the website" icon={Briefcase} href="/admin/careers" />
-        <StatTile label="Applications" value="0" hint="Awaiting review" icon={Inbox} href="/admin/applications" />
+        <StatTile label="Applications" value={n(applications)} hint="Candidates applied" icon={Inbox} href="/admin/applications" />
       </div>
 
       <div className="mt-5 grid items-start gap-5 lg:grid-cols-[1.6fr_1fr]">
