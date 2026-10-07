@@ -892,5 +892,32 @@
       "rejected": "Could not be fulfilled",
       "cancelled": "Cancelled"
     }
+  },
+  "Complaint": {
+    "title": "Raise a Complaint",
+    "intro": "Something gone wrong with an order or a product? Tell us and our team will call you back.",
+    "name": "Your name",
+    "phone": "Phone number",
+    "email": "Email (optional)",
+    "city": "City (optional)",
+    "orderNumber": "Order number (optional)",
+    "orderNumberHelp": "If your complaint is about an order, this helps us find it faster.",
+    "category": "What is this about?",
+    "categoryPlaceholder": "Choose one",
+    "categories": {
+      "order": "My order",
+      "product": "Product quality",
+      "delivery": "Delivery",
+      "payment": "Payment or refund",
+      "service": "Service or staff",
+      "other": "Something else"
+    },
+    "description": "What happened?",
+    "descriptionHelp": "Tell us what went wrong, in as much detail as you can.",
+    "submit": "Submit complaint",
+    "submitting": "Submitting…",
+    "successTitle": "We have your complaint",
+    "successDesc": "Our team will review it and call you on the number you gave us.",
+    "error": "Something went wrong. Please try again, or call us on +91 98330 30312."
   }
 }

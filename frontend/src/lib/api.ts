@@ -101,6 +101,29 @@ export const trackOrder = async (orderNumber: string, contact: string) => {
   return (await response.json()) as { data: TrackedOrder };
 };
 
+// Complaints. Routed differently from an enquiry: an enquiry is a sales lead,
+// a complaint is a customer already let down, so it opens a ticket the
+// telecalling head triages.
+export interface ComplaintInput {
+  name: string;
+  phone: string;
+  email?: string;
+  city?: string;
+  order_number?: string;
+  category?: string;
+  description: string;
+}
+
+export const submitComplaint = async (payload: ComplaintInput) => {
+  const response = await fetch(`${API_BASE_URL}/complaints`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!response.ok) throw new Error('Failed to submit complaint');
+  return response.json();
+};
+
 // Products
 export const getProducts = async (page = 1, limit = 10) => {
   const response = await fetch(`${API_BASE_URL}/products?page=${page}&limit=${limit}`);
