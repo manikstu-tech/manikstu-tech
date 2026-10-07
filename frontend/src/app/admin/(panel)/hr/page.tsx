@@ -1,11 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Briefcase, FileText, Plus, ChevronRight, Inbox, type LucideIcon } from "lucide-react";
+import { Briefcase, FileText, Plus, ChevronRight, Inbox, ArrowUpRight, type LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/admin/AdminUi";
 import { requireAdmin } from "@/lib/admin/auth";
 import { listSection } from "@/lib/admin/sections-api";
 
 export const metadata: Metadata = { title: "HR Dashboard" };
+
+type AppItem = {
+  id: number;
+  name: string;
+  email: string;
+  status: string;
+  job_title: string | null;
+  created_at: string | null;
+};
+
+const STATUS_STYLE: Record<string, string> = {
+  new: "bg-manikstu-gold/15 text-[#8A6414]",
+  shortlisted: "bg-[#5B8DEF]/12 text-[#3E6FD0]",
+  interview: "bg-[#7C5CB0]/12 text-[#6A4C9C]",
+  hired: "bg-manikstu-green/12 text-manikstu-leaf",
+  rejected: "bg-manikstu-red/10 text-manikstu-red",
+};
 
 async function count(key: string): Promise<number | null> {
   try {
@@ -14,6 +31,22 @@ async function count(key: string): Promise<number | null> {
   } catch {
     return null;
   }
+}
+
+async function getApplications(): Promise<{ total: number | null; recent: AppItem[] }> {
+  try {
+    const res = await listSection("applications", {});
+    const data = (res.data ?? []) as unknown as AppItem[];
+    return { total: res.meta?.total ?? data.length, recent: data.slice(0, 5) };
+  } catch {
+    return { total: null, recent: [] };
+  }
+}
+
+function fmtDate(iso: string | null): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
 }
 
 function StatTile({ label, value, hint, icon: Icon, href }: { label: string; value: string; hint: string; icon: LucideIcon; href: string }) {
@@ -55,7 +88,7 @@ function ActionRow({ label, description, icon: Icon, href }: { label: string; de
 
 export default async function HrDashboardPage() {
   const user = await requireAdmin();
-  const [jobs, applications] = await Promise.all([count("careers"), count("applications")]);
+  const [jobs, apps] = await Promise.all([count("careers"), getApplications()]);
   const n = (v: number | null) => (v === null ? "—" : v.toLocaleString("en-IN"));
 
   return (
@@ -67,24 +100,52 @@ export default async function HrDashboardPage() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <StatTile label="Job Openings" value={n(jobs)} hint="Posted on the website" icon={Briefcase} href="/admin/careers" />
-        <StatTile label="Applications" value={n(applications)} hint="Candidates applied" icon={Inbox} href="/admin/applications" />
+        <StatTile label="Applications" value={n(apps.total)} hint="Candidates applied" icon={Inbox} href="/admin/applications" />
       </div>
 
       <div className="mt-5 grid items-start gap-5 lg:grid-cols-[1.6fr_1fr]">
-        {/* Applications — placeholder until the CV-upload feature ships */}
+        {/* Recent applications */}
         <section className="overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white p-5 shadow-sm">
           <div className="flex items-center justify-between">
-            <h2 className="font-heading text-lg font-bold text-charcoal">Applications</h2>
+            <h2 className="font-heading text-lg font-bold text-charcoal">Recent Applications</h2>
+            <Link href="/admin/applications" className="inline-flex items-center gap-1 text-sm font-semibold text-manikstu-green hover:underline">
+              View all <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </div>
-          <div className="flex flex-col items-center justify-center gap-2 py-12 text-center">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
-              <Inbox className="h-6 w-6" />
-            </span>
-            <p className="text-sm font-semibold text-charcoal">Candidate applications will appear here</p>
-            <p className="max-w-sm text-xs text-grey">
-              Once the website apply form with CV upload is switched on, every applicant and their CV lands in this inbox.
-            </p>
-          </div>
+
+          {apps.recent.length === 0 ? (
+            <div className="flex flex-col items-center justify-center gap-2 py-12 text-center">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
+                <Inbox className="h-6 w-6" />
+              </span>
+              <p className="text-sm font-semibold text-charcoal">No applications yet</p>
+              <p className="max-w-sm text-xs text-grey">
+                When candidates apply through a job&apos;s Apply form on the website, they appear here with their CV.
+              </p>
+            </div>
+          ) : (
+            <ul className="mt-1 divide-y divide-[#F4F1EA]">
+              {apps.recent.map((a) => (
+                <li key={a.id}>
+                  <Link href="/admin/applications" className="flex items-center gap-3 py-3 transition hover:opacity-80">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 text-sm font-semibold text-manikstu-leaf">
+                      {a.name?.charAt(0).toUpperCase() || "?"}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-semibold text-charcoal">{a.name}</span>
+                      <span className="block truncate text-xs text-grey">{a.job_title ?? a.email}</span>
+                    </span>
+                    <span className="flex shrink-0 items-center gap-2.5">
+                      <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold capitalize ${STATUS_STYLE[a.status] ?? "bg-light-grey text-charcoal"}`}>
+                        {a.status}
+                      </span>
+                      <span className="whitespace-nowrap text-xs text-grey">{fmtDate(a.created_at)}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
 
         {/* Quick actions */}
