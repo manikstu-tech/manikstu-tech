@@ -48,6 +48,17 @@ export async function adminLogin(email: string, password: string): Promise<Login
   }
 
   const { token, user } = body as { token: string; user: AdminUser };
+
+  // Telecalling moved to the CRM and its panel here is gone, but Laravel's
+  // EnsureAdminArea still refuses telecallers — so letting one in would land
+  // them on a dashboard where every request 403s. Stop here and say where to go.
+  if (user.role === "telecaller") {
+    return {
+      ok: false,
+      error: "Telecalling now runs in the Manikstu CRM. Please sign in there instead.",
+    };
+  }
+
   await setAdminToken(token);
   return { ok: true, role: user.role };
 }
