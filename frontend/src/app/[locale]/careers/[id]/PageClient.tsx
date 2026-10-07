@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { MapPin, Clock, ArrowLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ApplyModal from "@/components/careers/ApplyModal";
 import type { JobDetail } from "./page";
 
 export default function JobPageClient({ job }: { job: JobDetail }) {
   const t = useTranslations("Careers");
+  const [applyOpen, setApplyOpen] = useState(false);
   const typeKey = job.type ? `jobTypes.${job.type}` : "";
   const typeLabel = typeKey && t.has(typeKey) ? t(typeKey) : job.type;
 
@@ -49,16 +52,24 @@ export default function JobPageClient({ job }: { job: JobDetail }) {
               <p className="mt-6 text-grey leading-relaxed">{job.description}</p>
             )}
 
-            <Link
-              href={`/contact?type=careers&role=${encodeURIComponent(job.title)}`}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
+            <button
+              type="button"
+              onClick={() => setApplyOpen(true)}
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
             >
               {t("applyNow")} <ChevronRight className="h-4 w-4" />
-            </Link>
+            </button>
           </div>
         </section>
       </main>
       <Footer />
+
+      <ApplyModal
+        jobId={job.id}
+        jobTitle={job.title}
+        open={applyOpen}
+        onClose={() => setApplyOpen(false)}
+      />
     </>
   );
 }

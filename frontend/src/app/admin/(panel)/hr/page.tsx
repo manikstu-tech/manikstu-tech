@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Briefcase, Users, FileText, Plus, ChevronRight, Inbox, type LucideIcon } from "lucide-react";
+import { Briefcase, FileText, Plus, ChevronRight, Inbox, type LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/admin/AdminUi";
 import { requireAdmin } from "@/lib/admin/auth";
 import { listSection } from "@/lib/admin/sections-api";
@@ -55,7 +55,7 @@ function ActionRow({ label, description, icon: Icon, href }: { label: string; de
 
 export default async function HrDashboardPage() {
   const user = await requireAdmin();
-  const [jobs, team] = await Promise.all([count("careers"), count("team")]);
+  const jobs = await count("careers");
   const n = (v: number | null) => (v === null ? "—" : v.toLocaleString("en-IN"));
 
   return (
@@ -67,7 +67,7 @@ export default async function HrDashboardPage() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <StatTile label="Job Openings" value={n(jobs)} hint="Posted on the website" icon={Briefcase} href="/admin/careers" />
-        <StatTile label="Team Members" value={n(team)} hint="Shown on the About page" icon={Users} href="/admin/team" />
+        <StatTile label="Applications" value="0" hint="Awaiting review" icon={Inbox} href="/admin/applications" />
       </div>
 
       <div className="mt-5 grid items-start gap-5 lg:grid-cols-[1.6fr_1fr]">
@@ -93,7 +93,7 @@ export default async function HrDashboardPage() {
           <div className="mt-4 grid gap-2.5">
             <ActionRow label="Post a Job" description="Create a new opening" icon={Plus} href="/admin/careers/new" />
             <ActionRow label="Manage Jobs" description="Edit or close openings" icon={Briefcase} href="/admin/careers" />
-            <ActionRow label="Team Directory" description="People on the About page" icon={Users} href="/admin/team" />
+            <ActionRow label="View Applications" description="Review candidates & CVs" icon={Inbox} href="/admin/applications" />
             <ActionRow label="Website Careers Page" description="See what candidates see" icon={FileText} href="/careers" />
           </div>
         </section>

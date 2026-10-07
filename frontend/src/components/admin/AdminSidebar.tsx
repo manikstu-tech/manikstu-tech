@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
-  Briefcase, FileText, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
+  Briefcase, FileText, Image as ImageIcon, Inbox, LayoutDashboard, LogOut, Megaphone,
   Menu, Newspaper, Quote, Search, Settings, ShieldCheck, Users, X,
   type LucideIcon,
 } from "lucide-react";
@@ -51,7 +51,7 @@ const HR_NAV: NavGroup[] = [
     items: [
       { label: "Dashboard", icon: LayoutDashboard, href: "/admin/hr" },
       { label: "Jobs", icon: Briefcase, href: "/admin/careers" },
-      { label: "Team", icon: Users, href: "/admin/team" },
+      { label: "Applications", icon: Inbox, href: "/admin/applications" },
     ],
   },
 ];

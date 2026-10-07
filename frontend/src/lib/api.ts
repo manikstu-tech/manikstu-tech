@@ -147,3 +147,18 @@ export const submitContact = async (formData: any) => {
   if (!response.ok) throw new Error('Failed to submit contact form');
   return response.json();
 };
+
+// Job application. Sent as multipart (includes the CV file), so no manual
+// Content-Type — the browser sets the boundary itself.
+export const submitJobApplication = async (jobId: number | string, data: FormData) => {
+  const response = await fetch(`${API_BASE_URL}/careers/${encodeURIComponent(String(jobId))}/apply`, {
+    method: 'POST',
+    body: data,
+  });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const firstError = body?.errors ? (Object.values(body.errors).flat()[0] as string | undefined) : undefined;
+    throw new Error(firstError || body?.message || 'Something went wrong. Please try again.');
+  }
+  return body;
+};
