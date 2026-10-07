@@ -17,6 +17,7 @@ const routes = [
   "/collaborate",
   "/collaborate/ajah",
   "/training",
+  "/investors",
   "/blog",
   "/help",
   "/privacy",

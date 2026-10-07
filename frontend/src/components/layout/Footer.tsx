@@ -15,6 +15,7 @@ const fallbackQuickLinks: FooterLink[] = [
   { id: 4, group: "quick", label: "Media", url: "/blog", order: 4, is_active: true },
   { id: 5, group: "quick", label: "Collaborate", url: "/collaborate", order: 5, is_active: true },
   { id: 6, group: "quick", label: "Training & Awareness", url: "/training", order: 6, is_active: true },
+  { id: 7, group: "quick", label: "Investors & Funders", url: "/investors", order: 7, is_active: true },
 ];
 
 const fallbackSupportLinks: FooterLink[] = [
@@ -52,7 +53,23 @@ export default function Footer() {
       .catch(() => {});
     getFooter()
       .then((res) => {
-        if (res.data.quick) setQuickLinks(res.data.quick);
+        if (res.data.quick) {
+          // Guarantee the Investors & Funders link even if the CMS footer
+          // menu hasn't been updated yet.
+          const quick = [...res.data.quick];
+          if (!quick.some((l) => l.url === "/investors")) {
+            const maxOrder = quick.reduce((m, l) => Math.max(m, l.order ?? 0), 0);
+            quick.push({
+              id: 9007,
+              group: "quick",
+              label: "Investors & Funders",
+              url: "/investors",
+              order: maxOrder + 1,
+              is_active: true,
+            });
+          }
+          setQuickLinks(quick);
+        }
         if (res.data.support) setSupportLinks(res.data.support);
       })
       .catch(() => {});

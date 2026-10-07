@@ -15,6 +15,7 @@ const fallbackLinks: NavigationMenuItem[] = [
   { id: 5, label: "Media", url: "/blog", parent_id: null, order: 5, is_active: true, target: "_self" },
   { id: 6, label: "Collaborate", url: "/collaborate", parent_id: null, order: 6, is_active: true, target: "_self" },
   { id: 7, label: "Training & Awareness", url: "/training", parent_id: null, order: 7, is_active: true, target: "_self" },
+  { id: 8, label: "Investors & Funders", url: "/investors", parent_id: null, order: 8, is_active: true, target: "_self" },
 ];
 
 export default function Header() {
@@ -26,7 +27,24 @@ export default function Header() {
   useEffect(() => {
     getNavigation()
       .then((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) setNavLinks(res.data);
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          // Ensure the Investors & Funders link is present even when the CMS
+          // menu hasn't been updated yet. Append it after Training if missing.
+          const links = [...res.data];
+          if (!links.some((l) => l.url === "/investors")) {
+            const maxOrder = links.reduce((m, l) => Math.max(m, l.order ?? 0), 0);
+            links.push({
+              id: 9008,
+              label: "Investors & Funders",
+              url: "/investors",
+              parent_id: null,
+              order: maxOrder + 1,
+              is_active: true,
+              target: "_self",
+            });
+          }
+          setNavLinks(links);
+        }
       })
       .catch(() => {});
   }, []);
