@@ -6,8 +6,8 @@ import { loginAction } from "./actions";
 import type { LoginState } from "@/lib/admin/types";
 
 const ROLES = [
-  { key: "admin", label: "Admin", Icon: ShieldCheck },
-  { key: "hr", label: "HR", Icon: Heart },
+  { key: "admin", label: "Admin", desc: "Full management", Icon: ShieldCheck },
+  { key: "hr", label: "HR", desc: "Hiring & team", Icon: Heart },
 ] as const;
 
 export default function LoginForm({ notice }: { notice?: string }) {
@@ -84,7 +84,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
       <div>
         <p className="mb-2 text-sm font-semibold text-charcoal">Select Your Role</p>
         <div className="grid grid-cols-2 gap-3">
-          {ROLES.map(({ key, label, Icon }) => {
+          {ROLES.map(({ key, label, desc, Icon }) => {
             const active = role === key;
             return (
               <button
@@ -92,20 +92,23 @@ export default function LoginForm({ notice }: { notice?: string }) {
                 type="button"
                 onClick={() => setRole(key)}
                 aria-pressed={active}
-                className={`flex flex-col items-center gap-1.5 rounded-xl border px-2 py-2.5 text-center transition ${
+                className={`flex items-center gap-2.5 rounded-xl border px-3 py-2.5 text-left transition ${
                   active
                     ? "border-manikstu-green bg-manikstu-green/5 ring-1 ring-manikstu-green/30"
                     : "border-[#E8E2D6] bg-white hover:border-manikstu-green/40"
                 }`}
               >
                 <span
-                  className={`flex h-8 w-8 items-center justify-center rounded-full ${
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition ${
                     active ? "bg-manikstu-green text-white" : "bg-manikstu-green/10 text-manikstu-green"
                   }`}
                 >
                   <Icon className="h-4 w-4" />
                 </span>
-                <span className="text-xs font-semibold leading-tight text-charcoal">{label}</span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-semibold leading-tight text-charcoal">{label}</span>
+                  <span className="block truncate text-[11px] leading-tight text-grey">{desc}</span>
+                </span>
               </button>
             );
           })}

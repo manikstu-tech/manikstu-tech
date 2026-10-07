@@ -13,8 +13,10 @@ import NotificationBell from "./NotificationBell";
 import UserMenu from "./UserMenu";
 
 type NavItem = { label: string; icon: LucideIcon; href: string; developerOnly?: boolean };
+type NavGroup = { group: string; items: NavItem[] };
 
-const NAV: { group: string; items: NavItem[] }[] = [
+// The full admin panel (admin / developer / telesales).
+const ADMIN_NAV: NavGroup[] = [
   { group: "Overview", items: [{ label: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" }] },
   {
     group: "Content",
@@ -42,6 +44,18 @@ const NAV: { group: string; items: NavItem[] }[] = [
   },
 ];
 
+// The focused HR panel.
+const HR_NAV: NavGroup[] = [
+  {
+    group: "HR Panel",
+    items: [
+      { label: "Dashboard", icon: LayoutDashboard, href: "/admin/hr" },
+      { label: "Jobs", icon: Briefcase, href: "/admin/careers" },
+      { label: "Team", icon: Users, href: "/admin/team" },
+    ],
+  },
+];
+
 const ROLE_STYLE: Record<string, string> = {
   developer: "bg-manikstu-gold text-white",
   telesales: "bg-manikstu-green text-white",
@@ -57,6 +71,8 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const isDeveloper = user.role === "developer";
+  const isHr = user.role === "hr";
+  const nav = isHr ? HR_NAV : ADMIN_NAV;
 
   return (
     <>
@@ -110,9 +126,12 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="relative flex h-20 items-center justify-center border-b border-white/10 px-5">
+        <div className="relative flex h-20 items-center justify-center gap-2.5 border-b border-white/10 px-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Manikstu Agri Solutions" className="h-14 w-auto brightness-0 invert" />
+          <img src="/logo.png" alt="Manikstu Agri Solutions" className="h-12 w-auto brightness-0 invert" />
+          <span className="rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-white">
+            {isHr ? "HR" : "Admin"}
+          </span>
           <button
             type="button"
             onClick={() => setOpen(false)}
@@ -124,7 +143,7 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
         </div>
 
         <nav className="hide-scrollbar flex-1 overflow-y-auto px-3 py-3">
-          {NAV.map(({ group, items }) => {
+          {nav.map(({ group, items }) => {
             const visible = items.filter((item) => !item.developerOnly || isDeveloper);
             if (visible.length === 0) return null;
             return (

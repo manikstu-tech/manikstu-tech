@@ -12,5 +12,6 @@ export async function loginAction(_prev: LoginState, formData: FormData): Promis
   const result = await adminLogin(email, password);
   if (!result.ok) return { error: result.error, email };
 
-  redirect("/admin/dashboard");
+  // Separate panels: HR staff land in the HR workspace, everyone else in the admin panel.
+  redirect(result.role === "hr" ? "/admin/hr" : "/admin/dashboard");
 }

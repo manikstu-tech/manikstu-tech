@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import {
   ArrowUpRight, Calendar, ChevronRight, FileText, Image as ImageIcon,
@@ -75,6 +76,8 @@ function ActionRow({ label, description, icon: Icon, href, tone }: { label: stri
 
 export default async function DashboardPage({ searchParams }: { searchParams: Promise<{ date?: string }> }) {
   const [user, sp] = await Promise.all([requireAdmin(), searchParams]);
+  // HR staff use the separate HR panel, not the admin dashboard.
+  if (user.role === "hr") redirect("/admin/hr");
   const data = await getDashboard(sp.date);
   const today = new Date().toISOString().slice(0, 10);
   const isDeveloper = user.role === "developer";
