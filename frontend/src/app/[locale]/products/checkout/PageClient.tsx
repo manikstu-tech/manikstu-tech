@@ -47,6 +47,8 @@ export default function CheckoutPage() {
   const [cart, setCart] = useState<CartMap>({});
   const [address, setAddress] = useState<Address>(emptyAddress);
   const [placed, setPlaced] = useState(false);
+  // Shown on the success card: without it the customer has no way to track.
+  const [orderNumber, setOrderNumber] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -85,7 +87,7 @@ export default function CheckoutPage() {
         if (!Number.isFinite(productId) || productId <= 0) throw new Error(`unresolvable:${l.slug}`);
         items.push({ productId, quantity: l.qty });
       }
-      await placeOrder({
+      const placedOrder = await placeOrder({
         items,
         customer_name: address.fullName,
         phone: address.phone,
@@ -97,6 +99,7 @@ export default function CheckoutPage() {
         pincode: address.pincode,
         notes: address.notes || undefined,
       });
+      setOrderNumber(placedOrder?.data?.order_number ?? null);
       setPlaced(true);
       clearCart();
     } catch {
@@ -133,6 +136,21 @@ export default function CheckoutPage() {
                 <p className="mx-auto mt-2 max-w-md text-grey">
                   {t("orderThankYou", { name: address.fullName || t("friend"), phone: address.phone || t("yourPhone"), city: address.city || t("yourAddress") })}
                 </p>
+                {orderNumber && (
+                  <div className="mt-4 rounded-xl border border-manikstu-gold/30 bg-manikstu-cream/60 p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-manikstu-green">
+                      {t("orderNumberLabel")}
+                    </p>
+                    <p className="mt-1 font-heading text-lg font-bold text-charcoal">{orderNumber}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-grey">{t("orderNumberHelp")}</p>
+                    <Link
+                      href={`/products/track?order=${encodeURIComponent(orderNumber)}`}
+                      className="mt-3 inline-block text-sm font-semibold text-manikstu-green underline hover:text-manikstu-leaf"
+                    >
+                      {t("trackThisOrder")}
+                    </Link>
+                  </div>
+                )}
                 <Link
                   href="/products"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"

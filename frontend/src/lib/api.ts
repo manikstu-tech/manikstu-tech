@@ -71,7 +71,34 @@ export const placeOrder = async (payload: OrderInput) => {
     body: JSON.stringify(payload),
   });
   if (!response.ok) throw new Error('Failed to place order');
-  return response.json();
+  return response.json() as Promise<{ data: { order_number: string } }>;
+};
+
+export interface TrackedOrder {
+  order_number: string;
+  status: string;
+  payment_status: string;
+  total: number;
+  placed_at: string | null;
+  items: { product_name: string; quantity: number; price: number }[];
+}
+
+/**
+ * Track an order. Checkout is open to guests, so there is no account to
+ * authenticate against: the backend wants the phone or email the order was
+ * placed with alongside the order number.
+ */
+export const trackOrder = async (orderNumber: string, contact: string) => {
+  const response = await fetch(
+    `${API_BASE_URL}/orders/${encodeURIComponent(orderNumber)}/track`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contact }),
+    },
+  );
+  if (!response.ok) throw new Error('No order found with those details.');
+  return (await response.json()) as { data: TrackedOrder };
 };
 
 // Products

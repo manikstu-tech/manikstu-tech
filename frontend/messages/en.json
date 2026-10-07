@@ -785,7 +785,10 @@
     "items": "Items",
     "delivery": "Delivery",
     "free": "Free",
-    "total": "Total"
+    "total": "Total",
+    "orderNumberLabel": "Your order number",
+    "orderNumberHelp": "Keep this safe. You can check your order's progress with it and the phone number you gave us.",
+    "trackThisOrder": "Track this order"
   },
   "Partners": {
     "pill": "Our Partners",
@@ -867,7 +870,27 @@
     "ctaPillar3Line2": "Reporting",
     "ctaPillar4Line1": "Scalable",
     "ctaPillar4Line2": "Model"
+  },
+  "TrackOrder": {
+    "title": "Track your order",
+    "intro": "Enter your order number and the phone number or email you ordered with.",
+    "orderNumber": "Order number",
+    "contact": "Phone or email",
+    "submit": "Track order",
+    "searching": "Checking…",
+    "notFound": "No order found with those details. Check the order number and the phone or email you used.",
+    "placedOn": "Placed on",
+    "total": "Total",
+    "items": "Items",
+    "statusLabel": "Status",
+    "status": {
+      "pending": "Awaiting seller confirmation",
+      "confirmed": "Confirmed",
+      "ready_for_dispatch": "Ready for dispatch",
+      "shipped": "Dispatched",
+      "delivered": "Delivered",
+      "rejected": "Could not be fulfilled",
+      "cancelled": "Cancelled"
+    }
   }
 }
-
-
