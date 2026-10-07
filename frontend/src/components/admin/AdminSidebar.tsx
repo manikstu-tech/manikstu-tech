@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
-  Briefcase, Contact, FileText, Image as ImageIcon, LayoutDashboard, LogOut, Mail, Megaphone,
-  Menu, MessageSquare, Newspaper, Package, Quote, Search, Settings, ShieldCheck, ShoppingCart, Tags, Users, X,
+  Briefcase, FileText, Image as ImageIcon, LayoutDashboard, LogOut, Megaphone,
+  Menu, Newspaper, Quote, Search, Settings, ShieldCheck, Users, X,
   type LucideIcon,
 } from "lucide-react";
 import type { AdminUser } from "@/lib/admin/types";
@@ -16,22 +16,6 @@ type NavItem = { label: string; icon: LucideIcon; href: string; developerOnly?: 
 
 const NAV: { group: string; items: NavItem[] }[] = [
   { group: "Overview", items: [{ label: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" }] },
-  {
-    group: "Sales",
-    items: [
-      { label: "Orders", icon: ShoppingCart, href: "/admin/orders" },
-      { label: "Enquiries", icon: MessageSquare, href: "/admin/enquiries" },
-      { label: "Subscribers", icon: Mail, href: "/admin/subscribers" },
-      { label: "Customers", icon: Contact, href: "/admin/customers" },
-    ],
-  },
-  {
-    group: "Catalogue",
-    items: [
-      { label: "Products", icon: Package, href: "/admin/products" },
-      { label: "Categories", icon: Tags, href: "/admin/categories" },
-    ],
-  },
   {
     group: "Content",
     items: [

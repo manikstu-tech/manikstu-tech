@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Bell, MessageSquare, Newspaper, ShoppingCart, type LucideIcon } from "lucide-react";
+import { Bell, Newspaper, type LucideIcon } from "lucide-react";
 import type { NotificationItem, NotificationType } from "@/app/admin/api/notifications/route";
 
 const LAST_SEEN_KEY = "admin:notif:lastSeen";
 const POLL_MS = 30_000;
 
 const META: Record<NotificationType, { icon: LucideIcon; className: string }> = {
-  order: { icon: ShoppingCart, className: "bg-manikstu-green/10 text-manikstu-leaf" },
-  enquiry: { icon: MessageSquare, className: "bg-manikstu-gold/15 text-[#8A6414]" },
   blog: { icon: Newspaper, className: "bg-[#5B8DEF]/10 text-[#3E6ED6]" },
 };
 
