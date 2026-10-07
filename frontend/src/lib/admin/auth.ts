@@ -18,22 +18,13 @@ export const getCurrentAdmin = cache(async (): Promise<AdminUser | null> => {
 });
 
 /**
- * Admin-panel pages call this. Telecallers belong in their own panel, so they
- * are sent there, as the Blade `area` guard did. The proxy's cookie check is
- * only optimistic.
+ * Admin-panel pages call this. The proxy's cookie check is only optimistic;
+ * Laravel checks the token and role on every request, so it stays the real
+ * auth boundary.
  */
 export async function requireAdmin(): Promise<AdminUser> {
   const user = await getCurrentAdmin();
   if (!user) redirect("/admin/session-expired");
-  if (user.role === "telecaller") redirect("/admin/telecalling");
-  return user;
-}
-
-/** Telecalling pages call this; everyone else goes to the admin dashboard. */
-export async function requireTelecaller(): Promise<AdminUser> {
-  const user = await getCurrentAdmin();
-  if (!user) redirect("/admin/session-expired");
-  if (user.role !== "telecaller") redirect("/admin/dashboard");
   return user;
 }
 

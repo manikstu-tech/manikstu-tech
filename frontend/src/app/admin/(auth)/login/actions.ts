@@ -12,5 +12,5 @@ export async function loginAction(_prev: LoginState, formData: FormData): Promis
   const result = await adminLogin(email, password);
   if (!result.ok) return { error: result.error, email };
 
-  redirect(result.role === "telecaller" ? "/admin/telecalling" : "/admin/dashboard");
+  redirect("/admin/dashboard");
 }

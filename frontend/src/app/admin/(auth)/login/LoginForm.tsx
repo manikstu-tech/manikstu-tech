@@ -1,13 +1,12 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { ArrowRight, Eye, EyeOff, Heart, Loader2, Lock, Mail, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, Eye, EyeOff, Heart, Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
 import { loginAction } from "./actions";
 import type { LoginState } from "@/lib/admin/types";
 
 const ROLES = [
   { key: "admin", label: "Admin", Icon: ShieldCheck },
-  { key: "farmers", label: "Farmers Connect", Icon: Users },
   { key: "hr", label: "HR", Icon: Heart },
 ] as const;
 
@@ -84,7 +83,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
       {/* Role selector */}
       <div>
         <p className="mb-2 text-sm font-semibold text-charcoal">Select Your Role</p>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-3">
           {ROLES.map(({ key, label, Icon }) => {
             const active = role === key;
             return (
