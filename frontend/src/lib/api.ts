@@ -5,7 +5,7 @@ export const API_BASE_URL =
   typeof window !== 'undefined'
     ? '/api/backend'
     : (process.env.NEXT_PUBLIC_API_URL ||
-       (process.env.NODE_ENV === 'production' ? 'https://api.manikstu.com/api' : 'http://localhost:8000/api'));
+       (process.env.NODE_ENV === 'production' ? 'https://api.manikstu.com/api' : 'http://127.0.0.1:8001/api'));
 
 // Generic fetch helper
 async function apiFetch<T>(path: string): Promise<T> {

@@ -7,7 +7,7 @@ import type { BlogPost, PressRelease } from "@/types";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  (process.env.NODE_ENV === "production" ? "https://api.manikstu.com/api" : "http://localhost:8000/api");
+  (process.env.NODE_ENV === "production" ? "https://api.manikstu.com/api" : "http://127.0.0.1:8001/api");
 
 export type ArticleDetail = (BlogPost | PressRelease) & { _source: "blog" | "press" };
 

@@ -6,7 +6,7 @@ import { setRequestLocale } from "next-intl/server";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  (process.env.NODE_ENV === "production" ? "https://api.manikstu.com/api" : "http://localhost:8000/api");
+  (process.env.NODE_ENV === "production" ? "https://api.manikstu.com/api" : "http://127.0.0.1:8001/api");
 
 export function generateStaticParams() {
   return FALLBACK_PRODUCTS.map((p) => ({ slug: p.slug }));

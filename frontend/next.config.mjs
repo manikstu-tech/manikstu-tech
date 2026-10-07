@@ -97,10 +97,17 @@ const nextConfig = {
   },
 
   async rewrites() {
+    // Browser calls go through this same-origin proxy, so they never hit CORS.
+    // It followed the live API unconditionally, which meant a dev browser wrote
+    // to production while the server half of the same page read localhost.
+    const backend = (
+      process.env.NEXT_PUBLIC_API_URL || "https://api.manikstu.com/api"
+    ).replace(/\/+$/, "");
+
     return [
       {
         source: "/api/backend/:path*",
-        destination: "https://api.manikstu.com/api/:path*",
+        destination: `${backend}/:path*`,
       },
     ];
   },
