@@ -281,6 +281,9 @@ export default function Footer() {
       <div className="border-t border-light-grey bg-white">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:py-3 text-center text-xs text-grey sm:px-6 md:px-8">
           <span>&copy; {new Date().getFullYear()} {t("copyright")}</span>
+          <p className="mt-1 text-[11px] text-grey/70">
+            CIN: {settings.cin} | GSTIN: {settings.gstin}
+          </p>
         </div>
       </div>
     </footer>
