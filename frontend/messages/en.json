@@ -886,7 +886,7 @@
     "status": {
       "pending": "Awaiting seller confirmation",
       "confirmed": "Confirmed",
-      "ready_for_dispatch": "Ready for dispatch",
+      "ready_for_dispatch": "Packed, ready for dispatch",
       "shipped": "Dispatched",
       "delivered": "Delivered",
       "rejected": "Could not be fulfilled",
