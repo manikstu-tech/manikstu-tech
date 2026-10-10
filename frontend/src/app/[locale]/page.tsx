@@ -139,13 +139,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       ],
     },
     {
-      title: t("partnersSupporting"),
-      partners: [
-        { name: "Supporting Partner", image: "/11.png" },
-        { name: "Supporting Partner 2", image: "/12.png" },
-      ],
-    },
-    {
       title: t("partnersCSR"),
       partners: [
         { name: "Kalinga Kusum", image: "/15.png" },
@@ -202,6 +195,27 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   const newsItems = [
     {
+      date: "May 14, 2026",
+      category: tBlogCategories("media"),
+      categoryColor: "bg-saura-red",
+      title:
+        "Visit of Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India at Raipur Office",
+      excerpt:
+        "Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India visited the Manikstu Agro Raipur Office.",
+      image: "/minister-visit-raipur.webp",
+      imageFit: "cover",
+    },
+    {
+      date: "May 08, 2026",
+      category: tBlogCategories("press"),
+      categoryColor: "bg-manikstu-gold",
+      title: "Initiative to Promote Scientific Goat Farming in the Dhamtari District",
+      excerpt:
+        "Goat Farming Center to be Established at Bhatgaon; To Be Developed as a Modern Research-cum-Integrated Breeding Center",
+      image: "/5866_press_release.jpeg",
+      imageFit: "cover",
+    },
+    {
       date: "Feb 25, 2024",
       category: tBlogCategories("featured"),
       categoryColor: "bg-manikstu-green",
@@ -220,27 +234,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       excerpt:
         "Jayanti Mahapatra, CEO Manikstu Agro received Emerging Women Entrepreneur Award at KIIT Technology Business Incubator.",
       image: "/women-entrepreneur-award.jpg",
-      imageFit: "cover",
-    },
-    {
-      date: "May 08, 2026",
-      category: tBlogCategories("press"),
-      categoryColor: "bg-manikstu-gold",
-      title: "Initiative to Promote Scientific Goat Farming in the Dhamtari District",
-      excerpt:
-        "Goat Farming Center to be Established at Bhatgaon; To Be Developed as a Modern Research-cum-Integrated Breeding Center",
-      image: "/5866_press_release.jpeg",
-      imageFit: "cover",
-    },
-    {
-      date: "May 14, 2026",
-      category: tBlogCategories("media"),
-      categoryColor: "bg-saura-red",
-      title:
-        "Visit of Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India at Raipur Office",
-      excerpt:
-        "Shri Kamlesh Paswan, Union Minister of State (MoS) for Rural Development, Government of India visited the Manikstu Agro Raipur Office.",
-      image: "/minister-visit-raipur.webp",
       imageFit: "cover",
     },
   ];

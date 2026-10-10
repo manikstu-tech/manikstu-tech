@@ -75,3 +75,7 @@ A dev server that is already running does not pick up an edited build config or 
 
 📄 **The rest is in [RETICLE.md](./RETICLE.md): what to do when the tools are missing, when a result carries `version_skew` or `update_available`, when `reticle_state` comes back empty, and how to write a feedback report that can be acted on. Read it when you hit one of those, not before.**
 <!-- reticle:end -->
+
+## Backend map (Hostinger, verified 2026-10-08)
+
+The Laravel backend lives ONLY on the server (`~/domains/manikstu.com/public_html/api` — the ONLY copy to edit; it serves api.manikstu.com). Do NOT touch: `~/public_html/api` (stale copy, broken .env), `~/public_html/api_old_*` (symlink to the unrelated goat-fpc project), `~/domains/manikstu.com/deploy-temp/` (old working files). After ANY backend file change: `php artisan route:clear` (a stale `bootstrap/cache/routes-v7.php` otherwise hides new routes). Migrations are additive-only; verify with `migrate:status` + a live API probe, then delete test rows.
