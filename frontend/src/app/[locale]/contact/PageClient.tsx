@@ -7,7 +7,12 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
-import { submitContact } from "@/lib/api";
+import { submitContact, submitComplaint } from "@/lib/api";
+
+// The second dropdown depends on the first. Enquiry categories are what the enquiry stores as its type;
+// complaint categories are the ones the complaints endpoint accepts.
+const ENQUIRY_CATEGORIES = ["general", "partnership", "training", "careers", "support", "bulk"];
+const COMPLAINT_CATEGORIES = ["order", "product", "delivery", "payment", "service", "other"];
 
 export default function ContactPage({
   initialType = "",
@@ -22,7 +27,9 @@ export default function ContactPage({
     phone: "",
     city: "",
     state: "",
-    type: initialType,
+    kind: ENQUIRY_CATEGORIES.includes(initialType) ? "enquiry" : "",
+    type: ENQUIRY_CATEGORIES.includes(initialType) ? initialType : "",
+    order_number: "",
     message: initialRole ? `Applying for: ${initialRole}\n\n` : "",
     orgName: "",
     orgType: "",
@@ -32,18 +39,36 @@ export default function ContactPage({
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const t = useTranslations("Contact");
   const tCommon = useTranslations("Common");
+  const tComplaint = useTranslations("Complaint");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    // A different Type means a different list of categories, so the old category no longer applies.
+    setForm((prev) => ({ ...prev, [name]: value, ...(name === "kind" ? { type: "" } : {}) }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
     try {
-      const { orgName, orgType, budget, geography, ...base } = form;
+      const { orgName, orgType, budget, geography, kind, order_number, ...base } = form;
+      if (kind === "complaint") {
+        // A complaint is a ticket, not a lead: it goes to the complaints endpoint with its own category.
+        await submitComplaint({
+          name: base.name,
+          phone: base.phone,
+          email: base.email || undefined,
+          city: base.city || undefined,
+          order_number: order_number || undefined,
+          category: base.type || undefined,
+          description: base.state ? `${base.message}\n\nState: ${base.state}` : base.message,
+        });
+        setStatus("success");
+        setForm({ name: "", email: "", phone: "", city: "", state: "", kind: "", type: "", order_number: "", message: "", orgName: "", orgType: "", budget: "", geography: "" });
+        return;
+      }
       const payload =
         form.type === "partnership"
           ? {
@@ -53,7 +78,7 @@ export default function ContactPage({
           : base;
       await submitContact(payload);
       setStatus("success");
-      setForm({ name: "", email: "", phone: "", city: "", state: "", type: "", message: "", orgName: "", orgType: "", budget: "", geography: "" });
+      setForm({ name: "", email: "", phone: "", city: "", state: "", kind: "", type: "", order_number: "", message: "", orgName: "", orgType: "", budget: "", geography: "" });
     } catch {
       setStatus("error");
     }
@@ -361,39 +386,82 @@ export default function ContactPage({
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-charcoal">
-                        {t("phone")}
+                        {form.kind === "complaint" ? t("phoneRequired") : t("phone")}
                       </label>
                       <input
                         id="phone"
                         name="phone"
                         type="tel"
+                        required={form.kind === "complaint"}
                         value={form.phone}
                         onChange={handleChange}
                         className="mt-1 block w-full rounded-lg border border-light-grey px-3 py-2.5 text-sm text-charcoal focus:border-manikstu-green focus:ring-1 focus:ring-manikstu-green outline-none"
                       />
                     </div>
                     <div>
-                      <label htmlFor="type" className="block text-sm font-medium text-charcoal">
-                        {t("enquiryType")}
+                      <label htmlFor="kind" className="block text-sm font-medium text-charcoal">
+                        {t("type")}
                       </label>
                       <select
-                        id="type"
-                        name="type"
-                        value={form.type}
+                        id="kind"
+                        name="kind"
+                        required
+                        value={form.kind}
                         onChange={handleChange}
                         className="mt-1 block w-full rounded-lg border border-light-grey px-3 py-2.5 text-sm text-charcoal focus:border-manikstu-green focus:ring-1 focus:ring-manikstu-green outline-none"
                       >
                         <option value="">{t("selectType")}</option>
-                        <option value="general">{t("general")}</option>
-                        <option value="partnership">{t("partnership")}</option>
-                        <option value="training">{t("training")}</option>
-                        <option value="careers">{t("careers")}</option>
-                        <option value="support">{t("support")}</option>
-                        <option value="bulk">{t("bulk")}</option>
+                        <option value="enquiry">{t("typeEnquiry")}</option>
+                        <option value="complaint">{t("typeComplaint")}</option>
                       </select>
                     </div>
                   </div>
-                  {form.type === "partnership" && (
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="type" className="block text-sm font-medium text-charcoal">
+                        {t("category")}
+                      </label>
+                      <select
+                        id="type"
+                        name="type"
+                        required
+                        disabled={!form.kind}
+                        value={form.type}
+                        onChange={handleChange}
+                        className="mt-1 block w-full rounded-lg border border-light-grey px-3 py-2.5 text-sm text-charcoal focus:border-manikstu-green focus:ring-1 focus:ring-manikstu-green outline-none disabled:cursor-not-allowed disabled:bg-light-grey/30"
+                      >
+                        <option value="">{t("selectCategory")}</option>
+                        {form.kind === "enquiry" &&
+                          ENQUIRY_CATEGORIES.map((c) => (
+                            <option key={c} value={c}>
+                              {t(c)}
+                            </option>
+                          ))}
+                        {form.kind === "complaint" &&
+                          COMPLAINT_CATEGORIES.map((c) => (
+                            <option key={c} value={c}>
+                              {tComplaint(`categories.${c}`)}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                    {form.kind === "complaint" && (
+                      <div>
+                        <label htmlFor="order_number" className="block text-sm font-medium text-charcoal">
+                          {tComplaint("orderNumber")}
+                        </label>
+                        <input
+                          id="order_number"
+                          name="order_number"
+                          type="text"
+                          value={form.order_number}
+                          onChange={handleChange}
+                          className="mt-1 block w-full rounded-lg border border-light-grey px-3 py-2.5 text-sm text-charcoal focus:border-manikstu-green focus:ring-1 focus:ring-manikstu-green outline-none"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  {form.kind === "enquiry" && form.type === "partnership" && (
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div>
                         <label htmlFor="orgName" className="block text-sm font-medium text-charcoal">
