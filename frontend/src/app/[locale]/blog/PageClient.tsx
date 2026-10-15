@@ -33,6 +33,12 @@ const channelVideos: VideoItem[] = youtubeVideos.map((v) => ({
   youtubeId: v.id,
 }));
 
+/** Pull an 11-char YouTube id from a watch/share/embed/shorts URL, else null. */
+function extractYouTubeId(url: string): string | null {
+  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
 export default function BlogPage() {
   const [filter, setFilter] = useState<"All" | Category>("All");
   const [allArticles, setAllArticles] = useState<Article[]>(fallbackArticles);
@@ -105,16 +111,20 @@ export default function BlogPage() {
     // Videos uploaded from the admin Media Library → prepend to the videos list
     getMedia("video").then((res) => {
       if (res.data?.length) {
-        const mediaVideos: VideoItem[] = res.data.map((m) => ({
-          id: `media-${m.id}`,
-          title: m.title || "",
-          url: m.url,
-          thumbnail: "",
-          duration: "",
-          date: m.date || "",
-          description: "",
-          isFile: true,
-        }));
+        const mediaVideos: VideoItem[] = res.data.map((m) => {
+          const ytId = extractYouTubeId(m.url);
+          return {
+            id: `media-${m.id}`,
+            title: m.title || "",
+            url: m.url,
+            thumbnail: ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : "",
+            duration: "",
+            date: m.date || "",
+            description: "",
+            // YouTube links open in the popup player; direct files play inline.
+            ...(ytId ? { youtubeId: ytId } : { isFile: true }),
+          };
+        });
         setVideos((prev) => [...mediaVideos, ...prev.filter((v) => !v.id.startsWith("media-"))]);
       }
     }).catch(() => {});

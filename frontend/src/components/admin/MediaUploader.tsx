@@ -14,7 +14,9 @@ const LIMITS = {
 export default function MediaUploader({ action }: { action: (state: FormState, formData: FormData) => Promise<FormState> }) {
   const [state, formAction, pending] = useActionState(action, {});
   const [type, setType] = useState<"photo" | "video">("photo");
+  const [videoSource, setVideoSource] = useState<"file" | "url">("file");
   const [clientError, setClientError] = useState<string | null>(null);
+  const urlMode = type === "video" && videoSource === "url";
   const form = useRef<HTMLFormElement>(null);
   const today = new Date().toISOString().slice(0, 10);
 
@@ -25,6 +27,22 @@ export default function MediaUploader({ action }: { action: (state: FormState, f
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+
+    if (urlMode) {
+      const url = String(formData.get("video_url") ?? "").trim();
+      if (!url) {
+        setClientError("Paste a video URL.");
+        return;
+      }
+      if (!/^https?:\/\//i.test(url)) {
+        setClientError("Enter a valid URL starting with http:// or https://.");
+        return;
+      }
+      setClientError(null);
+      startTransition(() => formAction(formData));
+      return;
+    }
+
     const file = formData.get("file");
     if (!(file instanceof File) || file.size === 0) {
       setClientError("Choose a file to upload.");
@@ -41,7 +59,10 @@ export default function MediaUploader({ action }: { action: (state: FormState, f
   const tab = (value: "photo" | "video", label: string, Icon: typeof ImageIcon) => (
     <button
       type="button"
-      onClick={() => setType(value)}
+      onClick={() => {
+        setType(value);
+        if (value === "photo") setVideoSource("file");
+      }}
       aria-pressed={type === value}
       className={`flex flex-1 items-center justify-center gap-2 rounded-lg py-2 text-sm font-semibold transition ${
         type === value ? "bg-white text-manikstu-leaf shadow-sm" : "text-grey hover:text-charcoal"
@@ -69,8 +90,36 @@ export default function MediaUploader({ action }: { action: (state: FormState, f
             {tab("video", "Video", Film)}
           </div>
         </div>
-        <Field label="File" name="file" help={LIMITS[type].hint}>
-          <input id="file" name="file" type="file" accept={LIMITS[type].accept} className="block w-full text-sm text-grey file:mr-3 file:rounded-lg file:border-0 file:bg-manikstu-green/10 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-manikstu-leaf hover:file:bg-manikstu-green/15" />
+        <Field
+          label={urlMode ? "Video URL" : "File"}
+          name={urlMode ? "video_url" : "file"}
+          help={urlMode ? "Paste a YouTube, Vimeo or direct video link." : LIMITS[type].hint}
+        >
+          {type === "video" && (
+            <div className="mb-2 inline-flex gap-0.5 rounded-lg bg-[#F2EEE4] p-0.5 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setVideoSource("file")}
+                aria-pressed={videoSource === "file"}
+                className={`rounded-md px-2.5 py-1 transition ${videoSource === "file" ? "bg-white text-manikstu-leaf shadow-sm" : "text-grey hover:text-charcoal"}`}
+              >
+                Upload file
+              </button>
+              <button
+                type="button"
+                onClick={() => setVideoSource("url")}
+                aria-pressed={videoSource === "url"}
+                className={`rounded-md px-2.5 py-1 transition ${videoSource === "url" ? "bg-white text-manikstu-leaf shadow-sm" : "text-grey hover:text-charcoal"}`}
+              >
+                Video URL
+              </button>
+            </div>
+          )}
+          {urlMode ? (
+            <input id="video_url" name="video_url" type="url" inputMode="url" placeholder="https://youtube.com/watch?v=…" className={inputClass()} />
+          ) : (
+            <input id="file" name="file" type="file" accept={LIMITS[type].accept} className="block w-full text-sm text-grey file:mr-3 file:rounded-lg file:border-0 file:bg-manikstu-green/10 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-manikstu-leaf hover:file:bg-manikstu-green/15" />
+          )}
         </Field>
         <Field label="Event Name" name="title" help="Shown with the item on the website.">
           <input id="title" name="title" maxLength={150} placeholder="e.g. Field day at Kalahandi" className={inputClass()} />

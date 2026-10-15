@@ -124,6 +124,8 @@ export async function uploadMedia(input: FormData): Promise<MediaItem> {
   }
   const file = input.get("file");
   if (file instanceof File && file.size > 0) out.set("file", file);
+  const videoUrl = input.get("video_url");
+  if (typeof videoUrl === "string" && videoUrl.trim()) out.set("video_url", videoUrl.trim());
   return (await adminFetch<{ data: MediaItem }>("/media", { method: "POST", body: out })).data;
 }
 

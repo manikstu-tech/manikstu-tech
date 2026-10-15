@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FileText, ImageOff, Search } from "lucide-react";
+import { FileText, Film, ImageOff, PlayCircle, Search } from "lucide-react";
+
+/** 11-char YouTube id from a watch/share/embed URL, else null. */
+function youTubeId(url: string): string | null {
+  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
 import { buttonClass, fieldClass, formatBytes, formatDate, PageHeader, Pagination } from "@/components/admin/AdminUi";
 import DeleteRecordButton from "@/components/admin/DeleteRecordButton";
 import MediaUploader from "@/components/admin/MediaUploader";
@@ -64,10 +70,22 @@ export default async function MediaPage({ searchParams }: { searchParams: Promis
             {items.map((m) => {
               const isVideo = m.mime_type.startsWith("video/");
               const isPdf = m.mime_type === "application/pdf";
+              const isExternalVideo = isVideo && (m.mime_type === "video/external" || /^https?:\/\//.test(m.url) && !m.url.includes("/storage/"));
+              const ytId = isExternalVideo ? youTubeId(m.url) : null;
               return (
                 <li key={m.id} className="overflow-hidden rounded-xl border border-[#EDE9E1] bg-[#FBFAF7]">
                   <a href={m.url} target="_blank" rel="noreferrer" className="relative block aspect-[4/3] bg-charcoal/5">
-                    {isVideo ? (
+                    {isExternalVideo ? (
+                      <span className="relative flex h-full w-full items-center justify-center bg-black">
+                        {ytId ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={`https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`} alt={m.name} loading="lazy" className="h-full w-full object-cover opacity-90" />
+                        ) : (
+                          <Film className="h-10 w-10 text-white/70" />
+                        )}
+                        <PlayCircle className="absolute h-10 w-10 text-white drop-shadow" />
+                      </span>
+                    ) : isVideo ? (
                       <video src={`${m.url}#t=0.5`} preload="metadata" muted className="h-full w-full bg-black object-cover" />
                     ) : isPdf ? (
                       <span className="flex h-full items-center justify-center text-grey">
