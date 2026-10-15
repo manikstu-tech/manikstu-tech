@@ -146,8 +146,8 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                   </figcaption>
                 )}
               </figure>
-            ) : video.youtubeId ? (
-              // YouTube video, opens in a popup player on click
+            ) : video.youtubeId || video.embedUrl ? (
+              // Embedded video (YouTube / Google Drive), opens in a popup player on click
               <button
                 key={video.id}
                 type="button"
@@ -156,13 +156,17 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                 className="animate-gallery-fade group relative overflow-hidden rounded-xl border border-light-grey bg-white text-left shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-manikstu-green"
               >
                 <div className="relative aspect-video w-full bg-charcoal">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={video.thumbnail}
-                    alt={video.title}
-                    loading="eager"
-                    className="h-full w-full object-cover"
-                  />
+                  {video.thumbnail ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      loading="eager"
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <span className="flex h-full w-full bg-gradient-to-br from-manikstu-green to-manikstu-leaf" />
+                  )}
                   {/* Dark overlay + YouTube-style play button */}
                   <div className="absolute inset-0 flex items-center justify-center bg-charcoal/25 transition-colors group-hover:bg-charcoal/40">
                     <span className="flex h-6 w-9 items-center justify-center rounded-md bg-[#FF0000] text-white shadow-lg transition-transform group-hover:scale-110">
@@ -246,7 +250,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
       </div>
 
       {/* Popup player */}
-      {activeVideo?.youtubeId && (
+      {(activeVideo?.youtubeId || activeVideo?.embedUrl) && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 sm:p-6"
           role="dialog"
@@ -268,7 +272,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
             </button>
             <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-2xl">
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${activeVideo.youtubeId}?autoplay=1&rel=0`}
+                src={activeVideo.youtubeId ? `https://www.youtube-nocookie.com/embed/${activeVideo.youtubeId}?autoplay=1&rel=0` : activeVideo.embedUrl}
                 title={activeVideo.title}
                 className="absolute inset-0 h-full w-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

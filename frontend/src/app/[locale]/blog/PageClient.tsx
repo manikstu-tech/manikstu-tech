@@ -39,6 +39,21 @@ function extractYouTubeId(url: string): string | null {
   return m ? m[1] : null;
 }
 
+/** Extract a Google Drive file id from a share link, else null. */
+function driveFileId(url: string): string | null {
+  if (!/drive\.google\.com/.test(url)) return null;
+  const m = url.match(/\/file\/d\/([A-Za-z0-9_-]+)/) || url.match(/[?&]id=([A-Za-z0-9_-]+)/);
+  return m ? m[1] : null;
+}
+const driveEmbed = (url: string) => {
+  const id = driveFileId(url);
+  return id ? `https://drive.google.com/file/d/${id}/preview` : null;
+};
+const driveThumb = (url: string) => {
+  const id = driveFileId(url);
+  return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w640` : null;
+};
+
 export default function BlogPage() {
   const [filter, setFilter] = useState<"All" | Category>("All");
   const [allArticles, setAllArticles] = useState<Article[]>(fallbackArticles);
@@ -113,16 +128,17 @@ export default function BlogPage() {
       if (res.data?.length) {
         const mediaVideos: VideoItem[] = res.data.map((m) => {
           const ytId = extractYouTubeId(m.url);
+          const drive = ytId ? null : driveEmbed(m.url);
           return {
             id: `media-${m.id}`,
             title: m.title || "",
             url: m.url,
-            thumbnail: ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : "",
+            thumbnail: ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : (drive ? driveThumb(m.url) ?? "" : ""),
             duration: "",
             date: m.date || "",
             description: "",
-            // YouTube links open in the popup player; direct files play inline.
-            ...(ytId ? { youtubeId: ytId } : { isFile: true }),
+            // YouTube & Google Drive open in the popup player; direct files play inline.
+            ...(ytId ? { youtubeId: ytId } : drive ? { embedUrl: drive } : { isFile: true }),
           };
         });
         setVideos((prev) => [...mediaVideos, ...prev.filter((v) => !v.id.startsWith("media-"))]);

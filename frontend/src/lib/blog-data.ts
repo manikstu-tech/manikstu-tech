@@ -24,6 +24,8 @@ export interface VideoItem {
   isFile?: boolean;
   // Set when this is a YouTube video, opens in a popup player instead of navigating.
   youtubeId?: string;
+  // An iframe embed src (e.g. Google Drive preview) — opens in the popup player.
+  embedUrl?: string;
 }
 
 export interface GalleryPhoto {
