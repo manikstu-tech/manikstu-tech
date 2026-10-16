@@ -20,9 +20,10 @@ const fallbackQuickLinks: FooterLink[] = [
 
 const fallbackSupportLinks: FooterLink[] = [
   { id: 7, group: "support", label: "Help Center", url: "/help", order: 1, is_active: true },
-  { id: 8, group: "support", label: "Contact Us", url: "/contact", order: 2, is_active: true },
-  { id: 9, group: "support", label: "Privacy Policy", url: "/privacy", order: 3, is_active: true },
-  { id: 10, group: "support", label: "Terms & Conditions", url: "/terms", order: 4, is_active: true },
+  { id: 8, group: "support", label: "Enquire", url: "/contact", order: 2, is_active: true },
+  { id: 11, group: "support", label: "Complaint", url: "/complaint", order: 3, is_active: true },
+  { id: 9, group: "support", label: "Privacy Policy", url: "/privacy", order: 4, is_active: true },
+  { id: 10, group: "support", label: "Terms & Conditions", url: "/terms", order: 5, is_active: true },
 ];
 
 const fallbackSettings: Record<string, string> = {
@@ -70,7 +71,20 @@ export default function Footer() {
           }
           setQuickLinks(quick);
         }
-        if (res.data.support) setSupportLinks(res.data.support);
+        if (res.data.support) {
+          // Drop "Contact Us" and show "Enquire" then "Complaint" after Help
+          // Center, even when the CMS footer hasn't been updated yet.
+          const support = res.data.support.filter((l) => l.url !== "/contact");
+          const insertAfter = (afterUrl: string, item: FooterLink) => {
+            if (support.some((l) => l.url === item.url)) return;
+            const i = support.findIndex((l) => l.url === afterUrl);
+            if (i >= 0) support.splice(i + 1, 0, item);
+            else support.push(item);
+          };
+          insertAfter("/help", { id: 9006, group: "support", label: "Enquire", url: "/contact", order: 0, is_active: true });
+          insertAfter("/contact", { id: 9005, group: "support", label: "Complaint", url: "/complaint", order: 0, is_active: true });
+          setSupportLinks(support);
+        }
       })
       .catch(() => {});
   }, []);
