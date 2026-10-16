@@ -513,10 +513,10 @@ export default async function InvestorsPage({
                   {t("ctaButton")} <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <a
-                  href="mailto:info@manikstu.com"
+                  href="mailto:contact@manikstu.com"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-manikstu-green px-6 py-2.5 text-xs sm:text-sm font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2"
                 >
-                  <Mail className="h-3.5 w-3.5" /> info@manikstu.com
+                  <Mail className="h-3.5 w-3.5" /> contact@manikstu.com
                 </a>
               </div>
             </div>
