@@ -604,24 +604,6 @@ export default function AboutPage() {
             },
           ];
           const displayAdvisors = liveAdvisors.length ? liveAdvisors : advisors;
-          const tagColor = (t: string) =>
-            ({
-              FMD: "bg-manikstu-green",
-              CEO: "bg-manikstu-green",
-              Growth: "bg-manikstu-gold",
-              Accounts: "bg-manikstu-leaf",
-              Marketing: "bg-manikstu-green",
-              "Tech & Ops": "bg-manikstu-gold",
-              Operations: "bg-manikstu-leaf",
-              Infrastructure: "bg-manikstu-gold",
-              HR: "bg-manikstu-gold",
-              Sales: "bg-saura-red",
-              Technical: "bg-manikstu-green",
-              Legal: "bg-saura-red",
-              Compliance: "bg-manikstu-gold",
-              Board: "bg-manikstu-green",
-              GTM: "bg-saura-red",
-            } as Record<string, string>)[t] ?? "bg-manikstu-green";
           return (
             <>
               <section className="pt-6 sm:pt-12 pb-12 sm:pb-20 md:pb-24 bg-white px-4 md:px-8">
@@ -669,11 +651,6 @@ export default function AboutPage() {
                             </div>
                           </div>
                         )}
-                        <span
-                          className={`absolute left-2.5 bottom-2.5 sm:left-3 sm:bottom-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
-                        >
-                          {l.tag}
-                        </span>
                       </div>
 
                       <div className="flex flex-1 flex-col items-center justify-between p-3.5 sm:p-5 text-center">
@@ -752,11 +729,6 @@ export default function AboutPage() {
                             </div>
                           </div>
                         )}
-                        <span
-                          className={`absolute left-2.5 bottom-2.5 sm:left-3 sm:bottom-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
-                        >
-                          {l.tag}
-                        </span>
                       </div>
 
                       <div className="flex flex-1 flex-col items-center justify-between p-3.5 sm:p-5 text-center">
@@ -882,11 +854,6 @@ export default function AboutPage() {
                             </div>
                           </div>
                         )}
-                        <span
-                          className={`absolute left-2.5 bottom-2.5 sm:left-3 sm:bottom-3 rounded px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-sm z-10 ${tagColor(l.tag)}`}
-                        >
-                          {l.tag}
-                        </span>
                       </div>
 
                       <div className="flex flex-1 flex-col items-center justify-between p-3.5 sm:p-5 text-center">
