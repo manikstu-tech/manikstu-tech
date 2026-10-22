@@ -20,11 +20,14 @@ import {
   BadgeCheck,
   MessageCircleQuestion,
   X,
+  PackageX,
 } from "lucide-react";
 import { getProducts, getProductBySlug } from "@/lib/api";
 import {
   trustFeatures,
   FALLBACK_PRODUCTS,
+  isOutOfStock,
+  stockLimit,
   type Product,
   type Review,
   type Question,
@@ -94,7 +97,8 @@ function StarRow({
   );
 }
 
-export default function ProductDetailPage() {
+/** initialProduct: the live product (with stock) the server loaded with the page; null if it could not. */
+export default function ProductDetailPage({ initialProduct = null }: { initialProduct?: Product | null }) {
   const params = useParams<{ slug: string }>();
   const router = useRouter();
   const t = useTranslations("ProductDetail");
@@ -105,7 +109,7 @@ export default function ProductDetailPage() {
   // when the backend isn't running.
   const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
   const [product, setProduct] = useState<Product | null>(
-    FALLBACK_PRODUCTS.find((p) => p.slug === slug) ?? null
+    initialProduct ?? FALLBACK_PRODUCTS.find((p) => p.slug === slug) ?? null
   );
   const [loading, setLoading] = useState(false);
   const [qty, setQty] = useState(1);
@@ -116,8 +120,23 @@ export default function ProductDetailPage() {
   // Product video popup (YouTube) open/closed.
   const [videoOpen, setVideoOpen] = useState(false);
 
+  // Whether the live product (with stock) has loaded. The baked-in catalogue shown meanwhile knows nothing about stock,
+  // so nothing can be bought from it: "loading" and "failed" both keep the buttons off.
+  const [live, setLive] = useState<"loading" | "ok" | "failed">(
+    initialProduct && initialProduct.slug === slug ? "ok" : "loading"
+  );
+  // Stock as the CRM reports it: undefined when not tracked (no limit), otherwise the most that can be ordered.
+  const limit = product ? stockLimit(product) : undefined;
+  const soldOut = product ? isOutOfStock(product) : false;
+  const canBuy = live === "ok" && !soldOut;
+  const atLimit = limit !== undefined && qty >= limit;
+  // Fresh stock can be lower than a quantity already picked (e.g. the API answered after the click).
+  useEffect(() => {
+    if (limit !== undefined && limit > 0 && qty > limit) setQty(limit);
+  }, [limit, qty]);
+
   const handleAddToCart = () => {
-    if (!product) return;
+    if (!product || !canBuy) return;
     addToCartStore(
       {
         slug: product.slug,
@@ -125,6 +144,7 @@ export default function ProductDetailPage() {
         price: product.price,
         image: product.image,
         size: product.size,
+        stock: limit,
       },
       qty
     );
@@ -236,29 +256,44 @@ export default function ProductDetailPage() {
 
   // Fetch product + full listing from the backend. Admin panel takes
   // precedence when it has data; otherwise we keep the baked-in catalogue.
+  // The product normally arrives with the page, stock included (loaded on the server, uncached), so the buttons are
+  // right on first paint and nothing is fetched again here. Only if the server could not load it does the browser
+  // try; until then stock is unknown and the buttons stay off. The related-products list loads on its own.
+  const serverLoaded = !!initialProduct && initialProduct.slug === slug;
   useEffect(() => {
     let cancelled = false;
-    Promise.all([
-      slug
-        ? getProductBySlug(slug).catch(() => null)
-        : Promise.resolve(null),
-      getProducts(1, 50).catch(() => null),
-    ]).then(([detailRes, listRes]) => {
-      if (cancelled) return;
-      const detail: Product | null =
-        detailRes && (detailRes.data as Product | undefined)
-          ? (detailRes.data as Product)
-          : null;
-      const list: Product[] = Array.isArray(listRes?.data) ? listRes.data : [];
-      // Override defaults only when the API actually returned something.
-      if (detail) setProduct(detail);
-      if (list.length > 0) setProducts(list);
-      setLoading(false);
-    });
+    setLive(serverLoaded ? "ok" : slug ? "loading" : "failed");
+    if (slug && !serverLoaded) {
+      getProductBySlug(slug)
+        .then((res) => {
+          if (cancelled) return;
+          const detail = res?.data as Product | undefined;
+          if (detail) {
+            setProduct(detail);
+            setLive("ok");
+          } else {
+            setLive("failed");
+          }
+        })
+        .catch(() => {
+          if (!cancelled) setLive("failed");
+        });
+    }
+    getProducts(1, 50)
+      .then((res) => {
+        if (cancelled) return;
+        const list: Product[] = Array.isArray(res?.data) ? res.data : [];
+        // Override defaults only when the API actually returned something.
+        if (list.length > 0) setProducts(list);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
     return () => {
       cancelled = true;
     };
-  }, [slug]);
+  }, [slug, serverLoaded]);
 
   const related = useMemo(
     () => products.filter((p) => p.slug !== slug).slice(0, 3),
@@ -598,7 +633,47 @@ export default function ProductDetailPage() {
                 )}
               </div>
 
-              {/* Qty + Add to Cart + Buy Now */}
+              {/* Stock, when the CRM reports it: in stock, only N left (under 30), or out of stock */}
+              {product.stockStatus && (
+                <div className="mt-3">
+                  {product.stockStatus === "out" ? (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-manikstu-red/30 bg-manikstu-red/5 px-3 py-1 text-sm font-semibold text-manikstu-red">
+                      <PackageX className="h-4 w-4" />
+                      {t("outOfStock")}
+                    </span>
+                  ) : product.stockStatus === "low" ? (
+                    <p className="inline-flex items-center gap-2 text-sm font-semibold text-manikstu-red">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-manikstu-red opacity-60" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-manikstu-red" />
+                      </span>
+                      {t("onlyLeft", { count: product.stock ?? 0 })}
+                    </p>
+                  ) : (
+                    <p className="inline-flex items-center gap-2 text-sm font-semibold text-manikstu-green">
+                      <span className="h-2 w-2 rounded-full bg-manikstu-green" />
+                      {t("inStock")}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Qty + Add to Cart + Buy Now (or Out of Stock) */}
+              {soldOut ? (
+                <div className="mt-6 w-full sm:max-w-md">
+                  <button
+                    type="button"
+                    disabled
+                    className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-full border-2 border-manikstu-red/40 bg-manikstu-red/5 px-6 py-3.5 text-sm font-semibold text-manikstu-red"
+                  >
+                    <PackageX className="h-4 w-4 !m-0" />
+                    <span>{t("outOfStock")}</span>
+                  </button>
+                  <p className="mt-3 text-center text-sm text-grey">
+                    {t("outOfStockDesc")}
+                  </p>
+                </div>
+              ) : (
               <div className="mt-6 w-full sm:max-w-md">
                 <div className="flex items-center gap-2.5 sm:gap-4">
                   <div className="inline-flex shrink-0 items-center gap-1 rounded-full border border-manikstu-green/60 bg-white text-sm font-semibold text-manikstu-green">
@@ -615,9 +690,10 @@ export default function ProductDetailPage() {
                     </span>
                     <button
                       type="button"
-                      onClick={() => setQty((q) => q + 1)}
+                      onClick={() => setQty((q) => (limit === undefined ? q + 1 : Math.min(limit, q + 1)))}
+                      disabled={atLimit || !canBuy}
                       aria-label="Increase quantity"
-                      className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-manikstu-green/10"
+                      className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-manikstu-green/10 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
                     >
                       <Plus className="h-4 w-4" />
                     </button>
@@ -626,7 +702,9 @@ export default function ProductDetailPage() {
                   <button
                     type="button"
                     onClick={handleAddToCart}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-full bg-manikstu-green px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98]"
+                    disabled={!canBuy}
+                    aria-busy={live === "loading"}
+                    className="flex flex-1 items-center justify-center gap-2 rounded-full bg-manikstu-green px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-manikstu-leaf focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-manikstu-green disabled:active:scale-100"
                   >
                     <ShoppingBag className="h-4 w-4 !m-0" />
                     <span>{t("addToCart")}</span>
@@ -636,8 +714,10 @@ export default function ProductDetailPage() {
                 {/* Buy Now, spans full width of container */}
                 <button
                   type="button"
+                  disabled={!canBuy}
+                  aria-busy={live === "loading"}
                   onClick={() => {
-                    if (!product) return;
+                    if (!product || !canBuy) return;
                     addToCartStore(
                       {
                         slug: product.slug,
@@ -645,17 +725,29 @@ export default function ProductDetailPage() {
                         price: product.price,
                         image: product.image,
                         size: product.size,
+                        stock: limit,
                       },
                       qty
                     );
                     router.push("/products/checkout");
                   }}
-                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-red px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-saura-red focus:outline-none focus:ring-2 focus:ring-manikstu-red focus:ring-offset-2 active:scale-[0.98]"
+                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-red px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-saura-red focus:outline-none focus:ring-2 focus:ring-manikstu-red focus:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-manikstu-red disabled:active:scale-100"
                 >
                   <ArrowRight className="h-4 w-4 !m-0" />
                   <span>{t("buyNow")}</span>
                 </button>
+                {live === "failed" && (
+                  <p role="status" className="mt-2 text-center text-xs font-medium text-grey">
+                    {t("stockUnavailable")}
+                  </p>
+                )}
+                {atLimit && product.stockStatus === "low" && (
+                  <p className="mt-2 text-center text-xs font-medium text-manikstu-red">
+                    {t("maxReached", { count: limit ?? 0 })}
+                  </p>
+                )}
               </div>
+              )}
 
               {/* Highlights */}
               {product.highlights && product.highlights.length > 0 && (

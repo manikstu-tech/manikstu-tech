@@ -64,13 +64,27 @@ export interface OrderInput {
   notes?: string;
 }
 
+/** The order asked for more of a product than is left. `product.stock` is how many there are (0 = out of stock). */
+export class InsufficientStockError extends Error {
+  constructor(public product: { slug: string; name: string; stock: number }, message: string) {
+    super(message);
+    this.name = 'InsufficientStockError';
+  }
+}
+
 export const placeOrder = async (payload: OrderInput) => {
   const response = await fetch(`${API_BASE_URL}/orders`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
-  if (!response.ok) throw new Error('Failed to place order');
+  if (!response.ok) {
+    const body = await response.json().catch(() => null);
+    if (response.status === 422 && body?.code === 'insufficient_stock' && body.product) {
+      throw new InsufficientStockError(body.product, body.message ?? 'Not enough stock');
+    }
+    throw new Error('Failed to place order');
+  }
   return response.json() as Promise<{ data: { order_number: string } }>;
 };
 
@@ -125,17 +139,39 @@ export const submitComplaint = async (payload: ComplaintInput) => {
 };
 
 // Products
-export const getProducts = async (page = 1, limit = 10) => {
-  const response = await fetch(`${API_BASE_URL}/products?page=${page}&limit=${limit}`);
-  if (!response.ok) throw new Error('Failed to fetch products');
-  return response.json();
-};
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const getProductBySlug = async (slug: string) => {
-  const response = await fetch(`${API_BASE_URL}/products/${slug}`);
-  if (!response.ok) throw new Error('Failed to fetch product');
-  return response.json();
-};
+/**
+ * Product data carries live stock, so it is never taken from the HTTP cache, and a busy backend (429 rate limit, 5xx)
+ * or a dropped connection is waited out and retried rather than given up on: giving up would leave the page on the
+ * baked-in catalogue, which knows nothing about stock. A real answer such as 404 is not retried.
+ */
+async function fetchProductJson(url: string, failure: string, attempts = 4) {
+  let delay = 1000;
+  for (let attempt = 1; ; attempt++) {
+    let response: Response | null = null;
+    try {
+      response = await fetch(url, { cache: 'no-store' });
+    } catch {
+      if (attempt >= attempts) throw new Error(failure);
+    }
+    if (response) {
+      if (response.ok) return response.json();
+      const retryable = response.status === 429 || response.status >= 500;
+      if (!retryable || attempt >= attempts) throw new Error(failure);
+      const retryAfter = Number(response.headers.get('Retry-After'));
+      if (Number.isFinite(retryAfter) && retryAfter > 0) delay = Math.max(delay, retryAfter * 1000);
+    }
+    await sleep(Math.min(delay, 15000));
+    delay *= 2;
+  }
+}
+
+export const getProducts = (page = 1, limit = 10) =>
+  fetchProductJson(`${API_BASE_URL}/products?page=${page}&limit=${limit}`, 'Failed to fetch products');
+
+export const getProductBySlug = (slug: string) =>
+  fetchProductJson(`${API_BASE_URL}/products/${slug}`, 'Failed to fetch product');
 
 // Contact
 export const submitContact = async (formData: any) => {

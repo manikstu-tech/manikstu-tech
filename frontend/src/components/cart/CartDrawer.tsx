@@ -14,6 +14,7 @@ import {
   Truck,
 } from "lucide-react";
 import {
+  atMaxQty,
   readCart,
   subscribeCart,
   setQty,
@@ -187,8 +188,9 @@ export default function CartDrawer() {
                             <button
                               type="button"
                               onClick={() => setQty(line.slug, line.qty + 1)}
+                              disabled={atMaxQty(line)}
                               aria-label="Increase quantity"
-                              className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10 hover:text-manikstu-green transition-colors"
+                              className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10 hover:text-manikstu-green transition-colors disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-charcoal"
                             >
                               <Plus className="h-3 w-3" />
                             </button>
