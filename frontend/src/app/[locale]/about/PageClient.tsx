@@ -505,7 +505,7 @@ export default function AboutPage() {
               name: "Jayanti Mahapatra",
               role: "Managing Director",
               tag: "MD",
-              photo: "/team/jayanti-mahapatra.jpg",
+              photo: "/team/jayanti-mahapatra.png",
               bio: "Driving strategic vision, business growth, and organizational excellence.",
             },
             {
