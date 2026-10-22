@@ -498,14 +498,14 @@ export default function AboutPage() {
               name: "Biren Sahoo",
               role: "Founder & CEO",
               tag: "CEO",
-              photo: "",
+              photo: "/team/biren-sahoo.jpg",
               bio: "Pioneering sustainable rural development and livestock empowerment across Odisha.",
             },
             {
               name: "Jayanti Mahapatra",
               role: "Managing Director",
               tag: "MD",
-              photo: "",
+              photo: "/team/jayanti-mahapatra.jpg",
               bio: "Driving strategic vision, business growth, and organizational excellence.",
             },
             {
