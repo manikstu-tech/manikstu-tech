@@ -7,11 +7,12 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ArrowLeft, Package, CheckCircle2, ShoppingBag } from "lucide-react";
-import { getProductBySlug, placeOrder, type OrderItemInput } from "@/lib/api";
+import { getProductBySlug, placeOrder, InsufficientStockError, type OrderItemInput } from "@/lib/api";
 import {
   readCart,
   subscribeCart,
   clearCart,
+  limitToStock,
   cartLines as cartLinesOf,
   cartCount as cartCountOf,
   cartTotal as cartTotalOf,
@@ -50,6 +51,13 @@ export default function CheckoutPage() {
   // Shown on the success card: without it the customer has no way to track.
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
+  // Set when stock ran short: the cart has been corrected and the customer reviews it before placing again.
+  const [stockNotice, setStockNotice] = useState<string | null>(null);
+
+  const applyShortage = (slug: string, name: string, stock: number) => {
+    setCart(limitToStock(slug, stock));
+    setStockNotice(stock <= 0 ? t("itemOutOfStock", { name }) : t("itemLowStock", { name, count: stock }));
+  };
 
   useEffect(() => {
     setCart(readCart());
@@ -78,13 +86,21 @@ export default function CheckoutPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setFailed(false);
+    setStockNotice(null);
     try {
-      // Resolve cart slugs to backend product IDs; never place a partial order.
+      // Resolve cart slugs to backend product IDs; never place a partial order. The same lookup carries live stock,
+      // so a shortage is caught here and the cart corrected before anything is sent (the server checks again).
       const items: OrderItemInput[] = [];
       for (const l of cartLines) {
         const res = await getProductBySlug(l.slug).catch(() => null);
-        const productId = Number((res as { data?: { id?: unknown } } | null)?.data?.id);
+        const data = (res as { data?: { id?: unknown; stock?: unknown; stockStatus?: unknown } } | null)?.data;
+        const productId = Number(data?.id);
         if (!Number.isFinite(productId) || productId <= 0) throw new Error(`unresolvable:${l.slug}`);
+        const stock = typeof data?.stock === "number" ? data.stock : undefined;
+        if (data?.stockStatus === "out" || (stock !== undefined && l.qty > stock)) {
+          applyShortage(l.slug, l.name, data?.stockStatus === "out" ? 0 : stock ?? 0);
+          return;
+        }
         items.push({ productId, quantity: l.qty });
       }
       const placedOrder = await placeOrder({
@@ -102,7 +118,12 @@ export default function CheckoutPage() {
       setOrderNumber(placedOrder?.data?.order_number ?? null);
       setPlaced(true);
       clearCart();
-    } catch {
+    } catch (err) {
+      // Someone bought the last units between the check above and the order: same correction.
+      if (err instanceof InsufficientStockError) {
+        applyShortage(err.product.slug, err.product.name, err.product.stock);
+        return;
+      }
       setFailed(true);
     }
   };
@@ -291,6 +312,11 @@ export default function CheckoutPage() {
                 >
                   {t("placeOrder")}
                 </button>
+                {stockNotice && (
+                  <p role="alert" className="mt-3 rounded-xl border border-manikstu-red/30 bg-manikstu-red/5 px-4 py-3 text-center text-sm font-medium text-manikstu-red">
+                    {stockNotice}
+                  </p>
+                )}
                 {failed && (
                   <p className="mt-3 text-center text-sm font-medium text-manikstu-red">
                     {t("orderFailed")}

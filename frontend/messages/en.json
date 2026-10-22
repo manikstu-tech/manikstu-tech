@@ -333,7 +333,11 @@
     "mobileTitleAccent": "Healthier Farms.",
     "searchPlaceholder": "Search products...",
     "allCategories": "All",
-    "noMatches": "No products match your search."
+    "noMatches": "No products match your search.",
+    "outOfStock": "Out of Stock",
+    "onlyInStock": "Only {count} in stock",
+    "checkingStock": "Checking stock…",
+    "stockUnavailable": "We could not check stock right now. Please refresh the page."
   },
   "Training": {
     "pill": "Training & Awareness",
@@ -750,7 +754,14 @@
     "answeredBy": "Answered by",
     "seeAllQuestions": "See all questions",
     "unmarkHelpful": "Unmark as helpful",
-    "markHelpful": "Mark as helpful"
+    "markHelpful": "Mark as helpful",
+    "outOfStock": "Out of Stock",
+    "inStock": "In stock",
+    "onlyLeft": "Only {count} left in stock",
+    "outOfStockDesc": "This product is currently out of stock. Please check back soon.",
+    "maxReached": "You can order up to {count}.",
+    "checkingStock": "Checking stock…",
+    "stockUnavailable": "We could not check stock right now. Please refresh the page."
   },
   "Checkout": {
     "backToProducts": "Back to products",
@@ -794,7 +805,9 @@
     "total": "Total",
     "orderNumberLabel": "Your order number",
     "orderNumberHelp": "Keep this safe. You can check your order's progress with it and the phone number you gave us.",
-    "trackThisOrder": "Track this order"
+    "trackThisOrder": "Track this order",
+    "itemOutOfStock": "{name} is out of stock and has been removed from your cart.",
+    "itemLowStock": "Only {count} {name} left in stock, so your cart has been updated. Please review it and place the order again."
   },
   "Partners": {
     "pill": "Our Partners",

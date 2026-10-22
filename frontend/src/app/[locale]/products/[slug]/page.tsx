@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageClient from "./PageClient";
 import JsonLd from "@/components/seo/JsonLd";
-import { FALLBACK_PRODUCTS } from "../data";
+import { FALLBACK_PRODUCTS, type Product } from "../data";
 import { setRequestLocale } from "next-intl/server";
 
 const API_BASE_URL =
@@ -35,6 +35,25 @@ async function getProduct(slug: string): Promise<ProductData | null> {
     });
     if (!res.ok) return null;
     return res.json();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The product as it is right now, stock included, for the first paint: never cached, so a shopper never sees a
+ * stale "In stock". Fetching it uncached renders this page per request. Capped at a few seconds so a slow backend
+ * cannot hold the page up; on failure the page renders and the browser loads the product itself.
+ */
+async function getLiveProduct(slug: string): Promise<ProductData["data"] | null> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/products/${slug}`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(3000),
+    });
+    if (!res.ok) return null;
+    const body = (await res.json()) as ProductData;
+    return body?.data ?? null;
   } catch {
     return null;
   }
@@ -84,8 +103,9 @@ export default async function ProductDetailPage({
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const product = await getProduct(slug);
-  const p = product?.data;
+  const live = await getLiveProduct(slug);
+  // Structured data from the live product when there is one, so search engines see real availability too.
+  const p = live ?? (await getProduct(slug))?.data;
 
   return (
     <>
@@ -124,7 +144,7 @@ export default async function ProductDetailPage({
           }}
         />
       )}
-      <PageClient />
+      <PageClient initialProduct={live as Product | null} />
     </>
   );
 }

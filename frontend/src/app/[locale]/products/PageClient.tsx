@@ -18,10 +18,12 @@ import {
   X,
   ShoppingCart,
   Search,
+  PackageX,
 } from "lucide-react";
 import { getProducts } from "@/lib/api";
-import { trustFeatures, FALLBACK_PRODUCTS, type Product } from "./data";
+import { trustFeatures, FALLBACK_PRODUCTS, isOutOfStock, stockLimit, type Product } from "./data";
 import {
+  atMaxQty,
   readCart,
   subscribeCart,
   addToCart as addToCartStore,
@@ -34,27 +36,40 @@ import {
   type CartMap,
 } from "./cart";
 
-export default function ProductsPage() {
+/** initialProducts: the live catalogue (with stock) the server loaded with the page; null if it could not. */
+export default function ProductsPage({ initialProducts = null }: { initialProducts?: Product[] | null }) {
   // Start with the baked-in catalogue so pages render instantly and the site
   // works even when there's no shared DB yet. If the backend returns products
   // (admin panel populated), those take precedence, admin remains the source
   // of truth whenever it has data.
-  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
+  const [products, setProducts] = useState<Product[]>(initialProducts ?? FALLBACK_PRODUCTS);
   const [loading, setLoading] = useState(false);
   const t = useTranslations("Products");
   const [cart, setCart] = useState<CartMap>({});
 
+  // Whether the live catalogue (with stock) has loaded. It normally arrives with the page (loaded on the server,
+  // uncached), so the cards are right on first paint and nothing is fetched again here. Only if the server could not
+  // load it does the browser try; the baked-in catalogue shown meanwhile knows nothing about stock, so nothing can be
+  // added to the cart from it.
+  const serverLoaded = !!initialProducts;
+  const [live, setLive] = useState<"loading" | "ok" | "failed">(serverLoaded ? "ok" : "loading");
+
   useEffect(() => {
+    if (serverLoaded) return;
     getProducts(1, 50)
       .then((res) => {
         if (Array.isArray(res.data) && res.data.length > 0) {
           setProducts(res.data);
+          setLive("ok");
+        } else {
+          setLive("failed");
         }
       })
       .catch(() => {
         /* keep FALLBACK_PRODUCTS when the API isn't reachable */
+        setLive("failed");
       });
-  }, []);
+  }, [serverLoaded]);
 
   // Hydrate cart from localStorage on mount, and subscribe to same/other-tab changes.
   useEffect(() => {
@@ -76,6 +91,7 @@ export default function ProductsPage() {
   }, [cart]);
 
   const addToCart = (product: Product) => {
+    if (live !== "ok" || isOutOfStock(product)) return;
     setCart(
       addToCartStore({
         slug: product.slug,
@@ -83,6 +99,7 @@ export default function ProductsPage() {
         price: product.price,
         image: product.image,
         size: product.size,
+        stock: stockLimit(product),
       })
     );
   };
@@ -356,7 +373,15 @@ export default function ProductsPage() {
                       >
                         {t("viewDetails")}
                       </Link>
-                      {cart[product.slug] ? (
+                      {isOutOfStock(product) ? (
+                        <span
+                          role="status"
+                          className="inline-flex cursor-not-allowed items-center justify-center gap-1.5 rounded-xl border border-manikstu-red/30 bg-manikstu-red/5 py-2.5 text-sm font-semibold text-manikstu-red"
+                        >
+                          <PackageX className="h-4 w-4" />
+                          {t("outOfStock")}
+                        </span>
+                      ) : cart[product.slug] ? (
                         <div className="flex items-center justify-between rounded-xl bg-manikstu-green px-1 text-sm font-semibold text-white">
                           <button
                             type="button"
@@ -370,8 +395,9 @@ export default function ProductsPage() {
                           <button
                             type="button"
                             onClick={() => addToCart(product)}
+                            disabled={live !== "ok" || atMaxQty(cart[product.slug])}
                             aria-label={`Add one more ${product.name}`}
-                            className="flex h-9 w-9 items-center justify-center"
+                            className="flex h-9 w-9 items-center justify-center disabled:cursor-not-allowed disabled:opacity-40"
                           >
                             <Plus className="h-4 w-4" />
                           </button>
@@ -380,7 +406,10 @@ export default function ProductsPage() {
                         <button
                           type="button"
                           onClick={() => addToCart(product)}
-                          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-manikstu-green py-2.5 text-sm font-semibold text-white"
+                          disabled={live !== "ok"}
+                          aria-busy={live === "loading"}
+                          title={live === "loading" ? t("checkingStock") : live === "failed" ? t("stockUnavailable") : undefined}
+                          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-manikstu-green py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
                         >
                           <ShoppingCart className="h-4 w-4" />
                           {t("addToCart")}
@@ -401,7 +430,15 @@ export default function ProductsPage() {
                       >
                         {t("viewDetails")}
                       </Link>
-                    {cart[product.slug] ? (
+                    {isOutOfStock(product) ? (
+                      <span
+                        role="status"
+                        className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-full border border-manikstu-red/30 bg-manikstu-red/5 px-3 py-1.5 text-xs font-semibold text-manikstu-red"
+                      >
+                        <PackageX className="h-3.5 w-3.5" />
+                        {t("outOfStock")}
+                      </span>
+                    ) : cart[product.slug] ? (
                       <div className="inline-flex items-center gap-1 rounded-full border border-manikstu-green bg-white text-xs font-semibold text-manikstu-green">
                         <button
                           type="button"
@@ -417,8 +454,9 @@ export default function ProductsPage() {
                         <button
                           type="button"
                           onClick={() => addToCart(product)}
+                          disabled={live !== "ok" || atMaxQty(cart[product.slug])}
                           aria-label={`Add one more ${product.name}`}
-                          className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-manikstu-green/10 focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                          className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-manikstu-green/10 focus:outline-none focus:ring-2 focus:ring-manikstu-green disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
                         >
                           <Plus className="h-3.5 w-3.5" />
                         </button>
@@ -427,7 +465,10 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         onClick={() => addToCart(product)}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-manikstu-green bg-white px-3 py-1.5 text-xs font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1"
+                        disabled={live !== "ok"}
+                        aria-busy={live === "loading"}
+                        title={live === "loading" ? t("checkingStock") : live === "failed" ? t("stockUnavailable") : undefined}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-manikstu-green bg-white px-3 py-1.5 text-xs font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-manikstu-green"
                       >
                         <ShoppingBag className="h-3.5 w-3.5" />
                         {t("addToCart")}
@@ -499,6 +540,11 @@ export default function ProductsPage() {
                             ₹{line.price.toLocaleString("en-IN")}
                             {line.size ? ` · ${line.size}` : ""}
                           </p>
+                          {atMaxQty(line) && (
+                            <p className="text-[11px] font-semibold text-manikstu-red">
+                              {t("onlyInStock", { count: line.maxQty ?? 0 })}
+                            </p>
+                          )}
                         </div>
 
                         <div className="inline-flex items-center gap-1 rounded-full border border-light-grey text-xs font-semibold text-charcoal">
@@ -518,8 +564,9 @@ export default function ProductsPage() {
                             onClick={() =>
                               setCart(setQtyStore(line.slug, line.qty + 1))
                             }
+                            disabled={atMaxQty(line)}
                             aria-label={`Increase ${line.name}`}
-                            className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10"
+                            className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
                           >
                             <Plus className="h-3 w-3" />
                           </button>

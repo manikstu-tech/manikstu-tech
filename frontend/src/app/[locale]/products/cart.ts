@@ -17,6 +17,13 @@ export interface CartLine {
   image?: string;
   size?: string;
   qty: number;
+  /** Units in stock when last added; the cart never holds more. Absent when stock is not tracked. */
+  maxQty?: number;
+}
+
+/** Whether a cart line is already at the most that can be bought. */
+export function atMaxQty(line: Pick<CartLine, "qty" | "maxQty">): boolean {
+  return line.maxQty !== undefined && line.qty >= line.maxQty;
 }
 
 /** Cart keyed by product slug. */
@@ -29,6 +36,8 @@ export interface CartProduct {
   price?: number | string | null;
   image?: string;
   size?: string;
+  /** Units in stock (from the API). Absent or null: not tracked, no limit. */
+  stock?: number | null;
 }
 
 function isBrowser() {
@@ -57,6 +66,7 @@ export function readCart(): CartMap {
         image: typeof line.image === "string" ? line.image : undefined,
         size: typeof line.size === "string" ? line.size : undefined,
         qty,
+        maxQty: typeof line.maxQty === "number" && Number.isFinite(line.maxQty) ? line.maxQty : undefined,
       };
     }
     return out;
@@ -75,10 +85,17 @@ export function writeCart(next: CartMap) {
   }
 }
 
-/** Add (or increment) a product in the cart. Deduplicates by slug. */
+/**
+ * Add (or increment) a product in the cart. Deduplicates by slug. When the product's stock is known the line is
+ * capped at it, and an out-of-stock product is not added at all.
+ */
 export function addToCart(product: CartProduct, qty = 1): CartMap {
   const cur = readCart();
   const existing = cur[product.slug];
+  const maxQty = typeof product.stock === "number" ? Math.max(0, product.stock) : existing?.maxQty;
+  const wanted = (existing?.qty ?? 0) + qty;
+  const capped = maxQty === undefined ? wanted : Math.min(wanted, maxQty);
+  if (capped <= 0) return cur;
   const next: CartMap = {
     ...cur,
     [product.slug]: {
@@ -87,7 +104,8 @@ export function addToCart(product: CartProduct, qty = 1): CartMap {
       price: Number(product.price) || 0,
       image: product.image,
       size: product.size,
-      qty: (existing?.qty ?? 0) + qty,
+      qty: capped,
+      maxQty,
     },
   };
   writeCart(next);
@@ -100,7 +118,23 @@ export function setQty(slug: string, qty: number): CartMap {
   if (qty <= 0 || !next[slug]) {
     delete next[slug];
   } else {
-    next[slug] = { ...next[slug], qty };
+    const max = next[slug].maxQty;
+    next[slug] = { ...next[slug], qty: max === undefined ? qty : Math.min(qty, max) };
+  }
+  writeCart(next);
+  return next;
+}
+
+/** Stock turned out lower than the cart holds: cap the line at it from now on (0 removes it). */
+export function limitToStock(slug: string, stock: number): CartMap {
+  const cur = readCart();
+  if (!cur[slug]) return cur;
+  const next: CartMap = { ...cur };
+  const max = Math.max(0, stock);
+  if (max === 0) {
+    delete next[slug];
+  } else {
+    next[slug] = { ...next[slug], maxQty: max, qty: Math.min(next[slug].qty, max) };
   }
   writeCart(next);
   return next;
