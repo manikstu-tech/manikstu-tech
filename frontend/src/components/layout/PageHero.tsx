@@ -59,7 +59,7 @@ export default function PageHero({
       aria-hidden
       width={504}
       height={560}
-      className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14]"
+      className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.40] sm:opacity-[0.56]"
     />
   );
 

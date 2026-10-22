@@ -38,7 +38,7 @@ export default function ResumeCTA() {
         aria-hidden
         width={768}
         height={768}
-        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-30 -scale-x-100"
       />
 
       {/* Top-right quarter floral artwork */}
@@ -48,13 +48,13 @@ export default function ResumeCTA() {
         aria-hidden
         width={768}
         height={768}
-        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18]"
+        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-30"
       />
 
       {/* Bottom village panoramic scene banner */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-3 sm:-bottom-5 md:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-45"
+        className="pointer-events-none absolute inset-x-0 -bottom-3 sm:-bottom-5 md:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-70"
       >
         <Image
           src="/patterns/village-figures.webp"
@@ -103,7 +103,7 @@ export default function ResumeCTA() {
           <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
         </div>
 
-        <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-grey leading-relaxed">
+        <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-charcoal leading-relaxed">
           {t("resumeDesc")}
         </p>
 
@@ -137,7 +137,7 @@ export default function ResumeCTA() {
                 <h3 className="font-heading text-xs sm:text-sm font-bold text-charcoal">
                   {pillar.title}
                 </h3>
-                <p className="mt-0.5 text-[10px] sm:text-[11px] text-grey">
+                <p className="mt-0.5 text-[10px] sm:text-[11px] text-charcoal">
                   {pillar.subtitle}
                 </p>
               </div>

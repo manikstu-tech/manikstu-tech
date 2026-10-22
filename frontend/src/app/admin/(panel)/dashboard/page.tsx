@@ -36,9 +36,9 @@ function ActivityRow({ item }: { item: Activity }) {
       </span>
       <span className="min-w-0 flex-1">
         <span className="block truncate text-sm font-semibold text-charcoal">{item.title}</span>
-        <span className="block truncate text-xs text-grey">{item.subtitle}</span>
+        <span className="block truncate text-xs text-charcoal">{item.subtitle}</span>
       </span>
-      <span className="flex shrink-0 items-center gap-2 whitespace-nowrap text-xs text-grey">
+      <span className="flex shrink-0 items-center gap-2 whitespace-nowrap text-xs text-charcoal">
         {timeAgo(item.at)}
         <span className="h-2 w-2 rounded-full bg-[#5B8DEF]" />
       </span>
@@ -67,9 +67,9 @@ function ActionRow({ label, description, icon: Icon, href, tone }: { label: stri
       </span>
       <span className="min-w-0 flex-1">
         <span className="block text-sm font-semibold text-charcoal">{label}</span>
-        <span className="block truncate text-xs text-grey">{description}</span>
+        <span className="block truncate text-xs text-charcoal">{description}</span>
       </span>
-      <ChevronRight className={`h-4 w-4 shrink-0 text-grey transition group-hover:translate-x-0.5 ${t.chevron}`} />
+      <ChevronRight className={`h-4 w-4 shrink-0 text-charcoal transition group-hover:translate-x-0.5 ${t.chevron}`} />
     </Link>
   );
 }
@@ -116,7 +116,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
               aria-label="Show figures as of"
               className="border-0 bg-transparent p-0 text-sm font-semibold text-charcoal outline-none [color-scheme:light]"
             />
-            <button type="submit" className="flex h-6 w-6 items-center justify-center rounded-full text-grey transition hover:bg-manikstu-cream hover:text-manikstu-green" aria-label="Apply date">
+            <button type="submit" className="flex h-6 w-6 items-center justify-center rounded-full text-charcoal transition hover:bg-manikstu-cream hover:text-manikstu-green" aria-label="Apply date">
               <ChevronRight className="h-4 w-4" />
             </button>
           </form>
@@ -133,7 +133,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
             </Link>
           </div>
           {activity.length === 0 ? (
-            <p className="py-10 text-center text-sm text-grey">No recent activity yet.</p>
+            <p className="py-10 text-center text-sm text-charcoal">No recent activity yet.</p>
           ) : (
             <ul className="mt-1 divide-y divide-[#F4F1EA]">
               {activity.map((item) => (

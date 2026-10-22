@@ -122,7 +122,7 @@ export default function CheckoutPage() {
           <h1 className="font-heading text-3xl font-bold text-charcoal md:text-4xl">
             {t("checkout")}
           </h1>
-          <p className="mt-2 text-grey">
+          <p className="mt-2 text-charcoal">
             {t("enterDeliveryAddress")}
           </p>
 
@@ -133,7 +133,7 @@ export default function CheckoutPage() {
                 <h2 className="mt-4 font-heading text-2xl font-bold text-charcoal">
                   {t("orderPlacedSuccess")}
                 </h2>
-                <p className="mx-auto mt-2 max-w-md text-grey">
+                <p className="mx-auto mt-2 max-w-md text-charcoal">
                   {t("orderThankYou", { name: address.fullName || t("friend"), phone: address.phone || t("yourPhone"), city: address.city || t("yourAddress") })}
                 </p>
                 {orderNumber && (
@@ -142,7 +142,7 @@ export default function CheckoutPage() {
                       {t("orderNumberLabel")}
                     </p>
                     <p className="mt-1 font-heading text-lg font-bold text-charcoal">{orderNumber}</p>
-                    <p className="mt-2 text-xs leading-relaxed text-grey">{t("orderNumberHelp")}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-charcoal">{t("orderNumberHelp")}</p>
                     <Link
                       href={`/products/track?order=${encodeURIComponent(orderNumber)}`}
                       className="mt-3 inline-block text-sm font-semibold text-manikstu-green underline hover:text-manikstu-leaf"
@@ -163,11 +163,11 @@ export default function CheckoutPage() {
 
           {cartCount === 0 && !placed ? (
             <div className="mt-10 rounded-2xl border border-light-grey bg-white p-8 text-center shadow-sm md:p-12">
-              <ShoppingBag className="mx-auto h-12 w-12 text-grey/50" />
+              <ShoppingBag className="mx-auto h-12 w-12 text-charcoal/50" />
               <h2 className="mt-4 font-heading text-xl font-bold text-charcoal">
                 {t("cartEmpty")}
               </h2>
-              <p className="mt-2 text-grey">
+              <p className="mt-2 text-charcoal">
                 {t("addProductsBefore")}
               </p>
               <Link
@@ -323,7 +323,7 @@ export default function CheckoutPage() {
                         <p className="truncate text-sm font-semibold text-charcoal">
                           {line.name}
                         </p>
-                        <p className="text-xs text-grey">
+                        <p className="text-xs text-charcoal">
                           Qty {line.qty}
                           {line.size ? ` · ${line.size}` : ""}
                         </p>
@@ -336,11 +336,11 @@ export default function CheckoutPage() {
                 </ul>
 
                 <div className="mt-5 space-y-2 border-t border-light-grey/70 pt-4 text-sm">
-                  <div className="flex justify-between text-grey">
+                  <div className="flex justify-between text-charcoal">
                     <span>{t("items")} ({cartCount})</span>
                     <span>₹{cartTotal.toLocaleString("en-IN")}</span>
                   </div>
-                  <div className="flex justify-between text-grey">
+                  <div className="flex justify-between text-charcoal">
                     <span>{t("delivery")}</span>
                     <span className="text-manikstu-green">{t("free")}</span>
                   </div>
@@ -362,7 +362,7 @@ export default function CheckoutPage() {
 }
 
 const inputCls =
-  "w-full rounded-lg border border-light-grey bg-white px-4 py-2.5 text-sm text-charcoal outline-none transition-colors placeholder:text-grey/60 focus:border-manikstu-green focus:ring-2 focus:ring-manikstu-green/20";
+  "w-full rounded-lg border border-light-grey bg-white px-4 py-2.5 text-sm text-charcoal outline-none transition-colors placeholder:text-charcoal/60 focus:border-manikstu-green focus:ring-2 focus:ring-manikstu-green/20";
 
 function Field({
   label,

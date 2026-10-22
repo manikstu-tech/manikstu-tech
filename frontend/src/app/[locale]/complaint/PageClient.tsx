@@ -57,7 +57,7 @@ export default function ComplaintPage() {
       <main id="main-content" className="bg-manikstu-cream/40">
         <div className="mx-auto max-w-2xl px-4 py-12 md:px-8 md:py-16">
           <h1 className="font-heading text-3xl font-bold text-charcoal md:text-4xl">{t("title")}</h1>
-          <p className="mt-2 text-grey">{t("intro")}</p>
+          <p className="mt-2 text-charcoal">{t("intro")}</p>
 
           {status === "success" ? (
             <div className="mt-8 rounded-2xl border border-manikstu-gold/25 bg-white p-8 text-center shadow-sm">
@@ -65,7 +65,7 @@ export default function ComplaintPage() {
               <h2 className="mt-4 font-heading text-2xl font-bold text-charcoal">
                 {t("successTitle")}
               </h2>
-              <p className="mt-3 text-grey">{t("successDesc")}</p>
+              <p className="mt-3 text-charcoal">{t("successDesc")}</p>
             </div>
           ) : (
             <form
@@ -103,7 +103,7 @@ export default function ComplaintPage() {
               <div>
                 <label htmlFor="order_number" className={LABEL}>{t("orderNumber")}</label>
                 <input id="order_number" name="order_number" value={form.order_number} onChange={change} className={FIELD} />
-                <p className="mt-1 text-xs text-grey">{t("orderNumberHelp")}</p>
+                <p className="mt-1 text-xs text-charcoal">{t("orderNumberHelp")}</p>
               </div>
 
               <div>
@@ -127,7 +127,7 @@ export default function ComplaintPage() {
                   required
                   className={FIELD}
                 />
-                <p className="mt-1 text-xs text-grey">{t("descriptionHelp")}</p>
+                <p className="mt-1 text-xs text-charcoal">{t("descriptionHelp")}</p>
               </div>
 
               <button

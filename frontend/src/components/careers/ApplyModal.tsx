@@ -93,7 +93,7 @@ export default function ApplyModal({
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full text-grey transition hover:bg-manikstu-cream hover:text-charcoal"
+          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full text-charcoal transition hover:bg-manikstu-cream hover:text-charcoal"
         >
           <X className="h-5 w-5" />
         </button>
@@ -104,7 +104,7 @@ export default function ApplyModal({
               <CheckCircle2 className="h-8 w-8" />
             </span>
             <h2 className="font-heading text-2xl font-bold text-charcoal">Application received</h2>
-            <p className="max-w-sm text-sm text-grey">
+            <p className="max-w-sm text-sm text-charcoal">
               Thank you for applying for <span className="font-semibold text-charcoal">{jobTitle}</span>. Our team will review your CV and get back to you.
             </p>
             <button
@@ -119,7 +119,7 @@ export default function ApplyModal({
           <form onSubmit={handleSubmit} className="px-6 pb-6 pt-7 sm:px-7">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-manikstu-green">Apply now</p>
             <h2 className="mt-1.5 font-heading text-2xl font-bold leading-tight text-charcoal">{jobTitle}</h2>
-            <p className="mt-1 text-sm text-grey">Fill in your details and attach your CV.</p>
+            <p className="mt-1 text-sm text-charcoal">Fill in your details and attach your CV.</p>
 
             {error && (
               <p role="alert" className="mt-4 rounded-lg border border-manikstu-red/20 bg-manikstu-red/5 px-3.5 py-2.5 text-sm font-medium text-manikstu-red">
@@ -136,7 +136,7 @@ export default function ApplyModal({
 
               <div>
                 <label htmlFor="apply-note" className="mb-1.5 block text-sm font-semibold text-charcoal">
-                  Message <span className="font-normal text-grey">(optional)</span>
+                  Message <span className="font-normal text-charcoal">(optional)</span>
                 </label>
                 <textarea
                   id="apply-note"
@@ -165,7 +165,7 @@ export default function ApplyModal({
                     <span className="block truncate text-sm font-semibold text-charcoal">
                       {file ? file.name : "Choose a file"}
                     </span>
-                    <span className="block text-xs text-grey">PDF or Word, up to {MAX_MB} MB</span>
+                    <span className="block text-xs text-charcoal">PDF or Word, up to {MAX_MB} MB</span>
                   </span>
                 </button>
                 <input

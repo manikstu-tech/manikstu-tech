@@ -77,12 +77,12 @@ function AwardsCarousel({ awards }: { awards: AwardItem[] }) {
           <div
             key={`${item.title}-${i}`}
             aria-hidden={i >= awards.length}
-            className="group relative flex w-[270px] sm:w-[320px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 pt-5 pb-5 px-5 sm:pt-6 sm:pb-6 sm:px-6 shadow-sm transition-all duration-300 hover:shadow-xl"
+            className="group relative flex w-[270px] sm:w-[320px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-white/95 pt-5 pb-5 px-5 sm:pt-6 sm:pb-6 sm:px-6 shadow-sm transition-all duration-300 hover:shadow-xl"
           >
             {/* Inner dashed border */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+              className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
             />
 
             <div className="relative z-10 flex flex-col items-center text-center">
@@ -91,7 +91,7 @@ function AwardsCarousel({ awards }: { awards: AwardItem[] }) {
                 <Icon className="h-5 w-5 sm:h-7 sm:w-7 text-manikstu-green transition-transform duration-300 group-hover:scale-110" />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-[-3.5px] sm:inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
+                  className="pointer-events-none absolute inset-[-3.5px] sm:inset-[-5px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                 />
               </div>
 
@@ -110,7 +110,7 @@ function AwardsCarousel({ awards }: { awards: AwardItem[] }) {
                 <span aria-hidden className="h-px w-4 sm:w-5 bg-manikstu-gold" />
               </div>
 
-              <p className="text-[11px] sm:text-sm text-grey leading-relaxed">
+              <p className="text-[11px] sm:text-sm text-charcoal leading-relaxed">
                 {item.description}
               </p>
             </div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-charcoal">
               {t("heroDesc")}
             </p>
 
@@ -245,7 +245,7 @@ export default function AboutPage() {
               <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                 <Heart className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
-              <p className="text-sm text-grey">
+              <p className="text-sm text-charcoal">
                 {t("microStatement")}
               </p>
             </div>
@@ -323,7 +323,7 @@ export default function AboutPage() {
                   <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
                 </div>
 
-                <div className="mt-6 space-y-4 text-sm sm:text-base leading-relaxed text-grey">
+                <div className="mt-6 space-y-4 text-sm sm:text-base leading-relaxed text-charcoal">
                   <p>
                     {t("storyP1")}
                   </p>
@@ -335,7 +335,7 @@ export default function AboutPage() {
 
               {/* Right Column: Values 2x2 Grid Panel (Tribal / Collaborate Card Design) */}
               <div className="flex flex-col lg:col-span-7">
-                <div className="group relative flex h-full flex-col justify-center overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/95 p-6 sm:p-7 md:p-8 shadow-sm transition-all duration-300 hover:shadow-xl">
+                <div className="group relative flex h-full flex-col justify-center overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-white/95 p-6 sm:p-7 md:p-8 shadow-sm transition-all duration-300 hover:shadow-xl">
                   <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2">
                     {/* People First (Top-Left) */}
                     <div className="flex items-start gap-4 pb-7 sm:pb-7 sm:pr-7 border-b sm:border-r border-manikstu-gold/30">
@@ -346,7 +346,7 @@ export default function AboutPage() {
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
                           {t("valuePeopleFirst")}
                         </h3>
-                        <p className="mt-1.5 text-xs sm:text-sm text-grey leading-relaxed">
+                        <p className="mt-1.5 text-xs sm:text-sm text-charcoal leading-relaxed">
                           {t("valuePeopleFirstDesc")}
                         </p>
                       </div>
@@ -361,7 +361,7 @@ export default function AboutPage() {
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
                           {t("valueIntegrity")}
                         </h3>
-                        <p className="mt-1.5 text-xs sm:text-sm text-grey leading-relaxed">
+                        <p className="mt-1.5 text-xs sm:text-sm text-charcoal leading-relaxed">
                           {t("valueIntegrityDesc")}
                         </p>
                       </div>
@@ -376,7 +376,7 @@ export default function AboutPage() {
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
                           {t("valueSustainability")}
                         </h3>
-                        <p className="mt-1.5 text-xs sm:text-sm text-grey leading-relaxed">
+                        <p className="mt-1.5 text-xs sm:text-sm text-charcoal leading-relaxed">
                           {t("valueSustainabilityDesc")}
                         </p>
                       </div>
@@ -391,7 +391,7 @@ export default function AboutPage() {
                         <h3 className="font-heading text-lg sm:text-xl italic font-bold text-manikstu-leaf">
                           {t("valueInnovation")}
                         </h3>
-                        <p className="mt-1.5 text-xs sm:text-sm text-grey leading-relaxed">
+                        <p className="mt-1.5 text-xs sm:text-sm text-charcoal leading-relaxed">
                           {t("valueInnovationDesc")}
                         </p>
                       </div>
@@ -661,7 +661,7 @@ export default function AboutPage() {
                           <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs font-semibold text-manikstu-green">
                             {l.role}
                           </p>
-                          <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs leading-relaxed text-grey">
+                          <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs leading-relaxed text-charcoal">
                             {l.bio}
                           </p>
                         </div>
@@ -739,7 +739,7 @@ export default function AboutPage() {
                           <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs font-semibold text-manikstu-green">
                             {l.role}
                           </p>
-                          <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs leading-relaxed text-grey">
+                          <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs leading-relaxed text-charcoal">
                             {l.bio}
                           </p>
                         </div>
@@ -776,7 +776,7 @@ export default function AboutPage() {
                 aria-hidden
                 width={1370}
                 height={1155}
-                className="pointer-events-none select-none absolute left-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.16] sm:opacity-[0.20]"
+                className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.56] sm:opacity-[0.72]"
               />
 
               {/* Bottom-right (right bottom corner) mandala */}
@@ -786,7 +786,7 @@ export default function AboutPage() {
                 aria-hidden
                 width={1370}
                 height={1155}
-                className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.16] sm:opacity-[0.20] -scale-x-100 -scale-y-100"
+                className="pointer-events-none select-none absolute right-0 bottom-2 sm:bottom-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.56] sm:opacity-[0.72] -scale-x-100 -scale-y-100"
               />
 
               {/* Top tribal floral border */}
@@ -864,7 +864,7 @@ export default function AboutPage() {
                           <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs font-semibold text-manikstu-green">
                             {l.role}
                           </p>
-                          <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs leading-relaxed text-grey">
+                          <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs leading-relaxed text-charcoal">
                             {l.bio}
                           </p>
                         </div>

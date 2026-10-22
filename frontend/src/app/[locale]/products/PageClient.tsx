@@ -140,7 +140,7 @@ export default function ProductsPage() {
               )}
             </h1>
 
-            <p className="mt-6 hidden max-w-lg text-lg leading-relaxed text-grey sm:block">
+            <p className="mt-6 hidden max-w-lg text-lg leading-relaxed text-charcoal sm:block">
               {t("heroDesc")}
             </p>
 
@@ -164,7 +164,7 @@ export default function ProductsPage() {
               <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                 <Sprout className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
-              <p className="text-sm text-grey">
+              <p className="text-sm text-charcoal">
                 {t("microStatement")}
               </p>
             </div>
@@ -206,14 +206,14 @@ export default function ProductsPage() {
             {/* Mobile heading, search and category chips */}
             <div className="sm:hidden">
               <div className="relative">
-                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-charcoal" />
                 <input
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={t("searchPlaceholder")}
                   aria-label={t("searchPlaceholder")}
-                  className="w-full rounded-full border border-light-grey bg-white py-3 pl-11 pr-4 text-sm text-charcoal placeholder:text-grey focus:border-manikstu-green focus:outline-none focus:ring-2 focus:ring-manikstu-green/30"
+                  className="w-full rounded-full border border-light-grey bg-white py-3 pl-11 pr-4 text-sm text-charcoal placeholder:text-charcoal focus:border-manikstu-green focus:outline-none focus:ring-2 focus:ring-manikstu-green/30"
                 />
               </div>
 
@@ -269,13 +269,13 @@ export default function ProductsPage() {
                 <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey">
+              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-charcoal">
                 {t("trustedByFarmers")}
               </p>
             </div>
 
             {loading ? (
-              <div className="mt-10 py-16 text-center text-grey">
+              <div className="mt-10 py-16 text-center text-charcoal">
                 {t("loadingProducts")}
               </div>
             ) : products.length === 0 ? (
@@ -286,7 +286,7 @@ export default function ProductsPage() {
                 <h3 className="mt-4 font-heading text-lg font-bold text-charcoal">
                   {t("noProductsAvailable")}
                 </h3>
-                <p className="mt-1 max-w-md text-sm text-grey">
+                <p className="mt-1 max-w-md text-sm text-charcoal">
                   {t("noProductsDesc")}
                 </p>
                 <Link
@@ -297,7 +297,7 @@ export default function ProductsPage() {
                 </Link>
               </div>
             ) : visibleProducts.length === 0 ? (
-              <p className="mt-8 py-10 text-center text-sm text-grey">
+              <p className="mt-8 py-10 text-center text-sm text-charcoal">
                 {t("noMatches")}
               </p>
             ) : (
@@ -333,7 +333,7 @@ export default function ProductsPage() {
                       <h3 className="mt-1 font-heading text-xl font-bold leading-tight text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-2 sm:mt-0 sm:text-base sm:line-clamp-1">
                         {product.name}
                       </h3>
-                      <p className="mt-2 text-sm text-grey leading-snug line-clamp-3 sm:mt-1 sm:text-xs">
+                      <p className="mt-2 text-sm text-charcoal leading-snug line-clamp-3 sm:mt-1 sm:text-xs">
                         {product.description}
                       </p>
                       {product.size && (
@@ -456,7 +456,7 @@ export default function ProductsPage() {
                       <p className="font-heading text-sm font-bold text-charcoal">
                         {t("yourCart")}
                       </p>
-                      <p className="text-[11px] text-grey">
+                      <p className="text-[11px] text-charcoal">
                         {cartCount} {cartCount === 1 ? t("item") : t("items")}
                       </p>
                     </div>
@@ -464,7 +464,7 @@ export default function ProductsPage() {
                   <button
                     type="button"
                     onClick={() => setCart(clearCartStore())}
-                    className="text-xs font-semibold text-grey hover:text-manikstu-red transition-colors"
+                    className="text-xs font-semibold text-charcoal hover:text-manikstu-red transition-colors"
                   >
                     {t("clearAll")}
                   </button>
@@ -495,7 +495,7 @@ export default function ProductsPage() {
                           <p className="text-sm font-semibold text-charcoal line-clamp-1">
                             {line.name}
                           </p>
-                          <p className="text-[11px] text-grey">
+                          <p className="text-[11px] text-charcoal">
                             ₹{line.price.toLocaleString("en-IN")}
                             {line.size ? ` · ${line.size}` : ""}
                           </p>
@@ -532,7 +532,7 @@ export default function ProductsPage() {
                           type="button"
                           onClick={() => removeFromCart(line.slug)}
                           aria-label={`Remove ${line.name} from cart`}
-                          className="flex h-7 w-7 items-center justify-center rounded-full text-grey hover:bg-manikstu-red/10 hover:text-manikstu-red transition-colors"
+                          className="flex h-7 w-7 items-center justify-center rounded-full text-charcoal hover:bg-manikstu-red/10 hover:text-manikstu-red transition-colors"
                         >
                           <X className="h-4 w-4" />
                         </button>
@@ -543,7 +543,7 @@ export default function ProductsPage() {
 
                 <div className="flex flex-col items-stretch gap-3 border-t border-light-grey/70 bg-manikstu-cream/40 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-[11px] uppercase tracking-wider text-grey">
+                    <p className="text-[11px] uppercase tracking-wider text-charcoal">
                       {t("totalToPay")}
                     </p>
                     <p className="font-body text-2xl font-bold text-manikstu-green">
@@ -574,7 +574,7 @@ export default function ProductsPage() {
                         <h4 className="text-sm font-bold text-charcoal">
                           {f.title}
                         </h4>
-                        <p className="mt-0.5 text-xs text-grey leading-snug">
+                        <p className="mt-0.5 text-xs text-charcoal leading-snug">
                           {f.subtitle}
                         </p>
                       </div>

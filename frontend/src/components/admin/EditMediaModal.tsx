@@ -49,7 +49,7 @@ export default function EditMediaModal({
         onClick={() => setOpen(true)}
         title="Edit item"
         aria-label={`Edit ${item.name}`}
-        className="flex h-8 w-8 items-center justify-center rounded-lg text-grey transition-colors hover:bg-manikstu-green/10 hover:text-manikstu-green focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+        className="flex h-8 w-8 items-center justify-center rounded-lg text-charcoal transition-colors hover:bg-manikstu-green/10 hover:text-manikstu-green focus:outline-none focus:ring-2 focus:ring-manikstu-green"
       >
         <Pencil className="h-4 w-4" />
       </button>
@@ -69,14 +69,14 @@ export default function EditMediaModal({
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-grey hover:bg-charcoal/5 hover:text-charcoal"
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-charcoal hover:bg-charcoal/5 hover:text-charcoal"
               aria-label="Close"
             >
               <X className="h-5 w-5" />
             </button>
 
             <h3 className="font-heading text-xl font-bold text-charcoal">Edit Media Item</h3>
-            <p className="mt-1 text-xs text-grey">Update the name, date, or replace the uploaded file.</p>
+            <p className="mt-1 text-xs text-charcoal">Update the name, date, or replace the uploaded file.</p>
 
             <form ref={formRef} onSubmit={onSubmit} className="mt-5 space-y-4">
               <ErrorSummary message={state.ok ? undefined : state.message} errors={state.ok ? undefined : state.errors} />
@@ -93,7 +93,7 @@ export default function EditMediaModal({
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-xs font-semibold text-charcoal">{item.name}</p>
-                  <p className="text-[11px] text-grey">{item.file_name}</p>
+                  <p className="text-[11px] text-charcoal">{item.file_name}</p>
                 </div>
               </div>
 
@@ -105,7 +105,7 @@ export default function EditMediaModal({
                     type="button"
                     onClick={() => setType("photo")}
                     className={`flex flex-1 items-center justify-center gap-2 rounded-lg py-2 text-sm font-semibold transition ${
-                      type === "photo" ? "bg-white text-manikstu-leaf shadow-sm" : "text-grey hover:text-charcoal"
+                      type === "photo" ? "bg-white text-manikstu-leaf shadow-sm" : "text-charcoal hover:text-charcoal"
                     }`}
                   >
                     <ImageIcon className="h-4 w-4" />
@@ -115,7 +115,7 @@ export default function EditMediaModal({
                     type="button"
                     onClick={() => setType("video")}
                     className={`flex flex-1 items-center justify-center gap-2 rounded-lg py-2 text-sm font-semibold transition ${
-                      type === "video" ? "bg-white text-manikstu-leaf shadow-sm" : "text-grey hover:text-charcoal"
+                      type === "video" ? "bg-white text-manikstu-leaf shadow-sm" : "text-charcoal hover:text-charcoal"
                     }`}
                   >
                     <Film className="h-4 w-4" />
@@ -157,7 +157,7 @@ export default function EditMediaModal({
                   name="file"
                   type="file"
                   accept={type === "video" ? "video/*" : "image/*,application/pdf"}
-                  className="block w-full text-xs text-grey file:mr-3 file:rounded-lg file:border-0 file:bg-manikstu-green/10 file:px-3 file:py-2 file:text-xs file:font-semibold file:text-manikstu-leaf hover:file:bg-manikstu-green/15"
+                  className="block w-full text-xs text-charcoal file:mr-3 file:rounded-lg file:border-0 file:bg-manikstu-green/10 file:px-3 file:py-2 file:text-xs file:font-semibold file:text-manikstu-leaf hover:file:bg-manikstu-green/15"
                 />
               </Field>
 

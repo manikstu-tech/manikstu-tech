@@ -39,7 +39,7 @@ export default function ArticlePageClient({ article }: { article: ArticleDetail 
             </h1>
 
             {formatDate(article.published_at) && (
-              <p className="mt-3 inline-flex items-center gap-1.5 text-sm text-grey">
+              <p className="mt-3 inline-flex items-center gap-1.5 text-sm text-charcoal">
                 <Calendar className="h-4 w-4 text-manikstu-green" />
                 {formatDate(article.published_at)}
               </p>
@@ -59,7 +59,7 @@ export default function ArticlePageClient({ article }: { article: ArticleDetail 
 
             {article.content && (
               <div
-                className="mt-8 text-grey leading-relaxed [&_a]:text-manikstu-green [&_a]:underline [&_blockquote]:my-3 [&_blockquote]:border-l-4 [&_blockquote]:border-manikstu-gold/50 [&_blockquote]:pl-4 [&_blockquote]:italic [&_h2]:mb-2 [&_h2]:mt-6 [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-charcoal [&_h3]:mb-1 [&_h3]:mt-4 [&_h3]:font-semibold [&_h3]:text-charcoal [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-3 [&_ul]:list-disc [&_ul]:pl-5"
+                className="mt-8 text-charcoal leading-relaxed [&_a]:text-manikstu-green [&_a]:underline [&_blockquote]:my-3 [&_blockquote]:border-l-4 [&_blockquote]:border-manikstu-gold/50 [&_blockquote]:pl-4 [&_blockquote]:italic [&_h2]:mb-2 [&_h2]:mt-6 [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-charcoal [&_h3]:mb-1 [&_h3]:mt-4 [&_h3]:font-semibold [&_h3]:text-charcoal [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-3 [&_ul]:list-disc [&_ul]:pl-5"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
             )}

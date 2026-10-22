@@ -109,7 +109,7 @@ export default function NotificationBell() {
       <button
         type="button"
         onClick={toggle}
-        className="relative flex h-10 w-10 items-center justify-center rounded-lg text-grey transition-colors hover:bg-manikstu-cream/70 hover:text-charcoal"
+        className="relative flex h-10 w-10 items-center justify-center rounded-lg text-charcoal transition-colors hover:bg-manikstu-cream/70 hover:text-charcoal"
         aria-label={`Notifications${unread ? ` (${unread} new)` : ""}`}
         aria-haspopup="true"
         aria-expanded={open}
@@ -137,7 +137,7 @@ export default function NotificationBell() {
             {items.length === 0 ? (
               <div className="px-4 py-10 text-center">
                 <Bell className="mx-auto h-8 w-8 text-light-grey" />
-                <p className="mt-2 text-sm text-grey">You&apos;re all caught up.</p>
+                <p className="mt-2 text-sm text-charcoal">You&apos;re all caught up.</p>
               </div>
             ) : (
               <ul className="divide-y divide-[#F4F1EA]">
@@ -156,8 +156,8 @@ export default function NotificationBell() {
                         </span>
                         <span className="min-w-0 flex-1">
                           <span className="block truncate text-sm font-semibold text-charcoal">{item.title}</span>
-                          <span className="block truncate text-xs text-grey">{item.subtitle}</span>
-                          <span className="mt-0.5 block text-[11px] font-medium text-grey/70">{timeAgo(item.at)}</span>
+                          <span className="block truncate text-xs text-charcoal">{item.subtitle}</span>
+                          <span className="mt-0.5 block text-[11px] font-medium text-charcoal/70">{timeAgo(item.at)}</span>
                         </span>
                         {isNew && <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-manikstu-red" />}
                       </Link>

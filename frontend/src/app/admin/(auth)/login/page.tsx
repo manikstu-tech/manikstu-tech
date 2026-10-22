@@ -29,12 +29,12 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           src="/patterns/mandala-top-right.png"
           alt=""
           aria-hidden
-          className="pointer-events-none absolute -right-10 top-6 h-auto w-80 opacity-[0.12] [filter:brightness(0)_invert(1)]"
+          className="pointer-events-none absolute -right-10 top-6 h-auto w-80 opacity-[0.50] [filter:brightness(0)_invert(1)]"
         />
         {/* Village scene along the bottom */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-cover bg-bottom bg-no-repeat opacity-[0.16] brightness-0 invert"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-cover bg-bottom bg-no-repeat opacity-[0.64] brightness-0 invert"
           style={{ backgroundImage: "url('/patterns/village-scene.webp')" }}
         />
 
@@ -77,7 +77,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         {/* Soft background scene on mobile/tablet only (desktop has the brand panel) */}
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-[0.14] lg:hidden"
+          className="pointer-events-none fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-[0.56] lg:hidden"
           style={{ backgroundImage: "url('/patterns/village-scene.webp')" }}
         />
 
@@ -96,7 +96,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/logo.png" alt="Manikstu Agri Solutions" className="mx-auto h-12 w-auto lg:hidden" />
                 <h1 className="mt-3 font-heading text-2xl font-bold text-charcoal lg:mt-0">Welcome back</h1>
-                <p className="mt-1 text-xs text-grey">Sign in to the Manikstu admin panel</p>
+                <p className="mt-1 text-xs text-charcoal">Sign in to the Manikstu admin panel</p>
                 <div className="mt-3 flex items-center justify-center gap-2">
                   <span aria-hidden className="h-px w-12 bg-manikstu-gold/50" />
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
@@ -115,7 +115,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
               <ShieldCheck className="h-4 w-4" />
               Secure Admin Access
             </p>
-            <p className="mt-0.5 text-xs text-grey lg:hidden">&copy; 2026 Manikstu Agro Private Limited.</p>
+            <p className="mt-0.5 text-xs text-charcoal lg:hidden">&copy; 2026 Manikstu Agro Private Limited.</p>
           </div>
         </div>
       </section>

@@ -52,7 +52,7 @@ function StatusSelect({ id, value }: { id: number; value: string }) {
           </option>
         ))}
       </select>
-      {pending && <Loader2 className="h-3.5 w-3.5 animate-spin text-grey" />}
+      {pending && <Loader2 className="h-3.5 w-3.5 animate-spin text-charcoal" />}
     </span>
   );
 }
@@ -63,7 +63,7 @@ export default function ApplicationsTable({ applications }: { applications: Appl
       <div className="overflow-x-auto">
         <table className="w-full min-w-[720px] text-left text-sm">
           <thead>
-            <tr className="border-b border-light-grey bg-manikstu-cream/40 text-xs uppercase tracking-wide text-grey">
+            <tr className="border-b border-light-grey bg-manikstu-cream/40 text-xs uppercase tracking-wide text-charcoal">
               <th className="px-4 py-3 font-semibold">Applicant</th>
               <th className="px-4 py-3 font-semibold">Job</th>
               <th className="px-4 py-3 font-semibold">Applied</th>
@@ -76,11 +76,11 @@ export default function ApplicationsTable({ applications }: { applications: Appl
               <tr key={a.id} className="align-middle hover:bg-manikstu-cream/20">
                 <td className="px-4 py-3">
                   <div className="font-semibold text-charcoal">{a.name}</div>
-                  <div className="text-xs text-grey">{a.email}</div>
-                  {a.phone && <div className="text-xs text-grey">{a.phone}</div>}
+                  <div className="text-xs text-charcoal">{a.email}</div>
+                  {a.phone && <div className="text-xs text-charcoal">{a.phone}</div>}
                 </td>
-                <td className="px-4 py-3 text-grey">{a.job_title ?? "—"}</td>
-                <td className="px-4 py-3 whitespace-nowrap text-grey">{fmtDate(a.created_at)}</td>
+                <td className="px-4 py-3 text-charcoal">{a.job_title ?? "—"}</td>
+                <td className="px-4 py-3 whitespace-nowrap text-charcoal">{fmtDate(a.created_at)}</td>
                 <td className="px-4 py-3"><StatusSelect id={a.id} value={a.status} /></td>
                 <td className="px-4 py-3">
                   <a

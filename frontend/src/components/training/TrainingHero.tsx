@@ -31,7 +31,7 @@ export default function TrainingHero() {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-charcoal">
               {t("heroDesc")}
             </p>
 
@@ -55,7 +55,7 @@ export default function TrainingHero() {
               <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                 <Sprout className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
-              <p className="text-sm text-grey">
+              <p className="text-sm text-charcoal">
                 {t("microStatement")}
               </p>
             </div>

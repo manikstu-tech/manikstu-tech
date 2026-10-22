@@ -38,17 +38,17 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
   return (
     <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
       <div className={`relative h-full ${flipped ? "lg:order-2" : ""}`}>
-        <div className="group relative h-full overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/90 py-10 px-6 shadow-sm transition-all duration-300 hover:shadow-xl md:px-8 flex flex-col items-center justify-center">
+        <div className="group relative h-full overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-manikstu-cream/90 py-10 px-6 shadow-sm transition-all duration-300 hover:shadow-xl md:px-8 flex flex-col items-center justify-center">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+            className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
           />
           <div className="relative z-10 text-center">
             <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
               <Icon className="h-7 w-7 text-manikstu-green" />
               <span
                 aria-hidden
-                className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-[#DFE9D9]"
               />
             </div>
             {item.subtitle && (
@@ -69,7 +69,7 @@ function AlternatingBlock({ item, index }: { item: Block; index: number }) {
                 {item.highlight}
               </p>
             )}
-            <p className="mt-4 text-sm leading-relaxed text-grey md:text-base">
+            <p className="mt-4 text-sm leading-relaxed text-charcoal md:text-base">
               {item.description}
             </p>
           </div>
@@ -274,7 +274,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               )}
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-charcoal">
               {t("heroDesc")}
             </p>
 
@@ -297,7 +297,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                 <Sprout className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
-              <p className="text-sm text-grey">
+              <p className="text-sm text-charcoal">
                 {t("microStatement")}
               </p>
             </div>
@@ -355,7 +355,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
+              <p className="mx-auto mt-6 max-w-2xl text-charcoal leading-relaxed">
                 {t("servicesDesc")}
               </p>
             </div>

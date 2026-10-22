@@ -37,7 +37,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
         aria-hidden
         width={768}
         height={768}
-        className="pointer-events-none select-none absolute -left-10 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-40 md:w-52 opacity-[0.12] sm:opacity-[0.16] -scale-x-100"
+        className="pointer-events-none select-none absolute -left-10 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-40 md:w-52 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
       />
       {/* Right side mandala */}
       <Image
@@ -46,7 +46,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
         aria-hidden
         width={768}
         height={768}
-        className="pointer-events-none select-none absolute -right-10 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-40 md:w-52 opacity-[0.12] sm:opacity-[0.16]"
+        className="pointer-events-none select-none absolute -right-10 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-40 md:w-52 opacity-[0.56] sm:opacity-[0.72]"
       />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
@@ -81,7 +81,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
             <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
           </div>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey leading-relaxed">
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-charcoal leading-relaxed">
             {t("whyDesc")}
           </p>
         </div>
@@ -92,12 +92,12 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
             return (
               <div
                 key={value.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 p-6 text-center transition-shadow hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-white/90 p-6 text-center transition-shadow hover:shadow-lg"
               >
                 {/* Inner dashed border */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
                 />
 
                 <div className="relative text-center">
@@ -106,7 +106,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
                     <Icon className="h-6 w-6 text-manikstu-green" />
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                     />
                   </div>
 
@@ -121,7 +121,7 @@ export default function WhyJoinUs({ values }: { values: CareerValue[] }) {
                     <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
                   </div>
 
-                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-grey">
+                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-charcoal">
                     {value.description}
                   </p>
                 </div>

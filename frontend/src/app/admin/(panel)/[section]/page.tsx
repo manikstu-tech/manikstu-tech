@@ -26,7 +26,7 @@ function Cell({ row, column }: { row: AdminRecord; column: ColumnDef }) {
     case "status":
       return <StatusBadge active={Boolean(value)} on={column.on} off={column.off} />;
     case "date":
-      return <span className="whitespace-nowrap text-grey">{formatDate(value)}</span>;
+      return <span className="whitespace-nowrap text-charcoal">{formatDate(value)}</span>;
     case "money":
       return <span className="font-medium">{formatPrice(typeof value === "number" ? value : null)}</span>;
     case "rating":
@@ -36,7 +36,7 @@ function Cell({ row, column }: { row: AdminRecord; column: ColumnDef }) {
           {String(value)}/5
         </span>
       ) : (
-        <span className="text-grey">—</span>
+        <span className="text-charcoal">—</span>
       );
     case "image":
       return value ? (
@@ -48,9 +48,9 @@ function Cell({ row, column }: { row: AdminRecord; column: ColumnDef }) {
         </span>
       );
     case "pill":
-      return value ? <Pill tone={column.tones?.[String(value)] ?? "grey"}>{column.labels?.[String(value)] ?? String(value)}</Pill> : <span className="text-grey">—</span>;
+      return value ? <Pill tone={column.tones?.[String(value)] ?? "grey"}>{column.labels?.[String(value)] ?? String(value)}</Pill> : <span className="text-charcoal">—</span>;
     default:
-      return value === null || value === undefined || value === "" ? <span className="text-grey">—</span> : <>{String(value)}</>;
+      return value === null || value === undefined || value === "" ? <span className="text-charcoal">—</span> : <>{String(value)}</>;
   }
 }
 
@@ -103,7 +103,7 @@ export default async function SectionListPage({ params, searchParams }: Params &
 
       <form method="get" className="mb-5 flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center">
         <div className="relative md:w-72">
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-charcoal" />
           <input name="search" defaultValue={sp.search} placeholder={section.searchPlaceholder ?? "Search…"} className={`${fieldClass} w-full pl-10`} />
         </div>
         {section.filters?.map((f) => (
@@ -120,7 +120,7 @@ export default async function SectionListPage({ params, searchParams }: Params &
           Filter
         </button>
         {filtered && (
-          <Link href={`/admin/${key}`} className="text-sm font-medium text-grey hover:text-manikstu-green">
+          <Link href={`/admin/${key}`} className="text-sm font-medium text-charcoal hover:text-manikstu-green">
             Clear
           </Link>
         )}
@@ -183,7 +183,7 @@ export default async function SectionListPage({ params, searchParams }: Params &
           <div className="px-5 py-16 text-center">
             <Inbox className="mx-auto h-12 w-12 text-manikstu-green/50" strokeWidth={1.5} />
             <h3 className="mt-3 text-xl font-bold">{filtered ? "Nothing matches these filters" : `No ${section.title.toLowerCase()} yet`}</h3>
-            <p className="mt-1 text-sm text-grey">
+            <p className="mt-1 text-sm text-charcoal">
               {filtered ? "Try a different search or clear the filters." : section.canCreate !== false ? `Add the first ${section.singular.toLowerCase()} to get started.` : "New entries will appear here."}
             </p>
           </div>

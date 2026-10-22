@@ -48,7 +48,7 @@ export default function CollaborateImpact({ stats: propStats }: { stats?: Stat[]
       />
 
       {/* Left & Right Mandala line art, white */}
-      <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-15 brightness-0 invert">
+      <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-[0.61] brightness-0 invert">
         <Image
           src="/patterns/mandala-left.png"
           alt=""
@@ -57,7 +57,7 @@ export default function CollaborateImpact({ stats: propStats }: { stats?: Stat[]
           className="h-auto w-32 sm:w-44 md:w-52 max-h-[90%] object-contain object-left"
         />
       </div>
-      <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-15 brightness-0 invert">
+      <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-[0.61] brightness-0 invert">
         <Image
           src="/patterns/mandala-right.png"
           alt=""

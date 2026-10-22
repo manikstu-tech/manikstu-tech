@@ -389,7 +389,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 width={1300}
                 height={1300}
                 priority
-                className="select-none absolute right-0 translate-x-1/2 md:translate-x-0 md:right-2 top-1/3 sm:top-1/2 -translate-y-1/2 h-[65%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.12] sm:opacity-[0.14]"
+                className="select-none absolute right-0 translate-x-1/2 md:translate-x-0 md:right-2 top-1/3 sm:top-1/2 -translate-y-1/2 h-[65%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.50] sm:opacity-[0.56]"
               />
             </div>
           }
@@ -401,7 +401,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <br />
                   <span className="text-manikstu-green">{t("heroTitle2")}</span>
                 </h1>
-                <p className="mt-3 sm:mt-6 max-w-lg text-sm sm:text-base md:text-lg text-grey leading-relaxed">
+                <p className="mt-3 sm:mt-6 max-w-lg text-sm sm:text-base md:text-lg text-charcoal leading-relaxed">
                   {t("missionDesc2")}
                 </p>
                 <div className="mt-5 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
@@ -420,7 +420,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
                 {/* Trust badges */}
                 <div className="mt-5 sm:mt-6 flex items-center gap-3">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm text-grey">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm text-charcoal">
                     <Shield className="h-4 w-4 text-manikstu-green" />
                     {t("trustedBy")}
                   </div>
@@ -488,7 +488,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
             </div>
 
-            <p className="mx-auto mt-6 max-w-2xl text-center text-grey leading-relaxed">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-charcoal leading-relaxed">
               {t("missionDesc1")}
             </p>
 
@@ -498,18 +498,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 return (
                   <div
                     key={card.title}
-                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                    className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-white/90 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
                   >
                     {/* Inner dashed border */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                      className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
                     />
 
                     {/* Bottom Warli village art */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-45 z-0"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-70 z-0"
                       style={
                         card.image
                           ? {
@@ -531,7 +531,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         <Icon className="h-7 w-7 text-manikstu-green" />
                         <span
                           aria-hidden
-                          className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                          className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                         />
                       </div>
 
@@ -546,7 +546,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
                       </div>
 
-                      <p className="mt-3 text-sm text-grey leading-relaxed">
+                      <p className="mt-3 text-sm text-charcoal leading-relaxed">
                         {card.description}
                       </p>
                     </div>
@@ -576,7 +576,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18]"
+            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.56] sm:opacity-[0.72]"
           />
           {/* Top-right mandala corner (mirrored) */}
           <Image
@@ -585,12 +585,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+            className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
           />
           {/* Bottom village panoramic scene banner, mobile single full-width lower banner, desktop original two-side panoramic banner */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-40 sm:opacity-50"
+            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-65 sm:opacity-80"
           >
             {/* Left figures (Desktop/tablet only) */}
             <Image
@@ -647,7 +647,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <span aria-hidden className="h-px w-10 sm:w-14 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm text-grey leading-relaxed">
+              <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm text-charcoal leading-relaxed">
                 {t("statsDesc")}
               </p>
             </div>
@@ -658,12 +658,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 return (
                   <div
                     key={stat.label}
-                    className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white/90 p-4 sm:p-5 text-center transition-shadow hover:shadow-lg"
+                    className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-white/90 p-4 sm:p-5 text-center transition-shadow hover:shadow-lg"
                   >
                     {/* Inner dashed border */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                      className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
                     />
 
                     <div className="relative text-center">
@@ -672,7 +672,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-manikstu-green" />
                         <span
                           aria-hidden
-                          className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
+                          className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                         />
                       </div>
 
@@ -687,7 +687,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         <span aria-hidden className="h-px w-5 bg-manikstu-gold" />
                       </div>
 
-                      <p className="mt-2 text-xs sm:text-sm font-medium leading-snug text-grey">
+                      <p className="mt-2 text-xs sm:text-sm font-medium leading-snug text-charcoal">
                         {stat.label}
                       </p>
                     </div>
@@ -708,7 +708,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               aria-hidden
               width={600}
               height={600}
-              className="w-56 sm:w-72 md:w-80 lg:w-[450px] max-w-[500px] h-auto opacity-[0.04] lg:opacity-[0.06]"
+              className="w-56 sm:w-72 md:w-80 lg:w-[450px] max-w-[500px] h-auto opacity-[0.16] lg:opacity-[0.24]"
             />
           </div>
           <div className="relative mx-auto max-w-7xl">
@@ -742,7 +742,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <span aria-hidden className="h-px w-10 sm:w-16 bg-manikstu-gold/70" />
                 </div>
 
-                <p className="mt-3 sm:mt-4 text-sm sm:text-base text-grey leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                <p className="mt-3 sm:mt-4 text-sm sm:text-base text-charcoal leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
                   {t("flagshipDesc")}
                 </p>
                 <Link
@@ -824,7 +824,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                             />
                           ))}
                         </div>
-                        <p className="mt-4 text-sm text-grey italic line-clamp-4">
+                        <p className="mt-4 text-sm text-charcoal italic line-clamp-4">
                           &ldquo;{item.quote}&rdquo;
                         </p>
                         <div className="mt-6 flex items-center gap-3">
@@ -839,7 +839,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                             <p className="text-sm font-semibold text-charcoal">
                               {item.name}
                             </p>
-                            <p className="text-xs text-grey">{item.role}</p>
+                            <p className="text-xs text-charcoal">{item.role}</p>
                           </div>
                         </div>
                       </div>
@@ -898,7 +898,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
             </div>
 
-            <p className="mt-2 text-xs text-grey sm:text-sm">
+            <p className="mt-2 text-xs text-charcoal sm:text-sm">
               {t("networkDesc")}
             </p>
           </div>
@@ -947,7 +947,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.14] sm:opacity-[0.18]"
+            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.56] sm:opacity-[0.72]"
           />
 
           <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
@@ -971,7 +971,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   {/* Warli figures at bottom of phone */}
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom opacity-45"
+                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom opacity-70"
                     style={{
                       backgroundImage: "url('/patterns/village-figures.webp')",
                       backgroundSize: "180% auto",
@@ -1007,7 +1007,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <span aria-hidden className="h-px w-16 bg-manikstu-gold/50" />
                 </div>
 
-                <p className="mt-6 text-grey text-center lg:text-left max-w-lg mx-auto lg:mx-0">
+                <p className="mt-6 text-charcoal text-center lg:text-left max-w-lg mx-auto lg:mx-0">
                   {t("appDesc")}
                 </p>
 
@@ -1085,7 +1085,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-40 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-65 -scale-x-100"
           />
           <Image
             src="/patterns/village-figures.webp"
@@ -1094,7 +1094,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[12px] right-0 w-[30%] max-w-none h-auto opacity-40"
+            className="pointer-events-none select-none absolute bottom-[12px] right-0 w-[30%] max-w-none h-auto opacity-65"
           />
 
           {/* Dark green tagline ribbon */}
@@ -1133,7 +1133,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               alt=""
               width={504}
               height={560}
-              className="h-auto w-24 sm:w-32 md:w-40 lg:w-48 object-contain object-right-top opacity-[0.12] sm:opacity-[0.18]"
+              className="h-auto w-24 sm:w-32 md:w-40 lg:w-48 object-contain object-right-top opacity-[0.50] sm:opacity-[0.72]"
             />
           </div>
 
@@ -1144,7 +1144,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               alt=""
               width={420}
               height={1024}
-              className="h-auto w-20 sm:w-28 md:w-36 lg:w-44 max-h-[85%] object-contain object-left-bottom opacity-[0.12] sm:opacity-[0.18]"
+              className="h-auto w-20 sm:w-28 md:w-36 lg:w-44 max-h-[85%] object-contain object-left-bottom opacity-[0.50] sm:opacity-[0.72]"
             />
           </div>
 
@@ -1197,14 +1197,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     </span>
                   </div>
                   <div className="p-4 flex flex-col flex-1">
-                    <p className="flex items-center gap-1 text-xs text-grey">
+                    <p className="flex items-center gap-1 text-xs text-charcoal">
                       <Calendar className="h-3 w-3" /> {item.date}
                     </p>
                     <h3 className="mt-2 text-sm font-semibold text-charcoal line-clamp-2 group-hover:text-manikstu-green transition-colors">
                       {item.title}
                     </h3>
                     {item.excerpt && (
-                      <p className="mt-1.5 text-xs text-grey line-clamp-2">
+                      <p className="mt-1.5 text-xs text-charcoal line-clamp-2">
                         {item.excerpt}
                       </p>
                     )}

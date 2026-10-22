@@ -70,7 +70,7 @@ export default function CareerBenefits({
             <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
           </div>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey leading-relaxed">
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-charcoal leading-relaxed">
             {t("benefitsDesc")}
           </p>
         </div>
@@ -81,12 +81,12 @@ export default function CareerBenefits({
             return (
               <div
                 key={benefit.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/40 bg-manikstu-cream/40 p-5 text-center transition-shadow hover:shadow-md"
+                className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-manikstu-cream/40 p-5 text-center transition-shadow hover:shadow-md"
               >
                 {/* Inner dashed border */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/30"
+                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
                 />
 
                 <div className="relative text-center">
@@ -94,7 +94,7 @@ export default function CareerBenefits({
                     <Icon className="h-6 w-6 text-manikstu-green" />
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-saura-red/40"
+                      className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                     />
                   </div>
                   <h3 className="mt-4 font-heading text-base font-bold text-charcoal group-hover:text-manikstu-green transition-colors">
@@ -108,7 +108,7 @@ export default function CareerBenefits({
                     <span aria-hidden className="h-px w-4 bg-manikstu-gold" />
                   </div>
 
-                  <p className="mt-2 text-xs leading-relaxed text-grey">
+                  <p className="mt-2 text-xs leading-relaxed text-charcoal">
                     {benefit.description}
                   </p>
                 </div>

@@ -326,7 +326,7 @@ export default function ProductDetailPage() {
         <Header />
         <main
           id="main-content"
-          className="mx-auto max-w-3xl px-4 py-24 text-center text-grey sm:px-6 md:px-8"
+          className="mx-auto max-w-3xl px-4 py-24 text-center text-charcoal sm:px-6 md:px-8"
         >
           {t("loadingProduct")}
         </main>
@@ -347,7 +347,7 @@ export default function ProductDetailPage() {
           <h1 className="mt-4 font-heading text-2xl font-bold text-charcoal">
             {t("productNotFound")}
           </h1>
-          <p className="mt-2 text-grey">
+          <p className="mt-2 text-charcoal">
             The product you&apos;re looking for isn&apos;t available right now.
           </p>
           <Link
@@ -372,7 +372,7 @@ export default function ProductDetailPage() {
           {/* Breadcrumb */}
           <nav
             aria-label="Breadcrumb"
-            className="text-xs text-grey"
+            className="text-xs text-charcoal"
           >
             <ol className="flex flex-wrap items-center gap-1">
               <li>
@@ -528,7 +528,7 @@ export default function ProductDetailPage() {
                   <button
                     type="button"
                     onClick={() => setVideoOpen(true)}
-                    className="mt-1.5 text-base font-medium text-grey underline-offset-2 transition-colors hover:text-manikstu-green hover:underline"
+                    className="mt-1.5 text-base font-medium text-charcoal underline-offset-2 transition-colors hover:text-manikstu-green hover:underline"
                   >
                     You can watch it here.
                   </button>
@@ -572,7 +572,7 @@ export default function ProductDetailPage() {
                     <StarRow value={stripRating} size="md" />
                     <a
                       href="#reviews"
-                      className="text-sm font-semibold text-grey hover:text-manikstu-green transition-colors"
+                      className="text-sm font-semibold text-charcoal hover:text-manikstu-green transition-colors"
                     >
                       {stripCount.toLocaleString("en-IN")} {t("ratings")}
                       {" & "}
@@ -582,7 +582,7 @@ export default function ProductDetailPage() {
                 );
               })()}
 
-              <p className="mt-4 text-base leading-relaxed text-grey">
+              <p className="mt-4 text-base leading-relaxed text-charcoal">
                 {product.longDescription ?? product.description}
               </p>
 
@@ -592,7 +592,7 @@ export default function ProductDetailPage() {
                   ₹{Number(product.price).toLocaleString("en-IN")}
                 </p>
                 {product.size && (
-                  <span className="text-sm text-grey">
+                  <span className="text-sm text-charcoal">
                     per {product.size}
                   </span>
                 )}
@@ -669,7 +669,7 @@ export default function ProductDetailPage() {
                         <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10">
                           <Check className="h-3 w-3 text-manikstu-green" />
                         </span>
-                        <span className="text-sm text-grey">
+                        <span className="text-sm text-charcoal">
                           {h}
                         </span>
                       </li>
@@ -754,7 +754,7 @@ export default function ProductDetailPage() {
                       <p className="text-xs font-bold uppercase tracking-wider text-charcoal">
                         {t("composition")}
                       </p>
-                      <p className="mt-1.5 text-xs leading-relaxed text-grey">
+                      <p className="mt-1.5 text-xs leading-relaxed text-charcoal">
                         {product.ingredients}
                       </p>
                     </div>
@@ -765,7 +765,7 @@ export default function ProductDetailPage() {
                       <p className="text-xs font-bold uppercase tracking-wider text-charcoal">
                         {t("storageHandling")}
                       </p>
-                      <p className="mt-1.5 text-xs leading-relaxed text-grey">
+                      <p className="mt-1.5 text-xs leading-relaxed text-charcoal">
                         {product.storage}
                       </p>
                     </div>
@@ -878,7 +878,7 @@ export default function ProductDetailPage() {
                         strokeWidth={1.5}
                       />
                     </div>
-                    <p className="mt-1 text-xs text-grey">
+                    <p className="mt-1 text-xs text-charcoal">
                       {t("basedOnRatings")} {totalRatings.toLocaleString("en-IN")} {t("ratingsAnd")} {reviews.length} {t("reviewsCount")}
                     </p>
 
@@ -915,7 +915,7 @@ export default function ProductDetailPage() {
                                 style={{ width: `${pct}%` }}
                               />
                             </div>
-                            <span className="text-right tabular-nums text-grey">
+                            <span className="text-right tabular-nums text-charcoal">
                               {count.toLocaleString("en-IN")}
                             </span>
                           </div>
@@ -945,7 +945,7 @@ export default function ProductDetailPage() {
                       <h3 className="font-heading text-base font-bold text-charcoal">
                         {t("shareYourExperience")}
                       </h3>
-                      <p className="mt-1 text-xs text-grey">
+                      <p className="mt-1 text-xs text-charcoal">
                         {t("helpOtherFarmers")}
                       </p>
 
@@ -1004,7 +1004,7 @@ export default function ProductDetailPage() {
                           value={formName}
                           onChange={(e) => setFormName(e.target.value)}
                           placeholder={t("namePlaceholder")}
-                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-charcoal/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                         />
                       </div>
 
@@ -1014,7 +1014,7 @@ export default function ProductDetailPage() {
                           htmlFor="review-location"
                           className="block text-xs font-semibold uppercase tracking-wider text-charcoal"
                         >
-                          {t("location")} <span className="text-grey">{t("optional")}</span>
+                          {t("location")} <span className="text-charcoal">{t("optional")}</span>
                         </label>
                         <input
                           id="review-location"
@@ -1023,7 +1023,7 @@ export default function ProductDetailPage() {
                           onChange={(e) => setFormLocation(e.target.value)}
                           placeholder={t("locationPlaceholder")}
                           maxLength={80}
-                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-charcoal/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                         />
                       </div>
 
@@ -1033,7 +1033,7 @@ export default function ProductDetailPage() {
                           htmlFor="review-title"
                           className="block text-xs font-semibold uppercase tracking-wider text-charcoal"
                         >
-                          {t("headline")} <span className="text-grey">{t("optional")}</span>
+                          {t("headline")} <span className="text-charcoal">{t("optional")}</span>
                         </label>
                         <input
                           id="review-title"
@@ -1042,7 +1042,7 @@ export default function ProductDetailPage() {
                           onChange={(e) => setFormTitle(e.target.value)}
                           placeholder={t("headlinePlaceholder")}
                           maxLength={80}
-                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+                          className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-charcoal/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                         />
                       </div>
 
@@ -1061,9 +1061,9 @@ export default function ProductDetailPage() {
                           value={formBody}
                           onChange={(e) => setFormBody(e.target.value)}
                           placeholder={t("reviewPlaceholder")}
-                          className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+                          className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-charcoal/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                         />
-                        <p className="mt-1 text-[10px] text-grey">
+                        <p className="mt-1 text-[10px] text-charcoal">
                           {formBody.length}/1000
                         </p>
                       </div>
@@ -1085,7 +1085,7 @@ export default function ProductDetailPage() {
                             setReviewFormOpen(false);
                             resetForm();
                           }}
-                          className="text-xs font-semibold text-grey hover:text-manikstu-red transition-colors"
+                          className="text-xs font-semibold text-charcoal hover:text-manikstu-red transition-colors"
                         >
                           {t("cancel")}
                         </button>
@@ -1110,7 +1110,7 @@ export default function ProductDetailPage() {
                     <h3 className="font-heading text-lg font-bold text-charcoal">
                       {t("latestReviews")}
                     </h3>
-                    <span className="text-xs text-grey">
+                    <span className="text-xs text-charcoal">
                       {t("sortedByMostHelpful")}
                     </span>
                   </div>
@@ -1141,7 +1141,7 @@ export default function ProductDetailPage() {
                           {r.body}
                         </p>
 
-                        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-grey">
+                        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-charcoal">
                           <span className="font-semibold text-charcoal">
                             {r.author}
                           </span>
@@ -1238,7 +1238,7 @@ export default function ProductDetailPage() {
                               <p className="text-sm font-semibold text-charcoal">
                                 {q.question}
                               </p>
-                              <p className="mt-1 text-[11px] text-grey">
+                              <p className="mt-1 text-[11px] text-charcoal">
                                 {t("askedBy")} {q.asker} ┬╖ {q.askedAt}
                               </p>
                             </div>
@@ -1253,7 +1253,7 @@ export default function ProductDetailPage() {
                                 <p className="text-sm leading-relaxed text-charcoal">
                                   {q.answer}
                                 </p>
-                                <p className="mt-1 text-[11px] text-grey">
+                                <p className="mt-1 text-[11px] text-charcoal">
                                   {t("answeredBy")}{" "}
                                   <span className="font-semibold text-manikstu-green">
                                     {q.answerer}
@@ -1319,7 +1319,7 @@ export default function ProductDetailPage() {
                     <h3 className="font-heading text-sm font-bold text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-1">
                       {p.name}
                     </h3>
-                    <p className="mt-1 text-xs text-grey line-clamp-2">
+                    <p className="mt-1 text-xs text-charcoal line-clamp-2">
                       {p.description}
                     </p>
                     <p className="mt-2 text-sm font-bold text-manikstu-green">
@@ -1363,7 +1363,7 @@ export default function ProductDetailPage() {
                   >
                     {t("askAQuestion")}
                   </h3>
-                  <p className="text-[11px] text-grey line-clamp-1">
+                  <p className="text-[11px] text-charcoal line-clamp-1">
                     {t("aboutProduct")} {product.name}
                   </p>
                 </div>
@@ -1372,7 +1372,7 @@ export default function ProductDetailPage() {
                 type="button"
                 onClick={closeAskModal}
                 aria-label="Close"
-                className="flex h-8 w-8 items-center justify-center rounded-full text-grey hover:bg-manikstu-red/10 hover:text-manikstu-red transition-colors"
+                className="flex h-8 w-8 items-center justify-center rounded-full text-charcoal hover:bg-manikstu-red/10 hover:text-manikstu-red transition-colors"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -1392,7 +1392,7 @@ export default function ProductDetailPage() {
                 value={askName}
                 onChange={(e) => setAskName(e.target.value)}
                 placeholder={t("namePlaceholder")}
-                className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+                className="mt-1 w-full rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-charcoal/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
               />
 
               <label
@@ -1409,9 +1409,9 @@ export default function ProductDetailPage() {
                 onChange={(e) => setAskText(e.target.value)}
                 placeholder={t("questionPlaceholder")}
                 maxLength={500}
-                className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-grey/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+                className="mt-1 w-full resize-y rounded-lg border border-light-grey bg-white px-3 py-2 text-sm text-charcoal placeholder:text-charcoal/60 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
               />
-              <p className="mt-1 text-[10px] text-grey">
+              <p className="mt-1 text-[10px] text-charcoal">
                 {askText.length}/500 ┬╖ {t("supportReplies")}
               </p>
 
@@ -1426,7 +1426,7 @@ export default function ProductDetailPage() {
                 <button
                   type="button"
                   onClick={closeAskModal}
-                  className="text-xs font-semibold text-grey hover:text-manikstu-red transition-colors"
+                  className="text-xs font-semibold text-charcoal hover:text-manikstu-red transition-colors"
                 >
                   {t("cancel")}
                 </button>

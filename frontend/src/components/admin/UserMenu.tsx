@@ -44,7 +44,7 @@ export default function UserMenu({ user, logoutAction }: Props) {
           <span className="block text-sm font-semibold text-charcoal">{user.name}</span>
           <span className="block text-xs font-semibold text-manikstu-gold">{role}</span>
         </span>
-        <ChevronDown className={`hidden h-4 w-4 shrink-0 text-grey transition-transform sm:block ${open ? "rotate-180" : ""}`} />
+        <ChevronDown className={`hidden h-4 w-4 shrink-0 text-charcoal transition-transform sm:block ${open ? "rotate-180" : ""}`} />
       </button>
 
       {open && (
@@ -55,7 +55,7 @@ export default function UserMenu({ user, logoutAction }: Props) {
             </span>
             <span className="min-w-0">
               <span className="block truncate text-sm font-semibold text-charcoal">{user.name}</span>
-              <span className="block truncate text-xs text-grey">{user.email}</span>
+              <span className="block truncate text-xs text-charcoal">{user.email}</span>
             </span>
           </div>
 

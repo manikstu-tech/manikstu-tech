@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between gap-3 border-b border-[#F4F1EB] py-2.5 text-sm last:border-0">
-      <span className="text-grey">{label}</span>
+      <span className="text-charcoal">{label}</span>
       <span className="text-right font-semibold text-charcoal">{children}</span>
     </div>
   );
@@ -40,7 +40,7 @@ function OrderDetail({ order }: { order: AdminRecord }) {
     <div className="grid items-start gap-5 lg:grid-cols-[1.6fr_1fr]">
       <Card title={`Items (${items.length})`}>
         {items.length === 0 ? (
-          <p className="text-sm text-grey">This order has no line items.</p>
+          <p className="text-sm text-charcoal">This order has no line items.</p>
         ) : (
           <div className="-mx-5 -my-5 overflow-x-auto">
             <table className="w-full min-w-[480px] text-sm">
@@ -57,7 +57,7 @@ function OrderDetail({ order }: { order: AdminRecord }) {
                   <tr key={item.id} className="border-t border-[#F4F1EA]">
                     <td className="px-5 py-3">
                       <p className="font-semibold">{item.name}</p>
-                      {item.sku && <p className="text-xs text-grey">SKU {item.sku}</p>}
+                      {item.sku && <p className="text-xs text-charcoal">SKU {item.sku}</p>}
                     </td>
                     <td className="px-5 py-3 text-right">{item.quantity}</td>
                     <td className="px-5 py-3 text-right">{formatPrice(item.price)}</td>
@@ -69,7 +69,7 @@ function OrderDetail({ order }: { order: AdminRecord }) {
           </div>
         )}
         <div className="mt-5 flex justify-end border-t border-[#F0ECE2] pt-4 text-base">
-          <span className="mr-4 text-grey">Order total</span>
+          <span className="mr-4 text-charcoal">Order total</span>
           <span className="font-bold text-manikstu-leaf">{formatPrice(order.total as number)}</span>
         </div>
       </Card>
@@ -101,7 +101,7 @@ function OrderDetail({ order }: { order: AdminRecord }) {
               )}
             </div>
           ) : (
-            <p className="text-sm text-grey">No customer linked (guest order).</p>
+            <p className="text-sm text-charcoal">No customer linked (guest order).</p>
           )}
         </Card>
         {Boolean(order.notes) && (

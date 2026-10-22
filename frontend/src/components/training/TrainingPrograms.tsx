@@ -80,7 +80,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
         aria-hidden
         width={1370}
         height={1155}
-        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18]"
+        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.56] sm:opacity-[0.72]"
       />
       {/* Top-right mandala corner (mirrored) */}
       <Image
@@ -89,7 +89,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
         aria-hidden
         width={1370}
         height={1155}
-        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
       />
       {/* Bottom-left tree + goat silhouette */}
       <Image
@@ -98,7 +98,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
         aria-hidden
         width={1536}
         height={1024}
-        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-20 sm:opacity-25"
+        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.80] sm:opacity-[0.90]"
       />
       {/* Bottom-right woman + hut + tree silhouette */}
       <Image
@@ -107,7 +107,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
         aria-hidden
         width={1802}
         height={900}
-        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-20 sm:opacity-25"
+        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.80] sm:opacity-[0.90]"
       />
       <div className="relative mx-auto max-w-6xl">
         <div className="text-center">
@@ -139,7 +139,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
             <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
           </div>
 
-          <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
+          <p className="mx-auto mt-6 max-w-2xl text-charcoal leading-relaxed">
             {t("programsDesc")}
           </p>
         </div>
@@ -150,7 +150,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
             return (
               <div
                 key={program.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 pt-5 pb-16 px-5 sm:pt-6 sm:pb-20 sm:px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-manikstu-cream/30 pt-5 pb-16 px-5 sm:pt-6 sm:pb-20 sm:px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
 
                 {/* Bottom tribal art */}
@@ -172,7 +172,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
                     <Icon className="h-6 w-6 text-manikstu-green" />
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                     />
                   </div>
 
@@ -187,7 +187,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
                     <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
                   </div>
 
-                  <p className="mt-4 text-sm leading-relaxed text-grey">
+                  <p className="mt-4 text-sm leading-relaxed text-charcoal">
                     {program.description}
                   </p>
                 </div>

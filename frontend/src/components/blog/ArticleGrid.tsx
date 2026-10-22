@@ -25,7 +25,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
 
   if (articles.length === 0) {
     return (
-      <p className="py-12 text-center text-grey">
+      <p className="py-12 text-center text-charcoal">
         {t("noArticles")}
       </p>
     );
@@ -56,7 +56,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
                   {article.category}
                 </span>
                 {article.date && (
-                  <span className="inline-flex items-center gap-1.5 text-xs text-grey whitespace-nowrap">
+                  <span className="inline-flex items-center gap-1.5 text-xs text-charcoal whitespace-nowrap">
                     <Calendar className="h-3.5 w-3.5 text-manikstu-green" />
                     {formatArticleDate(article.date)}
                   </span>
@@ -65,7 +65,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
               <h3 className="mt-3 text-lg font-bold text-charcoal font-heading group-hover:text-manikstu-green transition-colors line-clamp-2">
                 {article.title}
               </h3>
-              <p className="mt-2 text-sm text-grey line-clamp-2">
+              <p className="mt-2 text-sm text-charcoal line-clamp-2">
                 {article.excerpt}
               </p>
               <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-manikstu-green">

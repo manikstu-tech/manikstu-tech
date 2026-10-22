@@ -16,7 +16,7 @@ export default function ProductGallery({ images, name, size }: { images: Product
           // eslint-disable-next-line @next/next/no-img-element
           <img src={current.url!} alt={name} className="h-full w-full object-contain" />
         ) : (
-          <span className="flex flex-col items-center gap-2 text-sm text-grey">
+          <span className="flex flex-col items-center gap-2 text-sm text-charcoal">
             <ImageOff className="h-8 w-8" />
             No images
           </span>

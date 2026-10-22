@@ -154,7 +154,7 @@ function BlockForm({ block, saveAction, onDone }: { block?: PageBlock; saveActio
           {block ? "Save Block" : "Add Block"}
         </button>
         {block && onDone && (
-          <button type="button" onClick={onDone} className="h-10 rounded-xl px-4 text-sm font-medium text-grey hover:text-charcoal">
+          <button type="button" onClick={onDone} className="h-10 rounded-xl px-4 text-sm font-medium text-charcoal hover:text-charcoal">
             Cancel
           </button>
         )}
@@ -186,17 +186,17 @@ export default function BlocksEditor({ blocks, canDelete, saveAction, reorderAct
     });
   }
 
-  const iconButton = "flex h-8 w-8 items-center justify-center rounded-lg border border-[#ECE7DC] bg-white text-grey transition hover:text-manikstu-green disabled:opacity-40";
+  const iconButton = "flex h-8 w-8 items-center justify-center rounded-lg border border-[#ECE7DC] bg-white text-charcoal transition hover:text-manikstu-green disabled:opacity-40";
 
   return (
     <div className="space-y-5">
-      <Section title={`Content Blocks (${blocks.length})`} action={pending ? <Loader2 className="h-4 w-4 animate-spin text-grey" /> : undefined}>
+      <Section title={`Content Blocks (${blocks.length})`} action={pending ? <Loader2 className="h-4 w-4 animate-spin text-charcoal" /> : undefined}>
         <datalist id="block-types">
           {KNOWN_TYPES.map((t) => (
             <option key={t} value={t} />
           ))}
         </datalist>
-        {blocks.length === 0 && <p className="text-sm text-grey">No blocks yet. Add one below.</p>}
+        {blocks.length === 0 && <p className="text-sm text-charcoal">No blocks yet. Add one below.</p>}
         <div className="space-y-3">
           {blocks.map((block, i) => (
             <article key={block.id} className={`rounded-xl border ${editing === block.id ? "border-manikstu-green/50" : "border-[#EDE9E1]"} bg-white`}>
@@ -237,7 +237,7 @@ export default function BlocksEditor({ blocks, canDelete, saveAction, reorderAct
                   <BlockForm block={block} saveAction={saveAction} onDone={() => setEditing(null)} />
                 </div>
               ) : (
-                <p className="border-t border-[#F4F1EA] px-4 py-2 font-mono text-xs text-grey">{summary(block.content)}</p>
+                <p className="border-t border-[#F4F1EA] px-4 py-2 font-mono text-xs text-charcoal">{summary(block.content)}</p>
               )}
             </article>
           ))}
@@ -245,7 +245,7 @@ export default function BlocksEditor({ blocks, canDelete, saveAction, reorderAct
       </Section>
 
       <Section title="Add Block">
-        <p className="-mt-1 flex items-center gap-1.5 text-xs text-grey">
+        <p className="-mt-1 flex items-center gap-1.5 text-xs text-charcoal">
           <Plus className="h-3.5 w-3.5" /> New blocks go to the end; move them into place afterwards.
         </p>
         <BlockForm saveAction={saveAction} />

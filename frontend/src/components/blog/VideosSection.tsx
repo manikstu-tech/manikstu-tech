@@ -41,7 +41,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
       {/* Top tribal border (matches home page Our Network) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-7 bg-repeat-x opacity-70"
+        className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-7 bg-repeat-x opacity-50"
         style={{
           backgroundImage: "url('/patterns/tribal-border.png')",
           backgroundSize: "auto 100%",
@@ -50,7 +50,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
       {/* Bottom tribal border (flipped) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
+        className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-50"
         style={{
           backgroundImage: "url('/patterns/tribal-border.png')",
           backgroundSize: "auto 100%",
@@ -64,7 +64,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
         aria-hidden
         width={1370}
         height={1155}
-        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.14] sm:opacity-[0.18]"
+        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.56] sm:opacity-[0.72]"
       />
       {/* Top-right mandala corner (mirrored) */}
       <Image
@@ -73,7 +73,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
         aria-hidden
         width={1370}
         height={1155}
-        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
       />
 
       <div className="relative mx-auto max-w-7xl">
@@ -108,7 +108,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
             <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
           </div>
 
-          <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
+          <p className="mx-auto mt-6 max-w-2xl text-charcoal leading-relaxed">
             {t("videosDesc")}
           </p>
         </div>
@@ -138,7 +138,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                       </h3>
                     )}
                     {video.date && (
-                      <div className="mt-3 flex items-center gap-1 text-xs text-grey">
+                      <div className="mt-3 flex items-center gap-1 text-xs text-charcoal">
                         <Calendar className="h-3 w-3 text-manikstu-green" />
                         {video.date}
                       </div>
@@ -179,7 +179,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                     {video.title}
                   </h3>
                   {video.date && (
-                    <div className="mt-3 flex items-center gap-1 text-xs text-grey">
+                    <div className="mt-3 flex items-center gap-1 text-xs text-charcoal">
                       <Calendar className="h-3 w-3 text-manikstu-green" />
                       {video.date}
                     </div>
@@ -217,10 +217,10 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
                   <h3 className="text-sm font-semibold text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-2">
                     {video.title}
                   </h3>
-                  <p className="mt-2 text-xs text-grey line-clamp-2">
+                  <p className="mt-2 text-xs text-charcoal line-clamp-2">
                     {video.description}
                   </p>
-                  <div className="mt-3 flex items-center gap-1 text-xs text-grey">
+                  <div className="mt-3 flex items-center gap-1 text-xs text-charcoal">
                     <Calendar className="h-3 w-3 text-manikstu-green" />
                     {video.date}
                   </div>

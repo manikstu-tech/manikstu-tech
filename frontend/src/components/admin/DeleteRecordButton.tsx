@@ -40,7 +40,7 @@ export default function DeleteRecordButton({ name, action, variant = "icon", not
       disabled={pending}
       title="Delete"
       aria-label={`Delete ${name}`}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#ECE7DC] bg-white text-grey transition hover:border-manikstu-red/25 hover:bg-manikstu-red/5 hover:text-manikstu-red disabled:opacity-60"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#ECE7DC] bg-white text-charcoal transition hover:border-manikstu-red/25 hover:bg-manikstu-red/5 hover:text-manikstu-red disabled:opacity-60"
     >
       {icon}
     </button>

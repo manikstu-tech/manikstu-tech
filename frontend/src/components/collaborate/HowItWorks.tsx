@@ -70,7 +70,7 @@ export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] })
             <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
           </div>
 
-          <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
+          <p className="mx-auto mt-6 max-w-2xl text-charcoal leading-relaxed">
             {t("howDesc")}
           </p>
         </div>
@@ -81,12 +81,12 @@ export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] })
             return (
               <div
                 key={item.step}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 p-6 transition-shadow hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-manikstu-cream/30 p-6 transition-shadow hover:shadow-lg"
               >
                 {/* Inner dashed border */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                  className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
                 />
 
                 <div className="relative text-center">
@@ -100,7 +100,7 @@ export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] })
                     <Icon className="h-6 w-6 text-manikstu-green" />
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-saura-red/50"
+                      className="pointer-events-none absolute inset-[-5px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                     />
                   </div>
 
@@ -115,7 +115,7 @@ export default function HowItWorks({ steps: propSteps }: { steps?: StepItem[] })
                     <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
                   </div>
 
-                  <p className="mt-3 text-sm leading-relaxed text-grey">
+                  <p className="mt-3 text-sm leading-relaxed text-charcoal">
                     {item.description}
                   </p>
                 </div>

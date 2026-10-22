@@ -47,7 +47,7 @@ export default async function MediaPage({ searchParams }: { searchParams: Promis
 
       <form method="get" className="mb-5 flex flex-col gap-3 md:flex-row md:items-center">
         <div className="relative md:w-72">
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-charcoal" />
           <input name="search" defaultValue={sp.search} placeholder="Search by name…" className={`${fieldClass} w-full pl-10`} />
         </div>
         <select name="type" defaultValue={sp.type ?? ""} className={fieldClass} aria-label="Type">
@@ -63,7 +63,7 @@ export default async function MediaPage({ searchParams }: { searchParams: Promis
           Filter
         </button>
         {(sp.search || sp.type || sp.sort) && (
-          <Link href="/admin/media" className="text-sm font-medium text-grey hover:text-manikstu-green">
+          <Link href="/admin/media" className="text-sm font-medium text-charcoal hover:text-manikstu-green">
             Clear
           </Link>
         )}
@@ -73,7 +73,7 @@ export default async function MediaPage({ searchParams }: { searchParams: Promis
         <div className="rounded-2xl border border-[#ECE7DC] bg-white px-5 py-16 text-center shadow-sm">
           <ImageOff className="mx-auto h-12 w-12 text-manikstu-green/50" strokeWidth={1.5} />
           <h3 className="mt-3 text-xl font-bold">No media yet</h3>
-          <p className="mt-1 text-sm text-grey">Upload a photo or video above to get started.</p>
+          <p className="mt-1 text-sm text-charcoal">Upload a photo or video above to get started.</p>
         </div>
       ) : (
         <div className="overflow-hidden rounded-2xl border border-[#ECE7DC] bg-white shadow-sm">
@@ -97,7 +97,7 @@ export default async function MediaPage({ searchParams }: { searchParams: Promis
                     ) : isVideo ? (
                       <video src={`${m.url}#t=0.5`} preload="metadata" muted className="h-full w-full bg-black object-cover" />
                     ) : isPdf ? (
-                      <span className="flex h-full items-center justify-center text-grey">
+                      <span className="flex h-full items-center justify-center text-charcoal">
                         <FileText className="h-10 w-10" />
                       </span>
                     ) : (
@@ -113,7 +113,7 @@ export default async function MediaPage({ searchParams }: { searchParams: Promis
                       <p className="truncate text-sm font-semibold" title={m.name}>
                         {m.name}
                       </p>
-                      <p className="text-xs text-grey">
+                      <p className="text-xs text-charcoal">
                         {formatDate(m.created_at)} · {formatBytes(m.size)}
                       </p>
                     </div>

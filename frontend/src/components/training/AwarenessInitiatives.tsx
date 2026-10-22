@@ -72,7 +72,7 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
             <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
           </div>
 
-          <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
+          <p className="mx-auto mt-6 max-w-2xl text-charcoal leading-relaxed">
             {t("awarenessDesc")}
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
             return (
               <div
                 key={item.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-manikstu-cream/30 pt-8 pb-28 px-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
 
                 {/* Bottom tribal art */}
@@ -104,7 +104,7 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
                     <Icon className="h-6 w-6 text-manikstu-green" />
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                     />
                   </div>
 
@@ -119,7 +119,7 @@ export default function AwarenessInitiatives({ initiatives: propInitiatives }: {
                     <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
                   </div>
 
-                  <p className="mt-4 text-sm leading-relaxed text-grey">
+                  <p className="mt-4 text-sm leading-relaxed text-charcoal">
                     {item.description}
                   </p>
                 </div>

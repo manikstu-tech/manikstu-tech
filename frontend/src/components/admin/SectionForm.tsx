@@ -105,7 +105,7 @@ function Translations({ record }: { record?: Rec }) {
       }
     >
       {!open ? (
-        <p className="text-xs text-grey">Open to add the title, excerpt and content in other languages. Empty languages fall back to English on the website.</p>
+        <p className="text-xs text-charcoal">Open to add the title, excerpt and content in other languages. Empty languages fall back to English on the website.</p>
       ) : (
         <>
           <div className="flex flex-wrap gap-1.5">
@@ -115,7 +115,7 @@ function Translations({ record }: { record?: Rec }) {
                 type="button"
                 onClick={() => setLocale(l.value)}
                 className={`rounded-lg px-2.5 py-1 text-xs font-semibold transition ${
-                  l.value === locale ? "bg-manikstu-green text-white" : existing.get(l.value)?.title ? "bg-manikstu-green/10 text-manikstu-leaf" : "bg-[#F2EEE4] text-grey hover:bg-[#E9E3D5]"
+                  l.value === locale ? "bg-manikstu-green text-white" : existing.get(l.value)?.title ? "bg-manikstu-green/10 text-manikstu-leaf" : "bg-[#F2EEE4] text-charcoal hover:bg-[#E9E3D5]"
                 }`}
               >
                 {l.label}
@@ -199,7 +199,7 @@ export default function SectionForm({ sectionKey, record, categories, action, ca
               {pending && <Loader2 className="h-4 w-4 animate-spin" />}
               {pending ? "Saving…" : record ? `Update ${section.singular}` : `Create ${section.singular}`}
             </button>
-            <Link href={cancelHref} className="flex items-center justify-center gap-1.5 text-sm font-medium text-grey hover:text-manikstu-green">
+            <Link href={cancelHref} className="flex items-center justify-center gap-1.5 text-sm font-medium text-charcoal hover:text-manikstu-green">
               <ArrowLeft className="h-3.5 w-3.5" />
               Cancel
             </Link>

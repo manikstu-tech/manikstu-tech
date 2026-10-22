@@ -204,7 +204,7 @@ export default function BlogPage() {
                 <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
+              <p className="mx-auto mt-6 max-w-2xl text-charcoal leading-relaxed">
                 In-depth reads, event recaps and press coverage, filter by
                 category or browse the featured piece.
               </p>
