@@ -120,7 +120,7 @@ export default async function HelpPage({ params }: { params: Promise<{ locale: s
 
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-[0.61] brightness-0 invert"
+            className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-[0.95] brightness-0 invert"
           >
             <Image
               src="/patterns/mandala-left.png"
@@ -132,7 +132,7 @@ export default async function HelpPage({ params }: { params: Promise<{ locale: s
           </div>
           <div
             aria-hidden
-            className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-[0.61] brightness-0 invert"
+            className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-[0.95] brightness-0 invert"
           >
             <Image
               src="/patterns/mandala-right.png"

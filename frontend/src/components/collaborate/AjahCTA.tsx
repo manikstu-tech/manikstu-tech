@@ -148,7 +148,7 @@ export default function AjahCTA() {
         aria-hidden
         width={300}
         height={200}
-        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.80] sm:opacity-[0.90]"
+        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
       />
 
       {/* Bottom village scene illustration, right */}
@@ -158,7 +158,7 @@ export default function AjahCTA() {
         aria-hidden
         width={300}
         height={200}
-        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.80] sm:opacity-[0.90]"
+        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
       />
     </section>
   );

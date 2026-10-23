@@ -10,6 +10,7 @@ import WatchStoryButton from "@/components/home/WatchStoryButton";
 import TestimonialsSlider from "@/components/home/TestimonialsSlider";
 import { categoryColorMap } from "@/lib/blog-data";
 import PageHero from "@/components/layout/PageHero";
+import FallbackImage from "@/components/ui/FallbackImage";
 import JsonLd from "@/components/seo/JsonLd";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import {
@@ -389,7 +390,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 width={1300}
                 height={1300}
                 priority
-                className="select-none absolute right-0 translate-x-1/2 md:translate-x-0 md:right-2 top-1/3 sm:top-1/2 -translate-y-1/2 h-[65%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.50] sm:opacity-[0.56]"
+                className="select-none absolute right-0 translate-x-1/2 md:translate-x-0 md:right-2 top-1/3 sm:top-1/2 -translate-y-1/2 h-[65%] sm:h-[85%] lg:h-[95%] w-auto max-w-none opacity-[0.95] sm:opacity-[0.95]"
               />
             </div>
           }
@@ -509,7 +510,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     {/* Bottom Warli village art */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-70 z-0"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-no-repeat bg-bottom opacity-[0.95] z-0"
                       style={
                         card.image
                           ? {
@@ -576,7 +577,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.56] sm:opacity-[0.72]"
+            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.95] sm:opacity-[0.95]"
           />
           {/* Top-right mandala corner (mirrored) */}
           <Image
@@ -585,12 +586,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
+            className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
           />
           {/* Bottom village panoramic scene banner, mobile single full-width lower banner, desktop original two-side panoramic banner */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-65 sm:opacity-80"
+            className="pointer-events-none absolute inset-x-0 -bottom-5 sm:-bottom-5 md:-bottom-6 lg:-bottom-7 z-0 flex sm:justify-between overflow-hidden select-none opacity-[0.95] sm:opacity-[0.95]"
           >
             {/* Left figures (Desktop/tablet only) */}
             <Image
@@ -708,7 +709,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               aria-hidden
               width={600}
               height={600}
-              className="w-56 sm:w-72 md:w-80 lg:w-[450px] max-w-[500px] h-auto opacity-[0.16] lg:opacity-[0.24]"
+              className="w-56 sm:w-72 md:w-80 lg:w-[450px] max-w-[500px] h-auto opacity-[0.95] lg:opacity-[0.95]"
             />
           </div>
           <div className="relative mx-auto max-w-7xl">
@@ -947,7 +948,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.56] sm:opacity-[0.72]"
+            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-64 sm:w-80 md:w-[26rem] lg:w-[32rem] opacity-[0.95] sm:opacity-[0.95]"
           />
 
           <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-16 sm:px-6 md:px-8 md:pt-16 md:pb-20">
@@ -971,7 +972,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   {/* Warli figures at bottom of phone */}
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom opacity-70"
+                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-no-repeat bg-bottom opacity-[0.95]"
                     style={{
                       backgroundImage: "url('/patterns/village-figures.webp')",
                       backgroundSize: "180% auto",
@@ -1085,7 +1086,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-65 -scale-x-100"
+            className="pointer-events-none select-none absolute bottom-[12px] left-0 w-[30%] max-w-none h-auto opacity-[0.95] -scale-x-100"
           />
           <Image
             src="/patterns/village-figures.webp"
@@ -1094,7 +1095,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             width={2172}
             height={724}
             loading="eager"
-            className="pointer-events-none select-none absolute bottom-[12px] right-0 w-[30%] max-w-none h-auto opacity-65"
+            className="pointer-events-none select-none absolute bottom-[12px] right-0 w-[30%] max-w-none h-auto opacity-[0.95]"
           />
 
           {/* Dark green tagline ribbon */}
@@ -1133,7 +1134,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               alt=""
               width={504}
               height={560}
-              className="h-auto w-24 sm:w-32 md:w-40 lg:w-48 object-contain object-right-top opacity-[0.50] sm:opacity-[0.72]"
+              className="h-auto w-24 sm:w-32 md:w-40 lg:w-48 object-contain object-right-top opacity-[0.95] sm:opacity-[0.95]"
             />
           </div>
 
@@ -1144,7 +1145,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               alt=""
               width={420}
               height={1024}
-              className="h-auto w-20 sm:w-28 md:w-36 lg:w-44 max-h-[85%] object-contain object-left-bottom opacity-[0.50] sm:opacity-[0.72]"
+              className="h-auto w-20 sm:w-28 md:w-36 lg:w-44 max-h-[85%] object-contain object-left-bottom opacity-[0.95] sm:opacity-[0.95]"
             />
           </div>
 
@@ -1174,7 +1175,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     }`}
                   >
                     {item.image ? (
-                      <Image
+                      <FallbackImage
                         src={item.image}
                         alt={item.title}
                         width={400}

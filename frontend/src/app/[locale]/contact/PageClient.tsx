@@ -98,7 +98,7 @@ export default function ContactPage({
                 aria-hidden
                 width={504}
                 height={560}
-                className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.40] sm:opacity-[0.56]"
+                className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.95] sm:opacity-[0.95]"
               />
               {/* Left-side mandala */}
               <Image
@@ -107,7 +107,7 @@ export default function ContactPage({
                 aria-hidden
                 width={768}
                 height={768}
-                className="pointer-events-none select-none absolute -left-12 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-44 md:w-56 lg:w-64 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
+                className="pointer-events-none select-none absolute -left-12 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-44 md:w-56 lg:w-64 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
               />
             </>
           }
@@ -275,7 +275,7 @@ export default function ContactPage({
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.56] sm:opacity-[0.72]"
+            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.95] sm:opacity-[0.95]"
           />
 
           {/* Bottom-right mandala corner */}
@@ -285,7 +285,7 @@ export default function ContactPage({
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute right-0 bottom-2 sm:bottom-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.56] sm:opacity-[0.72] -scale-x-100 -scale-y-100"
+            className="pointer-events-none select-none absolute right-0 bottom-2 sm:bottom-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.95] sm:opacity-[0.95] -scale-x-100 -scale-y-100"
           />
 
           <div className="relative z-10 mx-auto max-w-4xl">

@@ -29,12 +29,12 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           src="/patterns/mandala-top-right.png"
           alt=""
           aria-hidden
-          className="pointer-events-none absolute -right-10 top-6 h-auto w-80 opacity-[0.50] [filter:brightness(0)_invert(1)]"
+          className="pointer-events-none absolute -right-10 top-6 h-auto w-80 opacity-[0.95] [filter:brightness(0)_invert(1)]"
         />
         {/* Village scene along the bottom */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-cover bg-bottom bg-no-repeat opacity-[0.64] brightness-0 invert"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-cover bg-bottom bg-no-repeat opacity-[0.95] brightness-0 invert"
           style={{ backgroundImage: "url('/patterns/village-scene.webp')" }}
         />
 
@@ -77,7 +77,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         {/* Soft background scene on mobile/tablet only (desktop has the brand panel) */}
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-[0.56] lg:hidden"
+          className="pointer-events-none fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-[0.95] lg:hidden"
           style={{ backgroundImage: "url('/patterns/village-scene.webp')" }}
         />
 

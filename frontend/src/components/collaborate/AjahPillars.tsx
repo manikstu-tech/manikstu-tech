@@ -73,7 +73,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
         aria-hidden
         width={400}
         height={400}
-        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.56] sm:opacity-[0.72]"
+        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95]"
       />
       <Image
         src="/patterns/mandala-corner-top.webp"
@@ -81,7 +81,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
         aria-hidden
         width={400}
         height={400}
-        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
+        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
       />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 md:px-8">

@@ -64,7 +64,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
         aria-hidden
         width={1370}
         height={1155}
-        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.56] sm:opacity-[0.72]"
+        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.95] sm:opacity-[0.95]"
       />
       {/* Top-right mandala corner (mirrored) */}
       <Image
@@ -73,7 +73,7 @@ export default function VideosSection({ videos }: { videos: VideoItem[] }) {
         aria-hidden
         width={1370}
         height={1155}
-        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
+        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
       />
 
       <div className="relative mx-auto max-w-7xl">

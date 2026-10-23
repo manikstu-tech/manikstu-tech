@@ -80,7 +80,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
         aria-hidden
         width={1370}
         height={1155}
-        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.56] sm:opacity-[0.72]"
+        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95]"
       />
       {/* Top-right mandala corner (mirrored) */}
       <Image
@@ -89,7 +89,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
         aria-hidden
         width={1370}
         height={1155}
-        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
+        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
       />
       {/* Bottom-left tree + goat silhouette */}
       <Image
@@ -98,7 +98,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
         aria-hidden
         width={1536}
         height={1024}
-        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.80] sm:opacity-[0.90]"
+        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.95] sm:opacity-[0.95]"
       />
       {/* Bottom-right woman + hut + tree silhouette */}
       <Image
@@ -107,7 +107,7 @@ export default function TrainingPrograms({ programs: propPrograms }: { programs?
         aria-hidden
         width={1802}
         height={900}
-        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.80] sm:opacity-[0.90]"
+        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.95] sm:opacity-[0.95]"
       />
       <div className="relative mx-auto max-w-6xl">
         <div className="text-center">

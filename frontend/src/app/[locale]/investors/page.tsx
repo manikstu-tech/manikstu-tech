@@ -303,7 +303,7 @@ export default async function InvestorsPage({
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.56] sm:opacity-[0.72]"
+            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95]"
           />
           <Image
             src="/patterns/mandala-corner-top.webp"
@@ -311,7 +311,7 @@ export default async function InvestorsPage({
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.56] sm:opacity-[0.72] -scale-x-100"
+            className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
           />
           <Image
             src="/patterns/training-bottom-left.webp"
@@ -319,7 +319,7 @@ export default async function InvestorsPage({
             aria-hidden
             width={1536}
             height={1024}
-            className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.80] sm:opacity-[0.90]"
+            className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.95] sm:opacity-[0.95]"
           />
           <Image
             src="/patterns/training-bottom-right.webp"
@@ -327,7 +327,7 @@ export default async function InvestorsPage({
             aria-hidden
             width={1802}
             height={900}
-            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.80] sm:opacity-[0.90]"
+            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.95] sm:opacity-[0.95]"
           />
           <div className="relative mx-auto max-w-6xl">
             <SectionHead
@@ -393,7 +393,7 @@ export default async function InvestorsPage({
               backgroundSize: "auto 100%",
             }}
           />
-          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-[0.61] brightness-0 invert">
+          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-[0.95] brightness-0 invert">
             <Image
               src="/patterns/mandala-left.png"
               alt=""
@@ -402,7 +402,7 @@ export default async function InvestorsPage({
               className="h-auto w-32 sm:w-44 md:w-52 max-h-[90%] object-contain object-left"
             />
           </div>
-          <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-[0.61] brightness-0 invert">
+          <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-[0.95] brightness-0 invert">
             <Image
               src="/patterns/mandala-right.png"
               alt=""
@@ -564,7 +564,7 @@ export default async function InvestorsPage({
             aria-hidden
             width={1536}
             height={1024}
-            className="pointer-events-none select-none absolute left-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.80] sm:opacity-[0.90]"
+            className="pointer-events-none select-none absolute left-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
           />
           <Image
             src="/patterns/training-bottom-right.webp"
@@ -572,7 +572,7 @@ export default async function InvestorsPage({
             aria-hidden
             width={1802}
             height={900}
-            className="pointer-events-none select-none absolute right-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.80] sm:opacity-[0.90]"
+            className="pointer-events-none select-none absolute right-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
           />
           <div
             aria-hidden

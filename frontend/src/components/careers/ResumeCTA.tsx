@@ -54,7 +54,7 @@ export default function ResumeCTA() {
       {/* Bottom village panoramic scene banner */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-3 sm:-bottom-5 md:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-70"
+        className="pointer-events-none absolute inset-x-0 -bottom-3 sm:-bottom-5 md:-bottom-7 z-0 flex justify-between overflow-hidden select-none opacity-[0.95]"
       >
         <Image
           src="/patterns/village-figures.webp"

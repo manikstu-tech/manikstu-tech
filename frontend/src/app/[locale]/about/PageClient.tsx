@@ -776,7 +776,7 @@ export default function AboutPage() {
                 aria-hidden
                 width={1370}
                 height={1155}
-                className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.56] sm:opacity-[0.72]"
+                className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.95] sm:opacity-[0.95]"
               />
 
               {/* Bottom-right (right bottom corner) mandala */}
@@ -786,7 +786,7 @@ export default function AboutPage() {
                 aria-hidden
                 width={1370}
                 height={1155}
-                className="pointer-events-none select-none absolute right-0 bottom-2 sm:bottom-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.56] sm:opacity-[0.72] -scale-x-100 -scale-y-100"
+                className="pointer-events-none select-none absolute right-0 bottom-2 sm:bottom-3 h-auto w-36 sm:w-48 md:w-60 lg:w-72 opacity-[0.95] sm:opacity-[0.95] -scale-x-100 -scale-y-100"
               />
 
               {/* Top tribal floral border */}
