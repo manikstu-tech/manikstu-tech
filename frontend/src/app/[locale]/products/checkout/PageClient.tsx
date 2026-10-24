@@ -42,6 +42,41 @@ const emptyAddress: Address = {
   notes: "",
 };
 
+type CashfreeSdk = (opts: { mode: "sandbox" | "production" }) => {
+  checkout: (opts: { paymentSessionId: string; redirectTarget: "_self" }) => Promise<unknown>;
+};
+
+const CASHFREE_MODE: "sandbox" | "production" =
+  process.env.NEXT_PUBLIC_CASHFREE_MODE === "production" ? "production" : "sandbox";
+
+function loadCashfree(): Promise<CashfreeSdk> {
+  return new Promise((resolve, reject) => {
+    const w = window as unknown as { Cashfree?: CashfreeSdk };
+    if (w.Cashfree) return resolve(w.Cashfree);
+    const s = document.createElement("script");
+    s.src = "https://sdk.cashfree.com/js/v3/cashfree.js";
+    s.async = true;
+    s.onload = () => (w.Cashfree ? resolve(w.Cashfree) : reject(new Error("Cashfree SDK missing")));
+    s.onerror = () => reject(new Error("Cashfree SDK failed to load"));
+    document.head.appendChild(s);
+  });
+}
+
+// Asks our backend for a payment session. The amount comes from the saved order, never from the browser.
+async function startPayment(orderNumber: string): Promise<string> {
+  const res = await fetch(`/api/backend/orders/${encodeURIComponent(orderNumber)}/pay`, {
+    method: "POST",
+    headers: { Accept: "application/json" },
+  });
+  const json = await res.json().catch(() => null);
+  const sessionId = json?.data?.payment_session_id;
+  if (!res.ok || typeof sessionId !== "string") {
+    throw new Error(json?.message ?? "Could not start the payment.");
+  }
+  return sessionId;
+}
+
+
 export default function CheckoutPage() {
   const t = useTranslations("Checkout");
   const [cart, setCart] = useState<CartMap>({});
@@ -50,6 +85,12 @@ export default function CheckoutPage() {
   // Shown on the success card: without it the customer has no way to track.
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
+
+    const [payMethod, setPayMethod] = useState<"online" | "cod">("online");
+  // Set once the order exists, so a failed payment is retried on the SAME order, not a new one.
+  const [pendingOrder, setPendingOrder] = useState<string | null>(null);
+  const [paying, setPaying] = useState(false);
+  const [payError, setPayError] = useState<string | null>(null);
 
   useEffect(() => {
     setCart(readCart());
@@ -75,35 +116,93 @@ export default function CheckoutPage() {
     setAddress((a) => ({ ...a, pincode: digits }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  // const handleSubmit = async (e: FormEvent) => {
+  //   e.preventDefault();
+  //   setFailed(false);
+  //   try {
+  //     // Resolve cart slugs to backend product IDs; never place a partial order.
+  //     const items: OrderItemInput[] = [];
+  //     for (const l of cartLines) {
+  //       const res = await getProductBySlug(l.slug).catch(() => null);
+  //       const productId = Number((res as { data?: { id?: unknown } } | null)?.data?.id);
+  //       if (!Number.isFinite(productId) || productId <= 0) throw new Error(`unresolvable:${l.slug}`);
+  //       items.push({ productId, quantity: l.qty });
+  //     }
+  //     const placedOrder = await placeOrder({
+  //       items,
+  //       customer_name: address.fullName,
+  //       phone: address.phone,
+  //       email: address.email,
+  //       address_line1: address.line1,
+  //       address_line2: address.line2 || undefined,
+  //       city: address.city,
+  //       state: address.state,
+  //       pincode: address.pincode,
+  //       notes: address.notes || undefined,
+  //     });
+  //     setOrderNumber(placedOrder?.data?.order_number ?? null);
+  //     setPlaced(true);
+  //     clearCart();
+  //   } catch {
+  //     setFailed(true);
+  //   }
+  // };
+
+    const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (paying) return;
     setFailed(false);
+    setPayError(null);
+    setPaying(true);
     try {
-      // Resolve cart slugs to backend product IDs; never place a partial order.
-      const items: OrderItemInput[] = [];
-      for (const l of cartLines) {
-        const res = await getProductBySlug(l.slug).catch(() => null);
-        const productId = Number((res as { data?: { id?: unknown } } | null)?.data?.id);
-        if (!Number.isFinite(productId) || productId <= 0) throw new Error(`unresolvable:${l.slug}`);
-        items.push({ productId, quantity: l.qty });
+      let number = pendingOrder;
+
+      if (!number) {
+        // Resolve cart slugs to backend product IDs; never place a partial order.
+        const items: OrderItemInput[] = [];
+        for (const l of cartLines) {
+          const res = await getProductBySlug(l.slug).catch(() => null);
+          const productId = Number((res as { data?: { id?: unknown } } | null)?.data?.id);
+          if (!Number.isFinite(productId) || productId <= 0) throw new Error(`unresolvable:${l.slug}`);
+          items.push({ productId, quantity: l.qty });
+        }
+        const placedOrder = await placeOrder({
+          items,
+          customer_name: address.fullName,
+          phone: address.phone,
+          email: address.email,
+          address_line1: address.line1,
+          address_line2: address.line2 || undefined,
+          city: address.city,
+          state: address.state,
+          pincode: address.pincode,
+          notes: address.notes || undefined,
+        });
+        number = placedOrder?.data?.order_number ?? null;
+        if (!number) throw new Error("missing order number");
+
+        if (payMethod === "cod") {
+          // Existing behaviour: the team confirms by phone.
+          setOrderNumber(number);
+          setPlaced(true);
+          clearCart();
+          return;
+        }
+        setPendingOrder(number);
       }
-      const placedOrder = await placeOrder({
-        items,
-        customer_name: address.fullName,
-        phone: address.phone,
-        email: address.email,
-        address_line1: address.line1,
-        address_line2: address.line2 || undefined,
-        city: address.city,
-        state: address.state,
-        pincode: address.pincode,
-        notes: address.notes || undefined,
-      });
-      setOrderNumber(placedOrder?.data?.order_number ?? null);
-      setPlaced(true);
-      clearCart();
+
+      try {
+        const sessionId = await startPayment(number);
+        const cashfree = (await loadCashfree())({ mode: CASHFREE_MODE });
+        // The cart is cleared on the status page, once the payment is confirmed.
+        await cashfree.checkout({ paymentSessionId: sessionId, redirectTarget: "_self" });
+      } catch (err) {
+        setPayError(err instanceof Error ? err.message : "Could not start the payment.");
+      }
     } catch {
       setFailed(true);
+    } finally {
+      setPaying(false);
     }
   };
 
@@ -285,12 +384,50 @@ export default function CheckoutPage() {
                   </Field>
                 </div>
 
+               
+
+                                <fieldset className="mt-6">
+                  <legend className="mb-2 text-sm font-semibold text-charcoal">Payment method</legend>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-light-grey p-3 text-sm">
+                      <input
+                        type="radio"
+                        name="payMethod"
+                        checked={payMethod === "online"}
+                        disabled={!!pendingOrder}
+                        onChange={() => setPayMethod("online")}
+                      />
+                      Pay online (UPI, card, netbanking)
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-light-grey p-3 text-sm">
+                      <input
+                        type="radio"
+                        name="payMethod"
+                        checked={payMethod === "cod"}
+                        disabled={!!pendingOrder}
+                        onChange={() => setPayMethod("cod")}
+                      />
+                      Pay later (our team will call you)
+                    </label>
+                  </div>
+                </fieldset>
+
                 <button
                   type="submit"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf"
+                  disabled={paying}
+                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-manikstu-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-manikstu-leaf disabled:opacity-60"
                 >
-                  {t("placeOrder")}
+                  {paying
+                    ? "Please wait..."
+                    : pendingOrder
+                      ? "Retry payment"
+                      : payMethod === "online"
+                        ? `Pay ₹${cartTotal.toLocaleString("en-IN")}`
+                        : t("placeOrder")}
                 </button>
+                {payError && (
+                  <p className="mt-3 text-center text-sm font-medium text-manikstu-red">{payError}</p>
+                )}
                 {failed && (
                   <p className="mt-3 text-center text-sm font-medium text-manikstu-red">
                     {t("orderFailed")}
