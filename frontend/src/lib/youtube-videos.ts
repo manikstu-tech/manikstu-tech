@@ -12,6 +12,7 @@ export interface YouTubeVideo {
 }
 
 export const youtubeVideos: YouTubeVideo[] = [
+  { id: "En6-XTZNAa4", title: "Jayanti Mahapatra Honoured with Agri-Tech Innovation Award 2026 | Manikstu Agro | Kanak News", date: "2026-10-15" },
   { id: "I5O3s-BnDpQ", title: "A Healthy Goat Starts with a Clean Shed | Smart Goat Farming", date: "2026-07-11" },
   { id: "aKnwiUhA4Yw", title: "Project AJAH | Integrated Livestock Entrepreneurship Initiative | Government of Chhattisgarh", date: "2026-02-25" },
   { id: "9ywHq6H3-wU", title: "Project AJAH: Igniting India’s Rural Red Revolution | 10,000 Women Entrepreneurs Rising", date: "2026-02-16" },
