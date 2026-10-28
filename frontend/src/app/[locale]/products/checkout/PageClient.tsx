@@ -99,7 +99,9 @@ export default function CheckoutPage() {
     setStockNotice(stock <= 0 ? t("itemOutOfStock", { name }) : t("itemLowStock", { name, count: stock }));
   };
 
-  const [payMethod, setPayMethod] = useState<"online" | "cod">("online");
+  // Online payment is offered only once the backend says Cashfree is set up; until then the checkout is pay-later.
+  const [onlineAvailable, setOnlineAvailable] = useState(false);
+  const [payMethod, setPayMethod] = useState<"online" | "cod">("cod");
   // Set once the order exists, so a failed payment is retried on the SAME order, not a new one.
   const [pendingOrder, setPendingOrder] = useState<string | null>(null);
   const [paying, setPaying] = useState(false);
@@ -109,6 +111,22 @@ export default function CheckoutPage() {
     setCart(readCart());
     const unsub = subscribeCart(setCart);
     return unsub;
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/backend/payments/options", { headers: { Accept: "application/json" } })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (!cancelled && json?.data?.online === true) {
+          setOnlineAvailable(true);
+          setPayMethod("online");
+        }
+      })
+      .catch(() => {}); // unknown: stay pay-later
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const cartLines = cartLinesOf(cart);
@@ -382,9 +400,8 @@ export default function CheckoutPage() {
                   </Field>
                 </div>
 
-               
-
-                                <fieldset className="mt-6">
+                {onlineAvailable && (
+                <fieldset className="mt-6">
                   <legend className="mb-2 text-sm font-semibold text-charcoal">Payment method</legend>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-light-grey p-3 text-sm">
@@ -409,6 +426,7 @@ export default function CheckoutPage() {
                     </label>
                   </div>
                 </fieldset>
+                )}
 
                 <button
                   type="submit"
