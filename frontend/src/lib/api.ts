@@ -62,6 +62,8 @@ export interface OrderInput {
   state?: string;
   pincode?: string;
   notes?: string;
+  /** 'online': paid through Cashfree before the order reaches the team. Default: pay later. */
+  payment_method?: 'cod' | 'online';
 }
 
 /** The order asked for more of a product than is left. `product.stock` is how many there are (0 = out of stock). */

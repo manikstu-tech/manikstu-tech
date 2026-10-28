@@ -39,7 +39,7 @@ function StatusInner() {
           setView("paid");
           return;
         }
-               if (cf === "EXPIRED" || cf === "TERMINATED" || cf === "AMOUNT_MISMATCH" || cf === "ATTEMPT_FAILED") {
+        if (cf === "EXPIRED" || cf === "TERMINATED" || cf === "AMOUNT_MISMATCH" || cf === "ATTEMPT_FAILED") {
           setView("failed");
           return;
         }

@@ -63,6 +63,9 @@ function loadCashfree(): Promise<CashfreeSdk> {
   });
 }
 
+/** The order's payment window closed (its units were given back): the customer has to place the order again. */
+class PaymentExpiredError extends Error {}
+
 // Asks our backend for a payment session. The amount comes from the saved order, never from the browser.
 async function startPayment(orderNumber: string): Promise<string> {
   const res = await fetch(`/api/backend/orders/${encodeURIComponent(orderNumber)}/pay`, {
@@ -71,12 +74,14 @@ async function startPayment(orderNumber: string): Promise<string> {
   });
   const json = await res.json().catch(() => null);
   const sessionId = json?.data?.payment_session_id;
+  if (json?.code === "payment_expired") {
+    throw new PaymentExpiredError(json.message ?? "This payment has expired. Please place the order again.");
+  }
   if (!res.ok || typeof sessionId !== "string") {
     throw new Error(json?.message ?? "Could not start the payment.");
   }
   return sessionId;
 }
-
 
 export default function CheckoutPage() {
   const t = useTranslations("Checkout");
@@ -94,7 +99,7 @@ export default function CheckoutPage() {
     setStockNotice(stock <= 0 ? t("itemOutOfStock", { name }) : t("itemLowStock", { name, count: stock }));
   };
 
-    const [payMethod, setPayMethod] = useState<"online" | "cod">("online");
+  const [payMethod, setPayMethod] = useState<"online" | "cod">("online");
   // Set once the order exists, so a failed payment is retried on the SAME order, not a new one.
   const [pendingOrder, setPendingOrder] = useState<string | null>(null);
   const [paying, setPaying] = useState(false);
@@ -124,39 +129,7 @@ export default function CheckoutPage() {
     setAddress((a) => ({ ...a, pincode: digits }));
   };
 
-  // const handleSubmit = async (e: FormEvent) => {
-  //   e.preventDefault();
-  //   setFailed(false);
-  //   try {
-  //     // Resolve cart slugs to backend product IDs; never place a partial order.
-  //     const items: OrderItemInput[] = [];
-  //     for (const l of cartLines) {
-  //       const res = await getProductBySlug(l.slug).catch(() => null);
-  //       const productId = Number((res as { data?: { id?: unknown } } | null)?.data?.id);
-  //       if (!Number.isFinite(productId) || productId <= 0) throw new Error(`unresolvable:${l.slug}`);
-  //       items.push({ productId, quantity: l.qty });
-  //     }
-  //     const placedOrder = await placeOrder({
-  //       items,
-  //       customer_name: address.fullName,
-  //       phone: address.phone,
-  //       email: address.email,
-  //       address_line1: address.line1,
-  //       address_line2: address.line2 || undefined,
-  //       city: address.city,
-  //       state: address.state,
-  //       pincode: address.pincode,
-  //       notes: address.notes || undefined,
-  //     });
-  //     setOrderNumber(placedOrder?.data?.order_number ?? null);
-  //     setPlaced(true);
-  //     clearCart();
-  //   } catch {
-  //     setFailed(true);
-  //   }
-  // };
-
-    const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (paying) return;
     setFailed(false);
@@ -193,6 +166,8 @@ export default function CheckoutPage() {
           state: address.state,
           pincode: address.pincode,
           notes: address.notes || undefined,
+          // An online order is held until paid and reaches the team only then; a pay-later one goes at once.
+          payment_method: payMethod,
         });
         number = placedOrder?.data?.order_number ?? null;
         if (!number) throw new Error("missing order number");
@@ -213,6 +188,8 @@ export default function CheckoutPage() {
         // The cart is cleared on the status page, once the payment is confirmed.
         await cashfree.checkout({ paymentSessionId: sessionId, redirectTarget: "_self" });
       } catch (err) {
+        // An expired order cannot be paid any more: the next press places a fresh one.
+        if (err instanceof PaymentExpiredError) setPendingOrder(null);
         setPayError(err instanceof Error ? err.message : "Could not start the payment.");
       }
     } catch (err) {
