@@ -445,16 +445,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {/* Main photo */}
                 <div className="relative rounded-2xl overflow-hidden bg-manikstu-cream aspect-[4/3]">
                   <HeroSlider
-                    images={["/hero-slide-1.webp"]}
-                    alt="Manikstu Agri Solutions, goat farming ecosystem"
-                    intervalMs={4000}
-                  />
-                  {/* Watch Our Story, opens a YouTube popup */}
-                  <WatchStoryButton
-                    videoId="eurGt7tXTFw"
-                    topLabel={t("watchOurStory").split("\n")[0]}
-                    bottomLabel={t("watchOurStory").split("\n")[1]}
-                  />
+  images={["/hero-slide-1.webp", "/hero-slide-2.webp", "/hero-slide-3.webp"]}
+  alt="Manikstu Agri Solutions, goat farming ecosystem"
+  intervalMs={4000}
+  firstSlideOverlay={
+    <WatchStoryButton
+      videoId="eurGt7tXTFw"
+      topLabel={t("watchOurStory").split("\n")[0]}
+      bottomLabel={t("watchOurStory").split("\n")[1]}
+    />
+  }
+/>
                 </div>
               </div>
         </PageHero>
