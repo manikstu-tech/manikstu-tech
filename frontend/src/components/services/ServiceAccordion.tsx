@@ -60,7 +60,7 @@ export default function ServiceAccordion({
                     </p>
                   )}
                   {item.detail && (
-                    <p className="text-sm leading-relaxed text-grey">
+                    <p className="text-sm leading-relaxed text-charcoal">
                       {item.detail}
                     </p>
                   )}

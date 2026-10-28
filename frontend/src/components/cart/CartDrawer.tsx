@@ -14,6 +14,7 @@ import {
   Truck,
 } from "lucide-react";
 import {
+  atMaxQty,
   readCart,
   subscribeCart,
   setQty,
@@ -92,7 +93,7 @@ export default function CartDrawer() {
                 <h2 className="font-heading text-lg font-bold text-charcoal">
                   Shopping Cart
                 </h2>
-                <p className="text-xs text-grey">
+                <p className="text-xs text-charcoal">
                   {cartCount} {cartCount === 1 ? "item" : "items"}
                 </p>
               </div>
@@ -102,7 +103,7 @@ export default function CartDrawer() {
               type="button"
               onClick={closeCartDrawer}
               aria-label="Close cart"
-              className="flex h-8 w-8 items-center justify-center rounded-full text-grey hover:bg-light-grey/50 hover:text-charcoal transition-colors"
+              className="flex h-8 w-8 items-center justify-center rounded-full text-charcoal hover:bg-light-grey/50 hover:text-charcoal transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
@@ -118,7 +119,7 @@ export default function CartDrawer() {
                 <h3 className="font-heading text-lg font-bold text-charcoal">
                   Your cart is empty
                 </h3>
-                <p className="mt-1 text-sm text-grey max-w-xs">
+                <p className="mt-1 text-sm text-charcoal max-w-xs">
                   Looks like you haven&apos;t added any products yet.
                 </p>
                 <button
@@ -163,7 +164,7 @@ export default function CartDrawer() {
                           {line.name}
                         </Link>
                         {line.size && (
-                          <p className="text-xs text-grey mt-0.5">
+                          <p className="text-xs text-charcoal mt-0.5">
                             {line.size}
                           </p>
                         )}
@@ -187,8 +188,9 @@ export default function CartDrawer() {
                             <button
                               type="button"
                               onClick={() => setQty(line.slug, line.qty + 1)}
+                              disabled={atMaxQty(line)}
                               aria-label="Increase quantity"
-                              className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10 hover:text-manikstu-green transition-colors"
+                              className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10 hover:text-manikstu-green transition-colors disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-charcoal"
                             >
                               <Plus className="h-3 w-3" />
                             </button>
@@ -202,7 +204,7 @@ export default function CartDrawer() {
                               type="button"
                               onClick={() => removeFromCart(line.slug)}
                               aria-label={`Remove ${line.name}`}
-                              className="text-grey hover:text-manikstu-red transition-colors"
+                              className="text-charcoal hover:text-manikstu-red transition-colors"
                             >
                               <Trash2 className="h-3.5 w-3.5" />
                             </button>
@@ -225,7 +227,7 @@ export default function CartDrawer() {
               </div>
 
               <div className="flex items-baseline justify-between mb-4">
-                <span className="text-sm text-grey">
+                <span className="text-sm text-charcoal">
                   Subtotal
                 </span>
                 <span className="font-body text-xl font-bold text-charcoal">
@@ -246,7 +248,7 @@ export default function CartDrawer() {
                   <button
                     type="button"
                     onClick={clearCart}
-                    className="text-grey hover:text-manikstu-red transition-colors"
+                    className="text-charcoal hover:text-manikstu-red transition-colors"
                   >
                     Clear Cart
                   </button>
@@ -260,7 +262,7 @@ export default function CartDrawer() {
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-grey border-t border-light-grey/60 pt-3">
+              <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-charcoal border-t border-light-grey/60 pt-3">
                 <ShieldCheck className="h-3.5 w-3.5 text-manikstu-green" />
                 <span>100% Genuine Ayurvedic & Farm Direct Products</span>
               </div>

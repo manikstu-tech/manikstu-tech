@@ -36,7 +36,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
               <span className="text-manikstu-green">Conditions</span>
             </h1>
 
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-grey sm:text-base">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-charcoal sm:text-base">
               The rules that govern your use of our website and services.
               Please read them carefully.
             </p>
@@ -44,7 +44,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
 
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
+            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-50"
             style={{
               backgroundImage: "url('/patterns/tribal-border.png')",
               backgroundSize: "auto 100%",
@@ -58,8 +58,8 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
 
         <section className="section-padding bg-white">
           <div className="mx-auto max-w-3xl">
-            <div className="text-sm text-grey">{t("lastUpdated")}</div>
-            <div className="mt-6 space-y-6 leading-relaxed text-grey">
+            <div className="text-sm text-charcoal">{t("lastUpdated")}</div>
+            <div className="mt-6 space-y-6 leading-relaxed text-charcoal">
               <p>{t("intro")}</p>
               <h2 className="font-heading text-xl font-bold text-charcoal">{t("acceptanceTitle")}</h2>
               <p>{t("acceptanceText")}</p>

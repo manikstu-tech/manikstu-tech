@@ -38,7 +38,7 @@ export default function AjahHero() {
           </span>
         </h1>
 
-        <p className="mt-5 max-w-lg text-base sm:text-lg leading-relaxed text-grey">
+        <p className="mt-5 max-w-lg text-base sm:text-lg leading-relaxed text-charcoal">
           {t("heroDesc")}
         </p>
 
@@ -56,7 +56,7 @@ export default function AjahHero() {
           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
             <Users className="h-4 w-4 text-manikstu-green" />
           </span>
-          <p className="text-xs sm:text-sm font-medium text-grey">
+          <p className="text-xs sm:text-sm font-medium text-charcoal">
             {t("microStatement")}
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function AjahHero() {
 
       {/* Right, visual panel */}
       <div className="relative">
-        <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-[#FAF4EB] p-6 shadow-md transition-all duration-300 hover:shadow-xl">
+        <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-[#FAF4EB] p-6 shadow-md transition-all duration-300 hover:shadow-xl">
           {/* Project AJAH event photo */}
           <Image
             src="/ajah-hero.webp"

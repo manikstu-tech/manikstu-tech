@@ -20,7 +20,7 @@ export default function InsurancePanel({ heading, paragraphs, showLess = "Show L
 
       <div className="space-y-4">
         {(expanded ? paragraphs : paragraphs.slice(0, 2)).map((p, i) => (
-          <p key={i} className="text-sm leading-relaxed text-grey">
+          <p key={i} className="text-sm leading-relaxed text-charcoal">
             {p}
           </p>
         ))}

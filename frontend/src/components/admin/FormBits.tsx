@@ -15,7 +15,7 @@ export function Field({ label, name, error, help, children }: { label: string; n
         {label}
       </label>
       {children}
-      {error ? <p className="mt-1.5 text-xs font-medium text-manikstu-red">{error}</p> : help && <p className="mt-1.5 text-xs text-grey">{help}</p>}
+      {error ? <p className="mt-1.5 text-xs font-medium text-manikstu-red">{error}</p> : help && <p className="mt-1.5 text-xs text-charcoal">{help}</p>}
     </div>
   );
 }
@@ -37,7 +37,7 @@ export function Toggle({ name, label, help, defaultChecked }: { name: string; la
     <label className="flex cursor-pointer items-start justify-between gap-4">
       <span>
         <span className="block text-[13px] font-semibold text-[#3A3A3A]">{label}</span>
-        {help && <span className="mt-0.5 block text-xs text-grey">{help}</span>}
+        {help && <span className="mt-0.5 block text-xs text-charcoal">{help}</span>}
       </span>
       <span className="relative mt-0.5 inline-flex shrink-0">
         <input type="checkbox" name={name} value="1" defaultChecked={defaultChecked} className="peer sr-only" />

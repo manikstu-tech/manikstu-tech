@@ -133,7 +133,7 @@ export default function TestimonialsSlider({
                     />
                   ))}
                 </div>
-                <p className="mt-4 text-sm text-grey italic">
+                <p className="mt-4 text-sm text-charcoal italic">
                   &ldquo;{tItem.quote}&rdquo;
                 </p>
                 <div className="mt-6 flex items-center gap-3">
@@ -148,7 +148,7 @@ export default function TestimonialsSlider({
                     <p className="text-sm font-semibold text-charcoal">
                       {tItem.name}
                     </p>
-                    <p className="text-xs text-grey">{tItem.role}</p>
+                    <p className="text-xs text-charcoal">{tItem.role}</p>
                   </div>
                 </div>
               </div>

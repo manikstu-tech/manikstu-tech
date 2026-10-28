@@ -105,7 +105,7 @@ export default function Footer() {
               />
               <span className="text-[10px] font-bold text-manikstu-green ml-0 mt-1">&reg;</span>
             </Link>
-            <p className="mt-3 text-sm text-grey">
+            <p className="mt-3 text-sm text-charcoal">
               {settings.brand_tagline || t("brandTagline")}
             </p>
             <div className="mt-4 flex gap-3">
@@ -148,7 +148,7 @@ export default function Footer() {
                 <li key={link.id}>
                   <Link
                     href={link.url}
-                    className="flex items-center gap-1 text-sm text-grey hover:text-manikstu-green transition-colors"
+                    className="flex items-center gap-1 text-sm text-charcoal hover:text-manikstu-green transition-colors"
                   >
                     <ChevronRight className="h-3 w-3 flex-shrink-0 text-manikstu-green" />
                     {link.label}
@@ -170,7 +170,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/careers"
-                  className="flex items-center gap-1 text-sm text-grey hover:text-manikstu-green transition-colors"
+                  className="flex items-center gap-1 text-sm text-charcoal hover:text-manikstu-green transition-colors"
                 >
                   <ChevronRight className="h-3 w-3 flex-shrink-0 text-manikstu-green" />
                   {t("careers")}
@@ -180,7 +180,7 @@ export default function Footer() {
                 <li key={link.id}>
                   <Link
                     href={link.url}
-                    className="flex items-center gap-1 text-sm text-grey hover:text-manikstu-green transition-colors"
+                    className="flex items-center gap-1 text-sm text-charcoal hover:text-manikstu-green transition-colors"
                   >
                     <ChevronRight className="h-3 w-3 flex-shrink-0 text-manikstu-green" />
                     {link.label}
@@ -199,7 +199,7 @@ export default function Footer() {
               {t("contactUs")}
             </h3>
             <ul className="mt-3 space-y-3">
-              <li className="flex items-center gap-2 text-sm text-grey">
+              <li className="flex items-center gap-2 text-sm text-charcoal">
                 <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Phone className="h-4 w-4 shrink-0" />
                 </span>
@@ -207,7 +207,7 @@ export default function Footer() {
                   {settings.phone}
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-sm text-grey">
+              <li className="flex items-start gap-2 text-sm text-charcoal">
                 <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-cream text-manikstu-green">
                   <Mail className="h-4 w-4 shrink-0" />
                 </span>
@@ -224,7 +224,7 @@ export default function Footer() {
               </span>
               {t("stayUpdated")}
             </h3>
-            <p className="mt-2 text-sm text-grey leading-relaxed">
+            <p className="mt-2 text-sm text-charcoal leading-relaxed">
               {t("newsletterDesc")}
             </p>
             {newsletterStatus === "done" ? (
@@ -249,7 +249,7 @@ export default function Footer() {
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder={tCommon("enterEmail")}
-                  className="mt-2 w-full rounded-lg border border-light-grey px-4 py-2.5 text-sm text-charcoal placeholder:text-grey/50 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
+                  className="mt-2 w-full rounded-lg border border-light-grey px-4 py-2.5 text-sm text-charcoal placeholder:text-charcoal/50 focus:border-manikstu-green focus:outline-none focus:ring-1 focus:ring-manikstu-green"
                 />
                 <button className="mt-3 w-full rounded-lg bg-manikstu-green px-4 py-2.5 text-sm font-semibold text-white hover:bg-manikstu-leaf transition-colors">
                   {tCommon("subscribe")}
@@ -270,22 +270,22 @@ export default function Footer() {
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
               <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("registeredOffice")}</p>
-              <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_registered}</p>
+              <p className="mt-1 text-xs text-charcoal leading-relaxed">{settings.address_registered}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
               <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("corporateOffice")}</p>
-              <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_corporate}</p>
+              <p className="mt-1 text-xs text-charcoal leading-relaxed">{settings.address_corporate}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
               <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("farmOffice")}</p>
-              <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_farm}</p>
+              <p className="mt-1 text-xs text-charcoal leading-relaxed">{settings.address_farm}</p>
             </div>
             <div>
               <MapPin className="mx-auto h-5 w-5 text-manikstu-green" />
               <p className="mt-1 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("regionalOffice")}</p>
-              <p className="mt-1 text-xs text-grey leading-relaxed">{settings.address_regional}</p>
+              <p className="mt-1 text-xs text-charcoal leading-relaxed">{settings.address_regional}</p>
             </div>
           </div>
         </div>
@@ -293,9 +293,9 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-light-grey bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:py-3 text-center text-xs text-grey sm:px-6 md:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:py-3 text-center text-xs text-charcoal sm:px-6 md:px-8">
           <span>&copy; {new Date().getFullYear()} {t("copyright")}</span>
-          <p className="mt-1 text-[11px] text-grey/70">
+          <p className="mt-1 text-[11px] text-charcoal/70">
             CIN: {settings.cin} | GSTIN: {settings.gstin}
           </p>
         </div>

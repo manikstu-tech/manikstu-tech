@@ -50,7 +50,19 @@ export interface Product {
   ingredients?: string;
   recommendedFor?: string[];
   gallery?: string[];
+  /** Units left, as reported by the CRM; null/absent when stock is not tracked for this product. */
+  stock?: number | null;
+  inStock?: boolean;
+  /** "low" under 30 left, "out" at 0; null/absent when stock is not tracked. */
+  stockStatus?: "in" | "low" | "out" | null;
 }
+
+/** Whether a product can't be bought right now. Untracked stock (the baked-in catalogue, or before the CRM reports) never is. */
+export const isOutOfStock = (p: Pick<Product, "stockStatus">) => p.stockStatus === "out";
+
+/** Most units of a product a customer may order, or undefined when stock is not tracked. */
+export const stockLimit = (p: Pick<Product, "stock">) =>
+  typeof p.stock === "number" ? Math.max(0, p.stock) : undefined;
 
 /**
  * Trust badges shown around the product surfaces. These are marketing chrome

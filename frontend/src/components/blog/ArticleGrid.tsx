@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import FallbackImage from "@/components/ui/FallbackImage";
 import { useTranslations } from "next-intl";
 import { Calendar, ArrowRight } from "lucide-react";
 import type { Article } from "@/lib/blog-data";
@@ -25,7 +25,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
 
   if (articles.length === 0) {
     return (
-      <p className="py-12 text-center text-grey">
+      <p className="py-12 text-center text-charcoal">
         {t("noArticles")}
       </p>
     );
@@ -38,7 +38,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
           <article className="group h-full overflow-hidden rounded-xl border border-light-grey bg-white transition-all hover:shadow-md">
             {/* Thumbnail */}
             <div className="relative flex h-48 w-full items-center justify-center overflow-hidden bg-manikstu-cream p-4">
-              <Image
+              <FallbackImage
                 src={article.image}
                 alt={article.title}
                 width={384}
@@ -56,7 +56,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
                   {article.category}
                 </span>
                 {article.date && (
-                  <span className="inline-flex items-center gap-1.5 text-xs text-grey whitespace-nowrap">
+                  <span className="inline-flex items-center gap-1.5 text-xs text-charcoal whitespace-nowrap">
                     <Calendar className="h-3.5 w-3.5 text-manikstu-green" />
                     {formatArticleDate(article.date)}
                   </span>
@@ -65,7 +65,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
               <h3 className="mt-3 text-lg font-bold text-charcoal font-heading group-hover:text-manikstu-green transition-colors line-clamp-2">
                 {article.title}
               </h3>
-              <p className="mt-2 text-sm text-grey line-clamp-2">
+              <p className="mt-2 text-sm text-charcoal line-clamp-2">
                 {article.excerpt}
               </p>
               <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-manikstu-green">

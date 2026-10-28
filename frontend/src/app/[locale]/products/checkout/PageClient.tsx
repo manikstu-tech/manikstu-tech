@@ -7,11 +7,12 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ArrowLeft, Package, CheckCircle2, ShoppingBag } from "lucide-react";
-import { getProductBySlug, placeOrder, type OrderItemInput } from "@/lib/api";
+import { getProductBySlug, placeOrder, InsufficientStockError, type OrderItemInput } from "@/lib/api";
 import {
   readCart,
   subscribeCart,
   clearCart,
+  limitToStock,
   cartLines as cartLinesOf,
   cartCount as cartCountOf,
   cartTotal as cartTotalOf,
@@ -85,6 +86,13 @@ export default function CheckoutPage() {
   // Shown on the success card: without it the customer has no way to track.
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
+  // Set when stock ran short: the cart has been corrected and the customer reviews it before placing again.
+  const [stockNotice, setStockNotice] = useState<string | null>(null);
+
+  const applyShortage = (slug: string, name: string, stock: number) => {
+    setCart(limitToStock(slug, stock));
+    setStockNotice(stock <= 0 ? t("itemOutOfStock", { name }) : t("itemLowStock", { name, count: stock }));
+  };
 
     const [payMethod, setPayMethod] = useState<"online" | "cod">("online");
   // Set once the order exists, so a failed payment is retried on the SAME order, not a new one.
@@ -152,18 +160,26 @@ export default function CheckoutPage() {
     e.preventDefault();
     if (paying) return;
     setFailed(false);
+    setStockNotice(null);
     setPayError(null);
     setPaying(true);
     try {
       let number = pendingOrder;
 
       if (!number) {
-        // Resolve cart slugs to backend product IDs; never place a partial order.
+        // Resolve cart slugs to backend product IDs; never place a partial order. The same lookup carries live
+        // stock, so a shortage is caught here and the cart corrected before anything is sent (the server checks again).
         const items: OrderItemInput[] = [];
         for (const l of cartLines) {
           const res = await getProductBySlug(l.slug).catch(() => null);
-          const productId = Number((res as { data?: { id?: unknown } } | null)?.data?.id);
+          const data = (res as { data?: { id?: unknown; stock?: unknown; stockStatus?: unknown } } | null)?.data;
+          const productId = Number(data?.id);
           if (!Number.isFinite(productId) || productId <= 0) throw new Error(`unresolvable:${l.slug}`);
+          const stock = typeof data?.stock === "number" ? data.stock : undefined;
+          if (data?.stockStatus === "out" || (stock !== undefined && l.qty > stock)) {
+            applyShortage(l.slug, l.name, data?.stockStatus === "out" ? 0 : stock ?? 0);
+            return;
+          }
           items.push({ productId, quantity: l.qty });
         }
         const placedOrder = await placeOrder({
@@ -199,7 +215,12 @@ export default function CheckoutPage() {
       } catch (err) {
         setPayError(err instanceof Error ? err.message : "Could not start the payment.");
       }
-    } catch {
+    } catch (err) {
+      // Someone bought the last units between the check above and the order: same correction.
+      if (err instanceof InsufficientStockError) {
+        applyShortage(err.product.slug, err.product.name, err.product.stock);
+        return;
+      }
       setFailed(true);
     } finally {
       setPaying(false);
@@ -221,7 +242,7 @@ export default function CheckoutPage() {
           <h1 className="font-heading text-3xl font-bold text-charcoal md:text-4xl">
             {t("checkout")}
           </h1>
-          <p className="mt-2 text-grey">
+          <p className="mt-2 text-charcoal">
             {t("enterDeliveryAddress")}
           </p>
 
@@ -232,7 +253,7 @@ export default function CheckoutPage() {
                 <h2 className="mt-4 font-heading text-2xl font-bold text-charcoal">
                   {t("orderPlacedSuccess")}
                 </h2>
-                <p className="mx-auto mt-2 max-w-md text-grey">
+                <p className="mx-auto mt-2 max-w-md text-charcoal">
                   {t("orderThankYou", { name: address.fullName || t("friend"), phone: address.phone || t("yourPhone"), city: address.city || t("yourAddress") })}
                 </p>
                 {orderNumber && (
@@ -241,7 +262,7 @@ export default function CheckoutPage() {
                       {t("orderNumberLabel")}
                     </p>
                     <p className="mt-1 font-heading text-lg font-bold text-charcoal">{orderNumber}</p>
-                    <p className="mt-2 text-xs leading-relaxed text-grey">{t("orderNumberHelp")}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-charcoal">{t("orderNumberHelp")}</p>
                     <Link
                       href={`/products/track?order=${encodeURIComponent(orderNumber)}`}
                       className="mt-3 inline-block text-sm font-semibold text-manikstu-green underline hover:text-manikstu-leaf"
@@ -262,11 +283,11 @@ export default function CheckoutPage() {
 
           {cartCount === 0 && !placed ? (
             <div className="mt-10 rounded-2xl border border-light-grey bg-white p-8 text-center shadow-sm md:p-12">
-              <ShoppingBag className="mx-auto h-12 w-12 text-grey/50" />
+              <ShoppingBag className="mx-auto h-12 w-12 text-charcoal/50" />
               <h2 className="mt-4 font-heading text-xl font-bold text-charcoal">
                 {t("cartEmpty")}
               </h2>
-              <p className="mt-2 text-grey">
+              <p className="mt-2 text-charcoal">
                 {t("addProductsBefore")}
               </p>
               <Link
@@ -425,6 +446,11 @@ export default function CheckoutPage() {
                         ? `Pay ₹${cartTotal.toLocaleString("en-IN")}`
                         : t("placeOrder")}
                 </button>
+                {stockNotice && (
+                  <p role="alert" className="mt-3 rounded-xl border border-manikstu-red/30 bg-manikstu-red/5 px-4 py-3 text-center text-sm font-medium text-manikstu-red">
+                    {stockNotice}
+                  </p>
+                )}
                 {payError && (
                   <p className="mt-3 text-center text-sm font-medium text-manikstu-red">{payError}</p>
                 )}
@@ -460,7 +486,7 @@ export default function CheckoutPage() {
                         <p className="truncate text-sm font-semibold text-charcoal">
                           {line.name}
                         </p>
-                        <p className="text-xs text-grey">
+                        <p className="text-xs text-charcoal">
                           Qty {line.qty}
                           {line.size ? ` · ${line.size}` : ""}
                         </p>
@@ -473,11 +499,11 @@ export default function CheckoutPage() {
                 </ul>
 
                 <div className="mt-5 space-y-2 border-t border-light-grey/70 pt-4 text-sm">
-                  <div className="flex justify-between text-grey">
+                  <div className="flex justify-between text-charcoal">
                     <span>{t("items")} ({cartCount})</span>
                     <span>₹{cartTotal.toLocaleString("en-IN")}</span>
                   </div>
-                  <div className="flex justify-between text-grey">
+                  <div className="flex justify-between text-charcoal">
                     <span>{t("delivery")}</span>
                     <span className="text-manikstu-green">{t("free")}</span>
                   </div>
@@ -499,7 +525,7 @@ export default function CheckoutPage() {
 }
 
 const inputCls =
-  "w-full rounded-lg border border-light-grey bg-white px-4 py-2.5 text-sm text-charcoal outline-none transition-colors placeholder:text-grey/60 focus:border-manikstu-green focus:ring-2 focus:ring-manikstu-green/20";
+  "w-full rounded-lg border border-light-grey bg-white px-4 py-2.5 text-sm text-charcoal outline-none transition-colors placeholder:text-charcoal/60 focus:border-manikstu-green focus:ring-2 focus:ring-manikstu-green/20";
 
 function Field({
   label,

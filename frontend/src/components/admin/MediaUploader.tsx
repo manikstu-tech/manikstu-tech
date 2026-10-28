@@ -65,7 +65,7 @@ export default function MediaUploader({ action }: { action: (state: FormState, f
       }}
       aria-pressed={type === value}
       className={`flex flex-1 items-center justify-center gap-2 rounded-lg py-2 text-sm font-semibold transition ${
-        type === value ? "bg-white text-manikstu-leaf shadow-sm" : "text-grey hover:text-charcoal"
+        type === value ? "bg-white text-manikstu-leaf shadow-sm" : "text-charcoal hover:text-charcoal"
       }`}
     >
       <Icon className="h-4 w-4" />
@@ -101,7 +101,7 @@ export default function MediaUploader({ action }: { action: (state: FormState, f
                 type="button"
                 onClick={() => setVideoSource("file")}
                 aria-pressed={videoSource === "file"}
-                className={`rounded-md px-2.5 py-1 transition ${videoSource === "file" ? "bg-white text-manikstu-leaf shadow-sm" : "text-grey hover:text-charcoal"}`}
+                className={`rounded-md px-2.5 py-1 transition ${videoSource === "file" ? "bg-white text-manikstu-leaf shadow-sm" : "text-charcoal hover:text-charcoal"}`}
               >
                 Upload file
               </button>
@@ -109,7 +109,7 @@ export default function MediaUploader({ action }: { action: (state: FormState, f
                 type="button"
                 onClick={() => setVideoSource("url")}
                 aria-pressed={videoSource === "url"}
-                className={`rounded-md px-2.5 py-1 transition ${videoSource === "url" ? "bg-white text-manikstu-leaf shadow-sm" : "text-grey hover:text-charcoal"}`}
+                className={`rounded-md px-2.5 py-1 transition ${videoSource === "url" ? "bg-white text-manikstu-leaf shadow-sm" : "text-charcoal hover:text-charcoal"}`}
               >
                 Video URL
               </button>
@@ -118,7 +118,7 @@ export default function MediaUploader({ action }: { action: (state: FormState, f
           {urlMode ? (
             <input id="video_url" name="video_url" type="url" inputMode="url" placeholder="https://youtube.com/watch?v=…" className={inputClass()} />
           ) : (
-            <input id="file" name="file" type="file" accept={LIMITS[type].accept} className="block w-full text-sm text-grey file:mr-3 file:rounded-lg file:border-0 file:bg-manikstu-green/10 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-manikstu-leaf hover:file:bg-manikstu-green/15" />
+            <input id="file" name="file" type="file" accept={LIMITS[type].accept} className="block w-full text-sm text-charcoal file:mr-3 file:rounded-lg file:border-0 file:bg-manikstu-green/10 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-manikstu-leaf hover:file:bg-manikstu-green/15" />
           )}
         </Field>
         <Field label="Event Name" name="title" help="Shown with the item on the website.">

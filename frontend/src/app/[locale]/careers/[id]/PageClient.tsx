@@ -35,7 +35,7 @@ export default function JobPageClient({ job }: { job: JobDetail }) {
               {job.title}
             </h1>
 
-            <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-grey">
+            <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-charcoal">
               {job.location && (
                 <span className="flex items-center gap-1">
                   <MapPin className="h-4 w-4 text-manikstu-green" /> {job.location}
@@ -49,7 +49,7 @@ export default function JobPageClient({ job }: { job: JobDetail }) {
             </div>
 
             {job.description && (
-              <p className="mt-6 text-grey leading-relaxed">{job.description}</p>
+              <p className="mt-6 text-charcoal leading-relaxed">{job.description}</p>
             )}
 
             <button

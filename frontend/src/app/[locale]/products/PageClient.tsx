@@ -18,10 +18,12 @@ import {
   X,
   ShoppingCart,
   Search,
+  PackageX,
 } from "lucide-react";
 import { getProducts } from "@/lib/api";
-import { trustFeatures, FALLBACK_PRODUCTS, type Product } from "./data";
+import { trustFeatures, FALLBACK_PRODUCTS, isOutOfStock, stockLimit, type Product } from "./data";
 import {
+  atMaxQty,
   readCart,
   subscribeCart,
   addToCart as addToCartStore,
@@ -34,27 +36,40 @@ import {
   type CartMap,
 } from "./cart";
 
-export default function ProductsPage() {
+/** initialProducts: the live catalogue (with stock) the server loaded with the page; null if it could not. */
+export default function ProductsPage({ initialProducts = null }: { initialProducts?: Product[] | null }) {
   // Start with the baked-in catalogue so pages render instantly and the site
   // works even when there's no shared DB yet. If the backend returns products
   // (admin panel populated), those take precedence, admin remains the source
   // of truth whenever it has data.
-  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
+  const [products, setProducts] = useState<Product[]>(initialProducts ?? FALLBACK_PRODUCTS);
   const [loading, setLoading] = useState(false);
   const t = useTranslations("Products");
   const [cart, setCart] = useState<CartMap>({});
 
+  // Whether the live catalogue (with stock) has loaded. It normally arrives with the page (loaded on the server,
+  // uncached), so the cards are right on first paint and nothing is fetched again here. Only if the server could not
+  // load it does the browser try; the baked-in catalogue shown meanwhile knows nothing about stock, so nothing can be
+  // added to the cart from it.
+  const serverLoaded = !!initialProducts;
+  const [live, setLive] = useState<"loading" | "ok" | "failed">(serverLoaded ? "ok" : "loading");
+
   useEffect(() => {
+    if (serverLoaded) return;
     getProducts(1, 50)
       .then((res) => {
         if (Array.isArray(res.data) && res.data.length > 0) {
           setProducts(res.data);
+          setLive("ok");
+        } else {
+          setLive("failed");
         }
       })
       .catch(() => {
         /* keep FALLBACK_PRODUCTS when the API isn't reachable */
+        setLive("failed");
       });
-  }, []);
+  }, [serverLoaded]);
 
   // Hydrate cart from localStorage on mount, and subscribe to same/other-tab changes.
   useEffect(() => {
@@ -76,6 +91,7 @@ export default function ProductsPage() {
   }, [cart]);
 
   const addToCart = (product: Product) => {
+    if (live !== "ok" || isOutOfStock(product)) return;
     setCart(
       addToCartStore({
         slug: product.slug,
@@ -83,6 +99,7 @@ export default function ProductsPage() {
         price: product.price,
         image: product.image,
         size: product.size,
+        stock: stockLimit(product),
       })
     );
   };
@@ -140,7 +157,7 @@ export default function ProductsPage() {
               )}
             </h1>
 
-            <p className="mt-6 hidden max-w-lg text-lg leading-relaxed text-grey sm:block">
+            <p className="mt-6 hidden max-w-lg text-lg leading-relaxed text-charcoal sm:block">
               {t("heroDesc")}
             </p>
 
@@ -164,7 +181,7 @@ export default function ProductsPage() {
               <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                 <Sprout className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
-              <p className="text-sm text-grey">
+              <p className="text-sm text-charcoal">
                 {t("microStatement")}
               </p>
             </div>
@@ -206,14 +223,14 @@ export default function ProductsPage() {
             {/* Mobile heading, search and category chips */}
             <div className="sm:hidden">
               <div className="relative">
-                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-charcoal" />
                 <input
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={t("searchPlaceholder")}
                   aria-label={t("searchPlaceholder")}
-                  className="w-full rounded-full border border-light-grey bg-white py-3 pl-11 pr-4 text-sm text-charcoal placeholder:text-grey focus:border-manikstu-green focus:outline-none focus:ring-2 focus:ring-manikstu-green/30"
+                  className="w-full rounded-full border border-light-grey bg-white py-3 pl-11 pr-4 text-sm text-charcoal placeholder:text-charcoal focus:border-manikstu-green focus:outline-none focus:ring-2 focus:ring-manikstu-green/30"
                 />
               </div>
 
@@ -269,13 +286,13 @@ export default function ProductsPage() {
                 <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey">
+              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-charcoal">
                 {t("trustedByFarmers")}
               </p>
             </div>
 
             {loading ? (
-              <div className="mt-10 py-16 text-center text-grey">
+              <div className="mt-10 py-16 text-center text-charcoal">
                 {t("loadingProducts")}
               </div>
             ) : products.length === 0 ? (
@@ -286,7 +303,7 @@ export default function ProductsPage() {
                 <h3 className="mt-4 font-heading text-lg font-bold text-charcoal">
                   {t("noProductsAvailable")}
                 </h3>
-                <p className="mt-1 max-w-md text-sm text-grey">
+                <p className="mt-1 max-w-md text-sm text-charcoal">
                   {t("noProductsDesc")}
                 </p>
                 <Link
@@ -297,7 +314,7 @@ export default function ProductsPage() {
                 </Link>
               </div>
             ) : visibleProducts.length === 0 ? (
-              <p className="mt-8 py-10 text-center text-sm text-grey">
+              <p className="mt-8 py-10 text-center text-sm text-charcoal">
                 {t("noMatches")}
               </p>
             ) : (
@@ -333,7 +350,7 @@ export default function ProductsPage() {
                       <h3 className="mt-1 font-heading text-xl font-bold leading-tight text-charcoal group-hover:text-manikstu-green transition-colors line-clamp-2 sm:mt-0 sm:text-base sm:line-clamp-1">
                         {product.name}
                       </h3>
-                      <p className="mt-2 text-sm text-grey leading-snug line-clamp-3 sm:mt-1 sm:text-xs">
+                      <p className="mt-2 text-sm text-charcoal leading-snug line-clamp-3 sm:mt-1 sm:text-xs">
                         {product.description}
                       </p>
                       {product.size && (
@@ -356,7 +373,15 @@ export default function ProductsPage() {
                       >
                         {t("viewDetails")}
                       </Link>
-                      {cart[product.slug] ? (
+                      {isOutOfStock(product) ? (
+                        <span
+                          role="status"
+                          className="inline-flex cursor-not-allowed items-center justify-center gap-1.5 rounded-xl border border-manikstu-red/30 bg-manikstu-red/5 py-2.5 text-sm font-semibold text-manikstu-red"
+                        >
+                          <PackageX className="h-4 w-4" />
+                          {t("outOfStock")}
+                        </span>
+                      ) : cart[product.slug] ? (
                         <div className="flex items-center justify-between rounded-xl bg-manikstu-green px-1 text-sm font-semibold text-white">
                           <button
                             type="button"
@@ -370,8 +395,9 @@ export default function ProductsPage() {
                           <button
                             type="button"
                             onClick={() => addToCart(product)}
+                            disabled={live !== "ok" || atMaxQty(cart[product.slug])}
                             aria-label={`Add one more ${product.name}`}
-                            className="flex h-9 w-9 items-center justify-center"
+                            className="flex h-9 w-9 items-center justify-center disabled:cursor-not-allowed disabled:opacity-40"
                           >
                             <Plus className="h-4 w-4" />
                           </button>
@@ -380,7 +406,10 @@ export default function ProductsPage() {
                         <button
                           type="button"
                           onClick={() => addToCart(product)}
-                          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-manikstu-green py-2.5 text-sm font-semibold text-white"
+                          disabled={live !== "ok"}
+                          aria-busy={live === "loading"}
+                          title={live === "loading" ? t("checkingStock") : live === "failed" ? t("stockUnavailable") : undefined}
+                          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-manikstu-green py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
                         >
                           <ShoppingCart className="h-4 w-4" />
                           {t("addToCart")}
@@ -401,7 +430,15 @@ export default function ProductsPage() {
                       >
                         {t("viewDetails")}
                       </Link>
-                    {cart[product.slug] ? (
+                    {isOutOfStock(product) ? (
+                      <span
+                        role="status"
+                        className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-full border border-manikstu-red/30 bg-manikstu-red/5 px-3 py-1.5 text-xs font-semibold text-manikstu-red"
+                      >
+                        <PackageX className="h-3.5 w-3.5" />
+                        {t("outOfStock")}
+                      </span>
+                    ) : cart[product.slug] ? (
                       <div className="inline-flex items-center gap-1 rounded-full border border-manikstu-green bg-white text-xs font-semibold text-manikstu-green">
                         <button
                           type="button"
@@ -417,8 +454,9 @@ export default function ProductsPage() {
                         <button
                           type="button"
                           onClick={() => addToCart(product)}
+                          disabled={live !== "ok" || atMaxQty(cart[product.slug])}
                           aria-label={`Add one more ${product.name}`}
-                          className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-manikstu-green/10 focus:outline-none focus:ring-2 focus:ring-manikstu-green"
+                          className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-manikstu-green/10 focus:outline-none focus:ring-2 focus:ring-manikstu-green disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
                         >
                           <Plus className="h-3.5 w-3.5" />
                         </button>
@@ -427,7 +465,10 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         onClick={() => addToCart(product)}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-manikstu-green bg-white px-3 py-1.5 text-xs font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1"
+                        disabled={live !== "ok"}
+                        aria-busy={live === "loading"}
+                        title={live === "loading" ? t("checkingStock") : live === "failed" ? t("stockUnavailable") : undefined}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-manikstu-green bg-white px-3 py-1.5 text-xs font-semibold text-manikstu-green transition-colors hover:bg-manikstu-green hover:text-white focus:outline-none focus:ring-2 focus:ring-manikstu-green focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-manikstu-green"
                       >
                         <ShoppingBag className="h-3.5 w-3.5" />
                         {t("addToCart")}
@@ -456,7 +497,7 @@ export default function ProductsPage() {
                       <p className="font-heading text-sm font-bold text-charcoal">
                         {t("yourCart")}
                       </p>
-                      <p className="text-[11px] text-grey">
+                      <p className="text-[11px] text-charcoal">
                         {cartCount} {cartCount === 1 ? t("item") : t("items")}
                       </p>
                     </div>
@@ -464,7 +505,7 @@ export default function ProductsPage() {
                   <button
                     type="button"
                     onClick={() => setCart(clearCartStore())}
-                    className="text-xs font-semibold text-grey hover:text-manikstu-red transition-colors"
+                    className="text-xs font-semibold text-charcoal hover:text-manikstu-red transition-colors"
                   >
                     {t("clearAll")}
                   </button>
@@ -495,10 +536,15 @@ export default function ProductsPage() {
                           <p className="text-sm font-semibold text-charcoal line-clamp-1">
                             {line.name}
                           </p>
-                          <p className="text-[11px] text-grey">
+                          <p className="text-[11px] text-charcoal">
                             ₹{line.price.toLocaleString("en-IN")}
                             {line.size ? ` · ${line.size}` : ""}
                           </p>
+                          {atMaxQty(line) && (
+                            <p className="text-[11px] font-semibold text-manikstu-red">
+                              {t("onlyInStock", { count: line.maxQty ?? 0 })}
+                            </p>
+                          )}
                         </div>
 
                         <div className="inline-flex items-center gap-1 rounded-full border border-light-grey text-xs font-semibold text-charcoal">
@@ -518,8 +564,9 @@ export default function ProductsPage() {
                             onClick={() =>
                               setCart(setQtyStore(line.slug, line.qty + 1))
                             }
+                            disabled={atMaxQty(line)}
                             aria-label={`Increase ${line.name}`}
-                            className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10"
+                            className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-manikstu-green/10 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
                           >
                             <Plus className="h-3 w-3" />
                           </button>
@@ -532,7 +579,7 @@ export default function ProductsPage() {
                           type="button"
                           onClick={() => removeFromCart(line.slug)}
                           aria-label={`Remove ${line.name} from cart`}
-                          className="flex h-7 w-7 items-center justify-center rounded-full text-grey hover:bg-manikstu-red/10 hover:text-manikstu-red transition-colors"
+                          className="flex h-7 w-7 items-center justify-center rounded-full text-charcoal hover:bg-manikstu-red/10 hover:text-manikstu-red transition-colors"
                         >
                           <X className="h-4 w-4" />
                         </button>
@@ -543,7 +590,7 @@ export default function ProductsPage() {
 
                 <div className="flex flex-col items-stretch gap-3 border-t border-light-grey/70 bg-manikstu-cream/40 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-[11px] uppercase tracking-wider text-grey">
+                    <p className="text-[11px] uppercase tracking-wider text-charcoal">
                       {t("totalToPay")}
                     </p>
                     <p className="font-body text-2xl font-bold text-manikstu-green">
@@ -574,7 +621,7 @@ export default function ProductsPage() {
                         <h4 className="text-sm font-bold text-charcoal">
                           {f.title}
                         </h4>
-                        <p className="mt-0.5 text-xs text-grey leading-snug">
+                        <p className="mt-0.5 text-xs text-charcoal leading-snug">
                           {f.subtitle}
                         </p>
                       </div>

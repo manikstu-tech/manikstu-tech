@@ -12,7 +12,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
 
       {/* Site-wide footer — copyright over a full-bleed village art band flush to the bottom */}
       <footer className="relative">
-        <p className="px-4 pb-2 text-center text-xs font-medium text-grey">
+        <p className="px-4 pb-2 text-center text-xs font-medium text-charcoal">
           &copy; 2026 Manikstu Agro Private Limited. All Rights Reserved.
         </p>
         {/* Village line-art — multiply blend drops the white ground so only the ink shows */}

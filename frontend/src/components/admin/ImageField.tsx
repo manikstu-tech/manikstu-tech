@@ -81,7 +81,7 @@ export default function ImageField({ name, existingPath, existingUrl, error }: {
         ) : (
           <span className="flex flex-col items-center gap-1 p-3 text-center">
             <ImagePlus className="h-7 w-7 text-manikstu-green" />
-            <span className="text-xs font-semibold text-grey">Drop an image or click to choose</span>
+            <span className="text-xs font-semibold text-charcoal">Drop an image or click to choose</span>
             <span className="text-[10px] text-[#B0A98E]">JPG, PNG or WebP, up to 5MB</span>
           </span>
         )}

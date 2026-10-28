@@ -60,7 +60,7 @@ export default function PageSettingsForm({ page, action }: Props) {
                     type="button"
                     onClick={() => setLocale(l.value)}
                     className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${
-                      l.value === locale ? "bg-manikstu-green text-white" : existing.has(l.value) ? "bg-manikstu-green/10 text-manikstu-leaf" : "bg-[#F2EEE4] text-grey"
+                      l.value === locale ? "bg-manikstu-green text-white" : existing.has(l.value) ? "bg-manikstu-green/10 text-manikstu-leaf" : "bg-[#F2EEE4] text-charcoal"
                     }`}
                   >
                     {l.label}

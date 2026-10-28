@@ -1,92 +1,23 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
-import ServiceAccordion, {
-  type AccordionItem,
-} from "@/components/services/ServiceAccordion";
-import InsurancePanel from "@/components/services/InsurancePanel";
 import JsonLd from "@/components/seo/JsonLd";
-import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  HeartPulse,
-  LayoutDashboard,
   Sprout,
   ShieldCheck,
   ArrowRight,
   Handshake,
   Layers,
-  type LucideIcon,
+  Warehouse,
+  Smartphone,
+  Stethoscope,
 } from "lucide-react";
+import GoatBodyIcon from "@/components/icons/GoatBodyIcon";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-type Block = {
-  title: string;
-  subtitle?: string;
-  highlight?: string;
-  description: string;
-  icon: LucideIcon;
-  panel?: ReactNode;
-};
-
-function AlternatingBlock({ item, index }: { item: Block; index: number }) {
-  const Icon = item.icon;
-  const flipped = index % 2 === 1;
-
-  return (
-    <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
-      <div className={`relative h-full ${flipped ? "lg:order-2" : ""}`}>
-        <div className="group relative h-full overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/90 py-10 px-6 shadow-sm transition-all duration-300 hover:shadow-xl md:px-8 flex flex-col items-center justify-center">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
-          />
-          <div className="relative z-10 text-center">
-            <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
-              <Icon className="h-7 w-7 text-manikstu-green" />
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
-              />
-            </div>
-            {item.subtitle && (
-              <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.25em] text-manikstu-green sm:text-xs">
-                {item.subtitle}
-              </p>
-            )}
-            <h3 className="mt-2 font-heading text-2xl italic font-bold leading-snug text-manikstu-leaf group-hover:text-manikstu-green transition-colors md:text-3xl">
-              {item.title}
-            </h3>
-            <div className="mt-3 flex items-center justify-center gap-1.5">
-              <span aria-hidden className="h-px w-10 bg-manikstu-gold" />
-              <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-              <span aria-hidden className="h-px w-10 bg-manikstu-gold" />
-            </div>
-            {item.highlight && (
-              <p className="mt-3 text-sm font-semibold text-manikstu-green">
-                {item.highlight}
-              </p>
-            )}
-            <p className="mt-4 text-sm leading-relaxed text-grey md:text-base">
-              {item.description}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className={`h-full ${flipped ? "lg:order-1" : ""}`}>
-        {item.panel ? (
-          item.panel
-        ) : (
-          <div className="flex aspect-[4/3] h-full items-center justify-center rounded-2xl border border-manikstu-gold/20 bg-manikstu-cream shadow-sm">
-            <Icon className="h-24 w-24 text-manikstu-green/40" strokeWidth={1.5} />
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 export const metadata: Metadata = {
   title: "Our Services",
@@ -105,136 +36,6 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   setRequestLocale(locale);
   const t = await getTranslations("Services");
 
-  const goatCareItems: AccordionItem[] = [
-    {
-      title: t("vaccination"),
-      highlight: t("yearRoundImmunization"),
-      detail: t("vaccinationDesc"),
-    },
-    {
-      title: t("treatment"),
-      detail: t("treatmentDesc"),
-    },
-    {
-      title: t("pregnancyCare"),
-      detail: t("pregnancyCareDesc"),
-    },
-    {
-      title: t("goatKidBirth"),
-      detail: t("goatKidBirthDesc"),
-    },
-    {
-      title: t("naturalBreeding"),
-      detail: t("naturalBreedingDesc"),
-    },
-    {
-      title: t("artificialInsemination"),
-      detail: t("artificialInseminationDesc"),
-    },
-  ];
-
-  const farmingSolutions: AccordionItem[] = [
-    {
-      title: t("goatShedConstruction"),
-      detail: t("goatShedDesc"),
-    },
-    {
-      title: t("breederSelection"),
-      detail: t("breederSelectionDesc"),
-    },
-    {
-      title: t("livestockProcurement"),
-      detail: t("livestockProcurementDesc"),
-    },
-    {
-      title: t("fodderManagement"),
-      detail: t("fodderManagementDesc"),
-    },
-    {
-      title: t("feedSupplements"),
-      detail: t("feedSupplementsDesc"),
-    },
-    {
-      title: t("vetEquipment"),
-      detail: t("vetEquipmentDesc"),
-    },
-    {
-      title: t("manpowerSolutions"),
-      detail: t("manpowerSolutionsDesc"),
-    },
-  ];
-
-  const insuranceParagraphs = [
-    t("insuranceDesc1"),
-    t("insuranceDesc2"),
-    t("insuranceDesc3"),
-    t("insuranceDesc4"),
-    t("insuranceDesc5"),
-  ];
-
-  const erpModules: AccordionItem[] = [
-    {
-      title: t("goatFarmApp"),
-      detail: t("goatFarmAppDesc"),
-    },
-    {
-      title: t("livelihoodApp"),
-      detail: t("livelihoodAppDesc"),
-    },
-    {
-      title: t("psaApp"),
-      detail: t("psaAppDesc"),
-    },
-    {
-      title: t("goatCareApp"),
-      detail: t("goatCareAppDesc"),
-    },
-  ];
-
-  const categories: Block[] = [
-    {
-      title: t("goatCare"),
-      subtitle: t("goatCareSubtitle"),
-      description: t("goatCareDesc"),
-      icon: HeartPulse,
-      panel: (
-        <ServiceAccordion heading={t("ourGoatCare")} items={goatCareItems} />
-      ),
-    },
-    {
-      title: t("farmManagementERP"),
-      subtitle: t("farmManagementSubtitle"),
-      description: t("farmManagementDesc"),
-      icon: LayoutDashboard,
-      panel: <ServiceAccordion heading={t("ourERPModules")} items={erpModules} />,
-    },
-    {
-      title: t("goatFarmingSolution"),
-      subtitle: t("goatFarmingSubtitle"),
-      description: t("goatFarmingDesc"),
-      icon: Sprout,
-      panel: (
-        <ServiceAccordion
-          heading={t("ourGoatFarmingSolutions")}
-          items={farmingSolutions}
-        />
-      ),
-    },
-    {
-      title: t("goatInsurance"),
-      subtitle: t("goatInsuranceSubtitle"),
-      description: t("goatInsuranceDesc"),
-      icon: ShieldCheck,
-      panel: (
-        <InsurancePanel
-          heading={t("reducingRisk")}
-          paragraphs={insuranceParagraphs}
-          showLess={t("showLess")}
-          readMore={t("readMore")}
-        />
-      ),
-    },
-  ];
 
   return (
     <>
@@ -274,7 +75,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               )}
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-charcoal">
               {t("heroDesc")}
             </p>
 
@@ -297,7 +98,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                 <Sprout className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
-              <p className="text-sm text-grey">
+              <p className="text-sm text-charcoal">
                 {t("microStatement")}
               </p>
             </div>
@@ -326,46 +127,131 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           </div>
         </PageHero>
 
-        <section id="what-we-offer" className="section-padding !pt-4 sm:!pt-12 md:!pt-16 bg-white scroll-mt-6">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-12 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
-                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-manikstu-green">
-                  {t("whatWeOffer")}
-                </p>
-                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
-                <span aria-hidden className="h-px w-10 bg-manikstu-gold/60" />
-              </div>
+        {/* Service highlights strip, four core supports directly under the hero */}
+        <section id="what-we-offer" aria-label="Service highlights" className="relative z-10 -mt-6 sm:-mt-10 lg:-mt-16 scroll-mt-24 border-b border-light-grey/60 bg-manikstu-cream/50">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
+            <div className="grid grid-cols-2 gap-x-5 lg:grid-cols-4 lg:gap-x-0 lg:divide-x lg:divide-light-grey/80">
+              {[
+                { icon: GoatBodyIcon, title: "Animal Health", subtitle: "Healthier goats, stronger farms" },
+                { icon: Warehouse, title: "Farm Infrastructure", subtitle: "Modern & climate-smart solutions" },
+                { icon: Smartphone, title: "Digital Tools", subtitle: "Data-driven farm management" },
+                { icon: ShieldCheck, title: "Livestock Protection", subtitle: "Greater security for your assets" },
+              ].map(({ icon: Icon, title, subtitle }) => (
+                <div key={title} className="flex items-center gap-3.5 py-4 lg:px-6 lg:py-6">
+                  <Icon className="h-8 w-8 shrink-0 text-manikstu-green" strokeWidth={1.5} aria-hidden />
+                  <div className="min-w-0">
+                    <p className="font-heading text-[15px] font-bold leading-tight text-manikstu-green">{title}</p>
+                    <p className="mt-0.5 text-xs leading-snug text-charcoal/70">{subtitle}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-              <h2 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
-                {t("ourServices")}{" "}
-                <span className="text-manikstu-green">{t("servicesTitle")}</span>
+        {/* One ecosystem — detailed service cards */}
+        <section aria-labelledby="ecosystem-heading" className="bg-manikstu-cream/40 py-14 sm:py-16 md:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
+            <div className="mb-10 text-center sm:mb-12">
+              <h2 id="ecosystem-heading" className="font-heading text-3xl font-bold leading-tight text-charcoal sm:text-4xl lg:text-5xl">
+                One ecosystem. <span className="text-manikstu-green">Practical support.</span>
               </h2>
-
-              <div className="mt-4 flex items-center justify-center gap-2">
-                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+              <div className="mt-5 flex items-center justify-center gap-2">
+                <span aria-hidden className="h-px w-14 bg-manikstu-gold/70 sm:w-20" />
                 <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
                 <div aria-hidden className="relative flex items-center justify-center">
                   <span className="h-3.5 w-3.5 rotate-45 border border-manikstu-gold bg-transparent" />
                   <span className="absolute h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                 </div>
                 <span aria-hidden className="h-1 w-1 rounded-full bg-manikstu-gold/80" />
-                <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
+                <span aria-hidden className="h-px w-14 bg-manikstu-gold/70 sm:w-20" />
               </div>
-
-              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
-                {t("servicesDesc")}
+              <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-charcoal/80">
+                Choose the support you need today — build a stronger farm for tomorrow.
               </p>
             </div>
-            <div className="space-y-16 md:space-y-24">
-              {categories.map((item, i) => (
-                <AlternatingBlock key={item.title} item={item} index={i} />
+
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              {[
+                {
+                  num: "01",
+                  title: "Goat Care Services",
+                  description: "On-ground healthcare and breeding support from trained Pashu Seva Adhikaris.",
+                  tags: ["Vaccination", "Treatment", "Pregnancy & kidding", "Natural breeding"],
+                  icon: Stethoscope,
+                  image: "/goat-care-vet.webp",
+                  wide: true,
+                },
+                {
+                  num: "02",
+                  title: "Goat Farming Solutions",
+                  description: "Scientific farm planning, quality livestock sourcing and daily operating essentials.",
+                  tags: ["Shed construction", "Breeder selection", "Livestock procurement", "Feed & fodder"],
+                  icon: Warehouse,
+                  image: "/goat-farming-shed.webp",
+                  wide: true,
+                },
+                {
+                  num: "03",
+                  title: "Farm Management ERP",
+                  description: "Digital tools to help teams track farms, visits, livestock and service delivery.",
+                  tags: ["Farm management app", "PSA app", "Goat Care app", "Program management"],
+                  icon: Smartphone,
+                  image: "/farm-erp-app.webp",
+                  wide: true,
+                },
+                {
+                  num: "04",
+                  title: "Goat Insurance Support",
+                  description: "Practical livestock risk support so farmers can protect their assets with greater confidence.",
+                  tags: ["Livestock protection", "Documentation", "Risk awareness"],
+                  icon: ShieldCheck,
+                  image: "/goat-insurance-farmer.webp",
+                  wide: true,
+                },
+              ].map(({ num, title, description, tags, icon: Icon, image, wide }) => (
+                <article
+                  key={num}
+                  className={`group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-light-grey/70 bg-white shadow-sm transition-shadow hover:shadow-md sm:flex-row ${wide ? "lg:col-span-2" : ""}`}
+                >
+                  <div className="relative h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-2/5">
+                    <Image
+                      src={image}
+                      alt={title}
+                      width={640}
+                      height={480}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="relative flex min-w-0 flex-1 flex-col p-5 sm:p-6">
+                    <span className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-manikstu-green/10 text-manikstu-green">
+                      <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+                    </span>
+                    <p className="font-heading text-sm font-bold tracking-wide text-manikstu-gold">{num}</p>
+                    <h3 className="mt-1 pr-12 font-heading text-xl font-bold leading-tight text-charcoal sm:text-2xl">
+                      {title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-charcoal/75">{description}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-manikstu-green/15 bg-manikstu-sage/50 px-2.5 py-1 text-[11px] font-medium text-manikstu-green"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-manikstu-green">
+                      Explore service <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
+
       </main>
       <Footer />
     </>

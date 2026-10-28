@@ -73,7 +73,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
         aria-hidden
         width={400}
         height={400}
-        className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.12] sm:opacity-[0.16]"
+        className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95]"
       />
       <Image
         src="/patterns/mandala-corner-top.webp"
@@ -81,7 +81,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
         aria-hidden
         width={400}
         height={400}
-        className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.12] sm:opacity-[0.16] -scale-x-100"
+        className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
       />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
@@ -114,7 +114,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
             <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
           </div>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-grey leading-relaxed">
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-charcoal leading-relaxed">
             {t("modelDesc")}
           </p>
         </div>
@@ -125,7 +125,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
             return (
               <div
                 key={pillar.title}
-                className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 py-8 px-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-manikstu-cream/50"
+                className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-manikstu-cream/30 py-8 px-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-manikstu-cream/50"
               >
                 <div className="relative text-center">
                   {/* Icon with dashed decorative ring */}
@@ -133,7 +133,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
                     <Icon className="h-6 w-6 text-manikstu-green transition-transform duration-300 group-hover:scale-110" />
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                      className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                     />
                   </div>
 
@@ -148,7 +148,7 @@ export default function AjahPillars({ pillars: propPillars }: { pillars?: AjahPi
                     <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
                   </div>
 
-                  <p className="mt-4 text-sm leading-relaxed text-grey">
+                  <p className="mt-4 text-sm leading-relaxed text-charcoal">
                     {pillar.description}
                   </p>
                 </div>

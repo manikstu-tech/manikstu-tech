@@ -98,7 +98,7 @@ export default function ContactPage({
                 aria-hidden
                 width={504}
                 height={560}
-                className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.10] sm:opacity-[0.14]"
+                className="pointer-events-none select-none absolute right-0 top-0 h-auto w-64 sm:w-80 md:w-96 lg:w-[28rem] opacity-[0.95] sm:opacity-[0.95]"
               />
               {/* Left-side mandala */}
               <Image
@@ -107,7 +107,7 @@ export default function ContactPage({
                 aria-hidden
                 width={768}
                 height={768}
-                className="pointer-events-none select-none absolute -left-12 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-44 md:w-56 lg:w-64 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+                className="pointer-events-none select-none absolute -left-12 top-1/2 -translate-y-1/2 h-auto w-32 sm:w-44 md:w-56 lg:w-64 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
               />
             </>
           }
@@ -143,7 +143,7 @@ export default function ContactPage({
               <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
             </div>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-charcoal">
               {t("heroDesc")}
             </p>
           </div>
@@ -189,7 +189,7 @@ export default function ContactPage({
                       {value}
                     </a>
                   </p>
-                  <p className="mt-1 text-xs text-grey">{subtitle}</p>
+                  <p className="mt-1 text-xs text-charcoal">{subtitle}</p>
                 </div>
               </div>
             ))}
@@ -239,7 +239,7 @@ export default function ContactPage({
                       {office.label}
                     </p>
                   </div>
-                  <p className="mt-1 text-[11px] leading-snug text-grey">
+                  <p className="mt-1 text-[11px] leading-snug text-charcoal">
                     {office.address}
                   </p>
                 </div>
@@ -252,7 +252,7 @@ export default function ContactPage({
           {/* Top tribal border */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-7 bg-repeat-x opacity-70"
+            className="pointer-events-none absolute left-0 right-0 top-0 h-6 sm:h-7 bg-repeat-x opacity-50"
             style={{
               backgroundImage: "url('/patterns/tribal-border.png')",
               backgroundSize: "auto 100%",
@@ -261,7 +261,7 @@ export default function ContactPage({
           {/* Bottom tribal border (flipped) */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
+            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-50"
             style={{
               backgroundImage: "url('/patterns/tribal-border.png')",
               backgroundSize: "auto 100%",
@@ -275,7 +275,7 @@ export default function ContactPage({
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.14] sm:opacity-[0.18]"
+            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.95] sm:opacity-[0.95]"
           />
 
           {/* Bottom-right mandala corner */}
@@ -285,7 +285,7 @@ export default function ContactPage({
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.14] sm:opacity-[0.18] -scale-x-100 -scale-y-100"
+            className="pointer-events-none select-none absolute right-0 bottom-2 sm:bottom-3 h-auto w-40 sm:w-56 md:w-72 lg:w-80 opacity-[0.95] sm:opacity-[0.95] -scale-x-100 -scale-y-100"
           />
 
           <div className="relative z-10 mx-auto max-w-4xl">
@@ -319,18 +319,18 @@ export default function ContactPage({
                 <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
               </div>
 
-              <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
+              <p className="mx-auto mt-6 max-w-2xl text-charcoal leading-relaxed">
                 Drop us a line, questions, partnership ideas, feedback or
                 anything else. Our team responds within a working day.
               </p>
             </div>
 
             {/* Ornate form card, matches Training program card */}
-            <div className="relative mt-10 overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-white p-6 shadow-sm sm:p-8">
+            <div className="relative mt-10 overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-white p-6 shadow-sm sm:p-8">
               {/* Inner dashed border */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
               />
               <div className="relative">
               {status === "success" ? (
@@ -341,7 +341,7 @@ export default function ContactPage({
                   <h2 className="mt-6 font-heading text-2xl font-bold text-charcoal">
                     {t("successTitle")}
                   </h2>
-                  <p className="mt-3 text-grey">
+                  <p className="mt-3 text-charcoal">
                     {t("successDesc")}
                   </p>
                   <button

@@ -91,11 +91,11 @@ export default function AdminSidebar({ user, logoutAction }: Props) {
 
           {/* Search */}
           <div className="relative w-full max-w-md">
-            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-grey" />
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-charcoal" />
             <input
               type="text"
               placeholder="Search anything..."
-              className="h-11 w-full rounded-xl border border-light-grey bg-manikstu-cream/40 pl-10 pr-4 text-sm text-charcoal outline-none transition placeholder:text-grey/60 focus:border-manikstu-green focus:bg-white focus:ring-4 focus:ring-manikstu-green/10"
+              className="h-11 w-full rounded-xl border border-light-grey bg-manikstu-cream/40 pl-10 pr-4 text-sm text-charcoal outline-none transition placeholder:text-charcoal/60 focus:border-manikstu-green focus:bg-white focus:ring-4 focus:ring-manikstu-green/10"
             />
           </div>
 

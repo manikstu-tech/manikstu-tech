@@ -86,7 +86,7 @@ export default function AjahCTA() {
             <span className="text-[#9F5233]">AJAH</span>
           </h2>
 
-          <p className="mx-auto mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-grey">
+          <p className="mx-auto mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-charcoal">
             {t("ctaDesc")}
           </p>
 
@@ -119,7 +119,7 @@ export default function AjahCTA() {
                     <span className="mt-2 text-[11px] sm:text-xs md:text-sm font-bold text-charcoal font-heading leading-tight">
                       {pillar.line1}
                     </span>
-                    <span className="text-[10px] sm:text-xs text-grey font-medium leading-tight">
+                    <span className="text-[10px] sm:text-xs text-charcoal font-medium leading-tight">
                       {pillar.line2}
                     </span>
                   </div>
@@ -148,7 +148,7 @@ export default function AjahCTA() {
         aria-hidden
         width={300}
         height={200}
-        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-20 sm:opacity-25"
+        className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
       />
 
       {/* Bottom village scene illustration, right */}
@@ -158,7 +158,7 @@ export default function AjahCTA() {
         aria-hidden
         width={300}
         height={200}
-        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-20 sm:opacity-25"
+        className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
       />
     </section>
   );

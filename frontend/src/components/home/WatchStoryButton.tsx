@@ -64,7 +64,7 @@ export default function WatchStoryButton({
           <span className="block text-[10px] sm:text-xs font-semibold leading-tight text-charcoal">
             {topLabel}
           </span>
-          <span className="block text-[9px] sm:text-xs leading-tight text-grey">
+          <span className="block text-[9px] sm:text-xs leading-tight text-charcoal">
             {bottomLabel}
           </span>
         </span>

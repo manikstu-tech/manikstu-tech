@@ -332,7 +332,11 @@
     "mobileTitleAccent": "स्वस्थ खेतों के लिए।",
     "searchPlaceholder": "उत्पाद खोजें...",
     "allCategories": "सभी",
-    "noMatches": "आपकी खोज से कोई उत्पाद नहीं मिला।"
+    "noMatches": "आपकी खोज से कोई उत्पाद नहीं मिला।",
+    "outOfStock": "स्टॉक में नहीं",
+    "onlyInStock": "स्टॉक में केवल {count}",
+    "checkingStock": "स्टॉक जाँचा जा रहा है…",
+    "stockUnavailable": "अभी स्टॉक की जाँच नहीं हो सकी। कृपया पेज रीफ़्रेश करें।"
   },
   "Training": {
     "pill": "प्रशिक्षण एवं जागरूकता",
@@ -749,7 +753,14 @@
     "answeredBy": "जवाब दिया:",
     "seeAllQuestions": "सभी सवाल देखें",
     "unmarkHelpful": "उपयोगी निशान हटाएं",
-    "markHelpful": "उपयोगी चिह्नित करें"
+    "markHelpful": "उपयोगी चिह्नित करें",
+    "outOfStock": "स्टॉक में नहीं",
+    "inStock": "स्टॉक में उपलब्ध",
+    "onlyLeft": "स्टॉक में केवल {count} बचे हैं",
+    "outOfStockDesc": "यह उत्पाद अभी स्टॉक में नहीं है। कृपया बाद में देखें।",
+    "maxReached": "आप अधिकतम {count} ऑर्डर कर सकते हैं।",
+    "checkingStock": "स्टॉक जाँचा जा रहा है…",
+    "stockUnavailable": "अभी स्टॉक की जाँच नहीं हो सकी। कृपया पेज रीफ़्रेश करें।"
   },
   "Checkout": {
     "backToProducts": "उत्पादों पर वापस",
@@ -793,7 +804,9 @@
     "total": "कुल",
     "orderNumberLabel": "आपका ऑर्डर नंबर",
     "orderNumberHelp": "इसे संभालकर रखें। दिए गए फोन नंबर से आप अपने ऑर्डर की प्रगति देख सकते हैं।",
-    "trackThisOrder": "ऑर्डर ट्रैक करें"
+    "trackThisOrder": "ऑर्डर ट्रैक करें",
+    "itemOutOfStock": "{name} स्टॉक में नहीं है, इसलिए इसे आपके कार्ट से हटा दिया गया है।",
+    "itemLowStock": "{name} स्टॉक में केवल {count} बचे हैं, इसलिए आपका कार्ट अपडेट कर दिया गया है। कृपया जाँच कर फिर से ऑर्डर करें।"
   },
   "Partners": {
     "pill": "हमारे भागीदार",

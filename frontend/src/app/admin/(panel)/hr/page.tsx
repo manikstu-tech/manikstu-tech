@@ -59,11 +59,11 @@ function StatTile({ label, value, hint, icon: Icon, href }: { label: string; val
         <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-manikstu-green/10 text-manikstu-leaf">
           <Icon className="h-[22px] w-[22px]" />
         </span>
-        <ChevronRight className="h-4 w-4 text-grey transition group-hover:translate-x-0.5 group-hover:text-manikstu-green" />
+        <ChevronRight className="h-4 w-4 text-charcoal transition group-hover:translate-x-0.5 group-hover:text-manikstu-green" />
       </div>
       <p className="mt-4 font-heading text-4xl font-bold lining-nums tabular-nums text-charcoal">{value}</p>
-      <p className="mt-1 text-sm font-medium text-grey">{label}</p>
-      <p className="mt-0.5 text-xs text-grey/70">{hint}</p>
+      <p className="mt-1 text-sm font-medium text-charcoal">{label}</p>
+      <p className="mt-0.5 text-xs text-charcoal/70">{hint}</p>
     </Link>
   );
 }
@@ -79,9 +79,9 @@ function ActionRow({ label, description, icon: Icon, href }: { label: string; de
       </span>
       <span className="min-w-0 flex-1">
         <span className="block text-sm font-semibold text-charcoal">{label}</span>
-        <span className="block truncate text-xs text-grey">{description}</span>
+        <span className="block truncate text-xs text-charcoal">{description}</span>
       </span>
-      <ChevronRight className="h-4 w-4 shrink-0 text-grey transition group-hover:translate-x-0.5 group-hover:text-manikstu-green" />
+      <ChevronRight className="h-4 w-4 shrink-0 text-charcoal transition group-hover:translate-x-0.5 group-hover:text-manikstu-green" />
     </Link>
   );
 }
@@ -119,7 +119,7 @@ export default async function HrDashboardPage() {
                 <Inbox className="h-6 w-6" />
               </span>
               <p className="text-sm font-semibold text-charcoal">No applications yet</p>
-              <p className="max-w-sm text-xs text-grey">
+              <p className="max-w-sm text-xs text-charcoal">
                 When candidates apply through a job&apos;s Apply form on the website, they appear here with their CV.
               </p>
             </div>
@@ -133,13 +133,13 @@ export default async function HrDashboardPage() {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-semibold text-charcoal">{a.name}</span>
-                      <span className="block truncate text-xs text-grey">{a.job_title ?? a.email}</span>
+                      <span className="block truncate text-xs text-charcoal">{a.job_title ?? a.email}</span>
                     </span>
                     <span className="flex shrink-0 items-center gap-2.5">
                       <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold capitalize ${STATUS_STYLE[a.status] ?? "bg-light-grey text-charcoal"}`}>
                         {a.status}
                       </span>
-                      <span className="whitespace-nowrap text-xs text-grey">{fmtDate(a.created_at)}</span>
+                      <span className="whitespace-nowrap text-xs text-charcoal">{fmtDate(a.created_at)}</span>
                     </span>
                   </Link>
                 </li>

@@ -68,7 +68,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
             <span aria-hidden className="h-px w-14 sm:w-20 bg-manikstu-gold/70" />
           </div>
 
-          <p className="mx-auto mt-6 max-w-2xl text-grey leading-relaxed">
+          <p className="mx-auto mt-6 max-w-2xl text-charcoal leading-relaxed">
             {t("galleryDesc")}
           </p>
         </div>
@@ -113,7 +113,7 @@ export default function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
                 </h3>
                 {/* gold underline that grows on hover */}
                 <span className="mt-1 block h-0.5 w-6 rounded-full bg-manikstu-gold transition-all duration-300 group-hover:w-10" />
-                <div className="mt-1.5 flex items-center gap-2.5 text-[11px] text-grey">
+                <div className="mt-1.5 flex items-center gap-2.5 text-[11px] text-charcoal">
                   {photo.location && (
                     <span className="inline-flex items-center gap-1">
                       <MapPin className="h-3 w-3 text-manikstu-green" />

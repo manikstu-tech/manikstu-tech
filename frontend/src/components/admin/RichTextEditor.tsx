@@ -47,7 +47,7 @@ export default function RichTextEditor({ id, name, defaultValue, invalid }: { id
   }
 
   const button =
-    "flex h-8 w-8 items-center justify-center rounded-md text-grey transition hover:bg-manikstu-green/10 hover:text-manikstu-leaf";
+    "flex h-8 w-8 items-center justify-center rounded-md text-charcoal transition hover:bg-manikstu-green/10 hover:text-manikstu-leaf";
 
   return (
     <div className={`overflow-hidden rounded-xl border bg-white ${invalid ? "border-manikstu-red/50" : "border-[#E8E2D6] focus-within:border-manikstu-green"}`}>

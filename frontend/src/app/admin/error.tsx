@@ -17,10 +17,10 @@ export default function AdminError({ error, retry }: { error: Error & { digest?:
       <div className="w-full max-w-lg rounded-2xl border border-[#ECE7DC] bg-white p-8 text-center shadow-sm">
         <ServerCrash className="mx-auto h-10 w-10 text-manikstu-red/70" strokeWidth={1.5} />
         <h1 className="mt-4 text-xl font-bold">This page couldn&apos;t load</h1>
-        <p className="mt-2 text-sm text-grey">
+        <p className="mt-2 text-sm text-charcoal">
           The admin API may be unreachable, or something went wrong on the server. Please try again in a moment.
         </p>
-        {error.digest && <p className="mt-3 font-mono text-xs text-grey">Ref: {error.digest}</p>}
+        {error.digest && <p className="mt-3 font-mono text-xs text-charcoal">Ref: {error.digest}</p>}
         <button
           type="button"
           onClick={() => retry()}

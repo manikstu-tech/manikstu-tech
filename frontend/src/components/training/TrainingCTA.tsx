@@ -94,7 +94,7 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
             Generation of Farmers
           </h2>
 
-          <p className="mx-auto mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-grey">
+          <p className="mx-auto mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-charcoal">
             {t("ctaDesc")}
           </p>
 
@@ -158,7 +158,7 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
         aria-hidden
         width={1536}
         height={1024}
-        className="pointer-events-none select-none absolute left-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-20 sm:opacity-25"
+        className="pointer-events-none select-none absolute left-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
       />
 
       {/* Bottom right woman, hut, tree */}
@@ -168,7 +168,7 @@ export default function TrainingCTA({ pillars: propPillars }: { pillars?: Pillar
         aria-hidden
         width={1802}
         height={900}
-        className="pointer-events-none select-none absolute right-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-20 sm:opacity-25"
+        className="pointer-events-none select-none absolute right-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
       />
 
       {/* Bottom continuous tribal floral border strip */}

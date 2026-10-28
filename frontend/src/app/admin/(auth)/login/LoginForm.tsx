@@ -72,7 +72,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
           <button
             type="button"
             onClick={() => setShowPassword((v) => !v)}
-            className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-grey hover:text-manikstu-green"
+            className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-charcoal hover:text-manikstu-green"
             aria-label={showPassword ? "Hide password" : "Show password"}
           >
             {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -107,7 +107,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
                 </span>
                 <span className="min-w-0">
                   <span className="block text-sm font-semibold leading-tight text-charcoal">{label}</span>
-                  <span className="block truncate text-[11px] leading-tight text-grey">{desc}</span>
+                  <span className="block truncate text-[11px] leading-tight text-charcoal">{desc}</span>
                 </span>
               </button>
             );
@@ -117,7 +117,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
 
       {/* Remember me + forgot password */}
       <div className="flex items-center justify-between">
-        <label className="flex items-center gap-2 text-sm text-grey">
+        <label className="flex items-center gap-2 text-sm text-charcoal">
           <input
             type="checkbox"
             name="remember"

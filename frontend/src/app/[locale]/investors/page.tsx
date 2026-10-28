@@ -82,7 +82,7 @@ function SectionHead({
       </div>
 
       {desc && (
-        <p className={`mx-auto mt-6 max-w-2xl leading-relaxed ${tone === "light" ? "text-white/85" : "text-grey"}`}>
+        <p className={`mx-auto mt-6 max-w-2xl leading-relaxed ${tone === "light" ? "text-white/85" : "text-charcoal"}`}>
           {desc}
         </p>
       )}
@@ -103,13 +103,13 @@ function OrnateCard({
   italic?: boolean;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/30 px-5 pb-8 pt-6 shadow-sm transition-all duration-300 hover:shadow-xl sm:px-6">
+    <div className="group relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-manikstu-cream/30 px-5 pb-8 pt-6 shadow-sm transition-all duration-300 hover:shadow-xl sm:px-6">
       <div className="relative text-center">
         <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
           <Icon className="h-6 w-6 text-manikstu-green" />
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+            className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-[#DFE9D9]"
           />
         </div>
 
@@ -127,7 +127,7 @@ function OrnateCard({
           <span aria-hidden className="h-px w-6 bg-manikstu-gold" />
         </div>
 
-        <p className="mt-4 text-sm leading-relaxed text-grey">{desc}</p>
+        <p className="mt-4 text-sm leading-relaxed text-charcoal">{desc}</p>
       </div>
     </div>
   );
@@ -211,7 +211,7 @@ export default async function InvestorsPage({
               )}
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-grey">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-charcoal">
               {t("heroDesc")}
             </p>
 
@@ -234,23 +234,23 @@ export default async function InvestorsPage({
               <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                 <TrendingUp className="h-4 w-4 shrink-0 text-manikstu-green" />
               </span>
-              <p className="text-sm text-grey">{t("microStatement")}</p>
+              <p className="text-sm text-charcoal">{t("microStatement")}</p>
             </div>
           </div>
 
           {/* Right, ornate highlight panel */}
           <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl border-2 border-saura-red/50 bg-manikstu-cream/90 p-8 shadow-sm md:p-10">
+            <div className="relative overflow-hidden rounded-2xl border-2 border-[#DFE9D9] bg-manikstu-cream/90 p-8 shadow-sm md:p-10">
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-saura-red/40"
+                className="pointer-events-none absolute inset-2 rounded-xl border border-dashed border-[#DFE9D9]"
               />
               <div className="relative text-center">
                 <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-manikstu-green/10 ring-1 ring-manikstu-green/20">
                   <Sprout className="h-7 w-7 text-manikstu-green" />
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-saura-red/50"
+                    className="pointer-events-none absolute inset-[-6px] rounded-full border-2 border-dashed border-[#DFE9D9]"
                   />
                 </div>
                 <h2 className="mt-5 font-heading text-2xl font-bold italic leading-snug text-manikstu-leaf md:text-3xl">
@@ -261,7 +261,7 @@ export default async function InvestorsPage({
                   <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-manikstu-gold" />
                   <span aria-hidden className="h-px w-8 bg-manikstu-gold" />
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-grey md:text-base">
+                <p className="mt-3 text-sm leading-relaxed text-charcoal md:text-base">
                   {t("heroCardDesc")}
                 </p>
                 <div className="mt-6 grid grid-cols-2 gap-4">
@@ -269,7 +269,7 @@ export default async function InvestorsPage({
                     <p className="font-heading text-2xl font-bold text-manikstu-green md:text-3xl">
                       {t("heroStatA")}
                     </p>
-                    <p className="mt-1 text-xs font-medium text-grey">
+                    <p className="mt-1 text-xs font-medium text-charcoal">
                       {t("heroStatALabel")}
                     </p>
                   </div>
@@ -277,7 +277,7 @@ export default async function InvestorsPage({
                     <p className="font-heading text-2xl font-bold text-manikstu-green md:text-3xl">
                       {t("heroStatB")}
                     </p>
-                    <p className="mt-1 text-xs font-medium text-grey">
+                    <p className="mt-1 text-xs font-medium text-charcoal">
                       {t("heroStatBLabel")}
                     </p>
                   </div>
@@ -298,36 +298,36 @@ export default async function InvestorsPage({
             }}
           />
           <Image
-            src="/patterns/mandala-corner-top.png"
+            src="/patterns/mandala-corner-top.webp"
             alt=""
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute left-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18]"
+            className="pointer-events-none select-none absolute left-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95]"
           />
           <Image
-            src="/patterns/mandala-corner-top.png"
+            src="/patterns/mandala-corner-top.webp"
             alt=""
             aria-hidden
             width={1370}
             height={1155}
-            className="pointer-events-none select-none absolute right-0 top-0 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.14] sm:opacity-[0.18] -scale-x-100"
+            className="pointer-events-none select-none absolute right-0 top-2 sm:top-3 h-auto w-48 sm:w-64 md:w-80 lg:w-96 opacity-[0.95] sm:opacity-[0.95] -scale-x-100"
           />
           <Image
-            src="/patterns/training-bottom-left.png"
+            src="/patterns/training-bottom-left.webp"
             alt=""
             aria-hidden
             width={1536}
             height={1024}
-            className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-20 sm:opacity-25"
+            className="pointer-events-none select-none absolute left-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.95] sm:opacity-[0.95]"
           />
           <Image
-            src="/patterns/training-bottom-right.png"
+            src="/patterns/training-bottom-right.webp"
             alt=""
             aria-hidden
             width={1802}
             height={900}
-            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-20 sm:opacity-25"
+            className="pointer-events-none select-none absolute right-0 bottom-0 h-auto w-28 sm:w-36 md:w-48 lg:w-64 opacity-[0.95] sm:opacity-[0.95]"
           />
           <div className="relative mx-auto max-w-6xl">
             <SectionHead
@@ -364,7 +364,7 @@ export default async function InvestorsPage({
               <h3 className="font-heading text-xl font-bold text-charcoal">
                 {t("backersHeading")}
               </h3>
-              <p className="mx-auto mt-2 max-w-xl text-sm text-grey">{t("backersDesc")}</p>
+              <p className="mx-auto mt-2 max-w-xl text-sm text-charcoal">{t("backersDesc")}</p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                 {backers.map((b) => (
                   <span
@@ -393,7 +393,7 @@ export default async function InvestorsPage({
               backgroundSize: "auto 100%",
             }}
           />
-          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-15 brightness-0 invert">
+          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-[0.95] brightness-0 invert">
             <Image
               src="/patterns/mandala-left.png"
               alt=""
@@ -402,7 +402,7 @@ export default async function InvestorsPage({
               className="h-auto w-32 sm:w-44 md:w-52 max-h-[90%] object-contain object-left"
             />
           </div>
-          <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-15 brightness-0 invert">
+          <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-[0.95] brightness-0 invert">
             <Image
               src="/patterns/mandala-right.png"
               alt=""
@@ -501,7 +501,7 @@ export default async function InvestorsPage({
                 {t("ctaHeading")}
               </h2>
 
-              <p className="mx-auto mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-grey">
+              <p className="mx-auto mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-charcoal">
                 {t("ctaDesc")}
               </p>
 
@@ -559,20 +559,20 @@ export default async function InvestorsPage({
           </div>
 
           <Image
-            src="/patterns/training-bottom-left.png"
+            src="/patterns/training-bottom-left.webp"
             alt=""
             aria-hidden
             width={1536}
             height={1024}
-            className="pointer-events-none select-none absolute left-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-20 sm:opacity-25"
+            className="pointer-events-none select-none absolute left-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
           />
           <Image
-            src="/patterns/training-bottom-right.png"
+            src="/patterns/training-bottom-right.webp"
             alt=""
             aria-hidden
             width={1802}
             height={900}
-            className="pointer-events-none select-none absolute right-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-20 sm:opacity-25"
+            className="pointer-events-none select-none absolute right-0 bottom-1.5 sm:bottom-2 h-auto w-24 sm:w-32 md:w-44 lg:w-52 opacity-[0.95] sm:opacity-[0.95]"
           />
           <div
             aria-hidden

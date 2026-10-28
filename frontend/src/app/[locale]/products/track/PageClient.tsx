@@ -98,7 +98,7 @@ function TrackOrderForm() {
                         aria-hidden
                         className={`h-2.5 w-2.5 shrink-0 rounded-full ${i <= stepIndex ? "bg-manikstu-green" : "bg-light-grey"}`}
                       />
-                      <span className={i <= stepIndex ? "font-semibold text-charcoal" : "text-grey"}>
+                      <span className={i <= stepIndex ? "font-semibold text-charcoal" : "text-charcoal"}>
                         {t(`status.${step}`)}
                       </span>
                     </li>
@@ -108,19 +108,19 @@ function TrackOrderForm() {
 
               <dl className="mt-6 grid gap-3 border-t border-light-grey/70 pt-4 text-sm sm:grid-cols-2">
                 <div>
-                  <dt className="text-grey">{t("placedOn")}</dt>
+                  <dt className="text-charcoal">{t("placedOn")}</dt>
                   <dd className="font-semibold text-charcoal">
                     {order.placed_at ? new Date(order.placed_at).toLocaleDateString() : "—"}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-grey">{t("total")}</dt>
+                  <dt className="text-charcoal">{t("total")}</dt>
                   <dd className="font-semibold text-charcoal">₹{order.total.toLocaleString("en-IN")}</dd>
                 </div>
               </dl>
 
               <p className="mt-5 text-xs font-bold uppercase tracking-wider text-manikstu-green">{t("items")}</p>
-              <ul className="mt-2 space-y-1 text-sm text-grey">
+              <ul className="mt-2 space-y-1 text-sm text-charcoal">
                 {order.items.map((item, i) => (
                   <li key={`${item.product_name}-${i}`}>
                     {item.product_name} × {item.quantity}
@@ -160,7 +160,7 @@ function TrackOrderHeading() {
   return (
     <>
       <h1 className="font-heading text-3xl font-bold text-charcoal md:text-4xl">{t("title")}</h1>
-      <p className="mt-2 text-grey">{t("intro")}</p>
+      <p className="mt-2 text-charcoal">{t("intro")}</p>
     </>
   );
 }

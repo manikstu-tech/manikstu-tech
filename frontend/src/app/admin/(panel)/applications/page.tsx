@@ -47,7 +47,7 @@ export default async function ApplicationsPage({ searchParams }: { searchParams:
               className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
                 active
                   ? "border-manikstu-green bg-manikstu-green text-white"
-                  : "border-light-grey bg-white text-grey hover:border-manikstu-green/40 hover:text-charcoal"
+                  : "border-light-grey bg-white text-charcoal hover:border-manikstu-green/40 hover:text-charcoal"
               }`}
             >
               {f.label}
@@ -65,7 +65,7 @@ export default async function ApplicationsPage({ searchParams }: { searchParams:
             <h2 className="font-heading text-lg font-bold text-charcoal">
               {status ? `No ${status} applications` : "No applications yet"}
             </h2>
-            <p className="max-w-md text-sm text-grey">
+            <p className="max-w-md text-sm text-charcoal">
               {status
                 ? "Try a different status filter."
                 : "When candidates apply through a job's Apply form on the website, they'll appear here with their CV."}
@@ -80,7 +80,7 @@ export default async function ApplicationsPage({ searchParams }: { searchParams:
         </section>
       ) : (
         <>
-          <p className="mb-3 text-sm text-grey">
+          <p className="mb-3 text-sm text-charcoal">
             {total} application{total === 1 ? "" : "s"}
           </p>
           <ApplicationsTable applications={data} />

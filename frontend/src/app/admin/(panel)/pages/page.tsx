@@ -38,7 +38,7 @@ export default async function PagesPage() {
                   </td>
                   <td className="px-5 py-3.5">{p.blocks_count}</td>
                   <td className="px-5 py-3.5"><StatusBadge active={p.is_published} /></td>
-                  <td className="whitespace-nowrap px-5 py-3.5 text-grey">{formatDate(p.updated_at)}</td>
+                  <td className="whitespace-nowrap px-5 py-3.5 text-charcoal">{formatDate(p.updated_at)}</td>
                   <td className="px-5 py-3.5">
                     <div className="flex justify-end">
                       <Link href={`/admin/pages/${p.id}`} className={buttonClass.icon} title="Edit" aria-label={`Edit ${p.title}`}>
@@ -51,7 +51,7 @@ export default async function PagesPage() {
             </tbody>
           </table>
         </div>
-        {pages.length === 0 && <p className="px-5 py-12 text-center text-sm text-grey">No pages yet.</p>}
+        {pages.length === 0 && <p className="px-5 py-12 text-center text-sm text-charcoal">No pages yet.</p>}
       </div>
     </>
   );

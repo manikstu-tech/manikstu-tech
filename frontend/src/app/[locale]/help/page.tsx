@@ -75,14 +75,14 @@ export default async function HelpPage({ params }: { params: Promise<{ locale: s
               <span className="text-manikstu-green">Help?</span>
             </h1>
 
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-grey sm:text-base">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-charcoal sm:text-base">
               {t("heroDesc")}
             </p>
           </div>
 
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-70"
+            className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 sm:h-7 bg-repeat-x -scale-y-100 opacity-50"
             style={{
               backgroundImage: "url('/patterns/tribal-border.png')",
               backgroundSize: "auto 100%",
@@ -101,7 +101,7 @@ export default async function HelpPage({ params }: { params: Promise<{ locale: s
               {faqs.map((faq, i) => (
                 <div key={i} className="py-5">
                   <h3 className="font-heading text-base font-bold text-charcoal">{faq.q}</h3>
-                  <p className="mt-2 text-sm text-grey leading-relaxed">{faq.a}</p>
+                  <p className="mt-2 text-sm text-charcoal leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -120,7 +120,7 @@ export default async function HelpPage({ params }: { params: Promise<{ locale: s
 
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-15 brightness-0 invert"
+            className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none opacity-[0.95] brightness-0 invert"
           >
             <Image
               src="/patterns/mandala-left.png"
@@ -132,7 +132,7 @@ export default async function HelpPage({ params }: { params: Promise<{ locale: s
           </div>
           <div
             aria-hidden
-            className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-15 brightness-0 invert"
+            className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none opacity-[0.95] brightness-0 invert"
           >
             <Image
               src="/patterns/mandala-right.png"
