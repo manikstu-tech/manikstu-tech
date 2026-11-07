@@ -28,7 +28,7 @@ export const CONTACT_INFO = {
 }
 
 export const NAV_LINKS: NavItem[] = [
-  { label: "Company", href: "/#about" },
+  { label: "Company", href: "/" },
 
   { label: "Our Solutions", href: "/#solutions", dropdownOnly: true },
 
