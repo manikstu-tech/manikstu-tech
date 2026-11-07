@@ -1,0 +1,61 @@
+# Checks every push to main and every pull request. Hostinger deploys main on its own as soon as it is pushed, so a red run
+# here means the push that is going live has a problem: fix it or revert it. See DEPLOYMENT.md.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the secret scan reads the whole history
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # the Node version set for manikstu.com in hPanel
+          cache: npm
+
+      # Hostinger runs npm install with NODE_ENV=production, which skips devDependencies. Install the same way, so a package the
+      # build needs but that sits in devDependencies fails here first.
+      - name: Install (as Hostinger does)
+        run: npm ci --no-audit --no-fund
+        env:
+          NODE_ENV: production
+
+      - name: Hostinger guards
+        run: bash scripts/ci/hostinger-guards.sh
+
+      - name: Type check
+        run: npx tsc --noEmit -p .
+
+      - name: Tests
+        run: npm test
+
+      - name: Dependency audit
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Secret scan (full history)
+        run: |
+          curl -sSL -o gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz
+          echo "5bc41815076e6ed6ef8fbecc9d9b75bcae31f39029ceb55da08086315316e3ba  gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf gitleaks.tar.gz gitleaks
+          ./gitleaks git . --redact --no-banner --log-level warn
+
+      - name: Build (as Hostinger does)
+        run: npm run build
+        env:
+          NODE_ENV: production
