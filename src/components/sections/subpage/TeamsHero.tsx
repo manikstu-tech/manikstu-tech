@@ -55,7 +55,7 @@ export function TeamsHero() {
           <div className="logoDisc">
             <img
               src={`${LOCAL_ASSET_BASE}/logo.png`}
-              alt="Manikstu Agri Solutions logo"
+              alt="Manikstu Agro Private Limited logo"
               width="360"
               height="352"
             />

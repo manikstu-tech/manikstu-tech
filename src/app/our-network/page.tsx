@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header"
 import { BackToTop } from "@/components/ui/BackToTop"
 
 export const metadata: Metadata = {
-  title: "Our Network | Manikstu Agri Solutions",
+  title: "Our Network | Manikstu Agro Private Limited",
   description: "Our network of partners and associations is coming soon.",
   // Nothing to index until the page has real content
   robots: { index: false },

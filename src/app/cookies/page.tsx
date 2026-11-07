@@ -4,7 +4,7 @@ import { COOKIES } from "@/constants/legal"
 import { getContent } from "@/lib/cms"
 
 export const metadata: Metadata = {
-  title: `${COOKIES.title} | Manikstu Agri Solutions`,
+  title: `${COOKIES.title} | Manikstu Agro Private Limited`,
   description: COOKIES.description,
   alternates: { canonical: "/cookies" },
 }

@@ -1,6 +1,6 @@
 <div align="center">
 
-# Manikstu Agri Solutions
+# Manikstu Agro Private Limited
 
 **The website for Manikstu: goat-farming enterprises, animal care and fair markets for rural India.**
 
@@ -18,8 +18,8 @@
 
 ## What this is
 
-A full redesign of [manikstu.com](https://manikstu.com): a responsive marketing and storefront site for Manikstu Agri
-Solutions. It tells the company's story, presents its five solutions and three flagship projects, brings in partners
+A full redesign of [manikstu.com](https://manikstu.com): a responsive marketing and storefront site for Manikstu Agro
+Private Limited. It tells the company's story, presents its five solutions and three flagship projects, brings in partners
 and investors through one shared enquiry flow, and sells products through a cart with online payment.
 
 **Highlights**
@@ -286,6 +286,6 @@ waits for the shopper's decision instead of being placed.
 
 <div align="center">
 
-Built for Manikstu Agri Solutions.
+Built for Manikstu Agro Private Limited.
 
 </div>

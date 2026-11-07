@@ -35,7 +35,7 @@ export function StatusPage({ code, title, text, children, links, note }: Props) 
     <main id="main" className="status">
       <Link className="statusBrand" href="/">
         <img src="/icons/icon-192.png" alt="" width="40" height="40" />
-        <span>Manikstu Agri Solutions</span>
+        <span>Manikstu Agro Private Limited</span>
       </Link>
       <div className="statusBody">
         <p className="statusCode" aria-hidden="true">

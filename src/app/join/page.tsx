@@ -8,9 +8,9 @@ import { REPLY_TIME } from "@/constants/contact"
 import { WHY_TRUST } from "@/constants/subpages"
 import { getContent } from "@/lib/cms"
 
-const TITLE = "Join Us | Manikstu Agri Solutions"
+const TITLE = "Join Us | Manikstu Agro Private Limited"
 const DESCRIPTION =
-  "Invest in or partner with Manikstu Agri Solutions. Tell us who you are and how you would like to join, and our team will get back to you."
+  "Invest in or partner with Manikstu Agro Private Limited. Tell us who you are and how you would like to join, and our team will get back to you."
 
 export const metadata: Metadata = {
   title: TITLE,

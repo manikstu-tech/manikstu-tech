@@ -14,9 +14,9 @@ import { SITE_URL } from "@/constants/site"
 import { PARTNER_STEPS, PARTNER_TYPES } from "@/constants/subpages"
 import { getContent } from "@/lib/cms"
 
-const TITLE = "Partners | Manikstu Agri Solutions"
+const TITLE = "Partners | Manikstu Agro Private Limited"
 const DESCRIPTION =
-  "Partner with Manikstu Agri Solutions: farmer groups, corporates, NGOs, government and financial institutions scaling livestock livelihoods across India."
+  "Partner with Manikstu Agro Private Limited: farmer groups, corporates, NGOs, government and financial institutions scaling livestock livelihoods across India."
 
 export const metadata: Metadata = {
   title: TITLE,

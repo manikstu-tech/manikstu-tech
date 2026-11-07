@@ -10,9 +10,9 @@ import { ADVISORS, LEADERSHIP, MANAGEMENT, type Person } from "@/constants/subpa
 import { getContent } from "@/lib/cms"
 import { SITE_URL } from "@/constants/site"
 
-const TITLE = "Our team | Manikstu Agri Solutions"
+const TITLE = "Our team | Manikstu Agro Private Limited"
 const DESCRIPTION =
-  "Meet the leadership, key management and advisors behind Manikstu Agri Solutions, a goat farming company working with rural families in Odisha and beyond."
+  "Meet the leadership, key management and advisors behind Manikstu Agro Private Limited, a goat farming company working with rural families in Odisha and beyond."
 
 export const metadata: Metadata = {
   title: TITLE,

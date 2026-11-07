@@ -8,9 +8,9 @@ import { Arrow } from "@/components/ui/Arrow"
 import { BackToTop } from "@/components/ui/BackToTop"
 import { PRESS } from "@/constants/resources"
 
-const TITLE = "Blogs | Manikstu Agri Solutions"
+const TITLE = "Blogs | Manikstu Agro Private Limited"
 const DESCRIPTION =
-  "Press coverage and articles about Manikstu Agri Solutions and the goat farming families we work with across rural India."
+  "Press coverage and articles about Manikstu Agro Private Limited and the goat farming families we work with across rural India."
 
 export const metadata: Metadata = {
   title: TITLE,

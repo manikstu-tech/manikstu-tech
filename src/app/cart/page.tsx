@@ -9,7 +9,7 @@ import { PRODUCTS } from "@/constants/products"
 import { SITE_URL } from "@/constants/site"
 
 export const metadata: Metadata = {
-  title: "Your Cart | Manikstu Agri Solutions",
+  title: "Your Cart | Manikstu Agro Private Limited",
   robots: { index: false },
 }
 

@@ -14,7 +14,7 @@ import type { ImpactIconType } from "@/types"
 // shortcut: the buy-back rate and the VB-G RAM G scheme name are for the team to confirm before launch.
 // Nov 2026, by client request: the herd-growth chart/table and the income projections were removed from every project page.
 
-const TITLE = "Aangan Lakshmi | Manikstu Agri Solutions"
+const TITLE = "Aangan Lakshmi | Manikstu Agro Private Limited"
 const SUMMARY =
   "Aangan Lakshmi helps rural women in Dhamtari, Chhattisgarh set up their own goat enterprise at home: a raised-floor shed, a starting herd of 17, training and a guaranteed buy-back."
 

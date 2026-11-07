@@ -12,9 +12,9 @@ import {
 } from "@/constants/contact"
 import { CONTACT_INFO, SITE_URL } from "@/constants/site"
 
-const TITLE = "Contact Manikstu Agri Solutions | Phone, email and offices"
+const TITLE = "Contact Manikstu Agro Private Limited | Phone, email and offices"
 const DESCRIPTION =
-  "Reach Manikstu Agri Solutions by phone, email or the enquiry form, or visit one of our four offices in Pune, Bhubaneswar, Kalahandi and Raipur."
+  "Reach Manikstu Agro Private Limited by phone, email or the enquiry form, or visit one of our four offices in Pune, Bhubaneswar, Kalahandi and Raipur."
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact Manikstu Agri Solutions",
+  name: "Contact Manikstu Agro Private Limited",
   url: `${SITE_URL}/contact`,
   mainEntity: {
     "@type": "Organization",

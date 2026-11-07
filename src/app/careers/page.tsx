@@ -11,9 +11,9 @@ import { CAREER_VALUES, HR_EMAIL, OPENINGS, PERKS, WHY_JOIN, applyLink } from "@
 import { getContent } from "@/lib/cms"
 import { PHOTOS } from "@/constants/resources"
 
-const TITLE = "Careers | Manikstu Agri Solutions"
+const TITLE = "Careers | Manikstu Agro Private Limited"
 const DESCRIPTION =
-  "Build your career with Manikstu Agri Solutions and help empower farmers, create livelihoods and drive sustainable rural transformation across India."
+  "Build your career with Manikstu Agro Private Limited and help empower farmers, create livelihoods and drive sustainable rural transformation across India."
 
 export const metadata: Metadata = {
   title: TITLE,

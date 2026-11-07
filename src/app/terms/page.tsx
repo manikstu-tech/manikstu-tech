@@ -4,7 +4,7 @@ import { TERMS } from "@/constants/legal"
 import { getContent } from "@/lib/cms"
 
 export const metadata: Metadata = {
-  title: `${TERMS.title} | Manikstu Agri Solutions`,
+  title: `${TERMS.title} | Manikstu Agro Private Limited`,
   description: TERMS.description,
   alternates: { canonical: "/terms" },
 }

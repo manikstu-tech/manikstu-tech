@@ -10,7 +10,7 @@ import { ImpactIcon } from "@/components/ui/ImpactIcon"
 // India Post, so those link to a search and the home page; the spec's livestock, vaccine and partner forms map to
 // the contact and join pages. The spec's Manufacturing Partners section was removed at the company's request.
 
-const TITLE = "Supply & Distribution | Manikstu Agri Solutions"
+const TITLE = "Supply & Distribution | Manikstu Agro Private Limited"
 const SUMMARY =
   "A demand-led supply and distribution network connecting farmers with quality livestock, veterinary essentials and farm inputs."
 

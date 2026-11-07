@@ -12,7 +12,7 @@ import type { ImpactIconType } from "@/types"
 // Copy and figures follow "Project Aja — Website Content Brief" (Project_Aja_Website_Content.docx),
 // whose numbers come from the official Project Aja PDF for Raipur District (Manikstu Agro Pvt. Ltd.).
 
-const TITLE = "Project AJAH | Manikstu Agri Solutions"
+const TITLE = "Project AJAH | Manikstu Agro Private Limited"
 const SUMMARY =
   "Project AJAH gives a rural woman a complete goat enterprise in her own backyard: a climate-smart shed, twelve goats and end-to-end support, in Raipur, Chhattisgarh."
 

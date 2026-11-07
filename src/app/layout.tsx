@@ -10,11 +10,11 @@ import "./globals.css"
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   icons: { icon: "/apple-touch-icon.png", apple: "/apple-touch-icon.png" },
-  title: "Manikstu Agri Solutions — Revolutionizing Goat Farming",
+  title: "Manikstu Agro Private Limited — Revolutionizing Goat Farming",
   description:
-    "Manikstu Agri Solutions is building an integrated goat-farming ecosystem through technology, healthcare, training and farmer empowerment.",
+    "Manikstu Agro Private Limited is building an integrated goat-farming ecosystem through technology, healthcare, training and farmer empowerment.",
   openGraph: {
-    title: "Manikstu Agri Solutions — Revolutionizing Goat Farming",
+    title: "Manikstu Agro Private Limited — Revolutionizing Goat Farming",
     description:
       "Building sustainable livestock livelihoods across rural India.",
     images: ["https://manikstu.com/og-image.png"],

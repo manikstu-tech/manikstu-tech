@@ -105,7 +105,7 @@ export function HeaderBar({ links, mega, join }: { links: NavItem[]; mega: MegaC
       >
         <Image
           src={`${LOCAL_ASSET_BASE}/Manikstu-Logo.png`}
-          alt="Manikstu Agri Solutions"
+          alt="Manikstu Agro Private Limited"
           width={184}
           height={68}
           priority

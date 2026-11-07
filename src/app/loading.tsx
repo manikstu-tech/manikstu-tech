@@ -33,7 +33,7 @@ export default function Loading() {
           textTransform: "uppercase",
         }}
       >
-        Loading Manikstu Agri Solutions...
+        Loading Manikstu Agro Private Limited...
       </p>
     </div>
   )

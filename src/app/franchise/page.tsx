@@ -15,7 +15,7 @@ import { SITE_URL } from "@/constants/site"
 // figures changed to a 400 sq. ft. shed, 10 + 2 starting herd and ₹4 lakh estimated investment (the brief said 200 sq.
 // ft., 10 + 1 and ₹3.54 lakh). The ₹3.50 lakh loan and 35-animal capacity were not restated, so they still need checking.
 
-const TITLE = "Franchise & Business Partnerships | Manikstu Agri Solutions"
+const TITLE = "Franchise & Business Partnerships | Manikstu Agro Private Limited"
 const SUMMARY =
   "Start your own goat farming enterprise with Manikstu's complete support system: climate-smart shed, healthy breeding goats, veterinary care, insurance and market linkages. Estimated investment ₹4 lakh."
 

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const page = await getContent(`solutions/${slug}`, base)
   const url = `/solutions/${slug}`
   return {
-    title: `${page.name} | Manikstu Agri Solutions`,
+    title: `${page.name} | Manikstu Agro Private Limited`,
     description: page.summary,
     alternates: { canonical: url },
     openGraph: { title: page.title, description: page.summary, url },

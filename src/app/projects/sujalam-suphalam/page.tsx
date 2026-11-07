@@ -11,7 +11,7 @@ import type { ImpactIconType } from "@/types"
 // numbers come from the Project Sujalam-Suphalam sales pitch (Manikstu Agro Pvt. Ltd., April 2026). The brief's "Unit
 // economics" block is marked "Do not publish", so it is not used here.
 
-const TITLE = "Project Sujalam-Suphalam | Manikstu Agri Solutions"
+const TITLE = "Project Sujalam-Suphalam | Manikstu Agro Private Limited"
 const SUMMARY =
   "A fully managed, 35-animal goat enterprise for progressive farmers in Odisha: a climate-smart shed, elite breeding stock, 100% livestock insurance and a guaranteed buy-back, starting at ₹4,000."
 

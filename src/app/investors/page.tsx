@@ -10,9 +10,9 @@ import { SITE_URL } from "@/constants/site"
 import { WAYS_TO_FUND, WHY_TRUST } from "@/constants/subpages"
 import { getContent } from "@/lib/cms"
 
-const TITLE = "Investors & funders | Manikstu Agri Solutions"
+const TITLE = "Investors & funders | Manikstu Agro Private Limited"
 const DESCRIPTION =
-  "Invest in rural prosperity with Manikstu Agri Solutions: impact equity, grants, CSR partnerships and working capital behind a proven, scalable goat-farming model."
+  "Invest in rural prosperity with Manikstu Agro Private Limited: impact equity, grants, CSR partnerships and working capital behind a proven, scalable goat-farming model."
 
 export const metadata: Metadata = {
   title: TITLE,

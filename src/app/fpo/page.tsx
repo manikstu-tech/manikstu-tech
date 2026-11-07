@@ -11,7 +11,7 @@ import { SITE_URL } from "@/constants/site"
 // are not built. The commission and margin percentages, the two Prani Mitras per FPO and the app status are published as the
 // brief words them; the team should confirm them before launch.
 
-const TITLE = "FPO Connect | Manikstu Agri Solutions"
+const TITLE = "FPO Connect | Manikstu Agro Private Limited"
 const SUMMARY =
   "A partnership programme for FPOs: free goat vaccination camps for your members, product and manure business lines, and Manikstu's veterinary and digital support."
 

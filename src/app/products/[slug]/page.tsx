@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params
   const product = PRODUCTS.find((p) => p.slug === slug)
   if (!product) return {}
-  const title = `${product.name} | Manikstu Agri Solutions`
+  const title = `${product.name} | Manikstu Agro Private Limited`
   const url = `/products/${slug}`
   return {
     title,

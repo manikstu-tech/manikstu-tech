@@ -4,7 +4,7 @@ import { PRIVACY } from "@/constants/legal"
 import { getContent } from "@/lib/cms"
 
 export const metadata: Metadata = {
-  title: `${PRIVACY.title} | Manikstu Agri Solutions`,
+  title: `${PRIVACY.title} | Manikstu Agro Private Limited`,
   description: PRIVACY.description,
   alternates: { canonical: "/privacy" },
 }

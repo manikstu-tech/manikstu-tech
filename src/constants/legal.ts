@@ -249,7 +249,7 @@ export const PRIVACY: LegalPageContent = {
 export const COOKIES: LegalPageContent = {
   title: "Cookies Policy",
   description:
-    "How Manikstu Agri Solutions uses cookies, local storage and third-party content on this website, and how you can control them.",
+    "How Manikstu Agro Private Limited uses cookies, local storage and third-party content on this website, and how you can control them.",
   updated: "November 2026",
   intro:
     "This page explains how Manikstu Agro Private Limited uses cookies and similar technologies on this website, and the choices available to you.",
@@ -371,7 +371,7 @@ export const COOKIES: LegalPageContent = {
 export const TERMS: LegalPageContent = {
   title: "Terms & Conditions",
   description:
-    "The rules for using the Manikstu Agri Solutions website, buying products, using services, and participating in our franchise and training programs.",
+    "The rules for using the Manikstu Agro Private Limited website, buying products, using services, and participating in our franchise and training programs.",
   updated: "November 2026",
   intro:
     "These terms set out the rules for using the Manikstu Agro Private Limited website, purchasing products, using services such as insurance and training, and participating in franchise and partnership opportunities. By accessing this website or using any of our services, you agree to be bound by these terms.",

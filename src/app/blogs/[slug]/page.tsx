@@ -54,7 +54,7 @@ export default async function PostPage({ params }: Params) {
               <span className="tag">{post.category}</span>
               <h1>{post.title}</h1>
               <p className="postMeta">
-                {post.dateLabel} · {minutes} min read · Manikstu Agri Solutions
+                {post.dateLabel} · {minutes} min read · Manikstu Agro Private Limited
               </p>
               {lead && (
                 <figure className="postFigure">

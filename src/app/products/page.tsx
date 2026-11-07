@@ -8,9 +8,9 @@ import { ImpactIcon } from "@/components/ui/ImpactIcon"
 import { PRODUCTS, PRODUCT_ASSURANCE, PRODUCT_TRUST } from "@/constants/products"
 import { CONTACT_PAGE, SITE_URL } from "@/constants/site"
 
-const TITLE = "Goat farming products, supplements and feed | Manikstu Agri Solutions"
+const TITLE = "Goat farming products, supplements and feed | Manikstu Agro Private Limited"
 const DESCRIPTION =
-  "Veterinary tonics, mineral lick blocks and complete goat feed from Manikstu Agri Solutions: curated products for healthier goats, sourced with care and priced for rural households."
+  "Veterinary tonics, mineral lick blocks and complete goat feed from Manikstu Agro Private Limited: curated products for healthier goats, sourced with care and priced for rural households."
 
 export const metadata: Metadata = {
   title: TITLE,

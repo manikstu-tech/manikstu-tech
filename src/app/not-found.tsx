@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { StatusPage } from "@/components/ui/StatusPage"
 
-export const metadata: Metadata = { title: "Page not found | Manikstu Agri Solutions" }
+export const metadata: Metadata = { title: "Page not found | Manikstu Agro Private Limited" }
 
 export default function NotFound() {
   return (

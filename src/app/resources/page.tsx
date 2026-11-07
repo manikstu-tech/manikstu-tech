@@ -6,9 +6,9 @@ import { VideoGrid } from "@/components/sections/resources/VideoGrid"
 import { SubSection } from "@/components/sections/subpage/parts"
 import { BackToTop } from "@/components/ui/BackToTop"
 
-const TITLE = "Resources | Manikstu Agri Solutions"
+const TITLE = "Resources | Manikstu Agro Private Limited"
 const DESCRIPTION =
-  "Photos and videos from Manikstu Agri Solutions and its work with goat farmers and rural families across India."
+  "Photos and videos from Manikstu Agro Private Limited and its work with goat farmers and rural families across India."
 
 export const metadata: Metadata = {
   title: TITLE,
