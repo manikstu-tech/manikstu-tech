@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { Arrow } from "@/components/ui/Arrow"
 import { CartStepper } from "@/components/ui/CartStepper"
 import { PRODUCTS } from "@/constants/products"
-import { SITE_URL } from "@/constants/site"
+import { productImage } from "@/constants/site"
 import { clearCart, onFirstItem, setQty, useCart } from "@/lib/cart"
 
 const rupees = (n: number) => `₹${n.toLocaleString("en-IN")}`
@@ -104,7 +104,7 @@ export function MiniCart() {
       <ul className="miniList">
         {items.map((item) => (
           <li key={item.slug}>
-            <img src={`${SITE_URL}/products/${item.image}`} alt="" width="44" height="44" />
+            <img src={productImage(item.image)} alt="" width="44" height="44" />
             <div>
               <strong>{item.name}</strong>
               <small>

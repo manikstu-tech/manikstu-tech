@@ -13,7 +13,7 @@ import { Arrow } from "@/components/ui/Arrow"
 import { BackToTop } from "@/components/ui/BackToTop"
 import { ImpactIcon } from "@/components/ui/ImpactIcon"
 import { PRODUCTS, PRODUCT_DETAILS, PRODUCT_TRUST } from "@/constants/products"
-import { SITE_URL } from "@/constants/site"
+import { productImage, SITE_URL } from "@/constants/site"
 
 type Params = { params: Promise<{ slug: string }> }
 
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       title,
       description: product.tagline,
       url,
-      images: [`${SITE_URL}/products/${product.image}`],
+      images: [productImage(product.image)],
     },
   }
 }
@@ -94,7 +94,7 @@ export default async function ProductPage({ params }: Params) {
   ].slice(0, 3)
   const specs = detail.specs.filter(([, value]) => value)
   const composition = detail.composition ? parseComposition(detail.composition) : null
-  const images = detail.images.map((path) => `${SITE_URL}${path}`)
+  const images = detail.images.map((path) => productImage(path))
 
   const tabs: Tab[] = [
     {
@@ -288,7 +288,7 @@ export default async function ProductPage({ params }: Params) {
               <li key={item.slug}>
                 <a href={`/products/${item.slug}`}>
                   <Image
-                    src={`${SITE_URL}/products/${item.image}`}
+                    src={productImage(item.image)}
                     alt=""
                     width={160}
                     height={160}

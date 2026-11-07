@@ -6,7 +6,7 @@ import { Arrow } from "@/components/ui/Arrow"
 import { BackToTop } from "@/components/ui/BackToTop"
 import { ImpactIcon } from "@/components/ui/ImpactIcon"
 import { PRODUCTS, PRODUCT_ASSURANCE, PRODUCT_TRUST } from "@/constants/products"
-import { CONTACT_PAGE, SITE_URL } from "@/constants/site"
+import { CONTACT_PAGE, productImage, SITE_URL } from "@/constants/site"
 
 const TITLE = "Goat farming products, supplements and feed | Manikstu Agro Private Limited"
 const DESCRIPTION =
@@ -35,7 +35,7 @@ const structuredData = {
       "@type": "Product",
       name: product.name,
       description: product.tagline,
-      image: `${SITE_URL}/products/${product.image}`,
+      image: productImage(product.image),
       url: `${SITE_URL}/products/${product.slug}`,
       brand: { "@type": "Brand", name: "Manikstu" },
       offers: {

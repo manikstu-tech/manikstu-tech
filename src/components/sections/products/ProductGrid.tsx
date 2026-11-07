@@ -5,7 +5,7 @@ import { useState } from "react"
 import { MiniCart } from "@/components/sections/products/MiniCart"
 import { PRODUCTS } from "@/constants/products"
 import { CartStepper } from "@/components/ui/CartStepper"
-import { SITE_URL } from "@/constants/site"
+import { productImage } from "@/constants/site"
 import { addToCart, useCart } from "@/lib/cart"
 
 const FILTERS = ["All", "Health", "Nutrition"] as const
@@ -57,7 +57,7 @@ export function ProductGrid() {
               aria-hidden="true"
             >
               <img
-                src={`${SITE_URL}/products/${product.image}`}
+                src={productImage(product.image)}
                 alt=""
                 width="480"
                 height="384"

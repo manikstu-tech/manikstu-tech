@@ -234,7 +234,7 @@ export function CartCheckout({ catalog, imageBase }: { catalog: CatalogItem[]; i
           <ul className="cartItems">
             {items.map((item) => (
               <li key={item.slug}>
-                <img src={`${imageBase}/products/${item.image}`} alt="" width="88" height="88" />
+                <img src={`${imageBase}/${item.image}`} alt="" width="88" height="88" />
                 <div className="cartItemInfo">
                   <Link href={`/products/${item.slug}`}>{item.name}</Link>
                   <small>

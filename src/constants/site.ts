@@ -4,6 +4,12 @@ export const SITE_URL = "https://manikstu.com"
 
 export const LOCAL_ASSET_BASE = "/manikstu"
 
+// Product photos live in public_html/product-images on the live server, outside the build. They cannot sit in a folder named
+// "products" there: LiteSpeed would answer /products/<slug> as that folder and redirect to /products/<slug>/, Next.js would
+// redirect back, and the product pages would loop. Takes "slug/1.png" or "/products/slug/1.png".
+export const PRODUCT_IMAGE_BASE = `${SITE_URL}/product-images`
+export const productImage = (path: string) => `${PRODUCT_IMAGE_BASE}/${path.replace(/^\/?products\//, "")}`
+
 export const CONTACT_PAGE = "/contact"
 
 export const JOIN_PAGE = "/join"

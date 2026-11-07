@@ -6,7 +6,7 @@ import { Header } from "@/components/layout/Header"
 import { CartCheckout } from "@/components/sections/cart/CartCheckout"
 import { BackToTop } from "@/components/ui/BackToTop"
 import { PRODUCTS } from "@/constants/products"
-import { SITE_URL } from "@/constants/site"
+import { PRODUCT_IMAGE_BASE } from "@/constants/site"
 
 export const metadata: Metadata = {
   title: "Your Cart | Manikstu Agro Private Limited",
@@ -34,7 +34,7 @@ export default function CartPage() {
             Continue shopping <Arrow />
           </Link>
         </div>
-        <CartCheckout catalog={catalog} imageBase={SITE_URL} />
+        <CartCheckout catalog={catalog} imageBase={PRODUCT_IMAGE_BASE} />
       </main>
       <Footer />
       <BackToTop />

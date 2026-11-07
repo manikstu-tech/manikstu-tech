@@ -83,7 +83,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
     remotePatterns: [
-      { protocol: "https", hostname: "manikstu.com", pathname: "/products/**" },
+      { protocol: "https", hostname: "manikstu.com", pathname: "/product-images/**" },
       // Preview pictures of the press stories on the Resources page
       { protocol: "https", hostname: "www.orissapost.com", pathname: "/wp-content/uploads/**" },
       { protocol: "https", hostname: "img-cdn.krishijagran.com", pathname: "/99237/**" },
