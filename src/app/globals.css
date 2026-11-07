@@ -453,6 +453,13 @@ html::-webkit-scrollbar{display:none}
 .admLogin label{font:600 14px var(--font-body);color:var(--forest)}
 .admLogin input{min-height:48px;padding:0 14px;border:1.5px solid color-mix(in srgb,var(--forest) 28%,transparent);border-radius:8px;background:var(--ivory);font:inherit}
 .admLogin .admBtn{min-height:48px}
+/* Password box with a show/hide button inside its right edge */
+.admPassword{position:relative}
+.admPassword input{width:100%;padding-right:52px}
+.admPassword button{position:absolute;top:50%;right:4px;transform:translateY(-50%);display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:6px;background:none;color:var(--forest);cursor:pointer}
+.admPassword button:focus-visible{outline:2px solid var(--forest);outline-offset:2px}
+@media(hover:hover) and (pointer:fine){.admPassword button:hover{background:color-mix(in srgb,var(--forest) 9%,transparent)}}
+.admPassword svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .admError{color:var(--charcoal);font-weight:600}
 .admError:before{content:"! ";color:var(--forest)}
 @media(max-width:1100px){
