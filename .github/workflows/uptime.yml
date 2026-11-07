@@ -1,0 +1,32 @@
+# Every 30 minutes, checks that the live sites answer. A failed run sends GitHub's failure email to whoever last changed this
+# file. GitHub pauses scheduled workflows after 60 days without a push to the repository: re-enable it under Actions if so.
+name: Uptime
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check the live sites
+        run: |
+          failed=0
+          check() {
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 --retry 2 --retry-delay 15 "$1")
+            echo "$1 -> $code"
+            [ "$code" = 200 ] || { echo "::error::$1 answered $code"; failed=1; }
+          }
+          check https://manikstu.com/
+          check https://manikstu.com/products
+          check https://manikstu.com/contact
+          check https://manikstu.com/manikstu/Manikstu-Logo.png
+          check https://manikstu.com/product-images/poshak-tatwa/1.webp
+          check https://api.manikstu.com/api/settings
+          exit "$failed"
