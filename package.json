@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "format": "oxfmt src",
     "data:goat": "node scripts/goat-market/extract-pib.mjs && node scripts/goat-market/build.mjs && node scripts/goat-market/validate.mjs",

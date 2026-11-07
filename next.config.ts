@@ -1,6 +1,13 @@
 import type { NextConfig } from "next"
 
+// The live site builds on Hostinger shared hosting, which reports 64 CPUs but caps the processes and threads one account may
+// start. Left alone, the build starts a worker per CPU and Tailwind's CSS engine a thread per CPU, and both die with EAGAIN.
+// Two of each is plenty for this site. (The build script also uses webpack: Turbopack needs native bindings built for
+// glibc 2.29, and that server has 2.28.)
+process.env.RAYON_NUM_THREADS ??= "2"
+
 const nextConfig: NextConfig = {
+  experimental: { cpus: 2 },
   outputFileTracingRoot: process.cwd(),
   // A phone opens the dev site by this computer's network address or through an ngrok tunnel. Without this, Next.js blocks
   // its own scripts for that address, the page never becomes interactive, and menus, previews and every button stop working.
