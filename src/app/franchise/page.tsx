@@ -263,7 +263,7 @@ export default function FranchisePage() {
           <h2 id="fr-faq">Frequently asked questions.</h2>
           <div>
             {FAQS.map(([question, answer], i) => (
-              <details key={question} open={i === 0}>
+              <details key={question} name="franchise-faq" open={i === 0}>
                 <summary>{question}</summary>
                 <p>{answer}</p>
               </details>

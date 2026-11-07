@@ -321,7 +321,7 @@ export default function FpoPage() {
           <h2 id="fpo-faq">A clear start. A flexible partnership.</h2>
           <div>
             {FAQS.map(([question, answer], i) => (
-              <details key={question} open={i === 0}>
+              <details key={question} name="fpo-faq" open={i === 0}>
                 <summary>{question}</summary>
                 <p>{answer}</p>
               </details>
