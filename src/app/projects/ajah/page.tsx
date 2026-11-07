@@ -123,7 +123,7 @@ export default function ProjectAjaPage() {
               </li>
             ))}
             <li>
-              <img src="/manikstu/Manikstu-Logo.png" alt="Manikstu" width="2060" height="763" />
+              <img src="/manikstu/Manikstu-Logo.png" alt="Manikstu" width="1200" height="400" />
             </li>
           </ul>
         </section>
