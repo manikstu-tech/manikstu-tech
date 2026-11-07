@@ -1,23 +1,17 @@
 import { HR_EMAIL } from "@/constants/careers"
-import { resumeError, validateApplication, type ApplicationValues } from "@/lib/application"
+import { RESUME_MAX_BYTES, resumeError, validateApplication, type ApplicationValues } from "@/lib/application"
+import { clientIp, rateLimiter, readBody } from "@/lib/requestGuard"
 
 // Delivery uses Resend (https://resend.com), like the contact form. Set these in the host's environment:
 //   RESEND_API_KEY      required, without it the form reports that it is not set up
 //   CAREERS_TO_EMAIL    optional, defaults to the HR address shown on the Careers page
 //   CONTACT_FROM_EMAIL  optional, must be on a domain verified in Resend
 
-// shortcut: the rate limit lives in this server instance's memory, as in the contact route
-const hits = new Map<string, number[]>()
-const WINDOW_MS = 10 * 60 * 1000
-const MAX_PER_WINDOW = 5
+// Per visitor, and a cap for everyone together so made-up addresses cannot get around it
+const limited = rateLimiter({ perVisitor: 5, total: 40, windowMs: 10 * 60 * 1000 })
 
-function limited(ip: string) {
-  const now = Date.now()
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS)
-  recent.push(now)
-  hits.set(ip, recent)
-  return recent.length > MAX_PER_WINDOW
-}
+// The resume (4 MB at most) plus the text fields
+const MAX_BODY_BYTES = RESUME_MAX_BYTES + 512 * 1024
 
 // The file name can be faked, so check the first bytes too: PDF, DOCX (a zip) or the older DOC format
 function looksLikeResume(bytes: Uint8Array) {
@@ -31,12 +25,14 @@ const text = (data: FormData, key: string) => {
 }
 
 export async function POST(request: Request) {
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown"
+  const ip = clientIp(request)
   if (limited(ip)) return Response.json({ error: "rate_limited" }, { status: 429 })
 
+  const body = await readBody(request, MAX_BODY_BYTES)
+  if (!body.ok) return body.response
   let data: FormData
   try {
-    data = await request.formData()
+    data = await new Response(new Uint8Array(body.bytes), { headers: { "Content-Type": request.headers.get("content-type") ?? "" } }).formData()
   } catch {
     return Response.json({ error: "bad_request" }, { status: 400 })
   }

@@ -1,3 +1,4 @@
+import { clientIp, rateLimiter, readJson } from "@/lib/requestGuard"
 import { validateContact, type ContactValues } from "@/lib/contact"
 
 // Delivery uses Resend (https://resend.com). Set these in the host's environment:
@@ -5,34 +6,20 @@ import { validateContact, type ContactValues } from "@/lib/contact"
 //   CONTACT_TO_EMAIL    optional, defaults to contact@manikstu.com
 //   CONTACT_FROM_EMAIL  optional, must be on a domain verified in Resend
 
-// shortcut: the rate limit lives in this server instance's memory, so it resets on restart and is not shared
-// between serverless instances. Move it to a shared store (Redis, Upstash) if abuse shows up.
-const hits = new Map<string, number[]>()
-const WINDOW_MS = 10 * 60 * 1000
-const MAX_PER_WINDOW = 5
-
-function limited(ip: string) {
-  const now = Date.now()
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS)
-  recent.push(now)
-  hits.set(ip, recent)
-  return recent.length > MAX_PER_WINDOW
-}
+// Per visitor, and a cap for everyone together so made-up addresses cannot get around it
+const limited = rateLimiter({ perVisitor: 5, total: 60, windowMs: 10 * 60 * 1000 })
 
 const text = (value: unknown) => (typeof value === "string" ? value : "")
 
 export async function POST(request: Request) {
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown"
+  const ip = clientIp(request)
   if (limited(ip)) {
     return Response.json({ error: "rate_limited" }, { status: 429 })
   }
 
-  let body: Record<string, unknown>
-  try {
-    body = await request.json()
-  } catch {
-    return Response.json({ error: "bad_request" }, { status: 400 })
-  }
+  const parsed = await readJson(request)
+  if (!parsed.ok) return parsed.response
+  const body = parsed.data
 
   // A real visitor never sees this field, so any value means a bot. Answer as if it worked.
   if (text(body.website)) return Response.json({ ok: true })

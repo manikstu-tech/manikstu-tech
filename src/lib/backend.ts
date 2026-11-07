@@ -39,34 +39,5 @@ export async function callBackend(request: Request, path: string, { method = "GE
   }
 }
 
-// Every request body this site sends (an order, a review, a payment proof) is a few kilobytes. Anything larger is refused
-// here, while it is being read, so a hostile client cannot make this server hold megabytes in memory or pass them on.
-const MAX_BODY_BYTES = 100 * 1024
-
-export type JsonBody = { ok: true; data: Record<string, unknown> } | { ok: false; response: Response }
-const refuse = (error: string, status: number): JsonBody => ({ ok: false, response: Response.json({ error }, { status }) })
-
-// Reads the JSON body of a browser request: an object, or the response to send back when it is missing, broken or too big
-export async function readJson(request: Request): Promise<JsonBody> {
-  if (Number(request.headers.get("content-length") ?? 0) > MAX_BODY_BYTES) return refuse("payload_too_large", 413)
-  const reader = request.body?.getReader()
-  if (!reader) return refuse("bad_request", 400)
-  const chunks: Uint8Array[] = []
-  let size = 0
-  for (;;) {
-    const { done, value } = await reader.read()
-    if (done) break
-    size += value.byteLength
-    if (size > MAX_BODY_BYTES) {
-      await reader.cancel()
-      return refuse("payload_too_large", 413)
-    }
-    chunks.push(value)
-  }
-  try {
-    const data: unknown = JSON.parse(Buffer.concat(chunks).toString("utf8"))
-    return data && typeof data === "object" && !Array.isArray(data) ? { ok: true, data: data as Record<string, unknown> } : refuse("bad_request", 400)
-  } catch {
-    return refuse("bad_request", 400)
-  }
-}
+// Bodies are read with the shared size cap: an order, a review or a payment proof is a few kilobytes
+export { readJson, type JsonBody } from "@/lib/requestGuard"

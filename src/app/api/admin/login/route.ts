@@ -1,28 +1,17 @@
 import { cookies } from "next/headers"
 import { COOKIE, SESSION_HOURS, adminConfigured, newToken, passwordMatches } from "@/lib/adminAuth"
+import { clientIp, rateLimiter, readJson } from "@/lib/requestGuard"
 
-// shortcut: the attempt limit lives in this server instance's memory, so it resets on restart and is not shared between
-// serverless instances. Move it to a shared store (Redis, Upstash) if the admin address is ever attacked.
-const hits = new Map<string, number[]>()
-const WINDOW_MS = 10 * 60 * 1000
-const MAX_PER_WINDOW = 8
+// 8 tries per visitor, and 30 for everyone together: a made-up x-forwarded-for on every try still hits the shared cap
+const limited = rateLimiter({ perVisitor: 8, total: 30, windowMs: 10 * 60 * 1000 })
 
 export async function POST(request: Request) {
   if (!adminConfigured) return Response.json({ error: "not_configured" }, { status: 503 })
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown"
-  const now = Date.now()
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS)
-  recent.push(now)
-  hits.set(ip, recent)
-  if (recent.length > MAX_PER_WINDOW) return Response.json({ error: "rate_limited" }, { status: 429 })
+  if (limited(clientIp(request))) return Response.json({ error: "rate_limited" }, { status: 429 })
 
-  let password = ""
-  try {
-    const body = await request.json()
-    password = typeof body?.password === "string" ? body.password : ""
-  } catch {
-    return Response.json({ error: "bad_request" }, { status: 400 })
-  }
+  const parsed = await readJson(request, 4 * 1024)
+  if (!parsed.ok) return parsed.response
+  const password = typeof parsed.data.password === "string" ? parsed.data.password : ""
   if (!passwordMatches(password)) return Response.json({ error: "wrong_password" }, { status: 401 })
 
   ;(await cookies()).set(COOKIE, newToken(), {

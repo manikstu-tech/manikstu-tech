@@ -11,7 +11,8 @@
     "build": "next build",
     "start": "next start",
     "format": "oxfmt src",
-    "data:goat": "node scripts/goat-market/extract-pib.mjs && node scripts/goat-market/build.mjs && node scripts/goat-market/validate.mjs"
+    "data:goat": "node scripts/goat-market/extract-pib.mjs && node scripts/goat-market/build.mjs && node scripts/goat-market/validate.mjs",
+    "test": "node --test \"src/**/*.test.ts\""
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
