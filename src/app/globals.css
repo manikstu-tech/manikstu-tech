@@ -33,6 +33,9 @@
    deep black behind the text on the left, and darker top and bottom edges like a film frame */
 .slideShade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.36) 0%,rgba(0,0,0,0) 38%),linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,0) 22%),linear-gradient(90deg,rgba(0,0,0,.58) 0%,rgba(0,0,0,.46) 36%,rgba(0,0,0,.13) 66%,rgba(0,0,0,.04) 100%),rgba(0,0,0,.11)}
 .slideCopy{position:absolute;inset:0;padding:0 var(--hx) 40px;max-width:min(780px,52vw);box-sizing:content-box;display:flex;flex-direction:column;justify-content:center;text-shadow:0 1px 3px rgba(0,0,0,.45),0 1px 18px rgba(0,0,0,.45)}
+/* Desktop: every slide's text starts on the same line instead of being centred, so a longer slide does not sit higher.
+   The spacer is a share of the slide's height and shrinks when a slide's text needs the room. */
+@media(min-width:901px){.slideCopy{justify-content:flex-start}.slideCopy:before{content:"";flex:0 1 12%}}
 .slideCopy .eyebrow{color:#fff;margin-bottom:22px}
 .slideCopy h1,.slideCopy h2{font:600 clamp(36px,4.5vw,76px)/1 var(--font-heading),sans-serif;letter-spacing:-.055em;margin:0;color:#fff}
 .slideCopy em{color:var(--sage)}
