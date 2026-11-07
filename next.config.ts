@@ -32,9 +32,41 @@ const nextConfig: NextConfig = {
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+          // Only on the live site: a local http:// server must not tell the browser to insist on https
+          ...(process.env.NODE_ENV === "production" ? [{ key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" }] : []),
         ],
       },
+      // The admin can rewrite every page, so it never runs inside another site's frame, is never cached and never indexed
+      ...["/admin", "/api/admin/:path*"].map((source) => ({
+        source,
+        headers: [
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+          { key: "Cache-Control", value: "no-store" },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      })),
     ]
+  },
+  // Pages of the previous site (Nov 2026 rebuild) that no longer exist: send visitors and search engines to the nearest page
+  async redirects() {
+    const moved: [string, string][] = [
+      ["/en", "/"],
+      ["/en/:path*", "/:path*"],
+      ["/about", "/teams"],
+      ["/blog", "/blogs"],
+      ["/blog/:slug", "/blogs/:slug"],
+      ["/services", "/#solutions"],
+      ["/training", "/#solutions"],
+      ["/collaborate", "/join"],
+      ["/complaint", "/contact"],
+      ["/help", "/contact"],
+      ["/payment", "/cart"],
+      ["/payment/:path*", "/cart"],
+      ["/admin/:path+", "/admin"],
+    ]
+    return moved.map(([source, destination]) => ({ source, destination, permanent: true }))
   },
   // Product photos live on manikstu.com; next/image serves them resized, as WebP or AVIF
   images: {
