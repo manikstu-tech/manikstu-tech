@@ -104,7 +104,7 @@ export function HeaderBar({ links, mega, join }: { links: NavItem[]; mega: MegaC
         onClick={() => toTopIfHere("/")}
       >
         <Image
-          src={`${LOCAL_ASSET_BASE}/Manikstu-Logo.png`}
+          src={`${LOCAL_ASSET_BASE}/manikstu-logo-green.png`}
           alt="Manikstu Agro Private Limited"
           width={184}
           height={68}

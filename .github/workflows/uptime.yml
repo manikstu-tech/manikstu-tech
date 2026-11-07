@@ -26,7 +26,7 @@ jobs:
           check https://manikstu.com/
           check https://manikstu.com/products
           check https://manikstu.com/contact
-          check https://manikstu.com/manikstu/Manikstu-Logo.png
+          check https://manikstu.com/manikstu/manikstu-logo-green.png
           check https://manikstu.com/product-images/poshak-tatwa/1.webp
           check https://api.manikstu.com/api/settings
           exit "$failed"
