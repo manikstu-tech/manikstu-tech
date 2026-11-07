@@ -77,8 +77,11 @@ const nextConfig = {
     ]
     return moved.map(([source, destination]) => ({ source, destination, permanent: true }))
   },
-  // Product photos live on manikstu.com; next/image serves them resized, as WebP or AVIF
+  // Product photos live on manikstu.com. On Hostinger the image optimizer fetches a local picture over the network from its
+  // own server, which Passenger does not answer, so every resized image came back as a 400. The pictures are served as
+  // they are instead (the site's own are already compressed WebP), as on the previous site.
   images: {
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "manikstu.com", pathname: "/products/**" },
       // Preview pictures of the press stories on the Resources page
