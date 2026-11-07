@@ -4,11 +4,12 @@ export const SITE_URL = "https://manikstu.com"
 
 export const LOCAL_ASSET_BASE = "/manikstu"
 
-// Product photos live in public_html/product-images on the live server, outside the build. They cannot sit in a folder named
-// "products" there: LiteSpeed would answer /products/<slug> as that folder and redirect to /products/<slug>/, Next.js would
-// redirect back, and the product pages would loop. Takes "slug/1.png" or "/products/slug/1.png".
+// Product photos are in public/product-images as WebP (converted from the previous site's PNGs, 293 MB down to 29 MB).
+// The product data still names the PNGs, as "slug/1.png" or "/products/slug/1.png", so this maps those names to the WebP files.
+// (Not public/products: on the live server that folder would shadow the /products pages.)
 export const PRODUCT_IMAGE_BASE = `${SITE_URL}/product-images`
-export const productImage = (path: string) => `${PRODUCT_IMAGE_BASE}/${path.replace(/^\/?products\//, "")}`
+export const productImage = (path: string) =>
+  `${PRODUCT_IMAGE_BASE}/${path.replace(/^\/?products\//, "").replace(/\.png$/i, ".webp")}`
 
 export const CONTACT_PAGE = "/contact"
 
