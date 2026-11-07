@@ -1,12 +1,13 @@
-import type { NextConfig } from "next"
-
 // The live site builds on Hostinger shared hosting, which reports 64 CPUs but caps the processes and threads one account may
 // start. Left alone, the build starts a worker per CPU and Tailwind's CSS engine a thread per CPU, and both die with EAGAIN.
 // Two of each is plenty for this site. (The build script also uses webpack: Turbopack needs native bindings built for
 // glibc 2.29, and that server has 2.28.)
+// This file is plain .mjs, not .ts: Hostinger wraps it in a config of its own that imports it without a file extension,
+// which fails for a .ts config in a "type": "module" package.
 process.env.RAYON_NUM_THREADS ??= "2"
 
-const nextConfig: NextConfig = {
+/** @type {import("next").NextConfig} */
+const nextConfig = {
   experimental: { cpus: 2 },
   outputFileTracingRoot: process.cwd(),
   // A phone opens the dev site by this computer's network address or through an ngrok tunnel. Without this, Next.js blocks
@@ -58,7 +59,8 @@ const nextConfig: NextConfig = {
   },
   // Pages of the previous site (Nov 2026 rebuild) that no longer exist: send visitors and search engines to the nearest page
   async redirects() {
-    const moved: [string, string][] = [
+    /** @type {[string, string][]} */
+    const moved = [
       ["/en", "/"],
       ["/en/:path*", "/:path*"],
       ["/about", "/teams"],

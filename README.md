@@ -90,7 +90,7 @@ cp .env.example .env.local   # then fill in the values below
 pnpm dev                     # http://localhost:3000
 ```
 
-The dev server allows phones on your network and ngrok tunnels (see `next.config.ts`), so you can test on a real
+The dev server allows phones on your network and ngrok tunnels (see `next.config.mjs`), so you can test on a real
 device without extra setup.
 
 ### Scripts
