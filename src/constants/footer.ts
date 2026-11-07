@@ -25,14 +25,12 @@ export const FOOTER = {
       ],
     },
     {
-      // "Partners & Investors" was renamed to "Partners": an audit agent (Nov 2026) found "Investors" here was
-      // redundant and inaccurate now that Quick Links covers that audience separately, and /join (no query param)
-      // already defaults to the partner-framed form, not investor copy — see that review for the full reasoning.
+      // "Partners" (/join) was replaced by Supply & Distribution at the client's request (Nov 2026)
       title: "Work with us",
       links: [
         { label: "Franchise", href: "/franchise" },
         { label: "FPO Connect", href: "/fpo" },
-        { label: "Partners", href: "/join" },
+        { label: "Supply & Distribution", href: "/supply-distribution" },
         { label: "Careers", href: "/careers" },
       ],
     },
