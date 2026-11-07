@@ -1,0 +1,258 @@
+{
+  "sources": {
+    "lc20-pib-annexure": {
+      "organisation": "Department of Animal Husbandry and Dairying, Ministry of Fisheries, Animal Husbandry and Dairying (published via PIB)",
+      "title": "Census for cows, buffaloes, goats and sheeps (Lok Sabha answer, 17 Dec 2025)",
+      "table": "Annexure I: State-wise Number of Cattle, Buffalo, Sheep and Goat as per 20th Livestock Census (in actual nos.)",
+      "page": null,
+      "referenceYear": 2019,
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2205263&reg=3&lang=2",
+      "kind": "official_census"
+    },
+    "lc20-key-results": {
+      "organisation": "Department of Animal Husbandry and Dairying",
+      "title": "20th Livestock Census 2019: Key Results",
+      "table": "Table 14: Goat Population 2012 & 2019 of Major States (in million)",
+      "page": 20,
+      "referenceYear": 2019,
+      "url": "https://static.pib.gov.in/WriteReadData/userfiles/key%20results.pdf",
+      "kind": "official_census"
+    },
+    "nss77-instructions": {
+      "organisation": "National Statistical Office, MoSPI",
+      "title": "NSS 77th Round (Jan to Dec 2019): Instructions to Field Staff, Vol. I",
+      "table": "Item 7 (para 3.8.3) and Item 14 (para 4.7.5): 'ovine and other mammals' covers sheep, goats, pigs and rabbits",
+      "page": 207,
+      "referenceYear": 2019,
+      "url": "https://microdata.gov.in/NADA/index.php/catalog/157/download/6443",
+      "kind": "survey_documentation"
+    },
+    "hces-questionnaire": {
+      "organisation": "National Statistical Office, MoSPI",
+      "title": "Household Consumption Expenditure Survey 2023-24: Questionnaire",
+      "table": "Section 6.5: egg, fish and meat consumed in the last 7 days, item code 192 'goat meat/mutton', unit kg",
+      "page": 32,
+      "referenceYear": 2024,
+      "url": "https://microdata.gov.in/NADA/index.php/catalog/237/download/3947",
+      "kind": "survey_documentation"
+    }
+  },
+  "metrics": {
+    "goatRearingHouseholds": {
+      "label": "Goat-rearing households",
+      "unit": "households",
+      "dataType": "survey_estimate",
+      "sourceIds": [
+        "nss77-instructions"
+      ],
+      "unavailableReason": "The NSS 77th round records goats together with sheep, pigs and rabbits as one 'ovine and other mammals' item, so goat-owning households cannot be separated. Its unit-level data also needs a free MoSPI login."
+    },
+    "goatPopulation": {
+      "label": "Goat population",
+      "unit": "goats",
+      "reportingYear": 2019,
+      "dataType": "official_census",
+      "sourceIds": [
+        "lc20-pib-annexure",
+        "lc20-key-results"
+      ]
+    },
+    "averageHerdSize": {
+      "label": "Average goat herd size",
+      "unit": "goats per household",
+      "dataType": "calculated",
+      "sourceIds": [
+        "nss77-instructions"
+      ],
+      "unavailableReason": "Needs the number of goat-rearing households. The NSS 77th round records goats together with sheep, pigs and rabbits as one 'ovine and other mammals' item, so goat-owning households cannot be separated. Its unit-level data also needs a free MoSPI login."
+    },
+    "perCapitaMeatConsumption": {
+      "label": "Per-capita goat meat consumption",
+      "unit": "kg per person per year",
+      "category": "goat_meat_or_mutton",
+      "dataType": "survey_estimate",
+      "sourceIds": [
+        "hces-questionnaire"
+      ],
+      "unavailableReason": "HCES 2023-24 records 'goat meat/mutton' as one combined item (code 192, kg, last 7 days). No state-wise quantity table is published in the documents we could reach, and the unit-level data needs a free MoSPI login."
+    },
+    "estimatedAnnualDemand": {
+      "label": "Estimated annual demand",
+      "unit": "tonnes per year",
+      "dataType": "calculated",
+      "sourceIds": [
+        "hces-questionnaire"
+      ],
+      "unavailableReason": "Needs state-wise per-capita consumption and goat meat production from the DAHD Basic Animal Husbandry Statistics, which we could not download."
+    },
+    "goatMeatProduction": {
+      "label": "Goat meat production",
+      "unit": "tonnes per year",
+      "dataType": "official_statistics",
+      "sourceIds": [],
+      "unavailableReason": "Needs state-wise per-capita consumption and goat meat production from the DAHD Basic Animal Husbandry Statistics, which we could not download."
+    },
+    "productionCoverage": {
+      "label": "Production coverage",
+      "unit": "percent of estimated demand",
+      "dataType": "calculated",
+      "sourceIds": [],
+      "unavailableReason": "Needs state-wise per-capita consumption and goat meat production from the DAHD Basic Animal Husbandry Statistics, which we could not download."
+    },
+    "productionDemandBalance": {
+      "label": "Indicative surplus or deficit",
+      "unit": "tonnes per year",
+      "dataType": "calculated",
+      "sourceIds": [],
+      "unavailableReason": "Needs state-wise per-capita consumption and goat meat production from the DAHD Basic Animal Husbandry Statistics, which we could not download."
+    }
+  },
+  "states": {
+    "Andaman and Nicobar Islands": {
+      "code": "AN",
+      "goatPopulation": 64761
+    },
+    "Andhra Pradesh": {
+      "code": "AP",
+      "goatPopulation": 5522133
+    },
+    "Arunachal Pradesh": {
+      "code": "AR",
+      "goatPopulation": 159740
+    },
+    "Assam": {
+      "code": "AS",
+      "goatPopulation": 4315173
+    },
+    "Bihar": {
+      "code": "BR",
+      "goatPopulation": 12821216
+    },
+    "Chandigarh": {
+      "code": "CH",
+      "goatPopulation": 998
+    },
+    "Chhattisgarh": {
+      "code": "CG",
+      "goatPopulation": 4005657
+    },
+    "Dadra and Nagar Haveli and Daman and Diu": {
+      "code": "DH",
+      "goatPopulation": 8535,
+      "note": "Sum of the two rows the census table prints separately."
+    },
+    "Delhi": {
+      "code": "DL",
+      "goatPopulation": 16995
+    },
+    "Goa": {
+      "code": "GA",
+      "goatPopulation": 9446
+    },
+    "Gujarat": {
+      "code": "GJ",
+      "goatPopulation": 4867744
+    },
+    "Haryana": {
+      "code": "HR",
+      "goatPopulation": 334640
+    },
+    "Himachal Pradesh": {
+      "code": "HP",
+      "goatPopulation": 1108413
+    },
+    "Jammu and Kashmir": {
+      "code": "JK",
+      "goatPopulation": 1730218,
+      "note": "Includes Ladakh. The 2019 census table counts the two together."
+    },
+    "Jharkhand": {
+      "code": "JH",
+      "goatPopulation": 9121173
+    },
+    "Karnataka": {
+      "code": "KA",
+      "goatPopulation": 6169392
+    },
+    "Kerala": {
+      "code": "KL",
+      "goatPopulation": 1359161
+    },
+    "Ladakh": {
+      "code": "LA",
+      "note": "Counted with Jammu and Kashmir in the 2019 census table."
+    },
+    "Lakshadweep": {
+      "code": "LD",
+      "goatPopulation": 43188
+    },
+    "Madhya Pradesh": {
+      "code": "MP",
+      "goatPopulation": 11064524
+    },
+    "Maharashtra": {
+      "code": "MH",
+      "goatPopulation": 10604883
+    },
+    "Manipur": {
+      "code": "MN",
+      "goatPopulation": 38697
+    },
+    "Meghalaya": {
+      "code": "ML",
+      "goatPopulation": 397503
+    },
+    "Mizoram": {
+      "code": "MZ",
+      "goatPopulation": 14820
+    },
+    "Nagaland": {
+      "code": "NL",
+      "goatPopulation": 31602
+    },
+    "Odisha": {
+      "code": "OD",
+      "goatPopulation": 6393452
+    },
+    "Puducherry": {
+      "code": "PY",
+      "goatPopulation": 73630
+    },
+    "Punjab": {
+      "code": "PB",
+      "goatPopulation": 347949
+    },
+    "Rajasthan": {
+      "code": "RJ",
+      "goatPopulation": 20840203
+    },
+    "Sikkim": {
+      "code": "SK",
+      "goatPopulation": 90506
+    },
+    "Tamil Nadu": {
+      "code": "TN",
+      "goatPopulation": 9888746
+    },
+    "Telangana": {
+      "code": "TS",
+      "goatPopulation": 4934673
+    },
+    "Tripura": {
+      "code": "TR",
+      "goatPopulation": 360204
+    },
+    "Uttar Pradesh": {
+      "code": "UP",
+      "goatPopulation": 14480025
+    },
+    "Uttarakhand": {
+      "code": "UK",
+      "goatPopulation": 1371971
+    },
+    "West Bengal": {
+      "code": "WB",
+      "goatPopulation": 16279340
+    }
+  }
+}

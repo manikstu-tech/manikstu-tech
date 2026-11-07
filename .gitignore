@@ -1,13 +1,45 @@
-node_modules
-.next
+node_modules/
+.next/
+out/
+dist/
+build/
+.cache/
+.env*
 .env*.local
-.vercel
+!.env.example
+.vercel/
+.vite/
+vite.config.*.timestamp-*
 *.tsbuildinfo
-playwright-mcp
-.reticle/
-frontend/out/
-.playwright-mcp/
+*-debug.log*
+logs/
+*.log
+.claude-replay.*
+.tmp-*
+.DS_Store
+Thumbs.db
+/.figma/
+next-env.d.ts
 
-# Decoupled Laravel backend now lives in its own repo; ignore any local leftover copy
-/backend/
-.gstack/
+# Platform-managed agentplat state, not project source. In the
+# client-initiated single-repo workspace layout (make's `Path: "."` spec) the
+# repo root IS the workspace root, so these land inside this repo rather than
+# beside it.
+/.plugins/
+/.opencode-skills/
+
+# Local test and tooling output
+/.playwright-mcp/
+/.taste-skill/
+
+# Customer reviews saved by /api/reviews
+/data/reviews/
+
+# Customer orders saved by /api/orders
+/data/orders/
+
+# Content admin edits and uploads while developing without Supabase (src/lib/cms.ts)
+/.data/
+/public/uploads/
+/claude.md
+/AGENTS.md

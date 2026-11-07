@@ -1,0 +1,303 @@
+{
+  "sourceId": "lc20-pib-annexure",
+  "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2205263&reg=3&lang=2",
+  "unit": "animals (actual numbers, Indian digit grouping as printed)",
+  "rows": [
+    {
+      "serial": "1",
+      "state": "Andaman & Nicobar Islands",
+      "cattle": "36,438",
+      "buffalo": "3,700",
+      "sheep": "5",
+      "goat": "64,761"
+    },
+    {
+      "serial": "2",
+      "state": "Andhra Pradesh",
+      "cattle": "46,00,087",
+      "buffalo": "62,19,499",
+      "sheep": "1,76,26,971",
+      "goat": "55,22,133"
+    },
+    {
+      "serial": "3",
+      "state": "Arunachal Pradesh",
+      "cattle": "3,39,221",
+      "buffalo": "6379",
+      "sheep": "7345",
+      "goat": "1,59,740"
+    },
+    {
+      "serial": "4",
+      "state": "Assam",
+      "cattle": "1,09,09,239",
+      "buffalo": "4,21,715",
+      "sheep": "3,32,100",
+      "goat": "43,15,173"
+    },
+    {
+      "serial": "5",
+      "state": "Bihar",
+      "cattle": "1,53,97,980",
+      "buffalo": "77,19,794",
+      "sheep": "2,13,377",
+      "goat": "1,28,21,216"
+    },
+    {
+      "serial": "6",
+      "state": "Chandigarh",
+      "cattle": "13,440",
+      "buffalo": "12,177",
+      "sheep": "0",
+      "goat": "998"
+    },
+    {
+      "serial": "7",
+      "state": "Chhattisgarh",
+      "cattle": "99,83,954",
+      "buffalo": "11,74,722",
+      "sheep": "1,80,229",
+      "goat": "40,05,657"
+    },
+    {
+      "serial": "8",
+      "state": "Dadra & Nagar Haveli",
+      "cattle": "39,736",
+      "buffalo": "997",
+      "sheep": "84",
+      "goat": "7548"
+    },
+    {
+      "serial": "9",
+      "state": "Daman And Diu",
+      "cattle": "1,840",
+      "buffalo": "374",
+      "sheep": "68",
+      "goat": "987"
+    },
+    {
+      "serial": "10",
+      "state": "Delhi",
+      "cattle": "1,24,549",
+      "buffalo": "1,57,625",
+      "sheep": "1,993",
+      "goat": "16,995"
+    },
+    {
+      "serial": "11",
+      "state": "Goa",
+      "cattle": "60,247",
+      "buffalo": "27,207",
+      "sheep": "8",
+      "goat": "9,446"
+    },
+    {
+      "serial": "12",
+      "state": "Gujarat",
+      "cattle": "96,33,637",
+      "buffalo": "1,05,43,250",
+      "sheep": "17,87,263",
+      "goat": "48,67,744"
+    },
+    {
+      "serial": "13",
+      "state": "Haryana",
+      "cattle": "19,28,682",
+      "buffalo": "43,68,023",
+      "sheep": "2,88,370",
+      "goat": "3,34,640"
+    },
+    {
+      "serial": "14",
+      "state": "Himachal Pradesh",
+      "cattle": "18,28,017",
+      "buffalo": "6,46,565",
+      "sheep": "7,91,345",
+      "goat": "11,08,413"
+    },
+    {
+      "serial": "15",
+      "state": "Jammu And Kashmir",
+      "cattle": "25,39,240",
+      "buffalo": "6,90,829",
+      "sheep": "32,47,503",
+      "goat": "17,30,218"
+    },
+    {
+      "serial": "16",
+      "state": "Jharkhand",
+      "cattle": "1,12,23,052",
+      "buffalo": "13,50,313",
+      "sheep": "6,41,183",
+      "goat": "91,21,173"
+    },
+    {
+      "serial": "17",
+      "state": "Karnataka",
+      "cattle": "84,69,004",
+      "buffalo": "29,84,560",
+      "sheep": "1,10,50,728",
+      "goat": "61,69,392"
+    },
+    {
+      "serial": "18",
+      "state": "Kerala",
+      "cattle": "13,41,996",
+      "buffalo": "1,01,504",
+      "sheep": "1,482",
+      "goat": "13,59,161"
+    },
+    {
+      "serial": "19",
+      "state": "Lakshadweep",
+      "cattle": "2,493",
+      "buffalo": "16",
+      "sheep": "0",
+      "goat": "43,188"
+    },
+    {
+      "serial": "20",
+      "state": "Madhya Pradesh",
+      "cattle": "1,87,50,828",
+      "buffalo": "1,03,07,131",
+      "sheep": "32,4,585",
+      "goat": "1,10,64,524"
+    },
+    {
+      "serial": "21",
+      "state": "Maharashtra",
+      "cattle": "1,39,92,304",
+      "buffalo": "56,03,692",
+      "sheep": "26,80,329",
+      "goat": "1,06,04,883"
+    },
+    {
+      "serial": "22",
+      "state": "Manipur",
+      "cattle": "2,24,472",
+      "buffalo": "36,230",
+      "sheep": "5,921",
+      "goat": "38,697"
+    },
+    {
+      "serial": "23",
+      "state": "Meghalaya",
+      "cattle": "9,03,570",
+      "buffalo": "15,714",
+      "sheep": "15,679",
+      "goat": "3,97,503"
+    },
+    {
+      "serial": "24",
+      "state": "Mizoram",
+      "cattle": "45,701",
+      "buffalo": "2,109",
+      "sheep": "485",
+      "goat": "14,820"
+    },
+    {
+      "serial": "25",
+      "state": "Nagaland",
+      "cattle": "78,296",
+      "buffalo": "15,654",
+      "sheep": "361",
+      "goat": "31,602"
+    },
+    {
+      "serial": "26",
+      "state": "Odisha",
+      "cattle": "99,03,970",
+      "buffalo": "4,58,324",
+      "sheep": "12,79,149",
+      "goat": "63,93,452"
+    },
+    {
+      "serial": "27",
+      "state": "Puducherry",
+      "cattle": "71,984",
+      "buffalo": "2,395",
+      "sheep": "2,445",
+      "goat": "7,3630"
+    },
+    {
+      "serial": "28",
+      "state": "Punjab",
+      "cattle": "25,31,460",
+      "buffalo": "40,15,947",
+      "sheep": "85,560",
+      "goat": "3,47,949"
+    },
+    {
+      "serial": "29",
+      "state": "Rajasthan",
+      "cattle": "1,39,37,630",
+      "buffalo": "1,36,93,316",
+      "sheep": "79,03,857",
+      "goat": "2,08,40,203"
+    },
+    {
+      "serial": "30",
+      "state": "Sikkim",
+      "cattle": "1,48,010",
+      "buffalo": "1,144",
+      "sheep": "2,016",
+      "goat": "90,506"
+    },
+    {
+      "serial": "31",
+      "state": "Tamil Nadu",
+      "cattle": "95,18,660",
+      "buffalo": "5,18,795",
+      "sheep": "45,00,491",
+      "goat": "98,88,746"
+    },
+    {
+      "serial": "32",
+      "state": "Telangana",
+      "cattle": "42,32,539",
+      "buffalo": "42,26,306",
+      "sheep": "1,90,63,058",
+      "goat": "49,34,673"
+    },
+    {
+      "serial": "33",
+      "state": "Tripura",
+      "cattle": "7,39,031",
+      "buffalo": "7,131",
+      "sheep": "5,460",
+      "goat": "3,60,204"
+    },
+    {
+      "serial": "34",
+      "state": "Uttar Pradesh",
+      "cattle": "1,90,19,641",
+      "buffalo": "3,30,16,785",
+      "sheep": "9,84,725",
+      "goat": "1,44,80,025"
+    },
+    {
+      "serial": "35",
+      "state": "Uttarakhand",
+      "cattle": "18,52,123",
+      "buffalo": "8,66,318",
+      "sheep": "2,84,615",
+      "goat": "13,71,971"
+    },
+    {
+      "serial": "36",
+      "state": "West Bengal",
+      "cattle": "1,90,77,916",
+      "buffalo": "6,30,921",
+      "sheep": "9,52,886",
+      "goat": "1,62,79,340"
+    },
+    {
+      "serial": "",
+      "state": "Total",
+      "cattle": "19,35,00,987",
+      "buffalo": "10,98,47,161",
+      "sheep": "7,42,61,676",
+      "goat": "14,88,71,311"
+    }
+  ]
+}

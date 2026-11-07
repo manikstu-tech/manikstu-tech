@@ -1,0 +1,40 @@
+{
+  "sources": {
+    "lc20-pib-annexure": {
+      "organisation": "Department of Animal Husbandry and Dairying, Ministry of Fisheries, Animal Husbandry and Dairying (published via PIB)",
+      "title": "Census for cows, buffaloes, goats and sheeps (Lok Sabha answer, 17 Dec 2025)",
+      "table": "Annexure I: State-wise Number of Cattle, Buffalo, Sheep and Goat as per 20th Livestock Census (in actual nos.)",
+      "page": null,
+      "referenceYear": 2019,
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2205263&reg=3&lang=2",
+      "kind": "official_census"
+    },
+    "lc20-key-results": {
+      "organisation": "Department of Animal Husbandry and Dairying",
+      "title": "20th Livestock Census 2019: Key Results",
+      "table": "Table 14: Goat Population 2012 & 2019 of Major States (in million)",
+      "page": 20,
+      "referenceYear": 2019,
+      "url": "https://static.pib.gov.in/WriteReadData/userfiles/key%20results.pdf",
+      "kind": "official_census"
+    },
+    "nss77-instructions": {
+      "organisation": "National Statistical Office, MoSPI",
+      "title": "NSS 77th Round (Jan to Dec 2019): Instructions to Field Staff, Vol. I",
+      "table": "Item 7 (para 3.8.3) and Item 14 (para 4.7.5): 'ovine and other mammals' covers sheep, goats, pigs and rabbits",
+      "page": 207,
+      "referenceYear": 2019,
+      "url": "https://microdata.gov.in/NADA/index.php/catalog/157/download/6443",
+      "kind": "survey_documentation"
+    },
+    "hces-questionnaire": {
+      "organisation": "National Statistical Office, MoSPI",
+      "title": "Household Consumption Expenditure Survey 2023-24: Questionnaire",
+      "table": "Section 6.5: egg, fish and meat consumed in the last 7 days, item code 192 'goat meat/mutton', unit kg",
+      "page": 32,
+      "referenceYear": 2024,
+      "url": "https://microdata.gov.in/NADA/index.php/catalog/237/download/3947",
+      "kind": "survey_documentation"
+    }
+  }
+}
