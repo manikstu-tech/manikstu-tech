@@ -4,7 +4,11 @@ import { cookies } from "next/headers"
 // One shared admin password (ADMIN_PASSWORD). While developing, "admin" works so the panel needs no setup; in production
 // nothing works until the variable is set. The session is a cookie holding an expiry time and its HMAC, so there is no session store.
 const DEV = process.env.NODE_ENV !== "production"
-const PASSWORD = process.env.ADMIN_PASSWORD ?? (DEV ? "admin" : "")
+// Production refuses a short password outright: the admin can rewrite every page, and the login is reachable by anyone
+export const MIN_PASSWORD_LENGTH = 12
+const given = process.env.ADMIN_PASSWORD ?? (DEV ? "admin" : "")
+const PASSWORD = DEV || given.length >= MIN_PASSWORD_LENGTH ? given : ""
+if (!DEV && given && !PASSWORD) console.error(`Admin: ADMIN_PASSWORD is shorter than ${MIN_PASSWORD_LENGTH} characters, so the admin stays closed`)
 const SECRET = process.env.ADMIN_SECRET ?? PASSWORD
 export const COOKIE = "mk_admin"
 export const SESSION_HOURS = 8
